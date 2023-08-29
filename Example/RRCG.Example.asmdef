@@ -1,0 +1,16 @@
+{
+    "name": "RRCG.Example",
+    "rootNamespace": "",
+    "references": [
+        "RRCG"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
