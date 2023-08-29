@@ -1,0 +1,35 @@
+{
+    "name": "RRCG.Editor",
+    "rootNamespace": "",
+    "references": [
+        "RRCG"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Humanizer.dll",
+        "Microsoft.CodeAnalysis.CSharp.dll",
+        "Microsoft.CodeAnalysis.CSharp.Workspaces.dll",
+        "Microsoft.CodeAnalysis.dll",
+        "Microsoft.CodeAnalysis.Workspaces.dll",
+        "SQLitePCLRaw.batteries_v2.dll",
+        "SQLitePCLRaw.core.dll",
+        "System.Collections.Immutable.dll",
+        "System.Composition.AttributedModel.dll",
+        "System.Composition.Convention.dll",
+        "System.Composition.Hosting.dll",
+        "System.Composition.Runtime.dll",
+        "System.Composition.TypedParts.dll",
+        "System.Reflection.Metadata.dll",
+        "System.Text.Encoding.CodePages.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
