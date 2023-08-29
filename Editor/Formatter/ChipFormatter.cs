@@ -1,5 +1,4 @@
-﻿using RecRoom.Core.Studio;
-using RRCGBuild;
+﻿using RRCGBuild;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,9 +12,9 @@ namespace RRCG
     {
         static float PX_SCALE = 100f;
 
-        static Dictionary<RRCGBuild.Node, CircuitNodeInstance> rrcgNodeToInstances;
+        static Dictionary<RRCGBuild.Node, Component> rrcgNodeToInstances;
 
-        public static async Task<Vector2> OrganizeCircuits(Transform root, Context context, Dictionary<RRCGBuild.Node, CircuitNodeInstance> rrcgNodeToInstances)
+        public static async Task<Vector2> OrganizeCircuits(Transform root, Context context, Dictionary<RRCGBuild.Node, Component> rrcgNodeToInstances)
         {
             ChipFormatter.rrcgNodeToInstances = rrcgNodeToInstances;
             var tempLayoutRoot = CreateRootContainer();
@@ -89,7 +88,7 @@ namespace RRCG
                 LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)tempLayoutRoot.transform);
             }
 
-            await RRCGUtils.awaitNextTick();
+            await Utils.awaitNextTick();
 
             var nodeDummys = tempLayoutRoot.GetComponentsInChildren<LayoutNodeReference>();
 
@@ -269,5 +268,4 @@ namespace RRCG
     {
         public Node node;
     }
-
 }

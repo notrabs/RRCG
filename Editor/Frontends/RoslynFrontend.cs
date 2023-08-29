@@ -23,7 +23,7 @@ namespace RRCG
 
             var generatedAssetPath = AssetDatabase.GetAssetPath(csFile).Replace(".cs", ".generated.cs");
 
-            RRCGUtils.WriteGeneratedCode(generatedTree, generatedAssetPath);
+            FileUtils.WriteGeneratedCode(generatedTree, generatedAssetPath);
         }
 
         public static Context GetBuilt(RRCG rrcgMeta)
