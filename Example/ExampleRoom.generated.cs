@@ -1,8 +1,6 @@
-using RRCG;
 using RRCGBuild;
 using System.Collections.Generic;
 
-[RRCGRoom]
 public class ExampleRoomGen : CircuitBuilder
 {
     public override void CircuitGraph()

@@ -1,7 +1,6 @@
 using RRCG;
 using RRCGSource;
 
-[RRCGRoom]
 public class ExampleRoom : CircuitDescriptor
 {
 
