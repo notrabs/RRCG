@@ -5,6 +5,10 @@
 > We need official support for programmatic circuit manipulation to bring generated circuits into the game.
 ---
 
+What if you never had to move a wire by hand? What if circuits were automatically organized?
+
+![example-circuit](/Docs/Images/header.png)
+
 <!-- toc -->
 
 ## Install
@@ -48,10 +52,10 @@ The Circuit Descriptor is your entry point. Your chips start building from the C
 ```c#
 public class ExampleRoom : CircuitDescriptor
 {
-  public override void CircuitGraph()
-  {
-    // Your circuits go here
-  }
+    public override void CircuitGraph()
+    {
+        // Your circuits go here
+    }
 }
 ```
 
