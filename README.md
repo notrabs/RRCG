@@ -1,9 +1,8 @@
-# RRCG - Rec Room Circuit Generator
----
 > :warning: **Consider upvoting this feature request**: https://recroom.featureupvote.com/suggestions/482338/circuits-api
 > 
 > We need official support for programmatic circuit manipulation to bring generated circuits into the game.
 ---
+# RRCG - Rec Room Circuit Generator
 
 What if you never had to move a wire by hand? What if circuits were automatically organized?
 
@@ -29,7 +28,7 @@ Open `Packages/manifest.json` with your favorite text editor. Add following line
   }
 }
 ```
-
+---
 ## Using the Compiler
 
 1. Add the `RRCG` prefab to your Scene (Place it in a location with enough space. The chip area will grow to the top-right)
@@ -42,6 +41,7 @@ Open `Packages/manifest.json` with your favorite text editor. Add following line
 A DOT graph is a standard graph format that can be visualized online. You can copy a DOT into your clipboard by pressing the button in the inspector.
 (e.g. [https://dreampuf.github.io/GraphvizOnline/](https://dreampuf.github.io/GraphvizOnline/))
 
+---
 ## Writing Code
 
 The goal of this language is to be an intuitive, direct mapping of C# to Circuits. With the C# execution flow being mapped to exec lines and data flow being mapped to data lines.
@@ -98,9 +98,11 @@ public void MyFunction()
 }
 ```
 
+---
 ## Building Code (.generated.cs files)
 TODO
 
+---
 ## Roadmap
 Things to do that are in scope of the RRCG project. Although contributions are welcome, even if not listed here.
 - [ ] Circuit Building Backend (with an official API)
@@ -127,6 +129,7 @@ Things to do that are in scope of the RRCG project. Although contributions are w
 - [ ] Online playground
   - [ ] Would be great for documentation 
 
+---
 ## Useful Resources
 * [Roslyn Quoter](https://roslynquoter.azurewebsites.net/)
 * [DOT Graph Visualizer](https://dreampuf.github.io/GraphvizOnline/)
