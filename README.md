@@ -99,7 +99,12 @@ public void MyFunction()
 ```
 
 ---
-## Building Code (.generated.cs files)
+## Custom Building Code (.generated.cs files)
+With the tight integration into Unity you can even implement more dynmaic use-cases than just a 1:1 text conversion, especially if your circuit structures are dynamic.
+
+To implement dynamic strucutures you can bypass the syntax transformation and write code directly in the `generated` realm. The syntax is a bit more verbose here, but you have the advantage of being able to use c# features to build code, instead of just describing it.
+![image](/Docs/Images/flow_chart.png)
+
 TODO
 
 ---
