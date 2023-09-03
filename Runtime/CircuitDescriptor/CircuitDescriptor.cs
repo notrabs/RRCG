@@ -1,9 +1,10 @@
 
 
 using RRCG;
+using RRCGSource;
 using System;
 
-public abstract class CircuitDescriptor
+public abstract class CircuitDescriptor : Chips
 {
     public abstract void CircuitGraph();
 

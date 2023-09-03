@@ -20,30 +20,30 @@ public class ExampleRoom : CircuitDescriptor
 
     public void MyRoom()
     {
-        Chips.EventReceiver(RoomEvents.Hz30);
+        EventReceiver(RoomEvents.Hz30);
 
-        int rand1 = Chips.RandomInt(0, 10);
-        int rand2 = Chips.RandomInt(0, 10);
-        int rand3 = Chips.RandomInt(0, 10);
+        int rand1 = RandomInt(0, 10);
+        int rand2 = RandomInt(0, 10);
+        int rand3 = RandomInt(0, 10);
 
         if (rand1 + rand2 + rand3 > 10)
         {
-            Chips.LogString("Today's your lucky day");
+            LogString("Today's your lucky day");
             return;
         }
 
-        Chips.LogString("Try again next time");
+        LogString("Try again next time");
     }
 
     public void TestEventHandler()
     {
-        string message = Chips.EventReceiver<string>("MyEvent");
+        string message = EventReceiver<string>("MyEvent");
 
         var sum = ChipLib.EventCache<int>(2+3+4+5);
 
-        var formatted = Chips.Concat(message, Chips.ToString(sum));
+        var formatted = Concat(message, ToString(sum));
 
-        Chips.PlayerShowSubtitle(Chips.GetLocalPlayer(), formatted, 3.0f, 0);
+        PlayerShowSubtitle(GetLocalPlayer(), formatted, 3.0f, 0);
     }
 
     public void AdderCircuitBoard()
@@ -69,7 +69,7 @@ public class ExampleRoom : CircuitDescriptor
 
     public int GenerateRandomNumber()
     {
-        return Chips.RandomInt(0, 100) + Chips.RandomInt(0,100);
+        return RandomInt(0, 100) + RandomInt(0,100);
     }
 
 
@@ -85,12 +85,12 @@ public class ExampleRoom : CircuitDescriptor
 
     string FormatMessage(string message)
     {
-        return Chips.Concat("a message:", message);
+        return Concat("a message:", message);
     }
 
     void PrintResult(string result)
     {
-        Chips.LogString(result);
+        LogString(result);
     }
 
     //void SimpleIf()

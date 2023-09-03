@@ -2,7 +2,7 @@ using System;
 
 namespace RRCGBuild
 {
-    public abstract class CircuitBuilder
+    public abstract class CircuitBuilder: ChipBuilder
     {
         public abstract Context BuildCircuitGraph();
         public abstract void CircuitGraph();

@@ -21,17 +21,17 @@ namespace RRCGGenerated
             return default(float);
         }
 
-        public static int Add(int Value)
+        internal static int Add(int Value)
         {
             return default(int);
         }
 
-        public static float Add(float Value)
+        internal static float Add(float Value)
         {
             return default(float);
         }
 
-        public static Vector3 Add(Vector3 Value)
+        internal static Vector3 Add(Vector3 Value)
         {
             return default(Vector3);
         }
@@ -976,27 +976,27 @@ namespace RRCGGenerated
             return default(bool);
         }
 
-        public static void EventDefinition()
+        internal static void EventDefinition()
         {
             return;
         }
 
-        public static void EventReceiver()
+        internal static void EventReceiver()
         {
             return;
         }
 
-        public static void EventSender()
+        internal static void EventSender()
         {
             return;
         }
 
-        public static void ExecutionIntegerSwitch(int Match)
+        internal static void ExecutionIntegerSwitch(int Match)
         {
             return;
         }
 
-        public static void ExecutionStringSwitch(string Match)
+        internal static void ExecutionStringSwitch(string Match)
         {
             return;
         }
@@ -1681,7 +1681,7 @@ namespace RRCGGenerated
             return default(Color);
         }
 
-        public static void If(bool Condition, AlternativeExec Else)
+        internal static void If(bool Condition, AlternativeExec Else)
         {
             return;
         }
@@ -3461,7 +3461,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static int Self()
+        internal static int Self()
         {
             return default(int);
         }
