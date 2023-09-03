@@ -206,7 +206,7 @@ EventHelper<int> onInputEvent = new EventHelper<int>("OnInput", "value");
 
 public void ExampleCircuit()
 {
-    // Place a definition chip if you want to generate an event definition
+    // Place a definition chip in the proper scope, if you need one
     onInputEvent.Definition();
 
     // Start new circuit graphs at the receiver
@@ -217,7 +217,16 @@ public void ExampleCircuit()
 }
 ```
 
-Studio Events are referenced by name. There is a small helper to make this more readable, but a properly named event receiver also works:
+Access the predefined events using the `RoomEvents` enum:
+```c#
+public void StudioBoard()
+{
+    EventReceiver(RoomEvents.Hz30);
+    // ... react to event
+}
+```
+
+Studio Events are referenced by name. There is a small helper to make this more readable, but a named event receiver also works:
 ```c#
 public void StudioBoard()
 {
