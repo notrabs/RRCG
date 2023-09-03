@@ -34,11 +34,11 @@ e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Pack
 
 1. Create a prefab from the `RRCG` window menu. Place it in a location with enough space. The chip area will grow as indicated by the arrows.
 2. Open the Inspector for the `RRCG` prefab
-3. Link a RRCG script file<b>*</b> in the inspector
-4. Click `Compile Circuit``
-5. Click `Build Circuit`` (placeholder for now. Until we have a Circuits API you can only create the debug DOT graph)
+3. Link a RRCG script file (<b>*</b>) in the inspector
+4. Click `Compile Circuit`
+5. Click `Build Circuit` (placeholder for now. Until we have a Circuits API you can only create the debug DOT graph)
 
-<b>*</b> A script file needs to contain a class with the same name as the file. You can copy the already linked example class anywhere into your project. See the next chapter on how to write valid code.
+(<b>*</b>) A script file needs to contain a class with the same name as the file. You can copy the already linked example class anywhere into your project. See the next chapter on how to write valid code.
 
 #### DOT Graph
 DOT is a standard graph format that can be [visualized online](https://dreampuf.github.io/GraphvizOnline/). You can copy a DOT graph for a compiled circuit by pressing the button in the inspector.
