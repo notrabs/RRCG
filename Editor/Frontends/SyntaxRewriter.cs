@@ -187,8 +187,6 @@ namespace RRCG
                         SyntaxFactory.IdentifierName("If")))
                 .WithArgumentList(
                     ArgumentList(
-                        SyntaxFactory.IdentifierName("context"),
-                        SyntaxFactory.IdentifierName("execFlow"),
                         test,
                         ExecDelegate().WithBlock(
                             SyntaxFactory.Block(trueStatement)
