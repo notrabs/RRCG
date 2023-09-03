@@ -6,7 +6,7 @@ What if you never had to move a wire by hand? RRCG brings text-based scripting s
 
 > :warning: **Consider upvoting this feature request**: https://recroom.featureupvote.com/suggestions/482338/circuits-api
 > 
-> This package currently only contains the compiler frontend to validate the graph generation. Wihout a proper Circuits API the backend conversion into actual graphs is too unstable to release.
+> This package only contains the compiler frontend to validate the graph generation. Wihout a proper Circuits API the backend conversion into actual graphs is too unstable to release.
 
 <!-- toc -->
 
