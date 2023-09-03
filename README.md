@@ -4,7 +4,7 @@
 ---
 # RRCG - Rec Room Circuit Generator
 
-What if you never had to move a wire by hand? What if circuits were automatically organized?
+What if you never had to move a wire by hand? RRCG aims to bring text-based scripting support to CV2, the visual scripting language used by [Rec Room](https://recroom.com/).
 
 ![example-circuit](./Docs/Images/header.png)
 
@@ -35,13 +35,16 @@ Open `Packages/manifest.json` with your favorite text editor. Add following line
 2. Open the Inspector of the RRCG prefab
 3. Link/Edit a RRCG script file (*)
 4. Click Compile Circuit
-5. Click Build Circuit (once it is supported. Until then you can only look at the debug DOT graph)
+5. Click Build Circuit (placeholder for now. Until we have a Circuits API you can only look at the debug DOT graph)
 
 (*) A script file needs to contain a class with the same name as the file. You can copy the already linked example class anywhere into your project.
 
 #### DOT Graph
 A DOT graph is a standard graph format that can be visualized online. You can copy a DOT into your clipboard by pressing the button in the inspector.
 (e.g. [https://dreampuf.github.io/GraphvizOnline/](https://dreampuf.github.io/GraphvizOnline/))
+
+#### Handle Compilation errors
+If you encounter an error during or after compilation it is likely a bug or non-implemented feature. Feel free to submit a bug report with your source code and `.generated.cs` file. Delete the erroneous `.generated.cs` file to make Unity compile changes again.
 
 ---
 ## Writing Code

@@ -6,44 +6,39 @@ public class ExampleRoom : CircuitDescriptor
 
     public override void CircuitGraph()
     {
-        MyRoom();
+        RandomExample();
 
-        TestEventHandler();
+        EventCacheExample();
 
-        StartNewGraph();
-        Main();
-
-
+        // These are WIP
         //ExistingCircuitBoard("Adder Board", AdderCircuitBoard);
         //ExistingCircuitBoard("Random Board", RandomCircuitBoard);
     }
 
-    public void MyRoom()
+    public void RandomExample()
     {
         EventReceiver(RoomEvents.Hz30);
 
-        int rand1 = RandomInt(0, 10);
-        int rand2 = RandomInt(0, 10);
-        int rand3 = RandomInt(0, 10);
+        var rand1 = RandomInt(0, 10);
+        var rand2 = RandomInt(0, 10);
 
-        if (rand1 + rand2 + rand3 > 10)
-        {
-            LogString("Today's your lucky day");
-            return;
-        }
-
-        LogString("Try again next time");
+        if (rand1 + rand2 > 10) LogString("Today's your lucky day");
+        else LogString("Try again next time");
     }
 
-    public void TestEventHandler()
+    public void EventCacheExample()
     {
-        string message = EventReceiver<string>("MyEvent");
+        EventReceiver(RoomEvents.Hz30);
 
-        var sum = ChipLib.EventCache<int>(2+3+4+5);
+        var rand1 = RandomInt(0, 10);
+        var sum = (rand1 + 3) + (4 + 5);
+        var cached = ChipLib.EventCache<int>(sum);
 
-        var formatted = Concat(message, ToString(sum));
-
-        PlayerShowSubtitle(GetLocalPlayer(), formatted, 3.0f, 0);
+        PlayerShowSubtitle(
+            GetLocalPlayer(),
+            ToString(cached), 
+            3.0f, 0
+        );
     }
 
     public void AdderCircuitBoard()
@@ -69,70 +64,8 @@ public class ExampleRoom : CircuitDescriptor
 
     public int GenerateRandomNumber()
     {
-        return RandomInt(0, 100) + RandomInt(0,100);
+        return RandomInt(0, 100) + RandomInt(0, 100);
     }
-
-
-
-    // OLD stuff
-
-    void Main()
-    {
-        string result = FormatMessage("b");
-
-        PrintResult(result);
-    }
-
-    string FormatMessage(string message)
-    {
-        return Concat("a message:", message);
-    }
-
-    void PrintResult(string result)
-    {
-        LogString(result);
-    }
-
-    //void SimpleIf()
-    //{
-    //    int result = Chips.Add(3, 4);
-    //    bool test = Chips.GreaterThan(result, Chips.RandomInt(0, 10));
-
-    //    Chips.If(test,
-    //     delegate ()
-    //     {
-    //         Chips.LogString("If");
-    //     },
-    //     delegate ()
-    //     {
-    //         Chips.LogString("Else");
-    //     });
-
-    //    Chips.LogString("SimpleIf");
-    //}
-
-
-    //void ComplexIf()
-    //{
-    //    int sum = 3 + 4;
-
-    //    if (sum > Chips.RandomInt(0, 10))
-    //    {
-    //        Chips.LogString("If");
-    //    }
-    //    else if (sum > Chips.RandomInt(0, 10))
-    //    {
-    //        Chips.LogString("Second Chance");
-    //    }
-    //    else
-    //    {
-    //        Chips.LogString("Else");
-    //        return;
-    //    }
-
-    //    Chips.LogString("No Early return");
-    //}
-
 }
 
 

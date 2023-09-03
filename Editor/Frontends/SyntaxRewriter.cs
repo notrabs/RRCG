@@ -177,7 +177,7 @@ namespace RRCG
         {
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
             StatementSyntax trueStatement = (StatementSyntax)Visit(node.Statement);
-            StatementSyntax falseStatement = node.Else != null ? (StatementSyntax)Visit(node.Else) : null;
+            StatementSyntax falseStatement = node.Else != null ? (StatementSyntax)Visit(node.Else.Statement) : null;
 
             return SyntaxFactory.ExpressionStatement(
                 SyntaxFactory.InvocationExpression(
