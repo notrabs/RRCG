@@ -1,22 +1,16 @@
-> :warning: **Consider upvoting this feature request**: https://recroom.featureupvote.com/suggestions/482338/circuits-api
-> 
-> We need official support for programmatic circuit manipulation to bring generated circuits into the game.
----
 # RRCG - Rec Room Circuit Generator
 
-What if you never had to move a wire by hand? RRCG aims to bring text-based scripting support to CV2, the visual scripting language used by [Rec Room](https://recroom.com/).
+What if you never had to move a wire by hand? RRCG brings text-based scripting support to [Rec Room's](https://recroom.com/) visual scripting language CV2.
 
 ![example-circuit](./Docs/Images/header.png)
+
+> :warning: **Consider upvoting this feature request**: https://recroom.featureupvote.com/suggestions/482338/circuits-api
+> 
+> This package currently only contains the compiler frontend to validate the graph generation. Wihout a proper Circuits API the backend conversion into actual graphs is too unstable to release.
 
 <!-- toc -->
 
 ## Install
-
-### For development
-
-For development: Clone the repository into the "Packages" folder of your Studio project.
-
-e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Packages/RRCG`
 
 ### via Git URL
 
@@ -28,20 +22,26 @@ Open `Packages/manifest.json` with your favorite text editor. Add following line
   }
 }
 ```
+
+### For development
+
+For development: Clone the repository into the "Packages" folder of your Studio project.
+
+e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Packages/RRCG`
+
 ---
 ## Using the Compiler
 
-1. Add the `RRCG` prefab to your Scene. Place it in a location with enough space, as the chip area will grow to the top-right.
-2. Open the Inspector of the RRCG prefab
-3. Link/Edit a RRCG script file (*)
-4. Click Compile Circuit
-5. Click Build Circuit (placeholder for now. Until we have a Circuits API you can only look at the debug DOT graph)
+1. Create a prefab from the `RRCG` window menu. Place it in a location with enough space. The chip area will grow as indicated by the arrows.
+2. Open the Inspector for the `RRCG` prefab
+3. Link a RRCG script file<b>*</b> in the inspector
+4. Click `Compile Circuit``
+5. Click `Build Circuit`` (placeholder for now. Until we have a Circuits API you can only create the debug DOT graph)
 
-(*) A script file needs to contain a class with the same name as the file. You can copy the already linked example class anywhere into your project.
+<b>*</b> A script file needs to contain a class with the same name as the file. You can copy the already linked example class anywhere into your project. See the next chapter on how to write valid code.
 
 #### DOT Graph
-A DOT graph is a standard graph format that can be visualized online. You can copy a DOT into your clipboard by pressing the button in the inspector.
-(e.g. [https://dreampuf.github.io/GraphvizOnline/](https://dreampuf.github.io/GraphvizOnline/))
+DOT is a standard graph format that can be [visualized online](https://dreampuf.github.io/GraphvizOnline/). You can copy a DOT graph for a compiled circuit by pressing the button in the inspector.
 
 #### Handle Compilation errors
 If you encounter an error during or after compilation it is likely a bug or non-implemented feature. Feel free to submit a bug report with your source code and `.generated.cs` file. Delete the erroneous `.generated.cs` file to make Unity compile changes again.
@@ -51,8 +51,6 @@ If you encounter an error during or after compilation it is likely a bug or non-
 
 The goal of this language is to be an intuitive, direct mapping of C# to Circuits. With the C# execution flow being mapped to exec lines and data flow being mapped to data lines.
 C# Language features should do what you expect.
-
-Check back as more features are implemented.
 
 ### The Circuit Descriptor
 The Circuit Descriptor is your entry point. Your chips start building from the `CircuitGraph()` method, but beyond that you can organize your code however you like. The only limitation for now is that the compiler only supports translating a single file at a time.
@@ -94,18 +92,29 @@ public void ExampleCircuit()
 }
 ```
 
+If a chip has multiple outputs, a tuple will be returned
+```c#
+public void ExampleCircuit()
+{
+    // The underscore is handy to discard unwanted values
+    var (parsed, _) = ParseFloat("1.0");
+}
+```
+
 ### Exec flow
 
-Functions are invisible. In most cases the execution flow follows the first pin. If a Chip has no exec input, it automatically starts a new graph.
+Functions are invisible. By default the execution flow follows the first pin. If a Chip has no exec input, it automatically starts a new graph.
 
 ```c#
 public void ExampleCircuit()
 {
+    // executions
     EventReceiver(RoomEvents.Hz30);
   
     var rand1 = MyFunction();
     LogString(ToString(rand1));
 
+    // starts a new graph
     EventReceiver(RoomEvents.Hz30);
     LogString("1");
 }
@@ -115,7 +124,7 @@ public void MyFunction()
     return RandomInt(1, 2);
 }
 ```
-If and Execution Switches are fully supported. A `throw` statement ends a branch of execution if you want to model error cases. (returns are in the works)
+"If" and Execution Switches are fully supported. A `throw` statement ends a branch of execution.
 ```c#
 public void ExampleCircuit()
 {
@@ -141,16 +150,17 @@ public void ExampleCircuit()
     }
 }
 ```
+ (returns are in the works)
 
 ### Operator Overload
-Math Operators and comparisons will create the according chips, and evaluate using c#'s operator order.
+Math Operators and comparisons will create the according chips, and evaluate using c#'s order of operation.
 ```c#
 public void ExampleCircuit()
 {
-  var result = RandomInt(1,5) + 1 - 2 * 3 / 4 % 5;
-   if (result > 0 && result < 0) {
-      LogString("This is a scientfic breakthrough");
-   }
+    var result = RandomInt(1,5) + 1 - 2 * 3 / 4 % 5;
+    if (result > 0 && result < 0) {
+        LogString("This is a scientfic breakthrough");
+    }
 }
 ```
 
@@ -161,17 +171,17 @@ You can generate code for existing circuit boards (or control panels). Their int
 ```c#
 public void ExampleCircuit()
 {
-    // ... other circuits placed in root
+    // ... other circuits placed directly in the room
 
     ExistingCircuitBoard("Board Name", CircuitBoard);
 }
 
 public void CircuitBoard()
 {
-  ExistingExecInput("AddRandom");
-  var sum = ExsitingDataInput<int>("number") + RandomInt(1,10);
-  ExistingDataOutput("Sum", sum);
-  ExistingExecOutput("AddRandom");
+    ExistingExecInput("AddRandom");
+    var sum = ExsitingDataInput<int>("number") + RandomInt(1,10);
+    ExistingDataOutput("Sum", sum);
+    ExistingExecOutput("AddRandom");
 }
 ```
 
@@ -190,7 +200,7 @@ public void ExampleCircuit()
 ```
 
 ### Event Helpers
-The Event helper class helps you write type-safe code. You can defined types of your ports using the c# types.
+The `EventHelper` class helps you write type-safe code. You can defined the structure of an event once and place all chips with correct typings:
 ```c#
 EventHelper<int> onInputEvent = new EventHelper<int>("OnInput", "value");
 
@@ -240,16 +250,16 @@ For example to generate n chips in a chain it is not possible to use a for loop:
 ```c#
 // This will transform into a single for chip and a single random chip
 public void RRCGSourceRealm() {
-  for (int i=0;i<n;i++) {
-    Chips.RandomInt(0,i);
-  }
+    for (int i=0;i<n;i++) {
+        Chips.RandomInt(0,i);
+    }
 } 
 
 // In the build realm the for loop stays in the c# code. So you will generate n random chips
 public void RRCGBuildRealm() {
-  for (int i=0;i<n;i++) {
-    ChipBuilder.RandomInt(0,i);
-  }
+    for (int i=0;i<n;i++) {
+        ChipBuilder.RandomInt(0,i);
+    }
 } 
 ```
 (Note: for loops are not implemented yet, but this example illustrates the idea)
@@ -292,3 +302,4 @@ Things to do that are in scope of the RRCG project. Although contributions are w
 ## Useful Resources
 * [Roslyn Quoter](https://roslynquoter.azurewebsites.net/)
 * [DOT Graph Visualizer](https://dreampuf.github.io/GraphvizOnline/)
+* [CV2 chip definitions](https://github.com/tyleo-rec/CircuitsV2Resources/blob/master/misc/circuitsv2.json)
