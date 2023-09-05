@@ -6,7 +6,7 @@ What if you never had to move a wire by hand? RRCG brings text-based scripting s
 
 > :warning: **Consider upvoting this feature request**: https://recroom.featureupvote.com/suggestions/482338/circuits-api
 > 
-> This package only contains the compiler frontend to validate the graph generation. Wihout a proper Circuits API the backend conversion into actual graphs is too unstable to release.
+> This package only contains the compiler frontend to validate the graph generation. Wihout a proper Circuits API the backend conversion into actual graphs is to unstable to release.
 
 <!-- toc -->
 
@@ -108,10 +108,11 @@ Functions are invisible. By default the execution flow follows the first pin. If
 ```c#
 public void ExampleCircuit()
 {
-    // executions
+    // starts a new graph
     EventReceiver(RoomEvents.Hz30);
   
-    var rand1 = MyFunction();
+    // connects the random chip inside the function directly to the event receiver
+    var rand1 = MyFunction();   
     LogString(ToString(rand1));
 
     // starts a new graph
@@ -153,7 +154,7 @@ public void ExampleCircuit()
  (returns are in the works)
 
 ### Operator Overload
-Math Operators and comparisons will create the according chips, and evaluate using c#'s order of operation.
+Math Operators and comparisons will create the according chips, and evaluate using c#'s order of operations.
 ```c#
 public void ExampleCircuit()
 {
