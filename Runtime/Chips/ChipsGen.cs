@@ -961,7 +961,7 @@ namespace RRCGGenerated
             return default(bool);
         }
 
-        public static bool EqualsNew(object Value)
+        public static bool Equals(object Value)
         {
             return default(bool);
         }
@@ -2716,6 +2716,11 @@ namespace RRCGGenerated
             return default(Seat);
         }
 
+        public static Vector3 PlayerGetSteeringDirection(Player Player)
+        {
+            return default(Vector3);
+        }
+
         public static int PlayerGetTimeZone(Player Player)
         {
             return default(int);
@@ -2812,6 +2817,11 @@ namespace RRCGGenerated
         }
 
         public static void PlayerRemoveRole(Player Target, string Value)
+        {
+            return;
+        }
+
+        public static void PlayerResetNameColor(Player Player)
         {
             return;
         }

@@ -1918,10 +1918,10 @@ namespace RRCGGenerated
             return new BoolPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static BoolPort EqualsNew(AnyPort Value)
+        public static BoolPort Equals(AnyPort Value)
         {
             // EqualsNodeV2
-            Node node = new Node{Name = "Equals (New)", Type = "e1f1b65e-8d82-47af-8637-ae2d0afa431f"};
+            Node node = new Node{Name = "Equals", Type = "e1f1b65e-8d82-47af-8637-ae2d0afa431f"};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
             return new BoolPort{Port = new Port{Node = node, Index = 0}};
@@ -5328,6 +5328,15 @@ namespace RRCGGenerated
             return new SeatPort{Port = new Port{Node = node, Index = 0}};
         }
 
+        public static Vector3Port PlayerGetSteeringDirection(PlayerPort Player)
+        {
+            // PlayerGetSteeringDirection
+            Node node = new Node{Name = "Player Get Steering Direction", Type = "119718a6-adb8-40b3-9e0c-b48dd5cb9ff3"};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+        }
+
         public static IntPort PlayerGetTimeZone(PlayerPort Player)
         {
             // GetTimeZoneNode
@@ -5512,6 +5521,16 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PlayerResetNameColor(PlayerPort Player)
+        {
+            // PlayerResetNameColorNode
+            Node node = new Node{Name = "Player Reset Name Color", Type = "d492a0c8-2f55-428f-8960-60f15258681e"};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }
