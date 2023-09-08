@@ -1908,7 +1908,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static BoolPort Equals(AnyPort A, AnyPort B)
+        internal static BoolPort Equals(AnyPort A, AnyPort B)
         {
             // EqualsNodeV1DEPRECATED
             Node node = new Node{Name = "Equals", Type = "3663225d-e18d-40e6-a234-ef10378528be"};
@@ -1918,7 +1918,7 @@ namespace RRCGGenerated
             return new BoolPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static BoolPort Equals(AnyPort Value)
+        internal static BoolPort Equals(AnyPort Value)
         {
             // EqualsNodeV2
             Node node = new Node{Name = "Equals", Type = "e1f1b65e-8d82-47af-8637-ae2d0afa431f"};

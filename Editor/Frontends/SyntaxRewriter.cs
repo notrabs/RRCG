@@ -218,7 +218,7 @@ namespace RRCG
                     }
                     else
                     {
-                        var caseValue = (ExpressionSyntax) Visit(((CaseSwitchLabelSyntax)label).Value);
+                        var caseValue = (ExpressionSyntax)Visit(((CaseSwitchLabelSyntax)label).Value);
 
                         cases.Add(SyntaxFactory.InitializerExpression(
                             SyntaxKind.ComplexElementInitializerExpression,
@@ -289,6 +289,9 @@ namespace RRCG
                 case SyntaxKind.LessThanOrEqualExpression:
                     chip = "GreaterorEqual";
                     break;
+                case SyntaxKind.EqualsExpression:
+                    chip = "Equals";
+                    break;
             }
 
             if (chip != null)
@@ -328,7 +331,7 @@ namespace RRCG
 
         public static SeparatedSyntaxList<ExpressionSyntax> ExpressionList(params ExpressionSyntax[] arguments)
         {
-            var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken) arg));
+            var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)arg));
 
             return SyntaxFactory.SeparatedList<ExpressionSyntax>(withCommas);
         }

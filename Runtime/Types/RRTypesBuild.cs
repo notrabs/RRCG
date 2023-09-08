@@ -11,19 +11,19 @@ namespace RRCGBuild
     public class ListPort<T> : AnyPort { }
     public class ColorPort : AnyPort { }
     public class LightPort : AnyPort { }
-    public class StringPort : AnyPort 
+    public class StringPort : AnyPort
     {
         public static implicit operator StringPort(string data) => new StringPort { Data = data };
     }
-    public class IntPort : AnyPort 
+    public class IntPort : AnyPort
     {
         public static implicit operator IntPort(int data) => new IntPort { Data = data };
     }
-    public class FloatPort : AnyPort 
+    public class FloatPort : AnyPort
     {
         public static implicit operator FloatPort(float data) => new FloatPort { Data = data };
     }
-    public class BoolPort : AnyPort 
+    public class BoolPort : AnyPort
     {
         public static implicit operator BoolPort(bool data) => new BoolPort { Data = data };
     }

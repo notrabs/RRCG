@@ -1,3 +1,4 @@
+using RRCGGenerated;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -142,6 +143,28 @@ namespace RRCGBuild
             }
 
             return new IntPort { Port = new Port { Node = node } };
+        }
+
+        public static BoolPort Equals(params object[] ports)
+        {
+            ChipBuilderGen.Equals((AnyPort)ports[0]);
+            var node = Context.lastSpawnedNode;
+
+            for (int i = 1; i < ports.Length; i++)
+            {
+                // casting magic needed to override the C# Equals method
+                AnyPort port;
+                if (ports[i] is AnyPort) port = (AnyPort)ports[i];
+                else port = new AnyPort() { Data = ports[i] };
+
+                node.ConnectInputPort(Context.current, port, new Port
+                {
+                    Node = node,
+                    Index = i
+                });
+            }
+
+            return new BoolPort { Port = new Port { Node = node } };
         }
 
         public static void If(BoolPort test, AlternativeExec ifBranch, AlternativeExec elseBranch)
