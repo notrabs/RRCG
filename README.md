@@ -193,10 +193,12 @@ The Chip Lib contains useful helpers to write common patterns. Check back as mor
 ```c#
 public void ExampleCircuit()
 {
-    // The event cache creates a simple event to cache data for later execution ticks
+    // The EventCache creates a simple event to cache data for later execution ticks
     var expensiveSum = Add(3,4);
     var cachedSum = ChipLib.EventCache<int>(expensiveSum);
-    LogString(ToString(cachedSum));
+
+    // Log automatically converts any value ToString
+    ChipLib.Log(cachedSum);
 }
 ```
 
@@ -306,6 +308,7 @@ Things to do that are in scope of the RRCG project. Although contributions are w
   - [ ] Collapse math operations (e.g. multipler adds into a single chip)
   - [ ] Automatically replace multiple "Equal-Ifs" with switches (also in combination with returns)
 - [ ] Online playground
+  - [ ] https://github.com/ashmind/SharpLab looks promising
   - [ ] Would be great for documentation 
 
 ---
