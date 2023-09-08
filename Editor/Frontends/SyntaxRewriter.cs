@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis.Formatting;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace RRCG
 {
@@ -90,7 +91,19 @@ namespace RRCG
         public override SyntaxNode VisitMethodDeclaration(MethodDeclarationSyntax node)
         {
             if (node.Identifier.Text.Equals("BuildCircuitGraph")) return node;
-            return base.VisitMethodDeclaration(node);
+            var method = (MethodDeclarationSyntax)base.VisitMethodDeclaration(node);
+
+            var statements = method.Body.Statements;
+
+            if (method.ReturnType.ToString() != "void") statements = statements.Insert(0, SyntaxFactory.ParseStatement(method.ReturnType.ToString()+" rrcg_return_data = null;"));
+            statements = statements.Insert(0, SyntaxFactory.ParseStatement("ExecFlow rrcg_return_flow = new ExecFlow();"));
+
+            statements = statements.Add(SyntaxFactory.ParseStatement("ExecFlow.current.Merge(rrcg_return_flow);"));
+            if (method.ReturnType.ToString() != "void") statements = statements.Add(SyntaxFactory.ParseStatement("return rrcg_return_data;"));
+
+            method = method.WithBody(method.Body.WithStatements(statements));
+
+            return method;
         }
 
         public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax node)
@@ -136,24 +149,6 @@ namespace RRCG
             return base.VisitIdentifierName(node);
         }
 
-
-        public override SyntaxNode VisitLiteralExpression(LiteralExpressionSyntax node)
-        {
-            switch (node.Kind())
-            {
-                case SyntaxKind.StringLiteralExpression:
-                    return SyntaxFactory.ParseExpression($"new StringPort {{ Data = {node.Token.Text}}}");
-                case SyntaxKind.NumericLiteralExpression:
-                    if (node.Token.Value is int)
-                        return SyntaxFactory.ParseExpression($"new IntPort {{ Data = {node.Token.Text}}}");
-                    else if (node.Token.Value is float)
-                        return SyntaxFactory.ParseExpression($"new FloatPort {{ Data = {node.Token.Text}}}");
-                    break;
-            }
-
-            return base.VisitLiteralExpression(node);
-        }
-
         public override SyntaxNode VisitBreakStatement(BreakStatementSyntax node)
         {
             return null;
@@ -164,10 +159,36 @@ namespace RRCG
             return SyntaxFactory.ParseStatement("execFlow.Clear();");
         }
 
-        //public override SyntaxNode VisitReturnStatement(ReturnStatementSyntax node)
-        //{
-        //    return SyntaxFactory.ParseStatement("execFlow.Clear();");
-        //}
+        public override SyntaxNode VisitReturnStatement(ReturnStatementSyntax node)
+        {
+            var expression = (ExpressionSyntax)base.Visit(node.Expression);
+
+            if (expression == null)
+            {
+                return SyntaxFactory.ExpressionStatement(
+                    SyntaxFactory.InvocationExpression(
+                        SyntaxFactory.IdentifierName("Return"))
+                    .WithArgumentList(
+                        ArgumentList(
+                            (ExpressionSyntax)SyntaxFactory.IdentifierName("rrcg_return_flow")
+                        )
+                    )
+                );
+            }
+
+            return SyntaxFactory.ExpressionStatement(
+                SyntaxFactory.InvocationExpression(
+                    SyntaxFactory.IdentifierName("Return"))
+                .WithArgumentList(
+                    ArgumentList(
+                        (ExpressionSyntax)SyntaxFactory.IdentifierName("rrcg_return_flow"),
+                        (ExpressionSyntax)SyntaxFactory.IdentifierName("out rrcg_return_data"),
+                        expression
+                    )
+                )
+            );
+
+        }
 
         // 
         // Syntax to Chip transforms

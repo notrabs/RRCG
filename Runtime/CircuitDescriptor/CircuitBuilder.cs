@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 
 namespace RRCGBuild
 {
@@ -48,6 +49,24 @@ namespace RRCGBuild
 
         public void ExistingExecOutput(StringPort portName)
         {
+        }
+
+        //
+        // Compilation Helpers
+        //
+
+        public void Return(ExecFlow returnFlow)
+        {
+            returnFlow.Merge(ExecFlow.current);
+            ExecFlow.current.Clear();
+        }
+
+        public void Return<T>(ExecFlow returnFlow, out T returnData, T expression)
+        {
+            returnFlow.Merge(ExecFlow.current);
+            ExecFlow.current.Clear();
+
+            returnData = expression;
         }
     }
 }
