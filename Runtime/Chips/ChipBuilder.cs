@@ -271,9 +271,9 @@ namespace RRCGBuild
 
         public static void ExecutionAnySwitch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
         {
-            if (match is IntPort) ExecutionIntegerSwitch((IntPort)match, failed, branches.ToDictionary(item => (IntPort)item.Key, item => item.Value));
-            else if (match is StringPort) ExecutionStringSwitch((StringPort)match, failed, branches.ToDictionary(item => (StringPort)item.Key, item => item.Value));
-            else throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a string value!");
+            if (match is IntPort) ExecutionIntegerSwitch((IntPort)match, failed, branches.ToDictionary(item => new IntPort() { Data = item.Key.Data }, item => item.Value));
+            else if (match is StringPort) ExecutionStringSwitch((StringPort)match, failed, branches.ToDictionary(item => new StringPort() { Data = item.Key.Data }, item => item.Value));
+            else throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a int or string value!");
         }
 
         public static T Self<T>() where T : AnyPort, new()
