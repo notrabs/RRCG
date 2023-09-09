@@ -263,9 +263,4 @@ namespace RRCG
 
         public List<List<Node>> deps = new List<List<Node>>();
     }
-
-    public class LayoutNodeReference : MonoBehaviour
-    {
-        public Node node;
-    }
 }
