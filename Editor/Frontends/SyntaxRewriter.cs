@@ -349,8 +349,8 @@ namespace RRCG
         private int CalculateScopeLevelDifference(SyntaxNode assignmentNode, ISymbol symbol)
         {
             // Walk up the syntax tree to find the declaration of the variable.
-            var currentScope = assignmentNode.Parent;
-            int scopeLevelDifference = 0;
+            //var currentScope = assignmentNode.Parent;
+            //int scopeLevelDifference = 0;
 
             //while (currentScope != null)
             //{
