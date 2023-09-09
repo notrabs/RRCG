@@ -33,7 +33,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Computes the sum of two or more inputs.
         /// </summary>
-        internal static int Add(int Value)
+        internal static int Add(params int[] Value)
         {
             return default(int);
         }
@@ -41,7 +41,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Computes the sum of two or more inputs.
         /// </summary>
-        internal static float Add(float Value)
+        internal static float Add(params float[] Value)
         {
             return default(float);
         }
@@ -49,7 +49,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Computes the sum of two or more inputs.
         /// </summary>
-        internal static Vector3 Add(Vector3 Value)
+        internal static Vector3 Add(params Vector3[] Value)
         {
             return default(Vector3);
         }
@@ -1384,7 +1384,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Find how many times a value contains another.
         /// </summary>
-        public static int Divide(int Value)
+        public static int Divide(params int[] Value)
         {
             return default(int);
         }
@@ -1392,7 +1392,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Find how many times a value contains another.
         /// </summary>
-        public static float Divide(float Value)
+        public static float Divide(params float[] Value)
         {
             return default(float);
         }
@@ -1400,7 +1400,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Find how many times a value contains another.
         /// </summary>
-        public static Vector3 Divide(Vector3 Value)
+        public static Vector3 Divide(params Vector3[] Value)
         {
             return default(Vector3);
         }
@@ -1528,7 +1528,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Compares the two input values and outputs True if they are the same. False if they are different.
         /// </summary>
-        internal static bool Equals(object A, object B)
+        internal static new bool Equals(object A, object B)
         {
             return default(bool);
         }
@@ -1536,7 +1536,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Compares the input values and outputs True if they are the same. False if they are different.
         /// </summary>
-        internal static bool Equals(object Value)
+        internal static new bool Equals(object Value)
         {
             return default(bool);
         }
@@ -3384,7 +3384,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Creates a list from input values. Add more inputs by using the configure tool on the node and press "Add Input". All items in a list must be of the same type.
         /// </summary>
-        public static List<object> ListCreate(object Item)
+        public static List<object> ListCreate(params object[] Item)
         {
             return default(List<object>);
         }
@@ -3768,7 +3768,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns largest of two or more values.
         /// </summary>
-        public static int Max(int Value)
+        public static int Max(params int[] Value)
         {
             return default(int);
         }
@@ -3776,7 +3776,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns largest of two or more values.
         /// </summary>
-        public static float Max(float Value)
+        public static float Max(params float[] Value)
         {
             return default(float);
         }
@@ -3784,7 +3784,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns smallest of two or more values.
         /// </summary>
-        public static int Min(int Value)
+        public static int Min(params int[] Value)
         {
             return default(int);
         }
@@ -3792,7 +3792,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns smallest of two or more values.
         /// </summary>
-        public static float Min(float Value)
+        public static float Min(params float[] Value)
         {
             return default(float);
         }
@@ -3800,7 +3800,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the remainder of the first value is divided by the second.
         /// </summary>
-        public static int Modulo(int Value)
+        public static int Modulo(params int[] Value)
         {
             return default(int);
         }
@@ -3808,7 +3808,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the remainder of the first value is divided by the second.
         /// </summary>
-        public static float Modulo(float Value)
+        public static float Modulo(params float[] Value)
         {
             return default(float);
         }
@@ -3816,7 +3816,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies the two or more input values and outputs the result.
         /// </summary>
-        public static int Multiply(int Value)
+        public static int Multiply(params int[] Value)
         {
             return default(int);
         }
@@ -3824,7 +3824,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies the two or more input values and outputs the result.
         /// </summary>
-        public static float Multiply(float Value)
+        public static float Multiply(params float[] Value)
         {
             return default(float);
         }
@@ -3832,7 +3832,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies the two or more input values and outputs the result.
         /// </summary>
-        public static Quaternion Multiply(Quaternion Value)
+        public static Quaternion Multiply(params Quaternion[] Value)
         {
             return default(Quaternion);
         }
@@ -3840,7 +3840,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies the two or more input values and outputs the result.
         /// </summary>
-        public static Vector3 Multiply(Vector3 Value)
+        public static Vector3 Multiply(params Vector3[] Value)
         {
             return default(Vector3);
         }
@@ -5992,7 +5992,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Concatenate a given series of strings in order, with an optional separator.
         /// </summary>
-        public static string StringConcat(string Separator, string Value)
+        public static string StringConcat(params string[] Separator)
         {
             return default(string);
         }
@@ -6216,7 +6216,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Takes one input value away from the other.
         /// </summary>
-        public static int Subtract(int Value)
+        public static int Subtract(params int[] Value)
         {
             return default(int);
         }
@@ -6224,7 +6224,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Takes one input value away from the other.
         /// </summary>
-        public static float Subtract(float Value)
+        public static float Subtract(params float[] Value)
         {
             return default(float);
         }
@@ -6232,7 +6232,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Takes one input value away from the other.
         /// </summary>
-        public static Vector3 Subtract(Vector3 Value)
+        public static Vector3 Subtract(params Vector3[] Value)
         {
             return default(Vector3);
         }

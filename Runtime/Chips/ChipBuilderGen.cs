@@ -4641,7 +4641,7 @@ namespace RRCGGenerated
             return new AnyPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static IntPort Max(IntPort Value)
+        internal static IntPort Max(IntPort Value)
         {
             // MaxNode
             Node node = new Node{Name = "Max", Type = "1cb807b1-85e7-4c14-b3ae-5775b7873b7d"};
@@ -4650,7 +4650,7 @@ namespace RRCGGenerated
             return new IntPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static FloatPort Max(FloatPort Value)
+        internal static FloatPort Max(FloatPort Value)
         {
             // MaxNode
             Node node = new Node{Name = "Max", Type = "1cb807b1-85e7-4c14-b3ae-5775b7873b7d"};
@@ -4659,7 +4659,7 @@ namespace RRCGGenerated
             return new FloatPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static IntPort Min(IntPort Value)
+        internal static IntPort Min(IntPort Value)
         {
             // MinNode
             Node node = new Node{Name = "Min", Type = "bfb1ad17-5ade-4bd8-9c31-6d4b1e47dae3"};
@@ -4668,7 +4668,7 @@ namespace RRCGGenerated
             return new IntPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static FloatPort Min(FloatPort Value)
+        internal static FloatPort Min(FloatPort Value)
         {
             // MinNode
             Node node = new Node{Name = "Min", Type = "bfb1ad17-5ade-4bd8-9c31-6d4b1e47dae3"};
@@ -7460,7 +7460,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static StringPort StringConcat(StringPort Separator, StringPort Value)
+        internal static StringPort StringConcat(StringPort Separator, StringPort Value)
         {
             // StringConcatenateNode
             Node node = new Node{Name = "String Concat", Type = "73ed7ea2-cead-405a-b39c-1fec4bfd4236"};

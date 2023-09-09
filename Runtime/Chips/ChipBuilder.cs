@@ -8,6 +8,10 @@ namespace RRCGBuild
 {
     public class ChipBuilder : RRCGGenerated.ChipBuilderGen
     {
+        // 
+        // Event Nodes
+        // 
+        #region EventNodes
         public static void EventReceiver(StringPort eventName)
         {
             EventReceiver();
@@ -111,61 +115,135 @@ namespace RRCGBuild
             node.EventDefintion.Add(param1.Data, typeof(T1));
         }
 
+        #endregion
+
+        // 
+        // Dynamic Pin Nodes
+        // 
+        #region DynamicPinNodes
+
         public static StringPort Concat(params StringPort[] ports)
         {
-            Node node = new Node { Name = "StringConcatenateNode", InputCount = ports.Length };
-            Context.current.Nodes.Add(node);
-
-            for (int i = 0; i < ports.Length; i++)
-            {
-                node.ConnectInputPort(Context.current, ports[i], new Port
-                {
-                    Node = node,
-                    Index = i
-                });
-            }
-
-            return new StringPort { Port = new Port { Node = node } };
+            ChipBuilderGen.StringConcat("", ports[0]);
+            return ConnectDynamicPins(1, ports);
         }
-
+        public static int Add(params int[] ports)
+        {
+            return ports.Sum();
+        }
         public static IntPort Add(params IntPort[] ports)
         {
-            Node node = new Node { Name = "AddNode", InputCount = ports.Length };
-            Context.current.Nodes.Add(node);
-
-            for (int i = 0; i < ports.Length; i++)
-            {
-                node.ConnectInputPort(Context.current, ports[i], new Port
-                {
-                    Node = node,
-                    Index = i
-                });
-            }
-
-            return new IntPort { Port = new Port { Node = node } };
+            ChipBuilderGen.Add(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static float Add(params float[] ports)
+        {
+            return ports.Sum();
+        }
+        public static FloatPort Add(params FloatPort[] ports)
+        {
+            ChipBuilderGen.Add(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static Vector3Port Add(params Vector3Port[] ports)
+        {
+            ChipBuilderGen.Add(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static IntPort Subtract(params IntPort[] ports)
+        {
+            ChipBuilderGen.Subtract(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static FloatPort Subtract(params FloatPort[] ports)
+        {
+            ChipBuilderGen.Subtract(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static Vector3Port Subtract(params Vector3Port[] ports)
+        {
+            ChipBuilderGen.Subtract(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static IntPort Multiply(params IntPort[] ports)
+        {
+            ChipBuilderGen.Multiply(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static FloatPort Multiply(params FloatPort[] ports)
+        {
+            ChipBuilderGen.Multiply(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static IntPort Divide(params IntPort[] ports)
+        {
+            ChipBuilderGen.Divide(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static FloatPort Divide(params FloatPort[] ports)
+        {
+            ChipBuilderGen.Divide(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static IntPort Modulo(params IntPort[] ports)
+        {
+            ChipBuilderGen.Modulo(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static FloatPort Modulo(params FloatPort[] ports)
+        {
+            ChipBuilderGen.Modulo(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static IntPort Min(params IntPort[] ports)
+        {
+            ChipBuilderGen.Min(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static FloatPort Min(params FloatPort[] ports)
+        {
+            ChipBuilderGen.Min(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static IntPort Max(params IntPort[] ports)
+        {
+            ChipBuilderGen.Max(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static FloatPort Max(params FloatPort[] ports)
+        {
+            ChipBuilderGen.Max(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static T ListCreate<T>(params T[] ports) where T : AnyPort, new()
+        {
+            ChipBuilderGen.ListCreate(ports[0]);
+            return ConnectDynamicPins(0, ports);
         }
 
-        public static BoolPort Equals(params object[] ports)
+        // Assumes first pin has already been connected
+        private static T ConnectDynamicPins<T>(int offset, params T[] ports) where T : AnyPort, new()
         {
-            ChipBuilderGen.Equals((AnyPort)ports[0]);
             var node = Context.lastSpawnedNode;
+            node.InputCount = ports.Length;
 
             for (int i = 1; i < ports.Length; i++)
             {
-                // casting magic needed to override the C# Equals method
-                AnyPort port;
-                if (ports[i] is AnyPort) port = (AnyPort)ports[i];
-                else port = new AnyPort() { Data = ports[i] };
-
-                node.ConnectInputPort(Context.current, port, new Port
+                node.ConnectInputPort(Context.current, ports[i], new Port
                 {
                     Node = node,
-                    Index = i
+                    Index = i + offset
                 });
             }
 
-            return new BoolPort { Port = new Port { Node = node } };
+            return new T { Port = new Port { Node = node } };
         }
+        #endregion
+
+        // 
+        // Control Flow
+        // 
+        #region ControlFlowNodes
 
         public static void If(BoolPort test, AlternativeExec ifBranch, AlternativeExec elseBranch)
         {
@@ -274,6 +352,33 @@ namespace RRCGBuild
             if (match is IntPort) ExecutionIntegerSwitch((IntPort)match, failed, branches.ToDictionary(item => new IntPort() { Data = item.Key.Data }, item => item.Value));
             else if (match is StringPort) ExecutionStringSwitch((StringPort)match, failed, branches.ToDictionary(item => new StringPort() { Data = item.Key.Data }, item => item.Value));
             else throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a int or string value!");
+        }
+        #endregion
+
+        // 
+        // Misc
+        // 
+
+        public static BoolPort Equals(params object[] ports)
+        {
+            ChipBuilderGen.Equals((AnyPort)ports[0]);
+            var node = Context.lastSpawnedNode;
+
+            for (int i = 1; i < ports.Length; i++)
+            {
+                // casting magic needed to override the C# Equals method
+                AnyPort port;
+                if (ports[i] is AnyPort) port = (AnyPort)ports[i];
+                else port = new AnyPort() { Data = ports[i] };
+
+                node.ConnectInputPort(Context.current, port, new Port
+                {
+                    Node = node,
+                    Index = i
+                });
+            }
+
+            return new BoolPort { Port = new Port { Node = node } };
         }
 
         public static T Self<T>() where T : AnyPort, new()
