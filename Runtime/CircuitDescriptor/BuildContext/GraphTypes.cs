@@ -10,6 +10,10 @@ namespace RRCGBuild
         public string Type;
 
         public string EventName { get; internal set; }
+        public string VariableName { get; internal set; }
+        public VariableKind VariableKind { get; internal set; }
+        public object VariableHomeValue { get; internal set; }
+
         public int InputCount { get; internal set; }
         public Dictionary<Port, object> DefaultValues = new Dictionary<Port, object>();
         public Dictionary<string, Type> EventDefintion = null;

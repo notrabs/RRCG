@@ -237,6 +237,25 @@ public void StudioBoard()
     // ... react to event
 }
 ```
+
+### Variable Helpers
+The `VariableHelpers` class helps you write type-safe variable accesses. Variables are named automatically in RR:
+
+```c#
+VariableHelper<int> count = new VariableHelper<int>();
+VariableHelper<int> syncedCountWithDefault = new VariableHelper<int>(2, VariableKind.Synced);
+
+public void ExampleCircuit()
+{
+    // Places a configured event receiver
+    count.ChangedEvent();
+
+    // Access/Modify the Value using the Value getter/setter
+    count.Value = count.Value + 1;
+}
+```
+
+
 ### Interfacing with Unity
 You can directly call functions in other Editor scripts or libraries. They will be evaluated when you build the circuits.
 
