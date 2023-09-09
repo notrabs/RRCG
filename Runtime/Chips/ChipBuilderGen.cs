@@ -33,7 +33,7 @@ namespace RRCGGenerated
             return new FloatPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static IntPort Add(IntPort Value)
+        internal static IntPort Add(IntPort Value)
         {
             // AddNode
             Node node = new Node{Name = "Add", Type = "0ccb153c-dd08-4f22-80fd-9d8c5940928c"};
@@ -42,7 +42,7 @@ namespace RRCGGenerated
             return new IntPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static FloatPort Add(FloatPort Value)
+        internal static FloatPort Add(FloatPort Value)
         {
             // AddNode
             Node node = new Node{Name = "Add", Type = "0ccb153c-dd08-4f22-80fd-9d8c5940928c"};
@@ -51,7 +51,7 @@ namespace RRCGGenerated
             return new FloatPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static Vector3Port Add(Vector3Port Value)
+        internal static Vector3Port Add(Vector3Port Value)
         {
             // AddNode
             Node node = new Node{Name = "Add", Type = "0ccb153c-dd08-4f22-80fd-9d8c5940928c"};
@@ -1730,7 +1730,7 @@ namespace RRCGGenerated
             return new FloatPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static IntPort Divide(IntPort Value)
+        internal static IntPort Divide(IntPort Value)
         {
             // DivideNode
             Node node = new Node{Name = "Divide", Type = "f2eafd78-5f23-44c9-a271-8ff2f0762e71"};
@@ -1739,7 +1739,7 @@ namespace RRCGGenerated
             return new IntPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static FloatPort Divide(FloatPort Value)
+        internal static FloatPort Divide(FloatPort Value)
         {
             // DivideNode
             Node node = new Node{Name = "Divide", Type = "f2eafd78-5f23-44c9-a271-8ff2f0762e71"};
@@ -1748,7 +1748,7 @@ namespace RRCGGenerated
             return new FloatPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static Vector3Port Divide(Vector3Port Value)
+        internal static Vector3Port Divide(Vector3Port Value)
         {
             // DivideNode
             Node node = new Node{Name = "Divide", Type = "f2eafd78-5f23-44c9-a271-8ff2f0762e71"};
@@ -4174,7 +4174,7 @@ namespace RRCGGenerated
             return new ListPort<AnyPort>{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static ListPort<AnyPort> ListCreate(AnyPort Item)
+        internal static ListPort<AnyPort> ListCreate(AnyPort Item)
         {
             // MakeListNode
             Node node = new Node{Name = "List Create", Type = "542d3256-0d51-4c33-a2a1-fbc44b7e1f07"};
@@ -4677,7 +4677,7 @@ namespace RRCGGenerated
             return new FloatPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static IntPort Modulo(IntPort Value)
+        internal static IntPort Modulo(IntPort Value)
         {
             // ModuloNode
             Node node = new Node{Name = "Modulo", Type = "fe462e79-9e9f-4234-b594-7b6c0a69329b"};
@@ -4686,7 +4686,7 @@ namespace RRCGGenerated
             return new IntPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static FloatPort Modulo(FloatPort Value)
+        internal static FloatPort Modulo(FloatPort Value)
         {
             // ModuloNode
             Node node = new Node{Name = "Modulo", Type = "fe462e79-9e9f-4234-b594-7b6c0a69329b"};
@@ -4695,7 +4695,7 @@ namespace RRCGGenerated
             return new FloatPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static IntPort Multiply(IntPort Value)
+        internal static IntPort Multiply(IntPort Value)
         {
             // MultiplyNode
             Node node = new Node{Name = "Multiply", Type = "4738d696-d05a-42ee-a182-7641c429ae06"};
@@ -4704,7 +4704,7 @@ namespace RRCGGenerated
             return new IntPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static FloatPort Multiply(FloatPort Value)
+        internal static FloatPort Multiply(FloatPort Value)
         {
             // MultiplyNode
             Node node = new Node{Name = "Multiply", Type = "4738d696-d05a-42ee-a182-7641c429ae06"};
@@ -4713,7 +4713,7 @@ namespace RRCGGenerated
             return new FloatPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static QuaternionPort Multiply(QuaternionPort Value)
+        internal static QuaternionPort Multiply(QuaternionPort Value)
         {
             // MultiplyNode
             Node node = new Node{Name = "Multiply", Type = "4738d696-d05a-42ee-a182-7641c429ae06"};
@@ -4722,7 +4722,7 @@ namespace RRCGGenerated
             return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static Vector3Port Multiply(Vector3Port Value)
+        internal static Vector3Port Multiply(Vector3Port Value)
         {
             // MultiplyNode
             Node node = new Node{Name = "Multiply", Type = "4738d696-d05a-42ee-a182-7641c429ae06"};
@@ -7756,7 +7756,7 @@ namespace RRCGGenerated
             return new StringPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static IntPort Subtract(IntPort Value)
+        internal static IntPort Subtract(IntPort Value)
         {
             // SubtractNode
             Node node = new Node{Name = "Subtract", Type = "1fbb364c-1af0-44bb-a82b-905caeb6819a"};
@@ -7765,7 +7765,7 @@ namespace RRCGGenerated
             return new IntPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static FloatPort Subtract(FloatPort Value)
+        internal static FloatPort Subtract(FloatPort Value)
         {
             // SubtractNode
             Node node = new Node{Name = "Subtract", Type = "1fbb364c-1af0-44bb-a82b-905caeb6819a"};
@@ -7774,7 +7774,7 @@ namespace RRCGGenerated
             return new FloatPort{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static Vector3Port Subtract(Vector3Port Value)
+        internal static Vector3Port Subtract(Vector3Port Value)
         {
             // SubtractNode
             Node node = new Node{Name = "Subtract", Type = "1fbb364c-1af0-44bb-a82b-905caeb6819a"};

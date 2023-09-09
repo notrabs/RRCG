@@ -329,7 +329,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static AI AIVariable(AI Port0)
+        internal static AI AIVariable(AI Port0)
         {
             return default(AI);
         }
@@ -776,7 +776,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static bool boolVariable(bool Port0)
+        internal static bool boolVariable(bool Port0)
         {
             return default(bool);
         }
@@ -952,7 +952,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static Color ColorVariable(Color Port0)
+        internal static Color ColorVariable(Color Port0)
         {
             return default(Color);
         }
@@ -1136,7 +1136,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static Combatant CombatantVariable(Combatant Port0)
+        internal static Combatant CombatantVariable(Combatant Port0)
         {
             return default(Combatant);
         }
@@ -1264,7 +1264,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Stores a destination room. Destination cannot be configured from variable - for that, use a Constant.
         /// </summary>
-        public static DestinationRoom DestinationRoomVariable(DestinationRoom Port0)
+        internal static DestinationRoom DestinationRoomVariable(DestinationRoom Port0)
         {
             return default(DestinationRoom);
         }
@@ -1672,7 +1672,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static float floatVariable(float Port0)
+        internal static float floatVariable(float Port0)
         {
             return default(float);
         }
@@ -2880,7 +2880,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static int intVariable(int Port0)
+        internal static int intVariable(int Port0)
         {
             return default(int);
         }
@@ -3344,7 +3344,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static List<bool> ListBoolVariable(List<bool> Port0)
+        internal static List<bool> ListBoolVariable(List<bool> Port0)
         {
             return default(List<bool>);
         }
@@ -3352,7 +3352,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static List<Color> ListColorVariable(List<Color> Port0)
+        internal static List<Color> ListColorVariable(List<Color> Port0)
         {
             return default(List<Color>);
         }
@@ -3392,7 +3392,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Stores a list of Destinations. Use constants to configure destinations.
         /// </summary>
-        public static List<DestinationRoom> ListDestinationRoomVariable(List<DestinationRoom> Port0)
+        internal static List<DestinationRoom> ListDestinationRoomVariable(List<DestinationRoom> Port0)
         {
             return default(List<DestinationRoom>);
         }
@@ -3424,7 +3424,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static List<float> ListFloatVariable(List<float> Port0)
+        internal static List<float> ListFloatVariable(List<float> Port0)
         {
             return default(List<float>);
         }
@@ -3472,7 +3472,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static List<int> ListIntVariable(List<int> Port0)
+        internal static List<int> ListIntVariable(List<int> Port0)
         {
             return default(List<int>);
         }
@@ -3544,7 +3544,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static List<ObjectiveMarker> ListObjectiveMarkerVariable(List<ObjectiveMarker> Port0)
+        internal static List<ObjectiveMarker> ListObjectiveMarkerVariable(List<ObjectiveMarker> Port0)
         {
             return default(List<ObjectiveMarker>);
         }
@@ -3552,7 +3552,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static List<Player> ListPlayerVariable(List<Player> Port0)
+        internal static List<Player> ListPlayerVariable(List<Player> Port0)
         {
             return default(List<Player>);
         }
@@ -3560,7 +3560,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static List<Quaternion> ListQuaternionVariable(List<Quaternion> Port0)
+        internal static List<Quaternion> ListQuaternionVariable(List<Quaternion> Port0)
         {
             return default(List<Quaternion>);
         }
@@ -3568,7 +3568,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static List<RecRoomObject> ListRecRoomObjectVariable(List<RecRoomObject> Port0)
+        internal static List<RecRoomObject> ListRecRoomObjectVariable(List<RecRoomObject> Port0)
         {
             return default(List<RecRoomObject>);
         }
@@ -3608,7 +3608,7 @@ namespace RRCGGenerated
         /// <summary>
         /// A list of Rewards
         /// </summary>
-        public static List<Reward> ListRewardVariable(List<Reward> Port0)
+        internal static List<Reward> ListRewardVariable(List<Reward> Port0)
         {
             return default(List<Reward>);
         }
@@ -3640,7 +3640,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static List<string> ListStringVariable(List<string> Port0)
+        internal static List<string> ListStringVariable(List<string> Port0)
         {
             return default(List<string>);
         }
@@ -3696,7 +3696,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static List<Vector3> ListVector3Variable(List<Vector3> Port0)
+        internal static List<Vector3> ListVector3Variable(List<Vector3> Port0)
         {
             return default(List<Vector3>);
         }
@@ -4584,7 +4584,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static Player PlayerVariable(Player Port0)
+        internal static Player PlayerVariable(Player Port0)
         {
             return default(Player);
         }
@@ -4592,7 +4592,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static Player PlayerVariableDeprecated(Player Port0)
+        internal static Player PlayerVariableDeprecated(Player Port0)
         {
             return default(Player);
         }
@@ -4928,7 +4928,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static Quaternion QuaternionVariable(Quaternion Port0)
+        internal static Quaternion QuaternionVariable(Quaternion Port0)
         {
             return default(Quaternion);
         }
@@ -5040,7 +5040,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static RecRoomObject RecRoomObjectVariable(RecRoomObject Port0)
+        internal static RecRoomObject RecRoomObjectVariable(RecRoomObject Port0)
         {
             return default(RecRoomObject);
         }
@@ -6096,7 +6096,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static string stringVariable(string Port0)
+        internal static string stringVariable(string Port0)
         {
             return default(string);
         }
@@ -6704,7 +6704,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        public static Vector3 Vector3Variable(Vector3 Port0)
+        internal static Vector3 Vector3Variable(Vector3 Port0)
         {
             return default(Vector3);
         }
