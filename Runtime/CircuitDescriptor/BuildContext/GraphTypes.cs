@@ -7,28 +7,26 @@ namespace RRCGBuild
     public class Node
     {
         public string Name;
-
         public string Type;
 
         public string EventName { get; internal set; }
         public int InputCount { get; internal set; }
-
         public Dictionary<Port, object> DefaultValues = new Dictionary<Port, object>();
-
         public Dictionary<string, Type> EventDefintion = null;
-
         public List<string> SwitchCases = null;
+
+        // The scope of this conditional context
+        public ConditionalContext MetaConditionalContext = null;
+
+        public Node()
+        {
+            MetaConditionalContext = ConditionalContext.current;
+        }
 
         public void ConnectInputPort(Context context, AnyPort port, Port input)
         {
-            if (port.Port != null)
-            {
-                context.Connections.Add(new Connection { From = port.Port, To = input });
-            }
-            else
-            {
-                DefaultValues.Add(input, port.Data);
-            }
+            if (port.IsActualPort) context.Connections.Add(new Connection { From = port.Port, To = input });
+            else DefaultValues.Add(input, port.Data);
         }
     }
 

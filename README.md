@@ -197,7 +197,7 @@ public void ExampleCircuit()
     var expensiveSum = Add(3,4);
     var cachedSum = ChipLib.EventCache<int>(expensiveSum);
 
-    // Log automatically converts any value ToString
+    // Log() automatically converts any value ToString
     ChipLib.Log(cachedSum);
 }
 ```

@@ -178,22 +178,31 @@ namespace RRCGBuild
                 Index = 1
             });
 
-            ExecFlow.current.Advance(Context.current, new Port { Node = node }, new Port { Node = node });
-
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port { Node = node });
+            var conditionalContext = ConditionalContext.Push(new IfConditionalContext() { test = test, currentBranch = true });
             ifBranch();
             var ifFlow = ExecFlow.current;
 
-
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port { Node = node, Index = 1 });
+            conditionalContext.currentBranch = false;
             elseBranch();
+            ConditionalContext.Pop();
             var elseFlow = ExecFlow.current;
 
-            ExecFlow.current.Clear();
-            ExecFlow.current.Merge(ifFlow);
-            ExecFlow.current.Merge(elseFlow);
+            if (ifFlow.hasAdvanced || elseFlow.hasAdvanced)
+            {
+                ExecFlow.current.Advance(Context.current, new Port { Node = node }, new Port { Node = node });
+
+                ExecFlow.current.Clear();
+                ExecFlow.current.Merge(ifFlow);
+                ExecFlow.current.Merge(elseFlow);
+            }
+            else
+            {
+                Context.current.Nodes.Remove(node);
+            }
         }
 
         public static void ExecutionIntegerSwitch(IntPort match, AlternativeExec failed, Dictionary<IntPort, AlternativeExec> branches)

@@ -1,4 +1,5 @@
 using RRCG;
+using UnityEngine;
 using RRCGBuild;
 using System.Collections.Generic;
 
@@ -6,69 +7,166 @@ public class ExampleRoomGen : CircuitBuilder
 {
     public override void CircuitGraph()
     {
+        ExecFlow rrcg_return_flow = new ExecFlow();
         RandomExample();
         EventCacheExample();
+        ExecFlow.current.Merge(rrcg_return_flow);
     // These are WIP
     //ExistingCircuitBoard("Adder Board", AdderCircuitBoard);
     //ExistingCircuitBoard("Random Board", RandomCircuitBoard);
+    //ReturnTest1();
+    //RandomInt(0, 10);
+    //var (a, b) = ReturnTest2();
+    //ChipLib.Log(a);
+    //ChipLib.Log(b);
     }
 
     public void RandomExample()
     {
+        ExecFlow rrcg_return_flow = new ExecFlow();
         EventReceiver(RoomEvents.Hz30);
-        var rand1 = RandomInt(new IntPort{Data = 0}, new IntPort{Data = 10});
-        var rand2 = RandomInt(new IntPort{Data = 0}, new IntPort{Data = 10});
-        ChipBuilder.If(ChipBuilder.GreaterThan(ChipBuilder.Add(rand1, rand2), new IntPort{Data = 10}), delegate
+        var rand1 = RandomInt(0, 10);
+        var rand2 = RandomInt(0, 10);
+        ChipBuilder.If(ChipBuilder.GreaterThan(ChipBuilder.Add(rand1, rand2), 10), delegate
         {
-            LogString(new StringPort{Data = "Today's your lucky day"});
+            LogString("Today's your lucky day");
         }
 
         , delegate
         {
-            LogString(new StringPort{Data = "Try again next time"});
+            LogString("Try again next time");
         }
 
         );
+        ExecFlow.current.Merge(rrcg_return_flow);
     }
 
     public void EventCacheExample()
     {
+        ExecFlow rrcg_return_flow = new ExecFlow();
         EventReceiver(RoomEvents.Hz30);
-        var rand1 = RandomInt(new IntPort{Data = 0}, new IntPort{Data = 10});
-        var sum = ChipBuilder.Add((ChipBuilder.Add(rand1, new IntPort{Data = 3})), (ChipBuilder.Add(new IntPort{Data = 4}, new IntPort{Data = 5})));
+        var rand1 = RandomInt(0, 10);
+        var sum = ChipBuilder.Add((ChipBuilder.Add(rand1, 3)), (ChipBuilder.Add(4, 5)));
         var cached = ChipLib.EventCache<IntPort>(sum);
-        PlayerShowSubtitle(GetLocalPlayer(), ToString(cached), new FloatPort{Data = 3.0f}, new IntPort{Data = 0});
+        PlayerShowSubtitle(GetLocalPlayer(), ToString(cached), 3.0f, 0);
+        ExecFlow.current.Merge(rrcg_return_flow);
     }
 
     public void AdderCircuitBoard()
     {
-        IntPort input1 = ExistingDataInput<IntPort>(new StringPort{Data = "value0"});
-        IntPort input2 = ExistingDataInput<IntPort>(new StringPort{Data = "value1"});
+        ExecFlow rrcg_return_flow = new ExecFlow();
+        IntPort input1 = ExistingDataInput<IntPort>("value0");
+        IntPort input2 = ExistingDataInput<IntPort>("value1");
         var result = ChipBuilder.Add(input1, input2);
-        ExistingDataOutput<IntPort>(new StringPort{Data = "result"}, result);
+        ExistingDataOutput<IntPort>("result", result);
+        ExecFlow.current.Merge(rrcg_return_flow);
     }
 
     public void RandomCircuitBoard()
     {
-        ExistingExecInput(new StringPort{Data = "Exec"});
+        ExecFlow rrcg_return_flow = new ExecFlow();
+        ExistingExecInput("Exec");
         var result = GenerateRandomNumber();
-        ExistingDataOutput<IntPort>(new StringPort{Data = "result"}, result);
-        ExistingExecOutput(new StringPort{Data = "Exec"});
+        ExistingDataOutput<IntPort>("result", result);
+        ExistingExecOutput("Exec");
+        ExecFlow.current.Merge(rrcg_return_flow);
     }
 
     public IntPort GenerateRandomNumber()
     {
-        return ChipBuilder.Add(RandomInt(new IntPort{Data = 0}, new IntPort{Data = 100}), RandomInt(new IntPort{Data = 0}, new IntPort{Data = 100}));
+        ExecFlow rrcg_return_flow = new ExecFlow();
+        IntPort rrcg_return_data = default;
+        Return(rrcg_return_flow, out rrcg_return_data, ChipBuilder.Add(RandomInt(0, 100), RandomInt(0, 100)));
+        ExecFlow.current.Merge(rrcg_return_flow);
+        return rrcg_return_data;
     }
 
-    public override Context BuildCircuitGraph()
+    public void ReturnTest1()
     {
-        List<Node> nodes = new List<Node>();
-        List<Connection> connections = new List<Connection>();
-        Context context = new Context{Nodes = nodes, Connections = connections};
-        Context.current = context;
-        ExecFlow.current = new ExecFlow();
-        CircuitGraph();
-        return context;
+        ExecFlow rrcg_return_flow = new ExecFlow();
+        ChipBuilder.If(ChipBuilder.Equals(RandomInt(0, 10), 5), delegate
+        {
+            {
+                Return(rrcg_return_flow);
+            }
+        }
+
+        , delegate
+        {
+            ChipBuilder.If(ChipBuilder.Equals(RandomInt(0, 10), 5), delegate
+            {
+                {
+                    Return(rrcg_return_flow);
+                }
+            }
+
+            , delegate
+            {
+            }
+
+            );
+        }
+
+        );
+        Return(rrcg_return_flow);
+        ExecFlow.current.Merge(rrcg_return_flow);
+    }
+
+    public (IntPort, IntPort) ReturnTest2()
+    {
+        ExecFlow rrcg_return_flow = new ExecFlow();
+        (IntPort, IntPort) rrcg_return_data = default;
+        IntPort b = 0;
+        ChipBuilder.If(ChipBuilder.Equals(RandomInt(0, 10), 5), delegate
+        {
+            {
+                Return(rrcg_return_flow, out rrcg_return_data, (1, 1));
+            }
+        }
+
+        , delegate
+        {
+            ChipBuilder.If(ChipBuilder.Equals(RandomInt(0, 10), 5), delegate
+            {
+                {
+                    var c = 3;
+                    ChipBuilder.If(ChipBuilder.Equals(RandomInt(0, 10), 5), delegate
+                    {
+                        c = 4;
+                    }
+
+                    , delegate
+                    {
+                    }
+
+                    );
+                    b = 4;
+                    Return(rrcg_return_flow, out rrcg_return_data, (b, c));
+                }
+            }
+
+            , delegate
+            {
+                ChipBuilder.If(ChipBuilder.Equals(RandomInt(0, 10), 5), delegate
+                {
+                    {
+                        b = 4;
+                    }
+                }
+
+                , delegate
+                {
+                }
+
+                );
+            }
+
+            );
+        }
+
+        );
+        Return(rrcg_return_flow, out rrcg_return_data, (1, b));
+        ExecFlow.current.Merge(rrcg_return_flow);
+        return rrcg_return_data;
     }
 }

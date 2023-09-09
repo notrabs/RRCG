@@ -44,11 +44,15 @@ namespace RRCGBuild
         public void Clear()
         {
             Ports.Clear();
+
+            hasAdvanced = true;
         }
 
         public void Merge(ExecFlow flow)
         {
             Ports.AddRange(flow.Ports);
+
+            hasAdvanced = true;
         }
     }
 }

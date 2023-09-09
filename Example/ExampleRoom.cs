@@ -1,5 +1,6 @@
 using RRCG;
 using RRCGSource;
+using UnityEngine;
 
 public class ExampleRoom : CircuitDescriptor
 {
@@ -13,6 +14,13 @@ public class ExampleRoom : CircuitDescriptor
         // These are WIP
         //ExistingCircuitBoard("Adder Board", AdderCircuitBoard);
         //ExistingCircuitBoard("Random Board", RandomCircuitBoard);
+
+        //ReturnTest1();
+        //RandomInt(0, 10);
+        //var (a, b) = ReturnTest2();
+
+        //ChipLib.Log(a);
+        //ChipLib.Log(b);
     }
 
     public void RandomExample()
@@ -36,7 +44,7 @@ public class ExampleRoom : CircuitDescriptor
 
         PlayerShowSubtitle(
             GetLocalPlayer(),
-            ToString(cached), 
+            ToString(cached),
             3.0f, 0
         );
     }
@@ -65,6 +73,45 @@ public class ExampleRoom : CircuitDescriptor
     public int GenerateRandomNumber()
     {
         return RandomInt(0, 100) + RandomInt(0, 100);
+    }
+
+    public void ReturnTest1()
+    {
+        if (RandomInt(0, 10) == 5)
+        {
+            return;
+        }
+        else if (RandomInt(0, 10) == 5)
+        {
+            return;
+        }
+
+        return;
+    }
+
+    public (int, int) ReturnTest2()
+    {
+        int b = 0;
+
+        if (RandomInt(0, 10) == 5)
+        {
+            return (1, 1);
+        }
+        else if (RandomInt(0, 10) == 5)
+        {
+            var c = 3;
+
+            if (RandomInt(0, 10) == 5) c = 4;
+
+            b = 4;
+            return (b, c);
+        }
+        else if (RandomInt(0, 10) == 5)
+        {
+            b = 4;
+        }
+
+        return (1, b);
     }
 }
 

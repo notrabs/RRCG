@@ -23,6 +23,5 @@ namespace RRCGBuild
 
             ChipBuilder.LogString(stringPort);
         }
-
     }
 }

@@ -6,11 +6,18 @@ using System.Text;
 using Microsoft.CodeAnalysis.Formatting;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace RRCG
 {
     public class RRCGSytaxRewriter : CSharpSyntaxRewriter
     {
+        private SemanticModel SemanticModel { get; }
+        public RRCGSytaxRewriter(SemanticModel semanticModel)
+        {
+            SemanticModel = semanticModel;
+        }
+
         public override SyntaxNode VisitCompilationUnit(CompilationUnitSyntax node)
         {
             if (!node.Usings.Any(u => u.Name.ToString() == "RRCGSource"))
@@ -46,34 +53,6 @@ namespace RRCG
 
             node = node.WithIdentifier(SyntaxFactory.Identifier(replacedName));
 
-
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append(@"
-    public override Context BuildCircuitGraph()
-    {
-
-        List<Node> nodes = new List<Node>();
-        List<Connection> connections = new List<Connection>();
-
-        Context context = new Context
-        {
-            Nodes = nodes,
-            Connections = connections
-        };
-
-        Context.current = context;
-        ExecFlow.current = new ExecFlow();
-
-        CircuitGraph();
-
-        return context;
-    }");
-
-            // Add the method to the class members
-            var method = SyntaxFactory.ParseMemberDeclaration(sb.ToString());
-            node = node.AddMembers(method);
-
             return base.VisitClassDeclaration(node);
         }
 
@@ -95,7 +74,7 @@ namespace RRCG
 
             var statements = method.Body.Statements;
 
-            if (method.ReturnType.ToString() != "void") statements = statements.Insert(0, SyntaxFactory.ParseStatement(method.ReturnType.ToString()+" rrcg_return_data = null;"));
+            if (method.ReturnType.ToString() != "void") statements = statements.Insert(0, SyntaxFactory.ParseStatement(method.ReturnType.ToString() + " rrcg_return_data = default;"));
             statements = statements.Insert(0, SyntaxFactory.ParseStatement("ExecFlow rrcg_return_flow = new ExecFlow();"));
 
             statements = statements.Add(SyntaxFactory.ParseStatement("ExecFlow.current.Merge(rrcg_return_flow);"));
@@ -188,6 +167,34 @@ namespace RRCG
                 )
             );
 
+        }
+
+        // 
+        // Assignments
+        // 
+
+        public override SyntaxNode VisitAssignmentExpression(AssignmentExpressionSyntax node)
+        {
+            //var info = SemanticModel.GetSymbolInfo(node);
+            //Debug.Log(info);
+
+            //// Check if the left-hand side of the assignment is an identifier (variable).
+            //if (node.Left is IdentifierNameSyntax identifier)
+            //{
+                
+
+            //    //// Find the declaration of the identifier in the syntax tree.
+            //    //var symbol = SemanticModel.GetSymbolInfo(identifier).Symbol as ILocalSymbol;
+
+            //    //if (symbol != null)
+            //    //{
+            //    //    // Calculate the scope level difference.
+            //    //    int scopeLevelDifference = CalculateScopeLevelDifference(node, symbol);
+            //    //    Console.WriteLine($"Scope level difference for variable '{symbol.Name}': {scopeLevelDifference}");
+            //    //}
+            //}
+
+            return base.VisitAssignmentExpression(node);
         }
 
         // 
@@ -338,6 +345,32 @@ namespace RRCG
 
 
         // Helpers 
+
+        private int CalculateScopeLevelDifference(SyntaxNode assignmentNode, ISymbol symbol)
+        {
+            // Walk up the syntax tree to find the declaration of the variable.
+            var currentScope = assignmentNode.Parent;
+            int scopeLevelDifference = 0;
+
+            //while (currentScope != null)
+            //{
+            //    if (currentScope is BlockSyntax)
+            //    {
+            //        // Check if the current scope contains the declaration of the variable.
+            //        if (symbol.ContainingSymbol.Equals(SemanticModel.GetEnclosingSymbol(currentScope)))
+            //        {
+            //            return scopeLevelDifference;
+            //        }
+
+            //        scopeLevelDifference++;
+            //    }
+
+            //    currentScope = currentScope.Parent;
+            //}
+
+            throw new Exception("Could not determine level scope difference. Is the variable defined?");
+        }
+
         public AnonymousMethodExpressionSyntax ExecDelegate()
         {
             return SyntaxFactory.AnonymousMethodExpression();

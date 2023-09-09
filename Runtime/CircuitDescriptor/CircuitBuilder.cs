@@ -5,8 +5,11 @@ namespace RRCGBuild
 {
     public abstract class CircuitBuilder: ChipBuilder
     {
-        public abstract Context BuildCircuitGraph();
         public abstract void CircuitGraph();
+
+        //
+        // Exec Flow Helpers
+        //
 
         public void StartNewGraph()
         {
@@ -17,6 +20,11 @@ namespace RRCGBuild
         {
             ExecFlow.current.Clear();
         }
+
+
+        //
+        // Circuit Board Helpers
+        //
 
         public void ExistingCircuitBoard(StringPort boardName, Action circuitBoardFn)
         {
@@ -67,6 +75,19 @@ namespace RRCGBuild
             ExecFlow.current.Clear();
 
             returnData = expression;
+        }
+
+        public T Assign<T>(out T variable, T value)
+        {
+            var assignedValue = value;
+
+            if (ConditionalContext.current != null)
+            {
+                //ConditionalContext.current.ConnectValuePort(value);
+            }
+
+            variable = assignedValue;
+            return assignedValue;
         }
     }
 }

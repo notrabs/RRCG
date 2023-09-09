@@ -4,8 +4,6 @@ using System;
 using UnityEditor;
 using UnityEngine;
 using RRCGBuild;
-using System.IO;
-using System.Linq;
 
 namespace RRCG
 {
@@ -18,7 +16,10 @@ namespace RRCG
 
             SyntaxTree sourceTree = CSharpSyntaxTree.ParseText(code);
 
-            var rewriter = new RRCGSytaxRewriter();
+            var compilation = CSharpCompilation.Create("RRCG.SemanticModel", syntaxTrees: new[] { sourceTree });
+            var semanticModel = compilation.GetSemanticModel(sourceTree);
+
+            var rewriter = new RRCGSytaxRewriter(semanticModel);
             var generatedTree = rewriter.Visit(sourceTree.GetRoot());
 
             var generatedAssetPath = AssetDatabase.GetAssetPath(csFile).Replace(".cs", ".generated.cs");
@@ -30,9 +31,21 @@ namespace RRCG
         {
             Debug.Log("Building: " + rrcgMeta.RoomCircuit.name + "Gen");
             var type = GetType(rrcgMeta.RoomCircuit.name + "Gen");
-            var instance = Activator.CreateInstance(type);
-            var method = type.GetMethod("BuildCircuitGraph");
-            return (Context)method.Invoke(instance, null);
+
+            Context context = new Context();
+
+            Context.current = context;
+            ExecFlow.current = new ExecFlow();
+            ConditionalContext.Push(new RootConditionalContext());
+
+            var instance = (CircuitBuilder)Activator.CreateInstance(type);
+            instance.CircuitGraph();
+
+            ConditionalContext.Clear();
+            ExecFlow.current = null;
+            Context.current = null;
+
+            return context;
         }
 
         public static Type GetType(string typeName)

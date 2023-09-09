@@ -5,6 +5,14 @@ namespace RRCGBuild
     {
         public Port Port;
         public dynamic Data;
+
+        public bool IsDataPort => Port == null;
+        public bool IsActualPort => Port != null;
+
+        public static implicit operator AnyPort(string data) => new AnyPort { Data = data };
+        public static implicit operator AnyPort(int data) => new AnyPort { Data = data };
+        public static implicit operator AnyPort(float data) => new AnyPort { Data = data };
+        public static implicit operator AnyPort(bool data) => new AnyPort { Data = data };
     }
 
     public class PortBuilderAny : AnyPort { }
