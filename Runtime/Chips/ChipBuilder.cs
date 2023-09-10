@@ -77,7 +77,7 @@ namespace RRCGBuild
             EventDefinition();
             var node = Context.lastSpawnedNode;
 
-            if (eventName.Port != null)
+            if (eventName.IsActualPort)
             {
                 throw new Exception("Can't create EventDefinitions with dynamic data. Make sure to pass a string value!");
             }
@@ -92,7 +92,7 @@ namespace RRCGBuild
             EventDefinition(eventName);
             var node = Context.lastSpawnedNode;
 
-            if (param0.Port != null)
+            if (param0.IsActualPort)
             {
                 throw new Exception("Can't create EventDefinitions with dynamic data. Make sure to pass a string value!");
             }
@@ -107,7 +107,7 @@ namespace RRCGBuild
             EventDefinition(eventName);
             var node = Context.lastSpawnedNode;
 
-            if (param0.Port != null || param1.Port != null)
+            if (param0.IsActualPort || param1.IsActualPort)
             {
                 throw new Exception("Can't create EventDefinitions with dynamic data. Make sure to pass a string value!");
             }

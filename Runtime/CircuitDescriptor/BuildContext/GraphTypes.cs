@@ -15,7 +15,7 @@ namespace RRCGBuild
         public object VariableHomeValue { get; internal set; }
 
         public int InputCount { get; internal set; }
-        public Dictionary<Port, object> DefaultValues = new Dictionary<Port, object>();
+        public Dictionary<int, object> DefaultValues = new Dictionary<int, object>();
         public Dictionary<string, Type> EventDefintion = null;
         public List<string> SwitchCases = null;
 
@@ -29,8 +29,12 @@ namespace RRCGBuild
 
         public void ConnectInputPort(Context context, AnyPort port, Port input)
         {
-            if (port.IsActualPort) context.Connections.Add(new Connection { From = port.Port, To = input });
-            else DefaultValues.Add(input, port.Data);
+            if (port.IsActualPort)
+            {
+                context.Connections.Add(new Connection { From = port.Port, To = input });
+                DefaultValues.Remove(input.Index);
+            }
+            else DefaultValues.Add(input.Index, port.Data);
         }
 
         public Port ConnectInputPort(AnyPort port, int inputIndex)

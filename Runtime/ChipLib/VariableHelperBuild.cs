@@ -57,7 +57,7 @@ namespace RRCGBuild
         }
         public void ChangedEvent()
         {
-            ChipBuilder.EventReceiver(name + " changed");
+            ChipBuilder.EventReceiver(name + " Changed");
         }
     }
 }
