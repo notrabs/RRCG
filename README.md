@@ -165,6 +165,17 @@ public void ExampleCircuit()
 }
 ```
 
+### Automatic Casting
+The `FromRecRoomObject` chip has been hidden since it doesn't map nicely into c# types. Instead you can use implicit casts to convert objects:
+```c#
+public void ExampleCircuit()
+{
+    var text = RecRoomObjectGetFirstwithTag("text");
+    // Using text here will automatically insert a FromRecRoomObject chip
+    TextSetText(text, "Hello");
+}
+```
+
 ### Existing Circuit Boards
 
 You can generate code for existing circuit boards (or control panels). Their interface needs to be already defined in the game:

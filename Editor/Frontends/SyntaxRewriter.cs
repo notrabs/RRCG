@@ -110,6 +110,8 @@ namespace RRCG
                     return SyntaxFactory.IdentifierName("IntPort");
                 case "float":
                     return SyntaxFactory.IdentifierName("FloatPort");
+                case "Text":
+                case "RecRoomObject":
                 case "StudioObject":
                     return SyntaxFactory.IdentifierName(node.Keyword.ValueText + "Port");
             }

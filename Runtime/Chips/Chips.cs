@@ -26,7 +26,6 @@ namespace RRCGSource
 
         public static T Self<T>() { return default; }
     }
-
 }
 
 

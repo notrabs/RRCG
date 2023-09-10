@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RRCGBuild;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,7 +53,9 @@ namespace RRCGSource
     public class Rotator { }
     public class Seat { }
     public class SFX { }
-    public class Text { }
+    public class Text {
+        public static implicit operator Text(RecRoomObject data) => null;
+    }
     public class ToggleButton { }
     public class MotionTrail { }
     public class TriggerVolume { }

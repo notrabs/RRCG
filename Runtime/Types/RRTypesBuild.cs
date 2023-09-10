@@ -83,7 +83,10 @@ namespace RRCGBuild
     public class RotatorPort : AnyPort { }
     public class SeatPort : AnyPort { }
     public class SFXPort : AnyPort { }
-    public class TextPort : AnyPort { }
+    public class TextPort : AnyPort
+    {
+        public static implicit operator TextPort(RecRoomObjectPort data) => new TextPort() { Port = ChipBuilder.FromRecRoomObject(data).Port };
+    }
     public class ToggleButtonPort : AnyPort { }
     public class MotionTrailPort : AnyPort { }
     public class TriggerVolumePort : AnyPort { }
