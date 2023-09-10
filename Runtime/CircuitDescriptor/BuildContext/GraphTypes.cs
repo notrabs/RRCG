@@ -32,6 +32,13 @@ namespace RRCGBuild
             if (port.IsActualPort) context.Connections.Add(new Connection { From = port.Port, To = input });
             else DefaultValues.Add(input, port.Data);
         }
+
+        public Port ConnectInputPort(AnyPort port, int inputIndex)
+        {
+            var input = new Port() { Node = this, Index = inputIndex };
+            ConnectInputPort(Context.current, port, input);
+            return input;
+        }
     }
 
     public class Port

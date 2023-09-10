@@ -1,5 +1,6 @@
 using RRCGGenerated;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -127,6 +128,15 @@ namespace RRCGBuild
             ChipBuilderGen.StringConcat("", ports[0]);
             return ConnectDynamicPins(1, ports);
         }
+        public static string Add(params string[] ports)
+        {
+            return String.Join("", ports);
+        }
+        public static StringPort Add(params StringPort[] ports)
+        {
+            return Concat(ports);
+        }
+
         public static int Add(params int[] ports)
         {
             return ports.Sum();
@@ -353,6 +363,48 @@ namespace RRCGBuild
             else if (match is StringPort) ExecutionStringSwitch((StringPort)match, failed, branches.ToDictionary(item => new StringPort() { Data = item.Key.Data }, item => item.Value));
             else throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a int or string value!");
         }
+
+        public static T ValueIntegerSwitch<T>(IntPort match, T defaultValue, Dictionary<IntPort, T> cases) where T : AnyPort, new()
+        {
+            var switchValue = ValueIntegerSwitch(match, defaultValue);
+            var node = Context.lastSpawnedNode;
+            node.SwitchCases = new List<string>();
+
+            var portIndex = 2;
+            foreach (var switchCase in cases)
+            {
+                if (switchCase.Key.IsActualPort) throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a int value!");
+
+                node.SwitchCases.Add(switchCase.Key.Data.ToString());
+                node.ConnectInputPort(switchCase.Value, portIndex);
+
+                portIndex++;
+            }
+
+            return new T() { Port = switchValue.Port };
+        }
+
+        public static T ValueStringSwitch<T>(StringPort match, T defaultValue, Dictionary<StringPort, T> cases) where T : AnyPort, new()
+        {
+            var switchValue = ValueStringSwitch(match, defaultValue);
+            var node = Context.lastSpawnedNode;
+            node.SwitchCases = new List<string>();
+
+            var portIndex = 2;
+            foreach (var switchCase in cases)
+            {
+                if (switchCase.Key.IsActualPort) throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a string value!");
+
+                node.SwitchCases.Add(switchCase.Key.Data);
+                node.ConnectInputPort(switchCase.Value, portIndex);
+
+                portIndex++;
+            }
+
+            return new T() { Port = switchValue.Port };
+        }
+
+
         #endregion
 
         // 
@@ -371,11 +423,7 @@ namespace RRCGBuild
                 if (ports[i] is AnyPort) port = (AnyPort)ports[i];
                 else port = new AnyPort() { Data = ports[i] };
 
-                node.ConnectInputPort(Context.current, port, new Port
-                {
-                    Node = node,
-                    Index = i
-                });
+                node.ConnectInputPort(port, i);
             }
 
             return new BoolPort { Port = new Port { Node = node } };

@@ -778,6 +778,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Quantity, new Port{Node = node, Index = 3});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnAwardConsumableComplete();
+            ExecFlow.current = mainFlow;
             return new BoolPort{Port = new Port{Node = node, Index = 2}};
         }
 
@@ -789,6 +794,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Amount, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnAwardCurrencyComplete();
+            ExecFlow.current = mainFlow;
             return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
         }
 
@@ -801,6 +811,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Amount, new Port{Node = node, Index = 3});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnAwardCurrencyComplete();
+            ExecFlow.current = mainFlow;
             return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
         }
 
@@ -812,6 +827,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, RoomKey, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnAwardRoomKeyComplete();
+            ExecFlow.current = mainFlow;
             return new BoolPort{Port = new Port{Node = node, Index = 2}};
         }
 
@@ -1571,6 +1591,14 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Delay, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            AfterDelay();
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 2});
+            Cancel();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -2133,6 +2161,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, From, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, To, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 2});
+            Done();
+            ExecFlow.current = mainFlow;
             return new IntPort{Port = new Port{Node = node, Index = 1}};
         }
 
@@ -2143,6 +2176,11 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Items, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 2});
+            Done();
+            ExecFlow.current = mainFlow;
             return new AnyPort{Port = new Port{Node = node, Index = 1}};
         }
 
@@ -2269,6 +2307,11 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnGetBalanceComplete();
+            ExecFlow.current = mainFlow;
             return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
         }
 
@@ -2280,6 +2323,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Currency, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnGetBalanceComplete();
+            ExecFlow.current = mainFlow;
             return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
         }
 
@@ -2857,6 +2905,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Reward, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnAwardComplete();
+            ExecFlow.current = mainFlow;
             return new BoolPort{Port = new Port{Node = node, Index = 2}};
         }
 
@@ -2958,6 +3011,11 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Failure();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3038,6 +3096,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Seatindex, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 3});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Failure();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3060,6 +3123,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Failure();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3071,6 +3139,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Seatindex, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Failure();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3302,6 +3375,11 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Condition, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Else();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3313,6 +3391,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Tag, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            DoesNotHaveTag();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3324,6 +3407,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Tag, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            DoesNotHaveTag();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3333,6 +3421,11 @@ namespace RRCGGenerated
             Node node = new Node{Name = "If Local Player Is Authority", Type = "b8b667b9-7b55-4b8d-b116-abef220777e2"};
             Context.current.Nodes.Add(node);
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            ImNotAuthority();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3342,6 +3435,11 @@ namespace RRCGGenerated
             Node node = new Node{Name = "If Local Player Is Room Authority", Type = "5e28057f-214b-4ff8-81bc-512be207c9d7"};
             Context.current.Nodes.Add(node);
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            ImNotAuthority();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3352,6 +3450,11 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, ActingPlayer, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            ShouldNotRun();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3363,6 +3466,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Role, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            DoesNotHaveRole();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3373,6 +3481,11 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            IsNotLocal();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3383,6 +3496,11 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            IsNotValid();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3393,6 +3511,14 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            IsNotValid();
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 2});
+            IsValidAndNotLocal();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -3721,6 +3847,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Channel, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnGetStatComplete();
+            ExecFlow.current = mainFlow;
             return new IntPort{Port = new Port{Node = node, Index = 2}};
         }
 
@@ -5490,6 +5621,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, RoomKey, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnPlayerOwnsRoomKeyComplete();
+            ExecFlow.current = mainFlow;
             return new BoolPort{Port = new Port{Node = node, Index = 2}};
         }
 
@@ -5503,6 +5639,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, PromptBody, new Port{Node = node, Index = 3});
             node.ConnectInputPort(Context.current, AnswerChoices, new Port{Node = node, Index = 4});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnPromptComplete();
+            ExecFlow.current = mainFlow;
             return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new PlayerPort{Port = new Port{Node = node, Index = 3}}, new StringPort{Port = new Port{Node = node, Index = 4}}, new IntPort{Port = new Port{Node = node, Index = 5}});
         }
 
@@ -5926,6 +6067,14 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, PromptTitle, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Prompt, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Complete();
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 3});
+            Failed();
+            ExecFlow.current = mainFlow;
             return new StringPort{Port = new Port{Node = node, Index = 2}};
         }
 
@@ -6348,6 +6497,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, ClearVelocity, new Port{Node = node, Index = 5});
             node.ConnectInputPort(Context.current, UseRezEffects, new Port{Node = node, Index = 6});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Failed();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -6363,6 +6517,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, ClearVelocity, new Port{Node = node, Index = 5});
             node.ConnectInputPort(Context.current, UseRezEffects, new Port{Node = node, Index = 6});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Failed();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -6378,6 +6537,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, ClearVelocity, new Port{Node = node, Index = 5});
             node.ConnectInputPort(Context.current, UseRezEffects, new Port{Node = node, Index = 6});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Failed();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -6393,6 +6557,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, ClearVelocity, new Port{Node = node, Index = 5});
             node.ConnectInputPort(Context.current, UseRezEffects, new Port{Node = node, Index = 6});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Failed();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -6555,6 +6724,11 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, BackgroundObjectsConstant, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            BlendFinished();
+            ExecFlow.current = mainFlow;
             return new BoolPort{Port = new Port{Node = node, Index = 2}};
         }
 
@@ -6564,6 +6738,11 @@ namespace RRCGGenerated
             Node node = new Node{Name = "Room Background Objects Reset", Type = "56c10ead-6198-4b13-b6de-d1df9080341b"};
             Context.current.Nodes.Add(node);
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            BlendFinished();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -6582,6 +6761,11 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, FogConstant, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            BlendFinished();
+            ExecFlow.current = mainFlow;
             return new BoolPort{Port = new Port{Node = node, Index = 2}};
         }
 
@@ -6591,6 +6775,11 @@ namespace RRCGGenerated
             Node node = new Node{Name = "Room Fog Reset", Type = "2dd67fbd-eb84-4810-bfa7-55836139f8a2"};
             Context.current.Nodes.Add(node);
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            BlendFinished();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -6626,6 +6815,11 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, MatchmakingPermitted, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnMatchmakingStateSet();
+            ExecFlow.current = mainFlow;
             return new BoolPort{Port = new Port{Node = node, Index = 2}};
         }
 
@@ -6636,6 +6830,11 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, SkydomeConstant, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            BlendFinished();
+            ExecFlow.current = mainFlow;
             return new BoolPort{Port = new Port{Node = node, Index = 2}};
         }
 
@@ -6645,6 +6844,11 @@ namespace RRCGGenerated
             Node node = new Node{Name = "Room Skydome Reset", Type = "b17f7045-6fa5-4fc5-84d5-def4f78d4f45"};
             Context.current.Nodes.Add(node);
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            BlendFinished();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -6656,6 +6860,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, SunConstant, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, SunDirection, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            BlendFinished();
+            ExecFlow.current = mainFlow;
             return new BoolPort{Port = new Port{Node = node, Index = 2}};
         }
 
@@ -6665,6 +6874,11 @@ namespace RRCGGenerated
             Node node = new Node{Name = "Room Sun Reset", Type = "b38f186d-67b3-44a1-8a95-120123ddb182"};
             Context.current.Nodes.Add(node);
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            BlendFinished();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -6851,6 +7065,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Fail();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -6878,6 +7097,11 @@ namespace RRCGGenerated
             Node node = new Node{Name = "Sequence", Type = "9e2ac049-e68e-4689-a288-bef8a62da316"};
             Context.current.Nodes.Add(node);
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            _2();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -7145,6 +7369,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Failed();
+            ExecFlow.current = mainFlow;
             return;
         }
 
@@ -7156,6 +7385,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            Failed();
+            ExecFlow.current = mainFlow;
             return;
         }
 

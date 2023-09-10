@@ -135,7 +135,7 @@ namespace RRCG
 
         public override SyntaxNode VisitThrowStatement(ThrowStatementSyntax node)
         {
-            return SyntaxFactory.ParseStatement("execFlow.Clear();");
+            return SyntaxFactory.ParseStatement("ExecFlow.current.Clear();");
         }
 
         public override SyntaxNode VisitReturnStatement(ReturnStatementSyntax node)

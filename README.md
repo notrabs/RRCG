@@ -35,7 +35,7 @@ e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Pack
 1. Create a prefab from the `RRCG` window menu. Place it in a location with enough space. The chip area will grow as indicated by the arrows.
 2. Open the Inspector for the `RRCG` prefab
 3. Link a RRCG script file (<b>*</b>) in the inspector
-4. Click `Compile Circuit`
+4. Click `Compile Circuit` (with watch mode on this will happen automatically when new changes are detected)
 5. Click `Build Circuit` (placeholder for now. Until we have a Circuits API you can only create the debug DOT graph)
 
 (<b>*</b>) A script file needs to contain a class with the same name as the file. You can copy the already linked example class anywhere into your project. See the next chapter on how to write valid code.
@@ -133,7 +133,7 @@ public void ExampleCircuit()
 
     if (num == 5) {
       LogString("high five");
-      throw;
+      throw null;
     } else {
       LogString("else and else if are supported");
     }

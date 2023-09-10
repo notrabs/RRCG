@@ -19,5 +19,15 @@
         /// Contines on the delayed exec port instead of the immediate one
         /// </summary>
         public static void AwaitDelay(float delay = 0) { }
+
+        /// <summary>
+        /// A simple execution counter, that is cheaper than a variable. Can't be reset.
+        /// </summary>
+        public static int RandomStoreCounter() { return default; }
+
+        /// <summary>
+        /// A modulated execution counter, that is cheaper than a variable.
+        /// </summary>
+        public static int RandomStoreCounter(int modulus) { return default; }
     }
 }
