@@ -89,7 +89,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the current line of sight parameters from the input AI.
         /// </summary>
-        public static (string, float, float, float) AIGetLineofSightParameters(AI AI)
+        public static (string VisionType, float VisionRange, float VisionConeAngle, float HearingRange) AIGetLineofSightParameters(AI AI)
         {
             return (default(string), default(float), default(float), default(float));
         }
@@ -601,7 +601,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Award some amount to the Player's balance of one room currency. Configure this chip to set the affected currency.
         /// </summary>
-        public static (bool, int) AwardCurrency(Player Player, int Amount, AlternativeExec OnAwardCurrencyComplete)
+        public static (bool Success, int TotalBalance) AwardCurrency(Player Player, int Amount, AlternativeExec OnAwardCurrencyComplete)
         {
             return (default(bool), default(int));
         }
@@ -609,7 +609,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Award some amount to the Player's balance of the given room currency.
         /// </summary>
-        public static (bool, int) AwardCurrencyNew(RoomCurrency Currency, Player Player, int Amount, AlternativeExec OnAwardCurrencyComplete)
+        public static (bool Success, int TotalBalance) AwardCurrencyNew(RoomCurrency Currency, Player Player, int Amount, AlternativeExec OnAwardCurrencyComplete)
         {
             return (default(bool), default(int));
         }
@@ -784,7 +784,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static (object, object) BreakTuple(object Tuple)
+        public static (object Item1, object Item2) BreakTuple(object Tuple)
         {
             return (default(object), default(object));
         }
@@ -928,7 +928,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Return hue, saturation, and value from the given color.
         /// </summary>
-        public static (float, float, float) ColorToHSV(Color Color)
+        public static (float Hue, float Saturation, float Value) ColorToHSV(Color Color)
         {
             return (default(float), default(float), default(float));
         }
@@ -944,7 +944,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Return red, green, and blue from the given color.
         /// </summary>
-        public static (float, float, float) ColorToRGB(Color Color)
+        public static (float Red, float Green, float Blue) ColorToRGB(Color Color)
         {
             return (default(float), default(float), default(float));
         }
@@ -984,7 +984,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the Health property of the input combatant.
         /// </summary>
-        public static (int, int, int) CombatantGetHealth(AI Object)
+        public static (int Health, int Shield, int MaxHealth) CombatantGetHealth(AI Object)
         {
             return (default(int), default(int), default(int));
         }
@@ -992,7 +992,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the Health property of the input combatant.
         /// </summary>
-        public static (int, int, int) CombatantGetHealth(Combatant Object)
+        public static (int Health, int Shield, int MaxHealth) CombatantGetHealth(Combatant Object)
         {
             return (default(int), default(int), default(int));
         }
@@ -1000,7 +1000,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the Health property of the input combatant.
         /// </summary>
-        public static (int, int, int) CombatantGetHealth(Player Object)
+        public static (int Health, int Shield, int MaxHealth) CombatantGetHealth(Player Object)
         {
             return (default(int), default(int), default(int));
         }
@@ -1032,7 +1032,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the input combatant's current velocity and speed.
         /// </summary>
-        public static (Vector3, float) CombatantGetVelocity(AI Combatant)
+        public static (Vector3 Velocity, float Speed) CombatantGetVelocity(AI Combatant)
         {
             return (default(Vector3), default(float));
         }
@@ -1040,7 +1040,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the input combatant's current velocity and speed.
         /// </summary>
-        public static (Vector3, float) CombatantGetVelocity(Combatant Combatant)
+        public static (Vector3 Velocity, float Speed) CombatantGetVelocity(Combatant Combatant)
         {
             return (default(Vector3), default(float));
         }
@@ -1048,7 +1048,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the input combatant's current velocity and speed.
         /// </summary>
-        public static (Vector3, float) CombatantGetVelocity(Player Combatant)
+        public static (Vector3 Velocity, float Speed) CombatantGetVelocity(Player Combatant)
         {
             return (default(Vector3), default(float));
         }
@@ -1128,7 +1128,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Splits the input Combatant into Player and AI types. Use this off of Combatant outputs to directly access the Player or AI.
         /// </summary>
-        public static (bool, Player, AI) CombatantSplit(Combatant Combatant)
+        public static (bool IsPlayer, Player Player, AI AI) CombatantSplit(Combatant Combatant)
         {
             return (default(bool), default(Player), default(AI));
         }
@@ -1792,7 +1792,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs player counts if you're in an event that's actively broadcasting.
         /// </summary>
-        public static (int, int, bool) GetBroadcastingAttendance()
+        public static (int AudienceCount, int BroadcasterCount, bool IsBroadcastActive) GetBroadcastingAttendance()
         {
             return (default(int), default(int), default(bool));
         }
@@ -1800,7 +1800,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (RecRoomObject, int, float) GetClosest(RecRoomObject Origin, List<object> Targets)
+        public static (RecRoomObject Closest, int ClosestIndex, float Distance) GetClosest(RecRoomObject Origin, List<object> Targets)
         {
             return (default(RecRoomObject), default(int), default(float));
         }
@@ -1808,7 +1808,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (Player, int, float) GetClosest(Player Origin, List<object> Targets)
+        public static (Player Closest, int ClosestIndex, float Distance) GetClosest(Player Origin, List<object> Targets)
         {
             return (default(Player), default(int), default(float));
         }
@@ -1816,7 +1816,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (Vector3, int, float) GetClosest(Vector3 Origin, List<object> Targets)
+        public static (Vector3 Closest, int ClosestIndex, float Distance) GetClosest(Vector3 Origin, List<object> Targets)
         {
             return (default(Vector3), default(int), default(float));
         }
@@ -1824,7 +1824,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the local players balance of one room currency. Configure this chip to selecht which currency to use.
         /// </summary>
-        public static (bool, int) GetCurrencyBalance(Player Player, AlternativeExec OnGetBalanceComplete)
+        public static (bool Success, int TotalBalance) GetCurrencyBalance(Player Player, AlternativeExec OnGetBalanceComplete)
         {
             return (default(bool), default(int));
         }
@@ -1832,7 +1832,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the given player's balance of the given room currency.
         /// </summary>
-        public static (bool, int) GetCurrencyBalanceNew(RoomCurrency Currency, Player Player, AlternativeExec OnGetBalanceComplete)
+        public static (bool Success, int TotalBalance) GetCurrencyBalanceNew(RoomCurrency Currency, Player Player, AlternativeExec OnGetBalanceComplete)
         {
             return (default(bool), default(int));
         }
@@ -1840,7 +1840,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (RecRoomObject, int, float) GetFarthest(RecRoomObject Origin, List<object> Targets)
+        public static (RecRoomObject Farthest, int FarthestIndex, float Distance) GetFarthest(RecRoomObject Origin, List<object> Targets)
         {
             return (default(RecRoomObject), default(int), default(float));
         }
@@ -1848,7 +1848,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (Player, int, float) GetFarthest(Player Origin, List<object> Targets)
+        public static (Player Farthest, int FarthestIndex, float Distance) GetFarthest(Player Origin, List<object> Targets)
         {
             return (default(Player), default(int), default(float));
         }
@@ -1856,7 +1856,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (Vector3, int, float) GetFarthest(Vector3 Origin, List<object> Targets)
+        public static (Vector3 Farthest, int FarthestIndex, float Distance) GetFarthest(Vector3 Origin, List<object> Targets)
         {
             return (default(Vector3), default(int), default(float));
         }
@@ -3864,7 +3864,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static (bool, Vector3) NavMeshSamplePosition(Vector3 SourcePosition, float MaxDistance)
+        public static (bool IsValid, Vector3 HitPosition) NavMeshSamplePosition(Vector3 SourcePosition, float MaxDistance)
         {
             return (default(bool), default(Vector3));
         }
@@ -4088,7 +4088,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Converts the input string to a bool if able.
         /// </summary>
-        public static (bool, bool) ParseBool(string String)
+        public static (bool Result, bool ParseSuccess) ParseBool(string String)
         {
             return (default(bool), default(bool));
         }
@@ -4096,7 +4096,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Attempt to parse the given string as a hexadecimal color in the '#RRGGBB' format.
         /// </summary>
-        public static (Color, bool) ParseColor(string String)
+        public static (Color Result, bool ParseSuccess) ParseColor(string String)
         {
             return (default(Color), default(bool));
         }
@@ -4104,7 +4104,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Converts the input string to a float if able.
         /// </summary>
-        public static (float, bool) ParseFloat(string String)
+        public static (float Result, bool ParseSuccess) ParseFloat(string String)
         {
             return (default(float), default(bool));
         }
@@ -4112,7 +4112,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Converts the input string to a integer if able.
         /// </summary>
-        public static (int, bool) ParseInt(string String)
+        public static (int Result, bool ParseSuccess) ParseInt(string String)
         {
             return (default(int), default(bool));
         }
@@ -4272,7 +4272,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Gets equipped objects from a player.
         /// </summary>
-        public static (RecRoomObject, RecRoomObject, RecRoomObject, RecRoomObject, RecRoomObject) PlayerGetEquippedObjects(Player Player)
+        public static (RecRoomObject DominantHandObject, RecRoomObject OffHandObject, RecRoomObject LeftHipHolsterObject, RecRoomObject RightHipHolsterObject, RecRoomObject ShoulderHolsterObject) PlayerGetEquippedObjects(Player Player)
         {
             return (default(RecRoomObject), default(RecRoomObject), default(RecRoomObject), default(RecRoomObject), default(RecRoomObject));
         }
@@ -4296,7 +4296,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static (bool, RecRoomObject) PlayerGetIsJumpingOrFalling(Player Player)
+        public static (bool IsJumpingOrFalling, RecRoomObject ContactSurface) PlayerGetIsJumpingOrFalling(Player Player)
         {
             return (default(bool), default(RecRoomObject));
         }
@@ -4488,7 +4488,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sends a watch notification to the specified player containing the prompt title and body, along with each of the answer choices on its own line. Once this watch notification is opened, the player can choose a response and hit "ok," triggering the On Prompt Complete event. Since there is a delay between sending a notification and receiving the response in which other responses may be received, the Player output can be used to disambiguate multiple responses
         /// </summary>
-        public static (bool, Player, string, int) PlayerPromptMultipleChoice(Player Player, string PromptTitle, string PromptBody, List<string> AnswerChoices, AlternativeExec OnPromptComplete)
+        public static (bool Success, Player ReceivingPlayer, string Response, int ResponseIndex) PlayerPromptMultipleChoice(Player Player, string PromptTitle, string PromptBody, List<string> AnswerChoices, AlternativeExec OnPromptComplete)
         {
             return (default(bool), default(Player), default(string), default(int));
         }
@@ -4576,7 +4576,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs True if the input Player subscribes to one of the current room's owners.
         /// </summary>
-        public static (bool, int) PlayerSubscribesToRoomOwner(Player Target)
+        public static (bool Result, int SecondsUntilEnabled) PlayerSubscribesToRoomOwner(Player Target)
         {
             return (default(bool), default(int));
         }
@@ -4888,7 +4888,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Gets the rotation which rotates angle degrees around axis.
         /// </summary>
-        public static (float, Vector3) QuaternionGetAngleAxis(Quaternion Quaternion)
+        public static (float Angle, Vector3 Axis) QuaternionGetAngleAxis(Quaternion Quaternion)
         {
             return (default(float), default(Vector3));
         }
@@ -4920,7 +4920,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Split a quaternion into its four float components: x, y, z, and w. Congratulations, you have reached peak math.
         /// </summary>
-        public static (float, float, float, float) QuaternionSplit(Quaternion Quaternion)
+        public static (float X, float Y, float Z, float W) QuaternionSplit(Quaternion Quaternion)
         {
             return (default(float), default(float), default(float), default(float));
         }
@@ -4968,7 +4968,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Fires an invisible ray from the "Start Position", in the "Direction" specified. Returns True if any object or player is hit within the target "Max Distance". Otherwise, returns False. You can configure the chip itself to ignore players or objects specifically.
         /// </summary>
-        public static (bool, Player, RecRoomObject, float, Vector3, Vector3) Raycast(Vector3 StartPosition, Vector3 Direction, float MaxDistance)
+        public static (bool Hit, Player Player, RecRoomObject Object, float Distance, Vector3 HitPosition, Vector3 SurfaceNormal) Raycast(Vector3 StartPosition, Vector3 Direction, float MaxDistance)
         {
             return (default(bool), default(Player), default(RecRoomObject), default(float), default(Vector3), default(Vector3));
         }
@@ -5016,7 +5016,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the player who last held an object.
         /// </summary>
-        public static (Player, bool) RecRoomObjectGetLastEquippingPlayer(RecRoomObject Object)
+        public static (Player Player, bool CurrentlyEquipped) RecRoomObjectGetLastEquippingPlayer(RecRoomObject Object)
         {
             return (default(Player), default(bool));
         }
@@ -5976,7 +5976,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Fires an invisible sphere of the specified Radius from the Start Position, in the Direction specified. Returns true if any object or player is hit within the target Max Distance. Otherwise, returns false. You can configure the chip itself to ignore players or objects specifically.
         /// </summary>
-        public static (bool, Player, RecRoomObject, float, Vector3, Vector3) Spherecast(Vector3 StartPosition, float Radius, Vector3 Direction, float MaxDistance)
+        public static (bool Hit, Player Player, RecRoomObject Object, float Distance, Vector3 HitPosition, Vector3 SurfaceNormal) Spherecast(Vector3 StartPosition, float Radius, Vector3 Direction, float MaxDistance)
         {
             return (default(bool), default(Player), default(RecRoomObject), default(float), default(Vector3), default(Vector3));
         }
@@ -6320,7 +6320,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Gets the UTC time. Uses server's clock. This will be synchronized between players.
         /// </summary>
-        public static (int, int, int, int, int, int) TimeGetUniversalTime()
+        public static (int Year, int Month, int Day, int Hour, int Minute, int Second) TimeGetUniversalTime()
         {
             return (default(int), default(int), default(int), default(int), default(int), default(int));
         }
@@ -6336,7 +6336,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Gets the UTC time. Uses local player's system clock. This is not synchronized between players!
         /// </summary>
-        public static (int, int, int, int, int, int) TimeGetUnsyncedUniversalTime()
+        public static (int Year, int Month, int Day, int Hour, int Minute, int Second) TimeGetUnsyncedUniversalTime()
         {
             return (default(int), default(int), default(int), default(int), default(int), default(int));
         }
@@ -6400,7 +6400,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Get the active touch position from the local player's interaction
         /// </summary>
-        public static (bool, Vector3, Vector3) TouchpadComponentGetActiveTouch(Touchpad Target)
+        public static (bool IsTouchActive, Vector3 TouchPosition, Vector3 WorldPosition) TouchpadComponentGetActiveTouch(Touchpad Target)
         {
             return (default(bool), default(Vector3), default(Vector3));
         }
@@ -6688,7 +6688,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Breaks the X, Y, and Z values out of the input vector.
         /// </summary>
-        public static (float, float, float) Vector3Split(Vector3 Vector3)
+        public static (float X, float Y, float Z) Vector3Split(Vector3 Vector3)
         {
             return (default(float), default(float), default(float));
         }
