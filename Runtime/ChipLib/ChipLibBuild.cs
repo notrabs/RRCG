@@ -23,5 +23,13 @@ namespace RRCGBuild
 
             ChipBuilder.LogString(stringPort);
         }
+
+        public static void AwaitDelay(FloatPort delay = null)
+        {
+            if (delay == null) delay = new FloatPort() { Data = 0f };
+
+            ChipBuilder.Delay(delay, delegate () { }, delegate () { });
+            ExecFlow.current.Ports[0].Index = 1;
+        }
     }
 }

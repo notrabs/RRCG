@@ -4631,13 +4631,13 @@ namespace RRCGGenerated
             return;
         }
 
-        public static AnyPort MakeTuple(AnyPort Item0, AnyPort Item1)
+        public static AnyPort MakeTuple(AnyPort Item1, AnyPort Item2)
         {
             // MakeTuple
             Node node = new Node{Name = "Make Tuple", Type = "bee72c1d-266b-4ea4-b185-7500618030c6"};
             Context.current.Nodes.Add(node);
-            node.ConnectInputPort(Context.current, Item0, new Port{Node = node, Index = 0});
-            node.ConnectInputPort(Context.current, Item1, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Item1, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, Item2, new Port{Node = node, Index = 1});
             return new AnyPort{Port = new Port{Node = node, Index = 0}};
         }
 

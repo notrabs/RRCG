@@ -14,5 +14,10 @@
         /// Logs a value to the console with automatic ToString conversion
         /// </summary>
         public static void Log(object obj) { }
+
+        /// <summary>
+        /// Contines on the delayed exec port instead of the immediate one
+        /// </summary>
+        public static void AwaitDelay(float delay = 0) { }
     }
 }

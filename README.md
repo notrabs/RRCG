@@ -199,6 +199,10 @@ public void ExampleCircuit()
 
     // Log() automatically converts any value ToString
     ChipLib.Log(cachedSum);
+
+    // AwaitDelay() continues on th delayed line of a Delay chip. Useful if you don't need immediate logic.
+    ChipLib.AwaitDelay();
+    ChipLib.AwaitDelay(1);
 }
 ```
 
