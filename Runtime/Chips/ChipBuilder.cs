@@ -266,6 +266,8 @@ namespace RRCGBuild
                 Index = 1
             });
 
+            var prevFlow = ExecFlow.current;
+
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port { Node = node });
             var conditionalContext = ConditionalContext.Push(new IfConditionalContext() { test = test, currentBranch = true });
@@ -278,6 +280,8 @@ namespace RRCGBuild
             elseBranch();
             ConditionalContext.Pop();
             var elseFlow = ExecFlow.current;
+
+            ExecFlow.current = prevFlow;
 
             if (ifFlow.hasAdvanced || elseFlow.hasAdvanced)
             {

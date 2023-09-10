@@ -15,7 +15,7 @@ namespace RRCGBuild
 
             EventSender<T0>(eventName, value0);
 
-            return EventReceiver<T0>(new StringPort() { Data = eventName });
+            return EventReceiver<T0>(eventName);
         }
 
         public static void Log(AnyPort obj)

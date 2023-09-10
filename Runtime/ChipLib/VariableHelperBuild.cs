@@ -17,9 +17,9 @@ namespace RRCGBuild
 
         private T VariableGetterPort;
 
-        public VariableHelper(T homeValue, VariableKind kind = VariableKind.Local)
+        public VariableHelper(T homeValue = null, VariableKind kind = VariableKind.Local)
         {
-            if (!homeValue.IsDataPort) throw new ArgumentException("homeValue needs to be static, not a port");
+            if (homeValue != null && !homeValue.IsDataPort) throw new ArgumentException("homeValue needs to be static, not a port");
 
             name = "RRCG_var_" + Context.current.GetUniqueId();
             this.kind = kind;
@@ -45,7 +45,7 @@ namespace RRCGBuild
 
             Context.lastSpawnedNode.VariableName = name;
             Context.lastSpawnedNode.VariableKind = kind;
-            Context.lastSpawnedNode.VariableHomeValue = homeValue.Data;
+            Context.lastSpawnedNode.VariableHomeValue = homeValue?.Data;
 
             return data;
         }
