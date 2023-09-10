@@ -4,8 +4,6 @@ using UnityEngine;
 
 namespace RRCGSource
 {
-    public delegate void AlternativeExec();
-
     public partial class Chips : RRCGGenerated.ChipsGen
     {
         public static void EventDefinition(string eventName) { }

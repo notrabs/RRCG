@@ -72,15 +72,43 @@ namespace RRCG
             if (node.Identifier.Text.Equals("BuildCircuitGraph")) return node;
             var method = (MethodDeclarationSyntax)base.VisitMethodDeclaration(node);
 
+            var methodName = method.Identifier.ToString();
+
             var statements = method.Body.Statements;
 
+            // return flow
             if (method.ReturnType.ToString() != "void") statements = statements.Insert(0, SyntaxFactory.ParseStatement(method.ReturnType.ToString() + " rrcg_return_data = default;"));
             statements = statements.Insert(0, SyntaxFactory.ParseStatement("ExecFlow rrcg_return_flow = new ExecFlow();"));
 
             statements = statements.Add(SyntaxFactory.ParseStatement("ExecFlow.current.Merge(rrcg_return_flow);"));
             if (method.ReturnType.ToString() != "void") statements = statements.Add(SyntaxFactory.ParseStatement("return rrcg_return_data;"));
 
-            method = method.WithBody(method.Body.WithStatements(statements));
+            // event functions
+            var isEventFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "EventFunction"));
+
+            if (isEventFunction)
+            {
+                StatementSyntax statement = SyntaxFactory.ExpressionStatement(
+                    SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName("__DispatchEventFunction"))
+                    .WithArgumentList(
+                        ArgumentList(
+                            SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
+                            SyntaxFactory.AnonymousMethodExpression()
+                                        .WithParameterList(SyntaxFactory.ParameterList())
+                                        .WithBlock(SyntaxFactory.Block(statements))
+                        )
+                    )
+                ).NormalizeWhitespace();
+
+                method = method.WithBody(
+                    method.Body.WithStatements(SyntaxFactory.SingletonList(statement))
+                );
+            }
+            else
+            {
+                method = method.WithBody(method.Body.WithStatements(statements));
+            }
+
 
             return method;
         }
@@ -183,7 +211,7 @@ namespace RRCG
             //// Check if the left-hand side of the assignment is an identifier (variable).
             //if (node.Left is IdentifierNameSyntax identifier)
             //{
-                
+
 
             //    //// Find the declaration of the identifier in the syntax tree.
             //    //var symbol = SemanticModel.GetSymbolInfo(identifier).Symbol as ILocalSymbol;

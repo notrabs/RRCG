@@ -1,10 +1,14 @@
 using System;
-using System.Linq.Expressions;
+using System.Collections.Generic;
 
 namespace RRCGBuild
 {
-    public abstract class CircuitBuilder: ChipBuilder
+    public class EventFunction : Attribute { }
+
+    public abstract class CircuitBuilder : ChipBuilder
     {
+        internal readonly Dictionary<string, EventHelper> __RRCG_EVENT_FUNCTIONS = new Dictionary<string, EventHelper>();
+
         public abstract void CircuitGraph();
 
         //
@@ -13,20 +17,45 @@ namespace RRCGBuild
 
         public void StartNewGraph()
         {
-            ExecFlow.current.Clear();
+            ExecFlow.current = new ExecFlow();
         }
 
         public void ClearExec()
         {
             ExecFlow.current.Clear();
         }
+        public void InlineGraph(AlternativeExec graphFn)
+        {
+            var prevExec = ExecFlow.current;
 
+            ExecFlow.current = new ExecFlow();
+            graphFn();
+
+            ExecFlow.current = prevExec;
+        }
+
+        protected void __DispatchEventFunction(string name, Action fn)
+        {
+            if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(name))
+            {
+                __RRCG_EVENT_FUNCTIONS[name] = new EventHelper("RRCG_EventFunction_" + name);
+
+                InlineGraph(() =>
+                {
+                    __RRCG_EVENT_FUNCTIONS[name].Definition();
+                    __RRCG_EVENT_FUNCTIONS[name].Receiver();
+                    fn();
+                });
+            }
+
+            __RRCG_EVENT_FUNCTIONS[name].Sender();
+        }
 
         //
         // Circuit Board Helpers
         //
 
-        public void ExistingCircuitBoard(StringPort boardName, Action circuitBoardFn)
+        public void ExistingCircuitBoard(StringPort boardName, AlternativeExec circuitBoardFn)
         {
             var parentContext = Context.current;
             var parentExec = ExecFlow.current;

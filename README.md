@@ -5,7 +5,7 @@ What if you never had to move a wire by hand? RRCG brings text-based scripting s
 ![example-circuit](./Docs/Images/header.png)
 
 > :warning: **Consider upvoting this feature request**: https://recroom.featureupvote.com/suggestions/482338/circuits-api
-> 
+>
 > This package only contains the compiler frontend to validate the graph generation. Wihout a proper Circuits API the backend conversion into actual graphs is to unstable to release.
 
 <!-- toc -->
@@ -15,6 +15,7 @@ What if you never had to move a wire by hand? RRCG brings text-based scripting s
 ### via Git URL
 
 Open `Packages/manifest.json` with your favorite text editor. Add following line to the dependencies block:
+
 ```json
 {
   "dependencies": {
@@ -30,30 +31,36 @@ For development: Clone the repository into the "Packages" folder of your Studio 
 e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Packages/RRCG`
 
 ---
+
 ## Using the Compiler
 
 1. Create a prefab from the `RRCG` window menu. Place it in a location with enough space. The chip area will grow as indicated by the arrows.
 2. Open the Inspector for the `RRCG` prefab
-3. Link a RRCG script file (<b>*</b>) in the inspector
+3. Link a RRCG script file (<b>\*</b>) in the inspector
 4. Click `Compile Circuit` (with watch mode on this will happen automatically when new changes are detected)
 5. Click `Build Circuit` (placeholder for now. Until we have a Circuits API you can only create the debug DOT graph)
 
-(<b>*</b>) A script file needs to contain a class with the same name as the file. You can copy the already linked example class anywhere into your project. See the next chapter on how to write valid code.
+(<b>\*</b>) A script file needs to contain a class with the same name as the file. You can copy the already linked example class anywhere into your project. See the next chapter on how to write valid code.
 
 #### DOT Graph
+
 DOT is a standard graph format that can be [visualized online](https://dreampuf.github.io/GraphvizOnline/). You can copy a DOT graph for a compiled circuit by pressing the button in the inspector.
 
 #### Handle Compilation errors
+
 If you encounter an error during or after compilation it is likely a bug or non-implemented feature. Feel free to submit a bug report with your source code and `.generated.cs` file. Delete the erroneous `.generated.cs` file to make Unity compile changes again.
 
 ---
+
 ## Writing Code
 
 The goal of this language is to be an intuitive, direct mapping of C# to Circuits. With the C# execution flow being mapped to exec lines and data flow being mapped to data lines.
 C# Language features should do what you expect.
 
 ### The Circuit Descriptor
+
 The Circuit Descriptor is your entry point. Your chips start building from the `CircuitGraph()` method, but beyond that you can organize your code however you like. The only limitation for now is that the compiler only supports translating a single file at a time.
+
 ```c#
 public class ExampleRoom : CircuitDescriptor
 {
@@ -65,7 +72,9 @@ public class ExampleRoom : CircuitDescriptor
 ```
 
 ### Placing Chips
+
 Chips are available as static functions in the `Chips` class. For convenience you can access them through the extended `CircuitDescriptor` class.
+
 ```c#
 public void ExampleCircuit()
 {
@@ -83,16 +92,17 @@ Ports are data. Data is Ports. Don't worry what the type system might say. Write
 public void ExampleCircuit()
 {
     EventReceiver(RoomEvents.Hz30);
-  
+
     int rand1 = RandomInt(0, 10);
     var rand2 = RandomInt(0, rand1);
-  
+
     if (rand1 + rand2 > 10) LogString("Today's your lucky day");
     else LogString("Try again next time");
 }
 ```
 
 If a chip has multiple outputs, a tuple will be returned
+
 ```c#
 public void ExampleCircuit()
 {
@@ -110,9 +120,9 @@ public void ExampleCircuit()
 {
     // starts a new graph
     EventReceiver(RoomEvents.Hz30);
-  
+
     // connects the random chip inside the function directly to the event receiver
-    var rand1 = MyFunction();   
+    var rand1 = MyFunction();
     LogString(ToString(rand1));
 
     // starts a new graph
@@ -125,7 +135,9 @@ public void MyFunction()
     return RandomInt(1, 2);
 }
 ```
+
 "If" and Execution Switches are fully supported. A `throw` statement ends a branch of execution.
+
 ```c#
 public void ExampleCircuit()
 {
@@ -151,10 +163,13 @@ public void ExampleCircuit()
     }
 }
 ```
- (returns are in the works)
+
+(returns are in the works)
 
 ### Operator Overload
+
 Math Operators and comparisons will create the according chips, and evaluate using c#'s order of operations.
+
 ```c#
 public void ExampleCircuit()
 {
@@ -166,7 +181,9 @@ public void ExampleCircuit()
 ```
 
 ### Automatic Casting
+
 The `FromRecRoomObject` chip has been hidden since it doesn't map nicely into c# types. Instead you can use implicit casts to convert objects:
+
 ```c#
 public void ExampleCircuit()
 {
@@ -197,10 +214,10 @@ public void CircuitBoard()
 }
 ```
 
-
 ### Chip Lib
 
 The Chip Lib contains useful helpers to write common patterns. Check back as more are implemented:
+
 ```c#
 public void ExampleCircuit()
 {
@@ -218,7 +235,9 @@ public void ExampleCircuit()
 ```
 
 ### Event Helpers
+
 The `EventHelper` class helps you write type-safe code. You can defined the structure of an event once and place all chips with correct typings:
+
 ```c#
 EventHelper<int> onInputEvent = new EventHelper<int>("OnInput", "value");
 
@@ -229,13 +248,14 @@ public void ExampleCircuit()
 
     // Start new circuit graphs at the receiver
     var data = onInputEvent.Receiver();
-    
+
     // Send Events using the sender
     onInputEvent.Sender(123);
 }
 ```
 
 Access the predefined events using the `RoomEvents` enum:
+
 ```c#
 public void StudioBoard()
 {
@@ -245,6 +265,7 @@ public void StudioBoard()
 ```
 
 Studio Events are referenced by name. There is a small helper to make this more readable, but a named event receiver also works:
+
 ```c#
 public void StudioBoard()
 {
@@ -253,7 +274,26 @@ public void StudioBoard()
 }
 ```
 
+Use the EventFunction Attribute to automatically convert a function call into event senders, with all the logic only being placed once in the world.
+
+```c#
+public void ExampleCircuit()
+{
+    // will be placed as two event senders
+    ExpensiveFunction();
+    ExpensiveFunction();
+}
+
+[EventFunction]
+public void ExpensiveFunction()
+{
+    // only one LogString will be placed in the world
+    LogString("Hello");
+}
+```
+
 ### Variable Helpers
+
 The `VariableHelpers` class helps you write type-safe variable accesses. Variables are named automatically in RR:
 
 ```c#
@@ -270,11 +310,12 @@ public void ExampleCircuit()
 }
 ```
 
-
 ### Interfacing with Unity
+
 You can directly call functions in other Editor scripts or libraries. They will be evaluated when you build the circuits.
 
 :warning: Make sure the data passed to outside functions is valid c# data. If it holds a chips' port output, the function needs to support the according `Port` type. Take a look at the next chapter to learn more about the compilation process.
+
 ```c#
 public void ExampleCircuit()
 {
@@ -285,39 +326,44 @@ public void ExampleCircuit()
 ```
 
 ---
+
 ## Custom Building Code (.generated.cs files)
+
 The conversion of control structures (if,for,...) might not be desireable in some use-cases. Especially when you want to create a dynamic number of chips.
 
 To implement dynamic structures you have to bypass the syntax transformation and write code directly in the build realm (= `generated` files). The syntax there is a bit more verbose, but you have the advantage of being able to use c# features to build code, instead of just describing it.
 
 ![image](./Docs/Images/flow_chart.png)
 
-For example to generate n chips in a chain it is not possible to use a for loop: 
+For example to generate n chips in a chain it is not possible to use a for loop:
+
 ```c#
 // This will transform into a single for chip and a single random chip
 public void RRCGSourceRealm() {
     for (int i=0;i<n;i++) {
         Chips.RandomInt(0,i);
     }
-} 
+}
 
 // In the build realm the for loop stays in the c# code. So you will generate n random chips
 public void RRCGBuildRealm() {
     for (int i=0;i<n;i++) {
         ChipBuilder.RandomInt(0,i);
     }
-} 
+}
 ```
+
 (Note: for loops are not implemented yet, but this example illustrates the idea)
 
-To use the build realm simply write your code in a non-compiled file. 
+To use the build realm simply write your code in a non-compiled file.
 More documnentation to come, but looking at the ChipLib source would be a good place to start. Note how there's two version of it so it can be used in the `RRCGSource` and `RRCGBuild` namespace with different types.
 
-
-
 ---
+
 ## Roadmap
+
 Things to do that are in scope of the RRCG project. Although contributions are welcome, even if not listed here.
+
 - [ ] Circuit Building Backend (with an official API)
 - [ ] Support more CV2 features
   - [ ] Circuit Boards
@@ -334,7 +380,7 @@ Things to do that are in scope of the RRCG project. Although contributions are w
   - [ ] Support more than one file for compilation (automatic dependencies?)
   - [ ] Attribute to disable syntax transformation of c# code
 - [ ] Circuit Formatter improvements
-  - [ ] Improve chip size estimation 
+  - [ ] Improve chip size estimation
   - [ ] Allow formatting a selection of circuits (with an official API)
 - [ ] Decompilation (Circuits to Code)
   - [ ] This wouldn't be perfect, but could be nice to build a library
@@ -343,10 +389,12 @@ Things to do that are in scope of the RRCG project. Although contributions are w
   - [ ] Automatically replace multiple "Equal-Ifs" with switches (also in combination with returns)
 - [ ] Online playground
   - [ ] https://github.com/ashmind/SharpLab looks promising
-  - [ ] Would be great for documentation 
+  - [ ] Would be great for documentation
 
 ---
+
 ## Useful Resources
-* [Roslyn Quoter](https://roslynquoter.azurewebsites.net/)
-* [DOT Graph Visualizer](https://dreampuf.github.io/GraphvizOnline/)
-* [CV2 chip definitions](https://github.com/tyleo-rec/CircuitsV2Resources/blob/master/misc/circuitsv2.json)
+
+- [Roslyn Quoter](https://roslynquoter.azurewebsites.net/)
+- [DOT Graph Visualizer](https://dreampuf.github.io/GraphvizOnline/)
+- [CV2 chip definitions](https://github.com/tyleo-rec/CircuitsV2Resources/blob/master/misc/circuitsv2.json)

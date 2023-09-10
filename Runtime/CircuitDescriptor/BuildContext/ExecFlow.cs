@@ -4,8 +4,6 @@ using System.Linq;
 
 namespace RRCGBuild
 {
-    public delegate void AlternativeExec();
-
     public class ExecFlow
     {
         public static ExecFlow current;

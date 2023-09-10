@@ -1,36 +1,50 @@
 
 
-using RRCG;
-using RRCGSource;
 using System;
 
-public abstract class CircuitDescriptor : Chips
+namespace RRCGSource
 {
-    public abstract void CircuitGraph();
+    /// <summary>
+    /// An Event Function will be called through an event, with all logic only present once in the graph
+    /// </summary>
+    public class EventFunction : Attribute { }
 
-    public void StartNewGraph() { }
-    public void ClearExec() { }
-
-    public void ExistingCircuitBoard(string boardName, Action circuitBoardFn)
+    public abstract class CircuitDescriptor : Chips
     {
-        circuitBoardFn();
-    }
+        public abstract void CircuitGraph();
 
-    public PinType ExistingDataInput<PinType>(string portName)
-    {
-        return default;
-    }
-    public void ExistingDataOutput<PinType>(string portName, PinType value)
-    {
-    }
+        public void StartNewGraph() { }
+        public void ClearExec() { }
 
-    public void ExistingExecInput(string portName)
-    {
-    }
+        /// <summary>
+        /// Define a new graph from your current context without destroying your current execution state.
+        /// </summary>
+        public void InlineGraph(AlternativeExec graphFn) { }
 
-    public void ExistingExecOutput(string portName)
-    {
-    }
+        public static Action EventFunction(AlternativeExec fn)
+        {
+            return default;
+        }
 
+        public void ExistingCircuitBoard(string boardName, AlternativeExec circuitBoardFn)
+        {
+            circuitBoardFn();
+        }
+
+        public PinType ExistingDataInput<PinType>(string portName)
+        {
+            return default;
+        }
+        public void ExistingDataOutput<PinType>(string portName, PinType value)
+        {
+        }
+
+        public void ExistingExecInput(string portName)
+        {
+        }
+
+        public void ExistingExecOutput(string portName)
+        {
+        }
+    }
 }
-
