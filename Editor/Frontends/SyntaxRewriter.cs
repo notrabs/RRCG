@@ -83,13 +83,32 @@ namespace RRCG
             statements = statements.Add(SyntaxFactory.ParseStatement("ExecFlow.current.Merge(rrcg_return_flow);"));
             if (method.ReturnType.ToString() != "void") statements = statements.Add(SyntaxFactory.ParseStatement("return rrcg_return_data;"));
 
-            // event functions
+            // special functions
             var isEventFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "EventFunction"));
+            var isSharedPropertyFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "SharedProperty"));
 
             if (isEventFunction)
             {
                 StatementSyntax statement = SyntaxFactory.ExpressionStatement(
                     SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName("__DispatchEventFunction"))
+                    .WithArgumentList(
+                        ArgumentList(
+                            SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
+                            SyntaxFactory.AnonymousMethodExpression()
+                                        .WithParameterList(SyntaxFactory.ParameterList())
+                                        .WithBlock(SyntaxFactory.Block(statements))
+                        )
+                    )
+                ).NormalizeWhitespace();
+
+                method = method.WithBody(
+                    method.Body.WithStatements(SyntaxFactory.SingletonList(statement))
+                );
+            }
+            else if (isSharedPropertyFunction)
+            {
+                StatementSyntax statement = SyntaxFactory.ReturnStatement(
+                    SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName("__DispatchSharedPropertyFunction"))
                     .WithArgumentList(
                         ArgumentList(
                             SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),

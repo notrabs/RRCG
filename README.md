@@ -274,7 +274,7 @@ public void StudioBoard()
 }
 ```
 
-Use the EventFunction Attribute to automatically convert a function call into event senders, with all the logic only being placed once in the world.
+Use the `[EventFunction]` Attribute to automatically convert a function call into event senders, with all the logic only being placed once in the world.
 
 ```c#
 public void ExampleCircuit()
@@ -307,6 +307,33 @@ public void ExampleCircuit()
 
     // Access/Modify the Value using the Value getter/setter
     count.Value = count.Value + 1;
+}
+```
+
+### Shared Properties
+
+Use the `[SharedProperty]` Attribute to annotate functions that should only be placed once. All calls to this function will connect to the same graph.
+This is a bit of syntactic sugar to work around c# not allowing you to access VariableHelpers during initialization. If possible you should place your shared chips into the class body.
+
+:warning: It is up to the user to ensure that SharedProperty functions are pure and do not contain any execs. You can pass parameters into the function, but they will be only connected during the first call of the function.
+
+```c#
+// Simple static chips can also be shared by storing them directly in the class.
+int SharedTimeChip = TimeGetUniversalSeconds();
+
+VariableHelper roundStarted = new VariableHelper<int>();
+
+public void ExampleCircuit()
+{
+    ChipLib.Log(RoundTime());
+    ChipLib.Log(RoundTime());
+}
+
+[SharedProperty]
+public int GameTime()
+{
+    // only placed once in the world
+    return SharedTimeChip - roundStarted.Value;
 }
 ```
 

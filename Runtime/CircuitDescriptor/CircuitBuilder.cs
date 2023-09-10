@@ -4,10 +4,12 @@ using System.Collections.Generic;
 namespace RRCGBuild
 {
     public class EventFunction : Attribute { }
+    public class SharedProperty : Attribute { }
 
     public abstract class CircuitBuilder : ChipBuilder
     {
         internal readonly Dictionary<string, EventHelper> __RRCG_EVENT_FUNCTIONS = new Dictionary<string, EventHelper>();
+        internal readonly Dictionary<string, object> __RRCG_SHARED_PROPERTIES = new Dictionary<string, object>();
 
         public abstract void CircuitGraph();
 
@@ -49,6 +51,18 @@ namespace RRCGBuild
             }
 
             __RRCG_EVENT_FUNCTIONS[name].Sender();
+        }
+        protected T __DispatchSharedPropertyFunction<T>(string name, Func<T> fn) where T : AnyPort
+        {
+            if (!__RRCG_SHARED_PROPERTIES.ContainsKey(name))
+            {
+                InlineGraph(() =>
+                {
+                    __RRCG_SHARED_PROPERTIES[name] = fn();
+                });
+            }
+
+            return __RRCG_SHARED_PROPERTIES[name] as T;
         }
 
         //

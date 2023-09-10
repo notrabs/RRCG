@@ -9,6 +9,11 @@ namespace RRCGSource
     /// </summary>
     public class EventFunction : Attribute { }
 
+    /// <summary>
+    /// A Shared Properties chips will only placed once in the world.
+    /// </summary>
+    public class SharedProperty : Attribute { }
+
     public abstract class CircuitDescriptor : Chips
     {
         public abstract void CircuitGraph();
