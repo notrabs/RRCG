@@ -235,7 +235,7 @@ namespace RRCGBuild
         private static T ConnectDynamicPins<T>(int offset, params T[] ports) where T : AnyPort, new()
         {
             var node = Context.lastSpawnedNode;
-            node.InputCount = ports.Length;
+            node.InputCount = ports.Length + offset;
 
             for (int i = 1; i < ports.Length; i++)
             {

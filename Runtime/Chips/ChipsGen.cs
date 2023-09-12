@@ -1720,7 +1720,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Converts the input Rec Room Object to the object's subtype.
         /// </summary>
-        public static RecRoomObject FromRecRoomObject(RecRoomObject Target)
+        internal static RecRoomObject FromRecRoomObject(RecRoomObject Target)
         {
             return default(RecRoomObject);
         }
@@ -3734,6 +3734,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Control whether the player sees the nametag of the target player.It takes priority over role settings.Reset the room to remove the effect of this chip.
+        /// </summary>
+        public static void LocalPlayerSetPlayerNametagVisibility(Player Player, bool Enabled)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Computes a logarithm.
         /// </summary>
         public static float Logarithm(float Value, float Base)
@@ -3859,14 +3867,6 @@ namespace RRCGGenerated
         public static bool Nand(bool Input)
         {
             return default(bool);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static (bool IsValid, Vector3 HitPosition) NavMeshSamplePosition(Vector3 SourcePosition, float MaxDistance)
-        {
-            return (default(bool), default(Vector3));
         }
 
         /// <summary>
@@ -5910,7 +5910,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Shows a player a notification about a single reward or a list of up to 4 rewards. Appearance can be customized in the config menu!
+        /// Shows a player a notification about a single reward or a list of up to 4 rewards. Appearance can be customized in the config menu! Triggering this chip multiple times will queue the notifications up in order of execution, and each will play subsequently after the previous duration is reached.
         /// </summary>
         public static void ShowRewardNotification(Player Player, Reward Reward, float Duration)
         {
@@ -5918,7 +5918,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Shows a player a notification about a single reward or a list of up to 4 rewards. Appearance can be customized in the config menu!
+        /// Shows a player a notification about a single reward or a list of up to 4 rewards. Appearance can be customized in the config menu! Triggering this chip multiple times will queue the notifications up in order of execution, and each will play subsequently after the previous duration is reached.
         /// </summary>
         public static void ShowRewardNotification(Player Player, List<Reward> Reward, float Duration)
         {
