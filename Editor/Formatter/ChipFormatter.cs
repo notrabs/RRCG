@@ -230,7 +230,7 @@ namespace RRCG
         {
             var size = new Vector2(0.4f, 0.2f);
 
-            if (rrcgNodeToInstances[node] != null)
+            if (rrcgNodeToInstances.ContainsKey(node))
             {
                 size.x += rrcgNodeToInstances[node].gameObject.name.Length * 0.01f;
             }

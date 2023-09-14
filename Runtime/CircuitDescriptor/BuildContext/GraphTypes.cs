@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using RRCGUtils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,8 +8,13 @@ namespace RRCGBuild
 {
     public class Node
     {
-        public string Name;
+        [JsonConverter(typeof(GuidConverter))]
+        public string Id;
+
+        [JsonConverter(typeof(GuidConverter))]
         public string Type;
+
+        public string Name;
 
         public string EventName { get; internal set; }
         public string VariableName { get; internal set; }
@@ -24,6 +31,7 @@ namespace RRCGBuild
 
         public Node()
         {
+            Id = Guid.NewGuid().ToString();
             MetaConditionalContext = ConditionalContext.current;
         }
 
@@ -47,6 +55,7 @@ namespace RRCGBuild
 
     public class Port
     {
+        [JsonConverter(typeof(NodeAsIdConverter))]
         public Node Node;
         public int Group = 0;
         public int Index = 0;
@@ -58,5 +67,23 @@ namespace RRCGBuild
         public Port To;
 
         public bool isExec = false;
+    }
+
+    internal class NodeAsIdConverter : JsonWriteConverter
+    {
+        public override void WriteJson(JsonWriter writer, object valueObj, JsonSerializer serializer)
+        {
+            var id = Convert.ToBase64String(Guid.Parse(((Node)valueObj).Id).ToByteArray());
+            writer.WriteValue(id);
+        }
+    }
+
+    internal class GuidConverter : JsonWriteConverter
+    {
+        public override void WriteJson(JsonWriter writer, object valueObj, JsonSerializer serializer)
+        {
+            var id = Convert.ToBase64String((Guid.Parse((string)valueObj)).ToByteArray());
+            writer.WriteValue(id);
+        }
     }
 }

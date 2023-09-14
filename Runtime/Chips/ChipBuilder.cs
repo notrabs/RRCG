@@ -257,16 +257,10 @@ namespace RRCGBuild
 
         public static void If(BoolPort test, AlternativeExec ifBranch, AlternativeExec elseBranch)
         {
-            Node node = new Node { Name = "BranchNode" };
-            Context.current.Nodes.Add(node);
-
-            node.ConnectInputPort(Context.current, test, new Port
-            {
-                Node = node,
-                Index = 1
-            });
-
             var prevFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ChipBuilderGen.If(test, () => { });
+            var node = Context.lastSpawnedNode;
 
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port { Node = node });
