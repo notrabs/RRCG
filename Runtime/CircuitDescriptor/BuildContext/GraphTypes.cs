@@ -22,7 +22,9 @@ namespace RRCGBuild
         public object VariableHomeValue { get; internal set; }
 
         public int InputCount { get; internal set; }
-        public Dictionary<int, object> DefaultValues = new Dictionary<int, object>();
+
+        [JsonConverter(typeof(DefaultValuesConverter))]
+        public Dictionary<(int Group, int Port), object> DefaultValues = new Dictionary<(int Group, int Port), object>();
         public Dictionary<string, Type> EventDefintion = null;
         public List<string> SwitchCases = null;
 
@@ -40,9 +42,9 @@ namespace RRCGBuild
             if (port.IsActualPort)
             {
                 context.Connections.Add(new Connection { From = port.Port, To = input });
-                DefaultValues.Remove(input.Index);
+                DefaultValues.Remove((input.Group, input.Index));
             }
-            else DefaultValues.Add(input.Index, port.Data);
+            else DefaultValues.Add((input.Group, input.Index), port.Data);
         }
 
         public Port ConnectInputPort(AnyPort port, int inputIndex)
@@ -84,6 +86,24 @@ namespace RRCGBuild
         {
             var id = Convert.ToBase64String((Guid.Parse((string)valueObj)).ToByteArray());
             writer.WriteValue(id);
+        }
+    }
+    internal class DefaultValuesConverter : JsonWriteConverter
+    {
+        public override void WriteJson(JsonWriter writer, object valueObj, JsonSerializer serializer)
+        {
+            if (valueObj == null)
+            {
+                writer.WriteValue("null");
+                return;
+            }
+
+            var dict = (Dictionary<(int Group, int Port), object>)valueObj;
+            var entries = dict
+                .Where(keyValue => keyValue.Value != null)
+                .Select(keyValue => new object[] { new int[] { keyValue.Key.Group, keyValue.Key.Port }, keyValue.Value.GetType().ToString(), keyValue.Value });
+
+            writer.WriteRawValue(JsonConvert.SerializeObject(entries.ToArray()));
         }
     }
 }

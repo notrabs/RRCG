@@ -367,6 +367,7 @@ namespace RRCGBuild
             var switchValue = ValueIntegerSwitch(match, defaultValue);
             var node = Context.lastSpawnedNode;
             node.SwitchCases = new List<string>();
+            node.InputCount += cases.Count();
 
             var portIndex = 2;
             foreach (var switchCase in cases)
@@ -387,6 +388,7 @@ namespace RRCGBuild
             var switchValue = ValueStringSwitch(match, defaultValue);
             var node = Context.lastSpawnedNode;
             node.SwitchCases = new List<string>();
+            node.InputCount += cases.Count();
 
             var portIndex = 2;
             foreach (var switchCase in cases)
