@@ -15,9 +15,16 @@ namespace RRCGBuild
 
             EventDefinition<T0>(eventName, "value0");
 
+            T0 port = null;
+
+            CircuitBuilder.InlineGraph(() =>
+            {
+                port = EventReceiver<T0>(eventName);
+            });
+
             EventSender<T0>(eventName, value0);
 
-            return EventReceiver<T0>(eventName);
+            return port;
         }
 
         public static void Log(AnyPort obj)

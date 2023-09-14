@@ -24,8 +24,11 @@ namespace RRCGBuild
 
         [JsonConverter(typeof(DefaultValuesConverter))]
         public Dictionary<(int Group, int Port), object> DefaultValues = new Dictionary<(int Group, int Port), object>();
-        public Dictionary<string, Type> EventDefintion = null;
+        public List<(string, Type)> EventDefintion = null;
         public List<string> SwitchCases = null;
+
+        [JsonConverter(typeof(GuidConverter))]
+        public string CircuitBoardId;
 
         // The scope of this conditional context
         public ConditionalContext MetaConditionalContext = null;
@@ -52,6 +55,11 @@ namespace RRCGBuild
             var input = new Port() { Node = this, Index = inputIndex };
             ConnectInputPort(Context.current, port, input);
             return input;
+        }
+
+        public Port Port(int Group, int Index)
+        {
+            return new Port() { Node = this, Group = Group, Index = Index };
         }
     }
 

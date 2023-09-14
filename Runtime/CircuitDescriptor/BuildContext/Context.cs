@@ -7,6 +7,9 @@ namespace RRCGBuild
 {
     public class Context
     {
+        [JsonConverter(typeof(GuidConverter))]
+        public string Id;
+
         public static Context current;
         public static Node lastSpawnedNode { get => Context.current.Nodes.Last(); }
 
@@ -18,6 +21,12 @@ namespace RRCGBuild
         public List<Context> SubContexts = new List<Context>();
 
         public string MetaExistingCircuitBoard;
+        public List<CBFunction> MetaNewBoard;
+
+        public Context()
+        {
+            Id = Guid.NewGuid().ToString();
+        }
 
         public void Merge(Context context)
         {
@@ -47,6 +56,18 @@ namespace RRCGBuild
             return nodes;
         }
 
+        public IEnumerable<Context> GetAllChildren()
+        {
+            IEnumerable<Context> children = new List<Context>();
+
+            foreach (var child in SubContexts)
+            {
+                children = children.Concat(child.GetAllChildren());
+            }
+
+            return children;
+        }
+
         private int idCounter = 0;
         public int GetUniqueId()
         {
@@ -54,5 +75,12 @@ namespace RRCGBuild
                 return ParentContext.GetUniqueId();
             return idCounter++;
         }
+    }
+
+    public class CBFunction
+    {
+        public string Name = "";
+        public List<(string, Type)> Inputs = new List<(string, Type)>();
+        public List<(string, Type)> Outputs = new List<(string, Type)>();
     }
 }

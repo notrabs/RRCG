@@ -32,11 +32,16 @@ namespace RRCGSource
         /// </summary>
         public static int RandomStoreCounter(int modulus) { return default; }
 
-
+        /// <summary>
+        /// A Look-Up-Table to generate a shared, switch-based accessor for a large list of data.
+        /// </summary>
         public class LUT<T>
         {
             public LUT(IEnumerable<T> list) { }
 
+            /// <summary>
+            /// Call immediately before reading a value. The output will change if a different index is read.
+            /// </summary>
             public T Read(int index) { return default; }
         }
     }

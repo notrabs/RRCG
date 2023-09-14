@@ -83,7 +83,7 @@ namespace RRCGBuild
             }
 
             node.EventName = eventName.Data;
-            node.EventDefintion = new Dictionary<string, Type>();
+            node.EventDefintion = new List<(string, Type)>();
         }
 
 
@@ -97,7 +97,7 @@ namespace RRCGBuild
                 throw new Exception("Can't create EventDefinitions with dynamic data. Make sure to pass a string value!");
             }
 
-            node.EventDefintion.Add(param0.Data, typeof(T0));
+            node.EventDefintion.Add((param0.Data, typeof(T0)));
         }
 
         public static void EventDefinition<T0, T1>(StringPort eventName, StringPort param0, StringPort param1)
@@ -112,8 +112,8 @@ namespace RRCGBuild
                 throw new Exception("Can't create EventDefinitions with dynamic data. Make sure to pass a string value!");
             }
 
-            node.EventDefintion.Add(param0.Data, typeof(T0));
-            node.EventDefintion.Add(param1.Data, typeof(T1));
+            node.EventDefintion.Add((param0.Data, typeof(T0)));
+            node.EventDefintion.Add((param1.Data, typeof(T1)));
         }
 
         #endregion

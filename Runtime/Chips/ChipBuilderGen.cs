@@ -1188,7 +1188,7 @@ namespace RRCGGenerated
             return new IntPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static void CircuitBoard()
+        internal static void CircuitBoard()
         {
             // CircuitBoard
             Node node = new Node()

@@ -32,6 +32,8 @@ namespace RRCG
             Debug.Log("Building: " + rrcgMeta.RoomCircuit.name + "Gen");
             var type = GetType(rrcgMeta.RoomCircuit.name + "Gen");
 
+            if (type == null) throw new Exception("Could not find compiled class for '" + rrcgMeta.RoomCircuit.name + "'. Make sure the class is public in the root namespace and has the same name as its file.");
+
             Context context = new Context();
 
             Context.current = context;
