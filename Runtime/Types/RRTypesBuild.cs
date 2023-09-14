@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace RRCGBuild
 {
     public class AnyPort
@@ -13,6 +15,17 @@ namespace RRCGBuild
         public static implicit operator AnyPort(int data) => new AnyPort { Data = data };
         public static implicit operator AnyPort(float data) => new AnyPort { Data = data };
         public static implicit operator AnyPort(bool data) => new AnyPort { Data = data };
+
+        public T AsData<T>()
+        {
+            if (IsActualPort) throw new Exception("Cannot convert actual port to data");
+            return (T)Data;
+        }
+
+        /// <summary>
+        /// Use this method ONLY in RRCG source code to trick the compiler into accepting your port.
+        /// </summary>
+        public T AsSourcePort<T>() => this as dynamic;
     }
 
     public class PortBuilderAny : AnyPort { }
@@ -22,18 +35,31 @@ namespace RRCGBuild
     public class StringPort : AnyPort
     {
         public static implicit operator StringPort(string data) => new StringPort { Data = data };
+        public static explicit operator string(StringPort data) => data.AsData<string>();
     }
     public class IntPort : AnyPort
     {
         public static implicit operator IntPort(int data) => new IntPort { Data = data };
+        public static explicit operator int(IntPort data) => data.AsData<int>();
+
+        public static explicit operator string(IntPort data) => data.AsData<int>().ToString();
+        public static explicit operator StringPort(IntPort data) => (string)data;
     }
     public class FloatPort : AnyPort
     {
         public static implicit operator FloatPort(float data) => new FloatPort { Data = data };
+        public static explicit operator float(FloatPort data) => data.AsData<float>();
+
+        public static explicit operator string(FloatPort data) => data.AsData<int>().ToString();
+        public static explicit operator StringPort(FloatPort data) => (string)data;
     }
     public class BoolPort : AnyPort
     {
         public static implicit operator BoolPort(bool data) => new BoolPort { Data = data };
+        public static explicit operator bool(BoolPort data) => data.AsData<bool>();
+
+        public static explicit operator string(BoolPort data) => data.AsData<int>().ToString();
+        public static explicit operator StringPort(BoolPort data) => (string)data;
     }
     public class Vector3Port : AnyPort { }
     public class QuaternionPort : AnyPort { }
