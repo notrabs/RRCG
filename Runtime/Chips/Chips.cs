@@ -21,6 +21,8 @@ namespace RRCGSource
         public static void If(bool test, AlternativeExec ifBranch, AlternativeExec elseBranch) { }
         public static void ExecutionIntegerSwitch(int match, AlternativeExec failed, Dictionary<int, AlternativeExec> cases) { }
         public static void ExecutionStringSwitch(int match, AlternativeExec failed, Dictionary<string, AlternativeExec> cases) { }
+        public static T ValueIntegerSwitch<T>(int match, T failed, Dictionary<int, T> cases) { return default; }
+        public static T ValueStringSwitch<T>(int match, T failed, Dictionary<string, T> cases) { return default; }
 
         public static T Self<T>() { return default; }
     }

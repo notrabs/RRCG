@@ -145,6 +145,19 @@ namespace RRCG
             return base.VisitInvocationExpression(node);
         }
 
+        public override SyntaxNode VisitMemberAccessExpression(MemberAccessExpressionSyntax node)
+        {
+            if (node.Expression is IdentifierNameSyntax ins)
+            {
+                if (ins.Identifier.Text == "Player")
+                {
+                    node = node.WithExpression(SyntaxFactory.IdentifierName("PlayerPort"));
+                }
+            }
+
+            return base.VisitMemberAccessExpression(node);
+        }
+
         public override SyntaxNode VisitPredefinedType(PredefinedTypeSyntax node)
         {
             switch (node.Keyword.ValueText)

@@ -13,7 +13,9 @@ namespace RRCGSource
     public class TriggerHandle { }
     public class StudioObject { }
     public class AnalyticsPayload { }
-    public class Player { }
+    public class Player { 
+        public static Player Local = new Player();
+    }
     public class RecRoomObject { }
     public class Combatant { }
     public class PatrolPoint { }

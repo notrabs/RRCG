@@ -415,6 +415,7 @@ namespace RRCGBuild
         {
             ChipBuilderGen.Equals((AnyPort)ports[0]);
             var node = Context.lastSpawnedNode;
+            node.InputCount = ports.Length;
 
             for (int i = 1; i < ports.Length; i++)
             {

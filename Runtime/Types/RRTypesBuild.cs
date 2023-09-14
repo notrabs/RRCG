@@ -69,7 +69,10 @@ namespace RRCGBuild
     public class TriggerHandlePort : AnyPort { }
     public class StudioObjectPort : AnyPort { }
     public class AnalyticsPayloadPort : AnyPort { }
-    public class PlayerPort : AnyPort { }
+    public class PlayerPort : AnyPort
+    {
+        public static PlayerPort Local = new PlayerPort();
+    }
     public class RecRoomObjectPort : AnyPort { }
     public class CombatantPort : AnyPort { }
     public class PatrolPointPort : AnyPort { }

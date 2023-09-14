@@ -1,4 +1,5 @@
 ﻿using RRCGBuild;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -234,6 +235,8 @@ namespace RRCG
             {
                 size.x += rrcgNodeToInstances[node].gameObject.name.Length * 0.01f;
             }
+
+            size.y += Math.Max(node.InputCount, node.SwitchCases?.Count ?? 0) * 0.03f;
 
             return size;
         }
