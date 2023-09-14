@@ -26,7 +26,7 @@ namespace RRCGBuild
         {
             ExecFlow.current.Clear();
         }
-        public void InlineGraph(AlternativeExec graphFn)
+        public static void InlineGraph(AlternativeExec graphFn)
         {
             var prevExec = ExecFlow.current;
 

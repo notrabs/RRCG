@@ -38,6 +38,7 @@ namespace RRCGBuild
 
         public void ConnectInputPort(Context context, AnyPort port, Port input)
         {
+            if (port == null) return;
             if (port.IsActualPort)
             {
                 context.Connections.Add(new Connection { From = port.Port, To = input });

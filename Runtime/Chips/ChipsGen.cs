@@ -3432,7 +3432,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns list of all indices of input item in target list if that list contains one or more instances of the item. Otherwise returns an empty list.
         /// </summary>
-        public static List<int> ListGetAllIndicesOf(List<object> Target, object Item)
+        public static List<int> ListGetAllIndicesOf<T>(List<T> Target, object Item)
         {
             return default(List<int>);
         }
@@ -3440,7 +3440,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the number of elements inside the input list.
         /// </summary>
-        public static int ListGetCount(List<object> List)
+        public static int ListGetCount<T>(List<T> List)
         {
             return default(int);
         }
@@ -3448,9 +3448,9 @@ namespace RRCGGenerated
         /// <summary>
         /// Gets a specified element from the input list. The "Index" is the location of the element in the list. The first element in the list is at index 0, the second element is at index 1.
         /// </summary>
-        public static object ListGetElement(List<object> List, int Index)
+        public static T ListGetElement<T>(List<T> List, int Index)
         {
-            return default(object);
+            return default;
         }
 
         /// <summary>

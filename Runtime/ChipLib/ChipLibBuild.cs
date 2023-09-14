@@ -1,6 +1,8 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace RRCGBuild
 {
@@ -71,6 +73,78 @@ namespace RRCGBuild
             randomNode.ConnectInputPort(Context.current, switchValue, new Port { Node = randomNode, Index = 2 });
 
             return randomPort;
+        }
+
+        public class LUT<T> where T : AnyPort, new()
+        {
+            private T readPort;
+            private EventHelper<IntPort> readEvent;
+
+            public LUT(IEnumerable<object> list)
+            {
+                readEvent = new EventHelper<IntPort>("LUT_" + Context.current.GetUniqueId(), "index");
+
+                CircuitBuilder.InlineGraph(() =>
+                {
+                    readEvent.Definition();
+
+                    var index = readEvent.Receiver();
+
+                    if (list.Count() <= 64)
+                    {
+                        var cases = new Dictionary<IntPort, T>();
+
+                        for (var i = 0; i < list.Count(); i++)
+                        {
+                            cases.Add(i, (T)list.ElementAt(i));
+                        }
+
+                        readPort = ChipBuilder.ValueIntegerSwitch<T>(index, null, cases);
+                    }
+                    else if (list.Count() <= 64 * 64)
+                    {
+                        var partitions = Partition<object>(list, 64);
+
+                        var rootCases = new Dictionary<IntPort, T>();
+
+                        int paritionIndex = 0;
+                        foreach (var partition in partitions)
+                        {
+                            var cases = new Dictionary<IntPort, T>();
+
+                            int itemIndex = 0;
+                            foreach (var item in partition)
+                            {
+                                cases.Add(paritionIndex * 64 + itemIndex, item as dynamic);
+                                itemIndex++;
+                            }
+
+                            var partitionSwitch = ChipBuilder.ValueIntegerSwitch<T>(index, null, cases);
+
+                            rootCases.Add(paritionIndex, partitionSwitch);
+                            paritionIndex++;
+                        }
+
+                        readPort = ChipBuilder.ValueIntegerSwitch<T>(ChipBuilder.Divide(index, 64), null, rootCases);
+                    }
+                    else
+                    {
+                        throw new Exception("not implemented");
+                    }
+                });
+            }
+
+            public T Read(IntPort index)
+            {
+                readEvent.Sender(index);
+                return readPort;
+            }
+
+            static IEnumerable<List<Type>> Partition<Type>(IEnumerable<Type> source, Int32 size)
+            {
+                for (int i = 0; i < (source.Count() / size) + (source.Count() % size > 0 ? 1 : 0); i++)
+                    yield return new List<Type>(source.Skip(size * i).Take(size));
+            }
         }
     }
 }

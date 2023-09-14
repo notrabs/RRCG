@@ -1,4 +1,6 @@
-﻿namespace RRCGSource
+﻿using System.Collections.Generic;
+
+namespace RRCGSource
 {
     public class ChipLib
     {
@@ -29,5 +31,13 @@
         /// A modulated execution counter, that is cheaper than a variable.
         /// </summary>
         public static int RandomStoreCounter(int modulus) { return default; }
+
+
+        public class LUT<T>
+        {
+            public LUT(IEnumerable<T> list) { }
+
+            public T Read(int index) { return default; }
+        }
     }
 }
