@@ -112,7 +112,6 @@ namespace RRCGBuild
                 .Select(keyValue =>
                 {
                     var port = new int[] { keyValue.Key.Group, keyValue.Key.Port };
-                    if (keyValue.Value == PlayerPort.Local) return new object[] { port, (0).GetType().ToString(), 1 };
                     return new object[] { port, keyValue.Value.GetType().ToString(), keyValue.Value };
                 });
 

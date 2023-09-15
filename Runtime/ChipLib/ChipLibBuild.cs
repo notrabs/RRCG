@@ -84,7 +84,7 @@ namespace RRCGBuild
 
         public class LUT<T> where T : AnyPort, new()
         {
-            private T readPort;
+            public T UnsafeReadPort;
             private EventHelper<IntPort> readEvent;
 
             private IEnumerable<object> list;
@@ -97,7 +97,7 @@ namespace RRCGBuild
 
                 this.list = list;
 
-                readPort = CircuitBuilder.CircuitBoard(LUT_Data);
+                UnsafeReadPort = CircuitBuilder.CircuitBoard(LUT_Data);
             }
 
             private T LUT_Data()
@@ -151,7 +151,7 @@ namespace RRCGBuild
             public T Read(IntPort index)
             {
                 readEvent.Sender(index);
-                return readPort;
+                return UnsafeReadPort;
             }
 
             static IEnumerable<List<Type>> Partition<Type>(IEnumerable<Type> source, Int32 size)

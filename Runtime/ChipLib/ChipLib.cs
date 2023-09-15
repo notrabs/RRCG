@@ -43,6 +43,11 @@ namespace RRCGSource
             /// Call immediately before reading a value. The output will change if a different index is read.
             /// </summary>
             public T Read(int index) { return default; }
+
+            /// <summary>
+            /// Read from this port if you have already called Read()
+            /// </summary>
+            public T UnsafeReadPort;
         }
     }
 }

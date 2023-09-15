@@ -71,7 +71,7 @@ namespace RRCGBuild
     public class AnalyticsPayloadPort : AnyPort { }
     public class PlayerPort : AnyPort
     {
-        public static PlayerPort Local = new PlayerPort();
+        public static PlayerPort Local = new PlayerPort() { Port = null, Data = 1 };
     }
     public class RecRoomObjectPort : AnyPort { }
     public class CombatantPort : AnyPort { }
