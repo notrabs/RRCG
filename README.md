@@ -4,9 +4,10 @@ What if you never had to move a wire by hand? RRCG brings text-based scripting s
 
 ![example-circuit](./Docs/Images/header.png)
 
-> :warning: **Consider upvoting this feature request**: https://recroom.featureupvote.com/suggestions/482338/circuits-api
->
-> This package only contains the compiler frontend to validate the graph generation. Wihout a proper Circuits API the backend conversion into actual graphs is to unstable to release.
+
+| :warning: WARNING |
+| --- |
+| **Consider upvoting this feature request**: **https://recroom.featureupvote.com/suggestions/482338/circuits-api** <br /> This package only contains the compiler frontend to validate the graph generation. Wihout a proper Circuits API the conversion into actual graphs is to unstable to release. |
 
 <!-- toc -->
 
@@ -14,15 +15,7 @@ What if you never had to move a wire by hand? RRCG brings text-based scripting s
 
 ### via Git URL
 
-Open `Packages/manifest.json` with your favorite text editor. Add following line to the dependencies block:
-
-```json
-{
-  "dependencies": {
-    "com.rrcs.RRCG": "https://github.com/notrabs/RRCG.git"
-  }
-}
-```
+[Using the Package Manager](https://docs.unity3d.com/Manual/upm-ui-giturl.html) install a package from this Git URL: `https://github.com/notrabs/RRCG.git`
 
 ### For development
 
