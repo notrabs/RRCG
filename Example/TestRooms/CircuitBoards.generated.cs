@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RRCG;
 using RRCGBuild;
+using System.Collections.Generic;
 
 public class CircuitBoardsGen : CircuitBuilder
 {
@@ -17,6 +14,8 @@ public class CircuitBoardsGen : CircuitBuilder
         var(c, d) = CircuitBoard(ContentsData, b, b);
         ChipLib.Log(c);
         ChipLib.Log(d);
+        CircuitBoard(ExecOut);
+        CircuitBoard(ExecIn);
         ExecFlow.current.Merge(rrcg_return_flow);
     }
 
@@ -31,7 +30,7 @@ public class CircuitBoardsGen : CircuitBuilder
     {
         ExecFlow rrcg_return_flow = new ExecFlow();
         IntPort rrcg_return_data = default;
-        Return(rrcg_return_flow, out rrcg_return_data, RandomInt(a, 10));
+        __Return(rrcg_return_flow, out rrcg_return_data, RandomInt(a, 10));
         ExecFlow.current.Merge(rrcg_return_flow);
         return rrcg_return_data;
     }
@@ -40,8 +39,23 @@ public class CircuitBoardsGen : CircuitBuilder
     {
         ExecFlow rrcg_return_flow = new ExecFlow();
         (IntPort, IntPort) rrcg_return_data = default;
-        Return(rrcg_return_flow, out rrcg_return_data, (a, b));
+        __Return(rrcg_return_flow, out rrcg_return_data, (a, b));
         ExecFlow.current.Merge(rrcg_return_flow);
         return rrcg_return_data;
+    }
+
+    void ExecOut()
+    {
+        ExecFlow rrcg_return_flow = new ExecFlow();
+        EventReceiver(RoomEvents.Hz30);
+        ExecFlow.current.Merge(rrcg_return_flow);
+    }
+
+    void ExecIn()
+    {
+        ExecFlow rrcg_return_flow = new ExecFlow();
+        RandomInt(1, 10);
+        ExecFlow.current.Clear();
+        ExecFlow.current.Merge(rrcg_return_flow);
     }
 }

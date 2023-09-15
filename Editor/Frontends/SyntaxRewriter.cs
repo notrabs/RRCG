@@ -208,7 +208,7 @@ namespace RRCG
             {
                 return SyntaxFactory.ExpressionStatement(
                     SyntaxFactory.InvocationExpression(
-                        SyntaxFactory.IdentifierName("Return"))
+                        SyntaxFactory.IdentifierName("__Return"))
                     .WithArgumentList(
                         ArgumentList(
                             (ExpressionSyntax)SyntaxFactory.IdentifierName("rrcg_return_flow")
@@ -219,7 +219,7 @@ namespace RRCG
 
             return SyntaxFactory.ExpressionStatement(
                 SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.IdentifierName("Return"))
+                    SyntaxFactory.IdentifierName("__Return"))
                 .WithArgumentList(
                     ArgumentList(
                         (ExpressionSyntax)SyntaxFactory.IdentifierName("rrcg_return_flow"),

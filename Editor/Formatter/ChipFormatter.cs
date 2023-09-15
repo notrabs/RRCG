@@ -20,114 +20,119 @@ namespace RRCG
             ChipFormatter.rrcgNodeToInstances = rrcgNodeToInstances;
             var tempLayoutRoot = CreateRootContainer();
 
-            var nodesToPlace = context.Nodes.ToList();
-
-            var execConnections = context.Connections.Where(c => c.isExec);
-            var dataConnections = context.Connections.Where(c => !c.isExec);
-            var entryNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n) && execConnections.All(c => c.To.Node != n));
-            var allExecConnectedNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n || c.To.Node == n));
-
-            // Calculate a structured version of the graph
-            var entryGroups = new List<EntryGroup>();
-
-            foreach (var entryNode in entryNodes)
+            try
             {
-                var entryGroup = new EntryGroup();
-                entryGroups.Add(entryGroup);
+                var nodesToPlace = context.Nodes.ToList();
 
-                var bfs = new List<Node>() { entryNode };
+                var execConnections = context.Connections.Where(c => c.isExec);
+                var dataConnections = context.Connections.Where(c => !c.isExec);
+                var entryNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n) && execConnections.All(c => c.To.Node != n));
+                var allExecConnectedNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n || c.To.Node == n));
 
-                while (bfs.Count > 0)
+                // Calculate a structured version of the graph
+                var entryGroups = new List<EntryGroup>();
+
+                foreach (var entryNode in entryNodes)
                 {
-                    var execGroup = new ExecGroup();
-                    entryGroup.execGroups.Add(execGroup);
+                    var entryGroup = new EntryGroup();
+                    entryGroups.Add(entryGroup);
 
-                    execGroup.execs = bfs.Select(n => new ExecNode() { execNode = n }).ToList();
+                    var bfs = new List<Node>() { entryNode };
 
-                    nodesToPlace.RemoveAll(n => bfs.Contains(n));
-
-                    bfs = nodesToPlace.Where(n => execConnections.Any(c => c.To.Node == n && bfs.Contains(c.From.Node))).ToList();
-                }
-
-
-                // Search for data dependencies
-                foreach (var execGroup in entryGroup.execGroups)
-                {
-                    foreach (var exec in execGroup.execs)
+                    while (bfs.Count > 0)
                     {
-                        bfs = new List<Node> { exec.execNode };
+                        var execGroup = new ExecGroup();
+                        entryGroup.execGroups.Add(execGroup);
 
-                        while ((bfs = nodesToPlace.Where(n => dataConnections.Any(c => c.From.Node == n && bfs.Contains(c.To.Node))).ToList()).Count > 0)
+                        execGroup.execs = bfs.Select(n => new ExecNode() { execNode = n }).ToList();
+
+                        nodesToPlace.RemoveAll(n => bfs.Contains(n));
+
+                        bfs = nodesToPlace.Where(n => execConnections.Any(c => c.To.Node == n && bfs.Contains(c.From.Node))).ToList();
+                    }
+
+
+                    // Search for data dependencies
+                    foreach (var execGroup in entryGroup.execGroups)
+                    {
+                        foreach (var exec in execGroup.execs)
                         {
-                            exec.deps.Add(bfs.ToList());
-                            nodesToPlace.RemoveAll(n => bfs.Contains(n));
+                            bfs = new List<Node> { exec.execNode };
+
+                            while ((bfs = nodesToPlace.Where(n => dataConnections.Any(c => c.From.Node == n && bfs.Contains(c.To.Node))).ToList()).Count > 0)
+                            {
+                                exec.deps.Add(bfs.ToList());
+                                nodesToPlace.RemoveAll(n => bfs.Contains(n));
+                            }
                         }
                     }
                 }
-            }
 
 
-            // Calculate the Layout of the structured graph
-            foreach (var entryGroup in entryGroups)
-            {
-                var entryContainer = CreateExecEntryLayout(tempLayoutRoot);
-
-                foreach (var execGroup in entryGroup.execGroups)
+                // Calculate the Layout of the structured graph
+                foreach (var entryGroup in entryGroups)
                 {
-                    CreateExecsContainer(entryContainer, execGroup);
+                    var entryContainer = CreateExecEntryLayout(tempLayoutRoot);
+
+                    foreach (var execGroup in entryGroup.execGroups)
+                    {
+                        CreateExecsContainer(entryContainer, execGroup);
+                    }
                 }
-            }
 
-            foreach (var node in nodesToPlace)
-            {
-                CreateNodeContainer(tempLayoutRoot, node);
-            }
-
-            // Apply the calculated layout to the actual nodes
-            for (int i = 0; i < 10; i++)
-            {
-                LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)tempLayoutRoot.transform);
-            }
-
-            await Utils.awaitNextTick();
-
-            var nodeDummys = tempLayoutRoot.GetComponentsInChildren<LayoutNodeReference>();
-
-            foreach (var nodeDummy in nodeDummys)
-            {
-                var dummyPosition = ((RectTransform)nodeDummy.transform).position;
-
-                var rrcgNode = nodeDummy.node;
-                var node = rrcgNodeToInstances[rrcgNode];
-
-                if (node == null) continue;
-
-                if (root != null) node.transform.rotation = root.rotation;
-
-                var isExec = allExecConnectedNodes.Contains(rrcgNode);
-                var depth = isExec ? 0.025f : 0.015f;
-
-                if (root != null)
+                foreach (var node in nodesToPlace)
                 {
-                    // Align to Background Plane
-                    node.transform.Rotate(new Vector3(0, -90, 0));
-
-                    var point = new Vector3(depth, 0, 0) + new Vector3(0, dummyPosition.y / PX_SCALE, dummyPosition.x / PX_SCALE);
-                    node.transform.position = root != null ? root.TransformPoint(point) : point;
+                    CreateNodeContainer(tempLayoutRoot, node);
                 }
-                else
+
+                // Apply the calculated layout to the actual nodes
+                for (int i = 0; i < 10; i++)
                 {
-                    // Align inside CircuitBoard
-                    var point = new Vector3(depth, 0, 0) + new Vector3(dummyPosition.x / PX_SCALE, dummyPosition.y / PX_SCALE, 0);
-                    node.transform.position = root != null ? root.TransformPoint(point) : point;
+                    LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)tempLayoutRoot.transform);
                 }
+
+                await Utils.awaitNextTick();
+
+                var nodeDummys = tempLayoutRoot.GetComponentsInChildren<LayoutNodeReference>();
+
+                foreach (var nodeDummy in nodeDummys)
+                {
+                    var dummyPosition = ((RectTransform)nodeDummy.transform).position;
+
+                    var rrcgNode = nodeDummy.node;
+                    var node = rrcgNodeToInstances[rrcgNode];
+
+                    if (node == null) continue;
+
+                    if (root != null) node.transform.rotation = root.rotation;
+
+                    var isExec = allExecConnectedNodes.Contains(rrcgNode);
+                    var depth = isExec ? 0.025f : 0.015f;
+
+                    if (root != null)
+                    {
+                        // Align to Background Plane
+                        node.transform.Rotate(new Vector3(0, -90, 0));
+
+                        var point = new Vector3(depth, 0, 0) + new Vector3(0, dummyPosition.y / PX_SCALE, dummyPosition.x / PX_SCALE);
+                        node.transform.position = root != null ? root.TransformPoint(point) : point;
+                    }
+                    else
+                    {
+                        // Align inside CircuitBoard
+                        var point = new Vector3(depth, 0, 0) + new Vector3(dummyPosition.x / PX_SCALE, dummyPosition.y / PX_SCALE, 0);
+                        node.transform.position = root != null ? root.TransformPoint(point) : point;
+                    }
+                }
+
+                var size = ((RectTransform)tempLayoutRoot.transform).sizeDelta;
+
+                return size / PX_SCALE;
             }
-
-            var size = ((RectTransform)tempLayoutRoot.transform).sizeDelta;
-
-            GameObject.DestroyImmediate(tempLayoutRoot);
-
-            return size / PX_SCALE;
+            finally
+            {
+                GameObject.DestroyImmediate(tempLayoutRoot);
+            }
         }
 
         public static GameObject CreateRootContainer()

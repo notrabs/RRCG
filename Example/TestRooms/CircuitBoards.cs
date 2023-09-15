@@ -1,9 +1,5 @@
-﻿using RRCGSource;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RRCG;
+using RRCGSource;
 
 public class CircuitBoards : CircuitDescriptor
 {
@@ -21,6 +17,9 @@ public class CircuitBoards : CircuitDescriptor
 
         ChipLib.Log(c);
         ChipLib.Log(d);
+
+        CircuitBoard(ExecOut);
+        CircuitBoard(ExecIn);
     }
 
     void ContentsExec()
@@ -36,5 +35,16 @@ public class CircuitBoards : CircuitDescriptor
     (int, int) ContentsData(int a, int b)
     {
         return (a, b);
+    }
+
+    void ExecOut()
+    {
+        EventReceiver(RoomEvents.Hz30);
+    }
+
+    void ExecIn()
+    {
+        RandomInt(1, 10);
+        throw null;
     }
 }

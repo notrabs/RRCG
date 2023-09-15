@@ -193,7 +193,7 @@ public void ExampleCircuit()
 }
 ```
 
-### Existing Circuit Boards
+### Circuit Boards
 
 You can generate code for existing circuit boards (or control panels). Their interface needs to be already defined in the game:
 
@@ -211,6 +211,29 @@ public void CircuitBoard()
     var sum = ExsitingDataInput<int>("number") + RandomInt(1,10);
     ExistingDataOutput("Sum", sum);
     ExistingExecOutput("AddRandom");
+}
+```
+
+You can create new Circuit Boards from a function. An exec port will be automatically added when executable nodes are inside. The inputs/outputs match the function interface. If you want to return multiple ports, make sure to wrap them in a tuple.
+
+```c#
+public void ExampleRoom()
+{
+    // This board will only have data pins
+    var (a, b) = CircuitBoard(MathBoard, 5, -5);
+
+    // This board will be connected to the exec lines
+    CircuitBoard(RandomBoard, a, b);
+}
+
+public (int, int) MathBoard(int a, int b)
+{
+   return (a + b, a - b);
+}
+
+public int RandomBoard(int a, int b)
+{
+   return RandomInt(a, b);
 }
 ```
 

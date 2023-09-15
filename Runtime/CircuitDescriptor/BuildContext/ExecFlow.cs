@@ -11,6 +11,9 @@ namespace RRCGBuild
         public List<Port> Ports = new List<Port>();
 
         public bool hasAdvanced = false;
+        public bool hasCleared = false;
+
+        public bool hasAdvancedOrCleared { get => hasAdvanced || hasCleared; }
 
         public void Advance(Context context, Port inPort, Port outPort)
         {
@@ -43,14 +46,15 @@ namespace RRCGBuild
         {
             Ports.Clear();
 
-            hasAdvanced = true;
+            hasCleared = true;
         }
 
         public void Merge(ExecFlow flow)
         {
             Ports.AddRange(flow.Ports);
 
-            hasAdvanced = true;
+            hasAdvanced = this.hasAdvanced || flow.hasAdvanced;
+            hasCleared = this.hasCleared || flow.hasCleared;
         }
     }
 }

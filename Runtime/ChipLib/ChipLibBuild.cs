@@ -87,58 +87,65 @@ namespace RRCGBuild
             private T readPort;
             private EventHelper<IntPort> readEvent;
 
+            private IEnumerable<object> list;
+
             public LUT(IEnumerable<object> list)
             {
                 readEvent = new EventHelper<IntPort>("LUT_" + Context.current.GetUniqueId(), "index");
 
-                CircuitBuilder.InlineGraph(() =>
+                readEvent.Definition();
+
+                this.list = list;
+
+                readPort = CircuitBuilder.CircuitBoard(LUT_Data);
+            }
+
+            private T LUT_Data()
+            {
+
+                var index = readEvent.Receiver();
+
+                if (list.Count() <= 64)
                 {
-                    readEvent.Definition();
+                    var cases = new Dictionary<IntPort, T>();
 
-                    var index = readEvent.Receiver();
+                    for (var i = 0; i < list.Count(); i++)
+                    {
+                        cases.Add(i, (T)list.ElementAt(i));
+                    }
 
-                    if (list.Count() <= 64)
+                    return ChipBuilder.ValueIntegerSwitch<T>(index, null, cases);
+                }
+                else if (list.Count() <= 64 * 64)
+                {
+                    var partitions = Partition<object>(list, 64);
+
+                    var rootCases = new Dictionary<IntPort, T>();
+
+                    int paritionIndex = 0;
+                    foreach (var partition in partitions)
                     {
                         var cases = new Dictionary<IntPort, T>();
 
-                        for (var i = 0; i < list.Count(); i++)
+                        int itemIndex = 0;
+                        foreach (var item in partition)
                         {
-                            cases.Add(i, (T)list.ElementAt(i));
+                            cases.Add(paritionIndex * 64 + itemIndex, item as dynamic);
+                            itemIndex++;
                         }
 
-                        readPort = ChipBuilder.ValueIntegerSwitch<T>(index, null, cases);
+                        var partitionSwitch = ChipBuilder.ValueIntegerSwitch<T>(index, null, cases);
+
+                        rootCases.Add(paritionIndex, partitionSwitch);
+                        paritionIndex++;
                     }
-                    else if (list.Count() <= 64 * 64)
-                    {
-                        var partitions = Partition<object>(list, 64);
 
-                        var rootCases = new Dictionary<IntPort, T>();
-
-                        int paritionIndex = 0;
-                        foreach (var partition in partitions)
-                        {
-                            var cases = new Dictionary<IntPort, T>();
-
-                            int itemIndex = 0;
-                            foreach (var item in partition)
-                            {
-                                cases.Add(paritionIndex * 64 + itemIndex, item as dynamic);
-                                itemIndex++;
-                            }
-
-                            var partitionSwitch = ChipBuilder.ValueIntegerSwitch<T>(index, null, cases);
-
-                            rootCases.Add(paritionIndex, partitionSwitch);
-                            paritionIndex++;
-                        }
-
-                        readPort = ChipBuilder.ValueIntegerSwitch<T>(ChipBuilder.Divide(index, 64), null, rootCases);
-                    }
-                    else
-                    {
-                        throw new Exception("not implemented");
-                    }
-                });
+                    return ChipBuilder.ValueIntegerSwitch<T>(ChipBuilder.Divide(index, 64), null, rootCases);
+                }
+                else
+                {
+                    throw new Exception("not implemented");
+                }
             }
 
             public T Read(IntPort index)

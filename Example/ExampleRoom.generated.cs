@@ -76,7 +76,7 @@ public class ExampleRoomGen : CircuitBuilder
     {
         ExecFlow rrcg_return_flow = new ExecFlow();
         IntPort rrcg_return_data = default;
-        Return(rrcg_return_flow, out rrcg_return_data, ChipBuilder.Add(RandomInt(0, 100), RandomInt(0, 100)));
+        __Return(rrcg_return_flow, out rrcg_return_data, ChipBuilder.Add(RandomInt(0, 100), RandomInt(0, 100)));
         ExecFlow.current.Merge(rrcg_return_flow);
         return rrcg_return_data;
     }
@@ -87,7 +87,7 @@ public class ExampleRoomGen : CircuitBuilder
         ChipBuilder.If(ChipBuilder.Equals(RandomInt(0, 10), 5), delegate
         {
             {
-                Return(rrcg_return_flow);
+                __Return(rrcg_return_flow);
             }
         }
 
@@ -96,7 +96,7 @@ public class ExampleRoomGen : CircuitBuilder
             ChipBuilder.If(ChipBuilder.Equals(RandomInt(0, 10), 5), delegate
             {
                 {
-                    Return(rrcg_return_flow);
+                    __Return(rrcg_return_flow);
                 }
             }
 
@@ -108,7 +108,7 @@ public class ExampleRoomGen : CircuitBuilder
         }
 
         );
-        Return(rrcg_return_flow);
+        __Return(rrcg_return_flow);
         ExecFlow.current.Merge(rrcg_return_flow);
     }
 
@@ -120,7 +120,7 @@ public class ExampleRoomGen : CircuitBuilder
         ChipBuilder.If(ChipBuilder.Equals(RandomInt(0, 10), 5), delegate
         {
             {
-                Return(rrcg_return_flow, out rrcg_return_data, (1, 1));
+                __Return(rrcg_return_flow, out rrcg_return_data, (1, 1));
             }
         }
 
@@ -141,7 +141,7 @@ public class ExampleRoomGen : CircuitBuilder
 
                     );
                     b = 4;
-                    Return(rrcg_return_flow, out rrcg_return_data, (b, c));
+                    __Return(rrcg_return_flow, out rrcg_return_data, (b, c));
                 }
             }
 
@@ -165,7 +165,7 @@ public class ExampleRoomGen : CircuitBuilder
         }
 
         );
-        Return(rrcg_return_flow, out rrcg_return_data, (1, b));
+        __Return(rrcg_return_flow, out rrcg_return_data, (1, b));
         ExecFlow.current.Merge(rrcg_return_flow);
         return rrcg_return_data;
     }

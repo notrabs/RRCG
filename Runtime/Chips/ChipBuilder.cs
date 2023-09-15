@@ -277,7 +277,7 @@ namespace RRCGBuild
 
             ExecFlow.current = prevFlow;
 
-            if (ifFlow.hasAdvanced || elseFlow.hasAdvanced)
+            if (ifFlow.hasAdvancedOrCleared || elseFlow.hasAdvancedOrCleared)
             {
                 ExecFlow.current.Advance(Context.current, new Port { Node = node }, new Port { Node = node });
 

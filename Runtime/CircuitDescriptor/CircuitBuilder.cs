@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace RRCGBuild
 {
@@ -71,7 +72,7 @@ namespace RRCGBuild
         // Circuit Board Helpers
         //
 
-        private object __CircuitBoard(Delegate circuitBoardFn, params dynamic[] parameters)
+        private static object __CircuitBoard(Delegate circuitBoardFn, params dynamic[] parameters)
         {
             var prevContext = Context.current;
             var prevExecFlow = ExecFlow.current;
@@ -91,41 +92,45 @@ namespace RRCGBuild
 
             if (!(isVoid || isPort || isTuple)) throw new Exception("CircuitBoard() only works with port types or tuples!");
 
+            var execPortGroup = 1;
+            var dataPortGroup = 2;
+
             // Construct Inner Context
 
             In();
             var inNode = Context.lastSpawnedNode;
 
-            ExecFlow.current.Ports.Add(inNode.Port(0, 0));
+            ExecFlow.current.Ports.Add(inNode.Port(execPortGroup, 0));
 
             var inNodePorts = parameters.Select((p, index) =>
             {
                 dynamic port = Activator.CreateInstance(p.GetType());
-                port.Port = inNode.Port(1, index);
+                port.Port = inNode.Port(dataPortGroup, index);
                 port.Data = p.Data;
                 return port;
             });
 
             var cbResult = circuitBoardFn.DynamicInvoke(inNodePorts.ToArray());
 
-            var hasExec = ExecFlow.current.hasAdvanced;
+            var hasExecIn = Context.current.Connections.Any(c => c.isExec && c.From.Node == inNode);
+            var hasExecOut = ExecFlow.current.hasAdvanced && ExecFlow.current.Ports.Count() > 0;
 
             Out();
             var outNode = Context.lastSpawnedNode;
 
-            if (hasExec) ExecFlow.current.Advance(Context.current, new Port() { Node = outNode, Group = 0, Index = 0 }, null);
+            if (hasExecOut) ExecFlow.current.Advance(Context.current, outNode.Port(execPortGroup, 0), null);
 
             if (isPort)
             {
-                outNode.ConnectInputPort(Context.current, cbResult as AnyPort, outNode.Port(1, 0));
+                outNode.ConnectInputPort(Context.current, cbResult as AnyPort, outNode.Port(dataPortGroup, 0));
             }
             else if (isTuple)
             {
-                var outNodeInputIndex = 0;
-                foreach (var toOutPort in cbResult.GetType().GetProperties().Select(p => p.GetValue(cbResult)))
+                var tuple = (ITuple)cbResult;
+
+                for (var i = 0; i < tuple.Length; i++)
                 {
-                    outNode.ConnectInputPort(Context.current, toOutPort as AnyPort, outNode.Port(1, outNodeInputIndex));
-                    outNodeInputIndex++;
+                    outNode.ConnectInputPort(Context.current, (AnyPort)tuple[i], outNode.Port(dataPortGroup, i));
                 }
             }
 
@@ -133,22 +138,23 @@ namespace RRCGBuild
 
             cbContext.MetaNewBoard = new List<CBFunction>();
 
+            // this dummy makes sure the CB is rendered correctly in the Circuit Editor
+            cbContext.MetaNewBoard.Add(new CBFunction() { Name = "Dummy" });
+
             var execFunction = new CBFunction() { Name = "Exec" };
             cbContext.MetaNewBoard.Add(execFunction);
 
             var dataFunction = new CBFunction() { Name = "Data" };
-            cbContext.MetaNewBoard.Add(execFunction);
+            cbContext.MetaNewBoard.Add(dataFunction);
 
-            if (hasExec)
-            {
-                execFunction.Inputs.Add(("Exec", typeof(void)));
-                execFunction.Outputs.Add(("Exec", typeof(void)));
-            }
+            if (hasExecIn) execFunction.Inputs.Add(("Exec", typeof(void)));
+            if (hasExecOut) execFunction.Outputs.Add(("Exec", typeof(void)));
 
             int parameterIndex = 0;
             foreach (var parameter in parameters)
             {
-                dataFunction.Inputs.Add(("value" + parameterIndex, parameter.GetType()));
+                var inputName = circuitBoardFn.Method.GetParameters().ElementAtOrDefault(parameterIndex)?.Name ?? "value0";
+                dataFunction.Inputs.Add((inputName, parameter.GetType()));
                 parameterIndex++;
             }
 
@@ -158,11 +164,11 @@ namespace RRCGBuild
             }
             else if (isTuple)
             {
-                int outputIndex = 0;
-                foreach (var outPort in cbResult.GetType().GetProperties().Select(p => p.GetValue(cbResult)))
+                var tuple = (ITuple)cbResult;
+
+                for (var i = 0; i < tuple.Length; i++)
                 {
-                    dataFunction.Outputs.Add(("value" + outputIndex, outPort.GetType()));
-                    outputIndex++;
+                    dataFunction.Outputs.Add(("value" + i, tuple[i].GetType()));
                 }
             }
 
@@ -175,16 +181,24 @@ namespace RRCGBuild
             ChipBuilder.CircuitBoard();
             var cbNode = Context.lastSpawnedNode;
             cbNode.CircuitBoardId = cbContext.Id.ToString();
+            cbNode.Name = "RRCG_" + circuitBoardFn.Method.Name + "_" + Context.current.GetUniqueId();
 
-            if (hasExec) ExecFlow.current.Advance(Context.current, cbNode.Port(0, 0), cbNode.Port(0, 0));
+            if (hasExecIn && hasExecOut) ExecFlow.current.Advance(Context.current, cbNode.Port(execPortGroup, 0), cbNode.Port(execPortGroup, 0));
+            else if (hasExecIn) ExecFlow.current.Advance(Context.current, cbNode.Port(execPortGroup, 0), null);
+            else if (hasExecOut) ExecFlow.current.Advance(Context.current, null, cbNode.Port(execPortGroup, 0));
 
-            foreach (var parameter in parameters) cbNode.ConnectInputPort(Context.current, parameter, cbNode.Port(1, parameterIndex));
+            parameterIndex = 0;
+            foreach (var parameter in parameters)
+            {
+                cbNode.ConnectInputPort(Context.current, parameter, cbNode.Port(dataPortGroup, parameterIndex));
+                parameterIndex++;
+            }
 
             if (isVoid) return null;
             if (isPort)
             {
                 dynamic port = Activator.CreateInstance(cbResult.GetType());
-                port.Port = cbNode.Port(1, 0);
+                port.Port = cbNode.Port(dataPortGroup, 0);
                 port.Data = (cbResult as AnyPort).Data;
                 return port;
             }
@@ -193,7 +207,7 @@ namespace RRCGBuild
                 var cbOutPorts = parameters.Select((p, index) =>
                 {
                     dynamic port = Activator.CreateInstance(p.GetType());
-                    port.Port = cbNode.Port(1, index);
+                    port.Port = cbNode.Port(dataPortGroup, index);
                     port.Data = p.Data;
                     return port;
                 });
@@ -203,14 +217,14 @@ namespace RRCGBuild
             }
         }
 
-        public void CircuitBoard(Action circuitBoardFn) => __CircuitBoard(circuitBoardFn);
-        public T CircuitBoard<T>(Func<T> circuitBoardFn) => (T)__CircuitBoard(circuitBoardFn);
-        public void CircuitBoard<P0>(Action<P0> circuitBoardFn, P0 value0) => __CircuitBoard(circuitBoardFn, value0);
-        public T CircuitBoard<P0, T>(Func<P0, T> circuitBoardFn, P0 value0) => (T)__CircuitBoard(circuitBoardFn, value0);
-        public void CircuitBoard<P0, P1>(Action<P0, P1> circuitBoardFn, P0 value0, P1 value1) => __CircuitBoard(circuitBoardFn, value0, value1);
-        public T CircuitBoard<P0, P1, T>(Func<P0, P1, T> circuitBoardFn, P0 value0, P1 value1) => (T)__CircuitBoard(circuitBoardFn, value0, value1);
+        public static void CircuitBoard(Action circuitBoardFn) => __CircuitBoard(circuitBoardFn);
+        public static T CircuitBoard<T>(Func<T> circuitBoardFn) => (T)__CircuitBoard(circuitBoardFn);
+        public static void CircuitBoard<P0>(Action<P0> circuitBoardFn, P0 value0) => __CircuitBoard(circuitBoardFn, value0);
+        public static T CircuitBoard<P0, T>(Func<P0, T> circuitBoardFn, P0 value0) => (T)__CircuitBoard(circuitBoardFn, value0);
+        public static void CircuitBoard<P0, P1>(Action<P0, P1> circuitBoardFn, P0 value0, P1 value1) => __CircuitBoard(circuitBoardFn, value0, value1);
+        public static T CircuitBoard<P0, P1, T>(Func<P0, P1, T> circuitBoardFn, P0 value0, P1 value1) => (T)__CircuitBoard(circuitBoardFn, value0, value1);
 
-        public void ExistingCircuitBoard(StringPort boardName, AlternativeExec circuitBoardFn)
+        public static void ExistingCircuitBoard(StringPort boardName, AlternativeExec circuitBoardFn)
         {
             var parentContext = Context.current;
             var parentExec = ExecFlow.current;
@@ -227,19 +241,19 @@ namespace RRCGBuild
             ExecFlow.current = parentExec;
         }
 
-        public PortType ExistingDataInput<PortType>(StringPort portName)
+        public static PortType ExistingDataInput<PortType>(StringPort portName)
         {
             return default;
         }
-        public void ExistingDataOutput<PortType>(StringPort portName, PortType value)
+        public static void ExistingDataOutput<PortType>(StringPort portName, PortType value)
         {
         }
 
-        public void ExistingExecInput(StringPort portName)
+        public static void ExistingExecInput(StringPort portName)
         {
         }
 
-        public void ExistingExecOutput(StringPort portName)
+        public static void ExistingExecOutput(StringPort portName)
         {
         }
 
@@ -247,13 +261,13 @@ namespace RRCGBuild
         // Compilation Helpers
         //
 
-        public void Return(ExecFlow returnFlow)
+        public void __Return(ExecFlow returnFlow)
         {
             returnFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();
         }
 
-        public void Return<T>(ExecFlow returnFlow, out T returnData, T expression)
+        public void __Return<T>(ExecFlow returnFlow, out T returnData, T expression)
         {
             returnFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();
@@ -261,7 +275,7 @@ namespace RRCGBuild
             returnData = expression;
         }
 
-        public T Assign<T>(out T variable, T value)
+        public T __Assign<T>(out T variable, T value)
         {
             var assignedValue = value;
 
