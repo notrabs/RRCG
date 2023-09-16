@@ -8,7 +8,6 @@ namespace RRCGBuild
 {
     public class EventFunction : Attribute { }
     public class SharedProperty : Attribute { }
-
     public abstract class CircuitBuilder : ChipBuilder
     {
         internal readonly Dictionary<string, EventHelper> __RRCG_EVENT_FUNCTIONS = new Dictionary<string, EventHelper>();
@@ -166,9 +165,13 @@ namespace RRCGBuild
             {
                 var tuple = (ITuple)cbResult;
 
+                var namesAttr = (TupleElementNamesAttribute) circuitBoardFn.Method.ReturnTypeCustomAttributes.GetCustomAttributes(true).FirstOrDefault(attr => attr is TupleElementNamesAttribute);
+
                 for (var i = 0; i < tuple.Length; i++)
                 {
-                    dataFunction.Outputs.Add(("value" + i, tuple[i].GetType()));
+                    var name = namesAttr?.TransformNames[i] ?? ("value" + i);
+
+                    dataFunction.Outputs.Add((name, tuple[i].GetType()));
                 }
             }
 
@@ -204,16 +207,18 @@ namespace RRCGBuild
             }
             else
             {
-                var cbOutPorts = parameters.Select((p, index) =>
-                {
-                    dynamic port = Activator.CreateInstance(p.GetType());
-                    port.Port = cbNode.Port(dataPortGroup, index);
-                    port.Data = p.Data;
-                    return port;
-                });
+                var cbResultTuple = (ITuple)cbResult;
+                var cbOutPorts = new List<dynamic>();
 
-                var tuple = TupleUtils.UnwrapTuple(cbResult.GetType(), cbOutPorts.ToArray());
-                return tuple;
+                for (var i = 0; i < cbResultTuple.Length; i++)
+                {
+                    dynamic port = Activator.CreateInstance(cbResultTuple[i].GetType());
+                    port.Port = cbNode.Port(dataPortGroup, 0);
+                    port.Data = (cbResultTuple[i] as AnyPort).Data;
+                    cbOutPorts.Add(port);
+                }
+
+                return TupleUtils.UnwrapTuple(cbResult.GetType(), cbOutPorts.ToArray());
             }
         }
 
