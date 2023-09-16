@@ -74,6 +74,11 @@ namespace RRCGBuild
 
         public static explicit operator string(BoolPort data) => data.AsData<int>().ToString();
         public static explicit operator StringPort(BoolPort data) => (string)data;
+        public static BoolPort operator !(BoolPort data)
+        {
+            if (data.IsDataPort) return new BoolPort { Data = !data.Data };
+            return ChipBuilder.Not(data);
+        }
     }
     public class Vector3Port : AnyPort { }
     public class QuaternionPort : AnyPort { }

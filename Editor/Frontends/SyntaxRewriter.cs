@@ -374,13 +374,19 @@ namespace RRCG
                     chip = "LessThan";
                     break;
                 case SyntaxKind.GreaterThanOrEqualExpression:
-                    chip = "LessorEqual";
+                    chip = "GreaterorEqual";
                     break;
                 case SyntaxKind.LessThanOrEqualExpression:
-                    chip = "GreaterorEqual";
+                    chip = "LessorEqual";
                     break;
                 case SyntaxKind.EqualsExpression:
                     chip = "Equals";
+                    break;
+                case SyntaxKind.LogicalAndExpression:
+                    chip = "And";
+                    break;
+                case SyntaxKind.LogicalOrExpression:
+                    chip = "Or";
                     break;
             }
 

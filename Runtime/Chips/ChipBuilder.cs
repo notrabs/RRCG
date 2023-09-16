@@ -230,6 +230,16 @@ namespace RRCGBuild
             ChipBuilderGen.ListCreate(ports[0]);
             return ConnectDynamicPins(0, ports);
         }
+        public static BoolPort And(params BoolPort[] ports)
+        {
+            ChipBuilderGen.And(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static BoolPort Or(params BoolPort[] ports)
+        {
+            ChipBuilderGen.Or(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
 
         // Assumes first pin has already been connected
         private static T ConnectDynamicPins<T>(int offset, params T[] ports) where T : AnyPort, new()

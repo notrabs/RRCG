@@ -491,7 +491,7 @@ namespace RRCGGenerated
             return new AudioPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static BoolPort And(BoolPort Input)
+        internal static BoolPort And(BoolPort Input)
         {
             // AndNode
             Node node = new Node()
@@ -5620,7 +5620,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static BoolPort Or(BoolPort Input)
+        internal static BoolPort Or(BoolPort Input)
         {
             // OrNode
             Node node = new Node()
