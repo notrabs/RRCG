@@ -1,4 +1,6 @@
-﻿namespace RRCGSource
+﻿using System;
+
+namespace RRCGSource
 {
     public enum VariableKind
     {
@@ -7,14 +9,34 @@
         Cloud
     }
 
-    public class VariableHelper<T>
+    public class NamedVariable<T>
     {
         private VariableKind kind;
 
-        public VariableHelper(T homeValue = default, VariableKind kind = VariableKind.Local) { }
+        public NamedVariable(string name, T homeValue, VariableKind kind) { }
 
         public T Value { get; set; }
 
         public void ChangedEvent() { }
+    }
+
+    public class Variable<T> : NamedVariable<T>
+    {
+        public Variable(T homeValue = default) : base("", homeValue, VariableKind.Local) { }
+    }
+
+    public class SyncedVariable<T> : NamedVariable<T>
+    {
+        public SyncedVariable(T homeValue = default) : base("", homeValue, VariableKind.Synced) { }
+    }
+
+    public class CloudVariable<T> : NamedVariable<T>
+    {
+        public CloudVariable(string name) : base(name, default, VariableKind.Cloud) { }
+    }
+
+    [Obsolete("Please use Variable/SyncedVariable/CloudVariable instead.")]
+    public class VariableHelper<T> : Variable<T> {
+        public VariableHelper(T homeValue = default, VariableKind kind = VariableKind.Local) { }
     }
 }

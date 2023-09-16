@@ -34,6 +34,9 @@ namespace RRCGBuild
     public class LightPort : AnyPort { }
     public class StringPort : AnyPort
     {
+        public StringPort() { }
+        public StringPort(char c, int count) { Data = new string(c, count); }
+
         public static implicit operator StringPort(string data) => new StringPort { Data = data };
         public static explicit operator string(StringPort data) => data.AsData<string>();
     }

@@ -33,6 +33,11 @@ namespace RRCGSource
         public static int RandomStoreCounter(int modulus) { return default; }
 
         /// <summary>
+        /// Picks a random value from the options using a value switch.
+        /// </summary>
+        public static T PickRandom<T>(params T[] options) { return default; }
+
+        /// <summary>
         /// A Look-Up-Table to generate a shared, switch-based accessor for a large list of data.
         /// </summary>
         public class LUT<T>

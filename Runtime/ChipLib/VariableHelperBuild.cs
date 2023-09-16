@@ -9,7 +9,7 @@ namespace RRCGBuild
         Cloud
     }
 
-    public class VariableHelper<T> where T : AnyPort, new()
+    public class NamedVariable<T> where T : AnyPort, new()
     {
         private string name;
         private VariableKind kind;
@@ -17,11 +17,11 @@ namespace RRCGBuild
 
         private T VariableGetterPort;
 
-        public VariableHelper(T homeValue = null, VariableKind kind = VariableKind.Local)
+        public NamedVariable(string name, T homeValue = null, VariableKind kind = VariableKind.Local)
         {
             if (homeValue != null && !homeValue.IsDataPort) throw new ArgumentException("homeValue needs to be static, not a port");
 
-            name = "RRCG_var_" + Context.current.GetUniqueId();
+            this.name = name;
             this.kind = kind;
             this.homeValue = homeValue;
 
@@ -60,5 +60,27 @@ namespace RRCGBuild
         {
             ChipBuilder.EventReceiver(name + " Changed");
         }
+    }
+
+    public class AutoNamedVariable<T> : NamedVariable<T> where T : AnyPort, new()
+    {
+        public AutoNamedVariable(T homeValue, VariableKind kind) : base(GenerateName(), homeValue, kind) { }
+        public static string GenerateName()
+        {
+            return "RRCG_var_" + Context.current.GetUniqueId();
+        }
+    }
+
+    public class Variable<T> : AutoNamedVariable<T> where T : AnyPort, new()
+    {
+        public Variable(T homeValue = default) : base(homeValue, VariableKind.Local) { }
+    }
+    public class SyncedVariable<T> : AutoNamedVariable<T> where T : AnyPort, new()
+    {
+        public SyncedVariable(T homeValue = default) : base(homeValue, VariableKind.Synced) { }
+    }
+    public class CloudVariable<T> : NamedVariable<T> where T : AnyPort, new()
+    {
+        public CloudVariable(string name) : base(name, default, VariableKind.Cloud) { }
     }
 }

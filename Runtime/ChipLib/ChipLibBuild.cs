@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace RRCGBuild
 {
@@ -80,6 +80,33 @@ namespace RRCGBuild
             randomNode.ConnectInputPort(Context.current, switchValue, new Port { Node = randomNode, Index = 2 });
 
             return randomPort;
+        }
+
+        public static T PickRandom<T>(params T[] options) where T : AnyPort, new()
+        {
+            var index = RandomInt(0, options.Length - 1);
+
+            var cases = new Dictionary<IntPort, T>();
+
+            for (var i = 1; i < options.Length; i++)
+            {
+                cases.Add(i, options[i]);
+            }
+
+            return ValueIntegerSwitch(index, options[0], cases);
+        }
+
+        public static StringPort PickRandom(params StringPort[] options)
+        {
+            return PickRandom<StringPort>(options);
+        }
+        public static IntPort PickRandom(params IntPort[] options)
+        {
+            return PickRandom<IntPort>(options);
+        }
+        public static FloatPort PickRandom(params FloatPort[] options)
+        {
+            return PickRandom<FloatPort>(options);
         }
 
         public class LUT<T> where T : AnyPort, new()
