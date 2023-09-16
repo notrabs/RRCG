@@ -44,6 +44,12 @@ namespace RRCGBuild
 
         public static explicit operator string(IntPort data) => data.AsData<int>().ToString();
         public static explicit operator StringPort(IntPort data) => (string)data;
+
+        public static IntPort operator -(IntPort data)
+        {
+            if (data.IsDataPort) return new IntPort { Data = -data.Data };
+            return ChipBuilder.Subtract(0, data);
+        }
     }
     public class FloatPort : AnyPort
     {
@@ -52,6 +58,11 @@ namespace RRCGBuild
 
         public static explicit operator string(FloatPort data) => data.AsData<int>().ToString();
         public static explicit operator StringPort(FloatPort data) => (string)data;
+        public static FloatPort operator -(FloatPort data)
+        {
+            if (data.IsDataPort) return new FloatPort { Data = -data.Data };
+            return ChipBuilder.Subtract(0, data);
+        }
     }
     public class BoolPort : AnyPort
     {
