@@ -77,7 +77,7 @@ namespace RRCG
             var statements = method.Body.Statements;
 
             // return flow
-            if (method.ReturnType.ToString() != "void") statements = statements.Insert(0, SyntaxFactory.ParseStatement(method.ReturnType.ToString() + " rrcg_return_data = default;"));
+            if (method.ReturnType.ToString() != "void") statements = statements.Insert(0, SyntaxFactory.ParseStatement(method.ReturnType.NormalizeWhitespace().ToString() + " rrcg_return_data = default;"));
             statements = statements.Insert(0, SyntaxFactory.ParseStatement("ExecFlow rrcg_return_flow = new ExecFlow();"));
 
             statements = statements.Add(SyntaxFactory.ParseStatement("ExecFlow.current.Merge(rrcg_return_flow);"));

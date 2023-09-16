@@ -16,6 +16,19 @@ public class CircuitBoardsGen : CircuitBuilder
         ChipLib.Log(d);
         CircuitBoard(ExecOut);
         CircuitBoard(ExecIn);
+        //CircuitBoard(() =>
+        //{
+        //    ChipLib.Log("Anonymous Function");
+        //    __Return(rrcg_return_flow, out rrcg_return_data, "test");
+        //}
+
+        //);
+        CircuitBoard((IntPort test) =>
+        {
+            ChipLib.Log("Anonymous Parameter");
+        }
+
+        , a);
         ExecFlow.current.Merge(rrcg_return_flow);
     }
 
@@ -35,10 +48,10 @@ public class CircuitBoardsGen : CircuitBuilder
         return rrcg_return_data;
     }
 
-    (IntPort, IntPort) ContentsData(IntPort a, IntPort b)
+    (IntPort namedValue, IntPort) ContentsData(IntPort a, IntPort b)
     {
         ExecFlow rrcg_return_flow = new ExecFlow();
-        (IntPort, IntPort) rrcg_return_data = default;
+        (IntPort namedValue, IntPort) rrcg_return_data = default;
         __Return(rrcg_return_flow, out rrcg_return_data, (a, b));
         ExecFlow.current.Merge(rrcg_return_flow);
         return rrcg_return_data;

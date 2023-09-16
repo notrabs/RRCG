@@ -20,6 +20,18 @@ public class CircuitBoards : CircuitDescriptor
 
         CircuitBoard(ExecOut);
         CircuitBoard(ExecIn);
+
+        // Returns are not translated yet
+        //CircuitBoard(() =>
+        //{
+        //    ChipLib.Log("Anonymous Function");
+        //    return "test";
+        //});
+
+        CircuitBoard((int test) =>
+        {
+            ChipLib.Log("Anonymous Parameter");
+        }, a);
     }
 
     void ContentsExec()
@@ -32,7 +44,7 @@ public class CircuitBoards : CircuitDescriptor
         return RandomInt(a, 10);
     }
 
-    (int, int) ContentsData(int a, int b)
+    (int namedValue, int) ContentsData(int a, int b)
     {
         return (a, b);
     }
