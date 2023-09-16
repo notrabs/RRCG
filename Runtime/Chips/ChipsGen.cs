@@ -2768,9 +2768,9 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs one input value based on the input condition. Outputs the "Then" input if the input condition is True. Outputs the "Else" input if the input condition is False. Only reads one of the inputs, not both.
         /// </summary>
-        public static object IfValue(bool If, object Then, object Else)
+        public static T IfValue<T>(bool If, T Then, T Else)
         {
-            return default(object);
+            return default;
         }
 
         /// <summary>

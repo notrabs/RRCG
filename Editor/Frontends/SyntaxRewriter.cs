@@ -170,10 +170,12 @@ namespace RRCG
                     return SyntaxFactory.IdentifierName("IntPort");
                 case "float":
                     return SyntaxFactory.IdentifierName("FloatPort");
-                case "Text":
-                case "RecRoomObject":
-                case "StudioObject":
-                    return SyntaxFactory.IdentifierName(node.Keyword.ValueText + "Port");
+                case "void":
+                    // ignore
+                    break;
+                default:
+                    Debug.Log("unknonw predefined type: " + node.Keyword.ValueText);
+                    break;
             }
 
             return base.VisitPredefinedType(node);
@@ -183,7 +185,70 @@ namespace RRCG
         {
             switch (node.Identifier.ValueText)
             {
+                case "AI":
+                case "Vector3":
+                case "Quaternion":
+                case "TriggerHandle":
+                case "WelcomeMat":
                 case "StudioObject":
+                case "AnalyticsPayload":
+                case "Player":
+                case "RecRoomObject":
+                case "Combatant":
+                case "PatrolPoint":
+                case "Audio":
+                case "AudioPlayer":
+                case "Consumable":
+                case "RoomKey":
+                case "BackgroundObjects":
+                case "Color":
+                case "Beacon":
+                case "Button":
+                case "TextScreen":
+                case "CollisionData":
+                case "Costume":
+                case "DestinationRoom":
+                case "Die":
+                case "RoomDoor":
+                case "Emitter":
+                case "ExplosionEmitter":
+                case "Fog":
+                case "HUDElement":
+                case "Reward":
+                case "GroundVehicle":
+                case "GunHandle":
+                case "HolotarProjector":
+                case "InteractionVolume":
+                case "InvisibleCollision":
+                case "LaserPointer":
+                case "Light":
+                case "Piston":
+                case "PlayerOutfitSlot":
+                case "PlayerWorldUI":
+                case "ProjectileLauncher":
+                case "RemoteVideoPlayer":
+                case "PlayerSpawnPointV2":
+                case "Skydome":
+                case "Sun":
+                case "SunDirection":
+                case "Rotator":
+                case "Seat":
+                case "SFX":
+                case "Text":
+                case "ToggleButton":
+                case "MotionTrail":
+                case "TriggerVolume":
+                case "VectorComponent":
+                case "RoomCurrency":
+                case "HUDConstant":
+                case "SteeringEngine":
+                case "GiftDropShopItem":
+                case "ObjectiveMarker":
+                case "MeleeZone":
+                case "SwingHandle":
+                case "RoomLevelHUD":
+                case "Touchpad":
+                case "AnimationController":
                     return SyntaxFactory.IdentifierName(node.Identifier.ValueText + "Port");
             }
 

@@ -1,5 +1,7 @@
 ﻿
+using RRCG;
 using System;
+using UnityEngine;
 
 namespace RRCGBuild
 {
@@ -15,6 +17,7 @@ namespace RRCGBuild
         public static implicit operator AnyPort(int data) => new AnyPort { Data = data };
         public static implicit operator AnyPort(float data) => new AnyPort { Data = data };
         public static implicit operator AnyPort(bool data) => new AnyPort { Data = data };
+        public static implicit operator AnyPort(Color data) => new AnyPort { Data = PortConversionUtils.EncodeColor(data) };
 
         public T AsData<T>()
         {
@@ -28,9 +31,28 @@ namespace RRCGBuild
         public T AsSourcePort<T>() => this as dynamic;
     }
 
+    public class PortConversionUtils
+    {
+        public static int EncodeColor(Color color)
+        {
+            int r = (int)(color.r * 255);
+            int g = (int)(color.g * 255);
+            int b = (int)(color.b * 255);
+
+            return (r << 16) + (g << 8) + b + 1000;
+        }
+    }
+
     public class PortBuilderAny : AnyPort { }
     public class ListPort<T> : AnyPort { }
-    public class ColorPort : AnyPort { }
+    public class ColorPort : AnyPort
+    {
+        public ColorPort() { }
+        public ColorPort(float r, float g, float b)  { Data = PortConversionUtils.EncodeColor(new Color(r, g, b)); }
+        public ColorPort(float r, float g, float b, float a)  { Data = PortConversionUtils.EncodeColor(new Color(r, g, b, a)); }
+
+        public static implicit operator ColorPort(Color data) => new ColorPort { Data = PortConversionUtils.EncodeColor(data) };
+    }
     public class LightPort : AnyPort { }
     public class StringPort : AnyPort
     {
@@ -107,7 +129,18 @@ namespace RRCGBuild
     public class CostumePort : AnyPort { }
     public class DestinationRoomPort : AnyPort { }
     public class DiePort : AnyPort { }
-    public class PlayerWorldUIPort : AnyPort { }
+    public class PlayerWorldUIPort : AnyPort
+    {
+        public PlayerWorldUIPort() { }
+
+        public PlayerWorldUIPort(string name, WorldUIBar primary, WorldUIBar secondary, string text, bool synced, bool enableWhileJoining)
+        {
+            ChipBuilder.PlayerWorldUI();
+            var node = Context.lastSpawnedNode;
+
+            Port = node.Port(0, 0);
+        }
+    }
     public class RoomDoorPort : AnyPort { }
     public class EmitterPort : AnyPort { }
     public class ExplosionEmitterPort : AnyPort { }

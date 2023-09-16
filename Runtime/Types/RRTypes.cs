@@ -13,7 +13,8 @@ namespace RRCGSource
     public class TriggerHandle { }
     public class StudioObject { }
     public class AnalyticsPayload { }
-    public class Player { 
+    public class Player
+    {
         public static Player Local = new Player();
     }
     public class RecRoomObject { }
@@ -31,7 +32,18 @@ namespace RRCGSource
     public class Costume { }
     public class DestinationRoom { }
     public class Die { }
-    public class PlayerWorldUI { }
+    public class PlayerWorldUI
+    {
+        public struct WorldUIBar
+        {
+            bool Enabled;
+            int Value;
+            int MaxValue;
+            bool Animated;
+        }
+
+        public PlayerWorldUI(string name, WorldUIBar primary, WorldUIBar secondary, string text, bool synced, bool enableWhileJoining) { }
+    }
     public class RoomDoor { }
     public class Emitter { }
     public class ExplosionEmitter { }
@@ -55,7 +67,8 @@ namespace RRCGSource
     public class Rotator { }
     public class Seat { }
     public class SFX { }
-    public class Text {
+    public class Text
+    {
         public static implicit operator Text(RecRoomObject data) => null;
     }
     public class ToggleButton { }

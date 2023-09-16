@@ -23,6 +23,11 @@ namespace RRCGSource
         public static void AwaitDelay(float delay = 0) { }
 
         /// <summary>
+        /// Throttles an exec signal to only occur once per interval. Further executions are blocked until the interval expires.
+        /// </summary>
+        public static void Throttle(float interval) { }
+
+        /// <summary>
         /// A simple execution counter, that is cheaper than a variable. Can't be reset.
         /// </summary>
         public static int RandomStoreCounter() { return default; }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -42,6 +41,30 @@ namespace RRCGBuild
 
             Delay(delay, delegate () { }, delegate () { });
             ExecFlow.current.Ports[0].Index = 1;
+        }
+
+        private static void ThrottleBoard(FloatPort interval)
+        {
+            var lastExec = new Variable<FloatPort>();
+
+            var currentTime = TimeGetPreciseSeconds();
+
+            var test = ChipBuilder.GreaterThan(
+                ChipBuilder.Subtract(currentTime, lastExec.Value),
+                interval
+            );
+
+            ChipBuilder.If(
+                test, 
+                () => lastExec.Value = currentTime,
+                () => throw null
+            );
+
+        }
+
+        public static void Throttle(FloatPort interval)
+        {
+            CircuitBuilder.CircuitBoard(ThrottleBoard, interval);
         }
 
         public static IntPort RandomStoreCounter()
