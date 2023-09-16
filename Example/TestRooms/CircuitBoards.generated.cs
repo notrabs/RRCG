@@ -16,13 +16,12 @@ public class CircuitBoardsGen : CircuitBuilder
         ChipLib.Log(d);
         CircuitBoard(ExecOut);
         CircuitBoard(ExecIn);
+        // Returns are not translated yet
         //CircuitBoard(() =>
         //{
         //    ChipLib.Log("Anonymous Function");
-        //    __Return(rrcg_return_flow, out rrcg_return_data, "test");
-        //}
-
-        //);
+        //    return "test";
+        //});
         CircuitBoard((IntPort test) =>
         {
             ChipLib.Log("Anonymous Parameter");

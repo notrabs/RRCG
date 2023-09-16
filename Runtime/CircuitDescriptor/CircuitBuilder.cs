@@ -159,7 +159,7 @@ namespace RRCGBuild
 
             if (isPort)
             {
-                dataFunction.Outputs.Add(("value0", cbResult.GetType()));
+                dataFunction.Outputs.Add(("result", cbResult.GetType()));
             }
             else if (isTuple)
             {

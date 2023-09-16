@@ -215,11 +215,12 @@ public void ExampleRoom()
     // This board will only have data pins
     var (a, b) = CircuitBoard(MathBoard, 5, -5);
 
-    // This board will be connected to the exec lines
+    // This board will have execution pins
     CircuitBoard(RandomBoard, a, b);
 }
 
-public (int, int) MathBoard(int a, int b)
+// the output ports will be named after parameter names and names in the tuple return
+public (int sum, int difference) MathBoard(int a, int b)
 {
    return (a + b, a - b);
 }
