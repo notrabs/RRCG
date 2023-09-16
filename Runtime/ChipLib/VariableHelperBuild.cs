@@ -45,6 +45,7 @@ namespace RRCGBuild
 
             Context.lastSpawnedNode.VariableName = name;
             Context.lastSpawnedNode.VariableKind = kind;
+            Context.lastSpawnedNode.VariableType = typeof(T);
             Context.lastSpawnedNode.VariableHomeValue = homeValue?.Data;
 
             return data;

@@ -18,6 +18,7 @@ namespace RRCGBuild
         public string EventName { get; internal set; }
         public string VariableName { get; internal set; }
         public VariableKind VariableKind { get; internal set; }
+        public Type VariableType { get; internal set; }
         public object VariableHomeValue { get; internal set; }
 
         public int InputCount { get; internal set; }
