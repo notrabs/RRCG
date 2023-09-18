@@ -11,6 +11,9 @@ namespace RRCGSource
         /// <param name="value0">The value to cache</param>
         /// <returns>The cached value</returns>
         public static T0 EventCache<T0>(T0 value0) { return default; }
+        public static (T0, T1) EventCache<T0, T1>(T0 value0, T1 value1) { return default; }
+        public static (T0, T1, T2) EventCache<T0, T1, T2>(T0 value0, T1 value1, T2 value2) { return default; }
+        public static (T0, T1, T2, T3) EventCache<T0, T1, T2, T3>(T0 value0, T1 value1, T2 value2, T3 value3) { return default; }
 
         /// <summary>
         /// Logs a value to the console with automatic ToString conversion

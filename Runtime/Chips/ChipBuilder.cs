@@ -30,7 +30,7 @@ namespace RRCGBuild
             EventReceiver(eventName);
             var node = Context.lastSpawnedNode;
 
-            return new T0() { Port = new Port { Node = node, Index = 1 } };
+            return new T0() { Port = node.Port(0, 1) };
         }
 
         public static (T0, T1) EventReceiver<T0, T1>(StringPort eventName)
@@ -40,7 +40,40 @@ namespace RRCGBuild
             EventReceiver(eventName);
             var node = Context.lastSpawnedNode;
 
-            return (new T0() { Port = new Port { Node = node, Index = 1 } }, new T1() { Port = new Port { Node = node, Index = 2 } });
+            return (
+                new T0() { Port = node.Port(0, 1) },
+                new T1() { Port = node.Port(0, 2) }
+            );
+        }
+        public static (T0, T1, T2) EventReceiver<T0, T1, T2>(StringPort eventName)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+        {
+            EventReceiver(eventName);
+            var node = Context.lastSpawnedNode;
+
+            return (
+                new T0() { Port = node.Port(0, 1) },
+                new T1() { Port = node.Port(0, 2) },
+                new T2() { Port = node.Port(0, 3) }
+            );
+        }
+        public static (T0, T1, T2, T3) EventReceiver<T0, T1, T2, T3>(StringPort eventName)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+        {
+            EventReceiver(eventName);
+            var node = Context.lastSpawnedNode;
+
+            return (
+                new T0() { Port = node.Port(0, 1) },
+                new T1() { Port = node.Port(0, 2) },
+                new T2() { Port = node.Port(0, 3) },
+                new T3() { Port = node.Port(0, 4) }
+            );
         }
 
         public static void EventSender(StringPort eventName)
@@ -63,13 +96,41 @@ namespace RRCGBuild
             node.ConnectInputPort(Context.current, value0, new Port { Node = node, Index = 1 });
         }
 
-        public static void EventSender<T0, T1>(StringPort eventName, T0 value0, T1 value1) where T0 : AnyPort where T1 : AnyPort
+        public static void EventSender<T0, T1>(StringPort eventName, T0 value0, T1 value1)
+            where T0 : AnyPort
+            where T1 : AnyPort
         {
             EventSender(eventName);
             var node = Context.lastSpawnedNode;
 
             node.ConnectInputPort(Context.current, value0, new Port { Node = node, Index = 1 });
             node.ConnectInputPort(Context.current, value1, new Port { Node = node, Index = 2 });
+        }
+        public static void EventSender<T0, T1, T2>(StringPort eventName, T0 value0, T1 value1, T2 value2)
+            where T0 : AnyPort
+            where T1 : AnyPort
+            where T2 : AnyPort
+        {
+            EventSender(eventName);
+            var node = Context.lastSpawnedNode;
+
+            node.ConnectInputPort(Context.current, value0, new Port { Node = node, Index = 1 });
+            node.ConnectInputPort(Context.current, value1, new Port { Node = node, Index = 2 });
+            node.ConnectInputPort(Context.current, value2, new Port { Node = node, Index = 3 });
+        }
+        public static void EventSender<T0, T1, T2, T3>(StringPort eventName, T0 value0, T1 value1, T2 value2, T3 value3)
+            where T0 : AnyPort
+            where T1 : AnyPort
+            where T2 : AnyPort
+            where T3 : AnyPort
+        {
+            EventSender(eventName);
+            var node = Context.lastSpawnedNode;
+
+            node.ConnectInputPort(Context.current, value0, new Port { Node = node, Index = 1 });
+            node.ConnectInputPort(Context.current, value1, new Port { Node = node, Index = 2 });
+            node.ConnectInputPort(Context.current, value2, new Port { Node = node, Index = 3 });
+            node.ConnectInputPort(Context.current, value3, new Port { Node = node, Index = 4 });
         }
 
         public static void EventDefinition(StringPort eventName)
@@ -114,6 +175,43 @@ namespace RRCGBuild
 
             node.EventDefintion.Add((param0.Data, typeof(T0)));
             node.EventDefintion.Add((param1.Data, typeof(T1)));
+        }
+
+        public static void EventDefinition<T0, T1, T2>(StringPort eventName, StringPort param0, StringPort param1, StringPort param2)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+        {
+            EventDefinition(eventName);
+            var node = Context.lastSpawnedNode;
+
+            if (param0.IsActualPort || param1.IsActualPort || param2.IsActualPort)
+            {
+                throw new Exception("Can't create EventDefinitions with dynamic data. Make sure to pass a string value!");
+            }
+
+            node.EventDefintion.Add((param0.Data, typeof(T0)));
+            node.EventDefintion.Add((param1.Data, typeof(T1)));
+            node.EventDefintion.Add((param2.Data, typeof(T2)));
+        }
+        public static void EventDefinition<T0, T1, T2, T3>(StringPort eventName, StringPort param0, StringPort param1, StringPort param2, StringPort param3)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+        {
+            EventDefinition(eventName);
+            var node = Context.lastSpawnedNode;
+
+            if (param0.IsActualPort || param1.IsActualPort || param2.IsActualPort || param3.IsActualPort)
+            {
+                throw new Exception("Can't create EventDefinitions with dynamic data. Make sure to pass a string value!");
+            }
+
+            node.EventDefintion.Add((param0.Data, typeof(T0)));
+            node.EventDefintion.Add((param1.Data, typeof(T1)));
+            node.EventDefintion.Add((param2.Data, typeof(T2)));
+            node.EventDefintion.Add((param2.Data, typeof(T3)));
         }
 
         #endregion

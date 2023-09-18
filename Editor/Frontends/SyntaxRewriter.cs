@@ -108,7 +108,12 @@ namespace RRCG
             else if (isSharedPropertyFunction)
             {
                 StatementSyntax statement = SyntaxFactory.ReturnStatement(
-                    SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName("__DispatchSharedPropertyFunction"))
+                    SyntaxFactory.InvocationExpression(
+                        SyntaxFactory.GenericName("__DispatchSharedPropertyFunction").WithTypeArgumentList(
+                        SyntaxFactory.TypeArgumentList(SyntaxFactory.SingletonSeparatedList<TypeSyntax>(
+                            method.ReturnType
+                        )))
+                    )
                     .WithArgumentList(
                         ArgumentList(
                             SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
@@ -134,23 +139,21 @@ namespace RRCG
 
         public override SyntaxNode VisitSimpleLambdaExpression(SimpleLambdaExpressionSyntax method)
         {
-            return VisitAnonymousFunction(method);
+            return VisitAnonymousFunction((SimpleLambdaExpressionSyntax)base.VisitSimpleLambdaExpression(method));
         }
         public override SyntaxNode VisitParenthesizedLambdaExpression(ParenthesizedLambdaExpressionSyntax method)
         {
-            return VisitAnonymousFunction(method);
+            return VisitAnonymousFunction((ParenthesizedLambdaExpressionSyntax)base.VisitParenthesizedLambdaExpression(method));
         }
 
         public override SyntaxNode VisitAnonymousMethodExpression(AnonymousMethodExpressionSyntax method)
         {
-            return VisitAnonymousFunction(method);
+            return VisitAnonymousFunction((AnonymousMethodExpressionSyntax)base.VisitAnonymousMethodExpression(method));
         }
 
         public T VisitAnonymousFunction<T>(T method) where T : AnonymousFunctionExpressionSyntax
         {
-            if (method.ExpressionBody != null) return (T)base.Visit(method.ExpressionBody);
-
-            method = (T)base.Visit(method);
+            if (method.ExpressionBody != null) return method;
 
             var statements = WrapFunctionStatements(
                 method.Block.Statements,

@@ -8,7 +8,8 @@ namespace RRCGBuild
     public class ChipLib : ChipBuilder
     {
 
-        public static T0 EventCache<T0>(T0 value0) where T0 : AnyPort, new()
+        public static T0 EventCache<T0>(T0 value0)
+            where T0 : AnyPort, new()
         {
             var eventName = "RRCG_EventCache_" + Context.current.GetUniqueId();
 
@@ -25,6 +26,70 @@ namespace RRCGBuild
 
             return port;
         }
+
+        public static (T0, T1) EventCache<T0, T1>(T0 value0, T1 value1)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+        {
+            var eventName = "RRCG_EventCache_" + Context.current.GetUniqueId();
+
+            EventDefinition<T0, T1>(eventName, "value0", "value1");
+
+            (T0, T1) ports = default;
+
+            CircuitBuilder.InlineGraph(() =>
+            {
+                ports = EventReceiver<T0, T1>(eventName);
+            });
+
+            EventSender<T0, T1>(eventName, value0, value1);
+
+            return ports;
+        }
+
+        public static (T0, T1, T2) EventCache<T0, T1, T2>(T0 value0, T1 value1, T2 value2)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+        {
+            var eventName = "RRCG_EventCache_" + Context.current.GetUniqueId();
+
+            EventDefinition<T0, T1, T2>(eventName, "value0", "value1", "value2");
+
+            (T0, T1, T2) ports = default;
+
+            CircuitBuilder.InlineGraph(() =>
+            {
+                ports = EventReceiver<T0, T1, T2>(eventName);
+            });
+
+            EventSender<T0, T1, T2>(eventName, value0, value1, value2);
+
+            return ports;
+        }
+
+        public static (T0, T1, T2, T3) EventCache<T0, T1, T2, T3>(T0 value0, T1 value1, T2 value2, T3 value3)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+        {
+            var eventName = "RRCG_EventCache_" + Context.current.GetUniqueId();
+
+            EventDefinition<T0, T1, T2, T3>(eventName, "value0", "value1", "value2", "value3");
+
+            (T0, T1, T2, T3) ports = default;
+
+            CircuitBuilder.InlineGraph(() =>
+            {
+                ports = EventReceiver<T0, T1, T2, T3>(eventName);
+            });
+
+            EventSender<T0, T1, T2, T3>(eventName, value0, value1, value2, value3);
+
+            return ports;
+        }
+
 
         public static void Log(AnyPort obj)
         {
@@ -43,28 +108,25 @@ namespace RRCGBuild
             ExecFlow.current.Ports[0].Index = 1;
         }
 
-        private static void ThrottleBoard(FloatPort interval)
-        {
-            var lastExec = new Variable<FloatPort>();
-
-            var currentTime = TimeGetPreciseSeconds();
-
-            var test = ChipBuilder.GreaterThan(
-                ChipBuilder.Subtract(currentTime, lastExec.Value),
-                interval
-            );
-
-            ChipBuilder.If(
-                test,
-                () => lastExec.Value = currentTime,
-                () => throw null
-            );
-
-        }
-
         public static void Throttle(FloatPort interval)
         {
-            CircuitBuilder.CircuitBoard(ThrottleBoard, interval);
+            CircuitBuilder.CircuitBoard("Throttle", (FloatPort interval) =>
+            {
+                var lastExec = new Variable<FloatPort>();
+
+                var currentTime = TimeGetPreciseSeconds();
+
+                var test = GreaterThan(
+                    Subtract(currentTime, lastExec.Value),
+                    interval
+                );
+
+                If(
+                    test,
+                    () => lastExec.Value = currentTime,
+                    () => throw null
+                );
+            }, interval);
         }
 
         public static IntPort RandomStoreCounter()
@@ -108,6 +170,8 @@ namespace RRCGBuild
         public static T ValueSwitch<T>(IntPort index, params T[] options) where T : AnyPort, new()
         {
             var cases = new Dictionary<IntPort, T>();
+
+            if (options.Length > 64) throw new Exception("ValueSwitch only supports 64 values. Consider using a ChipLib.LUT for big look up tables.");
 
             for (var i = 1; i < options.Length; i++)
             {

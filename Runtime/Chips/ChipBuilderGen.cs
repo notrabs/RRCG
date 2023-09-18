@@ -2494,7 +2494,7 @@ namespace RRCGGenerated
             return (new IntPort { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new BoolPort { Port = new Port { Node = node, Index = 2 } });
         }
 
-        public static (RecRoomObjectPort Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(RecRoomObjectPort Origin, ListPort<AnyPort> Targets)
+        public static (T Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest<T>(RecRoomObjectPort Origin, ListPort<T> Targets) where T : AnyPort, new()
         {
             // GetClosestNode
             Node node = new Node()
@@ -2502,10 +2502,10 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port { Node = node, Index = 0 });
             node.ConnectInputPort(Context.current, Targets, new Port { Node = node, Index = 1 });
-            return (new RecRoomObjectPort { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
+            return (new T { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
         }
 
-        public static (PlayerPort Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(PlayerPort Origin, ListPort<AnyPort> Targets)
+        public static (T Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest<T>(PlayerPort Origin, ListPort<T> Targets) where T : AnyPort, new()
         {
             // GetClosestNode
             Node node = new Node()
@@ -2513,10 +2513,10 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port { Node = node, Index = 0 });
             node.ConnectInputPort(Context.current, Targets, new Port { Node = node, Index = 1 });
-            return (new PlayerPort { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
+            return (new T { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
         }
 
-        public static (Vector3Port Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(Vector3Port Origin, ListPort<AnyPort> Targets)
+        public static (T Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest<T>(Vector3Port Origin, ListPort<T> Targets) where T: AnyPort, new()
         {
             // GetClosestNode
             Node node = new Node()
@@ -2524,7 +2524,7 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port { Node = node, Index = 0 });
             node.ConnectInputPort(Context.current, Targets, new Port { Node = node, Index = 1 });
-            return (new Vector3Port { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
+            return (new T { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
         }
 
         public static (BoolPort Success, IntPort TotalBalance) GetCurrencyBalance(PlayerPort Player, AlternativeExec OnGetBalanceComplete)

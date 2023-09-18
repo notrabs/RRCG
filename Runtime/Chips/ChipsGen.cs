@@ -1800,7 +1800,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (RecRoomObject Closest, int ClosestIndex, float Distance) GetClosest(RecRoomObject Origin, List<object> Targets)
+        public static (RecRoomObject Closest, int ClosestIndex, float Distance) GetClosest<T>(RecRoomObject Origin, List<T> Targets)
         {
             return (default(RecRoomObject), default(int), default(float));
         }
@@ -1808,7 +1808,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (Player Closest, int ClosestIndex, float Distance) GetClosest(Player Origin, List<object> Targets)
+        public static (Player Closest, int ClosestIndex, float Distance) GetClosest<T>(Player Origin, List<T> Targets)
         {
             return (default(Player), default(int), default(float));
         }
@@ -1816,9 +1816,9 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (Vector3 Closest, int ClosestIndex, float Distance) GetClosest(Vector3 Origin, List<object> Targets)
+        public static (T Closest, int ClosestIndex, float Distance) GetClosest<T>(Vector3 Origin, List<T> Targets)
         {
-            return (default(Vector3), default(int), default(float));
+            return (default, default(int), default(float));
         }
 
         /// <summary>
