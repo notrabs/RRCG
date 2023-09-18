@@ -55,7 +55,7 @@ namespace RRCGBuild
             );
 
             ChipBuilder.If(
-                test, 
+                test,
                 () => lastExec.Value = currentTime,
                 () => throw null
             );
@@ -105,10 +105,8 @@ namespace RRCGBuild
             return randomPort;
         }
 
-        public static T PickRandom<T>(params T[] options) where T : AnyPort, new()
+        public static T ValueSwitch<T>(IntPort index, params T[] options) where T : AnyPort, new()
         {
-            var index = RandomInt(0, options.Length - 1);
-
             var cases = new Dictionary<IntPort, T>();
 
             for (var i = 1; i < options.Length; i++)
@@ -117,6 +115,12 @@ namespace RRCGBuild
             }
 
             return ValueIntegerSwitch(index, options[0], cases);
+        }
+
+        public static T PickRandom<T>(params T[] options) where T : AnyPort, new()
+        {
+            var index = RandomInt(0, options.Length - 1);
+            return ValueSwitch(index, options);
         }
 
         public static StringPort PickRandom(params StringPort[] options)

@@ -38,6 +38,11 @@ namespace RRCGSource
         public static int RandomStoreCounter(int modulus) { return default; }
 
         /// <summary>
+        /// Constructs a simple switch to return a value by index. Supports 64 values. Consider using a ChipLib.LUT for bigger look up tables.
+        /// </summary>
+        public static T ValueSwitch<T>(int index, params T[] options) { return default; }
+
+        /// <summary>
         /// Picks a random value from the options using a value switch.
         /// </summary>
         public static T PickRandom<T>(params T[] options) { return default; }
