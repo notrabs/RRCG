@@ -58,7 +58,7 @@ namespace RRCGBuild
 
         public IEnumerable<Context> GetAllChildren()
         {
-            IEnumerable<Context> children = new List<Context>();
+            IEnumerable<Context> children = new List<Context>().Concat(SubContexts);
 
             foreach (var child in SubContexts)
             {
