@@ -10,9 +10,6 @@ namespace RRCGBuild
     public class SharedProperty : Attribute { }
     public abstract class CircuitBuilder : ChipBuilder
     {
-        internal readonly Dictionary<string, EventHelper> __RRCG_EVENT_FUNCTIONS = new Dictionary<string, EventHelper>();
-        internal readonly Dictionary<string, object> __RRCG_SHARED_PROPERTIES = new Dictionary<string, object>();
-
         public abstract void CircuitGraph();
 
         //
@@ -36,35 +33,6 @@ namespace RRCGBuild
             graphFn();
 
             ExecFlow.current = prevExec;
-        }
-
-        protected void __DispatchEventFunction(string name, Action fn)
-        {
-            if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(name))
-            {
-                __RRCG_EVENT_FUNCTIONS[name] = new EventHelper("RRCG_EventFunction_" + name);
-
-                InlineGraph(() =>
-                {
-                    __RRCG_EVENT_FUNCTIONS[name].Definition();
-                    __RRCG_EVENT_FUNCTIONS[name].Receiver();
-                    fn();
-                });
-            }
-
-            __RRCG_EVENT_FUNCTIONS[name].Sender();
-        }
-        protected T __DispatchSharedPropertyFunction<T>(string name, Func<T> fn) where T : AnyPort
-        {
-            if (!__RRCG_SHARED_PROPERTIES.ContainsKey(name))
-            {
-                InlineGraph(() =>
-                {
-                    __RRCG_SHARED_PROPERTIES[name] = fn();
-                });
-            }
-
-            return __RRCG_SHARED_PROPERTIES[name] as T;
         }
 
         //
@@ -277,6 +245,38 @@ namespace RRCGBuild
         //
         // Compilation Helpers
         //
+
+        internal readonly Dictionary<string, EventHelper> __RRCG_EVENT_FUNCTIONS = new Dictionary<string, EventHelper>();
+        internal readonly Dictionary<string, object> __RRCG_SHARED_PROPERTIES = new Dictionary<string, object>();
+
+        protected void __DispatchEventFunction(string name, Action fn)
+        {
+            if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(name))
+            {
+                __RRCG_EVENT_FUNCTIONS[name] = new EventHelper("RRCG_EventFunction_" + name);
+
+                InlineGraph(() =>
+                {
+                    __RRCG_EVENT_FUNCTIONS[name].Definition();
+                    __RRCG_EVENT_FUNCTIONS[name].Receiver();
+                    fn();
+                });
+            }
+
+            __RRCG_EVENT_FUNCTIONS[name].Sender();
+        }
+        protected T __DispatchSharedPropertyFunction<T>(string name, Func<T> fn) where T : AnyPort
+        {
+            if (!__RRCG_SHARED_PROPERTIES.ContainsKey(name))
+            {
+                InlineGraph(() =>
+                {
+                    __RRCG_SHARED_PROPERTIES[name] = fn();
+                });
+            }
+
+            return __RRCG_SHARED_PROPERTIES[name] as T;
+        }
 
         public void __Return(ExecFlow returnFlow)
         {
