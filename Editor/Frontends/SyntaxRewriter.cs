@@ -18,6 +18,10 @@ namespace RRCG
             SemanticModel = semanticModel;
         }
 
+        //
+        // Class and Module
+        // 
+
         public override SyntaxNode VisitCompilationUnit(CompilationUnitSyntax node)
         {
             if (!node.Usings.Any(u => u.Name.ToString() == "RRCGSource"))
@@ -66,6 +70,9 @@ namespace RRCG
             return base.VisitSimpleBaseType(node);
         }
 
+        //
+        // Methods and Functions
+        // 
 
         public override SyntaxNode VisitMethodDeclaration(MethodDeclarationSyntax node)
         {
@@ -74,14 +81,7 @@ namespace RRCG
 
             var methodName = method.Identifier.ToString();
 
-            var statements = method.Body.Statements;
-
-            // return flow
-            if (method.ReturnType.ToString() != "void") statements = statements.Insert(0, SyntaxFactory.ParseStatement(method.ReturnType.NormalizeWhitespace().ToString() + " rrcg_return_data = default;"));
-            statements = statements.Insert(0, SyntaxFactory.ParseStatement("ExecFlow rrcg_return_flow = new ExecFlow();"));
-
-            statements = statements.Add(SyntaxFactory.ParseStatement("ExecFlow.current.Merge(rrcg_return_flow);"));
-            if (method.ReturnType.ToString() != "void") statements = statements.Add(SyntaxFactory.ParseStatement("return rrcg_return_data;"));
+            var statements = WrapFunctionStatements(method.Body.Statements, method.ReturnType.ToString() == "void");
 
             // special functions
             var isEventFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "EventFunction"));
@@ -132,6 +132,50 @@ namespace RRCG
             return method;
         }
 
+        public override SyntaxNode VisitSimpleLambdaExpression(SimpleLambdaExpressionSyntax method)
+        {
+            return VisitAnonymousFunction(method);
+        }
+        public override SyntaxNode VisitParenthesizedLambdaExpression(ParenthesizedLambdaExpressionSyntax method)
+        {
+            return VisitAnonymousFunction(method);
+        }
+
+        public override SyntaxNode VisitAnonymousMethodExpression(AnonymousMethodExpressionSyntax method)
+        {
+            return VisitAnonymousFunction(method);
+        }
+
+        public T VisitAnonymousFunction<T>(T method) where T : AnonymousFunctionExpressionSyntax
+        {
+            if (method.ExpressionBody != null) return (T)base.Visit(method.ExpressionBody);
+
+            method = (T)base.Visit(method);
+
+            var statements = WrapFunctionStatements(
+                method.Block.Statements,
+                IsBlockVoid(method.Block)
+            );
+
+            return (T)method.WithBody(SyntaxFactory.Block(statements));
+        }
+
+        public SyntaxList<StatementSyntax> WrapFunctionStatements(SyntaxList<StatementSyntax> statements, bool isVoid)
+        {
+            if (!isVoid) statements = statements.Insert(0, SyntaxFactory.ParseStatement("dynamic rrcg_return_data = default;"));
+            statements = statements.Insert(0, SyntaxFactory.ParseStatement("ExecFlow rrcg_return_flow = new ExecFlow();"));
+
+            statements = statements.Add(SyntaxFactory.ParseStatement("ExecFlow.current.Merge(rrcg_return_flow);"));
+            if (!isVoid) statements = statements.Add(SyntaxFactory.ParseStatement("return rrcg_return_data;"));
+
+            return statements;
+        }
+
+
+        //
+        // Method contents
+        // 
+
         public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax node)
         {
             if (node.Expression is MemberAccessExpressionSyntax ma && ma.Expression is IdentifierNameSyntax ins)
@@ -145,18 +189,18 @@ namespace RRCG
             return base.VisitInvocationExpression(node);
         }
 
-        public override SyntaxNode VisitMemberAccessExpression(MemberAccessExpressionSyntax node)
-        {
-            if (node.Expression is IdentifierNameSyntax ins)
-            {
-                if (ins.Identifier.Text == "Player")
-                {
-                    node = node.WithExpression(SyntaxFactory.IdentifierName("PlayerPort"));
-                }
-            }
+        //public override SyntaxNode VisitMemberAccessExpression(MemberAccessExpressionSyntax node)
+        //{
+        //    if (node.Expression is IdentifierNameSyntax ins)
+        //    {
+        //        if (ins.Identifier.Text == "Player")
+        //        {
+        //            node = node.WithExpression(SyntaxFactory.IdentifierName("PlayerPort"));
+        //        }
+        //    }
 
-            return base.VisitMemberAccessExpression(node);
-        }
+        //    return base.VisitMemberAccessExpression(node);
+        //}
 
         public override SyntaxNode VisitPredefinedType(PredefinedTypeSyntax node)
         {
@@ -344,10 +388,10 @@ namespace RRCG
                     ArgumentList(
                         test,
                         ExecDelegate().WithBlock(
-                            SyntaxFactory.Block(trueStatement)
+                            WrapInBlock(trueStatement)
                         ),
                         ExecDelegate().WithBlock(
-                            falseStatement != null ? SyntaxFactory.Block(falseStatement) : SyntaxFactory.Block()
+                            WrapInBlock(falseStatement)
                         )
                  )))
             .NormalizeWhitespace();
@@ -476,8 +520,9 @@ namespace RRCG
             return base.VisitBinaryExpression(node);
         }
 
-
+        //
         // Helpers 
+        //
 
         private int CalculateScopeLevelDifference(SyntaxNode assignmentNode, ISymbol symbol)
         {
@@ -521,6 +566,20 @@ namespace RRCG
             var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)arg));
 
             return SyntaxFactory.SeparatedList<ExpressionSyntax>(withCommas);
+        }
+
+        public static bool IsBlockVoid(BlockSyntax block)
+        {
+            return !block.Statements.Any(s => s is ReturnStatementSyntax returnStatement && returnStatement.Expression != null);
+        }
+
+        public static BlockSyntax WrapInBlock(SyntaxNode node)
+        {
+            if (node == null) return SyntaxFactory.Block();
+            if (node is BlockSyntax) return (BlockSyntax)node;
+            if (node is StatementSyntax) return SyntaxFactory.Block((StatementSyntax)node);
+            Debug.LogError(node);
+            throw new Exception("SyntaxNode can't be wrapped in block");
         }
 
         public static SyntaxNodeOrToken[] CommaSeparated(IEnumerable<SyntaxNodeOrToken> list)

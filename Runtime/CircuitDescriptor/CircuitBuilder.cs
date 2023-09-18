@@ -73,6 +73,11 @@ namespace RRCGBuild
 
         private static object __CircuitBoard(Delegate circuitBoardFn, params dynamic[] parameters)
         {
+            return __CircuitBoard(circuitBoardFn.Method.Name, circuitBoardFn, parameters);
+        }
+
+        private static object __CircuitBoard(string name, Delegate circuitBoardFn, params dynamic[] parameters)
+        {
             var prevContext = Context.current;
             var prevExecFlow = ExecFlow.current;
 
@@ -165,13 +170,13 @@ namespace RRCGBuild
             {
                 var tuple = (ITuple)cbResult;
 
-                var namesAttr = (TupleElementNamesAttribute) circuitBoardFn.Method.ReturnTypeCustomAttributes.GetCustomAttributes(true).FirstOrDefault(attr => attr is TupleElementNamesAttribute);
+                var namesAttr = (TupleElementNamesAttribute)circuitBoardFn.Method.ReturnTypeCustomAttributes.GetCustomAttributes(true).FirstOrDefault(attr => attr is TupleElementNamesAttribute);
 
                 for (var i = 0; i < tuple.Length; i++)
                 {
-                    var name = namesAttr?.TransformNames[i] ?? ("value" + i);
+                    var outputName = namesAttr?.TransformNames[i] ?? ("value" + i);
 
-                    dataFunction.Outputs.Add((name, tuple[i].GetType()));
+                    dataFunction.Outputs.Add((outputName, tuple[i].GetType()));
                 }
             }
 
@@ -184,7 +189,7 @@ namespace RRCGBuild
             ChipBuilder.CircuitBoard();
             var cbNode = Context.lastSpawnedNode;
             cbNode.CircuitBoardId = cbContext.Id.ToString();
-            cbNode.Name = "RRCG_" + circuitBoardFn.Method.Name + "_" + Context.current.GetUniqueId();
+            cbNode.Name = "RRCG_" + name + "_" + Context.current.GetUniqueId();
 
             if (hasExecIn && hasExecOut) ExecFlow.current.Advance(Context.current, cbNode.Port(execPortGroup, 0), cbNode.Port(execPortGroup, 0));
             else if (hasExecIn) ExecFlow.current.Advance(Context.current, cbNode.Port(execPortGroup, 0), null);
@@ -228,6 +233,13 @@ namespace RRCGBuild
         public static T CircuitBoard<P0, T>(Func<P0, T> circuitBoardFn, P0 value0) => (T)__CircuitBoard(circuitBoardFn, value0);
         public static void CircuitBoard<P0, P1>(Action<P0, P1> circuitBoardFn, P0 value0, P1 value1) => __CircuitBoard(circuitBoardFn, value0, value1);
         public static T CircuitBoard<P0, P1, T>(Func<P0, P1, T> circuitBoardFn, P0 value0, P1 value1) => (T)__CircuitBoard(circuitBoardFn, value0, value1);
+
+        public static void CircuitBoard(string name, Action circuitBoardFn) => __CircuitBoard(name, circuitBoardFn);
+        public static T CircuitBoard<T>(string name, Func<T> circuitBoardFn) => (T)__CircuitBoard(name, circuitBoardFn);
+        public static void CircuitBoard<P0>(string name, Action<P0> circuitBoardFn, P0 value0) => __CircuitBoard(name, circuitBoardFn, value0);
+        public static T CircuitBoard<P0, T>(string name, Func<P0, T> circuitBoardFn, P0 value0) => (T)__CircuitBoard(name, circuitBoardFn, value0);
+        public static void CircuitBoard<P0, P1>(string name, Action<P0, P1> circuitBoardFn, P0 value0, P1 value1) => __CircuitBoard(name, circuitBoardFn, value0, value1);
+        public static T CircuitBoard<P0, P1, T>(string name, Func<P0, P1, T> circuitBoardFn, P0 value0, P1 value1) => (T)__CircuitBoard(name, circuitBoardFn, value0, value1);
 
         public static void ExistingCircuitBoard(StringPort boardName, AlternativeExec circuitBoardFn)
         {
