@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace RRCGBuild
 {
@@ -198,6 +197,38 @@ namespace RRCGBuild
         public static FloatPort PickRandom(params FloatPort[] options)
         {
             return PickRandom<FloatPort>(options);
+        }
+
+        public static IntPort RandomNonRepeating(IntPort num)
+        {
+            var sum = Add(0, RandomInt(0, (int)num - 1));
+            var addNode = Context.lastSpawnedNode;
+
+            var newValue = Modulo(sum, num);
+            var nonRepeating = RandomInt(newValue, newValue);
+
+            addNode.ConnectInputPort(nonRepeating, 0);
+
+            return nonRepeating;
+        }
+        public static IntPort RandomNonRepeating(IVariable<IntPort> variable, IntPort num)
+        {
+            var newValue = Modulo(Add(variable.Value, RandomInt(0, (int)num - 1)), num);
+            variable.Value = newValue;
+            return variable.Value;
+        }
+
+        public static T GetClosest<T>(Vector3Port postion, string tag) where T : AnyPort, new()
+        {
+            return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllwithTag(tag)).Closest;
+        }
+        public static T GetClosest<T>(PlayerPort postion, string tag) where T : AnyPort, new()
+        {
+            return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllwithTag(tag)).Closest;
+        }
+        public static T GetClosest<T>(RecRoomObjectPort postion, string tag) where T : AnyPort, new()
+        {
+            return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllwithTag(tag)).Closest;
         }
 
         public class LUT<T> where T : AnyPort, new()

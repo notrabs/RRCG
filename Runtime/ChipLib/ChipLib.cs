@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace RRCGSource
 {
@@ -49,6 +50,23 @@ namespace RRCGSource
         /// Picks a random value from the options using a value switch.
         /// </summary>
         public static T PickRandom<T>(params T[] options) { return default; }
+
+        /// <summary>
+        /// Picks a random, non repeating value [0,num). It is stored in an efficient random store.
+        /// </summary>
+        public static int RandomNonRepeating(int num) { return default; }
+
+        /// <summary>
+        /// Picks a random, non repeating value [0,num) and stores it in the given variable
+        /// </summary>
+        public static int RandomNonRepeating(IVariable<int> variable, int num) { return default; }
+
+        /// <summary>
+        /// Gets the closest RRObject of type T
+        /// </summary>
+        public static T GetClosest<T>(Player position, string tag) { return default; }
+        public static T GetClosest<T>(Vector3 position, string tag) { return default; }
+        public static T GetClosest<T>(RecRoomObject position, string tag) { return default; }
 
         /// <summary>
         /// A Look-Up-Table to generate a shared, switch-based accessor for a large list of data.
