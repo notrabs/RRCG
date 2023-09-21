@@ -9,7 +9,14 @@ namespace RRCGSource
         Cloud
     }
 
-    public class NamedVariable<T>
+    public interface IVariable<T>
+    {
+        public T Value { get; set; }
+
+        public void ChangedEvent();
+    }
+
+    public class NamedVariable<T> : IVariable<T>
     {
         private VariableKind kind;
 

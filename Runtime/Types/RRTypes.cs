@@ -20,7 +20,14 @@ namespace RRCGSource
     public class RecRoomObject { }
     public class Combatant { }
     public class PatrolPoint { }
-    public class Audio { }
+    public class Audio
+    {
+        public static Audio SFX_Click { get; } 
+        public static Audio SFX_Firework { get; }
+        public static Audio SFX_UIXP02 { get; }
+        public static Audio SFX_CrowdCheer { get; }
+        public static Audio SFX_CrowdAww { get; }
+    }
     public class AudioPlayer { }
     public class Consumable { }
     public class RoomKey { }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RRCG;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace RRCGBuild
         public object VariableHomeValue { get; internal set; }
 
         public int InputCount { get; internal set; }
+
+        public SFXConstantData? SFXConstantData = null;
 
         [JsonConverter(typeof(DefaultValuesConverter))]
         public Dictionary<(int Group, int Port), object> DefaultValues = new Dictionary<(int Group, int Port), object>();

@@ -9,7 +9,15 @@ namespace RRCGBuild
         Cloud
     }
 
-    public class NamedVariable<T> where T : AnyPort, new()
+    public interface IVariable<T>
+    {
+        public T Value { get; set; }
+
+        public void ChangedEvent();
+    }
+
+
+    public class NamedVariable<T>: IVariable<T> where T : AnyPort, new()
     {
         private string name;
         private VariableKind kind;
