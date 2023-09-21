@@ -35,6 +35,15 @@ namespace RRCGBuild
             ExecFlow.current = prevExec;
         }
 
+        public static T Singleton<T>(string key, Func<T> creator) where T : AnyPort
+        {
+            if (!Context.current.SingletonChips.ContainsKey(key))
+            {
+                Context.current.SingletonChips.Add(key, creator());
+            }
+            return (T)Context.current.SingletonChips[key];
+        }
+
         //
         // Circuit Board Helpers
         //

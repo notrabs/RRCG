@@ -23,6 +23,9 @@ namespace RRCGBuild
         public string MetaExistingCircuitBoard;
         public List<CBFunction> MetaNewBoard;
 
+        [JsonIgnore]
+        internal Dictionary<string, AnyPort> SingletonChips = new Dictionary<string, AnyPort>();
+
         public Context()
         {
             Id = Guid.NewGuid().ToString();
