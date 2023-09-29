@@ -123,7 +123,7 @@ namespace RRCGBuild
                 If(
                     test,
                     () => lastExec.Value = currentTime,
-                    () => throw null
+                    () => CircuitBuilder.ClearExec()
                 );
             }, interval);
         }

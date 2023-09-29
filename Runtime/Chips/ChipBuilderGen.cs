@@ -2543,7 +2543,7 @@ namespace RRCGGenerated
             return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
         }
 
-        public static (BoolPort Success, IntPort TotalBalance) GetCurrencyBalanceNew(RoomCurrencyPort Currency, PlayerPort Player, AlternativeExec OnGetBalanceComplete)
+        public static (BoolPort Success, IntPort TotalBalance) GetCurrencyBalanceNew(RoomCurrencyPort Currency, PlayerPort Player, AlternativeExec<(BoolPort Success, IntPort TotalBalance)> OnGetBalanceComplete)
         {
             // GetBalanceFromConstantNode
             Node node = new Node()
@@ -2551,13 +2551,14 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Currency, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
+            var outputPorts = (new BoolPort { Port = new Port { Node = node, Index = 2 } }, new IntPort { Port = new Port { Node = node, Index = 3 } });
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnGetBalanceComplete();
+            OnGetBalanceComplete(outputPorts);
             ExecFlow.current = mainFlow;
-            return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
+            return outputPorts;
         }
 
         public static (RecRoomObjectPort Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest<T2>(RecRoomObjectPort Origin, ListPort<T2> Targets)

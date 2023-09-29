@@ -16,12 +16,12 @@ namespace RRCGBuild
         // Exec Flow Helpers
         //
 
-        public void StartNewGraph()
+        public static void StartNewGraph()
         {
             ExecFlow.current = new ExecFlow();
         }
 
-        public void ClearExec()
+        public static void ClearExec()
         {
             ExecFlow.current.Clear();
         }
