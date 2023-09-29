@@ -25,6 +25,7 @@ namespace RRCGBuild
         public int InputCount { get; internal set; }
 
         public SFXConstantData? SFXConstantData = null;
+        public string RoomCurrency = null;
 
         [JsonConverter(typeof(DefaultValuesConverter))]
         public Dictionary<(int Group, int Port), object> DefaultValues = new Dictionary<(int Group, int Port), object>();

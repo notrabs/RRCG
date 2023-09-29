@@ -83,7 +83,9 @@ namespace RRCGSource
     public class TriggerVolume { }
     public class VectorComponent { }
     public class AnimationController { }
-    public class RoomCurrency { }
+    public class RoomCurrency { 
+        public RoomCurrency(string name) { }
+    }
     public class HUDConstant { }
     public class SteeringEngine { }
     public class GiftDropShopItem { }

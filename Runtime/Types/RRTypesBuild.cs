@@ -287,7 +287,19 @@ namespace RRCGBuild
     {
         public static implicit operator VectorComponentPort(RecRoomObjectPort data) => new VectorComponentPort() { Port = ChipBuilder.FromRecRoomObject(data).Port };
     }
-    public class RoomCurrencyPort : AnyPort { }
+    public class RoomCurrencyPort : AnyPort
+    {
+        public RoomCurrencyPort() { }
+
+        public RoomCurrencyPort(string name)
+        {
+            ChipBuilder.RoomCurrencyConstant();
+            var node = Context.lastSpawnedNode;
+            node.RoomCurrency = name;
+
+            Port = node.Port(0, 0);
+        }
+    }
     public class HUDConstantPort : AnyPort
     {
         public static implicit operator HUDConstantPort(RecRoomObjectPort data) => new HUDConstantPort() { Port = ChipBuilder.FromRecRoomObject(data).Port };
