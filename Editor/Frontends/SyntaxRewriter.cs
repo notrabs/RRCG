@@ -461,6 +461,7 @@ namespace RRCG
         public override SyntaxNode VisitBinaryExpression(BinaryExpressionSyntax node)
         {
             string chip = null;
+            var negate = false;
 
             switch (node.Kind())
             {
@@ -494,6 +495,10 @@ namespace RRCG
                 case SyntaxKind.EqualsExpression:
                     chip = "Equals";
                     break;
+                case SyntaxKind.NotEqualsExpression:
+                    chip = "Equals";
+                    negate = true;
+                    break;
                 case SyntaxKind.LogicalAndExpression:
                     chip = "And";
                     break;
@@ -507,7 +512,7 @@ namespace RRCG
                 ExpressionSyntax leftExpression = (ExpressionSyntax)Visit(node.Left);
                 ExpressionSyntax rightExpression = (ExpressionSyntax)Visit(node.Right);
 
-                return SyntaxFactory.InvocationExpression(
+                var expression = SyntaxFactory.InvocationExpression(
                             SyntaxFactory.MemberAccessExpression(
                                 SyntaxKind.SimpleMemberAccessExpression,
                                 SyntaxFactory.IdentifierName("ChipBuilder"),
@@ -518,6 +523,22 @@ namespace RRCG
                                 rightExpression
                             ))
                         .NormalizeWhitespace();
+
+                if (negate)
+                {
+                    return SyntaxFactory.InvocationExpression(
+                            SyntaxFactory.MemberAccessExpression(
+                                SyntaxKind.SimpleMemberAccessExpression,
+                                SyntaxFactory.IdentifierName("ChipBuilder"),
+                                SyntaxFactory.IdentifierName("Not")))
+                        .WithArgumentList(
+                            ArgumentList(
+                                expression
+                            ))
+                        .NormalizeWhitespace();
+                }
+
+                return expression;
             }
 
             return base.VisitBinaryExpression(node);
