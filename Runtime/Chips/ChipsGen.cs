@@ -593,7 +593,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Award a room consumable to a player. Multiple award room consumable requests from the same client are sent in bulk with a ten-second cooldown. The Success port will be TRUE if the consumable was entirely, or in part, awarded to the player. If the consumable could not be awarded, the Success port will be FALSE. Use the Log Output toggle in the configuration settings to see more information about why a failure occurred. Logging output may impact room performance and should be toggled off when not in use.
         /// </summary>
-        public static bool AwardConsumable(Consumable Consumable, Player Player, int Quantity, AlternativeExec OnAwardConsumableComplete)
+        public static bool AwardConsumable(Consumable Consumable, Player Player, int Quantity, AlternativeExec<bool> OnAwardConsumableComplete)
         {
             return default(bool);
         }
@@ -601,7 +601,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Award some amount to the Player's balance of one room currency. Configure this chip to set the affected currency.
         /// </summary>
-        public static (bool Success, int TotalBalance) AwardCurrency(Player Player, int Amount, AlternativeExec OnAwardCurrencyComplete)
+        public static (bool Success, int TotalBalance) AwardCurrency(Player Player, int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
         {
             return (default(bool), default(int));
         }
@@ -609,14 +609,14 @@ namespace RRCGGenerated
         /// <summary>
         /// Award some amount to the Player's balance of the given room currency.
         /// </summary>
-        public static (bool Success, int TotalBalance) AwardCurrencyNew(RoomCurrency Currency, Player Player, int Amount, AlternativeExec OnAwardCurrencyComplete)
+        public static (bool Success, int TotalBalance) AwardCurrencyNew(RoomCurrency Currency, Player Player, int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
         {
             return (default(bool), default(int));
         }
 
         /// <summary>
         /// Unlocks a room key for the target player. Multiple award room key requests from the same client are sent in bulk with a one-second cooldown.
-        public static bool AwardRoomKey(RoomKey RoomKey, Player Player, AlternativeExec OnAwardRoomKeyComplete)
+        public static bool AwardRoomKey(RoomKey RoomKey, Player Player, AlternativeExec<bool> OnAwardRoomKeyComplete)
         {
             return default(bool);
         }
@@ -832,7 +832,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Use as a way to encapsulate your logic. You can have as many inputs and outputs as you like. Use the Edit tool to open up the Circuit Board and add nodes inside it to encapsulate the logic. Hit done editing on your Maker Pen to leave the Circuit Board context.
         /// </summary>
-        public static void CircuitBoard()
+        internal static void CircuitBoard()
         {
             return;
         }
@@ -1176,7 +1176,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static string ControlPanel()
+        internal static string ControlPanel()
         {
             return default(string);
         }
@@ -1704,7 +1704,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Iterates over the "From" pin (inclusive) to the "To" pin (exclusive).
         /// </summary>
-        public static int For(int From, int To, AlternativeExec Done)
+        public static int For(int From, int To, AlternativeExec<int> Done)
         {
             return default(int);
         }
@@ -1712,7 +1712,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Iterates over the input list. The loop exec fires for each element in the list. The Done exec fires once the end of the list has been reached.
         /// </summary>
-        public static object ForEach(List<object> Items, AlternativeExec Done)
+        public static object ForEach<T>(List<T> Items, AlternativeExec<object> Done)
         {
             return default(object);
         }
@@ -1800,23 +1800,23 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (RecRoomObject Closest, int ClosestIndex, float Distance) GetClosest<T>(RecRoomObject Origin, List<T> Targets)
+        public static (T2 Closest, int ClosestIndex, float Distance) GetClosest<T2>(RecRoomObject Origin, List<T2> Targets)
         {
-            return (default(RecRoomObject), default(int), default(float));
+            return (default, default(int), default(float));
         }
 
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (Player Closest, int ClosestIndex, float Distance) GetClosest<T>(Player Origin, List<T> Targets)
+        public static (T2 Closest, int ClosestIndex, float Distance) GetClosest<T2>(Player Origin, List<T2> Targets)
         {
-            return (default(Player), default(int), default(float));
+            return (default, default(int), default(float));
         }
 
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (T Closest, int ClosestIndex, float Distance) GetClosest<T>(Vector3 Origin, List<T> Targets)
+        public static (T2 Closest, int ClosestIndex, float Distance) GetClosest<T2>(Vector3 Origin, List<T2> Targets)
         {
             return (default, default(int), default(float));
         }
@@ -1824,7 +1824,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the local players balance of one room currency. Configure this chip to selecht which currency to use.
         /// </summary>
-        public static (bool Success, int TotalBalance) GetCurrencyBalance(Player Player, AlternativeExec OnGetBalanceComplete)
+        public static (bool Success, int TotalBalance) GetCurrencyBalance(Player Player, AlternativeExec<(bool Success, int TotalBalance)> OnGetBalanceComplete)
         {
             return (default(bool), default(int));
         }
@@ -1832,7 +1832,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the given player's balance of the given room currency.
         /// </summary>
-        public static (bool Success, int TotalBalance) GetCurrencyBalanceNew(RoomCurrency Currency, Player Player, AlternativeExec OnGetBalanceComplete)
+        public static (bool Success, int TotalBalance) GetCurrencyBalanceNew(RoomCurrency Currency, Player Player, AlternativeExec<(bool Success, int TotalBalance)> OnGetBalanceComplete)
         {
             return (default(bool), default(int));
         }
@@ -1840,7 +1840,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (RecRoomObject Farthest, int FarthestIndex, float Distance) GetFarthest(RecRoomObject Origin, List<object> Targets)
+        public static (RecRoomObject Farthest, int FarthestIndex, float Distance) GetFarthest<T2>(RecRoomObject Origin, List<T2> Targets)
         {
             return (default(RecRoomObject), default(int), default(float));
         }
@@ -1848,7 +1848,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (Player Farthest, int FarthestIndex, float Distance) GetFarthest(Player Origin, List<object> Targets)
+        public static (Player Farthest, int FarthestIndex, float Distance) GetFarthest<T2>(Player Origin, List<T2> Targets)
         {
             return (default(Player), default(int), default(float));
         }
@@ -1856,7 +1856,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (Vector3 Farthest, int FarthestIndex, float Distance) GetFarthest(Vector3 Origin, List<object> Targets)
+        public static (Vector3 Farthest, int FarthestIndex, float Distance) GetFarthest<T2>(Vector3 Origin, List<T2> Targets)
         {
             return (default(Vector3), default(int), default(float));
         }
@@ -2344,7 +2344,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Grants the contents of a Reward to the specified Player.
         /// </summary>
-        public static bool GrantReward(Player Player, Reward Reward, AlternativeExec OnAwardComplete)
+        public static bool GrantReward(Player Player, Reward Reward, AlternativeExec<bool> OnAwardComplete)
         {
             return default(bool);
         }
@@ -2768,9 +2768,9 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs one input value based on the input condition. Outputs the "Then" input if the input condition is True. Outputs the "Else" input if the input condition is False. Only reads one of the inputs, not both.
         /// </summary>
-        public static T IfValue<T>(bool If, T Then, T Else)
+        public static object IfValue(bool If, object Then, object Else)
         {
-            return default;
+            return default(object);
         }
 
         /// <summary>
@@ -3024,7 +3024,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Get the leaderboard stat for the given player on the given stat channel.
         /// </summary>
-        public static int LeaderboardGetPlayerStat(Player Player, int Channel, AlternativeExec OnGetStatComplete)
+        public static int LeaderboardGetPlayerStat(Player Player, int Channel, AlternativeExec<int> OnGetStatComplete)
         {
             return default(int);
         }
@@ -3320,7 +3320,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds a new element to the end of the target list containing the input value.
         /// </summary>
-        public static void ListAdd(List<object> Target, object Item)
+        public static void ListAdd<T>(List<T> Target, object Item)
         {
             return;
         }
@@ -3360,15 +3360,15 @@ namespace RRCGGenerated
         /// <summary>
         /// Combine lists together into one list.
         /// </summary>
-        public static List<object> ListConcat(List<object> List1, List<object> List2)
+        public static List<T> ListConcat<T>(List<T> List1, List<T> List2)
         {
-            return default(List<object>);
+            return default(List<T>);
         }
 
         /// <summary>
         /// Outputs True if the target list contains the input value.
         /// </summary>
-        public static bool ListContains(List<object> Target, object Item)
+        public static bool ListContains<T>(List<T> Target, object Item)
         {
             return default(bool);
         }
@@ -3376,17 +3376,17 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns a shallow clone of the given list.
         /// </summary>
-        public static List<object> ListCopy(List<object> Target)
+        public static List<T> ListCopy<T>(List<T> Target)
         {
-            return default(List<object>);
+            return default(List<T>);
         }
 
         /// <summary>
         /// Creates a list from input values. Add more inputs by using the configure tool on the node and press "Add Input". All items in a list must be of the same type.
         /// </summary>
-        public static List<object> ListCreate(params object[] Item)
+        public static List<T> ListCreate<T>(params object[] Item)
         {
-            return default(List<object>);
+            return default(List<T>);
         }
 
         /// <summary>
@@ -3400,7 +3400,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Divides each element in the list by the next element.
         /// </summary>
-        public static float ListDivide(List<float> Target)
+        public static float ListDivide<T>(List<float> Target)
         {
             return default(float);
         }
@@ -3408,7 +3408,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Divides each element in the list by the next element.
         /// </summary>
-        public static int ListDivide(List<int> Target)
+        public static int ListDivide<T>(List<int> Target)
         {
             return default(int);
         }
@@ -3416,7 +3416,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Divides each element in the list by the next element.
         /// </summary>
-        public static Vector3 ListDivide(List<Vector3> Target)
+        public static Vector3 ListDivide<T>(List<Vector3> Target)
         {
             return default(Vector3);
         }
@@ -3456,7 +3456,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns first index of the item in target list if that list contains it. Otherwise returns -1.
         /// </summary>
-        public static int ListGetFirstIndexOf(List<object> Target, object Item)
+        public static int ListGetFirstIndexOf<T>(List<T> Target, object Item)
         {
             return default(int);
         }
@@ -3464,7 +3464,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Insert a new element into the target list at the input index. The new element contains the input value.
         /// </summary>
-        public static void ListInsert(List<object> Target, object Item, int Index)
+        public static void ListInsert<T>(List<T> Target, object Item, int Index)
         {
             return;
         }
@@ -3480,7 +3480,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the highest value in the target list.
         /// </summary>
-        public static float ListMax(List<float> Target)
+        public static float ListMax<T>(List<float> Target)
         {
             return default(float);
         }
@@ -3488,7 +3488,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the highest value in the target list.
         /// </summary>
-        public static int ListMax(List<int> Target)
+        public static int ListMax<T>(List<int> Target)
         {
             return default(int);
         }
@@ -3496,7 +3496,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the lowest value in the target list.
         /// </summary>
-        public static float ListMin(List<float> Target)
+        public static float ListMin<T>(List<float> Target)
         {
             return default(float);
         }
@@ -3504,7 +3504,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the lowest value in the target list.
         /// </summary>
-        public static int ListMin(List<int> Target)
+        public static int ListMin<T>(List<int> Target)
         {
             return default(int);
         }
@@ -3512,7 +3512,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies each element in the list by the next element.
         /// </summary>
-        public static float ListMultiply(List<float> Target)
+        public static float ListMultiply<T>(List<float> Target)
         {
             return default(float);
         }
@@ -3520,7 +3520,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies each element in the list by the next element.
         /// </summary>
-        public static int ListMultiply(List<int> Target)
+        public static int ListMultiply<T>(List<int> Target)
         {
             return default(int);
         }
@@ -3528,7 +3528,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies each element in the list by the next element.
         /// </summary>
-        public static Quaternion ListMultiply(List<Quaternion> Target)
+        public static Quaternion ListMultiply<T>(List<Quaternion> Target)
         {
             return default(Quaternion);
         }
@@ -3536,7 +3536,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies each element in the list by the next element.
         /// </summary>
-        public static Vector3 ListMultiply(List<Vector3> Target)
+        public static Vector3 ListMultiply<T>(List<Vector3> Target)
         {
             return default(Vector3);
         }
@@ -3576,7 +3576,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Remove an element in the target list at the input index.
         /// </summary>
-        public static void ListRemoveAt(List<object> Target, int Index)
+        public static void ListRemoveAt<T>(List<T> Target, int Index)
         {
             return;
         }
@@ -3584,7 +3584,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Removes all instances of item from list.
         /// </summary>
-        public static void ListRemoveItemAll(List<object> Target, object Item)
+        public static void ListRemoveItemAll<T>(List<T> Target, object Item)
         {
             return;
         }
@@ -3592,7 +3592,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Removes the first instance of the item in the list, and returns the index where it was found (-1 if not present)
         /// </summary>
-        public static int ListRemoveItemFirst(List<object> Target, object Item)
+        public static int ListRemoveItemFirst<T>(List<T> Target, object Item)
         {
             return default(int);
         }
@@ -3600,7 +3600,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Removes the last element in a list.
         /// </summary>
-        public static void ListRemoveLast(List<object> Target)
+        public static void ListRemoveLast<T>(List<T> Target)
         {
             return;
         }
@@ -3616,7 +3616,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets a value at a location in a list.
         /// </summary>
-        public static void ListSetElement(List<object> List, int Index, object Value)
+        public static void ListSetElement<T>(List<T> List, int Index, object Value)
         {
             return;
         }
@@ -3624,7 +3624,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Randomize the order of the values in the given list.
         /// </summary>
-        public static void ListShuffle(List<object> Target)
+        public static void ListShuffle<T>(List<T> Target)
         {
             return;
         }
@@ -3632,7 +3632,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sorts the given list in place in either ascending or descending order.
         /// </summary>
-        public static void ListSort(List<object> Target, bool Ascending)
+        public static void ListSort<T>(List<T> Target, bool Ascending)
         {
             return;
         }
@@ -3648,7 +3648,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Subtracts each element in the list by the next element.
         /// </summary>
-        public static float ListSubtract(List<float> Target)
+        public static float ListSubtract<T>(List<float> Target)
         {
             return default(float);
         }
@@ -3656,7 +3656,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Subtracts each element in the list by the next element.
         /// </summary>
-        public static int ListSubtract(List<int> Target)
+        public static int ListSubtract<T>(List<int> Target)
         {
             return default(int);
         }
@@ -3664,7 +3664,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Subtracts each element in the list by the next element.
         /// </summary>
-        public static Vector3 ListSubtract(List<Vector3> Target)
+        public static Vector3 ListSubtract<T>(List<Vector3> Target)
         {
             return default(Vector3);
         }
@@ -3672,7 +3672,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds each element in the list by the next element.
         /// </summary>
-        public static float ListSum(List<float> Target)
+        public static float ListSum<T>(List<float> Target)
         {
             return default(float);
         }
@@ -3680,7 +3680,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds each element in the list by the next element.
         /// </summary>
-        public static int ListSum(List<int> Target)
+        public static int ListSum<T>(List<int> Target)
         {
             return default(int);
         }
@@ -3688,7 +3688,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds each element in the list by the next element.
         /// </summary>
-        public static Vector3 ListSum(List<Vector3> Target)
+        public static Vector3 ListSum<T>(List<Vector3> Target)
         {
             return default(Vector3);
         }
@@ -4480,7 +4480,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static bool PlayerOwnsRoomKey(Player Player, RoomKey RoomKey, AlternativeExec OnPlayerOwnsRoomKeyComplete)
+        public static bool PlayerOwnsRoomKey(Player Player, RoomKey RoomKey, AlternativeExec<bool> OnPlayerOwnsRoomKeyComplete)
         {
             return default(bool);
         }
@@ -4488,7 +4488,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sends a watch notification to the specified player containing the prompt title and body, along with each of the answer choices on its own line. Once this watch notification is opened, the player can choose a response and hit "ok," triggering the On Prompt Complete event. Since there is a delay between sending a notification and receiving the response in which other responses may be received, the Player output can be used to disambiguate multiple responses
         /// </summary>
-        public static (bool Success, Player ReceivingPlayer, string Response, int ResponseIndex) PlayerPromptMultipleChoice(Player Player, string PromptTitle, string PromptBody, List<string> AnswerChoices, AlternativeExec OnPromptComplete)
+        public static (bool Success, Player ReceivingPlayer, string Response, int ResponseIndex) PlayerPromptMultipleChoice(Player Player, string PromptTitle, string PromptBody, List<string> AnswerChoices, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response, int ResponseIndex)> OnPromptComplete)
         {
             return (default(bool), default(Player), default(string), default(int));
         }
@@ -4824,7 +4824,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sends a watch notification to a player. The player which it sends a notification to depends on who's machine fires the exec pin. Once this watch notification is opened, the player can type responses into the text box and send back responses. You can define the prompt title and the prompt itself via inputs, and can also receive the player’s response via an output pin.
         /// </summary>
-        public static string PromptLocalPlayer(string PromptTitle, string Prompt, AlternativeExec Complete, AlternativeExec Failed)
+        public static string PromptLocalPlayer(string PromptTitle, string Prompt, AlternativeExec<string> Complete, AlternativeExec<string> Failed)
         {
             return default(string);
         }
@@ -4944,7 +4944,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static object RandomFromList(List<object> List)
+        public static object RandomFromList<T>(List<T> List)
         {
             return default(object);
         }
@@ -4952,7 +4952,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs a random value from a target list.
         /// </summary>
-        public static object RandomFromListDeprecated(List<object> List)
+        public static object RandomFromListDeprecated<T>(List<T> List)
         {
             return default(object);
         }
@@ -5288,7 +5288,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static bool RoomBackgroundObjectsModify(BackgroundObjects BackgroundObjectsConstant, AlternativeExec BlendFinished)
+        public static bool RoomBackgroundObjectsModify(BackgroundObjects BackgroundObjectsConstant, AlternativeExec<bool> BlendFinished)
         {
             return default(bool);
         }
@@ -5304,7 +5304,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static RoomCurrency RoomCurrencyConstant()
+        internal static RoomCurrency RoomCurrencyConstant()
         {
             return default(RoomCurrency);
         }
@@ -5312,7 +5312,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static bool RoomFogModify(Fog FogConstant, AlternativeExec BlendFinished)
+        public static bool RoomFogModify(Fog FogConstant, AlternativeExec<bool> BlendFinished)
         {
             return default(bool);
         }
@@ -5352,7 +5352,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static bool RoomSetMatchmakingState(bool MatchmakingPermitted, AlternativeExec OnMatchmakingStateSet)
+        public static bool RoomSetMatchmakingState(bool MatchmakingPermitted, AlternativeExec<bool> OnMatchmakingStateSet)
         {
             return default(bool);
         }
@@ -5360,7 +5360,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static bool RoomSkydomeModify(Skydome SkydomeConstant, AlternativeExec BlendFinished)
+        public static bool RoomSkydomeModify(Skydome SkydomeConstant, AlternativeExec<bool> BlendFinished)
         {
             return default(bool);
         }
@@ -5376,7 +5376,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static bool RoomSunModify(Sun SunConstant, SunDirection SunDirection, AlternativeExec BlendFinished)
+        public static bool RoomSunModify(Sun SunConstant, SunDirection SunDirection, AlternativeExec<bool> BlendFinished)
         {
             return default(bool);
         }

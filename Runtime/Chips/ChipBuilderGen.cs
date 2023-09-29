@@ -1188,7 +1188,7 @@ namespace RRCGGenerated
             return new IntPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        internal static void CircuitBoard()
+        public static void CircuitBoard()
         {
             // CircuitBoard
             Node node = new Node()
@@ -2382,7 +2382,7 @@ namespace RRCGGenerated
             return new IntPort { Port = new Port { Node = node, Index = 1 } };
         }
 
-        public static AnyPort ForEach(ListPort<AnyPort> Items, AlternativeExec Done)
+        public static AnyPort ForEach<T>(ListPort<T> Items, AlternativeExec Done)
         {
             // ForEachNode
             Node node = new Node()
@@ -2494,7 +2494,7 @@ namespace RRCGGenerated
             return (new IntPort { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new BoolPort { Port = new Port { Node = node, Index = 2 } });
         }
 
-        public static (T Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest<T>(RecRoomObjectPort Origin, ListPort<T> Targets) where T : AnyPort, new()
+        public static (T2 Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest<T2>(RecRoomObjectPort Origin, ListPort<T2> Targets) where T2: AnyPort, new()
         {
             // GetClosestNode
             Node node = new Node()
@@ -2502,10 +2502,10 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port { Node = node, Index = 0 });
             node.ConnectInputPort(Context.current, Targets, new Port { Node = node, Index = 1 });
-            return (new T { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
+            return (new T2 { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
         }
 
-        public static (T Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest<T>(PlayerPort Origin, ListPort<T> Targets) where T : AnyPort, new()
+        public static (T2 Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest<T2>(PlayerPort Origin, ListPort<T2> Targets) where T2 : AnyPort, new()
         {
             // GetClosestNode
             Node node = new Node()
@@ -2513,10 +2513,10 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port { Node = node, Index = 0 });
             node.ConnectInputPort(Context.current, Targets, new Port { Node = node, Index = 1 });
-            return (new T { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
+            return (new T2 { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
         }
 
-        public static (T Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest<T>(Vector3Port Origin, ListPort<T> Targets) where T: AnyPort, new()
+        public static (T2 Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest<T2>(Vector3Port Origin, ListPort<T2> Targets) where T2 : AnyPort, new()
         {
             // GetClosestNode
             Node node = new Node()
@@ -2524,7 +2524,7 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port { Node = node, Index = 0 });
             node.ConnectInputPort(Context.current, Targets, new Port { Node = node, Index = 1 });
-            return (new T { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
+            return (new T2 { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
         }
 
         public static (BoolPort Success, IntPort TotalBalance) GetCurrencyBalance(PlayerPort Player, AlternativeExec OnGetBalanceComplete)
@@ -2560,7 +2560,7 @@ namespace RRCGGenerated
             return (new BoolPort { Port = new Port { Node = node, Index = 2 } }, new IntPort { Port = new Port { Node = node, Index = 3 } });
         }
 
-        public static (RecRoomObjectPort Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest(RecRoomObjectPort Origin, ListPort<AnyPort> Targets)
+        public static (RecRoomObjectPort Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest<T2>(RecRoomObjectPort Origin, ListPort<T2> Targets)
         {
             // GetFarthestNode
             Node node = new Node()
@@ -2571,7 +2571,7 @@ namespace RRCGGenerated
             return (new RecRoomObjectPort { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
         }
 
-        public static (PlayerPort Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest(PlayerPort Origin, ListPort<AnyPort> Targets)
+        public static (PlayerPort Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest<T2>(PlayerPort Origin, ListPort<T2> Targets)
         {
             // GetFarthestNode
             Node node = new Node()
@@ -2582,7 +2582,7 @@ namespace RRCGGenerated
             return (new PlayerPort { Port = new Port { Node = node, Index = 0 } }, new IntPort { Port = new Port { Node = node, Index = 1 } }, new FloatPort { Port = new Port { Node = node, Index = 2 } });
         }
 
-        public static (Vector3Port Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest(Vector3Port Origin, ListPort<AnyPort> Targets)
+        public static (Vector3Port Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest<T2>(Vector3Port Origin, ListPort<T2> Targets)
         {
             // GetFarthestNode
             Node node = new Node()
@@ -4641,7 +4641,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void ListAdd(ListPort<AnyPort> Target, AnyPort Item)
+        public static void ListAdd<T>(ListPort<T> Target, AnyPort Item)
         {
             // ListAddNode
             Node node = new Node()
@@ -4695,7 +4695,7 @@ namespace RRCGGenerated
             return new ListPort<ColorPort> { Port = new Port { Node = node, Index = 1 } };
         }
 
-        public static ListPort<AnyPort> ListConcat(ListPort<AnyPort> List1, ListPort<AnyPort> List2)
+        public static ListPort<T> ListConcat<T>(ListPort<T> List1, ListPort<T> List2)
         {
             // ListConcatNode
             Node node = new Node()
@@ -4703,10 +4703,10 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, List1, new Port { Node = node, Index = 0 });
             node.ConnectInputPort(Context.current, List2, new Port { Node = node, Index = 1 });
-            return new ListPort<AnyPort> { Port = new Port { Node = node, Index = 0 } };
+            return new ListPort<T> { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static BoolPort ListContains(ListPort<AnyPort> Target, AnyPort Item)
+        public static BoolPort ListContains<T>(ListPort<T> Target, AnyPort Item)
         {
             // ListContainsNode
             Node node = new Node()
@@ -4717,24 +4717,24 @@ namespace RRCGGenerated
             return new BoolPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static ListPort<AnyPort> ListCopy(ListPort<AnyPort> Target)
+        public static ListPort<T> ListCopy<T>(ListPort<T> Target)
         {
             // ListCopyNode
             Node node = new Node()
             { Name = "List Copy", Type = "b336b889-407a-45c8-ad82-a89f4e033c05", InputCount = 1 };
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port { Node = node, Index = 0 });
-            return new ListPort<AnyPort> { Port = new Port { Node = node, Index = 0 } };
+            return new ListPort<T> { Port = new Port { Node = node, Index = 0 } };
         }
 
-        internal static ListPort<AnyPort> ListCreate(AnyPort Item)
+        internal static ListPort<T> ListCreate<T>(AnyPort Item)
         {
             // MakeListNode
             Node node = new Node()
             { Name = "List Create", Type = "542d3256-0d51-4c33-a2a1-fbc44b7e1f07", InputCount = 1 };
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Item, new Port { Node = node, Index = 0 });
-            return new ListPort<AnyPort> { Port = new Port { Node = node, Index = 0 } };
+            return new ListPort<T> { Port = new Port { Node = node, Index = 0 } };
         }
 
         public static ListPort<DestinationRoomPort> ListDestinationRoomVariable(ListPort<DestinationRoomPort> Port0)
@@ -4748,7 +4748,7 @@ namespace RRCGGenerated
             return new ListPort<DestinationRoomPort> { Port = new Port { Node = node, Index = 1 } };
         }
 
-        public static FloatPort ListDivide(ListPort<FloatPort> Target)
+        public static FloatPort ListDivide<T>(ListPort<FloatPort> Target)
         {
             // ListDivideNode
             Node node = new Node()
@@ -4758,7 +4758,7 @@ namespace RRCGGenerated
             return new FloatPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static IntPort ListDivide(ListPort<IntPort> Target)
+        public static IntPort ListDivide<T>(ListPort<IntPort> Target)
         {
             // ListDivideNode
             Node node = new Node()
@@ -4768,7 +4768,7 @@ namespace RRCGGenerated
             return new IntPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static Vector3Port ListDivide(ListPort<Vector3Port> Target)
+        public static Vector3Port ListDivide<T>(ListPort<Vector3Port> Target)
         {
             // ListDivideNode
             Node node = new Node()
@@ -4789,7 +4789,7 @@ namespace RRCGGenerated
             return new ListPort<FloatPort> { Port = new Port { Node = node, Index = 1 } };
         }
 
-        public static ListPort<IntPort> ListGetAllIndicesOf(ListPort<AnyPort> Target, AnyPort Item)
+        public static ListPort<IntPort> ListGetAllIndicesOf<T>(ListPort<T> Target, AnyPort Item)
         {
             // ListGetAllIndicesNode
             Node node = new Node()
@@ -4821,7 +4821,7 @@ namespace RRCGGenerated
             return new T { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static IntPort ListGetFirstIndexOf(ListPort<AnyPort> Target, AnyPort Item)
+        public static IntPort ListGetFirstIndexOf<T>(ListPort<T> Target, AnyPort Item)
         {
             // ListGetFirstIndexNode
             Node node = new Node()
@@ -4832,7 +4832,7 @@ namespace RRCGGenerated
             return new IntPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static void ListInsert(ListPort<AnyPort> Target, AnyPort Item, IntPort Index)
+        public static void ListInsert<T>(ListPort<T> Target, AnyPort Item, IntPort Index)
         {
             // ListInsertNode
             Node node = new Node()
@@ -4856,7 +4856,7 @@ namespace RRCGGenerated
             return new ListPort<IntPort> { Port = new Port { Node = node, Index = 1 } };
         }
 
-        public static FloatPort ListMax(ListPort<FloatPort> Target)
+        public static FloatPort ListMax<T>(ListPort<FloatPort> Target)
         {
             // ListMaxNode
             Node node = new Node()
@@ -4866,7 +4866,7 @@ namespace RRCGGenerated
             return new FloatPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static IntPort ListMax(ListPort<IntPort> Target)
+        public static IntPort ListMax<T>(ListPort<IntPort> Target)
         {
             // ListMaxNode
             Node node = new Node()
@@ -4876,7 +4876,7 @@ namespace RRCGGenerated
             return new IntPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static FloatPort ListMin(ListPort<FloatPort> Target)
+        public static FloatPort ListMin<T>(ListPort<FloatPort> Target)
         {
             // ListMinNode
             Node node = new Node()
@@ -4886,7 +4886,7 @@ namespace RRCGGenerated
             return new FloatPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static IntPort ListMin(ListPort<IntPort> Target)
+        public static IntPort ListMin<T>(ListPort<IntPort> Target)
         {
             // ListMinNode
             Node node = new Node()
@@ -4896,7 +4896,7 @@ namespace RRCGGenerated
             return new IntPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static FloatPort ListMultiply(ListPort<FloatPort> Target)
+        public static FloatPort ListMultiply<T>(ListPort<FloatPort> Target)
         {
             // ListMultiplyNode
             Node node = new Node()
@@ -4906,7 +4906,7 @@ namespace RRCGGenerated
             return new FloatPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static IntPort ListMultiply(ListPort<IntPort> Target)
+        public static IntPort ListMultiply<T>(ListPort<IntPort> Target)
         {
             // ListMultiplyNode
             Node node = new Node()
@@ -4916,7 +4916,7 @@ namespace RRCGGenerated
             return new IntPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static QuaternionPort ListMultiply(ListPort<QuaternionPort> Target)
+        public static QuaternionPort ListMultiply<T>(ListPort<QuaternionPort> Target)
         {
             // ListMultiplyNode
             Node node = new Node()
@@ -4926,7 +4926,7 @@ namespace RRCGGenerated
             return new QuaternionPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static Vector3Port ListMultiply(ListPort<Vector3Port> Target)
+        public static Vector3Port ListMultiply<T>(ListPort<Vector3Port> Target)
         {
             // ListMultiplyNode
             Node node = new Node()
@@ -4980,7 +4980,7 @@ namespace RRCGGenerated
             return new ListPort<RecRoomObjectPort> { Port = new Port { Node = node, Index = 1 } };
         }
 
-        public static void ListRemoveAt(ListPort<AnyPort> Target, IntPort Index)
+        public static void ListRemoveAt<T>(ListPort<T> Target, IntPort Index)
         {
             // ListRemoveAtNode
             Node node = new Node()
@@ -4992,7 +4992,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void ListRemoveItemAll(ListPort<AnyPort> Target, AnyPort Item)
+        public static void ListRemoveItemAll<T>(ListPort<T> Target, AnyPort Item)
         {
             // ListRemoveItemAllNode
             Node node = new Node()
@@ -5004,7 +5004,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static IntPort ListRemoveItemFirst(ListPort<AnyPort> Target, AnyPort Item)
+        public static IntPort ListRemoveItemFirst<T>(ListPort<T> Target, AnyPort Item)
         {
             // ListRemoveItemFirstNode
             Node node = new Node()
@@ -5016,7 +5016,7 @@ namespace RRCGGenerated
             return new IntPort { Port = new Port { Node = node, Index = 1 } };
         }
 
-        public static void ListRemoveLast(ListPort<AnyPort> Target)
+        public static void ListRemoveLast<T>(ListPort<T> Target)
         {
             // ListRemoveLastNode
             Node node = new Node()
@@ -5038,7 +5038,7 @@ namespace RRCGGenerated
             return new ListPort<RewardPort> { Port = new Port { Node = node, Index = 1 } };
         }
 
-        public static void ListSetElement(ListPort<AnyPort> List, IntPort Index, AnyPort Value)
+        public static void ListSetElement<T>(ListPort<T> List, IntPort Index, AnyPort Value)
         {
             // SetElementNode
             Node node = new Node()
@@ -5051,7 +5051,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void ListShuffle(ListPort<AnyPort> Target)
+        public static void ListShuffle<T>(ListPort<T> Target)
         {
             // ListShuffleNode
             Node node = new Node()
@@ -5062,7 +5062,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void ListSort(ListPort<AnyPort> Target, BoolPort Ascending)
+        public static void ListSort<T>(ListPort<T> Target, BoolPort Ascending)
         {
             // ListSortNode
             Node node = new Node()
@@ -5085,7 +5085,7 @@ namespace RRCGGenerated
             return new ListPort<StringPort> { Port = new Port { Node = node, Index = 1 } };
         }
 
-        public static FloatPort ListSubtract(ListPort<FloatPort> Target)
+        public static FloatPort ListSubtract<T>(ListPort<FloatPort> Target)
         {
             // ListSubtractNode
             Node node = new Node()
@@ -5095,7 +5095,7 @@ namespace RRCGGenerated
             return new FloatPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static IntPort ListSubtract(ListPort<IntPort> Target)
+        public static IntPort ListSubtract<T>(ListPort<IntPort> Target)
         {
             // ListSubtractNode
             Node node = new Node()
@@ -5105,7 +5105,7 @@ namespace RRCGGenerated
             return new IntPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static Vector3Port ListSubtract(ListPort<Vector3Port> Target)
+        public static Vector3Port ListSubtract<T>(ListPort<Vector3Port> Target)
         {
             // ListSubtractNode
             Node node = new Node()
@@ -5115,7 +5115,7 @@ namespace RRCGGenerated
             return new Vector3Port { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static FloatPort ListSum(ListPort<FloatPort> Target)
+        public static FloatPort ListSum<T>(ListPort<FloatPort> Target)
         {
             // ListSumNode
             Node node = new Node()
@@ -5125,7 +5125,7 @@ namespace RRCGGenerated
             return new FloatPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static IntPort ListSum(ListPort<IntPort> Target)
+        public static IntPort ListSum<T>(ListPort<IntPort> Target)
         {
             // ListSumNode
             Node node = new Node()
@@ -5135,7 +5135,7 @@ namespace RRCGGenerated
             return new IntPort { Port = new Port { Node = node, Index = 0 } };
         }
 
-        public static Vector3Port ListSum(ListPort<Vector3Port> Target)
+        public static Vector3Port ListSum<T>(ListPort<Vector3Port> Target)
         {
             // ListSumNode
             Node node = new Node()
@@ -6834,7 +6834,7 @@ namespace RRCGGenerated
             return new FloatPort { Port = new Port { Node = node, Index = 1 } };
         }
 
-        public static AnyPort RandomFromList(ListPort<AnyPort> List)
+        public static AnyPort RandomFromList<T>(ListPort<T> List)
         {
             // RandomFromListNodeV2
             Node node = new Node()
@@ -6845,7 +6845,7 @@ namespace RRCGGenerated
             return new AnyPort { Port = new Port { Node = node, Index = 1 } };
         }
 
-        public static AnyPort RandomFromListDeprecated(ListPort<AnyPort> List)
+        public static AnyPort RandomFromListDeprecated<T>(ListPort<T> List)
         {
             // RandomFromListNode
             Node node = new Node()

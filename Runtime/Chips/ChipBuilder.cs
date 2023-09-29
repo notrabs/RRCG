@@ -325,7 +325,7 @@ namespace RRCGBuild
         }
         public static T ListCreate<T>(params T[] ports) where T : AnyPort, new()
         {
-            ChipBuilderGen.ListCreate(ports[0]);
+            ChipBuilderGen.ListCreate<T>(ports[0]);
             return ConnectDynamicPins(0, ports);
         }
         public static BoolPort And(params BoolPort[] ports)
