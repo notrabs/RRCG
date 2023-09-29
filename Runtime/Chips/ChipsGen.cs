@@ -11,7 +11,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float AbsoluteValue(float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int AbsoluteValue(int Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Acos(float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static int Add(params int[] Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static float Add(params float[] Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static Vector3 Add(params Vector3[] Value)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (string VisionType, float VisionRange, float VisionConeAngle, float HearingRange) AIGetLineofSightParameters(AI AI)
         {
-            return (default(string), default(float), default(float), default(float));
+            return default;
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Combatant AIGetTarget(AI AI)
         {
-            return default(Combatant);
+            return default;
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool AIHasLineofSightToTarget(AI AI, AI Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool AIHasLineofSightToTarget(AI AI, Combatant Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool AIHasLineofSightToTarget(AI AI, RecRoomObject Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool AIHasLineofSightToTarget(AI AI, PatrolPoint Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool AIHasLineofSightToTarget(AI AI, Player Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool AIHasLineofSightToTarget(AI AI, Vector3 Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -331,7 +331,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static AI AIVariable(AI Port0)
         {
-            return default(AI);
+            return default;
         }
 
         /// <summary>
@@ -339,7 +339,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Audio AmbienceConstant()
         {
-            return default(Audio);
+            return default;
         }
 
         /// <summary>
@@ -347,7 +347,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool And(bool Input)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool AngularVelocityAdd(RecRoomObject Target, Vector3 AngularVelocity, float SpeedMultiplier, float MaxAngularSpeed)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -379,7 +379,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool AngularVelocitySet(RecRoomObject Target, Vector3 AngularVelocity, float SpeedMultiplier)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -403,7 +403,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool AnimationGetIsPlaying(AnimationController Animator)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -411,7 +411,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float AnimationGetSpeed(AnimationController Animator)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -459,7 +459,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Asin(float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -467,7 +467,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Atan(float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Atan2(float Y, float X)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -483,7 +483,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float AudioGetLength(Audio Audio)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -491,7 +491,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Audio AudioPlayerGetAudio(AudioPlayer Target)
         {
-            return default(Audio);
+            return default;
         }
 
         /// <summary>
@@ -499,7 +499,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float AudioPlayerGetMaxRolloffDistance(AudioPlayer Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -507,7 +507,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool AudioPlayerGetPlaying(AudioPlayer Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -515,7 +515,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float AudioPlayerGetSpeed(AudioPlayer Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -523,7 +523,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float AudioPlayerGetTimeStamp(AudioPlayer Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -531,7 +531,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float AudioPlayerGetVolume(AudioPlayer Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -595,7 +595,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool AwardConsumable(Consumable Consumable, Player Player, int Quantity, AlternativeExec<bool> OnAwardConsumableComplete)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -603,7 +603,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (bool Success, int TotalBalance) AwardCurrency(Player Player, int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
         {
-            return (default(bool), default(int));
+            return default;
         }
 
         /// <summary>
@@ -611,14 +611,14 @@ namespace RRCGGenerated
         /// </summary>
         public static (bool Success, int TotalBalance) AwardCurrencyNew(RoomCurrency Currency, Player Player, int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
         {
-            return (default(bool), default(int));
+            return default;
         }
 
         /// <summary>
         /// Unlocks a room key for the target player. Multiple award room key requests from the same client are sent in bulk with a one-second cooldown.
         public static bool AwardRoomKey(RoomKey RoomKey, Player Player, AlternativeExec<bool> OnAwardRoomKeyComplete)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -626,7 +626,7 @@ namespace RRCGGenerated
         /// </summary>
         public static BackgroundObjects BackgroundObjectsConstant()
         {
-            return default(BackgroundObjects);
+            return default;
         }
 
         /// <summary>
@@ -634,7 +634,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color BeaconGetColor(Beacon Target)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -642,7 +642,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool BeaconGetEnabled(Beacon Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -650,7 +650,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float BeaconGetHeight(Beacon Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -682,7 +682,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int BitAnd(int Port0, int Port1)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -690,7 +690,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int BitLeadingZeros(int Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -698,7 +698,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int BitNand(int Port0, int Port1)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -706,7 +706,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int BitNot(int Port0)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -714,7 +714,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int BitOr(int Port0, int Port1)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -722,7 +722,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int BitPopCount(int Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -730,7 +730,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int BitRotateLeft(int Value, int Shift)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -738,7 +738,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int BitRotateRight(int Value, int Shift)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -746,7 +746,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int BitShiftLeft(int Value, int Shift)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -754,7 +754,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int BitShiftRight(int Value, int Shift)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -762,7 +762,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int BitTrailingZeros(int Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -770,7 +770,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int BitXor(int Port0, int Port1)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -778,7 +778,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static bool boolVariable(bool Port0)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -786,7 +786,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (object Item1, object Item2) BreakTuple(object Tuple)
         {
-            return (default(object), default(object));
+            return default;
         }
 
         /// <summary>
@@ -794,7 +794,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool ButtonGetIsPressed(Button Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -802,7 +802,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string ButtonGetText(Button Target)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -818,7 +818,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Ceil(float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -826,7 +826,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int CeiltoInt(float Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -842,7 +842,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Clamp(float Value, float Min, float Max)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -850,7 +850,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int Clamp(int Value, int Min, int Max)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -882,7 +882,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float CollisionDataGetDistance(CollisionData Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -890,7 +890,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 CollisionDataGetNormal(CollisionData Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -898,7 +898,7 @@ namespace RRCGGenerated
         /// </summary>
         public static RecRoomObject CollisionDataGetObject(CollisionData Target)
         {
-            return default(RecRoomObject);
+            return default;
         }
 
         /// <summary>
@@ -906,7 +906,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player CollisionDataGetPlayer(CollisionData Target)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -914,7 +914,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 CollisionDataGetPosition(CollisionData Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -922,7 +922,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color ColorConstant()
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -930,7 +930,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (float Hue, float Saturation, float Value) ColorToHSV(Color Color)
         {
-            return (default(float), default(float), default(float));
+            return default;
         }
 
         /// <summary>
@@ -938,7 +938,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ColorToInt(Color Color)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -946,7 +946,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (float Red, float Green, float Blue) ColorToRGB(Color Color)
         {
-            return (default(float), default(float), default(float));
+            return default;
         }
 
         /// <summary>
@@ -954,7 +954,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static Color ColorVariable(Color Port0)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -962,7 +962,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 CombatantGetGroundPosition(AI Combatant)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -970,7 +970,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 CombatantGetGroundPosition(Combatant Combatant)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -978,7 +978,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 CombatantGetGroundPosition(Player Combatant)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -986,7 +986,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (int Health, int Shield, int MaxHealth) CombatantGetHealth(AI Object)
         {
-            return (default(int), default(int), default(int));
+            return default;
         }
 
         /// <summary>
@@ -994,7 +994,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (int Health, int Shield, int MaxHealth) CombatantGetHealth(Combatant Object)
         {
-            return (default(int), default(int), default(int));
+            return default;
         }
 
         /// <summary>
@@ -1002,7 +1002,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (int Health, int Shield, int MaxHealth) CombatantGetHealth(Player Object)
         {
-            return (default(int), default(int), default(int));
+            return default;
         }
 
         /// <summary>
@@ -1010,7 +1010,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool CombatantGetIsAlive(AI Object)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -1018,7 +1018,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool CombatantGetIsAlive(Combatant Object)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -1026,7 +1026,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool CombatantGetIsAlive(Player Object)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -1034,7 +1034,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (Vector3 Velocity, float Speed) CombatantGetVelocity(AI Combatant)
         {
-            return (default(Vector3), default(float));
+            return default;
         }
 
         /// <summary>
@@ -1042,7 +1042,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (Vector3 Velocity, float Speed) CombatantGetVelocity(Combatant Combatant)
         {
-            return (default(Vector3), default(float));
+            return default;
         }
 
         /// <summary>
@@ -1050,7 +1050,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (Vector3 Velocity, float Speed) CombatantGetVelocity(Player Combatant)
         {
-            return (default(Vector3), default(float));
+            return default;
         }
 
         /// <summary>
@@ -1130,7 +1130,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (bool IsPlayer, Player Player, AI AI) CombatantSplit(Combatant Combatant)
         {
-            return (default(bool), default(Player), default(AI));
+            return default;
         }
 
         /// <summary>
@@ -1138,7 +1138,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static Combatant CombatantVariable(Combatant Port0)
         {
-            return default(Combatant);
+            return default;
         }
 
         /// <summary>
@@ -1162,7 +1162,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Consumable ConsumableConstant()
         {
-            return default(Consumable);
+            return default;
         }
 
         /// <summary>
@@ -1178,7 +1178,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static string ControlPanel()
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -1186,7 +1186,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Cos(float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1202,7 +1202,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player CostumeGetWearer(Costume Target)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -1210,7 +1210,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player CostumeUnequip(Costume Target)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -1226,7 +1226,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<int> DataTableGetAllRowsContaining()
         {
-            return default(List<int>);
+            return default;
         }
 
         /// <summary>
@@ -1234,7 +1234,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int DataTableGetFirstRowContaining()
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -1258,7 +1258,7 @@ namespace RRCGGenerated
         /// </summary>
         public static DestinationRoom DestinationRoomConstant()
         {
-            return default(DestinationRoom);
+            return default;
         }
 
         /// <summary>
@@ -1266,7 +1266,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static DestinationRoom DestinationRoomVariable(DestinationRoom Port0)
         {
-            return default(DestinationRoom);
+            return default;
         }
 
         /// <summary>
@@ -1274,7 +1274,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player DiceGetPlayerRolled(Die Target)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -1282,7 +1282,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int DiceGetResult(Die Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -1290,7 +1290,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool DiceGetRollfinished(Die Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -1306,7 +1306,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Distance(AI A, AI B)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1314,7 +1314,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Distance(Combatant A, Combatant B)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1322,7 +1322,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Distance(RecRoomObject A, RecRoomObject B)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1330,7 +1330,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Distance(Player A, Player B)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1338,7 +1338,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Distance(Vector3 A, Vector3 B)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1346,7 +1346,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float DistanceDeprecated(AI A, AI B)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1354,7 +1354,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float DistanceDeprecated(Combatant A, Combatant B)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1362,7 +1362,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float DistanceDeprecated(RecRoomObject A, RecRoomObject B)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1370,7 +1370,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float DistanceDeprecated(Player A, Player B)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1378,7 +1378,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float DistanceDeprecated(Vector3 A, Vector3 B)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1386,7 +1386,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int Divide(params int[] Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -1394,7 +1394,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Divide(params float[] Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1402,7 +1402,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 Divide(params Vector3[] Value)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -1410,7 +1410,7 @@ namespace RRCGGenerated
         /// </summary>
         public static DestinationRoom DoorGetDestination(RoomDoor Target)
         {
-            return default(DestinationRoom);
+            return default;
         }
 
         /// <summary>
@@ -1418,7 +1418,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool DoorGetLocked(RoomDoor Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -1442,7 +1442,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool EmitterGetLooping(Emitter Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -1450,7 +1450,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool EmitterGetPlaying(Emitter Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -1458,7 +1458,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float EmitterGetSize(Emitter Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1466,7 +1466,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float EmitterGetSpeed(Emitter Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1530,7 +1530,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static new bool Equals(object A, object B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -1538,7 +1538,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static new bool Equals(object Value)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -1546,7 +1546,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool EquipObjecttoDominantHand(Player Player, RecRoomObject ObjectToEquip, bool ForceEquip, bool Steal)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -1554,7 +1554,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool EquipObjecttoOffHand(Player Player, RecRoomObject ObjectToEquip, bool ForceEquip, bool Steal)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -1610,7 +1610,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ExplosionEmitterGetDamage(ExplosionEmitter Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -1618,7 +1618,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color ExplosionEmitterGetExplosionColor(ExplosionEmitter Target)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -1626,7 +1626,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float ExplosionEmitterGetExplosionRadius(ExplosionEmitter Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1634,7 +1634,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player ExplosionEmitterGetFiringPlayer(ExplosionEmitter Target)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -1674,7 +1674,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static float floatVariable(float Port0)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1682,7 +1682,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Floor(float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -1690,7 +1690,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int FloortoInt(float Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -1698,7 +1698,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Fog FogConstant()
         {
-            return default(Fog);
+            return default;
         }
 
         /// <summary>
@@ -1706,7 +1706,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int For(int From, int To, AlternativeExec<int> Done)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -1714,7 +1714,7 @@ namespace RRCGGenerated
         /// </summary>
         public static object ForEach<T>(List<T> Items, AlternativeExec<object> Done)
         {
-            return default(object);
+            return default;
         }
 
         /// <summary>
@@ -1722,7 +1722,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static RecRoomObject FromRecRoomObject(RecRoomObject Target)
         {
-            return default(RecRoomObject);
+            return default;
         }
 
         /// <summary>
@@ -1730,7 +1730,7 @@ namespace RRCGGenerated
         /// </summary>
         public static HUDElement GameHUDElementConstant()
         {
-            return default(HUDElement);
+            return default;
         }
 
         /// <summary>
@@ -1746,7 +1746,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<Player> GetAllPlayers()
         {
-            return default(List<Player>);
+            return default;
         }
 
         /// <summary>
@@ -1754,7 +1754,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<Player> GetAllPlayersDeprecated()
         {
-            return default(List<Player>);
+            return default;
         }
 
         /// <summary>
@@ -1762,7 +1762,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<Player> GetAllPlayersWithRole(string RoleName)
         {
-            return default(List<Player>);
+            return default;
         }
 
         /// <summary>
@@ -1770,7 +1770,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetAngularVelocity(RecRoomObject Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -1778,7 +1778,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player GetAnyPlayerwithRole(string Role)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -1786,7 +1786,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player GetAuthority()
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -1794,7 +1794,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (int AudienceCount, int BroadcasterCount, bool IsBroadcastActive) GetBroadcastingAttendance()
         {
-            return (default(int), default(int), default(bool));
+            return default;
         }
 
         /// <summary>
@@ -1802,7 +1802,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (T2 Closest, int ClosestIndex, float Distance) GetClosest<T2>(RecRoomObject Origin, List<T2> Targets)
         {
-            return (default, default(int), default(float));
+            return default;
         }
 
         /// <summary>
@@ -1810,7 +1810,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (T2 Closest, int ClosestIndex, float Distance) GetClosest<T2>(Player Origin, List<T2> Targets)
         {
-            return (default, default(int), default(float));
+            return default;
         }
 
         /// <summary>
@@ -1818,7 +1818,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (T2 Closest, int ClosestIndex, float Distance) GetClosest<T2>(Vector3 Origin, List<T2> Targets)
         {
-            return (default, default(int), default(float));
+            return default;
         }
 
         /// <summary>
@@ -1826,7 +1826,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (bool Success, int TotalBalance) GetCurrencyBalance(Player Player, AlternativeExec<(bool Success, int TotalBalance)> OnGetBalanceComplete)
         {
-            return (default(bool), default(int));
+            return default;
         }
 
         /// <summary>
@@ -1834,7 +1834,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (bool Success, int TotalBalance) GetCurrencyBalanceNew(RoomCurrency Currency, Player Player, AlternativeExec<(bool Success, int TotalBalance)> OnGetBalanceComplete)
         {
-            return (default(bool), default(int));
+            return default;
         }
 
         /// <summary>
@@ -1842,7 +1842,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (RecRoomObject Farthest, int FarthestIndex, float Distance) GetFarthest<T2>(RecRoomObject Origin, List<T2> Targets)
         {
-            return (default(RecRoomObject), default(int), default(float));
+            return default;
         }
 
         /// <summary>
@@ -1850,7 +1850,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (Player Farthest, int FarthestIndex, float Distance) GetFarthest<T2>(Player Origin, List<T2> Targets)
         {
-            return (default(Player), default(int), default(float));
+            return default;
         }
 
         /// <summary>
@@ -1858,7 +1858,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (Vector3 Farthest, int FarthestIndex, float Distance) GetFarthest<T2>(Vector3 Origin, List<T2> Targets)
         {
-            return (default(Vector3), default(int), default(float));
+            return default;
         }
 
         /// <summary>
@@ -1866,7 +1866,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string GetFirstTag(Player Target)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -1874,7 +1874,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string GetFirstTag(RecRoomObject Target)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -1882,7 +1882,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string GetFormattedTime(float UniversalSeconds, string Format)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -1890,7 +1890,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string GetFormattedTime(int UniversalSeconds, string Format)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -1898,7 +1898,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetForwardVector(RecRoomObject Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -1906,7 +1906,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetForwardVector(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -1914,7 +1914,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetForwardVectorDeprecated(RecRoomObject Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -1922,7 +1922,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetForwardVectorDeprecated(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -1930,7 +1930,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color GetGameHUDElementColor(HUDConstant Target)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -1938,7 +1938,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string GetGameHUDElementLabel(HUDConstant Target)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -1946,7 +1946,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int GetGameHUDElementMaxValue(HUDConstant Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -1954,7 +1954,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int GetGameHUDElementValue(HUDConstant Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -1962,7 +1962,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int GetLoadingPlayers()
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -1970,7 +1970,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetLocalCameraForward()
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -1978,7 +1978,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetLocalCameraPosition()
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -1986,7 +1986,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion GetLocalCameraRotation()
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -1994,7 +1994,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetLocalCameraUp()
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2002,7 +2002,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player GetLocalPlayer()
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -2010,7 +2010,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string GetNewLine()
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -2018,7 +2018,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<Player> GetPartyOfPlayer(Player Target)
         {
-            return default(List<Player>);
+            return default;
         }
 
         /// <summary>
@@ -2026,7 +2026,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string GetPlayerAccountName(Player Player)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -2034,7 +2034,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player GetPlayerByAccountName(string Name)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -2042,7 +2042,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player GetPlayerByDisplayName(string Name)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -2050,7 +2050,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string GetPlayerSeasonLeagueName(Player Player)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -2058,7 +2058,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GetPlayerWorldUIEnabled(Player Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2066,7 +2066,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color GetPlayerWorldUIPrimaryBarColor(Player Target)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -2074,7 +2074,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GetPlayerWorldUIPrimaryBarEnabled(Player Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2082,7 +2082,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int GetPlayerWorldUIPrimaryBarMaxValue(Player Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -2090,7 +2090,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int GetPlayerWorldUIPrimaryBarValue(Player Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -2098,7 +2098,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color GetPlayerWorldUISecondaryBarColor(Player Target)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -2106,7 +2106,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GetPlayerWorldUISecondaryBarEnabled(Player Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2114,7 +2114,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int GetPlayerWorldUISecondaryBarMaxValue(Player Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -2122,7 +2122,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int GetPlayerWorldUISecondaryBarValue(Player Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -2130,7 +2130,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color GetPlayerWorldUITextColor(Player Target)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -2138,7 +2138,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GetPlayerWorldUITextEnabled(Player Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2146,7 +2146,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string GetPlayerWorldUITextValue(Player Target)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -2154,7 +2154,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetPosition(AI Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2162,7 +2162,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetPosition(Combatant Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2170,7 +2170,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetPosition(RecRoomObject Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2178,7 +2178,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetPosition(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2186,7 +2186,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetPositionDeprecated(AI Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2194,7 +2194,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetPositionDeprecated(Combatant Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2202,7 +2202,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetPositionDeprecated(RecRoomObject Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2210,7 +2210,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetPositionDeprecated(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2218,7 +2218,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player GetRoomAuthority()
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -2226,7 +2226,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion GetRotation(RecRoomObject Target)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -2234,7 +2234,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion GetRotation(Player Target)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -2242,7 +2242,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion GetRotationDeprecated(RecRoomObject Target)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -2250,7 +2250,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion GetRotationDeprecated(Player Target)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -2258,7 +2258,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<string> GetTags(Player Target)
         {
-            return default(List<string>);
+            return default;
         }
 
         /// <summary>
@@ -2266,7 +2266,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<string> GetTags(RecRoomObject Target)
         {
-            return default(List<string>);
+            return default;
         }
 
         /// <summary>
@@ -2274,7 +2274,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetUpVector(RecRoomObject Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2282,7 +2282,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetUpVector(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2290,7 +2290,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetUpVectorDeprecated(RecRoomObject Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2298,7 +2298,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetUpVectorDeprecated(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2306,7 +2306,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetVelocity(RecRoomObject Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2314,7 +2314,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetVelocity(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2322,7 +2322,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetVelocityDeprecated(RecRoomObject Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2330,7 +2330,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GetVelocityDeprecated(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2346,7 +2346,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GrantReward(Player Player, Reward Reward, AlternativeExec<bool> OnAwardComplete)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2354,7 +2354,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GreaterorEqual(int A, int B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2362,7 +2362,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GreaterorEqual(float A, float B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2370,7 +2370,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GreaterThan(int A, int B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2378,7 +2378,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GreaterThan(float A, float B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2386,7 +2386,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GreaterThanDepreacted(int A, int B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2394,7 +2394,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GreaterThanDepreacted(float A, float B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2402,7 +2402,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GreaterThanOrEqualDepreacted(int A, int B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2410,7 +2410,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GreaterThanOrEqualDepreacted(float A, float B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2434,7 +2434,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int GroundVehicleGetBoostFuel(GroundVehicle Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -2442,7 +2442,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GroundVehicleGetDrivingEnabled(GroundVehicle Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2450,7 +2450,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float GroundVehicleGetEngineTorqueMultiplier(GroundVehicle Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2458,7 +2458,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player GroundVehicleGetSeatedPlayer(GroundVehicle Target, int Seatindex)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -2466,7 +2466,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float GroundVehicleGetWheelFrictionMultiplier(GroundVehicle Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2538,7 +2538,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int GunHandleGetCurrentAmmo(GunHandle Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -2546,7 +2546,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 GunHandleGetFiringDirection(GunHandle Target, RecRoomObject Source)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -2554,7 +2554,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GunHandleGetIsReloading(GunHandle Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2562,7 +2562,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int GunHandleGetMaxAmmo(GunHandle Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -2570,7 +2570,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float GunHandleGetRateOfFire(GunHandle Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2578,7 +2578,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float GunHandleGetReloadDuration(GunHandle Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2586,7 +2586,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool GunHandleGetSupportsReload(GunHandle Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2658,7 +2658,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool HasTag(Player Target, string Tag)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2666,7 +2666,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool HasTag(RecRoomObject Target, string Tag)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2674,7 +2674,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool HolsterObject(Player Player, RecRoomObject ObjectToHolster, bool ForceHolster, bool Steal)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2682,7 +2682,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color HSVToColor(float Hue, float Saturation, float Value)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -2770,7 +2770,7 @@ namespace RRCGGenerated
         /// </summary>
         public static object IfValue(bool If, object Then, object Else)
         {
-            return default(object);
+            return default;
         }
 
         /// <summary>
@@ -2786,7 +2786,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool InstanceGetIsEvent()
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2794,7 +2794,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool InstanceGetIsPrivate()
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2802,7 +2802,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int InstanceGetMaxPlayers()
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -2810,7 +2810,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float InteractionVolumeGetHoldTime(InteractionVolume Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2818,7 +2818,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string InteractionVolumeGetInteractionPrompt(InteractionVolume Target)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -2826,7 +2826,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool InteractionVolumeGetIsLocked(InteractionVolume Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2834,7 +2834,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float InteractionVolumeGetNormalizedHoldProgress(InteractionVolume Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2874,7 +2874,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float InttoFloat(int Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2882,7 +2882,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static int intVariable(int Port0)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -2890,7 +2890,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float InverseLerp(float Start, float End, float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2898,7 +2898,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float InverseLerp(Color Start, Color End, Color Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2906,7 +2906,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float InverseLerp(Vector3 Start, Vector3 End, Vector3 Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2914,7 +2914,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float InverseLerpUnclamped(float Start, float End, float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2922,7 +2922,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float InverseLerpUnclamped(Color Start, Color End, Color Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2930,7 +2930,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float InverseLerpUnclamped(Vector3 Start, Vector3 End, Vector3 Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -2938,7 +2938,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool InvisibleCollisionGetBlocksPlayers(InvisibleCollision Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2946,7 +2946,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool InvisibleCollisionGetEnabled(InvisibleCollision Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2970,7 +2970,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool IsValid(object Port0)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2978,7 +2978,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color LaserPointerGetColor(LaserPointer Target)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -2986,7 +2986,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool LaserPointerGetEnabled(LaserPointer Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -2994,7 +2994,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float LaserPointerGetLength(LaserPointer Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3026,7 +3026,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int LeaderboardGetPlayerStat(Player Player, int Channel, AlternativeExec<int> OnGetStatComplete)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3042,7 +3042,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Lerp(float Start, float End, float Progress)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3050,7 +3050,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion Lerp(Quaternion Start, Quaternion End, float Progress)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -3058,7 +3058,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 Lerp(Vector3 Start, Vector3 End, float Progress)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -3066,7 +3066,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color Lerp(Color Start, Color End, float Progress)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -3074,7 +3074,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float LerpUnclamped(float Start, float End, float Progress)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3082,7 +3082,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion LerpUnclamped(Quaternion Start, Quaternion End, float Progress)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -3090,7 +3090,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 LerpUnclamped(Vector3 Start, Vector3 End, float Progress)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -3098,7 +3098,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color LerpUnclamped(Color Start, Color End, float Progress)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -3106,7 +3106,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool LessorEqual(int A, int B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3114,7 +3114,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool LessorEqual(float A, float B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3122,7 +3122,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool LessThan(int A, int B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3130,7 +3130,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool LessThan(float A, float B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3138,7 +3138,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool LessThanDepreacted(int A, int B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3146,7 +3146,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool LessThanDepreacted(float A, float B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3154,7 +3154,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool LessThanOrEqualDepreacted(int A, int B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3162,7 +3162,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool LessThanOrEqualDepreacted(float A, float B)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3170,7 +3170,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float LightGetAngle(Light Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3178,7 +3178,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color LightGetColor(Light Target)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -3186,7 +3186,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool LightGetEnabled(Light Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3194,7 +3194,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float LightGetIntensity(Light Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3202,7 +3202,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float LightGetRange(Light Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3210,7 +3210,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float LightGetSoftness(Light Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3218,7 +3218,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float LightGetSpecularContribution(Light Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3330,7 +3330,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool ListAllTrue(List<bool> Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3338,7 +3338,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool ListAnyTrue(List<bool> Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3346,7 +3346,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static List<bool> ListBoolVariable(List<bool> Port0)
         {
-            return default(List<bool>);
+            return default;
         }
 
         /// <summary>
@@ -3354,7 +3354,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static List<Color> ListColorVariable(List<Color> Port0)
         {
-            return default(List<Color>);
+            return default;
         }
 
         /// <summary>
@@ -3362,7 +3362,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<T> ListConcat<T>(List<T> List1, List<T> List2)
         {
-            return default(List<T>);
+            return default;
         }
 
         /// <summary>
@@ -3370,7 +3370,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool ListContains<T>(List<T> Target, object Item)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3378,7 +3378,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<T> ListCopy<T>(List<T> Target)
         {
-            return default(List<T>);
+            return default;
         }
 
         /// <summary>
@@ -3386,7 +3386,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<T> ListCreate<T>(params object[] Item)
         {
-            return default(List<T>);
+            return default;
         }
 
         /// <summary>
@@ -3394,7 +3394,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static List<DestinationRoom> ListDestinationRoomVariable(List<DestinationRoom> Port0)
         {
-            return default(List<DestinationRoom>);
+            return default;
         }
 
         /// <summary>
@@ -3402,7 +3402,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float ListDivide<T>(List<float> Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3410,7 +3410,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ListDivide<T>(List<int> Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3418,7 +3418,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 ListDivide<T>(List<Vector3> Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -3426,7 +3426,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static List<float> ListFloatVariable(List<float> Port0)
         {
-            return default(List<float>);
+            return default;
         }
 
         /// <summary>
@@ -3434,7 +3434,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<int> ListGetAllIndicesOf<T>(List<T> Target, object Item)
         {
-            return default(List<int>);
+            return default;
         }
 
         /// <summary>
@@ -3442,7 +3442,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ListGetCount<T>(List<T> List)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3458,7 +3458,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ListGetFirstIndexOf<T>(List<T> Target, object Item)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3474,7 +3474,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static List<int> ListIntVariable(List<int> Port0)
         {
-            return default(List<int>);
+            return default;
         }
 
         /// <summary>
@@ -3482,7 +3482,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float ListMax<T>(List<float> Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3490,7 +3490,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ListMax<T>(List<int> Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3498,7 +3498,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float ListMin<T>(List<float> Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3506,7 +3506,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ListMin<T>(List<int> Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3514,7 +3514,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float ListMultiply<T>(List<float> Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3522,7 +3522,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ListMultiply<T>(List<int> Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3530,7 +3530,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion ListMultiply<T>(List<Quaternion> Target)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -3538,7 +3538,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 ListMultiply<T>(List<Vector3> Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -3546,7 +3546,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static List<ObjectiveMarker> ListObjectiveMarkerVariable(List<ObjectiveMarker> Port0)
         {
-            return default(List<ObjectiveMarker>);
+            return default;
         }
 
         /// <summary>
@@ -3554,7 +3554,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static List<Player> ListPlayerVariable(List<Player> Port0)
         {
-            return default(List<Player>);
+            return default;
         }
 
         /// <summary>
@@ -3562,7 +3562,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static List<Quaternion> ListQuaternionVariable(List<Quaternion> Port0)
         {
-            return default(List<Quaternion>);
+            return default;
         }
 
         /// <summary>
@@ -3570,7 +3570,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static List<RecRoomObject> ListRecRoomObjectVariable(List<RecRoomObject> Port0)
         {
-            return default(List<RecRoomObject>);
+            return default;
         }
 
         /// <summary>
@@ -3594,7 +3594,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ListRemoveItemFirst<T>(List<T> Target, object Item)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3610,7 +3610,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static List<Reward> ListRewardVariable(List<Reward> Port0)
         {
-            return default(List<Reward>);
+            return default;
         }
 
         /// <summary>
@@ -3642,7 +3642,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static List<string> ListStringVariable(List<string> Port0)
         {
-            return default(List<string>);
+            return default;
         }
 
         /// <summary>
@@ -3650,7 +3650,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float ListSubtract<T>(List<float> Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3658,7 +3658,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ListSubtract<T>(List<int> Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3666,7 +3666,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 ListSubtract<T>(List<Vector3> Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -3674,7 +3674,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float ListSum<T>(List<float> Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3682,7 +3682,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ListSum<T>(List<int> Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3690,7 +3690,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 ListSum<T>(List<Vector3> Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -3698,7 +3698,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static List<Vector3> ListVector3Variable(List<Vector3> Port0)
         {
-            return default(List<Vector3>);
+            return default;
         }
 
         /// <summary>
@@ -3722,7 +3722,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 LocalPlayerGazeDirection()
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -3730,7 +3730,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 LocalPlayerGazeOrigin()
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -3746,7 +3746,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Logarithm(float Value, float Base)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3770,7 +3770,7 @@ namespace RRCGGenerated
         /// </summary>
         public static object MakeTuple(object Item1, object Item2)
         {
-            return default(object);
+            return default;
         }
 
         /// <summary>
@@ -3778,7 +3778,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int Max(params int[] Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3786,7 +3786,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Max(params float[] Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3794,7 +3794,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int Min(params int[] Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3802,7 +3802,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Min(params float[] Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3810,7 +3810,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int Modulo(params int[] Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3818,7 +3818,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Modulo(params float[] Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3826,7 +3826,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int Multiply(params int[] Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -3834,7 +3834,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Multiply(params float[] Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3842,7 +3842,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion Multiply(params Quaternion[] Value)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -3850,7 +3850,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 Multiply(params Vector3[] Value)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -3858,7 +3858,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Audio MusicConstant()
         {
-            return default(Audio);
+            return default;
         }
 
         /// <summary>
@@ -3866,7 +3866,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool Nand(bool Input)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3874,7 +3874,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Noise(Vector3 Point)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3882,7 +3882,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool Nor(bool Input)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3890,7 +3890,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool Not(bool Value)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3914,7 +3914,7 @@ namespace RRCGGenerated
         /// </summary>
         public static ObjectiveMarker ObjectiveMarkerConstant()
         {
-            return default(ObjectiveMarker);
+            return default;
         }
 
         /// <summary>
@@ -3922,7 +3922,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color ObjectiveMarkerGetColor(ObjectiveMarker Target)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -3930,7 +3930,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float ObjectiveMarkerGetCurrentDistance(ObjectiveMarker Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3938,7 +3938,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool ObjectiveMarkerGetDistanceEnabled(ObjectiveMarker Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3946,7 +3946,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool ObjectiveMarkerGetEnabled(ObjectiveMarker Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3954,7 +3954,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float ObjectiveMarkerGetFadeThreshold(ObjectiveMarker Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -3962,7 +3962,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string ObjectiveMarkerGetLabel(ObjectiveMarker Target)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -3970,7 +3970,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool ObjectiveMarkerGetLabelEnabled(ObjectiveMarker Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -3978,7 +3978,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 ObjectiveMarkerGetPosition(ObjectiveMarker Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -3986,7 +3986,7 @@ namespace RRCGGenerated
         /// </summary>
         public static RecRoomObject ObjectiveMarkerGetTargetObject(ObjectiveMarker Target)
         {
-            return default(RecRoomObject);
+            return default;
         }
 
         /// <summary>
@@ -3994,7 +3994,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player ObjectiveMarkerGetTargetPlayer(ObjectiveMarker Target)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -4058,7 +4058,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool Or(bool Input)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -4074,7 +4074,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<CollisionData> OverlapBox(Vector3 Center, Vector3 Extents, Quaternion Orientation)
         {
-            return default(List<CollisionData>);
+            return default;
         }
 
         /// <summary>
@@ -4082,7 +4082,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<CollisionData> OverlapSphere(Vector3 Origin, float Radius)
         {
-            return default(List<CollisionData>);
+            return default;
         }
 
         /// <summary>
@@ -4090,7 +4090,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (bool Result, bool ParseSuccess) ParseBool(string String)
         {
-            return (default(bool), default(bool));
+            return default;
         }
 
         /// <summary>
@@ -4098,7 +4098,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (Color Result, bool ParseSuccess) ParseColor(string String)
         {
-            return (default(Color), default(bool));
+            return default;
         }
 
         /// <summary>
@@ -4106,7 +4106,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (float Result, bool ParseSuccess) ParseFloat(string String)
         {
-            return (default(float), default(bool));
+            return default;
         }
 
         /// <summary>
@@ -4114,7 +4114,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (int Result, bool ParseSuccess) ParseInt(string String)
         {
-            return (default(int), default(bool));
+            return default;
         }
 
         /// <summary>
@@ -4122,7 +4122,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float PistonGetAcceleration(Piston Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -4130,7 +4130,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float PistonGetDistance(Piston Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -4138,7 +4138,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float PistonGetMaxDistance(Piston Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -4146,7 +4146,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float PistonGetSpeed(Piston Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -4154,7 +4154,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float PistonGetTargetDistance(Piston Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -4218,7 +4218,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion PlayerBodyOrientation(Player Target)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4226,7 +4226,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerBodyPosition(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4250,7 +4250,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<Player> PlayerGetAllwithTag(string Tag)
         {
-            return default(List<Player>);
+            return default;
         }
 
         /// <summary>
@@ -4258,7 +4258,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Costume PlayerGetCostume(Player Player)
         {
-            return default(Costume);
+            return default;
         }
 
         /// <summary>
@@ -4266,7 +4266,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool PlayerGetDominantHandIsRight(Player Player)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -4274,7 +4274,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (RecRoomObject DominantHandObject, RecRoomObject OffHandObject, RecRoomObject LeftHipHolsterObject, RecRoomObject RightHipHolsterObject, RecRoomObject ShoulderHolsterObject) PlayerGetEquippedObjects(Player Player)
         {
-            return (default(RecRoomObject), default(RecRoomObject), default(RecRoomObject), default(RecRoomObject), default(RecRoomObject));
+            return default;
         }
 
         /// <summary>
@@ -4282,7 +4282,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player PlayerGetFirstwithTag(string Tag)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -4290,7 +4290,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool PlayerGetIsAuthorityOf(Player Target, RecRoomObject Object)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -4298,7 +4298,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (bool IsJumpingOrFalling, RecRoomObject ContactSurface) PlayerGetIsJumpingOrFalling(Player Player)
         {
-            return (default(bool), default(RecRoomObject));
+            return default;
         }
 
         /// <summary>
@@ -4306,7 +4306,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool PlayerGetIsLocal(Player Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -4314,7 +4314,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool PlayerGetIsRoomOwner(Player Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -4322,7 +4322,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int PlayerGetRadioChannel(Player Player)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -4330,7 +4330,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int PlayerGetRoomIndex(Player Player)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -4338,7 +4338,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Seat PlayerGetSeat(Player Player)
         {
-            return default(Seat);
+            return default;
         }
 
         /// <summary>
@@ -4346,7 +4346,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerGetSteeringDirection(Player Player)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4354,7 +4354,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int PlayerGetTimeZone(Player Player)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -4362,7 +4362,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool PlayerHasRole(Player Target, string Value)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -4370,7 +4370,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerHeadForwardVector(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4378,7 +4378,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float PlayerHeadHeight(Player Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -4386,7 +4386,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion PlayerHeadOrientation(Player Target)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4394,7 +4394,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerHeadPosition(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4402,7 +4402,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerHeadUpVector(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4410,7 +4410,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerHeadVelocity(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4418,7 +4418,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool PlayerIsInParty(Player Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -4426,7 +4426,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool PlayerIsRoomHost(Player Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -4434,7 +4434,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool PlayerIsRoomMod(Player Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -4442,7 +4442,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerLeftHandFingerDirection(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4450,7 +4450,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerLeftHandPosition(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4458,7 +4458,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion PlayerLeftHandRotation(Player Target)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4466,7 +4466,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerLeftHandThumbDirection(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4474,7 +4474,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerLeftHandVelocity(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4482,7 +4482,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool PlayerOwnsRoomKey(Player Player, RoomKey RoomKey, AlternativeExec<bool> OnPlayerOwnsRoomKeyComplete)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -4490,7 +4490,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (bool Success, Player ReceivingPlayer, string Response, int ResponseIndex) PlayerPromptMultipleChoice(Player Player, string PromptTitle, string PromptBody, List<string> AnswerChoices, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response, int ResponseIndex)> OnPromptComplete)
         {
-            return (default(bool), default(Player), default(string), default(int));
+            return default;
         }
 
         /// <summary>
@@ -4522,7 +4522,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerRightHandFingerDirection(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4530,7 +4530,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerRightHandPosition(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4538,7 +4538,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion PlayerRightHandRotation(Player Target)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4546,7 +4546,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerRightHandThumbDirection(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4554,7 +4554,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 PlayerRightHandVelocity(Player Target)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4578,7 +4578,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (bool Result, int SecondsUntilEnabled) PlayerSubscribesToRoomOwner(Player Target)
         {
-            return (default(bool), default(int));
+            return default;
         }
 
         /// <summary>
@@ -4586,7 +4586,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static Player PlayerVariable(Player Port0)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -4594,7 +4594,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static Player PlayerVariableDeprecated(Player Port0)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -4602,7 +4602,7 @@ namespace RRCGGenerated
         /// </summary>
         public static PlayerWorldUI PlayerWorldUI()
         {
-            return default(PlayerWorldUI);
+            return default;
         }
 
         /// <summary>
@@ -4634,7 +4634,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int Power(int Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -4642,7 +4642,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Power(float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -4666,7 +4666,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player ProjectileLauncherGetFiringPlayer(ProjectileLauncher Target)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -4674,7 +4674,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ProjectileLauncherGetHandDamage(ProjectileLauncher Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -4682,7 +4682,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ProjectileLauncherGetHeadDamage(ProjectileLauncher Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -4690,7 +4690,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color ProjectileLauncherGetProjectileColor(ProjectileLauncher Target)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -4698,7 +4698,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ProjectileLauncherGetProjectileCount(ProjectileLauncher Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -4706,7 +4706,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float ProjectileLauncherGetProjectileLifetime(ProjectileLauncher Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -4714,7 +4714,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float ProjectileLauncherGetProjectileSpeed(ProjectileLauncher Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -4722,7 +4722,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float ProjectileLauncherGetProjectileSpread(ProjectileLauncher Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -4730,7 +4730,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ProjectileLauncherGetRecRoomObjectDamage(ProjectileLauncher Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -4738,7 +4738,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int ProjectileLauncherGetTorsoDamage(ProjectileLauncher Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -4826,7 +4826,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string PromptLocalPlayer(string PromptTitle, string Prompt, AlternativeExec<string> Complete, AlternativeExec<string> Failed)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -4834,7 +4834,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion QuaternionCreate(float X, float Y, float Z, float W)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4842,7 +4842,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion QuaternionCreateAngleAxis(float Angle, Vector3 Axis)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4850,7 +4850,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion QuaternionCreateEulerAngles(Vector3 Angles)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4858,7 +4858,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion QuaternionCreateFromTo(Vector3 From, Vector3 To)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4866,7 +4866,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion QuaternionCreateLook(Vector3 Forward, Vector3 Upwards)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4874,7 +4874,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float QuaternionDot(Quaternion Lhs, Quaternion Rhs)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -4882,7 +4882,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 QuaternionEulerAngles(Quaternion Value)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -4890,7 +4890,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (float Angle, Vector3 Axis) QuaternionGetAngleAxis(Quaternion Quaternion)
         {
-            return (default(float), default(Vector3));
+            return default;
         }
 
         /// <summary>
@@ -4898,7 +4898,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion QuaternionInverse(Quaternion Value)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4906,7 +4906,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion QuaternionNormalize(Quaternion Value)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4914,7 +4914,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion QuaternionRotateTowards(Quaternion From, Quaternion To, float MaxDegreesDelta)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4922,7 +4922,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (float X, float Y, float Z, float W) QuaternionSplit(Quaternion Quaternion)
         {
-            return (default(float), default(float), default(float), default(float));
+            return default;
         }
 
         /// <summary>
@@ -4930,7 +4930,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static Quaternion QuaternionVariable(Quaternion Port0)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -4938,7 +4938,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float RandomFloat(float Min, float Max)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -4946,7 +4946,7 @@ namespace RRCGGenerated
         /// </summary>
         public static object RandomFromList<T>(List<T> List)
         {
-            return default(object);
+            return default;
         }
 
         /// <summary>
@@ -4954,7 +4954,7 @@ namespace RRCGGenerated
         /// </summary>
         public static object RandomFromListDeprecated<T>(List<T> List)
         {
-            return default(object);
+            return default;
         }
 
         /// <summary>
@@ -4962,7 +4962,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int RandomInt(int Min, int Max)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -4970,7 +4970,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (bool Hit, Player Player, RecRoomObject Object, float Distance, Vector3 HitPosition, Vector3 SurfaceNormal) Raycast(Vector3 StartPosition, Vector3 Direction, float MaxDistance)
         {
-            return (default(bool), default(Player), default(RecRoomObject), default(float), default(Vector3), default(Vector3));
+            return default;
         }
 
         /// <summary>
@@ -4978,7 +4978,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool RecalculateRoomAuthority()
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -4986,7 +4986,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<RecRoomObject> RecRoomObjectGetAllwithTag(string Tag)
         {
-            return default(List<RecRoomObject>);
+            return default;
         }
 
         /// <summary>
@@ -4994,7 +4994,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player RecRoomObjectGetAuthority(RecRoomObject Target)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -5002,7 +5002,7 @@ namespace RRCGGenerated
         /// </summary>
         public static RecRoomObject RecRoomObjectGetFirstwithTag(string Tag)
         {
-            return default(RecRoomObject);
+            return default;
         }
 
         /// <summary>
@@ -5010,7 +5010,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool RecRoomObjectGetIsLocalPlayerAuthority(RecRoomObject Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5018,7 +5018,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (Player Player, bool CurrentlyEquipped) RecRoomObjectGetLastEquippingPlayer(RecRoomObject Object)
         {
-            return (default(Player), default(bool));
+            return default;
         }
 
         /// <summary>
@@ -5042,7 +5042,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static RecRoomObject RecRoomObjectVariable(RecRoomObject Port0)
         {
-            return default(RecRoomObject);
+            return default;
         }
 
         /// <summary>
@@ -5090,7 +5090,7 @@ namespace RRCGGenerated
         /// </summary>
         public static object Reroute(object Port0)
         {
-            return default(object);
+            return default;
         }
 
         /// <summary>
@@ -5114,7 +5114,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool Respawn(Player Target, Vector3 Position, Vector3 Rotation, float SpawnRadius, bool ClearVelocity, bool UseRezEffects)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5122,7 +5122,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool Respawn(Player Target, Vector3 Position, Quaternion Rotation, float SpawnRadius, bool ClearVelocity, bool UseRezEffects)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5130,7 +5130,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool Respawn(RecRoomObject Target, Vector3 Position, Vector3 Rotation, float SpawnRadius, bool ClearVelocity, bool UseRezEffects)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5138,7 +5138,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool Respawn(RecRoomObject Target, Vector3 Position, Quaternion Rotation, float SpawnRadius, bool ClearVelocity, bool UseRezEffects)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5178,7 +5178,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool RespawnPointAddAvoidRole(PlayerSpawnPointV2 SpawnPoint, string Role)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5194,7 +5194,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool RespawnPointAddSpawnRole(PlayerSpawnPointV2 SpawnPoint, string Role)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5210,7 +5210,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool RespawnPointGetActive(PlayerSpawnPointV2 Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5274,7 +5274,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Reward Reward()
         {
-            return default(Reward);
+            return default;
         }
 
         /// <summary>
@@ -5282,7 +5282,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color RGBToColor(float Red, float Green, float Blue)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -5290,7 +5290,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool RoomBackgroundObjectsModify(BackgroundObjects BackgroundObjectsConstant, AlternativeExec<bool> BlendFinished)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5306,7 +5306,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static RoomCurrency RoomCurrencyConstant()
         {
-            return default(RoomCurrency);
+            return default;
         }
 
         /// <summary>
@@ -5314,7 +5314,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool RoomFogModify(Fog FogConstant, AlternativeExec<bool> BlendFinished)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5330,7 +5330,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool RoomGetMatchmakingState()
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5338,7 +5338,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player RoomIndexGetPlayer(int RoomIndex)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -5346,7 +5346,7 @@ namespace RRCGGenerated
         /// </summary>
         public static RoomKey RoomKeyConstant()
         {
-            return default(RoomKey);
+            return default;
         }
 
         /// <summary>
@@ -5354,7 +5354,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool RoomSetMatchmakingState(bool MatchmakingPermitted, AlternativeExec<bool> OnMatchmakingStateSet)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5362,7 +5362,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool RoomSkydomeModify(Skydome SkydomeConstant, AlternativeExec<bool> BlendFinished)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5378,7 +5378,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool RoomSunModify(Sun SunConstant, SunDirection SunDirection, AlternativeExec<bool> BlendFinished)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5394,7 +5394,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Root(float Value, float Root)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -5402,7 +5402,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 RotateVector(Quaternion Rotation, Vector3 Point)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -5410,7 +5410,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float RotatorGetRotation(Rotator Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -5418,7 +5418,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float RotatorGetRotationAcceleration(Rotator Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -5426,7 +5426,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float RotatorGetRotationSpeed(Rotator Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -5434,7 +5434,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float RotatorGetTargetRotation(Rotator Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -5474,7 +5474,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Round(float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -5482,7 +5482,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int RoundtoInt(float Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -5490,7 +5490,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Audio SampleAudioConstant()
         {
-            return default(Audio);
+            return default;
         }
 
         /// <summary>
@@ -5498,7 +5498,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SeatGetLockPlayersIn(Seat Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5506,7 +5506,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SeatGetLockPlayersOut(Seat Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5514,7 +5514,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Player SeatGetSeatedPlayer(Seat Target)
         {
-            return default(Player);
+            return default;
         }
 
         /// <summary>
@@ -5554,7 +5554,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static int Self()
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -5738,7 +5738,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SetPosition(Player Target, Vector3 Position)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5746,7 +5746,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SetPosition(RecRoomObject Target, Vector3 Position)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5770,7 +5770,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SetRotation(Player Target, Vector3 Rotation)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5778,7 +5778,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SetRotation(Player Target, Quaternion Rotation)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5786,7 +5786,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SetRotation(RecRoomObject Target, Vector3 Rotation)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5794,7 +5794,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SetRotation(RecRoomObject Target, Quaternion Rotation)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5802,7 +5802,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SetTransform(Player Target, Vector3 Position, Vector3 Rotation)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5810,7 +5810,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SetTransform(Player Target, Vector3 Position, Quaternion Rotation)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5818,7 +5818,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SetTransform(RecRoomObject Target, Vector3 Position, Vector3 Rotation)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5826,7 +5826,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SetTransform(RecRoomObject Target, Vector3 Position, Quaternion Rotation)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5834,7 +5834,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Audio SFXConstant()
         {
-            return default(Audio);
+            return default;
         }
 
         /// <summary>
@@ -5842,7 +5842,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool SFXGetIsPlaying(SFX Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -5850,7 +5850,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int SFXGetVolume(SFX Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -5930,7 +5930,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Sin(float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -5938,7 +5938,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Skydome SkydomeConstant()
         {
-            return default(Skydome);
+            return default;
         }
 
         /// <summary>
@@ -5946,7 +5946,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Quaternion Slerp(Quaternion Start, Quaternion End, float Progress)
         {
-            return default(Quaternion);
+            return default;
         }
 
         /// <summary>
@@ -5954,7 +5954,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 Slerp(Vector3 Start, Vector3 End, float Progress)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -5978,7 +5978,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (bool Hit, Player Player, RecRoomObject Object, float Distance, Vector3 HitPosition, Vector3 SurfaceNormal) Spherecast(Vector3 StartPosition, float Radius, Vector3 Direction, float MaxDistance)
         {
-            return (default(bool), default(Player), default(RecRoomObject), default(float), default(Vector3), default(Vector3));
+            return default;
         }
 
         /// <summary>
@@ -5994,7 +5994,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string StringConcat(params string[] Separator)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6002,7 +6002,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool StringContains(string String, string Sequence)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -6010,7 +6010,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string StringFormat(string Format, string Value)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6018,7 +6018,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int StringIndexOf(string String, string Substring)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -6026,7 +6026,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int StringLength(string String)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -6034,7 +6034,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string StringReplace(string String, string Pattern, string Replacement)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6042,7 +6042,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<string> StringSplit(string String, string Divider)
         {
-            return default(List<string>);
+            return default;
         }
 
         /// <summary>
@@ -6050,7 +6050,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<string> StringSplitAtIndex(string String, int Index)
         {
-            return default(List<string>);
+            return default;
         }
 
         /// <summary>
@@ -6058,7 +6058,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<string> StringSplitWhitespace(string String)
         {
-            return default(List<string>);
+            return default;
         }
 
         /// <summary>
@@ -6066,7 +6066,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string StringSubstring(string String, int Index, int Length)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6074,7 +6074,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string StringToLower(string String)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6082,7 +6082,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string StringToUpper(string String)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6090,7 +6090,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string StringTrim(string String)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6098,7 +6098,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static string stringVariable(string Port0)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6106,7 +6106,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Audio StudioAudioConstant()
         {
-            return default(Audio);
+            return default;
         }
 
         /// <summary>
@@ -6186,7 +6186,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool StudioObjectGetPropertyBool(StudioObject StudioObject, string Property)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -6194,7 +6194,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float StudioObjectGetPropertyFloat(StudioObject StudioObject, string Property)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -6202,7 +6202,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int StudioObjectGetPropertyInt(StudioObject StudioObject, string Property)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -6210,7 +6210,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string StudioObjectGetPropertyString(StudioObject StudioObject, string Property)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6218,7 +6218,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int Subtract(params int[] Value)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -6226,7 +6226,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Subtract(params float[] Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -6234,7 +6234,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 Subtract(params Vector3[] Value)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -6242,7 +6242,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Sun SunConstant()
         {
-            return default(Sun);
+            return default;
         }
 
         /// <summary>
@@ -6250,7 +6250,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Tan(float Value)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -6258,7 +6258,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color TextGetColor(Text Target)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -6266,7 +6266,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string TextGetText(Text Target)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6306,7 +6306,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float TimeGetPreciseSeconds()
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -6314,7 +6314,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int TimeGetUniversalSeconds()
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -6322,7 +6322,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (int Year, int Month, int Day, int Hour, int Minute, int Second) TimeGetUniversalTime()
         {
-            return (default(int), default(int), default(int), default(int), default(int), default(int));
+            return default;
         }
 
         /// <summary>
@@ -6330,7 +6330,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int TimeGetUnsyncedUniversalSeconds()
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -6338,7 +6338,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (int Year, int Month, int Day, int Hour, int Minute, int Second) TimeGetUnsyncedUniversalTime()
         {
-            return (default(int), default(int), default(int), default(int), default(int), default(int));
+            return default;
         }
 
         /// <summary>
@@ -6346,7 +6346,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Combatant ToCombatant(AI PlayerorAI)
         {
-            return default(Combatant);
+            return default;
         }
 
         /// <summary>
@@ -6354,7 +6354,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Combatant ToCombatant(Player PlayerorAI)
         {
-            return default(Combatant);
+            return default;
         }
 
         /// <summary>
@@ -6362,7 +6362,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool ToggleButtonGetIsPressed(ToggleButton Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -6378,7 +6378,7 @@ namespace RRCGGenerated
         /// </summary>
         public static RecRoomObject ToRecRoomObject(RecRoomObject Target)
         {
-            return default(RecRoomObject);
+            return default;
         }
 
         /// <summary>
@@ -6386,7 +6386,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string ToString(object Value)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6394,7 +6394,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string ToStringDepreacted(object Value)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6402,7 +6402,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (bool IsTouchActive, Vector3 TouchPosition, Vector3 WorldPosition) TouchpadComponentGetActiveTouch(Touchpad Target)
         {
-            return (default(bool), default(Vector3), default(Vector3));
+            return default;
         }
 
         /// <summary>
@@ -6410,7 +6410,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string TouchpadComponentGetInteractionLabel(Touchpad Target)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6418,7 +6418,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool TouchpadComponentGetIsEnabled(Touchpad Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -6442,7 +6442,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Color TrailGetColor(MotionTrail Target)
         {
-            return default(Color);
+            return default;
         }
 
         /// <summary>
@@ -6450,7 +6450,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool TrailGetEnabled(MotionTrail Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -6458,7 +6458,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float TrailGetLifetime(MotionTrail Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -6466,7 +6466,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float TrailGetOpacity(MotionTrail Target)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -6506,7 +6506,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string TriggerHandleGetControlPrompt(TriggerHandle Target)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6514,7 +6514,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool TriggerHandleGetPrimaryActionHeld(TriggerHandle Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -6530,7 +6530,7 @@ namespace RRCGGenerated
         /// </summary>
         public static string TriggerVolumeGetFilterRole(TriggerVolume Target)
         {
-            return default(string);
+            return default;
         }
 
         /// <summary>
@@ -6538,7 +6538,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<string> TriggerVolumeGetFilterTags(TriggerVolume Target)
         {
-            return default(List<string>);
+            return default;
         }
 
         /// <summary>
@@ -6546,7 +6546,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int TriggerVolumeGetObjectCount(TriggerVolume Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -6554,7 +6554,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<RecRoomObject> TriggerVolumeGetObjects(TriggerVolume Target)
         {
-            return default(List<RecRoomObject>);
+            return default;
         }
 
         /// <summary>
@@ -6562,7 +6562,7 @@ namespace RRCGGenerated
         /// </summary>
         public static int TriggerVolumeGetPlayerCount(TriggerVolume Target)
         {
-            return default(int);
+            return default;
         }
 
         /// <summary>
@@ -6570,7 +6570,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<Player> TriggerVolumeGetPlayers(TriggerVolume Target)
         {
-            return default(List<Player>);
+            return default;
         }
 
         /// <summary>
@@ -6594,7 +6594,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool UnequipFromPlayer(Player Player, RecRoomObject Object)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -6602,7 +6602,7 @@ namespace RRCGGenerated
         /// </summary>
         public static List<RecRoomObject> UnequipfromSlots(Player Player, bool DominantHand, bool OffHand, bool LeftHipHolster, bool RightHipHolster, bool ShoulderHolster)
         {
-            return default(List<RecRoomObject>);
+            return default;
         }
 
         /// <summary>
@@ -6610,7 +6610,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool UnequipObject(RecRoomObject Object)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -6618,7 +6618,7 @@ namespace RRCGGenerated
         /// </summary>
         public static object ValueIntegerSwitch(int Match, object Default)
         {
-            return default(object);
+            return default;
         }
 
         /// <summary>
@@ -6626,7 +6626,7 @@ namespace RRCGGenerated
         /// </summary>
         public static object ValueStringSwitch(string Match, object Default)
         {
-            return default(object);
+            return default;
         }
 
         /// <summary>
@@ -6634,7 +6634,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 Vector3Create(float X, float Y, float Z)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -6642,7 +6642,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 Vector3Cross(Vector3 Lhs, Vector3 Rhs)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -6650,7 +6650,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float Vector3Dot(Vector3 Lhs, Vector3 Rhs)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -6658,7 +6658,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 Vector3InverseTransform(Vector3 WorldPoint, Vector3 WorldOrigin, Quaternion WorldOrientation)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -6666,7 +6666,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 Vector3Normalize(Vector3 Value)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -6674,7 +6674,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 Vector3Scale(Vector3 Value, int Scalar)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -6682,7 +6682,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 Vector3Scale(Vector3 Value, float Scalar)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -6690,7 +6690,7 @@ namespace RRCGGenerated
         /// </summary>
         public static (float X, float Y, float Z) Vector3Split(Vector3 Vector3)
         {
-            return (default(float), default(float), default(float));
+            return default;
         }
 
         /// <summary>
@@ -6698,7 +6698,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 Vector3Transform(Vector3 LocalPoint, Vector3 WorldOrigin, Quaternion WorldOrientation)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -6706,7 +6706,7 @@ namespace RRCGGenerated
         /// </summary>
         internal static Vector3 Vector3Variable(Vector3 Port0)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -6714,7 +6714,7 @@ namespace RRCGGenerated
         /// </summary>
         public static Vector3 VectorComponentGetVector(VectorComponent Direction, float Magnitude)
         {
-            return default(Vector3);
+            return default;
         }
 
         /// <summary>
@@ -6722,7 +6722,7 @@ namespace RRCGGenerated
         /// </summary>
         public static float VectorGetMagnitude(Vector3 Vector3)
         {
-            return default(float);
+            return default;
         }
 
         /// <summary>
@@ -6778,7 +6778,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool WelcomeMatGetEnabled(WelcomeMat Target)
         {
-            return default(bool);
+            return default;
         }
 
         /// <summary>
@@ -6794,7 +6794,7 @@ namespace RRCGGenerated
         /// </summary>
         public static bool Xor(bool Input)
         {
-            return default(bool);
+            return default;
         }
     }
 }
