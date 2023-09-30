@@ -101,6 +101,8 @@ namespace RRCG
                     )
                 ).NormalizeWhitespace();
 
+                if (method.ReturnType.ToString() != "void") statement = SyntaxFactory.ReturnStatement(((ExpressionStatementSyntax)statement).Expression);
+
                 method = method.WithBody(
                     method.Body.WithStatements(SyntaxFactory.SingletonList(statement))
                 );

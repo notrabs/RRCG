@@ -271,6 +271,7 @@ namespace RRCGBuild
         //
 
         internal readonly Dictionary<string, EventHelper> __RRCG_EVENT_FUNCTIONS = new Dictionary<string, EventHelper>();
+        internal readonly Dictionary<string, object> __RRCG_EVENT_FUNCTION_RETURNS = new Dictionary<string, object>();
         internal readonly Dictionary<string, object> __RRCG_SHARED_PROPERTIES = new Dictionary<string, object>();
 
         protected void __DispatchEventFunction(string name, Action fn)
@@ -289,6 +290,26 @@ namespace RRCGBuild
 
             __RRCG_EVENT_FUNCTIONS[name].Sender();
         }
+
+        protected T __DispatchEventFunction<T>(string name, Func<T> fn)
+        {
+            if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(name))
+            {
+                __RRCG_EVENT_FUNCTIONS[name] = new EventHelper("RRCG_EventFunction_" + name);
+
+                InlineGraph(() =>
+                {
+                    __RRCG_EVENT_FUNCTIONS[name].Definition();
+                    __RRCG_EVENT_FUNCTIONS[name].Receiver();
+                    __RRCG_EVENT_FUNCTION_RETURNS[name] = fn();
+                });
+            }
+
+            __RRCG_EVENT_FUNCTIONS[name].Sender();
+
+            return (T)__RRCG_EVENT_FUNCTION_RETURNS[name];
+        }
+
         protected T __DispatchSharedPropertyFunction<T>(string name, Func<T> fn) where T : AnyPort
         {
             if (!__RRCG_SHARED_PROPERTIES.ContainsKey(name))
