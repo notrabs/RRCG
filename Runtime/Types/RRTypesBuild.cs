@@ -144,6 +144,7 @@ namespace RRCGBuild
     public class PlayerPort : AnyPort
     {
         public static PlayerPort Local = new PlayerPort() { Port = null, Data = 1 };
+        public static PlayerPort Invalid = new PlayerPort() { Port = null, Data = 0 };
     }
     public class RecRoomObjectPort : AnyPort { }
     public class CombatantPort : AnyPort { }

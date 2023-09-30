@@ -406,6 +406,7 @@ namespace RRCGBuild
             node.SwitchCases = new List<string>();
 
             var execFlow = ExecFlow.current;
+            execFlow.Clear();
 
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port { Node = node });
@@ -429,6 +430,8 @@ namespace RRCGBuild
 
                 branchIndex++;
             }
+
+            ExecFlow.current = execFlow;
         }
 
         public static void ExecutionStringSwitch(StringPort match, AlternativeExec failed, Dictionary<StringPort, AlternativeExec> branches)
@@ -438,6 +441,7 @@ namespace RRCGBuild
             node.SwitchCases = new List<string>();
 
             var execFlow = ExecFlow.current;
+            execFlow.Clear();
 
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port { Node = node });
@@ -461,6 +465,8 @@ namespace RRCGBuild
 
                 branchIndex++;
             }
+
+            ExecFlow.current = execFlow;
         }
 
         public static void ExecutionAnySwitch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)

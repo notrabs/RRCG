@@ -6376,7 +6376,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Casts a target specific object to a Rec Room Object.
         /// </summary>
-        public static RecRoomObject ToRecRoomObject(RecRoomObject Target)
+        public static RecRoomObject ToRecRoomObject(object Target)
         {
             return default;
         }

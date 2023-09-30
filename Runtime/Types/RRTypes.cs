@@ -11,11 +11,14 @@ namespace RRCGSource
     public class AI { }
     public class WelcomeMat { }
     public class TriggerHandle { }
-    public class StudioObject { }
+    public class StudioObject {
+        public static implicit operator StudioObject(RecRoomObject data) => null;
+    }
     public class AnalyticsPayload { }
     public class Player
     {
         public static Player Local = new Player();
+        public static Player Invalid = null;
     }
     public class RecRoomObject { }
     public class Combatant { }

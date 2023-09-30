@@ -49,8 +49,10 @@ namespace RRCGBuild
             else if (value is IntPort) data = ChipBuilder.intVariable(value as IntPort) as T;
             else if (value is BoolPort) data = ChipBuilder.boolVariable(value as BoolPort) as T;
             else if (value is FloatPort) data = ChipBuilder.floatVariable(value as FloatPort) as T;
+            else if (value is PlayerPort) data = ChipBuilder.PlayerVariable(value as PlayerPort) as T;
             else if (value is RecRoomObjectPort) data = ChipBuilder.RecRoomObjectVariable(value as RecRoomObjectPort) as T;
-            else throw new Exception("Variable type not supported yet");
+            else if (value is ListPort<RecRoomObjectPort>) data = ChipBuilder.ListRecRoomObjectVariable(value as ListPort<RecRoomObjectPort>) as T;
+            else throw new Exception("Variable type not supported yet: "+value.GetType().ToString());
 
             Context.lastSpawnedNode.VariableName = name;
             Context.lastSpawnedNode.VariableKind = kind;
