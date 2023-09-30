@@ -106,8 +106,26 @@ namespace RRCGBuild
     public class Vector3Port : AnyPort
     {
         public static Vector3Port zero { get => CircuitBuilder.Singleton("Vector3_zero", () => ChipBuilder.Vector3Create(0, 0, 0)); }
+
+        public (FloatPort X, FloatPort Y, FloatPort Z) split
+        {
+            get
+            {
+                if (IsActualPort) return CircuitBuilder.Singleton("Vector3_split_" + Port.PortKey(), () => ChipBuilder.Vector3Split(this));
+
+                var v = (Vector3)Data;
+                return (v.x, v.y, v.z);
+            }
+        }
+
+        public FloatPort x { get => split.X; }
+        public FloatPort y { get => split.Y; }
+        public FloatPort z { get => split.Z; }
     }
-    public class QuaternionPort : AnyPort { }
+    public class QuaternionPort : AnyPort
+    {
+        public static QuaternionPort identity { get => CircuitBuilder.Singleton("Quaternion_identity", () => ChipBuilder.QuaternionCreate(0, 0, 0, 1)); }
+    }
     public class ObjectPort : AnyPort { }
     public class AIPort : AnyPort { }
     public class WelcomeMatPort : AnyPort

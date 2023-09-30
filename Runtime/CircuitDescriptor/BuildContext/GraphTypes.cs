@@ -74,6 +74,12 @@ namespace RRCGBuild
         public Node Node;
         public int Group = 0;
         public int Index = 0;
+
+
+        public string PortKey()
+        {
+            return Node.Id + "_" + Group + "_" + Index;
+        }
     }
 
     public class Connection

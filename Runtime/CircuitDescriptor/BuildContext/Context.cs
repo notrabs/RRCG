@@ -24,7 +24,7 @@ namespace RRCGBuild
         public List<CBFunction> MetaNewBoard;
 
         [JsonIgnore]
-        internal Dictionary<string, AnyPort> SingletonChips = new Dictionary<string, AnyPort>();
+        internal Dictionary<string, object> SingletonChips = new Dictionary<string, object>();
 
         public Context()
         {

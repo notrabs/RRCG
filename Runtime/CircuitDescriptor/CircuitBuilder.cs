@@ -35,7 +35,7 @@ namespace RRCGBuild
             ExecFlow.current = prevExec;
         }
 
-        public static T Singleton<T>(string key, Func<T> creator) where T : AnyPort
+        public static T Singleton<T>(string key, Func<T> creator)
         {
             if (!Context.current.SingletonChips.ContainsKey(key))
             {
