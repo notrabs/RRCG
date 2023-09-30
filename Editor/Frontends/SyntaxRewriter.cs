@@ -87,25 +87,47 @@ namespace RRCG
             var isEventFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "EventFunction"));
             var isSharedPropertyFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "SharedProperty"));
 
+            var isVoid = method.ReturnType.ToString() == "void";
+            var hasParameters = method.ParameterList.Parameters.Count > 0;
+
             if (isEventFunction)
             {
-                StatementSyntax statement = SyntaxFactory.ExpressionStatement(
-                    SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName("__DispatchEventFunction"))
-                    .WithArgumentList(
-                        ArgumentList(
-                            SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
-                            SyntaxFactory.AnonymousMethodExpression()
-                                        .WithParameterList(SyntaxFactory.ParameterList())
-                                        .WithBlock(SyntaxFactory.Block(statements))
-                        )
-                    )
-                ).NormalizeWhitespace();
+                ExpressionSyntax identifier = SyntaxFactory.IdentifierName("__DispatchEventFunction");
 
-                if (method.ReturnType.ToString() != "void") statement = SyntaxFactory.ReturnStatement(((ExpressionStatementSyntax)statement).Expression);
+
+                if (!isVoid || hasParameters)
+                {
+                    var genericParams = new List<TypeSyntax>();
+
+                    if (!isVoid) genericParams.Add(method.ReturnType);
+                    foreach (var param in method.ParameterList.Parameters) genericParams.Add(param.Type);
+
+                    identifier = SyntaxFactory.GenericName("__DispatchEventFunction").WithTypeArgumentList(TypeArgumentList(genericParams.ToArray()));
+                }
+
+
+                var invocation = SyntaxFactory.InvocationExpression(identifier).WithArgumentList(
+                        ArgumentList(
+                            new ExpressionSyntax[]
+                            {
+                                SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
+                                SyntaxFactory.AnonymousMethodExpression()
+                                            .WithParameterList(method.ParameterList)
+                                            .WithBlock(SyntaxFactory.Block(statements))
+                            }.Concat(
+                                method.ParameterList.Parameters.Select(parameter => SyntaxFactory.IdentifierName(parameter.Identifier.ToString()))
+                            ).ToArray()
+                        )
+                    );
+
+                StatementSyntax statement = isVoid ? SyntaxFactory.ExpressionStatement(invocation) : SyntaxFactory.ReturnStatement(invocation);
+
+
+
 
                 method = method.WithBody(
                     method.Body.WithStatements(SyntaxFactory.SingletonList(statement))
-                );
+                ).NormalizeWhitespace();
             }
             else if (isSharedPropertyFunction)
             {
@@ -585,6 +607,12 @@ namespace RRCG
             var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)SyntaxFactory.Argument(arg)));
 
             return SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList<ArgumentSyntax>(withCommas));
+        }
+        public TypeArgumentListSyntax TypeArgumentList(params TypeSyntax[] arguments)
+        {
+            var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)arg));
+
+            return SyntaxFactory.TypeArgumentList(SyntaxFactory.SeparatedList<TypeSyntax>(withCommas));
         }
 
         public static SeparatedSyntaxList<ExpressionSyntax> ExpressionList(params ExpressionSyntax[] arguments)
