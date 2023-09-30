@@ -1,6 +1,6 @@
 namespace RRCGGenerated
 {
-    public class ChipId
+    public class ChipType
     {
         public const string AbsoluteValue = "98b99011-9be8-43b3-89cc-1e9d55bd8b51";
         public const string Acos = "46ce50b8-0a20-43d2-9646-484ce2a6752c";
