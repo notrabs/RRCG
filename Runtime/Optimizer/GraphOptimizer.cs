@@ -59,7 +59,7 @@ namespace RRCG.Optimizer
                 }
             }
 
-            context.SubContexts = context.SubContexts.Select(Optimize).ToList();
+            context.SubContexts = context.SubContexts.Select(OptimizeContext).ToList();
 
             return context;
         }
