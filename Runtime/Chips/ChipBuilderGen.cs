@@ -3868,7 +3868,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static AnyPort IfValue(BoolPort If, AnyPort Then, AnyPort Else)
+        public static T IfValue<T>(BoolPort If, T Then, T Else) where T: AnyPort, new()
         {
             // IfExpressionNode
             Node node = new Node()
@@ -3877,7 +3877,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, If, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Then, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Else, new Port{Node = node, Index = 2});
-            return new AnyPort{Port = new Port{Node = node, Index = 0}};
+            return new T { Port = new Port{Node = node, Index = 0}};
         }
 
         public static void In()

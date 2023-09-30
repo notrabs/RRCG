@@ -27,10 +27,10 @@
     {
         private StringPort eventName;
         private StringPort value0;
-        public EventHelper(StringPort eventName, StringPort value0)
+        public EventHelper(StringPort eventName, StringPort value0 = null)
         {
             this.eventName = eventName;
-            this.value0 = value0;
+            this.value0 = value0 ?? "value0";
         }
 
         public EventHelper<T0> Definition()
@@ -55,11 +55,11 @@
         private StringPort eventName;
         private StringPort value0;
         private StringPort value1;
-        public EventHelper(StringPort eventName, StringPort value0, StringPort value1)
+        public EventHelper(StringPort eventName, StringPort value0 = null, StringPort value1 = null)
         {
             this.eventName = eventName;
-            this.value0 = value0;
-            this.value1 = value1;
+            this.value0 = value0 ?? "value0";
+            this.value1 = value1 ?? "value1";
         }
         public EventHelper<T0, T1> Definition()
         {
