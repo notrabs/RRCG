@@ -1526,17 +1526,17 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Compares the two input values and outputs True if they are the same. False if they are different.
+        /// Compares the input values and outputs True if they are the same. False if they are different.
         /// </summary>
-        internal static new bool Equals(object A, object B)
+        internal static new bool Equals(object Value)
         {
             return default;
         }
 
         /// <summary>
-        /// Compares the input values and outputs True if they are the same. False if they are different.
+        /// Compares the two input values and outputs True if they are the same. False if they are different.
         /// </summary>
-        internal static new bool Equals(object Value)
+        public static bool EqualsDeprecated(object A, object B)
         {
             return default;
         }
