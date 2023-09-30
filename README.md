@@ -291,21 +291,21 @@ public void StudioBoard()
 }
 ```
 
-Use the `[EventFunction]` Attribute to automatically convert a function call into event senders, with all the logic only being placed once in the world.
+Use the `[EventFunction]` Attribute to automatically convert a function call into event senders, with all the logic only being placed once in the world. You can return a value like in other functions, where it will be shared by all users.
 
 ```c#
 public void ExampleCircuit()
 {
     // will be placed as two event senders
-    ExpensiveFunction();
-    ExpensiveFunction();
+    ExpensiveFunction("World");
+    ExpensiveFunction("World 2");
 }
 
 [EventFunction]
-public void ExpensiveFunction()
+public void ExpensiveFunction(string parameter)
 {
-    // only one LogString will be placed in the world
-    LogString("Hello");
+    // only one LogString will be placed in the world, and retrieve the parameter from the event
+    LogString("Hello" + parameter);
 }
 ```
 
