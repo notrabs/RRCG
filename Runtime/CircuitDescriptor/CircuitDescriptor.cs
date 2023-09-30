@@ -75,5 +75,10 @@ namespace RRCGSource
         public void ExistingDataOutput<PinType>(string portName, PinType value) { }
         public void ExistingExecInput(string portName) { }
         public void ExistingExecOutput(string portName) { }
+
+        /// <summary>
+        /// Shorthand to create an event receiver for a studio event. Automatically creates an EventDefinition if needed.
+        /// </summary>
+        public void StudioEventReceiver(string eventName) { }
     }
 }

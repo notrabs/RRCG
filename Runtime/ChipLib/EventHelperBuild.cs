@@ -8,9 +8,10 @@
         {
             this.eventName = eventName;
         }
-        public void Definition()
+        public EventHelper Definition()
         {
             ChipBuilder.EventDefinition(eventName);
+            return this;
         }
         public void Sender()
         {
@@ -32,9 +33,10 @@
             this.value0 = value0;
         }
 
-        public void Definition()
+        public EventHelper<T0> Definition()
         {
             ChipBuilder.EventDefinition<T0>(eventName, value0);
+            return this;
         }
         public void Sender(T0 value0)
         {
@@ -59,9 +61,10 @@
             this.value0 = value0;
             this.value1 = value1;
         }
-        public void Definition()
+        public EventHelper<T0, T1> Definition()
         {
             ChipBuilder.EventDefinition<T0, T1>(eventName, value0, value1);
+            return this;
         }
         public void Sender(T0 value0, T1 value1)
         {

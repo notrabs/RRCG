@@ -35,6 +35,15 @@ namespace RRCGBuild
             ExecFlow.current = prevExec;
         }
 
+        public static void Singleton(string key, Action creator)
+        {
+            if (!Context.current.SingletonChips.ContainsKey(key))
+            {
+                creator();
+                Context.current.SingletonChips.Add(key, null);
+            }
+        }
+
         public static T Singleton<T>(string key, Func<T> creator)
         {
             if (!Context.current.SingletonChips.ContainsKey(key))
@@ -249,6 +258,12 @@ namespace RRCGBuild
 
         public static void ExistingExecOutput(StringPort portName)
         {
+        }
+
+        public void StudioEventReceiver(string eventName)
+        {
+            CircuitBuilder.Singleton("StudioEventReceiver_" + eventName, () => EventDefinition(eventName));
+            EventReceiver(eventName);
         }
 
         //
