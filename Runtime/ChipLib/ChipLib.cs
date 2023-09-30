@@ -68,6 +68,8 @@ namespace RRCGSource
         public static T GetClosest<T>(Vector3 position, string tag) { return default; }
         public static T GetClosest<T>(RecRoomObject position, string tag) { return default; }
 
+        public static void RequireKey(string keyName) { }
+
         /// <summary>
         /// A Look-Up-Table to generate a shared, switch-based accessor for a large list of data.
         /// </summary>

@@ -25,6 +25,7 @@ namespace RRCGBuild
         public int InputCount { get; internal set; }
 
         public SFXConstantData? SFXConstantData = null;
+        public string RoomKey = null;
         public string RoomCurrency = null;
 
         [JsonConverter(typeof(DefaultValuesConverter))]

@@ -178,7 +178,17 @@ namespace RRCGBuild
         public static implicit operator AudioPlayerPort(RecRoomObjectPort data) => new AudioPlayerPort() { Port = ChipBuilder.FromRecRoomObject(data).Port };
     }
     public class ConsumablePort : AnyPort { }
-    public class RoomKeyPort : AnyPort { }
+    public class RoomKeyPort : AnyPort {
+        public RoomKeyPort() { }
+        public RoomKeyPort(string name)
+        {
+            ChipBuilder.RoomKeyConstant();
+            var node = Context.lastSpawnedNode;
+            node.RoomKey = name;
+
+            Port = node.Port(0, 0);
+        }
+    }
     public class BackgroundObjectsPort : AnyPort { }
     public class BeaconPort : AnyPort
     {

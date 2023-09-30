@@ -231,6 +231,19 @@ namespace RRCGBuild
             return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllwithTag(tag)).Closest;
         }
 
+        public static void RequireKey(StringPort keyName)
+        {
+            var key = CircuitBuilder.Singleton("RequireKey_" + keyName.AsData<string>(), () => new RoomKeyPort(keyName.AsData<string>()));
+
+            var ownsKey = PlayerOwnsRoomKey(PlayerPort.Local, key, (_) => { });
+            ExecFlow.current.Ports[0].Index = 1;
+
+            If(ownsKey, delegate () { }, delegate () {
+                ShowPurchasePrompt(key, PlayerPort.Local);
+                CircuitBuilder.ClearExec();
+            });
+        }
+
         public class LUT<T> where T : AnyPort, new()
         {
             public T UnsafeReadPort;

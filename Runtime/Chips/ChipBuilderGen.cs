@@ -6174,7 +6174,7 @@ namespace RRCGGenerated
             return new Vector3Port{Port = new Port{Node = node, Index = 0}};
         }
 
-        public static BoolPort PlayerOwnsRoomKey(PlayerPort Player, RoomKeyPort RoomKey, AlternativeExec OnPlayerOwnsRoomKeyComplete)
+        public static BoolPort PlayerOwnsRoomKey(PlayerPort Player, RoomKeyPort RoomKey, AlternativeExec<BoolPort> OnPlayerOwnsRoomKeyComplete)
         {
             // PlayerOwnsRoomKeyNode
             Node node = new Node()
@@ -6184,11 +6184,12 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, RoomKey, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
+            var outputs = new BoolPort { Port = new Port { Node = node, Index = 2 } };
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnPlayerOwnsRoomKeyComplete();
+            OnPlayerOwnsRoomKeyComplete(outputs);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return outputs;
         }
 
         public static (BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response, IntPort ResponseIndex) PlayerPromptMultipleChoice(PlayerPort Player, StringPort PromptTitle, StringPort PromptBody, ListPort<StringPort> AnswerChoices, AlternativeExec OnPromptComplete)
