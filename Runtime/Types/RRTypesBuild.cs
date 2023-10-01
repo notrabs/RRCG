@@ -174,6 +174,7 @@ namespace RRCGBuild
         public static AudioPort SFX_CrowdAww { get => CircuitBuilder.Singleton("SFX_CrowdAww", () => AudioSFXConstant("CrowdAww")); }
         public static AudioPort SFX_CrowdCheer { get => CircuitBuilder.Singleton("SFX_CrowdCheer", () => AudioSFXConstant("CrowdCheer")); }
         public static AudioPort SFX_TriggerMisfire { get => CircuitBuilder.Singleton("SFX_TriggerMisfire", () => AudioSFXConstant("TriggerMisfire")); }
+        public static AudioPort SFX_UIScore01 { get => CircuitBuilder.Singleton("SFX_UIScore01", () => AudioSFXConstant("UIScore01")); }
         public static AudioPort SFX_UIScore04 { get => CircuitBuilder.Singleton("SFX_UIScore04", () => AudioSFXConstant("UIScore04")); }
     }
     public class AudioPlayerPort : AnyPort

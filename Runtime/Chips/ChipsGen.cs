@@ -345,7 +345,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs True when all inputs are True. If any input is False, it outputs False.
         /// </summary>
-        public static bool And(bool Input)
+        public static bool And(params bool[] Input)
         {
             return default;
         }
@@ -4056,7 +4056,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs True if any input is True. Otherwise outputs False.
         /// </summary>
-        public static bool Or(bool Input)
+        public static bool Or(params bool[] Input)
         {
             return default;
         }
