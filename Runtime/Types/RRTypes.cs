@@ -30,6 +30,8 @@ namespace RRCGSource
         public static Audio SFX_UIXP02 { get; }
         public static Audio SFX_CrowdCheer { get; }
         public static Audio SFX_CrowdAww { get; }
+        public static Audio SFX_TriggerMisfire { get; }
+        public static Audio SFX_UIScore04 { get; }
     }
     public class AudioPlayer { }
     public class Consumable { }

@@ -25,6 +25,7 @@ namespace RRCGBuild
         public int InputCount { get; internal set; }
 
         public SFXConstantData? SFXConstantData = null;
+        public PlayAudioAtPositionData? PlayAudioAtPositionData = null;
         public string RoomKey = null;
         public string RoomCurrency = null;
 

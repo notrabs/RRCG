@@ -37,4 +37,20 @@ namespace RRCG
             this.SpeedVariation = SpeedVariation;
         }
     }
+
+    public struct PlayAudioAtPositionData
+    {
+        public int AudioChannel;
+        public float MaxRolloffDistance;
+        public int RolloffCurve;
+        public bool Synced;
+
+        public PlayAudioAtPositionData(int AudioChannel, float MaxRolloffDistance, int RolloffCurve, bool Synced)
+        {
+            this.AudioChannel = AudioChannel;
+            this.MaxRolloffDistance = MaxRolloffDistance;
+            this.RolloffCurve = RolloffCurve;
+            this.Synced = Synced;
+        }
+    }
 }

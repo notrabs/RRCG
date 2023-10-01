@@ -1,4 +1,6 @@
+using RRCG;
 using RRCGGenerated;
+using RRCGSource;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -549,6 +551,14 @@ namespace RRCGBuild
             var self = Self();
 
             return new T() { Port = self.Port };
+        }
+
+        //
+        // Configurable
+        // 
+        public static void PlayAudioAtPosition(AudioPort Audio, Vector3Port Position, FloatPort Volume, FloatPort PlaybackSpeed, BoolPort Is2D, PlayAudioAtPositionData config) {
+            PlayAudioAtPosition(Audio, Position, Volume, PlaybackSpeed, Is2D);
+            Context.lastSpawnedNode.PlayAudioAtPositionData = config;
         }
     }
 }
