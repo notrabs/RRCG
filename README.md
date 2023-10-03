@@ -29,21 +29,19 @@ e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Pack
 
 1. Create a prefab from the `RRCG` window menu. Place it in a location with enough space. The chip area will grow as indicated by the arrows.
 2. Open the Inspector for the `RRCG` prefab
-3. Link a RRCG script file in the inspector
-4. Click `Compile Room Circuit` (can be skipped with watch mode)
-5. Click `Build Circuit` (placeholder for now. Until we have a Circuits API you can only create the debug DOT graph)
+3. Select a `CircuitDescriptor` (or use the example)
+4. Click `Build Circuit` (placeholder for now. Until we have a Circuits API you can only create the debug DOT graph)
 
 
 #### RRCG script files
-To make the compiler recognize which files and classes need to be compiled, they need to:
-1. end in `.rrcg.cs`
-2. contain a CircuitDescriptor class with the same name as the file 
-3. contains no namespaces
+RRCG compiles every file in your project with a `.rrcg.cs` extension. Any `CircuitDescriptor` class that was successfully compiled by RRCG will be available to select in the RRCG inspector. See the next chapter for how to write valid code.
 
-You can copy the example class that is linked by default into your project. See the next chapter on how to write valid code.
+You can get started with this [example file](https://github.com/notrabs/RRCG/blob/main/Example/ExampleRoom.rrcg.cs) that is configured by default when you spawn the prefab.
 
 #### Watch Mode
-With watch mode on all `.rrcg.cs` files in your project are compiled automatically when imported by Unity. Manually compiling should then only be necessary, if the compiler was updated. You can also quickly recompile all files from the `RRCG` window menu.
+With watch mode on all `.rrcg.cs` files in your project are compiled automatically when Unity imports them. This also happens every time you make a change to a script file. There's no downside to leaving it watch mode on, but the option to disable it is there if you want to disable automatic compilation during development.
+
+In case you want to manually recompile a file you can use Unity's reimport functionality or use the "Recompile all" feature from the `RRCG` window menu. This should only be needed after you downloaded a new compiler version or during compiler development.
 
 #### DOT Graph
 
@@ -54,6 +52,8 @@ DOT is a standard graph format that can be [visualized online](https://dreampuf.
 If you encounter an error during or after compilation it is likely a bug or non-implemented feature. Feel free to submit a bug report with your source code and `.rrcg.gen.cs` file. 
 
 If you can't fix the error in your source file, delete the erroneous `.rrcg.gen.cs` file and disable Watch Mode to make Unity compile changes again.
+
+If you have a lot of broken generated files, you can use the `Clean All` function in the RRCG window menu to delete all generated files.
 
 ---
 

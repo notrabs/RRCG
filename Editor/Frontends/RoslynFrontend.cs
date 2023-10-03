@@ -27,10 +27,10 @@ namespace RRCG
 
         public static Context GetBuilt(RRCG rrcgMeta)
         {
-            Debug.Log("Building: " + rrcgMeta.RoomCircuit.name + "Gen");
-            var type = GetType(rrcgMeta.RoomCircuit.name + "Gen");
+            Debug.Log("Building: " + rrcgMeta.RoomCircuitClass);
+            var type = Utils.GetTypeInAssembly(rrcgMeta.RoomCircuitAssembly, rrcgMeta.RoomCircuitClass);
 
-            if (type == null) throw new Exception("Could not find compiled class for '" + rrcgMeta.RoomCircuit.name + "'. Make sure the class is public in the root namespace and has the same name as its file.");
+            if (type == null) throw new Exception("Could not find compiled class for '" + rrcgMeta.RoomCircuitClass + "'. Make sure the class is public in the root namespace and has the same name as its file.");
 
             Context context = new Context();
 
@@ -47,19 +47,5 @@ namespace RRCG
 
             return context;
         }
-
-        public static Type GetType(string typeName)
-        {
-            var type = Type.GetType(typeName);
-            if (type != null) return type;
-            foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                type = a.GetType(typeName);
-                if (type != null)
-                    return type;
-            }
-            return null;
-        }
-
     }
 }

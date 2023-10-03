@@ -13,21 +13,69 @@ namespace RRCG
     {
         public static bool EnableOptimizer = true;
 
+        private bool ShowCircuitDescriptors = false;
+        private Dictionary<string, List<string>> CircuitDescriptorOptions = new Dictionary<string, List<string>>();
+
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
 
             RRCG rrcgMeta = (RRCG)target;
 
+            if (ShowCircuitDescriptors)
+            {
+                GUILayout.Label("Available Circuit Descriptors: ");
+
+                foreach (var assembly in CircuitDescriptorOptions)
+                {
+                    GUILayout.Label(assembly.Key);
+
+                    foreach (var className in assembly.Value)
+                    {
+                        if (GUILayout.Button(className.Replace("RRCGBuild.", "")))
+                        {
+                            rrcgMeta.RoomCircuitAssembly = assembly.Key;
+                            rrcgMeta.RoomCircuitClass = className;
+                            Undo.RecordObject(rrcgMeta, "Configure RRCG CircuitDescriptor");
+                            PrefabUtility.RecordPrefabInstancePropertyModifications(rrcgMeta);
+                            EditorUtility.SetDirty(rrcgMeta);
+                            ShowCircuitDescriptors = false;
+                        }
+                    }
+                }
+
+                GUILayout.Space(10);
+                if (GUILayout.Button("Cancel"))
+                {
+                    ShowCircuitDescriptors = false;
+                }
+
+                return;
+            }
+
+
+            GUILayout.Label("Circuit Descriptor");
+            GUILayout.BeginHorizontal();
+            if (rrcgMeta.RoomCircuitClass != null)
+            {
+                GUILayout.Label(rrcgMeta.RoomCircuitClass);
+            }
+            if (GUILayout.Button("Select..."))
+            {
+                CircuitDescriptorOptions = Utils.GetAllAvailableCircuitDescriptors();
+                ShowCircuitDescriptors = true;
+            }
+            GUILayout.EndHorizontal();
+
             GUILayout.Label("Compiler");
 
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Compile Room Circuit"))
-            {
-                AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(rrcgMeta.RoomCircuit));
-            }
-            RRCGScriptPreprocessor.AutoCompile = GUILayout.Toggle(RRCGScriptPreprocessor.AutoCompile, "Watch", GUILayout.Width(70));
-            GUILayout.EndHorizontal();
+            //GUILayout.BeginHorizontal();
+            //if (GUILayout.Button("Compile Room Circuit"))
+            //{
+            //    AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(rrcgMeta.RoomCircuit));
+            //}
+            //RRCGScriptPreprocessor.AutoCompile = GUILayout.Toggle(RRCGScriptPreprocessor.AutoCompile, "Watch", GUILayout.Width(70));
+            //GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Build Circuits"))

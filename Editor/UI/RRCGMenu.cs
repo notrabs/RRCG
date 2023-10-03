@@ -46,5 +46,15 @@ public class RRCGMenu
         }
     }
 
+    [MenuItem("RRCG/Clean All", priority = 20)]
+    static void CleanAll()
+    {
+        var assets = AssetDatabase.FindAssets("rrcg").Select(AssetDatabase.GUIDToAssetPath).Where(path => path.EndsWith(".rrcg.gen.cs"));
+        foreach (var asset in assets)
+        {
+            AssetDatabase.DeleteAsset(asset);
+        }
+    }
+
 }
 

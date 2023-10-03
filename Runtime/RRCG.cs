@@ -4,6 +4,10 @@ namespace RRCG
 {
     public class RRCG : MonoBehaviour
     {
-        public TextAsset RoomCircuit;
+        [HideInInspector]
+        public string RoomCircuitAssembly;
+
+        [HideInInspector]
+        public string RoomCircuitClass;
     }
 }
