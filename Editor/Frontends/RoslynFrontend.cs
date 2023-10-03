@@ -19,7 +19,7 @@ namespace RRCG
             var compilation = CSharpCompilation.Create("RRCG.SemanticModel", syntaxTrees: new[] { sourceTree });
             var semanticModel = compilation.GetSemanticModel(sourceTree);
 
-            var rewriter = new RRCGSytaxRewriter(semanticModel);
+            var rewriter = new RRCGSyntaxRewriter(semanticModel);
             var generatedTree = rewriter.Visit(sourceTree.GetRoot());
 
             FileUtils.WriteGeneratedCode(generatedTree, compiledPath);

@@ -1,70 +1,45 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis;
+using RRCG;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.CodeAnalysis.Formatting;
-using System.Collections.Generic;
+using System.Threading.Tasks;
+using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using UnityEngine;
-using System;
 
 namespace RRCG
 {
-    public class RRCGSytaxRewriter : CSharpSyntaxRewriter
+    public class CircuitDescriptorRewriter : CSharpSyntaxRewriter
     {
-        private SemanticModel SemanticModel { get; }
-        public RRCGSytaxRewriter(SemanticModel semanticModel)
+        private RRCGSyntaxRewriter rrcgRewriter;
+
+        public CircuitDescriptorRewriter(RRCGSyntaxRewriter rrcgRewriter)
         {
-            SemanticModel = semanticModel;
+            this.rrcgRewriter = rrcgRewriter;
         }
 
         //
-        // Class and Module
-        // 
+        // Class translation
+        //
 
-        public override SyntaxNode VisitCompilationUnit(CompilationUnitSyntax node)
+        public SyntaxNode VisitClassDeclarationRoot(ClassDeclarationSyntax node)
         {
-            if (!node.Usings.Any(u => u.Name.ToString() == "RRCGSource"))
-            {
-                node.RemoveNode(node.Usings.First(u => u.Name.ToString() == "RRCGSource"), SyntaxRemoveOptions.KeepNoTrivia);
-            }
-
-            if (!node.Usings.Any(u => u.Name.ToString() == "RRCGBuild"))
-            {
-                node = node.AddUsings(SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("RRCGBuild")).WithAdditionalAnnotations(Formatter.Annotation));
-            }
-
-            if (!node.Usings.Any(u => u.Name.ToString() == "System.Collections.Generic"))
-            {
-                node = node.AddUsings(SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Collections.Generic")).WithAdditionalAnnotations(Formatter.Annotation));
-            }
-
-            return base.VisitCompilationUnit(node);
-        }
-
-        public override SyntaxNode VisitUsingDirective(UsingDirectiveSyntax node)
-        {
-            if (node.Name.ToString() == "RRCGSource")
-            {
-                return null;
-            }
-            return base.VisitUsingDirective(node);
+            return base.VisitClassDeclaration(node);
         }
 
         public override SyntaxNode VisitClassDeclaration(ClassDeclarationSyntax node)
         {
-            var replacedName = node.Identifier.Text + "Gen";
-
-            node = node.WithIdentifier(SyntaxFactory.Identifier(replacedName));
-
-            return base.VisitClassDeclaration(node);
+            return rrcgRewriter.VisitClassDeclaration(node);
         }
 
         public override SyntaxNode VisitSimpleBaseType(SimpleBaseTypeSyntax node)
         {
             if (node.Type.ToString() == "CircuitDescriptor")
             {
-                node = node.WithType(SyntaxFactory.ParseTypeName("CircuitBuilder"));
+                node = node.WithType(ParseTypeName("CircuitBuilder"));
             }
 
             return base.VisitSimpleBaseType(node);
@@ -102,12 +77,12 @@ namespace RRCG
                     if (!isVoid) genericParams.Add(method.ReturnType);
                     foreach (var param in method.ParameterList.Parameters) genericParams.Add(param.Type);
 
-                    identifier = SyntaxFactory.GenericName("__DispatchEventFunction").WithTypeArgumentList(TypeArgumentList(genericParams.ToArray()));
+                    identifier = SyntaxFactory.GenericName("__DispatchEventFunction").WithTypeArgumentList(SyntaxUtils.TypeArgumentList(genericParams.ToArray()));
                 }
 
 
                 var invocation = SyntaxFactory.InvocationExpression(identifier).WithArgumentList(
-                        ArgumentList(
+                        SyntaxUtils.ArgumentList(
                             new ExpressionSyntax[]
                             {
                                 SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
@@ -139,7 +114,7 @@ namespace RRCG
                         )))
                     )
                     .WithArgumentList(
-                        ArgumentList(
+                        SyntaxUtils.ArgumentList(
                             SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
                             SyntaxFactory.AnonymousMethodExpression()
                                         .WithParameterList(SyntaxFactory.ParameterList())
@@ -181,7 +156,7 @@ namespace RRCG
 
             var statements = WrapFunctionStatements(
                 method.Block.Statements,
-                IsBlockVoid(method.Block)
+                SyntaxUtils.IsBlockVoid(method.Block)
             );
 
             return (T)method.WithBody(SyntaxFactory.Block(statements));
@@ -346,7 +321,7 @@ namespace RRCG
                     SyntaxFactory.InvocationExpression(
                         SyntaxFactory.IdentifierName("__Return"))
                     .WithArgumentList(
-                        ArgumentList(
+                        SyntaxUtils.ArgumentList(
                             (ExpressionSyntax)SyntaxFactory.IdentifierName("rrcg_return_flow")
                         )
                     )
@@ -357,7 +332,7 @@ namespace RRCG
                 SyntaxFactory.InvocationExpression(
                     SyntaxFactory.IdentifierName("__Return"))
                 .WithArgumentList(
-                    ArgumentList(
+                    SyntaxUtils.ArgumentList(
                         (ExpressionSyntax)SyntaxFactory.IdentifierName("rrcg_return_flow"),
                         (ExpressionSyntax)SyntaxFactory.IdentifierName("out rrcg_return_data"),
                         expression
@@ -412,13 +387,13 @@ namespace RRCG
                         SyntaxFactory.IdentifierName("ChipBuilder"),
                         SyntaxFactory.IdentifierName("If")))
                 .WithArgumentList(
-                    ArgumentList(
+                    SyntaxUtils.ArgumentList(
                         test,
                         ExecDelegate().WithBlock(
-                            WrapInBlock(trueStatement)
+                            SyntaxUtils.WrapInBlock(trueStatement)
                         ),
                         ExecDelegate().WithBlock(
-                            WrapInBlock(falseStatement)
+                            SyntaxUtils.WrapInBlock(falseStatement)
                         )
                  )))
             .NormalizeWhitespace();
@@ -448,7 +423,7 @@ namespace RRCG
 
                         cases.Add(SyntaxFactory.InitializerExpression(
                             SyntaxKind.ComplexElementInitializerExpression,
-                            ExpressionList(caseValue, sectionFn)));
+                            SyntaxUtils.ExpressionList(caseValue, sectionFn)));
                     }
                 }
             }
@@ -460,7 +435,7 @@ namespace RRCG
                             SyntaxFactory.IdentifierName("ChipBuilder"),
                             SyntaxFactory.IdentifierName("ExecutionAnySwitch")))
                     .WithArgumentList(
-                        ArgumentList(
+                        SyntaxUtils.ArgumentList(
                             test,
                             defaultCase,
                             SyntaxFactory.ObjectCreationExpression(
@@ -476,7 +451,7 @@ namespace RRCG
                                 .WithInitializer(
                                     SyntaxFactory.InitializerExpression(
                                         SyntaxKind.CollectionInitializerExpression,
-                                        ExpressionList(cases.ToArray())
+                                        SyntaxUtils.ExpressionList(cases.ToArray())
                             )))
                         ))
                 .NormalizeWhitespace();
@@ -542,7 +517,7 @@ namespace RRCG
                                 SyntaxFactory.IdentifierName("ChipBuilder"),
                                 SyntaxFactory.IdentifierName(chip)))
                         .WithArgumentList(
-                            ArgumentList(
+                            SyntaxUtils.ArgumentList(
                                 leftExpression,
                                 rightExpression
                             ))
@@ -550,13 +525,13 @@ namespace RRCG
 
                 if (negate)
                 {
-                    return SyntaxFactory.InvocationExpression(
+                    return InvocationExpression(
                             SyntaxFactory.MemberAccessExpression(
                                 SyntaxKind.SimpleMemberAccessExpression,
                                 SyntaxFactory.IdentifierName("ChipBuilder"),
                                 SyntaxFactory.IdentifierName("Not")))
                         .WithArgumentList(
-                            ArgumentList(
+                            SyntaxUtils.ArgumentList(
                                 expression
                             ))
                         .NormalizeWhitespace();
@@ -602,56 +577,5 @@ namespace RRCG
             return SyntaxFactory.AnonymousMethodExpression();
         }
 
-        public ArgumentListSyntax ArgumentList(params ExpressionSyntax[] arguments)
-        {
-            var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)SyntaxFactory.Argument(arg)));
-
-            return SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList<ArgumentSyntax>(withCommas));
-        }
-        public TypeArgumentListSyntax TypeArgumentList(params TypeSyntax[] arguments)
-        {
-            var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)arg));
-
-            return SyntaxFactory.TypeArgumentList(SyntaxFactory.SeparatedList<TypeSyntax>(withCommas));
-        }
-
-        public static SeparatedSyntaxList<ExpressionSyntax> ExpressionList(params ExpressionSyntax[] arguments)
-        {
-            var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)arg));
-
-            return SyntaxFactory.SeparatedList<ExpressionSyntax>(withCommas);
-        }
-
-        public static bool IsBlockVoid(BlockSyntax block)
-        {
-            return !block.Statements.Any(s => s is ReturnStatementSyntax returnStatement && returnStatement.Expression != null);
-        }
-
-        public static BlockSyntax WrapInBlock(SyntaxNode node)
-        {
-            if (node == null) return SyntaxFactory.Block();
-            if (node is BlockSyntax) return (BlockSyntax)node;
-            if (node is StatementSyntax) return SyntaxFactory.Block((StatementSyntax)node);
-            Debug.LogError(node);
-            throw new Exception("SyntaxNode can't be wrapped in block");
-        }
-
-        public static SyntaxNodeOrToken[] CommaSeparated(IEnumerable<SyntaxNodeOrToken> list)
-        {
-            return Intersperse(list, SyntaxFactory.Token(SyntaxKind.CommaToken)).ToArray();
-        }
-
-        public static IEnumerable<T> Intersperse<T>(IEnumerable<T> source, T element)
-        {
-            bool first = true;
-            foreach (T value in source)
-            {
-                if (!first) yield return element;
-                yield return value;
-                first = false;
-            }
-        }
-
     }
 }
-

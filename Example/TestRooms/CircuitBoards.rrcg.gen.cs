@@ -2,74 +2,77 @@ using RRCG;
 using RRCGBuild;
 using System.Collections.Generic;
 
-public class CircuitBoardsGen : CircuitBuilder
+namespace RRCGBuild
 {
-    public override void CircuitGraph()
+    public class CircuitBoards : CircuitBuilder
     {
-        ExecFlow rrcg_return_flow = new ExecFlow();
-        var a = RandomInt(1, 10);
-        CircuitBoard(ContentsExec);
-        var b = CircuitBoard(ContentsMixed, a);
-        ChipLib.Log(b);
-        var(c, d) = CircuitBoard(ContentsData, b, b);
-        ChipLib.Log(c);
-        ChipLib.Log(d);
-        CircuitBoard(ExecOut);
-        CircuitBoard(ExecIn);
-        // Returns are not translated yet
-        //CircuitBoard(() =>
-        //{
-        //    ChipLib.Log("Anonymous Function");
-        //    return "test";
-        //});
-        CircuitBoard((IntPort test) =>
+        public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            ChipLib.Log("Anonymous Parameter");
+            var a = RandomInt(1, 10);
+            CircuitBoard(ContentsExec);
+            var b = CircuitBoard(ContentsMixed, a);
+            ChipLib.Log(b);
+            var(c, d) = CircuitBoard(ContentsData, b, b);
+            ChipLib.Log(c);
+            ChipLib.Log(d);
+            CircuitBoard(ExecOut);
+            CircuitBoard(ExecIn);
+            // Returns are not translated yet
+            //CircuitBoard(() =>
+            //{
+            //    ChipLib.Log("Anonymous Function");
+            //    return "test";
+            //});
+            CircuitBoard((IntPort test) =>
+            {
+                ExecFlow rrcg_return_flow = new ExecFlow();
+                ChipLib.Log("Anonymous Parameter");
+                ExecFlow.current.Merge(rrcg_return_flow);
+            }
+
+            , a);
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
-        , a);
-        ExecFlow.current.Merge(rrcg_return_flow);
-    }
+        void ContentsExec()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            RandomInt(1, 10);
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
 
-    void ContentsExec()
-    {
-        ExecFlow rrcg_return_flow = new ExecFlow();
-        RandomInt(1, 10);
-        ExecFlow.current.Merge(rrcg_return_flow);
-    }
+        IntPort ContentsMixed(IntPort a)
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            dynamic rrcg_return_data = default;
+            __Return(rrcg_return_flow, out rrcg_return_data, RandomInt(a, 10));
+            ExecFlow.current.Merge(rrcg_return_flow);
+            return rrcg_return_data;
+        }
 
-    IntPort ContentsMixed(IntPort a)
-    {
-        ExecFlow rrcg_return_flow = new ExecFlow();
-        dynamic rrcg_return_data = default;
-        __Return(rrcg_return_flow, out rrcg_return_data, RandomInt(a, 10));
-        ExecFlow.current.Merge(rrcg_return_flow);
-        return rrcg_return_data;
-    }
+        (IntPort namedValue, IntPort) ContentsData(IntPort a, IntPort b)
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            dynamic rrcg_return_data = default;
+            __Return(rrcg_return_flow, out rrcg_return_data, (a, b));
+            ExecFlow.current.Merge(rrcg_return_flow);
+            return rrcg_return_data;
+        }
 
-    (IntPort namedValue, IntPort) ContentsData(IntPort a, IntPort b)
-    {
-        ExecFlow rrcg_return_flow = new ExecFlow();
-        dynamic rrcg_return_data = default;
-        __Return(rrcg_return_flow, out rrcg_return_data, (a, b));
-        ExecFlow.current.Merge(rrcg_return_flow);
-        return rrcg_return_data;
-    }
+        void ExecOut()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            EventReceiver(RoomEvents.Hz30);
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
 
-    void ExecOut()
-    {
-        ExecFlow rrcg_return_flow = new ExecFlow();
-        EventReceiver(RoomEvents.Hz30);
-        ExecFlow.current.Merge(rrcg_return_flow);
-    }
-
-    void ExecIn()
-    {
-        ExecFlow rrcg_return_flow = new ExecFlow();
-        RandomInt(1, 10);
-        ExecFlow.current.Clear();
-        ExecFlow.current.Merge(rrcg_return_flow);
+        void ExecIn()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            RandomInt(1, 10);
+            ExecFlow.current.Clear();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
     }
 }

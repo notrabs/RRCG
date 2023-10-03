@@ -37,7 +37,8 @@ e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Pack
 #### RRCG script files
 To make the compiler recognize which files and classes need to be compiled, they need to:
 1. end in `.rrcg.cs`
-2. contain a class with the same name as the file 
+2. contain a CircuitDescriptor class with the same name as the file 
+3. contains no namespaces
 
 You can copy the example class that is linked by default into your project. See the next chapter on how to write valid code.
 
