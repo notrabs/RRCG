@@ -22,7 +22,7 @@ namespace RRCG
             var rewriter = new RRCGSytaxRewriter(semanticModel);
             var generatedTree = rewriter.Visit(sourceTree.GetRoot());
 
-            var generatedAssetPath = AssetDatabase.GetAssetPath(csFile).Replace(".cs", ".generated.cs");
+            var generatedAssetPath = AssetDatabase.GetAssetPath(csFile).Replace(".rrcg.cs", ".rrcg.gen.cs");
 
             FileUtils.WriteGeneratedCode(generatedTree, generatedAssetPath);
         }
