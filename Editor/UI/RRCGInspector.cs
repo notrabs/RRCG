@@ -22,9 +22,9 @@ namespace RRCG
             GUILayout.Label("Compiler");
 
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Compile Circuits"))
+            if (GUILayout.Button("Compile Room Circuit"))
             {
-                RoslynFrontend.Compile(rrcgMeta);
+                AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(rrcgMeta.RoomCircuit));
             }
             RRCGScriptPreprocessor.AutoCompile = GUILayout.Toggle(RRCGScriptPreprocessor.AutoCompile, "Watch", GUILayout.Width(70));
             GUILayout.EndHorizontal();

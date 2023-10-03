@@ -1,12 +1,13 @@
 ﻿using RRCG;
 using RRCGSource;
 
+#pragma warning disable CS0162 // Unreachable code detected
 public class Optimizer : CircuitDescriptor
 {
     public override void CircuitGraph()
     {
         var optimizableBool = ParseBool("true").Result;
-        
+
         if (true) LogString("true");
         else LogString("false");
 
@@ -36,3 +37,4 @@ public class Optimizer : CircuitDescriptor
         else LogString("false");
     }
 }
+#pragma warning restore CS0162 // Unreachable code detected

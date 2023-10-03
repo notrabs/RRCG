@@ -29,11 +29,20 @@ e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Pack
 
 1. Create a prefab from the `RRCG` window menu. Place it in a location with enough space. The chip area will grow as indicated by the arrows.
 2. Open the Inspector for the `RRCG` prefab
-3. Link a RRCG script file (<b>\*</b>) in the inspector
-4. Click `Compile Circuit` (with watch mode on this will happen automatically when new changes are detected)
+3. Link a RRCG script file in the inspector
+4. Click `Compile Room Circuit` (can be skipped with watch mode)
 5. Click `Build Circuit` (placeholder for now. Until we have a Circuits API you can only create the debug DOT graph)
 
-(<b>\*</b>) A script file needs to contain a class with the same name as the file. You can copy the already linked example class anywhere into your project. See the next chapter on how to write valid code.
+
+#### RRCG script files
+To make the compiler recognize which files and classes need to be compiled, they need to:
+1. end in `.rrcg.cs`
+2. contain a class with the same name as the file 
+
+You can copy the example class that is linked by default into your project. See the next chapter on how to write valid code.
+
+#### Watch Mode
+With watch mode on all `.rrcg.cs` files in your project are compiled automatically when imported by Unity. Manually compiling should then only be necessary, if the compiler was updated. You can also quickly recompile all files from the `RRCG` window menu.
 
 #### DOT Graph
 
@@ -41,7 +50,9 @@ DOT is a standard graph format that can be [visualized online](https://dreampuf.
 
 #### Handle Compilation errors
 
-If you encounter an error during or after compilation it is likely a bug or non-implemented feature. Feel free to submit a bug report with your source code and `.generated.cs` file. Delete the erroneous `.generated.cs` file to make Unity compile changes again.
+If you encounter an error during or after compilation it is likely a bug or non-implemented feature. Feel free to submit a bug report with your source code and `.rrcg.gen.cs` file. 
+
+If you can't fix the error in your source file, delete the erroneous `.rrcg.gen.cs` file and disable Watch Mode to make Unity compile changes again.
 
 ---
 
@@ -101,6 +112,9 @@ public void ExampleCircuit()
 {
     // The underscore is handy to discard unwanted values
     var (parsed, _) = ParseFloat("1.0");
+
+    // You can also access the named fields of the tuple to quickly get single values
+    var value = ParseFloat("1.0").Parsed;
 }
 ```
 
@@ -311,11 +325,12 @@ public void ExpensiveFunction(string parameter)
 
 ### Variable Helpers
 
-The `VariableHelpers` class helps you write type-safe variable accesses. Variables are named automatically in RR:
+The `Variable`, `SyncedVariable` and `CloudVariable` classes help you to write type-safe code. Instance and Synced Variables are named automatically.
 
 ```c#
-VariableHelper<int> count = new VariableHelper<int>();
-VariableHelper<int> syncedCountWithDefault = new VariableHelper<int>(2, VariableKind.Synced);
+Variable<int> count = new Variable<int>();
+SyncedVariable<int> syncedVarWithHomeValue = new SyncedVariable<int>(2);
+CloudVariable<string> cloudVar = new CloudVariable<string>("Name_of_my_Variable");
 
 public void ExampleCircuit()
 {
@@ -371,7 +386,7 @@ public void ExampleCircuit()
 
 ---
 
-## Custom Building Code (.generated.cs files)
+## Custom Building Code (.rrcg.gen.cs files)
 
 The conversion of control structures (if,for,...) might not be desireable in some use-cases. Especially when you want to create a dynamic number of chips.
 

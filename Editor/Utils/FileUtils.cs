@@ -1,8 +1,8 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using System.IO;
-using System.Threading.Tasks;
 using UnityEditor;
+using UnityEngine;
 
 class FileUtils
 {
@@ -10,9 +10,7 @@ class FileUtils
     {
         string generatedCode = syntaxTree.NormalizeWhitespace().ToString();
 
-        var file = File.CreateText(path);
-        file.Write(generatedCode);
-        file.Close();
+        File.WriteAllText(path, generatedCode);
 
         AssetDatabase.ImportAsset(path);
     }
