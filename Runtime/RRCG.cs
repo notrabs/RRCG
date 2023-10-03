@@ -1,13 +1,16 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RRCG
 {
     public class RRCG : MonoBehaviour
     {
         [HideInInspector]
-        public string RoomCircuitAssembly;
+        [FormerlySerializedAs("RoomCircuitAssembly")]
+        public string Assembly;
 
         [HideInInspector]
-        public string RoomCircuitClass;
+        [FormerlySerializedAs("RoomCircuitClass")]
+        public string DescriptorClass;
     }
 }

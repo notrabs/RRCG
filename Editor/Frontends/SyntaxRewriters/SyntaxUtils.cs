@@ -7,11 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using NUnit.Framework;
 
 namespace RRCG
 {
     internal static class SyntaxUtils
     {
+
+        public static ExpressionSyntax StringLiteral(string value)
+        {
+            return SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(value));
+        }
+
         public static ArgumentListSyntax ArgumentList(params ExpressionSyntax[] arguments)
         {
             var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)SyntaxFactory.Argument(arg)));
@@ -30,6 +37,12 @@ namespace RRCG
             var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)arg));
 
             return SyntaxFactory.SeparatedList<ExpressionSyntax>(withCommas);
+        }
+        public static ParameterListSyntax ParameterList(params ParameterSyntax[] parameters)
+        {
+            var withCommas = CommaSeparated(parameters.Select(arg => (SyntaxNodeOrToken)arg));
+
+            return SyntaxFactory.ParameterList(SyntaxFactory.SeparatedList<ParameterSyntax>(withCommas));
         }
 
         public static bool IsBlockVoid(BlockSyntax block)
@@ -61,5 +74,21 @@ namespace RRCG
                 first = false;
             }
         }
+
+        public static bool HasAttribute(MethodDeclarationSyntax method, string attrName)
+        {
+            return GetAttribute(method, attrName) != null;
+        }
+
+        public static AttributeSyntax GetAttribute(MethodDeclarationSyntax method, string attrName)
+        {
+            foreach (var attrList in method.AttributeLists)
+            {
+                var attr = attrList.Attributes.FirstOrDefault(attr => attr.Name.ToString() == attrName);
+                if (attr != null) return attr;
+            }
+            return null;
+        }
+
     }
 }

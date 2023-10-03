@@ -13,14 +13,14 @@ namespace RRCG
         private SemanticModel SemanticModel { get; }
 
         private CircuitDescriptorRewriter circuitDescriptorRewriter;
-        private CircuitDescriptorRewriter studioObjectDescriptorRewriter;
+        private StudioObjectDescriptorRewriter studioObjectDescriptorRewriter;
 
         public RRCGSyntaxRewriter(SemanticModel semanticModel)
         {
             SemanticModel = semanticModel;
 
             circuitDescriptorRewriter = new CircuitDescriptorRewriter(this);
-            studioObjectDescriptorRewriter = new CircuitDescriptorRewriter(this);
+            studioObjectDescriptorRewriter = new StudioObjectDescriptorRewriter(this);
         }
 
         //

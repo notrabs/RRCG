@@ -37,11 +37,7 @@ namespace RRCG
 
         public override SyntaxNode VisitSimpleBaseType(SimpleBaseTypeSyntax node)
         {
-            if (node.Type.ToString() == "CircuitDescriptor")
-            {
-                node = node.WithType(ParseTypeName("CircuitBuilder"));
-            }
-
+            if (node.Type.ToString() == "CircuitDescriptor") node = node.WithType(ParseTypeName("CircuitBuilder"));
             return base.VisitSimpleBaseType(node);
         }
 

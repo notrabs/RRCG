@@ -21,6 +21,15 @@ class Utils
 
     public static Dictionary<string, List<string>> GetAllAvailableCircuitDescriptors()
     {
+        return GetAllAvailableDescriptors("CircuitBuilder");
+    }
+    public static Dictionary<string, List<string>> GetAllAvailableStudioObjectDescriptors()
+    {
+        return GetAllAvailableDescriptors("StudioObjectBuilder");
+    }
+
+    public static Dictionary<string, List<string>> GetAllAvailableDescriptors(string name)
+    {
         var descriptors = new Dictionary<string, List<string>>();
 
         foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
@@ -29,7 +38,7 @@ class Utils
 
             foreach (var t in a.GetTypes())
             {
-                if (t.BaseType?.Name == "CircuitBuilder")
+                if (t.BaseType?.Name == name)
                 {
                     classes.Add(t.FullName);
                 }

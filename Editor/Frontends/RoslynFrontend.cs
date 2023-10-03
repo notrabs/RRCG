@@ -27,10 +27,10 @@ namespace RRCG
 
         public static Context GetBuilt(RRCG rrcgMeta)
         {
-            Debug.Log("Building: " + rrcgMeta.RoomCircuitClass);
-            var type = Utils.GetTypeInAssembly(rrcgMeta.RoomCircuitAssembly, rrcgMeta.RoomCircuitClass);
+            Debug.Log("Building: " + rrcgMeta.DescriptorClass);
+            var type = Utils.GetTypeInAssembly(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
 
-            if (type == null) throw new Exception("Could not find compiled class for '" + rrcgMeta.RoomCircuitClass + "'. Make sure the class is public in the root namespace and has the same name as its file.");
+            if (type == null) throw new Exception("Could not find compiled class for '" + rrcgMeta.DescriptorClass + "'. Make sure the class is public in the root namespace and has the same name as its file.");
 
             Context context = new Context();
 
@@ -46,6 +46,14 @@ namespace RRCG
             Context.current = null;
 
             return context;
+        }
+
+        public static void UpdateStudioEvents(RRCGStudioObject rrcgMeta)
+        {
+            var type = Utils.GetTypeInAssembly(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
+
+            var instance = (StudioObjectBuilder)Activator.CreateInstance(type);
+            instance.__UpdateStudioEvents();
         }
     }
 }
