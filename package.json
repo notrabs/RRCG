@@ -20,7 +20,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/rrcs/RRCG.git"
   },
-  "license": "GPLV3",
+  "license": "LGPL-2.0",
   "author": "RRCS (https://rrcs.dev)",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
