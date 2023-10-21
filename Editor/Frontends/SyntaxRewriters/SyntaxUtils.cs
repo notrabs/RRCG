@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace RRCG
 {
-    internal static class SyntaxUtils
+    public static class SyntaxUtils
     {
 
         public static ExpressionSyntax StringLiteral(string value)
@@ -30,6 +30,12 @@ namespace RRCG
             var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)arg));
 
             return SyntaxFactory.TypeArgumentList(SyntaxFactory.SeparatedList<TypeSyntax>(withCommas));
+        }
+        public static TypeParameterListSyntax TypeParameterList(params TypeParameterSyntax[] arguments)
+        {
+            var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)arg));
+
+            return SyntaxFactory.TypeParameterList(SyntaxFactory.SeparatedList<TypeParameterSyntax>(withCommas));
         }
 
         public static SeparatedSyntaxList<ExpressionSyntax> ExpressionList(params ExpressionSyntax[] arguments)
