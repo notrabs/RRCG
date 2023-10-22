@@ -64,7 +64,7 @@ C# Language features should do what you expect.
 
 ### The Circuit Descriptor
 
-The Circuit Descriptor is your entry point. Your chips start building from the `CircuitGraph()` method, but beyond that you can organize your code however you like. The only limitation for now is that the compiler only supports translating a single file at a time.
+The Circuit Descriptor is your entry point. Your chips start building from the `CircuitGraph()` method, but beyond that you can organize your code however you like. 
 
 ```c#
 public class ExampleRoom : CircuitDescriptor
