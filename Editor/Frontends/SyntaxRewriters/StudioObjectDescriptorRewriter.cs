@@ -51,6 +51,21 @@ namespace RRCG
                             )
                         )));
                     }
+                    else if (SyntaxUtils.HasAttribute(method, "StudioEventRange"))
+                    {
+                        return ExpressionStatement(InvocationExpression(IdentifierName("__AddStudioEventRange")).WithArgumentList(SyntaxUtils.ArgumentList(
+                                new ExpressionSyntax[]
+                                {
+                                    SyntaxUtils.StringLiteral(method.Identifier.Text),
+                                    ParseExpression("RRCG.StudioEventType." + GetStudioEventType(method).ToString()),
+                                    ParenthesizedLambdaExpression().WithParameterList(method.ParameterList).WithBody(
+                                        (BlockSyntax)bodyRewriter.Visit(method.Body)
+                                    )
+                                }.Concat(
+                                    SyntaxUtils.GetAttribute(method, "StudioEventRange").ArgumentList.Arguments.Select(arg => arg.Expression)
+                                ).ToArray()
+                        )));
+                    }
                 }
 
                 return null;
@@ -95,7 +110,7 @@ namespace RRCG
             {
                 parameters.Add(method.ParameterList.Parameters[0].WithType(IdentifierName("IntPort")));
 
-                statements.Add(ParseStatement($"var __eventName = ChipBuilder.Concat(\"{method.Identifier.Text}_\", ChipBuilder.ToString({method.ParameterList.Parameters[0].Identifier}));"));
+                statements.Add(ParseStatement($"var __eventName = ChipBuilder.Concat(\"{method.Identifier.Text}\", ChipBuilder.ToString({method.ParameterList.Parameters[0].Identifier}));"));
                 eventParam = "__eventName";
             }
 
@@ -207,7 +222,7 @@ namespace RRCG
         public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax node)
         {
             var invocationName = node.Expression.ToString();
- 
+
             if (
                 invocationName.StartsWith("AddListener") ||
                 invocationName.StartsWith("AddDynamicListener")

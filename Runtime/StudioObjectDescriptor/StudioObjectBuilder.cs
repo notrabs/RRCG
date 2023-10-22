@@ -58,6 +58,79 @@ namespace RRCGBuild
             __GetImplementation().__AddStudioEvent(this, name, type, creator);
         }
 
+        public void __AddStudioEventRange<RT>(string name, StudioEventType type, Action<RT> creator, params RT[] rangeParams)
+        {
+            foreach (var i in EnumerateRange(rangeParams))
+            {
+                __GetImplementation().__AddStudioEvent(this, name + i.ToString(), type, () => creator(i));
+            }
+        }
+        public void __AddStudioEventRange<RT, T>(string name, StudioEventType type, Action<RT, T> creator, params RT[] rangeParams)
+        {
+            foreach (var i in EnumerateRange(rangeParams))
+            {
+                __GetImplementation().__AddStudioEvent<T>(this, name + i.ToString(), type, (p1) => creator(i, p1));
+            }
+        }
+        public void __AddStudioEventRange<RT, T1, T2>(string name, StudioEventType type, Action<RT, T1, T2> creator, params RT[] rangeParams)
+        {
+            foreach (var i in EnumerateRange(rangeParams))
+            {
+                __GetImplementation().__AddStudioEvent<T1, T2>(this, name + i.ToString(), type, (p1, p2) => creator(i, p1, p2));
+            }
+        }
+
+        public IEnumerable<T> EnumerateRange<T>(params T[] rangeParams)
+        {
+            if (rangeParams.GetType() == typeof(int[]) && rangeParams.Length == 2)
+            {
+                int start = rangeParams[0] as dynamic;
+                int end = rangeParams[1] as dynamic;
+
+                if (start <= end)
+                {
+                    for (int i = start; i < end; i++) yield return i as dynamic;
+                }
+                else
+                {
+                    for (int i = start; i > end; i--) yield return i as dynamic;
+                }
+            }
+            else if (rangeParams.GetType() == typeof(int[]) && rangeParams.Length == 2)
+            {
+                int start = rangeParams[0] as dynamic;
+                int end = rangeParams[1] as dynamic;
+
+                if (start <= end)
+                {
+                    for (int i = start; i < end; i++) yield return i as dynamic;
+                }
+                else
+                {
+                    for (int i = start; i > end; i--) yield return i as dynamic;
+                }
+            }
+            else if (rangeParams.GetType() == typeof(int[]) && rangeParams.Length == 3)
+            {
+                int start = rangeParams[0] as dynamic;
+                int end = rangeParams[1] as dynamic;
+                int increment = rangeParams[2] as dynamic;
+
+                if (start <= end)
+                {
+                    for (int i = start; i < end; i+= increment) yield return i as dynamic;
+                }
+                else
+                {
+                    for (int i = start; i > end; i += increment) yield return i as dynamic;
+                }
+            }
+            else
+            {
+                foreach (var item in rangeParams) yield return item;
+            }
+        }
+
         protected void AddListener<T>(object obj, string propertyOrMethod)
         {
             __GetImplementation().AddListener(this, obj, propertyOrMethod);
