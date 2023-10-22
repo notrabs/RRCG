@@ -68,7 +68,7 @@ namespace RRCGBuild
             __GetImplementation().AddListener<T>(this, obj, propertyOrMethod, data);
         }
 
-        protected void AddDynamicListener(object obj, string propertyOrMethod)
+        protected void AddDynamicListener<T>(object obj, string propertyOrMethod)
         {
             __GetImplementation().AddDynamicListener(this, obj, propertyOrMethod);
         }

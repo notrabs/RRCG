@@ -16,7 +16,6 @@ namespace RRCGSource
         protected void AddListener(Action method) { }
         protected void AddListener<T>(T property, T data) { }
         protected void AddListener<T>(Action<T> method, T data) { }
-        protected void AddListener<T>(Action<string, T> method, string data0, T data1) { }
 
         protected void AddDynamicListener<T>(T property) { }
         protected void AddDynamicListener<T>(Action<T> method) { }

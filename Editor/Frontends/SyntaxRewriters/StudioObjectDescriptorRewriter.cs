@@ -36,7 +36,7 @@ namespace RRCG
                 ParseStatement("__GetImplementation().__ClearEvents(this);")
             };
 
-            statements = node.Members.Select(m =>
+            statements = statements.Concat(node.Members.Select(m =>
             {
                 if (m is MethodDeclarationSyntax method)
                 {
@@ -54,7 +54,7 @@ namespace RRCG
                 }
 
                 return null;
-            }).Where(m => m != null);
+            }).Where(m => m != null));
 
             statements = statements.Append(ParseStatement("__GetImplementation().__FinalizeEvents(this);"));
 
@@ -206,14 +206,19 @@ namespace RRCG
     {
         public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax node)
         {
-            if (node.Expression.ToString() == "AddListener")
+            var invocationName = node.Expression.ToString();
+ 
+            if (
+                invocationName.StartsWith("AddListener") ||
+                invocationName.StartsWith("AddDynamicListener")
+            )
             {
                 var firstArg = node.ArgumentList.Arguments[0].Expression;
                 var otherArgs = node.ArgumentList.Arguments.Skip(1).Select(arg => arg.Expression);
 
                 if (firstArg is MemberAccessExpressionSyntax mae)
                 {
-                    return SyntaxFactory.InvocationExpression(IdentifierName("AddListener"))
+                    return SyntaxFactory.InvocationExpression(IdentifierName(invocationName))
                     .WithArgumentList(SyntaxUtils.ArgumentList(
                         new ExpressionSyntax[]
                         {
