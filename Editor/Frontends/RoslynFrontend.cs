@@ -52,7 +52,7 @@ namespace RRCG
         {
             var type = Utils.GetTypeInAssembly(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
 
-            var instance = (StudioObjectBuilder)Activator.CreateInstance(type);
+            var instance = (StudioObjectBuilder)Activator.CreateInstance(type, new object[] {new StudioObjectPort() { Data = rrcgMeta.gameObject } });
             instance.__UpdateStudioEvents();
         }
     }

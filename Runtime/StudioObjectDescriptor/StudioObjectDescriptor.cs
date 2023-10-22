@@ -25,7 +25,7 @@ namespace RRCGSource
         /// <summary>
         /// The root gameObject of the Rec Room Object prefab
         /// </summary>
-        public GameObject gameObject { get; }
+        protected GameObject gameObject { get; }
     }
 
     public class StudioEvent : Attribute { }

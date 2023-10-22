@@ -15,10 +15,12 @@ namespace RRCG
     public class StudioObjectDescriptorRewriter : CSharpSyntaxRewriter
     {
         private RRCGSyntaxRewriter rrcgRewriter;
+        private BodyRewriter bodyRewriter;
 
         public StudioObjectDescriptorRewriter(RRCGSyntaxRewriter rrcgRewriter)
         {
             this.rrcgRewriter = rrcgRewriter;
+            this.bodyRewriter = new BodyRewriter();
         }
 
         //
@@ -29,7 +31,10 @@ namespace RRCG
         {
             var translatedNode = (ClassDeclarationSyntax)base.VisitClassDeclaration(node);
 
-            IEnumerable<StatementSyntax> statements = new List<StatementSyntax>();
+            IEnumerable<StatementSyntax> statements = new List<StatementSyntax>()
+            {
+                ParseStatement("__GetImplementation().__ClearEvents(this);")
+            };
 
             statements = node.Members.Select(m =>
             {
@@ -41,13 +46,17 @@ namespace RRCG
                         return ExpressionStatement(InvocationExpression(IdentifierName("__AddStudioEvent")).WithArgumentList(SyntaxUtils.ArgumentList(
                             SyntaxUtils.StringLiteral(method.Identifier.Text),
                             ParseExpression("RRCG.StudioEventType." + GetStudioEventType(method).ToString()),
-                            ParenthesizedLambdaExpression().WithParameterList(method.ParameterList).WithBody(method.Body)
+                            ParenthesizedLambdaExpression().WithParameterList(method.ParameterList).WithBody(
+                                (BlockSyntax)bodyRewriter.Visit(method.Body)
+                            )
                         )));
                     }
                 }
 
                 return null;
             }).Where(m => m != null);
+
+            statements = statements.Append(ParseStatement("__GetImplementation().__FinalizeEvents(this);"));
 
             return translatedNode.WithMembers(translatedNode.Members.Add(
                 ((MethodDeclarationSyntax)ParseMemberDeclaration("public override void __UpdateStudioEvents() { }")).WithBody(
@@ -191,5 +200,32 @@ namespace RRCG
             throw new Exception("Method " + method.ToString() + " cannot be expressed as a UnityEvent");
         }
 
+    }
+
+    class BodyRewriter : CSharpSyntaxRewriter
+    {
+        public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax node)
+        {
+            if (node.Expression.ToString() == "AddListener")
+            {
+                var firstArg = node.ArgumentList.Arguments[0].Expression;
+                var otherArgs = node.ArgumentList.Arguments.Skip(1).Select(arg => arg.Expression);
+
+                if (firstArg is MemberAccessExpressionSyntax mae)
+                {
+                    return SyntaxFactory.InvocationExpression(IdentifierName("AddListener"))
+                    .WithArgumentList(SyntaxUtils.ArgumentList(
+                        new ExpressionSyntax[]
+                        {
+                            mae.Expression,
+                            LiteralExpression(SyntaxKind.StringLiteralExpression, Literal(mae.Name.ToString())),
+                        }.Concat(otherArgs).ToArray()
+                    ));
+                }
+                else throw new Exception("first argument of AddListener() must be a member access expression (e.g. gameObject.name including the dot!)");
+            }
+
+            return base.VisitInvocationExpression(node);
+        }
     }
 }
