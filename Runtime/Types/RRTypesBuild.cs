@@ -46,7 +46,7 @@ namespace RRCGBuild
 
     public class PortBuilderAny : AnyPort { }
     public class ListPort<T> : AnyPort { }
-    public class RRTuple<T0, T1> : AnyPort { }
+    public class RRTuplePort<T0, T1> : AnyPort { }
     public class ColorPort : AnyPort
     {
         public ColorPort() { }

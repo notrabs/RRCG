@@ -784,7 +784,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static (T0 Item1, T1 Item2) BreakTuple<T0, T1>(object Tuple)
+        public static (T0 Item1, T1 Item2) BreakTuple<T0, T1>(RRTuple<T0, T1> Tuple)
         {
             return default;
         }
@@ -4368,7 +4368,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static object MakeTuple<T0, T1>(T0 Item1, T1 Item2)
+        public static RRTuple<T0, T1> MakeTuple<T0, T1>(T0 Item1, T1 Item2)
         {
             return default;
         }
@@ -4856,7 +4856,7 @@ namespace RRCGGenerated
         /// <summary>
         /// For the target player, equip the specified Inventory Item to the specified Inventory Equipment Slot. If the Slot is of Inventory type, this chip will take effect whether or not the Slot is enabled, but the Slot must then be enabled separately.
         /// </summary>
-        public static bool PlayerEquipInventoryItem(Player Player, InventoryItem InventoryItem, object InventoryEquipmentSlot, AlternativeExec<bool> OnEquipComplete)
+        public static bool PlayerEquipInventoryItem(Player Player, InventoryItem InventoryItem, EquipmentSlot InventoryEquipmentSlot, AlternativeExec<bool> OnEquipComplete)
         {
             return default;
         }

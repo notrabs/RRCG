@@ -1081,7 +1081,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static (T0 Item1, T1 Item2) BreakTuple<T0, T1>(AnyPort Tuple)
+        public static (T0 Item1, T1 Item2) BreakTuple<T0, T1>(RRTuplePort<T0, T1> Tuple)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
         {
@@ -1196,7 +1196,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void ClearScreen(AnyPort Target)
+        public static void ClearScreen(TextScreenPort Target)
         {
             Node node = new Node()
             {Name = "Clear Screen", Type = "142438cd-1bd2-4df2-b2fa-c93aaf99f771", InputCount = 2};
@@ -5962,7 +5962,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static AnyPort MakeTuple<T0, T1>(T0 Item1, T1 Item2)
+        public static RRTuplePort<T0, T1> MakeTuple<T0, T1>(T0 Item1, T1 Item2)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
         {
@@ -5971,7 +5971,7 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Item1, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Item2, new Port{Node = node, Index = 1});
-            var output_ports = new AnyPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new RRTuplePort<T0, T1>{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -6600,7 +6600,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static BoolPort PlayerEquipInventoryItem(PlayerPort Player, InventoryItemPort InventoryItem, AnyPort InventoryEquipmentSlot, AlternativeExec<BoolPort> OnEquipComplete)
+        public static BoolPort PlayerEquipInventoryItem(PlayerPort Player, InventoryItemPort InventoryItem, EquipmentSlotPort InventoryEquipmentSlot, AlternativeExec<BoolPort> OnEquipComplete)
         {
             Node node = new Node()
             {Name = "Player Equip Inventory Item", Type = "ad1dc480-3932-482f-9609-ab0b01f234e8", InputCount = 4};
@@ -7473,7 +7473,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static void PrintTextToScreen(AnyPort Target, StringPort Text, ColorPort Color)
+        public static void PrintTextToScreen(TextScreenPort Target, StringPort Text, ColorPort Color)
         {
             Node node = new Node()
             {Name = "Print Text To Screen", Type = "5f9f8c85-8aaa-4c9d-9d9d-4c952053b623", InputCount = 4};
