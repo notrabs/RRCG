@@ -46,6 +46,7 @@ namespace RRCGBuild
 
     public class PortBuilderAny : AnyPort { }
     public class ListPort<T> : AnyPort { }
+    public class RRTuple<T0, T1> : AnyPort { }
     public class ColorPort : AnyPort
     {
         public ColorPort() { }
@@ -368,5 +369,8 @@ namespace RRCGBuild
     {
         public static implicit operator AnimationControllerPort(RecRoomObjectPort data) => new AnimationControllerPort() { Port = ChipBuilder.FromRecRoomObject(data).Port };
     }
-
+    public class InventoryItemPort : AnyPort { }
+    public class StatePort : AnyPort { }
+    public class GrabberPort : AnyPort { }
+    public class EquipmentSlotPort : AnyPort { }
 }

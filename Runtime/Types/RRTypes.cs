@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace RRCGSource
 {
     public abstract class AnyObject { }
+    public class RRTuple<T0, T1> : AnyObject { }
 
     public class AI : AnyObject { }
     public class WelcomeMat : AnyObject { }
@@ -104,5 +105,9 @@ namespace RRCGSource
     public class SwingHandle : AnyObject { }
     public class RoomLevelHUD : AnyObject { }
     public class Touchpad : AnyObject { }
+    public class InventoryItem : AnyObject { }
+    public class State : AnyObject { }
+    public class Grabber : AnyObject { }
+    public class EquipmentSlot : AnyObject { }
 
 }

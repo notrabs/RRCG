@@ -2859,7 +2859,7 @@ namespace RRCGGenerated
             {Name = "From Rec Room Object", Type = "7ff685a6-f59c-4c6c-b559-f343d81ea1d4", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            var output_ports = new AnyPort { Port = new Port{Node = node, Index = 0}};
+            var output_ports = new AnyPort{ Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -3774,7 +3774,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void GoToState(AnyPort State)
+        public static void GoToState(StatePort State)
         {
             Node node = new Node()
             {Name = "Go To State", Type = "ecf53690-1d60-4971-b057-f601d49975ab", InputCount = 2};
@@ -3784,7 +3784,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static (BoolPort HasHeldObject, RecRoomObjectPort HeldObject) GrabberGetHeldObject(AnyPort Target)
+        public static (BoolPort HasHeldObject, RecRoomObjectPort HeldObject) GrabberGetHeldObject(GrabberPort Target)
         {
             Node node = new Node()
             {Name = "Grabber Get Held Object", Type = "338a3300-ad0d-40d9-a9a7-ff57f5401905", InputCount = 1};
@@ -3794,7 +3794,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort GrabberGrabObject(AnyPort Target, RecRoomObjectPort Object, BoolPort StealfromPlayer, BoolPort SnaptoGrabber)
+        public static BoolPort GrabberGrabObject(GrabberPort Target, RecRoomObjectPort Object, BoolPort StealfromPlayer, BoolPort SnaptoGrabber)
         {
             Node node = new Node()
             {Name = "Grabber Grab Object", Type = "36668004-5384-44df-901e-bd3324675838", InputCount = 5};
@@ -3808,7 +3808,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static RecRoomObjectPort GrabberRelease(AnyPort Target)
+        public static RecRoomObjectPort GrabberRelease(GrabberPort Target)
         {
             Node node = new Node()
             {Name = "Grabber Release", Type = "051648c8-f13b-4e75-b5e0-33fc834485c6", InputCount = 2};
@@ -3819,7 +3819,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static void GrabberSetPlayerCanStealFromGrabber(AnyPort Target, BoolPort Enabled)
+        public static void GrabberSetPlayerCanStealFromGrabber(GrabberPort Target, BoolPort Enabled)
         {
             Node node = new Node()
             {Name = "Grabber Set Player Can Steal From Grabber", Type = "a02cf9d4-fa6b-41c7-bcbb-262489fa52ad", InputCount = 3};
@@ -4642,7 +4642,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static (BoolPort Success, IntPort TotalCount) InventoryItemAdd(AnyPort InventoryItem, PlayerPort Player, IntPort Quantity, AlternativeExec<(BoolPort Success, IntPort TotalCount)> Complete)
+        public static (BoolPort Success, IntPort TotalCount) InventoryItemAdd(InventoryItemPort InventoryItem, PlayerPort Player, IntPort Quantity, AlternativeExec<(BoolPort Success, IntPort TotalCount)> Complete)
         {
             Node node = new Node()
             {Name = "Inventory Item Add", Type = "41d040f2-f8c6-45ec-b6c8-2c31a95e6951", InputCount = 4};
@@ -4660,16 +4660,16 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static AnyPort InventoryItemConstant()
+        public static InventoryItemPort InventoryItemConstant()
         {
             Node node = new Node()
             {Name = "Inventory Item Constant", Type = "04cc0f81-b7d4-4469-aaa4-428b6e0c1f02", InputCount = 0};
             Context.current.Nodes.Add(node);
-            var output_ports = new AnyPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new InventoryItemPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
-        public static IntPort InventoryItemGetCount(AnyPort InventoryItem, PlayerPort Player, AlternativeExec<IntPort> Complete)
+        public static IntPort InventoryItemGetCount(InventoryItemPort InventoryItem, PlayerPort Player, AlternativeExec<IntPort> Complete)
         {
             Node node = new Node()
             {Name = "Inventory Item Get Count", Type = "2e1cb4fa-a341-40fe-acba-e8621f7c69ca", InputCount = 3};
@@ -4686,7 +4686,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static (StringPort Name, StringPort Description, BoolPort SupportsUseAction) InventoryItemGetDefinition(AnyPort InventoryItem)
+        public static (StringPort Name, StringPort Description, BoolPort SupportsUseAction) InventoryItemGetDefinition(InventoryItemPort InventoryItem)
         {
             Node node = new Node()
             {Name = "Inventory Item Get Definition", Type = "93ad7158-81eb-453c-b3db-222b9630ae0e", InputCount = 1};
@@ -4696,7 +4696,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static (BoolPort Success, IntPort TotalCount) InventoryItemRemove(AnyPort InventoryItem, PlayerPort Player, IntPort Quantity, AlternativeExec<(BoolPort Success, IntPort TotalCount)> Complete)
+        public static (BoolPort Success, IntPort TotalCount) InventoryItemRemove(InventoryItemPort InventoryItem, PlayerPort Player, IntPort Quantity, AlternativeExec<(BoolPort Success, IntPort TotalCount)> Complete)
         {
             Node node = new Node()
             {Name = "Inventory Item Remove", Type = "736abfd6-5a44-4c74-9fc2-663adf6cbbdf", InputCount = 4};
@@ -4714,7 +4714,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static void InventoryItemUse(AnyPort InventoryItem)
+        public static void InventoryItemUse(InventoryItemPort InventoryItem)
         {
             Node node = new Node()
             {Name = "Inventory Item Use", Type = "ead258fa-43c8-4504-b5e5-1dc5bf47c7c7", InputCount = 2};
@@ -6600,7 +6600,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static BoolPort PlayerEquipInventoryItem(PlayerPort Player, AnyPort InventoryItem, AnyPort InventoryEquipmentSlot, AlternativeExec<BoolPort> OnEquipComplete)
+        public static BoolPort PlayerEquipInventoryItem(PlayerPort Player, InventoryItemPort InventoryItem, AnyPort InventoryEquipmentSlot, AlternativeExec<BoolPort> OnEquipComplete)
         {
             Node node = new Node()
             {Name = "Player Equip Inventory Item", Type = "ad1dc480-3932-482f-9609-ab0b01f234e8", InputCount = 4};
@@ -7060,7 +7060,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort PlayerOwnsInventoryItem(PlayerPort Player, AnyPort InventoryItem, AlternativeExec<BoolPort> Complete)
+        public static BoolPort PlayerOwnsInventoryItem(PlayerPort Player, InventoryItemPort InventoryItem, AlternativeExec<BoolPort> Complete)
         {
             Node node = new Node()
             {Name = "Player Owns Inventory Item", Type = "68cc97a7-440a-450a-bf7f-b25091629c32", InputCount = 3};
@@ -7369,7 +7369,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort PlayerUnequipInventoryItem(PlayerPort Player, AnyPort InventoryItem, AlternativeExec<BoolPort> OnUnequipComplete)
+        public static BoolPort PlayerUnequipInventoryItem(PlayerPort Player, InventoryItemPort InventoryItem, AlternativeExec<BoolPort> OnUnequipComplete)
         {
             Node node = new Node()
             {Name = "Player Unequip Inventory Item", Type = "944c8ed8-a0da-465d-95f8-e1b7a850ef2d", InputCount = 3};
@@ -9469,12 +9469,12 @@ namespace RRCGGenerated
             return;
         }
 
-        public static AnyPort StateConstant()
+        public static StatePort StateConstant()
         {
             Node node = new Node()
             {Name = "State Constant", Type = "bf4f0801-2e6b-4e4b-a2df-a005fe622087", InputCount = 0};
             Context.current.Nodes.Add(node);
-            var output_ports = new AnyPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StatePort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 

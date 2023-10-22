@@ -2824,7 +2824,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Transitions to the given state in the current state machine.
         /// </summary>
-        public static void GoToState(object State)
+        public static void GoToState(State State)
         {
             return;
         }
@@ -2832,7 +2832,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns whether the Grabber is currently holding an object, and a reference to that object if so. If no object is held, returns Invalid Object.
         /// </summary>
-        public static (bool HasHeldObject, RecRoomObject HeldObject) GrabberGetHeldObject(object Target)
+        public static (bool HasHeldObject, RecRoomObject HeldObject) GrabberGetHeldObject(Grabber Target)
         {
             return default;
         }
@@ -2840,7 +2840,7 @@ namespace RRCGGenerated
         /// <summary>
         /// On execution, the target Grabber will attempt to grab the specified object. If Steal From Player is true, it will steal the object from a player who has it held or holstered. If Snap to Grabber is true, the object will be moved to the Grabber’s position. If Snap to Grabber is false, the distance between Grabber and object at the moment of execution will be maintained until the object is released.
         /// </summary>
-        public static bool GrabberGrabObject(object Target, RecRoomObject Object, bool StealfromPlayer, bool SnaptoGrabber)
+        public static bool GrabberGrabObject(Grabber Target, RecRoomObject Object, bool StealfromPlayer, bool SnaptoGrabber)
         {
             return default;
         }
@@ -2848,7 +2848,7 @@ namespace RRCGGenerated
         /// <summary>
         /// On execution, the target Grabber will release anything it’s holding. If an object is dropped, a reference to that object will be passed as an output. If nothing is dropped, it will return Invalid Object.
         /// </summary>
-        public static RecRoomObject GrabberRelease(object Target)
+        public static RecRoomObject GrabberRelease(Grabber Target)
         {
             return default;
         }
@@ -2856,7 +2856,7 @@ namespace RRCGGenerated
         /// <summary>
         /// On execution, the target grabber will lock or unlock the object being held. If true, the held object will interactable for a player to steal.  If false, the held object will not be interactable for a player to steal.
         /// </summary>
-        public static void GrabberSetPlayerCanStealFromGrabber(object Target, bool Enabled)
+        public static void GrabberSetPlayerCanStealFromGrabber(Grabber Target, bool Enabled)
         {
             return;
         }
@@ -3416,7 +3416,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Add an inventory item to the given player.
         /// </summary>
-        public static (bool Success, int TotalCount) InventoryItemAdd(object InventoryItem, Player Player, int Quantity, AlternativeExec<(bool Success, int TotalCount)> Complete)
+        public static (bool Success, int TotalCount) InventoryItemAdd(InventoryItem InventoryItem, Player Player, int Quantity, AlternativeExec<(bool Success, int TotalCount)> Complete)
         {
             return default;
         }
@@ -3424,7 +3424,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static object InventoryItemConstant()
+        public static InventoryItem InventoryItemConstant()
         {
             return default;
         }
@@ -3432,7 +3432,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Get the count of how many of the given inventory item the given player owns.
         /// </summary>
-        public static int InventoryItemGetCount(object InventoryItem, Player Player, AlternativeExec<int> Complete)
+        public static int InventoryItemGetCount(InventoryItem InventoryItem, Player Player, AlternativeExec<int> Complete)
         {
             return default;
         }
@@ -3440,7 +3440,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Gets the friendly name and description of the given inventory item.
         /// </summary>
-        public static (string Name, string Description, bool SupportsUseAction) InventoryItemGetDefinition(object InventoryItem)
+        public static (string Name, string Description, bool SupportsUseAction) InventoryItemGetDefinition(InventoryItem InventoryItem)
         {
             return default;
         }
@@ -3448,7 +3448,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Remove an inventory item from the given player.
         /// </summary>
-        public static (bool Success, int TotalCount) InventoryItemRemove(object InventoryItem, Player Player, int Quantity, AlternativeExec<(bool Success, int TotalCount)> Complete)
+        public static (bool Success, int TotalCount) InventoryItemRemove(InventoryItem InventoryItem, Player Player, int Quantity, AlternativeExec<(bool Success, int TotalCount)> Complete)
         {
             return default;
         }
@@ -3456,7 +3456,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Uses the given inventory item.
         /// </summary>
-        public static void InventoryItemUse(object InventoryItem)
+        public static void InventoryItemUse(InventoryItem InventoryItem)
         {
             return;
         }
@@ -4856,7 +4856,7 @@ namespace RRCGGenerated
         /// <summary>
         /// For the target player, equip the specified Inventory Item to the specified Inventory Equipment Slot. If the Slot is of Inventory type, this chip will take effect whether or not the Slot is enabled, but the Slot must then be enabled separately.
         /// </summary>
-        public static bool PlayerEquipInventoryItem(Player Player, object InventoryItem, object InventoryEquipmentSlot, AlternativeExec<bool> OnEquipComplete)
+        public static bool PlayerEquipInventoryItem(Player Player, InventoryItem InventoryItem, object InventoryEquipmentSlot, AlternativeExec<bool> OnEquipComplete)
         {
             return default;
         }
@@ -5214,7 +5214,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns true if the given player owns at least one of the given inventory item.
         /// </summary>
-        public static bool PlayerOwnsInventoryItem(Player Player, object InventoryItem, AlternativeExec<bool> Complete)
+        public static bool PlayerOwnsInventoryItem(Player Player, InventoryItem InventoryItem, AlternativeExec<bool> Complete)
         {
             return default;
         }
@@ -5428,7 +5428,7 @@ namespace RRCGGenerated
         /// <summary>
         /// For the target player, unequip the specified Inventory Item from any slot to which it is equipped.
         /// </summary>
-        public static bool PlayerUnequipInventoryItem(Player Player, object InventoryItem, AlternativeExec<bool> OnUnequipComplete)
+        public static bool PlayerUnequipInventoryItem(Player Player, InventoryItem InventoryItem, AlternativeExec<bool> OnUnequipComplete)
         {
             return default;
         }
@@ -6876,7 +6876,7 @@ namespace RRCGGenerated
         /// <summary>
         /// A constant representing a state in a state machine.
         /// </summary>
-        public static object StateConstant()
+        public static State StateConstant()
         {
             return default;
         }
