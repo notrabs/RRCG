@@ -345,7 +345,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs True when all inputs are True. If any input is False, it outputs False.
         /// </summary>
-        public static bool And(params bool[] Input)
+        public static bool And(bool Input)
         {
             return default;
         }
@@ -784,7 +784,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static (object Item1, object Item2) BreakTuple(object Tuple)
+        public static (T0 Item1, T1 Item2) BreakTuple<T0, T1>(object Tuple)
         {
             return default;
         }
@@ -1064,7 +1064,55 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
+        public static void CombatantReceiveDamage(AI Target, int Damage, bool IgnoreShield, Combatant DamageSource)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Deals damage to the given target combatant with various parameters.
+        /// </summary>
+        public static void CombatantReceiveDamage(AI Target, int Damage, bool IgnoreShield, Player DamageSource)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Deals damage to the given target combatant with various parameters.
+        /// </summary>
+        public static void CombatantReceiveDamage(Combatant Target, int Damage, bool IgnoreShield, AI DamageSource)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Deals damage to the given target combatant with various parameters.
+        /// </summary>
         public static void CombatantReceiveDamage(Combatant Target, int Damage, bool IgnoreShield, Combatant DamageSource)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Deals damage to the given target combatant with various parameters.
+        /// </summary>
+        public static void CombatantReceiveDamage(Combatant Target, int Damage, bool IgnoreShield, Player DamageSource)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Deals damage to the given target combatant with various parameters.
+        /// </summary>
+        public static void CombatantReceiveDamage(Player Target, int Damage, bool IgnoreShield, AI DamageSource)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Deals damage to the given target combatant with various parameters.
+        /// </summary>
+        public static void CombatantReceiveDamage(Player Target, int Damage, bool IgnoreShield, Combatant DamageSource)
         {
             return;
         }
@@ -1230,9 +1278,25 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Returns the number of columns in the given data table, set by configuring the chip.
+        /// </summary>
+        public static int DataTableGetColumnCount()
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Returns the first row containing the given value within a specified Data Table. Configure the chip to select the Data Table and column.
         /// </summary>
         public static int DataTableGetFirstRowContaining()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns the number of rows in the given data table, set by configuring the chip.
+        /// </summary>
+        public static int DataTableGetRowCount()
         {
             return default;
         }
@@ -1312,7 +1376,87 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
+        public static float Distance(AI A, Combatant B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(AI A, RecRoomObject B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(AI A, Player B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(AI A, Vector3 B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(Combatant A, AI B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
         public static float Distance(Combatant A, Combatant B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(Combatant A, RecRoomObject B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(Combatant A, Player B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(Combatant A, Vector3 B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(RecRoomObject A, AI B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(RecRoomObject A, Combatant B)
         {
             return default;
         }
@@ -1328,7 +1472,87 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
+        public static float Distance(RecRoomObject A, Player B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(RecRoomObject A, Vector3 B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(Player A, AI B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(Player A, Combatant B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(Player A, RecRoomObject B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
         public static float Distance(Player A, Player B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(Player A, Vector3 B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(Vector3 A, AI B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(Vector3 A, Combatant B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(Vector3 A, RecRoomObject B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float Distance(Vector3 A, Player B)
         {
             return default;
         }
@@ -1352,7 +1576,87 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
+        public static float DistanceDeprecated(AI A, Combatant B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(AI A, RecRoomObject B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(AI A, Player B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(AI A, Vector3 B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(Combatant A, AI B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
         public static float DistanceDeprecated(Combatant A, Combatant B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(Combatant A, RecRoomObject B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(Combatant A, Player B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(Combatant A, Vector3 B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(RecRoomObject A, AI B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(RecRoomObject A, Combatant B)
         {
             return default;
         }
@@ -1368,7 +1672,87 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
+        public static float DistanceDeprecated(RecRoomObject A, Player B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(RecRoomObject A, Vector3 B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(Player A, AI B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(Player A, Combatant B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(Player A, RecRoomObject B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
         public static float DistanceDeprecated(Player A, Player B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(Player A, Vector3 B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(Vector3 A, AI B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(Vector3 A, Combatant B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(Vector3 A, RecRoomObject B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the distance between the input objects.
+        /// </summary>
+        public static float DistanceDeprecated(Vector3 A, Player B)
         {
             return default;
         }
@@ -1528,7 +1912,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Compares the input values and outputs True if they are the same. False if they are different.
         /// </summary>
-        internal static new bool Equals(object Value)
+        internal static bool Equals<T>(T Value)
         {
             return default;
         }
@@ -1536,7 +1920,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Compares the two input values and outputs True if they are the same. False if they are different.
         /// </summary>
-        public static bool EqualsDeprecated(object A, object B)
+        public static bool EqualsDeprecated<T>(T A, T B)
         {
             return default;
         }
@@ -1712,7 +2096,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Iterates over the input list. The loop exec fires for each element in the list. The Done exec fires once the end of the list has been reached.
         /// </summary>
-        public static object ForEach<T>(List<T> Items, AlternativeExec<object> Done)
+        public static T ForEach<T>(List<T> Items, AlternativeExec<T> Done)
         {
             return default;
         }
@@ -1720,7 +2104,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Converts the input Rec Room Object to the object's subtype.
         /// </summary>
-        internal static RecRoomObject FromRecRoomObject(RecRoomObject Target)
+        internal static T FromRecRoomObject<T>(RecRoomObject Target)
         {
             return default;
         }
@@ -1800,7 +2184,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (T2 Closest, int ClosestIndex, float Distance) GetClosest<T2>(RecRoomObject Origin, List<T2> Targets)
+        public static (RecRoomObject Closest, int ClosestIndex, float Distance) GetClosest(RecRoomObject Origin, List<RecRoomObject> Targets)
         {
             return default;
         }
@@ -1808,7 +2192,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (T2 Closest, int ClosestIndex, float Distance) GetClosest<T2>(Player Origin, List<T2> Targets)
+        public static (Player Closest, int ClosestIndex, float Distance) GetClosest(RecRoomObject Origin, List<Player> Targets)
         {
             return default;
         }
@@ -1816,7 +2200,55 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (T2 Closest, int ClosestIndex, float Distance) GetClosest<T2>(Vector3 Origin, List<T2> Targets)
+        public static (Vector3 Closest, int ClosestIndex, float Distance) GetClosest(RecRoomObject Origin, List<Vector3> Targets)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
+        /// </summary>
+        public static (RecRoomObject Closest, int ClosestIndex, float Distance) GetClosest(Player Origin, List<RecRoomObject> Targets)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
+        /// </summary>
+        public static (Player Closest, int ClosestIndex, float Distance) GetClosest(Player Origin, List<Player> Targets)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
+        /// </summary>
+        public static (Vector3 Closest, int ClosestIndex, float Distance) GetClosest(Player Origin, List<Vector3> Targets)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
+        /// </summary>
+        public static (RecRoomObject Closest, int ClosestIndex, float Distance) GetClosest(Vector3 Origin, List<RecRoomObject> Targets)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
+        /// </summary>
+        public static (Player Closest, int ClosestIndex, float Distance) GetClosest(Vector3 Origin, List<Player> Targets)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
+        /// </summary>
+        public static (Vector3 Closest, int ClosestIndex, float Distance) GetClosest(Vector3 Origin, List<Vector3> Targets)
         {
             return default;
         }
@@ -1840,7 +2272,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (RecRoomObject Farthest, int FarthestIndex, float Distance) GetFarthest<T2>(RecRoomObject Origin, List<T2> Targets)
+        public static (RecRoomObject Farthest, int FarthestIndex, float Distance) GetFarthest(RecRoomObject Origin, List<RecRoomObject> Targets)
         {
             return default;
         }
@@ -1848,7 +2280,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (Player Farthest, int FarthestIndex, float Distance) GetFarthest<T2>(Player Origin, List<T2> Targets)
+        public static (Player Farthest, int FarthestIndex, float Distance) GetFarthest(RecRoomObject Origin, List<Player> Targets)
         {
             return default;
         }
@@ -1856,7 +2288,55 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public static (Vector3 Farthest, int FarthestIndex, float Distance) GetFarthest<T2>(Vector3 Origin, List<T2> Targets)
+        public static (Vector3 Farthest, int FarthestIndex, float Distance) GetFarthest(RecRoomObject Origin, List<Vector3> Targets)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
+        /// </summary>
+        public static (RecRoomObject Farthest, int FarthestIndex, float Distance) GetFarthest(Player Origin, List<RecRoomObject> Targets)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
+        /// </summary>
+        public static (Player Farthest, int FarthestIndex, float Distance) GetFarthest(Player Origin, List<Player> Targets)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
+        /// </summary>
+        public static (Vector3 Farthest, int FarthestIndex, float Distance) GetFarthest(Player Origin, List<Vector3> Targets)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
+        /// </summary>
+        public static (RecRoomObject Farthest, int FarthestIndex, float Distance) GetFarthest(Vector3 Origin, List<RecRoomObject> Targets)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
+        /// </summary>
+        public static (Player Farthest, int FarthestIndex, float Distance) GetFarthest(Vector3 Origin, List<Player> Targets)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
+        /// </summary>
+        public static (Vector3 Farthest, int FarthestIndex, float Distance) GetFarthest(Vector3 Origin, List<Vector3> Targets)
         {
             return default;
         }
@@ -2342,9 +2822,57 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Transitions to the given state in the current state machine.
+        /// </summary>
+        public static void GoToState(object State)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Returns whether the Grabber is currently holding an object, and a reference to that object if so. If no object is held, returns Invalid Object.
+        /// </summary>
+        public static (bool HasHeldObject, RecRoomObject HeldObject) GrabberGetHeldObject(object Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// On execution, the target Grabber will attempt to grab the specified object. If Steal From Player is true, it will steal the object from a player who has it held or holstered. If Snap to Grabber is true, the object will be moved to the Grabber’s position. If Snap to Grabber is false, the distance between Grabber and object at the moment of execution will be maintained until the object is released.
+        /// </summary>
+        public static bool GrabberGrabObject(object Target, RecRoomObject Object, bool StealfromPlayer, bool SnaptoGrabber)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// On execution, the target Grabber will release anything it’s holding. If an object is dropped, a reference to that object will be passed as an output. If nothing is dropped, it will return Invalid Object.
+        /// </summary>
+        public static RecRoomObject GrabberRelease(object Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// On execution, the target grabber will lock or unlock the object being held. If true, the held object will interactable for a player to steal.  If false, the held object will not be interactable for a player to steal.
+        /// </summary>
+        public static void GrabberSetPlayerCanStealFromGrabber(object Target, bool Enabled)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Grants the contents of a Reward to the specified Player.
         /// </summary>
         public static bool GrantReward(Player Player, Reward Reward, AlternativeExec<bool> OnAwardComplete)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns true if the current circuit graph is active. When inactive, circuit events will not run.
+        /// </summary>
+        public static bool GraphGetIsActive()
         {
             return default;
         }
@@ -2886,6 +3414,54 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Add an inventory item to the given player.
+        /// </summary>
+        public static (bool Success, int TotalCount) InventoryItemAdd(object InventoryItem, Player Player, int Quantity, AlternativeExec<(bool Success, int TotalCount)> Complete)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static object InventoryItemConstant()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Get the count of how many of the given inventory item the given player owns.
+        /// </summary>
+        public static int InventoryItemGetCount(object InventoryItem, Player Player, AlternativeExec<int> Complete)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Gets the friendly name and description of the given inventory item.
+        /// </summary>
+        public static (string Name, string Description, bool SupportsUseAction) InventoryItemGetDefinition(object InventoryItem)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Remove an inventory item from the given player.
+        /// </summary>
+        public static (bool Success, int TotalCount) InventoryItemRemove(object InventoryItem, Player Player, int Quantity, AlternativeExec<(bool Success, int TotalCount)> Complete)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Uses the given inventory item.
+        /// </summary>
+        public static void InventoryItemUse(object InventoryItem)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Computes an inverse linear interpolation. The output is clamped between 0 and 1.
         /// </summary>
         public static float InverseLerp(float Start, float End, float Value)
@@ -2968,7 +3544,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if the input variable is not null. Certain variable types must be set before use because they can't have a default value. A Rec Room Object variable that isn't set isn't going to be valid.
         /// </summary>
-        public static bool IsValid(object Port0)
+        public static bool IsValid<T>(T Port0)
         {
             return default;
         }
@@ -3232,7 +3808,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the angle of the spotlight's cone.
         /// </summary>
-        public static void LightSetAngleNodeInt(Light Target, int Angle)
+        public static void LightSetAngleInt(Light Target, int Angle)
         {
             return;
         }
@@ -3280,7 +3856,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the range of a point light or a spotlight.
         /// </summary>
-        public static void LightSetRangeNodeInt(Light Target, int Range)
+        public static void LightSetRangeInt(Light Target, int Range)
         {
             return;
         }
@@ -3320,7 +3896,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds a new element to the end of the target list containing the input value.
         /// </summary>
-        public static void ListAdd<T>(List<T> Target, object Item)
+        public static void ListAdd<T>(List<T> Target, T Item)
         {
             return;
         }
@@ -3350,6 +3926,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Removes all elements from a list
+        /// </summary>
+        public static void ListClear<T>(List<T> List)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
         internal static List<Color> ListColorVariable(List<Color> Port0)
@@ -3368,7 +3952,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs True if the target list contains the input value.
         /// </summary>
-        public static bool ListContains<T>(List<T> Target, object Item)
+        public static bool ListContains<T>(List<T> Target, T Item)
         {
             return default;
         }
@@ -3384,7 +3968,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Creates a list from input values. Add more inputs by using the configure tool on the node and press "Add Input". All items in a list must be of the same type.
         /// </summary>
-        public static List<T> ListCreate<T>(params object[] Item)
+        public static List<T> ListCreate<T>(params T[] Item)
         {
             return default;
         }
@@ -3400,7 +3984,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Divides each element in the list by the next element.
         /// </summary>
-        public static float ListDivide<T>(List<float> Target)
+        public static float ListDivide(List<float> Target)
         {
             return default;
         }
@@ -3408,7 +3992,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Divides each element in the list by the next element.
         /// </summary>
-        public static int ListDivide<T>(List<int> Target)
+        public static int ListDivide(List<int> Target)
         {
             return default;
         }
@@ -3416,7 +4000,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Divides each element in the list by the next element.
         /// </summary>
-        public static Vector3 ListDivide<T>(List<Vector3> Target)
+        public static Vector3 ListDivide(List<Vector3> Target)
         {
             return default;
         }
@@ -3432,7 +4016,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns list of all indices of input item in target list if that list contains one or more instances of the item. Otherwise returns an empty list.
         /// </summary>
-        public static List<int> ListGetAllIndicesOf<T>(List<T> Target, object Item)
+        public static List<int> ListGetAllIndicesOf<T>(List<T> Target, T Item)
         {
             return default;
         }
@@ -3456,7 +4040,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns first index of the item in target list if that list contains it. Otherwise returns -1.
         /// </summary>
-        public static int ListGetFirstIndexOf<T>(List<T> Target, object Item)
+        public static int ListGetFirstIndexOf<T>(List<T> Target, T Item)
         {
             return default;
         }
@@ -3464,7 +4048,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Insert a new element into the target list at the input index. The new element contains the input value.
         /// </summary>
-        public static void ListInsert<T>(List<T> Target, object Item, int Index)
+        public static void ListInsert<T>(List<T> Target, T Item, int Index)
         {
             return;
         }
@@ -3480,7 +4064,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the highest value in the target list.
         /// </summary>
-        public static float ListMax<T>(List<float> Target)
+        public static float ListMax(List<float> Target)
         {
             return default;
         }
@@ -3488,7 +4072,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the highest value in the target list.
         /// </summary>
-        public static int ListMax<T>(List<int> Target)
+        public static int ListMax(List<int> Target)
         {
             return default;
         }
@@ -3496,7 +4080,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the lowest value in the target list.
         /// </summary>
-        public static float ListMin<T>(List<float> Target)
+        public static float ListMin(List<float> Target)
         {
             return default;
         }
@@ -3504,7 +4088,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the lowest value in the target list.
         /// </summary>
-        public static int ListMin<T>(List<int> Target)
+        public static int ListMin(List<int> Target)
         {
             return default;
         }
@@ -3512,7 +4096,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies each element in the list by the next element.
         /// </summary>
-        public static float ListMultiply<T>(List<float> Target)
+        public static float ListMultiply(List<float> Target)
         {
             return default;
         }
@@ -3520,7 +4104,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies each element in the list by the next element.
         /// </summary>
-        public static int ListMultiply<T>(List<int> Target)
+        public static int ListMultiply(List<int> Target)
         {
             return default;
         }
@@ -3528,7 +4112,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies each element in the list by the next element.
         /// </summary>
-        public static Quaternion ListMultiply<T>(List<Quaternion> Target)
+        public static Quaternion ListMultiply(List<Quaternion> Target)
         {
             return default;
         }
@@ -3536,7 +4120,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies each element in the list by the next element.
         /// </summary>
-        public static Vector3 ListMultiply<T>(List<Vector3> Target)
+        public static Vector3 ListMultiply(List<Vector3> Target)
         {
             return default;
         }
@@ -3584,7 +4168,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Removes all instances of item from list.
         /// </summary>
-        public static void ListRemoveItemAll<T>(List<T> Target, object Item)
+        public static void ListRemoveItemAll<T>(List<T> Target, T Item)
         {
             return;
         }
@@ -3592,7 +4176,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Removes the first instance of the item in the list, and returns the index where it was found (-1 if not present)
         /// </summary>
-        public static int ListRemoveItemFirst<T>(List<T> Target, object Item)
+        public static int ListRemoveItemFirst<T>(List<T> Target, T Item)
         {
             return default;
         }
@@ -3616,7 +4200,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets a value at a location in a list.
         /// </summary>
-        public static void ListSetElement<T>(List<T> List, int Index, object Value)
+        public static void ListSetElement<T>(List<T> List, int Index, T Value)
         {
             return;
         }
@@ -3632,7 +4216,23 @@ namespace RRCGGenerated
         /// <summary>
         /// Sorts the given list in place in either ascending or descending order.
         /// </summary>
-        public static void ListSort<T>(List<T> Target, bool Ascending)
+        public static void ListSort(List<float> Target, bool Ascending)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sorts the given list in place in either ascending or descending order.
+        /// </summary>
+        public static void ListSort(List<int> Target, bool Ascending)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sorts the given list in place in either ascending or descending order.
+        /// </summary>
+        public static void ListSort(List<string> Target, bool Ascending)
         {
             return;
         }
@@ -3648,7 +4248,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Subtracts each element in the list by the next element.
         /// </summary>
-        public static float ListSubtract<T>(List<float> Target)
+        public static float ListSubtract(List<float> Target)
         {
             return default;
         }
@@ -3656,7 +4256,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Subtracts each element in the list by the next element.
         /// </summary>
-        public static int ListSubtract<T>(List<int> Target)
+        public static int ListSubtract(List<int> Target)
         {
             return default;
         }
@@ -3664,7 +4264,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Subtracts each element in the list by the next element.
         /// </summary>
-        public static Vector3 ListSubtract<T>(List<Vector3> Target)
+        public static Vector3 ListSubtract(List<Vector3> Target)
         {
             return default;
         }
@@ -3672,7 +4272,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds each element in the list by the next element.
         /// </summary>
-        public static float ListSum<T>(List<float> Target)
+        public static float ListSum(List<float> Target)
         {
             return default;
         }
@@ -3680,7 +4280,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds each element in the list by the next element.
         /// </summary>
-        public static int ListSum<T>(List<int> Target)
+        public static int ListSum(List<int> Target)
         {
             return default;
         }
@@ -3688,7 +4288,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds each element in the list by the next element.
         /// </summary>
-        public static Vector3 ListSum<T>(List<Vector3> Target)
+        public static Vector3 ListSum(List<Vector3> Target)
         {
             return default;
         }
@@ -3768,7 +4368,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static object MakeTuple(object Item1, object Item2)
+        public static object MakeTuple<T0, T1>(T0 Item1, T1 Item2)
         {
             return default;
         }
@@ -4056,7 +4656,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs True if any input is True. Otherwise outputs False.
         /// </summary>
-        public static bool Or(params bool[] Input)
+        public static bool Or(bool Input)
         {
             return default;
         }
@@ -4214,6 +4814,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Award XP to specified player. Will not function correctly unless Room Progression is enabled in Room Settings.
+        /// </summary>
+        public static bool PlayerAwardXP(Player Player, int Amount, AlternativeExec<bool> OnAwardComplete)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Outputs the rotation of a Player's body.
         /// </summary>
         public static Quaternion PlayerBodyOrientation(Player Target)
@@ -4246,6 +4854,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// For the target player, equip the specified Inventory Item to the specified Inventory Equipment Slot. If the Slot is of Inventory type, this chip will take effect whether or not the Slot is enabled, but the Slot must then be enabled separately.
+        /// </summary>
+        public static bool PlayerEquipInventoryItem(Player Player, object InventoryItem, object InventoryEquipmentSlot, AlternativeExec<bool> OnEquipComplete)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Searches the room for all players with the input tag and outputs them as a list.
         /// </summary>
         public static List<Player> PlayerGetAllwithTag(string Tag)
@@ -4254,9 +4870,24 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Returns whether a given player is allowed to teleport.
+        public static bool PlayerGetCanTeleport(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Returns the costume that the given player is currently wearing.
         /// </summary>
         public static Costume PlayerGetCostume(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns whether crouch input is enabled for a given player
+        /// </summary>
+        public static bool PlayerGetCrouchInputEnabled(Player Player)
         {
             return default;
         }
@@ -4281,6 +4912,14 @@ namespace RRCGGenerated
         /// Gets the first player with the input tag.
         /// </summary>
         public static Player PlayerGetFirstwithTag(string Tag)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns whether manual sprint is required for a given player
+        /// </summary>
+        public static bool PlayerGetForceManualSprint(Player Player)
         {
             return default;
         }
@@ -4318,6 +4957,22 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Returns the jump height for a given player
+        /// </summary>
+        public static float PlayerGetJumpHeight(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns whether jump input is enabled for a given player
+        /// </summary>
+        public static bool PlayerGetJumpInputEnabled(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Get the radio channel number of a player. If a player is not in any, this node returns -1
         /// </summary>
         public static int PlayerGetRadioChannel(Player Player)
@@ -4334,9 +4989,33 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Returns the current Room Level of the specified player. Will not function correctly unless Room Progression is enabled in Room Settings.
+        /// </summary>
+        public static int PlayerGetRoomLevel(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         public static Seat PlayerGetSeat(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns whether sprint input is enabled for a given player
+        /// </summary>
+        public static bool PlayerGetSprintInputEnabled(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns the sprint speed for a given player
+        /// </summary>
+        public static float PlayerGetSprintSpeed(Player Player)
         {
             return default;
         }
@@ -4350,9 +5029,57 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Returns the teleport delay for a given player
+        /// </summary>
+        public static float PlayerGetTeleportDelay(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns the max teleport distance for a given player
+        /// </summary>
+        public static float PlayerGetTeleportDistance(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Returns the offset of the given player's local time zone from UTC in seconds.
         /// </summary>
         public static int PlayerGetTimeZone(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns the voice rolloff distance for a given player
+        /// </summary>
+        public static float PlayerGetVoiceRolloffDistance(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns whether walk input is enabled for a given player
+        /// </summary>
+        public static bool PlayerGetWalkInputEnabled(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns the walk speed for a given player
+        /// </summary>
+        public static float PlayerGetWalkSpeed(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns current XP of specified player. Will not function correctly unless Room Progression is enabled in Room Settings.
+        /// </summary>
+        public static int PlayerGetXP(Player Player)
         {
             return default;
         }
@@ -4409,6 +5136,13 @@ namespace RRCGGenerated
         /// Outputs the velocity of a Player's head.
         /// </summary>
         public static Vector3 PlayerHeadVelocity(Player Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs if the Player is holding their Maker Pen.
+        public static bool PlayerIsHoldingMakerPen(Player Target)
         {
             return default;
         }
@@ -4473,6 +5207,14 @@ namespace RRCGGenerated
         /// Outputs the velocity of a Player's left hand.
         /// </summary>
         public static Vector3 PlayerLeftHandVelocity(Player Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns true if the given player owns at least one of the given inventory item.
+        /// </summary>
+        public static bool PlayerOwnsInventoryItem(Player Player, object InventoryItem, AlternativeExec<bool> Complete)
         {
             return default;
         }
@@ -4558,9 +5300,111 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Sets whether a given player is allowed to teleport.
+        public static void PlayerSetCanTeleport(Player Player, bool CanTeleport)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets whether crouch input is enabled for a given player. Setting this to false will remove crouch button prompts / UI elements on supported platforms.
+        /// </summary>
+        public static void PlayerSetCrouchInputEnabled(Player Player, bool CrouchInputEnabled)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets whether manual sprint is required for a given player.
+        public static void PlayerSetForceManualSprint(Player Player, bool ForceManualSprint)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the jump height for a given player
+        /// </summary>
+        public static void PlayerSetJumpHeight(Player Player, float JumpHeight)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets whether jump input is enabled for a given player. Setting this to false will remove jump button prompts / UI elements on supported platforms.
+        /// </summary>
+        public static void PlayerSetJumpInputEnabled(Player Player, bool JumpInputEnabled)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void PlayerSetNameColor(Player Player, Color Color)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Assign a player to a radio channel. The channel needs to be a non-negative integer value. Players within the same channel will be able to communicate in team radio.
         /// </summary>
         public static void PlayerSetRadioChannel(Player Player, int Channel)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets whether sprint input is enabled for a given player. Setting this to false will remove sprint button prompts / UI elements on supported platforms.
+        /// </summary>
+        public static void PlayerSetSprintInputEnabled(Player Player, bool SprintInputEnabled)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the sprint speed for a given player
+        /// </summary>
+        public static void PlayerSetSprintSpeed(Player Player, float SprintSpeed)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the teleport delay for a given player
+        /// </summary>
+        public static void PlayerSetTeleportDelay(Player Player, float TeleportDelay)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the max teleport distance for a given player
+        /// </summary>
+        public static void PlayerSetTeleportDistance(Player Player, float TeleportDistance)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the voice rolloff distance for a given player. Beyond this distance, they cannot be heard.
+        /// </summary>
+        public static void PlayerSetVoiceRolloffDistance(Player Player, float VoiceRolloffDistance)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets whether walk input is enabled for a given player. Setting this to false will stop Steering Input events from firing, and will remove walk-related button prompts / UI elements on supported platforms.
+        /// </summary>
+        public static void PlayerSetWalkInputEnabled(Player Player, bool WalkInputEnabled)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the walk speed for a given player
+        /// </summary>
+        public static void PlayerSetWalkSpeed(Player Player, float WalkSpeed)
         {
             return;
         }
@@ -4577,6 +5421,14 @@ namespace RRCGGenerated
         /// Outputs True if the input Player subscribes to one of the current room's owners.
         /// </summary>
         public static (bool Result, int SecondsUntilEnabled) PlayerSubscribesToRoomOwner(Player Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// For the target player, unequip the specified Inventory Item from any slot to which it is equipped.
+        /// </summary>
+        public static bool PlayerUnequipInventoryItem(Player Player, object InventoryItem, AlternativeExec<bool> OnUnequipComplete)
         {
             return default;
         }
@@ -4944,7 +5796,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static object RandomFromList<T>(List<T> List)
+        public static T RandomFromList<T>(List<T> List)
         {
             return default;
         }
@@ -4952,7 +5804,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs a random value from a target list.
         /// </summary>
-        public static object RandomFromListDeprecated<T>(List<T> List)
+        public static T RandomFromListDeprecated<T>(List<T> List)
         {
             return default;
         }
@@ -5006,6 +5858,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Gets the player currently holding this object. Does not account for when objects are equipped but not directly grabbed. Returns Invalid Player if the object is not being held.
+        /// </summary>
+        public static (bool IsHeld, Player HolderPlayer) RecRoomObjectGetHolderPlayer(RecRoomObject Object)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Outputs True on the player's machine who has authority of the input.
         /// </summary>
         public static bool RecRoomObjectGetIsLocalPlayerAuthority(RecRoomObject Target)
@@ -5014,9 +5874,9 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Returns the player who last held an object.
+        /// Returns the player who last held or equipped an object.
         /// </summary>
-        public static (Player Player, bool CurrentlyEquipped) RecRoomObjectGetLastEquippingPlayer(RecRoomObject Object)
+        public static (Player Player, bool CurrentlyHeldOrEquipped) RecRoomObjectGetLastHoldingOrEquippingPlayer(RecRoomObject Object)
         {
             return default;
         }
@@ -5088,7 +5948,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Used to remove spaghetti from your creations. Consumes additional CPU heat.
         /// </summary>
-        public static object Reroute(object Port0)
+        public static T Reroute<T>(T Port0)
         {
             return default;
         }
@@ -5350,6 +6210,22 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// HUD elements including progress bars, wheels, and counters. Configure to customize a single element, then enable & modify with existing HUD chips. Can be configured to pull data from Room Progression if Progression is enabled in room settings.
+        /// </summary>
+        public static RoomLevelHUD RoomLevelHUD()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// A specialized data table for use with Room Progression, with some cells and formatting choices reserved. Edit the data table through the configuration menu on this chip. Specify the data type of each column and use Data Table Read Cell to extract the contents for use in circuit graphs. Must save room via Data Table UI to commit changes.
+        /// </summary>
+        public static void RoomLevels(object Levels)
+        {
+            return;
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         public static bool RoomSetMatchmakingState(bool MatchmakingPermitted, AlternativeExec<bool> OnMatchmakingStateSet)
@@ -5560,7 +6436,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Executes all output ports in order.
         /// </summary>
-        public static void Sequence(AlternativeExec _2)
+        public static void Sequence<T>(AlternativeExec _2)
         {
             return;
         }
@@ -5625,14 +6501,6 @@ namespace RRCGGenerated
         /// 
         /// </summary>
         public static void SetHUDElementEnabled(HUDConstant Target, bool Enabled)
-        {
-            return;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void SetPlayerNameColor(Player Player, Color Color)
         {
             return;
         }
@@ -5880,7 +6748,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Prints the input notification to the given player's screen.
         /// </summary>
-        public static void ShowNotification(Player Player, string Value)
+        public static void ShowNotification<T>(Player Player, string Value)
         {
             return;
         }
@@ -5958,6 +6826,22 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Moves a vector towards a target, with velocity based damping
+        /// </summary>
+        public static (float Result, float ResultVelocity) SmoothDamp(float Current, float Target, float CurrentVelocity, float SmoothTime, float MaxSpeed, float DeltaTime)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Moves a vector towards a target, with velocity based damping
+        /// </summary>
+        public static (Vector3 Result, Vector3 ResultVelocity) SmoothDamp(Vector3 Current, Vector3 Target, Vector3 CurrentVelocity, float SmoothTime, float MaxSpeed, float DeltaTime)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         public static void SpawnerInternalStartSpawning(RecRoomObject Spawner, int Amountofobjectstospawn, float Timebetweenspawns, Vector3 SpawnPosition)
@@ -5979,6 +6863,30 @@ namespace RRCGGenerated
         public static (bool Hit, Player Player, RecRoomObject Object, float Distance, Vector3 HitPosition, Vector3 SurfaceNormal) Spherecast(Vector3 StartPosition, float Radius, Vector3 Direction, float MaxDistance)
         {
             return default;
+        }
+
+        /// <summary>
+        /// Place this chip inside a State Machine chip to represent a state.
+        /// </summary>
+        public static void State()
+        {
+            return;
+        }
+
+        /// <summary>
+        /// A constant representing a state in a state machine.
+        /// </summary>
+        public static object StateConstant()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Manage state transitions by editing into this chip and populating it with connected State chips.
+        /// </summary>
+        public static void StateMachine()
+        {
+            return;
         }
 
         /// <summary>
@@ -6376,7 +7284,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Casts a target specific object to a Rec Room Object.
         /// </summary>
-        public static RecRoomObject ToRecRoomObject(object Target)
+        public static RecRoomObject ToRecRoomObject<T>(T Target)
         {
             return default;
         }
@@ -6384,7 +7292,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Converts the input value to the string type. Example: the integer input 10 would output "10" as a string. Helpful for debugging purposes.
         /// </summary>
-        public static string ToString(object Value)
+        public static string ToString<T>(T Value)
         {
             return default;
         }
@@ -6392,7 +7300,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Converts the input value to the string type. Example: the integer input 10 would output "10" as a string. Helpful for debugging purposes.
         /// </summary>
-        public static string ToStringDepreacted(object Value)
+        public static string ToStringDepreacted<T>(T Value)
         {
             return default;
         }
@@ -6616,7 +7524,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the associated input of the compare value that matches the 'match' input. Returns the default value if no match can be found.
         /// </summary>
-        public static object ValueIntegerSwitch(int Match, object Default)
+        public static T ValueIntegerSwitch<T>(int Match, T Default)
         {
             return default;
         }
@@ -6624,7 +7532,22 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the associated input of the compare value that matches the 'match' input. Returns the default value if no match can be found.
         /// </summary>
-        public static object ValueStringSwitch(string Match, object Default)
+        public static T ValueStringSwitch<T>(string Match, T Default)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Clamps a vector's magnitude to a given max length.
+        public static Vector3 Vector3ClampMagnitude(Vector3 Vector, float MaxLength)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Gets the point on the plane that is closest to a given position
+        /// </summary>
+        public static Vector3 Vector3ClosestPointOnPlane(Vector3 Position, Vector3 PlanePosition, Vector3 PlaneNormal)
         {
             return default;
         }
@@ -6662,9 +7585,33 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Moves a vector towards target, not moving more than max delta distance at a time
+        /// </summary>
+        public static Vector3 Vector3MoveTowards(Vector3 Current, Vector3 Target, float MaxDelta)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Outputs the target vector, but its magnitude is 1.
         /// </summary>
         public static Vector3 Vector3Normalize(Vector3 Value)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Projects a vector onto a normal
+        /// </summary>
+        public static Vector3 Vector3Project(Vector3 Vector, Vector3 OnNormal)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Projects a vector onto a plane
+        /// </summary>
+        public static Vector3 Vector3ProjectOnPlane(Vector3 Vector, Vector3 PlaneNormal)
         {
             return default;
         }
@@ -6769,6 +7716,22 @@ namespace RRCGGenerated
         /// Momentarily sets the velocity of the input target in the input direction. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
         public static void VelocitySet(RecRoomObject Target, float Speed, Vector3 Direction)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Momentarily sets the velocity of the input target in the input direction. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
+        /// </summary>
+        public static void VelocitySetDeprecated(Player Target, float Speed, Vector3 Direction)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Momentarily sets the velocity of the input target in the input direction. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
+        /// </summary>
+        public static void VelocitySetDeprecated(RecRoomObject Target, float Speed, Vector3 Direction)
         {
             return;
         }
