@@ -12,7 +12,8 @@ namespace RRCGGenerated
             {Name = "Absolute Value", Type = "98b99011-9be8-43b3-89cc-1e9d55bd8b51", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort AbsoluteValue(IntPort Value)
@@ -21,7 +22,8 @@ namespace RRCGGenerated
             {Name = "Absolute Value", Type = "98b99011-9be8-43b3-89cc-1e9d55bd8b51", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Acos(FloatPort Value)
@@ -30,7 +32,8 @@ namespace RRCGGenerated
             {Name = "Acos", Type = "46ce50b8-0a20-43d2-9646-484ce2a6752c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static IntPort Add(IntPort Value)
@@ -39,7 +42,8 @@ namespace RRCGGenerated
             {Name = "Add", Type = "0ccb153c-dd08-4f22-80fd-9d8c5940928c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static FloatPort Add(FloatPort Value)
@@ -48,7 +52,8 @@ namespace RRCGGenerated
             {Name = "Add", Type = "0ccb153c-dd08-4f22-80fd-9d8c5940928c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static Vector3Port Add(Vector3Port Value)
@@ -57,7 +62,8 @@ namespace RRCGGenerated
             {Name = "Add", Type = "0ccb153c-dd08-4f22-80fd-9d8c5940928c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void AddTag(PlayerPort Target, StringPort Tag)
@@ -110,7 +116,8 @@ namespace RRCGGenerated
             {Name = "AI Get Line of Sight Parameters", Type = "3edc785f-46ef-4f30-b101-a07126d3a370", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, AI, new Port{Node = node, Index = 0});
-            return (new StringPort{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}}, new FloatPort{Port = new Port{Node = node, Index = 3}});
+            var output_ports = (new StringPort{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}}, new FloatPort{Port = new Port{Node = node, Index = 3}});
+            return output_ports;
         }
 
         public static CombatantPort AIGetTarget(AIPort AI)
@@ -119,7 +126,8 @@ namespace RRCGGenerated
             {Name = "AI Get Target", Type = "1637b250-e497-4f4a-9d5e-64206488391c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, AI, new Port{Node = node, Index = 0});
-            return new CombatantPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new CombatantPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort AIHasLineofSightToTarget(AIPort AI, AIPort Target)
@@ -129,7 +137,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, AI, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort AIHasLineofSightToTarget(AIPort AI, CombatantPort Target)
@@ -139,7 +148,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, AI, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort AIHasLineofSightToTarget(AIPort AI, RecRoomObjectPort Target)
@@ -149,7 +159,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, AI, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort AIHasLineofSightToTarget(AIPort AI, PatrolPointPort Target)
@@ -159,7 +170,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, AI, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort AIHasLineofSightToTarget(AIPort AI, PlayerPort Target)
@@ -169,7 +181,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, AI, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort AIHasLineofSightToTarget(AIPort AI, Vector3Port Target)
@@ -179,7 +192,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, AI, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void AILookAt(AIPort AI, AIPort LookTarget, BoolPort LookTargetisDirection)
@@ -437,8 +451,9 @@ namespace RRCGGenerated
             {Name = "AI Variable", Type = "0e92a7fb-fb38-418c-af39-9afec92112ee", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new AIPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new AIPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static AudioPort AmbienceConstant()
@@ -446,7 +461,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Ambience Constant", Type = "1ad615de-65ea-40a3-b500-3a5b56b2a65d", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new AudioPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new AudioPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static BoolPort And(BoolPort Input)
@@ -455,7 +471,8 @@ namespace RRCGGenerated
             {Name = "And", Type = "3fb9fd93-8d45-4395-b9a3-63a99a14442b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Input, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort AngularVelocityAdd(RecRoomObjectPort Target, Vector3Port AngularVelocity, FloatPort SpeedMultiplier, FloatPort MaxAngularSpeed)
@@ -467,8 +484,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, AngularVelocity, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, SpeedMultiplier, new Port{Node = node, Index = 3});
             node.ConnectInputPort(Context.current, MaxAngularSpeed, new Port{Node = node, Index = 4});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void AngularVelocityAddDeprecated(RecRoomObjectPort Target, Vector3Port Rotation, FloatPort VelocityMultiplier, FloatPort MaxAngularVelocityApplied)
@@ -505,8 +523,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, AngularVelocity, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, SpeedMultiplier, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void AngularVelocitySetDeprecated(RecRoomObjectPort Target, Vector3Port Rotation, FloatPort VelocityMultiplier)
@@ -539,7 +558,8 @@ namespace RRCGGenerated
             {Name = "Animation Get Is Playing", Type = "b45a0e10-189e-4211-b152-f04863d36e8c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Animator, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort AnimationGetSpeed(AnimationControllerPort Animator)
@@ -548,7 +568,8 @@ namespace RRCGGenerated
             {Name = "Animation Get Speed", Type = "e73794bd-fd60-4284-90ca-f5169700fa23", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Animator, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void AnimationPause(AnimationControllerPort Animator)
@@ -609,7 +630,8 @@ namespace RRCGGenerated
             {Name = "Asin", Type = "aaa4e58f-16df-426a-b7a7-a654eab97037", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Atan(FloatPort Value)
@@ -618,7 +640,8 @@ namespace RRCGGenerated
             {Name = "Atan", Type = "84646ed2-015e-4a8b-9d37-5115cb9ebadc", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Atan2(FloatPort Y, FloatPort X)
@@ -628,7 +651,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Y, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, X, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort AudioGetLength(AudioPort Audio)
@@ -637,7 +661,8 @@ namespace RRCGGenerated
             {Name = "Audio Get Length", Type = "be5262f0-1f67-4be7-aa8c-967c30bd5487", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Audio, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static AudioPort AudioPlayerGetAudio(AudioPlayerPort Target)
@@ -646,7 +671,8 @@ namespace RRCGGenerated
             {Name = "Audio Player Get Audio", Type = "0f4433b6-425d-4172-968a-2c867bc0fef5", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new AudioPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new AudioPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort AudioPlayerGetMaxRolloffDistance(AudioPlayerPort Target)
@@ -655,7 +681,8 @@ namespace RRCGGenerated
             {Name = "Audio Player Get Max Rolloff Distance", Type = "2db28fb7-0edb-4f09-8d74-ed5614dfaf11", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort AudioPlayerGetPlaying(AudioPlayerPort Target)
@@ -664,7 +691,8 @@ namespace RRCGGenerated
             {Name = "Audio Player Get Playing", Type = "00443d01-632e-4f75-ac6f-23b3e224e791", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort AudioPlayerGetSpeed(AudioPlayerPort Target)
@@ -673,7 +701,8 @@ namespace RRCGGenerated
             {Name = "Audio Player Get Speed", Type = "931ebb4f-3424-4aa3-bee3-5e039ba210e4", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort AudioPlayerGetTimeStamp(AudioPlayerPort Target)
@@ -682,7 +711,8 @@ namespace RRCGGenerated
             {Name = "Audio Player Get Time Stamp", Type = "61e8293d-5d5a-4dbc-9505-0a13faf8b4cc", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort AudioPlayerGetVolume(AudioPlayerPort Target)
@@ -691,7 +721,8 @@ namespace RRCGGenerated
             {Name = "Audio Player Get Volume", Type = "1bbabac2-f316-4e07-9eb6-fd65848a5b90", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void AudioPlayerPause(AudioPlayerPort Target)
@@ -769,7 +800,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static BoolPort AwardConsumable(ConsumablePort Consumable, PlayerPort Player, IntPort Quantity, AlternativeExec OnAwardConsumableComplete)
+        public static BoolPort AwardConsumable(ConsumablePort Consumable, PlayerPort Player, IntPort Quantity, AlternativeExec<BoolPort> OnAwardConsumableComplete)
         {
             Node node = new Node()
             {Name = "Award Consumable", Type = "9ceb3e5a-2030-4034-98a4-dc2809828b63", InputCount = 4};
@@ -777,32 +808,34 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Consumable, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Quantity, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnAwardConsumableComplete();
+            OnAwardConsumableComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
-        public static (BoolPort Success, IntPort TotalBalance) AwardCurrency(PlayerPort Player, IntPort Amount, AlternativeExec OnAwardCurrencyComplete)
+        public static (BoolPort Success, IntPort TotalBalance) AwardCurrency(PlayerPort Player, IntPort Amount, AlternativeExec<(BoolPort Success, IntPort TotalBalance)> OnAwardCurrencyComplete)
         {
             Node node = new Node()
             {Name = "Award Currency", Type = "03461631-734f-491b-ab86-6bdf66947556", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Amount, new Port{Node = node, Index = 2});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnAwardCurrencyComplete();
+            OnAwardCurrencyComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
+            return output_ports;
         }
 
-        public static (BoolPort Success, IntPort TotalBalance) AwardCurrencyNew(RoomCurrencyPort Currency, PlayerPort Player, IntPort Amount, AlternativeExec OnAwardCurrencyComplete)
+        public static (BoolPort Success, IntPort TotalBalance) AwardCurrencyNew(RoomCurrencyPort Currency, PlayerPort Player, IntPort Amount, AlternativeExec<(BoolPort Success, IntPort TotalBalance)> OnAwardCurrencyComplete)
         {
             Node node = new Node()
             {Name = "Award Currency (New)", Type = "9ad9cfa5-da73-4bc6-b53e-e2fdc265998f", InputCount = 4};
@@ -810,29 +843,31 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Currency, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Amount, new Port{Node = node, Index = 3});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnAwardCurrencyComplete();
+            OnAwardCurrencyComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
+            return output_ports;
         }
 
-        public static BoolPort AwardRoomKey(RoomKeyPort RoomKey, PlayerPort Player, AlternativeExec OnAwardRoomKeyComplete)
+        public static BoolPort AwardRoomKey(RoomKeyPort RoomKey, PlayerPort Player, AlternativeExec<BoolPort> OnAwardRoomKeyComplete)
         {
             Node node = new Node()
             {Name = "Award Room Key", Type = "7e40f770-c9a4-4233-8845-cac6ec99ae67", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, RoomKey, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnAwardRoomKeyComplete();
+            OnAwardRoomKeyComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
         public static BackgroundObjectsPort BackgroundObjectsConstant()
@@ -840,7 +875,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Background Objects Constant", Type = "c6e9ffef-b505-41d3-bb2d-ff86838398c6", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new BackgroundObjectsPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BackgroundObjectsPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort BeaconGetColor(BeaconPort Target)
@@ -849,7 +885,8 @@ namespace RRCGGenerated
             {Name = "Beacon Get Color", Type = "5f7cd28c-bafc-409d-8872-f21ccec5f022", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort BeaconGetEnabled(BeaconPort Target)
@@ -858,7 +895,8 @@ namespace RRCGGenerated
             {Name = "Beacon Get Enabled", Type = "5646ab78-1388-44de-84a7-8c50f28cc88e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort BeaconGetHeight(BeaconPort Target)
@@ -867,7 +905,8 @@ namespace RRCGGenerated
             {Name = "Beacon Get Height", Type = "dbadcaaa-d673-4e35-bb29-c9c2a5c3d93e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void BeaconSetColor(BeaconPort Target, ColorPort Color)
@@ -910,7 +949,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Port1, new Port{Node = node, Index = 1});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort BitLeadingZeros(IntPort Value)
@@ -919,7 +959,8 @@ namespace RRCGGenerated
             {Name = "Bit Leading Zeros", Type = "d6e62624-06b0-416e-8e3c-ca058efd3c46", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort BitNand(IntPort Port0, IntPort Port1)
@@ -929,7 +970,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Port1, new Port{Node = node, Index = 1});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort BitNot(IntPort Port0)
@@ -938,7 +980,8 @@ namespace RRCGGenerated
             {Name = "Bit Not", Type = "ec74ea41-24e5-491c-8919-a502638583f9", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort BitOr(IntPort Port0, IntPort Port1)
@@ -948,7 +991,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Port1, new Port{Node = node, Index = 1});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort BitPopCount(IntPort Value)
@@ -957,7 +1001,8 @@ namespace RRCGGenerated
             {Name = "Bit Pop Count", Type = "6982e235-5814-4c5a-8bc8-fdbcc9a73eb8", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort BitRotateLeft(IntPort Value, IntPort Shift)
@@ -967,7 +1012,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Shift, new Port{Node = node, Index = 1});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort BitRotateRight(IntPort Value, IntPort Shift)
@@ -977,7 +1023,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Shift, new Port{Node = node, Index = 1});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort BitShiftLeft(IntPort Value, IntPort Shift)
@@ -987,7 +1034,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Shift, new Port{Node = node, Index = 1});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort BitShiftRight(IntPort Value, IntPort Shift)
@@ -997,7 +1045,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Shift, new Port{Node = node, Index = 1});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort BitTrailingZeros(IntPort Value)
@@ -1006,7 +1055,8 @@ namespace RRCGGenerated
             {Name = "Bit Trailing Zeros", Type = "773d361e-3761-497b-9dec-b5e5313a5a2c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort BitXor(IntPort Port0, IntPort Port1)
@@ -1016,7 +1066,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Port1, new Port{Node = node, Index = 1});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort boolVariable(BoolPort Port0)
@@ -1025,8 +1076,9 @@ namespace RRCGGenerated
             {Name = "bool Variable", Type = "80955588-7f7a-4f7c-b46f-6d1e9057fba0", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static (T0 Item1, T1 Item2) BreakTuple<T0, T1>(AnyPort Tuple)
@@ -1037,7 +1089,8 @@ namespace RRCGGenerated
             {Name = "Break Tuple", Type = "9478334a-451d-4802-bab1-4b05f00d45e4", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Tuple, new Port{Node = node, Index = 0});
-            return (new T0{Port = new Port{Node = node, Index = 0}}, new T1{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new T0{Port = new Port{Node = node, Index = 0}}, new T1{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static BoolPort ButtonGetIsPressed(ButtonPort Target)
@@ -1046,7 +1099,8 @@ namespace RRCGGenerated
             {Name = "Button Get Is Pressed", Type = "fe32ba92-9018-4575-92e2-3b0d82c9419b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort ButtonGetText(ButtonPort Target)
@@ -1055,7 +1109,8 @@ namespace RRCGGenerated
             {Name = "Button Get Text", Type = "70e7663d-a5fd-435d-8995-942b4babc262", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void ButtonSetText(ButtonPort Target, StringPort Text)
@@ -1075,7 +1130,8 @@ namespace RRCGGenerated
             {Name = "Ceil", Type = "f4cbc476-bc98-4cbf-bf47-de4baedddf79", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort CeiltoInt(FloatPort Value)
@@ -1084,7 +1140,8 @@ namespace RRCGGenerated
             {Name = "Ceil to Int", Type = "38b502dc-dd35-4083-a2b0-8a8e5f69a958", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void CircuitBoard()
@@ -1103,7 +1160,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Min, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Max, new Port{Node = node, Index = 2});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort Clamp(IntPort Value, IntPort Min, IntPort Max)
@@ -1114,7 +1172,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Min, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Max, new Port{Node = node, Index = 2});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void ClearPlayerVignette(PlayerPort Player)
@@ -1153,7 +1212,8 @@ namespace RRCGGenerated
             {Name = "Collision Data Get Distance", Type = "c3fc963c-6d73-4d88-9c9b-95e9faae219f", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port CollisionDataGetNormal(CollisionDataPort Target)
@@ -1162,7 +1222,8 @@ namespace RRCGGenerated
             {Name = "Collision Data Get Normal", Type = "ced470f8-dd9d-4e67-a654-7c7e1a3e7819", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static RecRoomObjectPort CollisionDataGetObject(CollisionDataPort Target)
@@ -1171,7 +1232,8 @@ namespace RRCGGenerated
             {Name = "Collision Data Get Object", Type = "8c8931da-1a8e-4164-a3a5-0f68db8cafb5", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort CollisionDataGetPlayer(CollisionDataPort Target)
@@ -1180,7 +1242,8 @@ namespace RRCGGenerated
             {Name = "Collision Data Get Player", Type = "2729e8db-62d1-4f9e-b076-74f27cd43332", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port CollisionDataGetPosition(CollisionDataPort Target)
@@ -1189,7 +1252,8 @@ namespace RRCGGenerated
             {Name = "Collision Data Get Position", Type = "5910618b-f862-49ce-9779-46130e47f985", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort ColorConstant()
@@ -1197,7 +1261,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Color Constant", Type = "87a8e178-b15c-4c38-9da0-95ba74f9f4ec", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (FloatPort Hue, FloatPort Saturation, FloatPort Value) ColorToHSV(ColorPort Color)
@@ -1206,7 +1271,8 @@ namespace RRCGGenerated
             {Name = "Color To HSV", Type = "d697171e-56ac-41b7-aa1e-dabc4538c029", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Color, new Port{Node = node, Index = 0});
-            return (new FloatPort{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new FloatPort{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static IntPort ColorToInt(ColorPort Color)
@@ -1215,7 +1281,8 @@ namespace RRCGGenerated
             {Name = "Color To Int", Type = "8e412141-635d-435c-a900-f40d8a261906", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Color, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (FloatPort Red, FloatPort Green, FloatPort Blue) ColorToRGB(ColorPort Color)
@@ -1224,7 +1291,8 @@ namespace RRCGGenerated
             {Name = "Color To RGB", Type = "52565e5d-73d1-4f29-bca7-0c8ae9afcc57", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Color, new Port{Node = node, Index = 0});
-            return (new FloatPort{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new FloatPort{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static ColorPort ColorVariable(ColorPort Port0)
@@ -1233,8 +1301,9 @@ namespace RRCGGenerated
             {Name = "Color Variable", Type = "3d2fd0b5-eeac-45cc-a622-1701710f0792", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ColorPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static Vector3Port CombatantGetGroundPosition(AIPort Combatant)
@@ -1243,7 +1312,8 @@ namespace RRCGGenerated
             {Name = "Combatant Get Ground Position", Type = "c0ee02f4-bbab-40ea-88a0-7441d7e7094c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Combatant, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port CombatantGetGroundPosition(CombatantPort Combatant)
@@ -1252,7 +1322,8 @@ namespace RRCGGenerated
             {Name = "Combatant Get Ground Position", Type = "c0ee02f4-bbab-40ea-88a0-7441d7e7094c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Combatant, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port CombatantGetGroundPosition(PlayerPort Combatant)
@@ -1261,7 +1332,8 @@ namespace RRCGGenerated
             {Name = "Combatant Get Ground Position", Type = "c0ee02f4-bbab-40ea-88a0-7441d7e7094c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Combatant, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (IntPort Health, IntPort Shield, IntPort MaxHealth) CombatantGetHealth(AIPort Object)
@@ -1270,7 +1342,8 @@ namespace RRCGGenerated
             {Name = "Combatant Get Health", Type = "3967a8ad-4237-4ae7-8cbf-850d8e24fe30", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 0});
-            return (new IntPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new IntPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new IntPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new IntPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (IntPort Health, IntPort Shield, IntPort MaxHealth) CombatantGetHealth(CombatantPort Object)
@@ -1279,7 +1352,8 @@ namespace RRCGGenerated
             {Name = "Combatant Get Health", Type = "3967a8ad-4237-4ae7-8cbf-850d8e24fe30", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 0});
-            return (new IntPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new IntPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new IntPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new IntPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (IntPort Health, IntPort Shield, IntPort MaxHealth) CombatantGetHealth(PlayerPort Object)
@@ -1288,7 +1362,8 @@ namespace RRCGGenerated
             {Name = "Combatant Get Health", Type = "3967a8ad-4237-4ae7-8cbf-850d8e24fe30", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 0});
-            return (new IntPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new IntPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new IntPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new IntPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static BoolPort CombatantGetIsAlive(AIPort Object)
@@ -1297,7 +1372,8 @@ namespace RRCGGenerated
             {Name = "Combatant Get Is Alive", Type = "2a12c389-c3c6-4484-8c63-21cdaf0fac6c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort CombatantGetIsAlive(CombatantPort Object)
@@ -1306,7 +1382,8 @@ namespace RRCGGenerated
             {Name = "Combatant Get Is Alive", Type = "2a12c389-c3c6-4484-8c63-21cdaf0fac6c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort CombatantGetIsAlive(PlayerPort Object)
@@ -1315,7 +1392,8 @@ namespace RRCGGenerated
             {Name = "Combatant Get Is Alive", Type = "2a12c389-c3c6-4484-8c63-21cdaf0fac6c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (Vector3Port Velocity, FloatPort Speed) CombatantGetVelocity(AIPort Combatant)
@@ -1324,7 +1402,8 @@ namespace RRCGGenerated
             {Name = "Combatant Get Velocity", Type = "b4eadbfa-cdbe-42e6-9481-5197de58e272", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Combatant, new Port{Node = node, Index = 0});
-            return (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static (Vector3Port Velocity, FloatPort Speed) CombatantGetVelocity(CombatantPort Combatant)
@@ -1333,7 +1412,8 @@ namespace RRCGGenerated
             {Name = "Combatant Get Velocity", Type = "b4eadbfa-cdbe-42e6-9481-5197de58e272", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Combatant, new Port{Node = node, Index = 0});
-            return (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static (Vector3Port Velocity, FloatPort Speed) CombatantGetVelocity(PlayerPort Combatant)
@@ -1342,7 +1422,8 @@ namespace RRCGGenerated
             {Name = "Combatant Get Velocity", Type = "b4eadbfa-cdbe-42e6-9481-5197de58e272", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Combatant, new Port{Node = node, Index = 0});
-            return (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static void CombatantReceiveDamage(AIPort Target, IntPort Damage, BoolPort IgnoreShield, AIPort DamageSource)
@@ -1534,7 +1615,8 @@ namespace RRCGGenerated
             {Name = "Combatant Split", Type = "81b08e44-0a1e-40da-b8a1-79f416691dcf", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Combatant, new Port{Node = node, Index = 0});
-            return (new BoolPort{Port = new Port{Node = node, Index = 0}}, new PlayerPort{Port = new Port{Node = node, Index = 1}}, new AIPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new PlayerPort{Port = new Port{Node = node, Index = 1}}, new AIPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static CombatantPort CombatantVariable(CombatantPort Port0)
@@ -1543,8 +1625,9 @@ namespace RRCGGenerated
             {Name = "Combatant Variable", Type = "cfd8e246-8682-4707-a0ae-da55bacfbf72", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new CombatantPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new CombatantPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void Comment()
@@ -1570,7 +1653,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Consumable Constant", Type = "3dc63876-39a9-4828-9967-67821e620cb1", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new ConsumablePort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ConsumablePort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void ConsumableDeactivate(ConsumablePort Consumable)
@@ -1588,7 +1672,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Control Panel", Type = "0e7f87db-1745-482b-993b-68211255fbbd", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Cos(FloatPort Value)
@@ -1597,7 +1682,8 @@ namespace RRCGGenerated
             {Name = "Cos", Type = "e8659a59-9e11-4403-8bbc-f4a3961cbf21", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void CostumeEquip(CostumePort Target, PlayerPort Player)
@@ -1617,7 +1703,8 @@ namespace RRCGGenerated
             {Name = "Costume Get Wearer", Type = "f28d1a5e-a08c-471b-89e6-5ee6372d9897", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort CostumeUnequip(CostumePort Target)
@@ -1626,8 +1713,9 @@ namespace RRCGGenerated
             {Name = "Costume Unequip", Type = "d5070b89-da23-4e4b-848c-07bb22c0420e", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new PlayerPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void DataTable(AnyPort Port0)
@@ -1644,7 +1732,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Data Table Get All Rows Containing", Type = "0a04aa3b-22bd-44a8-8613-9c02db855e88", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new ListPort<IntPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<IntPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort DataTableGetColumnCount()
@@ -1652,7 +1741,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Data Table Get Column Count", Type = "bf05749e-c89e-4aa2-97f8-31c105f45b49", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort DataTableGetFirstRowContaining()
@@ -1660,7 +1750,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Data Table Get First Row Containing", Type = "699f2839-0742-4b3d-80ca-4394fb60e7e2", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort DataTableGetRowCount()
@@ -1668,7 +1759,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Data Table Get Row Count", Type = "e32052ce-0f54-4875-aa11-39e8c2761deb", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void DataTableReadCell(IntPort Row)
@@ -1703,7 +1795,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Destination Room Constant", Type = "330f3621-0d37-4cd7-8b92-270c7df43fcb", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new DestinationRoomPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new DestinationRoomPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static DestinationRoomPort DestinationRoomVariable(DestinationRoomPort Port0)
@@ -1712,8 +1805,9 @@ namespace RRCGGenerated
             {Name = "Destination Room Variable", Type = "31eab00d-a6f7-4505-9f84-02d3e1eedd86", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new DestinationRoomPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new DestinationRoomPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static PlayerPort DiceGetPlayerRolled(DiePort Target)
@@ -1722,7 +1816,8 @@ namespace RRCGGenerated
             {Name = "Dice Get Player Rolled", Type = "c1fdc4fa-fcb4-4ea4-b505-7b1d15fb8117", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort DiceGetResult(DiePort Target)
@@ -1731,7 +1826,8 @@ namespace RRCGGenerated
             {Name = "Dice Get Result", Type = "c80e2979-c672-4e7a-81fb-0ed1964e3ea6", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort DiceGetRollfinished(DiePort Target)
@@ -1740,7 +1836,8 @@ namespace RRCGGenerated
             {Name = "Dice Get Roll finished", Type = "b8735ad9-cd89-4d81-ab9b-be3eb50e3b5a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void DisplayPlayerWorldUI(PlayerWorldUIPort Target, PlayerPort Player)
@@ -1761,7 +1858,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(AIPort A, CombatantPort B)
@@ -1771,7 +1869,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(AIPort A, RecRoomObjectPort B)
@@ -1781,7 +1880,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(AIPort A, PlayerPort B)
@@ -1791,7 +1891,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(AIPort A, Vector3Port B)
@@ -1801,7 +1902,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(CombatantPort A, AIPort B)
@@ -1811,7 +1913,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(CombatantPort A, CombatantPort B)
@@ -1821,7 +1924,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(CombatantPort A, RecRoomObjectPort B)
@@ -1831,7 +1935,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(CombatantPort A, PlayerPort B)
@@ -1841,7 +1946,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(CombatantPort A, Vector3Port B)
@@ -1851,7 +1957,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(RecRoomObjectPort A, AIPort B)
@@ -1861,7 +1968,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(RecRoomObjectPort A, CombatantPort B)
@@ -1871,7 +1979,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(RecRoomObjectPort A, RecRoomObjectPort B)
@@ -1881,7 +1990,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(RecRoomObjectPort A, PlayerPort B)
@@ -1891,7 +2001,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(RecRoomObjectPort A, Vector3Port B)
@@ -1901,7 +2012,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(PlayerPort A, AIPort B)
@@ -1911,7 +2023,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(PlayerPort A, CombatantPort B)
@@ -1921,7 +2034,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(PlayerPort A, RecRoomObjectPort B)
@@ -1931,7 +2045,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(PlayerPort A, PlayerPort B)
@@ -1941,7 +2056,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(PlayerPort A, Vector3Port B)
@@ -1951,7 +2067,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(Vector3Port A, AIPort B)
@@ -1961,7 +2078,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(Vector3Port A, CombatantPort B)
@@ -1971,7 +2089,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(Vector3Port A, RecRoomObjectPort B)
@@ -1981,7 +2100,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(Vector3Port A, PlayerPort B)
@@ -1991,7 +2111,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Distance(Vector3Port A, Vector3Port B)
@@ -2001,7 +2122,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(AIPort A, AIPort B)
@@ -2011,7 +2133,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(AIPort A, CombatantPort B)
@@ -2021,7 +2144,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(AIPort A, RecRoomObjectPort B)
@@ -2031,7 +2155,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(AIPort A, PlayerPort B)
@@ -2041,7 +2166,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(AIPort A, Vector3Port B)
@@ -2051,7 +2177,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(CombatantPort A, AIPort B)
@@ -2061,7 +2188,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(CombatantPort A, CombatantPort B)
@@ -2071,7 +2199,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(CombatantPort A, RecRoomObjectPort B)
@@ -2081,7 +2210,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(CombatantPort A, PlayerPort B)
@@ -2091,7 +2221,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(CombatantPort A, Vector3Port B)
@@ -2101,7 +2232,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(RecRoomObjectPort A, AIPort B)
@@ -2111,7 +2243,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(RecRoomObjectPort A, CombatantPort B)
@@ -2121,7 +2254,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(RecRoomObjectPort A, RecRoomObjectPort B)
@@ -2131,7 +2265,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(RecRoomObjectPort A, PlayerPort B)
@@ -2141,7 +2276,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(RecRoomObjectPort A, Vector3Port B)
@@ -2151,7 +2287,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(PlayerPort A, AIPort B)
@@ -2161,7 +2298,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(PlayerPort A, CombatantPort B)
@@ -2171,7 +2309,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(PlayerPort A, RecRoomObjectPort B)
@@ -2181,7 +2320,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(PlayerPort A, PlayerPort B)
@@ -2191,7 +2331,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(PlayerPort A, Vector3Port B)
@@ -2201,7 +2342,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(Vector3Port A, AIPort B)
@@ -2211,7 +2353,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(Vector3Port A, CombatantPort B)
@@ -2221,7 +2364,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(Vector3Port A, RecRoomObjectPort B)
@@ -2231,7 +2375,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(Vector3Port A, PlayerPort B)
@@ -2241,7 +2386,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort DistanceDeprecated(Vector3Port A, Vector3Port B)
@@ -2251,7 +2397,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static IntPort Divide(IntPort Value)
@@ -2260,7 +2407,8 @@ namespace RRCGGenerated
             {Name = "Divide", Type = "f2eafd78-5f23-44c9-a271-8ff2f0762e71", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static FloatPort Divide(FloatPort Value)
@@ -2269,7 +2417,8 @@ namespace RRCGGenerated
             {Name = "Divide", Type = "f2eafd78-5f23-44c9-a271-8ff2f0762e71", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static Vector3Port Divide(Vector3Port Value)
@@ -2278,7 +2427,8 @@ namespace RRCGGenerated
             {Name = "Divide", Type = "f2eafd78-5f23-44c9-a271-8ff2f0762e71", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static DestinationRoomPort DoorGetDestination(RoomDoorPort Target)
@@ -2287,7 +2437,8 @@ namespace RRCGGenerated
             {Name = "Door Get Destination", Type = "5f0eb749-1c4e-46fb-b2d1-4faaf69446bb", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new DestinationRoomPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new DestinationRoomPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort DoorGetLocked(RoomDoorPort Target)
@@ -2296,7 +2447,8 @@ namespace RRCGGenerated
             {Name = "Door Get Locked", Type = "f2918d8a-444c-429d-ab79-e2d445695a57", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void DoorSetDestination(RoomDoorPort Target, DestinationRoomPort Room)
@@ -2327,7 +2479,8 @@ namespace RRCGGenerated
             {Name = "Emitter Get Looping", Type = "f8c91da0-bb4f-4958-9016-546a387f45dd", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort EmitterGetPlaying(EmitterPort Target)
@@ -2336,7 +2489,8 @@ namespace RRCGGenerated
             {Name = "Emitter Get Playing", Type = "9fbee635-c6a4-4a02-a67b-295e075db7c9", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort EmitterGetSize(EmitterPort Target)
@@ -2345,7 +2499,8 @@ namespace RRCGGenerated
             {Name = "Emitter Get Size", Type = "08c3c01c-2c40-4b92-a913-e5a8cbbbe352", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort EmitterGetSpeed(EmitterPort Target)
@@ -2354,7 +2509,8 @@ namespace RRCGGenerated
             {Name = "Emitter Get Speed", Type = "df10f3b8-e5b8-49ad-9112-22cc0e3bdb9f", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void EmitterSetColor(EmitterPort Target, ColorPort Color)
@@ -2439,7 +2595,8 @@ namespace RRCGGenerated
             {Name = "Equals", Type = "e1f1b65e-8d82-47af-8637-ae2d0afa431f", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort EqualsDeprecated<T>(T A, T B)
@@ -2450,7 +2607,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort EquipObjecttoDominantHand(PlayerPort Player, RecRoomObjectPort ObjectToEquip, BoolPort ForceEquip, BoolPort Steal)
@@ -2462,8 +2620,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, ObjectToEquip, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, ForceEquip, new Port{Node = node, Index = 3});
             node.ConnectInputPort(Context.current, Steal, new Port{Node = node, Index = 4});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort EquipObjecttoOffHand(PlayerPort Player, RecRoomObjectPort ObjectToEquip, BoolPort ForceEquip, BoolPort Steal)
@@ -2475,8 +2634,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, ObjectToEquip, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, ForceEquip, new Port{Node = node, Index = 3});
             node.ConnectInputPort(Context.current, Steal, new Port{Node = node, Index = 4});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void EventDefinition()
@@ -2541,7 +2701,8 @@ namespace RRCGGenerated
             {Name = "Explosion Emitter Get Damage", Type = "87d94359-da69-49ed-8b61-fbf78d79fa48", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort ExplosionEmitterGetExplosionColor(ExplosionEmitterPort Target)
@@ -2550,7 +2711,8 @@ namespace RRCGGenerated
             {Name = "Explosion Emitter Get Explosion Color", Type = "6039d63b-f484-4436-bb7c-ea58529ed4ec", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort ExplosionEmitterGetExplosionRadius(ExplosionEmitterPort Target)
@@ -2559,7 +2721,8 @@ namespace RRCGGenerated
             {Name = "Explosion Emitter Get Explosion Radius", Type = "eff7cfca-dcee-4ea1-887f-e4c60f3c8269", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort ExplosionEmitterGetFiringPlayer(ExplosionEmitterPort Target)
@@ -2568,7 +2731,8 @@ namespace RRCGGenerated
             {Name = "Explosion Emitter Get Firing Player", Type = "36cd4562-2c1f-43e3-ba90-56daa0cb7339", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void ExplosionEmitterSetDamage(ExplosionEmitterPort Target, IntPort Damage)
@@ -2621,8 +2785,9 @@ namespace RRCGGenerated
             {Name = "float Variable", Type = "04a31ca5-91d2-4a69-bf3d-484d18411cc0", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new FloatPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static FloatPort Floor(FloatPort Value)
@@ -2631,7 +2796,8 @@ namespace RRCGGenerated
             {Name = "Floor", Type = "c90d9339-cdce-4d22-a885-f142fd5567ab", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort FloortoInt(FloatPort Value)
@@ -2640,7 +2806,8 @@ namespace RRCGGenerated
             {Name = "Floor to Int", Type = "bc451cab-2292-4e60-832d-31060eb82bd0", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FogPort FogConstant()
@@ -2648,47 +2815,52 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Fog Constant", Type = "3026a5c6-232f-4961-b18a-5ad179e6b24d", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new FogPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FogPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
-        public static IntPort For(IntPort From, IntPort To, AlternativeExec Done)
+        public static IntPort For(IntPort From, IntPort To, AlternativeExec<IntPort> Done)
         {
             Node node = new Node()
             {Name = "For", Type = "8f945c22-988b-45d2-b7f2-409ba304fef4", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, From, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, To, new Port{Node = node, Index = 2});
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 2});
-            Done();
+            Done(output_ports);
             ExecFlow.current = mainFlow;
-            return new IntPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
-        public static T ForEach<T>(ListPort<T> Items, AlternativeExec Done)
+        public static T ForEach<T>(ListPort<T> Items, AlternativeExec<T> Done)
             where T : AnyPort, new()
         {
             Node node = new Node()
             {Name = "For Each", Type = "744e5311-6cc7-4130-962e-fe050a475d43", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Items, new Port{Node = node, Index = 1});
+            var output_ports = new T{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 2});
-            Done();
+            Done(output_ports);
             ExecFlow.current = mainFlow;
-            return new T{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
-        public static AnyPort FromRecRoomObject(RecRoomObjectPort Target) {
+        public static AnyPort FromRecRoomObject(RecRoomObjectPort Target)
+        {
             Node node = new Node()
             {Name = "From Rec Room Object", Type = "7ff685a6-f59c-4c6c-b559-f343d81ea1d4", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new AnyPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new AnyPort { Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static HUDElementPort GameHUDElementConstant()
@@ -2696,7 +2868,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Game HUD Element Constant", Type = "4a3c3d38-f1a4-493b-977f-5444ab2d404b", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new HUDElementPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new HUDElementPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void GameHUDElementSetAllValues(HUDElementPort Target)
@@ -2714,7 +2887,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Get All Players", Type = "3f4346b1-bc6f-4aca-9650-d43cbd4acc5b", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<PlayerPort> GetAllPlayersDeprecated()
@@ -2722,7 +2896,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Get All Players (Deprecated)", Type = "09b0bf5b-95df-474b-b81a-4e8e2c78ed0a", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<PlayerPort> GetAllPlayersWithRole(StringPort RoleName)
@@ -2731,7 +2906,8 @@ namespace RRCGGenerated
             {Name = "Get All Players With Role", Type = "1c0a6bd4-bcac-40a9-8bae-fceff7ff7cff", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, RoleName, new Port{Node = node, Index = 0});
-            return new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetAngularVelocity(RecRoomObjectPort Target)
@@ -2740,7 +2916,8 @@ namespace RRCGGenerated
             {Name = "Get Angular Velocity", Type = "0922120c-c5b8-4109-8001-61b3131072a4", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort GetAnyPlayerwithRole(StringPort Role)
@@ -2749,7 +2926,8 @@ namespace RRCGGenerated
             {Name = "Get Any Player with Role", Type = "a924cac0-0245-4846-862d-df4092c5e1c2", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Role, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort GetAuthority()
@@ -2757,7 +2935,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Get Authority", Type = "eaf712f8-3257-4415-9f88-ae94e308396e", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (IntPort AudienceCount, IntPort BroadcasterCount, BoolPort IsBroadcastActive) GetBroadcastingAttendance()
@@ -2765,7 +2944,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Get Broadcasting Attendance", Type = "78f5a9f2-4e3d-4534-aada-4af3a551a953", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return (new IntPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new BoolPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new IntPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new BoolPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (RecRoomObjectPort Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(RecRoomObjectPort Origin, ListPort<RecRoomObjectPort> Targets)
@@ -2775,7 +2955,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (PlayerPort Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(RecRoomObjectPort Origin, ListPort<PlayerPort> Targets)
@@ -2785,7 +2966,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (Vector3Port Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(RecRoomObjectPort Origin, ListPort<Vector3Port> Targets)
@@ -2795,7 +2977,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (RecRoomObjectPort Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(PlayerPort Origin, ListPort<RecRoomObjectPort> Targets)
@@ -2805,7 +2988,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (PlayerPort Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(PlayerPort Origin, ListPort<PlayerPort> Targets)
@@ -2815,7 +2999,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (Vector3Port Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(PlayerPort Origin, ListPort<Vector3Port> Targets)
@@ -2825,7 +3010,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (RecRoomObjectPort Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(Vector3Port Origin, ListPort<RecRoomObjectPort> Targets)
@@ -2835,7 +3021,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (PlayerPort Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(Vector3Port Origin, ListPort<PlayerPort> Targets)
@@ -2845,7 +3032,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (Vector3Port Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(Vector3Port Origin, ListPort<Vector3Port> Targets)
@@ -2855,38 +3043,41 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
-        public static (BoolPort Success, IntPort TotalBalance) GetCurrencyBalance(PlayerPort Player, AlternativeExec OnGetBalanceComplete)
+        public static (BoolPort Success, IntPort TotalBalance) GetCurrencyBalance(PlayerPort Player, AlternativeExec<(BoolPort Success, IntPort TotalBalance)> OnGetBalanceComplete)
         {
             Node node = new Node()
             {Name = "Get Currency Balance", Type = "a4b0c860-e7f0-4abf-ad7c-9be1805c3d01", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnGetBalanceComplete();
+            OnGetBalanceComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
+            return output_ports;
         }
 
-        public static (BoolPort Success, IntPort TotalBalance) GetCurrencyBalanceNew(RoomCurrencyPort Currency, PlayerPort Player, AlternativeExec OnGetBalanceComplete)
+        public static (BoolPort Success, IntPort TotalBalance) GetCurrencyBalanceNew(RoomCurrencyPort Currency, PlayerPort Player, AlternativeExec<(BoolPort Success, IntPort TotalBalance)> OnGetBalanceComplete)
         {
             Node node = new Node()
             {Name = "Get Currency Balance (New)", Type = "01659b8a-db44-4b5e-9a58-c366dcfff666", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Currency, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnGetBalanceComplete();
+            OnGetBalanceComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
+            return output_ports;
         }
 
         public static (RecRoomObjectPort Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest(RecRoomObjectPort Origin, ListPort<RecRoomObjectPort> Targets)
@@ -2896,7 +3087,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (PlayerPort Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest(RecRoomObjectPort Origin, ListPort<PlayerPort> Targets)
@@ -2906,7 +3098,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (Vector3Port Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest(RecRoomObjectPort Origin, ListPort<Vector3Port> Targets)
@@ -2916,7 +3109,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (RecRoomObjectPort Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest(PlayerPort Origin, ListPort<RecRoomObjectPort> Targets)
@@ -2926,7 +3120,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (PlayerPort Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest(PlayerPort Origin, ListPort<PlayerPort> Targets)
@@ -2936,7 +3131,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (Vector3Port Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest(PlayerPort Origin, ListPort<Vector3Port> Targets)
@@ -2946,7 +3142,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (RecRoomObjectPort Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest(Vector3Port Origin, ListPort<RecRoomObjectPort> Targets)
@@ -2956,7 +3153,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (PlayerPort Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest(Vector3Port Origin, ListPort<PlayerPort> Targets)
@@ -2966,7 +3164,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (Vector3Port Farthest, IntPort FarthestIndex, FloatPort Distance) GetFarthest(Vector3Port Origin, ListPort<Vector3Port> Targets)
@@ -2976,7 +3175,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Targets, new Port{Node = node, Index = 1});
-            return (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static StringPort GetFirstTag(PlayerPort Target)
@@ -2985,7 +3185,8 @@ namespace RRCGGenerated
             {Name = "Get First Tag", Type = "cb909206-8627-4c66-ac8d-47b1a046ef8b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort GetFirstTag(RecRoomObjectPort Target)
@@ -2994,7 +3195,8 @@ namespace RRCGGenerated
             {Name = "Get First Tag", Type = "cb909206-8627-4c66-ac8d-47b1a046ef8b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort GetFormattedTime(FloatPort UniversalSeconds, StringPort Format)
@@ -3004,7 +3206,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, UniversalSeconds, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Format, new Port{Node = node, Index = 1});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort GetFormattedTime(IntPort UniversalSeconds, StringPort Format)
@@ -3014,7 +3217,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, UniversalSeconds, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Format, new Port{Node = node, Index = 1});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetForwardVector(RecRoomObjectPort Target)
@@ -3023,7 +3227,8 @@ namespace RRCGGenerated
             {Name = "Get Forward Vector", Type = "4536e1df-1138-4a2c-9117-475bb3f38eae", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetForwardVector(PlayerPort Target)
@@ -3032,7 +3237,8 @@ namespace RRCGGenerated
             {Name = "Get Forward Vector", Type = "4536e1df-1138-4a2c-9117-475bb3f38eae", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetForwardVectorDeprecated(RecRoomObjectPort Target)
@@ -3041,7 +3247,8 @@ namespace RRCGGenerated
             {Name = "Get Forward Vector (Deprecated)", Type = "88f95338-d1a6-4fad-8424-d714d651f6ac", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetForwardVectorDeprecated(PlayerPort Target)
@@ -3050,7 +3257,8 @@ namespace RRCGGenerated
             {Name = "Get Forward Vector (Deprecated)", Type = "88f95338-d1a6-4fad-8424-d714d651f6ac", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort GetGameHUDElementColor(HUDConstantPort Target)
@@ -3059,7 +3267,8 @@ namespace RRCGGenerated
             {Name = "Get Game HUD Element Color", Type = "119d2860-e05c-4140-ba5f-c24139b78652", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort GetGameHUDElementLabel(HUDConstantPort Target)
@@ -3068,7 +3277,8 @@ namespace RRCGGenerated
             {Name = "Get Game HUD Element Label", Type = "98ef89de-7a1b-4043-8071-b5cda41030cd", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort GetGameHUDElementMaxValue(HUDConstantPort Target)
@@ -3077,7 +3287,8 @@ namespace RRCGGenerated
             {Name = "Get Game HUD Element Max Value", Type = "f59d4537-e8b4-4d19-b29f-d5203ce562af", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort GetGameHUDElementValue(HUDConstantPort Target)
@@ -3086,7 +3297,8 @@ namespace RRCGGenerated
             {Name = "Get Game HUD Element Value", Type = "d9cbf25f-01c6-468f-8607-d1dd8317bb2f", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort GetLoadingPlayers()
@@ -3094,7 +3306,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Get Loading Players", Type = "2e02d617-5ada-4876-84ac-d1b6d6270fc4", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetLocalCameraForward()
@@ -3102,7 +3315,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Get Local Camera Forward", Type = "70c830bb-223a-4a7c-b0ae-df240c6f1f33", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetLocalCameraPosition()
@@ -3110,7 +3324,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Get Local Camera Position", Type = "c19eff8a-980c-444a-983f-bb4c53a94daf", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort GetLocalCameraRotation()
@@ -3118,7 +3333,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Get Local Camera Rotation", Type = "912f0e1b-267d-4424-8002-3f82a2d835fe", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetLocalCameraUp()
@@ -3126,7 +3342,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Get Local Camera Up", Type = "5d9da95f-a64f-4660-a11f-bf0855769659", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort GetLocalPlayer()
@@ -3134,7 +3351,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Get Local Player", Type = "fdf733a8-bdd6-4800-b1d4-95b06b3d6f02", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort GetNewLine()
@@ -3142,7 +3360,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Get New Line", Type = "975fde92-136c-4ce5-b749-bf149b817695", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<PlayerPort> GetPartyOfPlayer(PlayerPort Target)
@@ -3151,7 +3370,8 @@ namespace RRCGGenerated
             {Name = "Get Party Of Player", Type = "dcbd4d6a-8f42-48ef-ad66-e1f245228d84", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort GetPlayerAccountName(PlayerPort Player)
@@ -3160,7 +3380,8 @@ namespace RRCGGenerated
             {Name = "Get Player Account Name", Type = "6141ff64-412b-452f-beb0-f338eb6abfb5", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort GetPlayerByAccountName(StringPort Name)
@@ -3169,7 +3390,8 @@ namespace RRCGGenerated
             {Name = "Get Player By Account Name", Type = "2ee5a268-9d44-4326-8a34-ad126a3218f2", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Name, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort GetPlayerByDisplayName(StringPort Name)
@@ -3178,7 +3400,8 @@ namespace RRCGGenerated
             {Name = "Get Player By Display Name", Type = "637e07e4-9b93-44b6-bba3-68966080d064", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Name, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort GetPlayerSeasonLeagueName(PlayerPort Player)
@@ -3187,7 +3410,8 @@ namespace RRCGGenerated
             {Name = "Get Player Season League Name", Type = "288083ac-338d-410f-9395-fbd7c6e41207", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GetPlayerWorldUIEnabled(PlayerPort Target)
@@ -3196,7 +3420,8 @@ namespace RRCGGenerated
             {Name = "Get Player World UI Enabled", Type = "36ad6c98-0fb8-43a0-bf8d-0784394d2d28", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort GetPlayerWorldUIPrimaryBarColor(PlayerPort Target)
@@ -3205,7 +3430,8 @@ namespace RRCGGenerated
             {Name = "Get Player World UI Primary Bar Color", Type = "72101b8c-e522-43ad-ad96-7332f7962c10", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GetPlayerWorldUIPrimaryBarEnabled(PlayerPort Target)
@@ -3214,7 +3440,8 @@ namespace RRCGGenerated
             {Name = "Get Player World UI Primary Bar Enabled", Type = "125d57be-9afa-46b3-a1c4-0c967d044334", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort GetPlayerWorldUIPrimaryBarMaxValue(PlayerPort Target)
@@ -3223,7 +3450,8 @@ namespace RRCGGenerated
             {Name = "Get Player World UI Primary Bar Max Value", Type = "30eb2838-1409-4266-96ed-31b3e1e25408", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort GetPlayerWorldUIPrimaryBarValue(PlayerPort Target)
@@ -3232,7 +3460,8 @@ namespace RRCGGenerated
             {Name = "Get Player World UI Primary Bar Value", Type = "84f241f5-fa59-43a3-9b2d-029b831e9275", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort GetPlayerWorldUISecondaryBarColor(PlayerPort Target)
@@ -3241,7 +3470,8 @@ namespace RRCGGenerated
             {Name = "Get Player World UI Secondary Bar Color", Type = "2e537d07-930e-44f6-8757-ff34c365fd06", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GetPlayerWorldUISecondaryBarEnabled(PlayerPort Target)
@@ -3250,7 +3480,8 @@ namespace RRCGGenerated
             {Name = "Get Player World UI Secondary Bar Enabled", Type = "eaddf07d-4beb-4841-990c-a6b674a66126", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort GetPlayerWorldUISecondaryBarMaxValue(PlayerPort Target)
@@ -3259,7 +3490,8 @@ namespace RRCGGenerated
             {Name = "Get Player World UI Secondary Bar Max Value", Type = "b23bdd96-7676-4236-a5ab-ca0aae513916", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort GetPlayerWorldUISecondaryBarValue(PlayerPort Target)
@@ -3268,7 +3500,8 @@ namespace RRCGGenerated
             {Name = "Get Player World UI Secondary Bar Value", Type = "cafb066f-d6f5-4a1a-a833-e1a0186c6d8e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort GetPlayerWorldUITextColor(PlayerPort Target)
@@ -3277,7 +3510,8 @@ namespace RRCGGenerated
             {Name = "Get Player World UI Text Color", Type = "a8cdbc23-b8de-431e-9428-10b7ccc07192", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GetPlayerWorldUITextEnabled(PlayerPort Target)
@@ -3286,7 +3520,8 @@ namespace RRCGGenerated
             {Name = "Get Player World UI Text Enabled", Type = "cd1b799d-855a-4ade-b62f-043a0db60a44", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort GetPlayerWorldUITextValue(PlayerPort Target)
@@ -3295,7 +3530,8 @@ namespace RRCGGenerated
             {Name = "Get Player World UI Text Value", Type = "447bbb2e-11e4-408c-b4a9-b758e3e07ee7", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetPosition(AIPort Target)
@@ -3304,7 +3540,8 @@ namespace RRCGGenerated
             {Name = "Get Position", Type = "5f6a8ee8-8a87-4da2-851f-fda89cc62344", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetPosition(CombatantPort Target)
@@ -3313,7 +3550,8 @@ namespace RRCGGenerated
             {Name = "Get Position", Type = "5f6a8ee8-8a87-4da2-851f-fda89cc62344", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetPosition(RecRoomObjectPort Target)
@@ -3322,7 +3560,8 @@ namespace RRCGGenerated
             {Name = "Get Position", Type = "5f6a8ee8-8a87-4da2-851f-fda89cc62344", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetPosition(PlayerPort Target)
@@ -3331,7 +3570,8 @@ namespace RRCGGenerated
             {Name = "Get Position", Type = "5f6a8ee8-8a87-4da2-851f-fda89cc62344", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetPositionDeprecated(AIPort Target)
@@ -3340,7 +3580,8 @@ namespace RRCGGenerated
             {Name = "Get Position (Deprecated)", Type = "a8c52ef2-17bf-47e6-9084-3e5623584b48", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetPositionDeprecated(CombatantPort Target)
@@ -3349,7 +3590,8 @@ namespace RRCGGenerated
             {Name = "Get Position (Deprecated)", Type = "a8c52ef2-17bf-47e6-9084-3e5623584b48", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetPositionDeprecated(RecRoomObjectPort Target)
@@ -3358,7 +3600,8 @@ namespace RRCGGenerated
             {Name = "Get Position (Deprecated)", Type = "a8c52ef2-17bf-47e6-9084-3e5623584b48", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetPositionDeprecated(PlayerPort Target)
@@ -3367,7 +3610,8 @@ namespace RRCGGenerated
             {Name = "Get Position (Deprecated)", Type = "a8c52ef2-17bf-47e6-9084-3e5623584b48", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort GetRoomAuthority()
@@ -3375,7 +3619,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Get Room Authority", Type = "d7557465-963e-4451-a55a-dea2050e9b74", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort GetRotation(RecRoomObjectPort Target)
@@ -3384,7 +3629,8 @@ namespace RRCGGenerated
             {Name = "Get Rotation", Type = "d750b619-1dd8-4099-a1dd-627050cd5d41", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort GetRotation(PlayerPort Target)
@@ -3393,7 +3639,8 @@ namespace RRCGGenerated
             {Name = "Get Rotation", Type = "d750b619-1dd8-4099-a1dd-627050cd5d41", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort GetRotationDeprecated(RecRoomObjectPort Target)
@@ -3402,7 +3649,8 @@ namespace RRCGGenerated
             {Name = "Get Rotation (Deprecated)", Type = "c453fa47-d0db-4c4a-a6a1-dac4ebad0aca", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort GetRotationDeprecated(PlayerPort Target)
@@ -3411,7 +3659,8 @@ namespace RRCGGenerated
             {Name = "Get Rotation (Deprecated)", Type = "c453fa47-d0db-4c4a-a6a1-dac4ebad0aca", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<StringPort> GetTags(PlayerPort Target)
@@ -3420,7 +3669,8 @@ namespace RRCGGenerated
             {Name = "Get Tags", Type = "e67cfcb7-03e8-4152-ba41-af8ca61d93fb", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<StringPort> GetTags(RecRoomObjectPort Target)
@@ -3429,7 +3679,8 @@ namespace RRCGGenerated
             {Name = "Get Tags", Type = "e67cfcb7-03e8-4152-ba41-af8ca61d93fb", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetUpVector(RecRoomObjectPort Target)
@@ -3438,7 +3689,8 @@ namespace RRCGGenerated
             {Name = "Get Up Vector", Type = "824f6801-17b6-4ada-9a97-4f36cef02e8b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetUpVector(PlayerPort Target)
@@ -3447,7 +3699,8 @@ namespace RRCGGenerated
             {Name = "Get Up Vector", Type = "824f6801-17b6-4ada-9a97-4f36cef02e8b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetUpVectorDeprecated(RecRoomObjectPort Target)
@@ -3456,7 +3709,8 @@ namespace RRCGGenerated
             {Name = "Get Up Vector (Deprecated)", Type = "830f781d-2522-4ec0-9d6f-ecfc0bf695f6", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetUpVectorDeprecated(PlayerPort Target)
@@ -3465,7 +3719,8 @@ namespace RRCGGenerated
             {Name = "Get Up Vector (Deprecated)", Type = "830f781d-2522-4ec0-9d6f-ecfc0bf695f6", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetVelocity(RecRoomObjectPort Target)
@@ -3474,7 +3729,8 @@ namespace RRCGGenerated
             {Name = "Get Velocity", Type = "0310de62-2ede-4af0-b551-0228290fc54c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetVelocity(PlayerPort Target)
@@ -3483,7 +3739,8 @@ namespace RRCGGenerated
             {Name = "Get Velocity", Type = "0310de62-2ede-4af0-b551-0228290fc54c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetVelocityDeprecated(RecRoomObjectPort Target)
@@ -3492,7 +3749,8 @@ namespace RRCGGenerated
             {Name = "Get Velocity (Deprecated)", Type = "e9c65fbe-9d0f-4373-bd45-fe620de801b4", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GetVelocityDeprecated(PlayerPort Target)
@@ -3501,7 +3759,8 @@ namespace RRCGGenerated
             {Name = "Get Velocity (Deprecated)", Type = "e9c65fbe-9d0f-4373-bd45-fe620de801b4", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void GoToRoom(PlayerPort Player, DestinationRoomPort Destination)
@@ -3531,7 +3790,8 @@ namespace RRCGGenerated
             {Name = "Grabber Get Held Object", Type = "338a3300-ad0d-40d9-a9a7-ff57f5401905", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return (new BoolPort{Port = new Port{Node = node, Index = 0}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static BoolPort GrabberGrabObject(AnyPort Target, RecRoomObjectPort Object, BoolPort StealfromPlayer, BoolPort SnaptoGrabber)
@@ -3543,8 +3803,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, StealfromPlayer, new Port{Node = node, Index = 3});
             node.ConnectInputPort(Context.current, SnaptoGrabber, new Port{Node = node, Index = 4});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static RecRoomObjectPort GrabberRelease(AnyPort Target)
@@ -3553,8 +3814,9 @@ namespace RRCGGenerated
             {Name = "Grabber Release", Type = "051648c8-f13b-4e75-b5e0-33fc834485c6", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            var output_ports = new RecRoomObjectPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new RecRoomObjectPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void GrabberSetPlayerCanStealFromGrabber(AnyPort Target, BoolPort Enabled)
@@ -3568,20 +3830,21 @@ namespace RRCGGenerated
             return;
         }
 
-        public static BoolPort GrantReward(PlayerPort Player, RewardPort Reward, AlternativeExec OnAwardComplete)
+        public static BoolPort GrantReward(PlayerPort Player, RewardPort Reward, AlternativeExec<BoolPort> OnAwardComplete)
         {
             Node node = new Node()
             {Name = "Grant Reward", Type = "8b38e01f-9c85-47bb-abda-85e354c15d41", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Reward, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnAwardComplete();
+            OnAwardComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
         public static BoolPort GraphGetIsActive()
@@ -3589,7 +3852,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Graph Get Is Active", Type = "539cb9a4-39a4-4932-8f36-b249748cff9e", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GreaterorEqual(IntPort A, IntPort B)
@@ -3599,7 +3863,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GreaterorEqual(FloatPort A, FloatPort B)
@@ -3609,7 +3874,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GreaterThan(IntPort A, IntPort B)
@@ -3619,7 +3885,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GreaterThan(FloatPort A, FloatPort B)
@@ -3629,7 +3896,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GreaterThanDepreacted(IntPort A, IntPort B)
@@ -3639,7 +3907,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GreaterThanDepreacted(FloatPort A, FloatPort B)
@@ -3649,7 +3918,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GreaterThanOrEqualDepreacted(IntPort A, IntPort B)
@@ -3659,7 +3929,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GreaterThanOrEqualDepreacted(FloatPort A, FloatPort B)
@@ -3669,7 +3940,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void GroundVehicleAddBoostFuel(GroundVehiclePort Target, IntPort Boostamount)
@@ -3704,7 +3976,8 @@ namespace RRCGGenerated
             {Name = "Ground Vehicle Get Boost Fuel", Type = "76d46244-7b8e-43de-bd8c-55375411ffe1", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GroundVehicleGetDrivingEnabled(GroundVehiclePort Target)
@@ -3713,7 +3986,8 @@ namespace RRCGGenerated
             {Name = "Ground Vehicle Get Driving Enabled", Type = "f41ae49a-dbf3-4b4b-87dc-68614da242cc", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort GroundVehicleGetEngineTorqueMultiplier(GroundVehiclePort Target)
@@ -3722,7 +3996,8 @@ namespace RRCGGenerated
             {Name = "Ground Vehicle Get Engine Torque Multiplier", Type = "390257d5-e382-4416-81f7-40562d5473d3", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort GroundVehicleGetSeatedPlayer(GroundVehiclePort Target, IntPort Seatindex)
@@ -3732,7 +4007,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Seatindex, new Port{Node = node, Index = 1});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort GroundVehicleGetWheelFrictionMultiplier(GroundVehiclePort Target)
@@ -3741,7 +4017,8 @@ namespace RRCGGenerated
             {Name = "Ground Vehicle Get Wheel Friction Multiplier", Type = "0fcc3c15-5ee0-4af9-a4de-94627fbba6ec", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void GroundVehicleSetDrivingEnabled(GroundVehiclePort Target, BoolPort Enabled)
@@ -3857,7 +4134,8 @@ namespace RRCGGenerated
             {Name = "Gun Handle Get Current Ammo", Type = "9e2bb0fe-6179-4ffc-92df-6f3b43bca52d", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port GunHandleGetFiringDirection(GunHandlePort Target, RecRoomObjectPort Source)
@@ -3867,7 +4145,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Source, new Port{Node = node, Index = 1});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GunHandleGetIsReloading(GunHandlePort Target)
@@ -3876,7 +4155,8 @@ namespace RRCGGenerated
             {Name = "Gun Handle Get Is Reloading", Type = "f3ef0346-e593-47c9-85f0-f551efe0a9b6", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort GunHandleGetMaxAmmo(GunHandlePort Target)
@@ -3885,7 +4165,8 @@ namespace RRCGGenerated
             {Name = "Gun Handle Get Max Ammo", Type = "0d6de11b-5487-4e61-9b4b-d6719b3aeb0f", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort GunHandleGetRateOfFire(GunHandlePort Target)
@@ -3894,7 +4175,8 @@ namespace RRCGGenerated
             {Name = "Gun Handle Get Rate Of Fire", Type = "a06ad097-0666-42ff-ab3d-0f00c383e9a1", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort GunHandleGetReloadDuration(GunHandlePort Target)
@@ -3903,7 +4185,8 @@ namespace RRCGGenerated
             {Name = "Gun Handle Get Reload Duration", Type = "ce696294-0c85-4823-8fe3-5fd6a41df2c9", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort GunHandleGetSupportsReload(GunHandlePort Target)
@@ -3912,7 +4195,8 @@ namespace RRCGGenerated
             {Name = "Gun Handle Get Supports Reload", Type = "ec1f7c92-8484-4d00-b820-32726299f67a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void GunHandleRemoveAutoAimRole(GunHandlePort Target, StringPort Role)
@@ -4010,7 +4294,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Tag, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort HasTag(RecRoomObjectPort Target, StringPort Tag)
@@ -4020,7 +4305,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Tag, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort HolsterObject(PlayerPort Player, RecRoomObjectPort ObjectToHolster, BoolPort ForceHolster, BoolPort Steal)
@@ -4032,8 +4318,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, ObjectToHolster, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, ForceHolster, new Port{Node = node, Index = 3});
             node.ConnectInputPort(Context.current, Steal, new Port{Node = node, Index = 4});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static ColorPort HSVToColor(FloatPort Hue, FloatPort Saturation, FloatPort Value)
@@ -4044,7 +4331,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Hue, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Saturation, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void If(BoolPort Condition, AlternativeExec Else)
@@ -4210,7 +4498,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, If, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Then, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Else, new Port{Node = node, Index = 2});
-            return new T{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new T{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void In()
@@ -4226,7 +4515,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Instance Get Is Event", Type = "f24d537e-da9e-47bf-8764-fba6eeefb043", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort InstanceGetIsPrivate()
@@ -4234,7 +4524,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Instance Get Is Private", Type = "aa263220-c6aa-4789-b09c-c73d7fa144fd", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort InstanceGetMaxPlayers()
@@ -4242,7 +4533,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Instance Get Max Players", Type = "af660f62-d086-4731-ab9d-9a8e8a25c77e", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort InteractionVolumeGetHoldTime(InteractionVolumePort Target)
@@ -4251,7 +4543,8 @@ namespace RRCGGenerated
             {Name = "Interaction Volume Get Hold Time", Type = "90e2d8e3-6cdc-4b52-b7e9-529c98e5ee09", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort InteractionVolumeGetInteractionPrompt(InteractionVolumePort Target)
@@ -4260,7 +4553,8 @@ namespace RRCGGenerated
             {Name = "Interaction Volume Get Interaction Prompt", Type = "0c351297-db4d-43e7-81a3-95dc5ddde401", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort InteractionVolumeGetIsLocked(InteractionVolumePort Target)
@@ -4269,7 +4563,8 @@ namespace RRCGGenerated
             {Name = "Interaction Volume Get Is Locked", Type = "c536089c-e2c3-4a6a-a4fa-aba8dca6b810", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort InteractionVolumeGetNormalizedHoldProgress(InteractionVolumePort Target)
@@ -4278,7 +4573,8 @@ namespace RRCGGenerated
             {Name = "Interaction Volume Get Normalized Hold Progress", Type = "4cdfcf23-e5dc-4b81-a500-189dba609d0f", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void InteractionVolumeSetHoldTime(InteractionVolumePort Target, FloatPort HoldTime)
@@ -4331,7 +4627,8 @@ namespace RRCGGenerated
             {Name = "Int to Float", Type = "65cfba8a-b5dc-4946-b824-e6efc5719f3a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort intVariable(IntPort Port0)
@@ -4340,11 +4637,12 @@ namespace RRCGGenerated
             {Name = "int Variable", Type = "33224907-68ff-4102-802e-7c3eed481d37", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new IntPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
-        public static (BoolPort Success, IntPort TotalCount) InventoryItemAdd(AnyPort InventoryItem, PlayerPort Player, IntPort Quantity, AlternativeExec Complete)
+        public static (BoolPort Success, IntPort TotalCount) InventoryItemAdd(AnyPort InventoryItem, PlayerPort Player, IntPort Quantity, AlternativeExec<(BoolPort Success, IntPort TotalCount)> Complete)
         {
             Node node = new Node()
             {Name = "Inventory Item Add", Type = "41d040f2-f8c6-45ec-b6c8-2c31a95e6951", InputCount = 4};
@@ -4352,13 +4650,14 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, InventoryItem, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Quantity, new Port{Node = node, Index = 3});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            Complete();
+            Complete(output_ports);
             ExecFlow.current = mainFlow;
-            return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
+            return output_ports;
         }
 
         public static AnyPort InventoryItemConstant()
@@ -4366,23 +4665,25 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Inventory Item Constant", Type = "04cc0f81-b7d4-4469-aaa4-428b6e0c1f02", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new AnyPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new AnyPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
-        public static IntPort InventoryItemGetCount(AnyPort InventoryItem, PlayerPort Player, AlternativeExec Complete)
+        public static IntPort InventoryItemGetCount(AnyPort InventoryItem, PlayerPort Player, AlternativeExec<IntPort> Complete)
         {
             Node node = new Node()
             {Name = "Inventory Item Get Count", Type = "2e1cb4fa-a341-40fe-acba-e8621f7c69ca", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, InventoryItem, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            Complete();
+            Complete(output_ports);
             ExecFlow.current = mainFlow;
-            return new IntPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
         public static (StringPort Name, StringPort Description, BoolPort SupportsUseAction) InventoryItemGetDefinition(AnyPort InventoryItem)
@@ -4391,10 +4692,11 @@ namespace RRCGGenerated
             {Name = "Inventory Item Get Definition", Type = "93ad7158-81eb-453c-b3db-222b9630ae0e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, InventoryItem, new Port{Node = node, Index = 0});
-            return (new StringPort{Port = new Port{Node = node, Index = 0}}, new StringPort{Port = new Port{Node = node, Index = 1}}, new BoolPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new StringPort{Port = new Port{Node = node, Index = 0}}, new StringPort{Port = new Port{Node = node, Index = 1}}, new BoolPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
-        public static (BoolPort Success, IntPort TotalCount) InventoryItemRemove(AnyPort InventoryItem, PlayerPort Player, IntPort Quantity, AlternativeExec Complete)
+        public static (BoolPort Success, IntPort TotalCount) InventoryItemRemove(AnyPort InventoryItem, PlayerPort Player, IntPort Quantity, AlternativeExec<(BoolPort Success, IntPort TotalCount)> Complete)
         {
             Node node = new Node()
             {Name = "Inventory Item Remove", Type = "736abfd6-5a44-4c74-9fc2-663adf6cbbdf", InputCount = 4};
@@ -4402,13 +4704,14 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, InventoryItem, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Quantity, new Port{Node = node, Index = 3});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            Complete();
+            Complete(output_ports);
             ExecFlow.current = mainFlow;
-            return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}});
+            return output_ports;
         }
 
         public static void InventoryItemUse(AnyPort InventoryItem)
@@ -4429,7 +4732,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort InverseLerp(ColorPort Start, ColorPort End, ColorPort Value)
@@ -4440,7 +4744,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort InverseLerp(Vector3Port Start, Vector3Port End, Vector3Port Value)
@@ -4451,7 +4756,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort InverseLerpUnclamped(FloatPort Start, FloatPort End, FloatPort Value)
@@ -4462,7 +4768,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort InverseLerpUnclamped(ColorPort Start, ColorPort End, ColorPort Value)
@@ -4473,7 +4780,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort InverseLerpUnclamped(Vector3Port Start, Vector3Port End, Vector3Port Value)
@@ -4484,7 +4792,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort InvisibleCollisionGetBlocksPlayers(InvisibleCollisionPort Target)
@@ -4493,7 +4802,8 @@ namespace RRCGGenerated
             {Name = "Invisible Collision Get Blocks Players", Type = "0938d870-2f6d-4144-ba3d-c73af0e46348", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort InvisibleCollisionGetEnabled(InvisibleCollisionPort Target)
@@ -4502,7 +4812,8 @@ namespace RRCGGenerated
             {Name = "Invisible Collision Get Enabled", Type = "de407f3c-2fb0-4c9a-9dc4-fb6d6709737e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void InvisibleCollisionSetBlocksPlayers(InvisibleCollisionPort Target, BoolPort Enabled)
@@ -4534,7 +4845,8 @@ namespace RRCGGenerated
             {Name = "Is Valid", Type = "24a1be50-ef1b-4e54-836b-4a2a95780b4e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort LaserPointerGetColor(LaserPointerPort Target)
@@ -4543,7 +4855,8 @@ namespace RRCGGenerated
             {Name = "Laser Pointer Get Color", Type = "cb035f05-f3dc-4550-bd64-27cb96bd6be0", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort LaserPointerGetEnabled(LaserPointerPort Target)
@@ -4552,7 +4865,8 @@ namespace RRCGGenerated
             {Name = "Laser Pointer Get Enabled", Type = "54fc909a-a864-4e89-be6e-e7f92b7f275a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort LaserPointerGetLength(LaserPointerPort Target)
@@ -4561,7 +4875,8 @@ namespace RRCGGenerated
             {Name = "Laser Pointer Get Length", Type = "a839c882-9317-4b99-92e6-c3815532b479", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void LaserPointerSetColor(LaserPointerPort Target, ColorPort Color)
@@ -4597,20 +4912,21 @@ namespace RRCGGenerated
             return;
         }
 
-        public static IntPort LeaderboardGetPlayerStat(PlayerPort Player, IntPort Channel, AlternativeExec OnGetStatComplete)
+        public static IntPort LeaderboardGetPlayerStat(PlayerPort Player, IntPort Channel, AlternativeExec<IntPort> OnGetStatComplete)
         {
             Node node = new Node()
             {Name = "Leaderboard Get Player Stat", Type = "12cf9781-1e1b-4e59-a783-c7214b66be8a", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Channel, new Port{Node = node, Index = 2});
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnGetStatComplete();
+            OnGetStatComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return new IntPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
         public static void LeaderboardSetLocalPlayerStat(IntPort Channel, IntPort Value)
@@ -4632,7 +4948,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Progress, new Port{Node = node, Index = 2});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort Lerp(QuaternionPort Start, QuaternionPort End, FloatPort Progress)
@@ -4643,7 +4960,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Progress, new Port{Node = node, Index = 2});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Lerp(Vector3Port Start, Vector3Port End, FloatPort Progress)
@@ -4654,7 +4972,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Progress, new Port{Node = node, Index = 2});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort Lerp(ColorPort Start, ColorPort End, FloatPort Progress)
@@ -4665,7 +4984,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Progress, new Port{Node = node, Index = 2});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort LerpUnclamped(FloatPort Start, FloatPort End, FloatPort Progress)
@@ -4676,7 +4996,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Progress, new Port{Node = node, Index = 2});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort LerpUnclamped(QuaternionPort Start, QuaternionPort End, FloatPort Progress)
@@ -4687,7 +5008,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Progress, new Port{Node = node, Index = 2});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port LerpUnclamped(Vector3Port Start, Vector3Port End, FloatPort Progress)
@@ -4698,7 +5020,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Progress, new Port{Node = node, Index = 2});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort LerpUnclamped(ColorPort Start, ColorPort End, FloatPort Progress)
@@ -4709,7 +5032,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Progress, new Port{Node = node, Index = 2});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort LessorEqual(IntPort A, IntPort B)
@@ -4719,7 +5043,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort LessorEqual(FloatPort A, FloatPort B)
@@ -4729,7 +5054,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort LessThan(IntPort A, IntPort B)
@@ -4739,7 +5065,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort LessThan(FloatPort A, FloatPort B)
@@ -4749,7 +5076,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort LessThanDepreacted(IntPort A, IntPort B)
@@ -4759,7 +5087,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort LessThanDepreacted(FloatPort A, FloatPort B)
@@ -4769,7 +5098,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort LessThanOrEqualDepreacted(IntPort A, IntPort B)
@@ -4779,7 +5109,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort LessThanOrEqualDepreacted(FloatPort A, FloatPort B)
@@ -4789,7 +5120,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort LightGetAngle(LightPort Target)
@@ -4798,7 +5130,8 @@ namespace RRCGGenerated
             {Name = "Light Get Angle", Type = "8a6c0623-7585-402c-8734-7fa7248b15a0", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort LightGetColor(LightPort Target)
@@ -4807,7 +5140,8 @@ namespace RRCGGenerated
             {Name = "Light Get Color", Type = "bc45bb9f-619a-48c4-a3ed-14596c83424f", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort LightGetEnabled(LightPort Target)
@@ -4816,7 +5150,8 @@ namespace RRCGGenerated
             {Name = "Light Get Enabled", Type = "d5eafcf1-1762-4ece-bc31-7e2eddac253e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort LightGetIntensity(LightPort Target)
@@ -4825,7 +5160,8 @@ namespace RRCGGenerated
             {Name = "Light Get Intensity", Type = "67bf3eac-2273-4345-94b3-8288f63f9a0e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort LightGetRange(LightPort Target)
@@ -4834,7 +5170,8 @@ namespace RRCGGenerated
             {Name = "Light Get Range", Type = "e218e55a-3307-4839-a3d4-b7cc72e1e3bc", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort LightGetSoftness(LightPort Target)
@@ -4843,7 +5180,8 @@ namespace RRCGGenerated
             {Name = "Light Get Softness", Type = "afc674dc-06b5-44fc-9d01-95d8ca56db41", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort LightGetSpecularContribution(LightPort Target)
@@ -4852,7 +5190,8 @@ namespace RRCGGenerated
             {Name = "Light Get Specular Contribution", Type = "b7e74ebc-9ed7-4302-abf1-d2fe42b92a6d", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void LightSetAngle(LightPort Target, FloatPort Angle)
@@ -5003,7 +5342,8 @@ namespace RRCGGenerated
             {Name = "List All True", Type = "7d474bd7-ee53-4e6d-a45f-cd64fce1c0dc", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort ListAnyTrue(ListPort<BoolPort> Target)
@@ -5012,7 +5352,8 @@ namespace RRCGGenerated
             {Name = "List Any True", Type = "f9589495-685e-4e14-af2e-5cd45f860021", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<BoolPort> ListBoolVariable(ListPort<BoolPort> Port0)
@@ -5021,8 +5362,9 @@ namespace RRCGGenerated
             {Name = "List<bool> Variable", Type = "e0ef8c83-e5a6-4272-a102-07bfc0a40fd5", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<BoolPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<BoolPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void ListClear<T>(ListPort<T> List)
@@ -5042,8 +5384,9 @@ namespace RRCGGenerated
             {Name = "List<Color> Variable", Type = "9216dded-da74-49a7-a327-5750f4809787", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<ColorPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<ColorPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static ListPort<T> ListConcat<T>(ListPort<T> List1, ListPort<T> List2)
@@ -5054,7 +5397,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, List1, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, List2, new Port{Node = node, Index = 1});
-            return new ListPort<T>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<T>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort ListContains<T>(ListPort<T> Target, T Item)
@@ -5065,7 +5409,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Item, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<T> ListCopy<T>(ListPort<T> Target)
@@ -5075,7 +5420,8 @@ namespace RRCGGenerated
             {Name = "List Copy", Type = "b336b889-407a-45c8-ad82-a89f4e033c05", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ListPort<T>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<T>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static ListPort<T> ListCreate<T>(T Item)
@@ -5085,7 +5431,8 @@ namespace RRCGGenerated
             {Name = "List Create", Type = "542d3256-0d51-4c33-a2a1-fbc44b7e1f07", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Item, new Port{Node = node, Index = 0});
-            return new ListPort<T>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<T>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<DestinationRoomPort> ListDestinationRoomVariable(ListPort<DestinationRoomPort> Port0)
@@ -5094,8 +5441,9 @@ namespace RRCGGenerated
             {Name = "List<Destination Room> Variable", Type = "fff164aa-d775-4d67-a6b0-d1396cb74161", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<DestinationRoomPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<DestinationRoomPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static FloatPort ListDivide(ListPort<FloatPort> Target)
@@ -5104,7 +5452,8 @@ namespace RRCGGenerated
             {Name = "List Divide", Type = "7e5af908-533d-4d42-b3c9-0159e2b5fd55", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ListDivide(ListPort<IntPort> Target)
@@ -5113,7 +5462,8 @@ namespace RRCGGenerated
             {Name = "List Divide", Type = "7e5af908-533d-4d42-b3c9-0159e2b5fd55", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port ListDivide(ListPort<Vector3Port> Target)
@@ -5122,7 +5472,8 @@ namespace RRCGGenerated
             {Name = "List Divide", Type = "7e5af908-533d-4d42-b3c9-0159e2b5fd55", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<FloatPort> ListFloatVariable(ListPort<FloatPort> Port0)
@@ -5131,8 +5482,9 @@ namespace RRCGGenerated
             {Name = "List<float> Variable", Type = "9bcd36e6-c293-432a-8d90-f6391fe06c62", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<FloatPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<FloatPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static ListPort<IntPort> ListGetAllIndicesOf<T>(ListPort<T> Target, T Item)
@@ -5143,7 +5495,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Item, new Port{Node = node, Index = 1});
-            return new ListPort<IntPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<IntPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ListGetCount<T>(ListPort<T> List)
@@ -5153,7 +5506,8 @@ namespace RRCGGenerated
             {Name = "List Get Count", Type = "0493204d-9815-49a9-8c87-4dedf5ccf7e8", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, List, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static T ListGetElement<T>(ListPort<T> List, IntPort Index)
@@ -5164,7 +5518,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, List, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Index, new Port{Node = node, Index = 1});
-            return new T{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new T{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ListGetFirstIndexOf<T>(ListPort<T> Target, T Item)
@@ -5175,7 +5530,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Item, new Port{Node = node, Index = 1});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void ListInsert<T>(ListPort<T> Target, T Item, IntPort Index)
@@ -5197,8 +5553,9 @@ namespace RRCGGenerated
             {Name = "List<int> Variable", Type = "fe2f9c12-d213-4234-a387-9d2ec1ad7fc1", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<IntPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<IntPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static FloatPort ListMax(ListPort<FloatPort> Target)
@@ -5207,7 +5564,8 @@ namespace RRCGGenerated
             {Name = "List Max", Type = "47428133-4492-422a-aeab-82c21667543e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ListMax(ListPort<IntPort> Target)
@@ -5216,7 +5574,8 @@ namespace RRCGGenerated
             {Name = "List Max", Type = "47428133-4492-422a-aeab-82c21667543e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort ListMin(ListPort<FloatPort> Target)
@@ -5225,7 +5584,8 @@ namespace RRCGGenerated
             {Name = "List Min", Type = "73e9cc79-66cc-4526-8ed7-87500e208c6b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ListMin(ListPort<IntPort> Target)
@@ -5234,7 +5594,8 @@ namespace RRCGGenerated
             {Name = "List Min", Type = "73e9cc79-66cc-4526-8ed7-87500e208c6b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort ListMultiply(ListPort<FloatPort> Target)
@@ -5243,7 +5604,8 @@ namespace RRCGGenerated
             {Name = "List Multiply", Type = "585aebe5-5df3-423a-8bc4-66b4e2b8bc5b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ListMultiply(ListPort<IntPort> Target)
@@ -5252,7 +5614,8 @@ namespace RRCGGenerated
             {Name = "List Multiply", Type = "585aebe5-5df3-423a-8bc4-66b4e2b8bc5b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort ListMultiply(ListPort<QuaternionPort> Target)
@@ -5261,7 +5624,8 @@ namespace RRCGGenerated
             {Name = "List Multiply", Type = "585aebe5-5df3-423a-8bc4-66b4e2b8bc5b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port ListMultiply(ListPort<Vector3Port> Target)
@@ -5270,7 +5634,8 @@ namespace RRCGGenerated
             {Name = "List Multiply", Type = "585aebe5-5df3-423a-8bc4-66b4e2b8bc5b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<ObjectiveMarkerPort> ListObjectiveMarkerVariable(ListPort<ObjectiveMarkerPort> Port0)
@@ -5279,8 +5644,9 @@ namespace RRCGGenerated
             {Name = "List<Objective Marker> Variable", Type = "2aa2fe68-18bf-4f63-9ed9-2fc237b60df9", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<ObjectiveMarkerPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<ObjectiveMarkerPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static ListPort<PlayerPort> ListPlayerVariable(ListPort<PlayerPort> Port0)
@@ -5289,8 +5655,9 @@ namespace RRCGGenerated
             {Name = "List<Player> Variable", Type = "32837e14-12de-465f-89dc-ceddb64cdd6c", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static ListPort<QuaternionPort> ListQuaternionVariable(ListPort<QuaternionPort> Port0)
@@ -5299,8 +5666,9 @@ namespace RRCGGenerated
             {Name = "List<Quaternion> Variable", Type = "e8cfde19-33a4-4826-a032-4b9bd50aa171", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<QuaternionPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<QuaternionPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static ListPort<RecRoomObjectPort> ListRecRoomObjectVariable(ListPort<RecRoomObjectPort> Port0)
@@ -5309,8 +5677,9 @@ namespace RRCGGenerated
             {Name = "List<Rec Room Object> Variable", Type = "536e376c-087d-4909-9412-3fcee5d6f52b", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void ListRemoveAt<T>(ListPort<T> Target, IntPort Index)
@@ -5345,8 +5714,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Item, new Port{Node = node, Index = 2});
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new IntPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void ListRemoveLast<T>(ListPort<T> Target)
@@ -5366,8 +5736,9 @@ namespace RRCGGenerated
             {Name = "List<Reward> Variable", Type = "40a49ce8-a734-4e3e-bb59-00a4698a942e", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<RewardPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<RewardPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void ListSetElement<T>(ListPort<T> List, IntPort Index, T Value)
@@ -5433,8 +5804,9 @@ namespace RRCGGenerated
             {Name = "List<string> Variable", Type = "94fb596f-6b3f-4981-bc2d-1bb693c45ae6", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<StringPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<StringPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static FloatPort ListSubtract(ListPort<FloatPort> Target)
@@ -5443,7 +5815,8 @@ namespace RRCGGenerated
             {Name = "List Subtract", Type = "20f069cb-30e5-4df8-8e2f-d91f322a83dd", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ListSubtract(ListPort<IntPort> Target)
@@ -5452,7 +5825,8 @@ namespace RRCGGenerated
             {Name = "List Subtract", Type = "20f069cb-30e5-4df8-8e2f-d91f322a83dd", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port ListSubtract(ListPort<Vector3Port> Target)
@@ -5461,7 +5835,8 @@ namespace RRCGGenerated
             {Name = "List Subtract", Type = "20f069cb-30e5-4df8-8e2f-d91f322a83dd", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort ListSum(ListPort<FloatPort> Target)
@@ -5470,7 +5845,8 @@ namespace RRCGGenerated
             {Name = "List Sum", Type = "d080c9af-402f-4eb9-91d6-9eee945bf734", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ListSum(ListPort<IntPort> Target)
@@ -5479,7 +5855,8 @@ namespace RRCGGenerated
             {Name = "List Sum", Type = "d080c9af-402f-4eb9-91d6-9eee945bf734", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port ListSum(ListPort<Vector3Port> Target)
@@ -5488,7 +5865,8 @@ namespace RRCGGenerated
             {Name = "List Sum", Type = "d080c9af-402f-4eb9-91d6-9eee945bf734", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<Vector3Port> ListVector3Variable(ListPort<Vector3Port> Port0)
@@ -5497,8 +5875,9 @@ namespace RRCGGenerated
             {Name = "List<Vector3> Variable", Type = "35f84cfc-b10e-451e-832e-c6ad8d99685d", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<Vector3Port>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<Vector3Port>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void LocalPlayerDisableInteractionwithTargetPlayer(PlayerPort Player)
@@ -5528,7 +5907,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Local Player Gaze Direction", Type = "6b68c3d8-8e26-43d2-bd6d-37944ae80963", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port LocalPlayerGazeOrigin()
@@ -5536,7 +5916,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Local Player Gaze Origin", Type = "44d9ad9e-8f31-4588-903d-1bbe8d3c3b70", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void LocalPlayerSetPlayerNametagVisibility(PlayerPort Player, BoolPort Enabled)
@@ -5557,7 +5938,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Base, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void LogError(StringPort Error)
@@ -5589,7 +5971,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Item1, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Item2, new Port{Node = node, Index = 1});
-            return new AnyPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new AnyPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static IntPort Max(IntPort Value)
@@ -5598,7 +5981,8 @@ namespace RRCGGenerated
             {Name = "Max", Type = "1cb807b1-85e7-4c14-b3ae-5775b7873b7d", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static FloatPort Max(FloatPort Value)
@@ -5607,7 +5991,8 @@ namespace RRCGGenerated
             {Name = "Max", Type = "1cb807b1-85e7-4c14-b3ae-5775b7873b7d", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static IntPort Min(IntPort Value)
@@ -5616,7 +6001,8 @@ namespace RRCGGenerated
             {Name = "Min", Type = "bfb1ad17-5ade-4bd8-9c31-6d4b1e47dae3", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static FloatPort Min(FloatPort Value)
@@ -5625,7 +6011,8 @@ namespace RRCGGenerated
             {Name = "Min", Type = "bfb1ad17-5ade-4bd8-9c31-6d4b1e47dae3", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static IntPort Modulo(IntPort Value)
@@ -5634,7 +6021,8 @@ namespace RRCGGenerated
             {Name = "Modulo", Type = "fe462e79-9e9f-4234-b594-7b6c0a69329b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static FloatPort Modulo(FloatPort Value)
@@ -5643,7 +6031,8 @@ namespace RRCGGenerated
             {Name = "Modulo", Type = "fe462e79-9e9f-4234-b594-7b6c0a69329b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static IntPort Multiply(IntPort Value)
@@ -5652,7 +6041,8 @@ namespace RRCGGenerated
             {Name = "Multiply", Type = "4738d696-d05a-42ee-a182-7641c429ae06", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static FloatPort Multiply(FloatPort Value)
@@ -5661,7 +6051,8 @@ namespace RRCGGenerated
             {Name = "Multiply", Type = "4738d696-d05a-42ee-a182-7641c429ae06", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static QuaternionPort Multiply(QuaternionPort Value)
@@ -5670,7 +6061,8 @@ namespace RRCGGenerated
             {Name = "Multiply", Type = "4738d696-d05a-42ee-a182-7641c429ae06", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static Vector3Port Multiply(Vector3Port Value)
@@ -5679,7 +6071,8 @@ namespace RRCGGenerated
             {Name = "Multiply", Type = "4738d696-d05a-42ee-a182-7641c429ae06", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static AudioPort MusicConstant()
@@ -5687,7 +6080,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Music Constant", Type = "ce3cbe60-7983-4458-b44a-738ea7036155", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new AudioPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new AudioPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort Nand(BoolPort Input)
@@ -5696,7 +6090,8 @@ namespace RRCGGenerated
             {Name = "Nand", Type = "502e86d1-5b3a-4213-97e2-df25836ffcc4", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Input, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Noise(Vector3Port Point)
@@ -5705,7 +6100,8 @@ namespace RRCGGenerated
             {Name = "Noise", Type = "06f8732b-b1cb-4b79-815e-5b389c1dd78f", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Point, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort Nor(BoolPort Input)
@@ -5714,7 +6110,8 @@ namespace RRCGGenerated
             {Name = "Nor", Type = "2891bcb4-a6ab-4a2e-a08d-dd2a55f1cf66", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Input, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort Not(BoolPort Value)
@@ -5723,7 +6120,8 @@ namespace RRCGGenerated
             {Name = "Not", Type = "ff551243-beb4-470e-ab48-9d616818d5e4", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void ObjectiveMarkerAttachToPlayerOrObject(ObjectiveMarkerPort Target, PlayerPort PlayerOrObject)
@@ -5753,7 +6151,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Objective Marker Constant", Type = "9ffb119b-dadc-4e50-af19-9bfd335a34ef", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new ObjectiveMarkerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ObjectiveMarkerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort ObjectiveMarkerGetColor(ObjectiveMarkerPort Target)
@@ -5762,7 +6161,8 @@ namespace RRCGGenerated
             {Name = "Objective Marker Get Color", Type = "7c9d1838-0b70-4a77-8cec-b67758a9095e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort ObjectiveMarkerGetCurrentDistance(ObjectiveMarkerPort Target)
@@ -5771,7 +6171,8 @@ namespace RRCGGenerated
             {Name = "Objective Marker Get Current Distance", Type = "a4ab4e75-1031-4f68-9631-ef31f131c708", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort ObjectiveMarkerGetDistanceEnabled(ObjectiveMarkerPort Target)
@@ -5780,7 +6181,8 @@ namespace RRCGGenerated
             {Name = "Objective Marker Get Distance Enabled", Type = "6bca2a96-0f30-438e-89d8-aa77ffce2b1c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort ObjectiveMarkerGetEnabled(ObjectiveMarkerPort Target)
@@ -5789,7 +6191,8 @@ namespace RRCGGenerated
             {Name = "Objective Marker Get Enabled", Type = "67f3297e-f498-4e87-a170-5f42b59b0b3a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort ObjectiveMarkerGetFadeThreshold(ObjectiveMarkerPort Target)
@@ -5798,7 +6201,8 @@ namespace RRCGGenerated
             {Name = "Objective Marker Get Fade Threshold", Type = "6fe14d02-0382-4f94-a6ef-f3d414015e95", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort ObjectiveMarkerGetLabel(ObjectiveMarkerPort Target)
@@ -5807,7 +6211,8 @@ namespace RRCGGenerated
             {Name = "Objective Marker Get Label", Type = "38569dac-4cbc-487c-9ca6-14e2cc0fbf05", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort ObjectiveMarkerGetLabelEnabled(ObjectiveMarkerPort Target)
@@ -5816,7 +6221,8 @@ namespace RRCGGenerated
             {Name = "Objective Marker Get Label Enabled", Type = "79b28dea-36c7-4c4d-b523-7461667851a2", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port ObjectiveMarkerGetPosition(ObjectiveMarkerPort Target)
@@ -5825,7 +6231,8 @@ namespace RRCGGenerated
             {Name = "Objective Marker Get Position", Type = "0a6b285e-cfb2-4112-88c3-ebe2ba3269a5", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static RecRoomObjectPort ObjectiveMarkerGetTargetObject(ObjectiveMarkerPort Target)
@@ -5834,7 +6241,8 @@ namespace RRCGGenerated
             {Name = "Objective Marker Get Target Object", Type = "0a9761e3-44df-4ede-a1dd-6a8f4eb6a7c1", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort ObjectiveMarkerGetTargetPlayer(ObjectiveMarkerPort Target)
@@ -5843,7 +6251,8 @@ namespace RRCGGenerated
             {Name = "Objective Marker Get Target Player", Type = "f008de51-c5bb-4107-84e8-18a2d5b648bd", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void ObjectiveMarkerSetColor(ObjectiveMarkerPort Target, ColorPort Color)
@@ -5929,7 +6338,8 @@ namespace RRCGGenerated
             {Name = "Or", Type = "b5dcded0-eb2b-468d-a4b9-ffb1054f6214", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Input, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void Out()
@@ -5948,8 +6358,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Center, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Extents, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Orientation, new Port{Node = node, Index = 3});
+            var output_ports = new ListPort<CollisionDataPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<CollisionDataPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static ListPort<CollisionDataPort> OverlapSphere(Vector3Port Origin, FloatPort Radius)
@@ -5959,8 +6370,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Origin, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Radius, new Port{Node = node, Index = 2});
+            var output_ports = new ListPort<CollisionDataPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<CollisionDataPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static (BoolPort Result, BoolPort ParseSuccess) ParseBool(StringPort String)
@@ -5969,7 +6381,8 @@ namespace RRCGGenerated
             {Name = "Parse Bool", Type = "92c05ebc-1967-49a4-94b5-2d01fe1e6b85", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
-            return (new BoolPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static (ColorPort Result, BoolPort ParseSuccess) ParseColor(StringPort String)
@@ -5978,7 +6391,8 @@ namespace RRCGGenerated
             {Name = "Parse Color", Type = "7a36c4b7-fb89-4ddc-a3b2-bff8597f7b17", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
-            return (new ColorPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new ColorPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static (FloatPort Result, BoolPort ParseSuccess) ParseFloat(StringPort String)
@@ -5987,7 +6401,8 @@ namespace RRCGGenerated
             {Name = "Parse Float", Type = "5e25f40a-2b8c-4327-a89c-7a749838da7d", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
-            return (new FloatPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new FloatPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static (IntPort Result, BoolPort ParseSuccess) ParseInt(StringPort String)
@@ -5996,7 +6411,8 @@ namespace RRCGGenerated
             {Name = "Parse Int", Type = "00b49995-a322-47a3-a32b-5530f2ba7fed", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
-            return (new IntPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new IntPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static FloatPort PistonGetAcceleration(PistonPort Target)
@@ -6005,7 +6421,8 @@ namespace RRCGGenerated
             {Name = "Piston Get Acceleration", Type = "5e002bc3-c667-441c-8098-4df2f956de5b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort PistonGetDistance(PistonPort Target)
@@ -6014,7 +6431,8 @@ namespace RRCGGenerated
             {Name = "Piston Get Distance", Type = "e503b0e4-d295-48cc-bf95-1f1a8127a009", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort PistonGetMaxDistance(PistonPort Target)
@@ -6023,7 +6441,8 @@ namespace RRCGGenerated
             {Name = "Piston Get Max Distance", Type = "bb702e97-9f40-45cb-b35d-3a2193ab6800", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort PistonGetSpeed(PistonPort Target)
@@ -6032,7 +6451,8 @@ namespace RRCGGenerated
             {Name = "Piston Get Speed", Type = "1d989cd3-d6ae-4503-b80e-5e630ec3f308", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort PistonGetTargetDistance(PistonPort Target)
@@ -6041,7 +6461,8 @@ namespace RRCGGenerated
             {Name = "Piston Get Target Distance", Type = "639a360e-aeb1-4c5d-8bc1-96bfaea8aef2", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void PistonSetAcceleration(PistonPort Target, FloatPort Value)
@@ -6124,20 +6545,21 @@ namespace RRCGGenerated
             return;
         }
 
-        public static BoolPort PlayerAwardXP(PlayerPort Player, IntPort Amount, AlternativeExec OnAwardComplete)
+        public static BoolPort PlayerAwardXP(PlayerPort Player, IntPort Amount, AlternativeExec<BoolPort> OnAwardComplete)
         {
             Node node = new Node()
             {Name = "Player Award XP", Type = "beb93f31-9a12-4b47-a9cc-961febb623aa", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Amount, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnAwardComplete();
+            OnAwardComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
         public static QuaternionPort PlayerBodyOrientation(PlayerPort Target)
@@ -6146,7 +6568,8 @@ namespace RRCGGenerated
             {Name = "Player Body Orientation", Type = "d5f0503f-eee6-4a2a-811d-33ead7122bd3", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerBodyPosition(PlayerPort Target)
@@ -6155,7 +6578,8 @@ namespace RRCGGenerated
             {Name = "Player Body Position", Type = "5de67799-3301-48d8-ac08-0b371b418962", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void PlayerClearCurrentSubtitle(PlayerPort Player)
@@ -6176,7 +6600,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static BoolPort PlayerEquipInventoryItem(PlayerPort Player, AnyPort InventoryItem, AnyPort InventoryEquipmentSlot, AlternativeExec OnEquipComplete)
+        public static BoolPort PlayerEquipInventoryItem(PlayerPort Player, AnyPort InventoryItem, AnyPort InventoryEquipmentSlot, AlternativeExec<BoolPort> OnEquipComplete)
         {
             Node node = new Node()
             {Name = "Player Equip Inventory Item", Type = "ad1dc480-3932-482f-9609-ab0b01f234e8", InputCount = 4};
@@ -6184,13 +6608,14 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, InventoryItem, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, InventoryEquipmentSlot, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnEquipComplete();
+            OnEquipComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
         public static ListPort<PlayerPort> PlayerGetAllwithTag(StringPort Tag)
@@ -6199,7 +6624,8 @@ namespace RRCGGenerated
             {Name = "Player Get All with Tag", Type = "8286a047-19a2-4ad0-bdec-833f35adf4f2", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Tag, new Port{Node = node, Index = 0});
-            return new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerGetCanTeleport(PlayerPort Player)
@@ -6208,7 +6634,8 @@ namespace RRCGGenerated
             {Name = "Player Get Can Teleport", Type = "52fcfdc0-5f37-4c4c-892a-f61ba6ebf686", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static CostumePort PlayerGetCostume(PlayerPort Player)
@@ -6217,7 +6644,8 @@ namespace RRCGGenerated
             {Name = "Player Get Costume", Type = "c6778471-488c-4bc8-8e05-c322b91e1180", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new CostumePort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new CostumePort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerGetCrouchInputEnabled(PlayerPort Player)
@@ -6226,7 +6654,8 @@ namespace RRCGGenerated
             {Name = "Player Get Crouch Input Enabled", Type = "974059d8-f0cf-4b33-a467-c3403d56f2a6", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerGetDominantHandIsRight(PlayerPort Player)
@@ -6235,7 +6664,8 @@ namespace RRCGGenerated
             {Name = "Player Get Dominant Hand Is Right", Type = "2cc92be4-ca23-4148-88d6-71cfb9b7fd58", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (RecRoomObjectPort DominantHandObject, RecRoomObjectPort OffHandObject, RecRoomObjectPort LeftHipHolsterObject, RecRoomObjectPort RightHipHolsterObject, RecRoomObjectPort ShoulderHolsterObject) PlayerGetEquippedObjects(PlayerPort Player)
@@ -6244,7 +6674,8 @@ namespace RRCGGenerated
             {Name = "Player Get Equipped Objects", Type = "f0827a17-7d21-45ba-b302-c2b068bd50ca", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 1}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 2}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 3}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 4}});
+            var output_ports = (new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 1}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 2}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 3}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 4}});
+            return output_ports;
         }
 
         public static PlayerPort PlayerGetFirstwithTag(StringPort Tag)
@@ -6253,7 +6684,8 @@ namespace RRCGGenerated
             {Name = "Player Get First with Tag", Type = "48364320-cb02-41d8-9d8f-50291131dad2", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Tag, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerGetForceManualSprint(PlayerPort Player)
@@ -6262,7 +6694,8 @@ namespace RRCGGenerated
             {Name = "Player Get Force Manual Sprint", Type = "7b099bfd-965c-4d78-9e7b-59114bf64dbb", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerGetIsAuthorityOf(PlayerPort Target, RecRoomObjectPort Object)
@@ -6272,7 +6705,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (BoolPort IsJumpingOrFalling, RecRoomObjectPort ContactSurface) PlayerGetIsJumpingOrFalling(PlayerPort Player)
@@ -6281,7 +6715,8 @@ namespace RRCGGenerated
             {Name = "Player Get Is Jumping Or Falling", Type = "a474eca1-e820-4249-a314-fbc0ae223a5f", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return (new BoolPort{Port = new Port{Node = node, Index = 0}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static BoolPort PlayerGetIsLocal(PlayerPort Target)
@@ -6290,7 +6725,8 @@ namespace RRCGGenerated
             {Name = "Player Get Is Local", Type = "4646dbed-e616-470e-8e0c-eb446b91838b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerGetIsRoomOwner(PlayerPort Target)
@@ -6299,7 +6735,8 @@ namespace RRCGGenerated
             {Name = "Player Get Is Room Owner", Type = "58c5cab7-ddf7-4de8-86c8-25f3d3c19d98", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort PlayerGetJumpHeight(PlayerPort Player)
@@ -6308,7 +6745,8 @@ namespace RRCGGenerated
             {Name = "Player Get Jump Height", Type = "42dbf319-8d57-41d2-921f-f3f707e6ad81", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerGetJumpInputEnabled(PlayerPort Player)
@@ -6317,7 +6755,8 @@ namespace RRCGGenerated
             {Name = "Player Get Jump Input Enabled", Type = "e6ec527a-be2e-438d-84f4-f60c4785206c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort PlayerGetRadioChannel(PlayerPort Player)
@@ -6326,7 +6765,8 @@ namespace RRCGGenerated
             {Name = "Player Get Radio Channel", Type = "be2f38d2-c6cb-4d9a-b74d-0a664c216a7b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort PlayerGetRoomIndex(PlayerPort Player)
@@ -6335,7 +6775,8 @@ namespace RRCGGenerated
             {Name = "Player Get Room Index", Type = "7683e201-29d3-44d4-abb4-d75ef9233faa", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort PlayerGetRoomLevel(PlayerPort Player)
@@ -6344,7 +6785,8 @@ namespace RRCGGenerated
             {Name = "Player Get Room Level", Type = "475ba7d2-6031-4ea7-b7b8-11028971e466", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static SeatPort PlayerGetSeat(PlayerPort Player)
@@ -6353,7 +6795,8 @@ namespace RRCGGenerated
             {Name = "Player Get Seat", Type = "47038300-2f6d-4876-bbb7-7c2e64fd9364", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new SeatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new SeatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerGetSprintInputEnabled(PlayerPort Player)
@@ -6362,7 +6805,8 @@ namespace RRCGGenerated
             {Name = "Player Get Sprint Input Enabled", Type = "0b931a90-b24c-4be8-8503-efeea655c660", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort PlayerGetSprintSpeed(PlayerPort Player)
@@ -6371,7 +6815,8 @@ namespace RRCGGenerated
             {Name = "Player Get Sprint Speed", Type = "345866e8-5b3b-41f1-84b7-e357643be3c7", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerGetSteeringDirection(PlayerPort Player)
@@ -6380,7 +6825,8 @@ namespace RRCGGenerated
             {Name = "Player Get Steering Direction", Type = "119718a6-adb8-40b3-9e0c-b48dd5cb9ff3", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort PlayerGetTeleportDelay(PlayerPort Player)
@@ -6389,7 +6835,8 @@ namespace RRCGGenerated
             {Name = "Player Get Teleport Delay", Type = "aa63bd19-b0a1-441f-8d69-71591d9007b9", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort PlayerGetTeleportDistance(PlayerPort Player)
@@ -6398,7 +6845,8 @@ namespace RRCGGenerated
             {Name = "Player Get Teleport Distance", Type = "08b53553-0368-4de9-bb59-57a4e2fdb2b2", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort PlayerGetTimeZone(PlayerPort Player)
@@ -6407,7 +6855,8 @@ namespace RRCGGenerated
             {Name = "Player Get Time Zone", Type = "2d675f16-502a-489e-8fed-161935f32c04", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort PlayerGetVoiceRolloffDistance(PlayerPort Player)
@@ -6416,7 +6865,8 @@ namespace RRCGGenerated
             {Name = "Player Get Voice Rolloff Distance", Type = "7dd7ea91-2600-4002-804d-3a88d8b3b8a5", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerGetWalkInputEnabled(PlayerPort Player)
@@ -6425,7 +6875,8 @@ namespace RRCGGenerated
             {Name = "Player Get Walk Input Enabled", Type = "1b936400-5666-42f6-8d7e-8f0957efebce", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort PlayerGetWalkSpeed(PlayerPort Player)
@@ -6434,7 +6885,8 @@ namespace RRCGGenerated
             {Name = "Player Get Walk Speed", Type = "9decb308-a5c1-41d6-8d68-cfc96d894505", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort PlayerGetXP(PlayerPort Player)
@@ -6443,7 +6895,8 @@ namespace RRCGGenerated
             {Name = "Player Get XP", Type = "88a12c40-5a38-4304-be23-36f769c2a4b8", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerHasRole(PlayerPort Target, StringPort Value)
@@ -6453,7 +6906,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerHeadForwardVector(PlayerPort Target)
@@ -6462,7 +6916,8 @@ namespace RRCGGenerated
             {Name = "Player Head Forward Vector", Type = "9fb898a5-f5f2-4d62-be3d-31381279d1d3", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort PlayerHeadHeight(PlayerPort Target)
@@ -6471,7 +6926,8 @@ namespace RRCGGenerated
             {Name = "Player Head Height", Type = "6278538c-5ea9-4515-ba00-ffc4d5b99c3b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort PlayerHeadOrientation(PlayerPort Target)
@@ -6480,7 +6936,8 @@ namespace RRCGGenerated
             {Name = "Player Head Orientation", Type = "21ee2f55-0414-4fd6-a915-a2577832d6bd", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerHeadPosition(PlayerPort Target)
@@ -6489,7 +6946,8 @@ namespace RRCGGenerated
             {Name = "Player Head Position", Type = "2f3571aa-53bf-4f52-b8fe-d1c42eda6081", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerHeadUpVector(PlayerPort Target)
@@ -6498,7 +6956,8 @@ namespace RRCGGenerated
             {Name = "Player Head Up Vector", Type = "5adbfc46-75b1-4b2f-b072-5531ebb0246b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerHeadVelocity(PlayerPort Target)
@@ -6507,7 +6966,8 @@ namespace RRCGGenerated
             {Name = "Player Head Velocity", Type = "6577e6e8-8039-4843-aba1-993eb6967326", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerIsHoldingMakerPen(PlayerPort Target)
@@ -6516,7 +6976,8 @@ namespace RRCGGenerated
             {Name = "Player Is Holding Maker Pen", Type = "554060d7-5631-40a0-8d75-5dca5b2b910b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerIsInParty(PlayerPort Target)
@@ -6525,7 +6986,8 @@ namespace RRCGGenerated
             {Name = "Player Is In Party", Type = "7e6788b0-08a1-4c76-b591-9c8460bcf925", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerIsRoomHost(PlayerPort Target)
@@ -6534,7 +6996,8 @@ namespace RRCGGenerated
             {Name = "Player Is Room Host", Type = "6f4324c5-4c7a-4243-97d0-58f027996534", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort PlayerIsRoomMod(PlayerPort Target)
@@ -6543,7 +7006,8 @@ namespace RRCGGenerated
             {Name = "Player Is Room Mod", Type = "8f9b0921-a92b-4d01-a4d5-a8d2e6fc6ca0", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerLeftHandFingerDirection(PlayerPort Target)
@@ -6552,7 +7016,8 @@ namespace RRCGGenerated
             {Name = "Player Left Hand Finger Direction", Type = "6b5c4b0b-be26-4055-b26f-1e5f061c63ca", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerLeftHandPosition(PlayerPort Target)
@@ -6561,7 +7026,8 @@ namespace RRCGGenerated
             {Name = "Player Left Hand Position", Type = "619b3bc8-bcb9-4812-86f5-f6442cdbb557", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort PlayerLeftHandRotation(PlayerPort Target)
@@ -6570,7 +7036,8 @@ namespace RRCGGenerated
             {Name = "Player Left Hand Rotation", Type = "17e61429-059f-4b29-b8b8-f0bf3179f580", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerLeftHandThumbDirection(PlayerPort Target)
@@ -6579,7 +7046,8 @@ namespace RRCGGenerated
             {Name = "Player Left Hand Thumb Direction", Type = "fc2a0141-4997-422c-bdd3-f7ecd7d4c996", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerLeftHandVelocity(PlayerPort Target)
@@ -6588,42 +7056,45 @@ namespace RRCGGenerated
             {Name = "Player Left Hand Velocity", Type = "2607a0fe-f200-4f29-83ae-446db4b8e8ce", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
-        public static BoolPort PlayerOwnsInventoryItem(PlayerPort Player, AnyPort InventoryItem, AlternativeExec Complete)
+        public static BoolPort PlayerOwnsInventoryItem(PlayerPort Player, AnyPort InventoryItem, AlternativeExec<BoolPort> Complete)
         {
             Node node = new Node()
             {Name = "Player Owns Inventory Item", Type = "68cc97a7-440a-450a-bf7f-b25091629c32", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, InventoryItem, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            Complete();
+            Complete(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
-        public static BoolPort PlayerOwnsRoomKey(PlayerPort Player, RoomKeyPort RoomKey, AlternativeExec OnPlayerOwnsRoomKeyComplete)
+        public static BoolPort PlayerOwnsRoomKey(PlayerPort Player, RoomKeyPort RoomKey, AlternativeExec<BoolPort> OnPlayerOwnsRoomKeyComplete)
         {
             Node node = new Node()
             {Name = "Player Owns Room Key", Type = "e61558a9-0ce4-4dba-ac87-b16e61bcdb23", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, RoomKey, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnPlayerOwnsRoomKeyComplete();
+            OnPlayerOwnsRoomKeyComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
-        public static (BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response, IntPort ResponseIndex) PlayerPromptMultipleChoice(PlayerPort Player, StringPort PromptTitle, StringPort PromptBody, ListPort<StringPort> AnswerChoices, AlternativeExec OnPromptComplete)
+        public static (BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response, IntPort ResponseIndex) PlayerPromptMultipleChoice(PlayerPort Player, StringPort PromptTitle, StringPort PromptBody, ListPort<StringPort> AnswerChoices, AlternativeExec<(BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response, IntPort ResponseIndex)> OnPromptComplete)
         {
             Node node = new Node()
             {Name = "Player Prompt Multiple Choice", Type = "d376a3c7-67c2-4607-a124-e2b93dc256d8", InputCount = 5};
@@ -6632,13 +7103,14 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, PromptTitle, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, PromptBody, new Port{Node = node, Index = 3});
             node.ConnectInputPort(Context.current, AnswerChoices, new Port{Node = node, Index = 4});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 2}}, new PlayerPort{Port = new Port{Node = node, Index = 3}}, new StringPort{Port = new Port{Node = node, Index = 4}}, new IntPort{Port = new Port{Node = node, Index = 5}});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnPromptComplete();
+            OnPromptComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return (new BoolPort{Port = new Port{Node = node, Index = 2}}, new PlayerPort{Port = new Port{Node = node, Index = 3}}, new StringPort{Port = new Port{Node = node, Index = 4}}, new IntPort{Port = new Port{Node = node, Index = 5}});
+            return output_ports;
         }
 
         public static void PlayerReferenceBoard()
@@ -6676,7 +7148,8 @@ namespace RRCGGenerated
             {Name = "Player Right Hand Finger Direction", Type = "646ff790-c930-4565-ae38-99a798271a50", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerRightHandPosition(PlayerPort Target)
@@ -6685,7 +7158,8 @@ namespace RRCGGenerated
             {Name = "Player Right Hand Position", Type = "e9d3330d-c290-41d5-aa37-cc5e43198836", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort PlayerRightHandRotation(PlayerPort Target)
@@ -6694,7 +7168,8 @@ namespace RRCGGenerated
             {Name = "Player Right Hand Rotation", Type = "0afab661-0870-42bb-9256-891f1a876b3b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerRightHandThumbDirection(PlayerPort Target)
@@ -6703,7 +7178,8 @@ namespace RRCGGenerated
             {Name = "Player Right Hand Thumb Direction", Type = "86e8581c-ddf9-4302-a06f-c451b5055a98", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port PlayerRightHandVelocity(PlayerPort Target)
@@ -6712,7 +7188,8 @@ namespace RRCGGenerated
             {Name = "Player Right Hand Velocity", Type = "aba06411-9c8c-477a-bc7f-76ab5605c85d", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void PlayerSetCanTeleport(PlayerPort Player, BoolPort CanTeleport)
@@ -6888,23 +7365,25 @@ namespace RRCGGenerated
             {Name = "Player Subscribes To Room Owner", Type = "7e321d9b-4500-4917-9361-a32e1463401c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return (new BoolPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
-        public static BoolPort PlayerUnequipInventoryItem(PlayerPort Player, AnyPort InventoryItem, AlternativeExec OnUnequipComplete)
+        public static BoolPort PlayerUnequipInventoryItem(PlayerPort Player, AnyPort InventoryItem, AlternativeExec<BoolPort> OnUnequipComplete)
         {
             Node node = new Node()
             {Name = "Player Unequip Inventory Item", Type = "944c8ed8-a0da-465d-95f8-e1b7a850ef2d", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, InventoryItem, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnUnequipComplete();
+            OnUnequipComplete(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
         public static PlayerPort PlayerVariable(PlayerPort Port0)
@@ -6913,8 +7392,9 @@ namespace RRCGGenerated
             {Name = "Player Variable", Type = "ea61960b-3a53-426e-b87c-f0e94dd2c3da", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new PlayerPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static PlayerPort PlayerVariableDeprecated(PlayerPort Port0)
@@ -6923,8 +7403,9 @@ namespace RRCGGenerated
             {Name = "Player Variable", Type = "1094590a-ca33-4ca0-8e6b-66d784f4b5d7", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new PlayerPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static PlayerWorldUIPort PlayerWorldUI()
@@ -6932,7 +7413,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Player World UI", Type = "ff2d1f81-d76c-456f-acf0-af1861822681", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new PlayerWorldUIPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerWorldUIPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void PlayHandleHaptics(TriggerHandlePort Handle, IntPort Duration, FloatPort Intensity)
@@ -6977,7 +7459,8 @@ namespace RRCGGenerated
             {Name = "Power", Type = "288d4e89-ebed-41ed-a522-4c79bd48471a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Power(FloatPort Value)
@@ -6986,7 +7469,8 @@ namespace RRCGGenerated
             {Name = "Power", Type = "288d4e89-ebed-41ed-a522-4c79bd48471a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void PrintTextToScreen(AnyPort Target, StringPort Text, ColorPort Color)
@@ -7018,7 +7502,8 @@ namespace RRCGGenerated
             {Name = "Projectile Launcher Get Firing Player", Type = "9bc9def7-d7c3-4248-ba1c-35116f013768", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ProjectileLauncherGetHandDamage(ProjectileLauncherPort Target)
@@ -7027,7 +7512,8 @@ namespace RRCGGenerated
             {Name = "Projectile Launcher Get Hand Damage", Type = "ed1f109d-bc85-4e4b-8f15-d33363aed7dd", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ProjectileLauncherGetHeadDamage(ProjectileLauncherPort Target)
@@ -7036,7 +7522,8 @@ namespace RRCGGenerated
             {Name = "Projectile Launcher Get Head Damage", Type = "7aa59933-c380-428e-aca9-2de2875cb38d", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort ProjectileLauncherGetProjectileColor(ProjectileLauncherPort Target)
@@ -7045,7 +7532,8 @@ namespace RRCGGenerated
             {Name = "Projectile Launcher Get Projectile Color", Type = "29005ae6-2611-4ed3-9bed-e256749b487a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ProjectileLauncherGetProjectileCount(ProjectileLauncherPort Target)
@@ -7054,7 +7542,8 @@ namespace RRCGGenerated
             {Name = "Projectile Launcher Get Projectile Count", Type = "25f4df63-828a-482b-89e5-96e357575dfe", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort ProjectileLauncherGetProjectileLifetime(ProjectileLauncherPort Target)
@@ -7063,7 +7552,8 @@ namespace RRCGGenerated
             {Name = "Projectile Launcher Get Projectile Lifetime", Type = "7af08c60-bd52-4733-9a9a-c22317f28738", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort ProjectileLauncherGetProjectileSpeed(ProjectileLauncherPort Target)
@@ -7072,7 +7562,8 @@ namespace RRCGGenerated
             {Name = "Projectile Launcher Get Projectile Speed", Type = "1803843e-4e3b-4422-ada9-5f8959337ee5", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort ProjectileLauncherGetProjectileSpread(ProjectileLauncherPort Target)
@@ -7081,7 +7572,8 @@ namespace RRCGGenerated
             {Name = "Projectile Launcher Get Projectile Spread", Type = "7c6fcbd2-d306-4824-ae11-73e2c133a7fb", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ProjectileLauncherGetRecRoomObjectDamage(ProjectileLauncherPort Target)
@@ -7090,7 +7582,8 @@ namespace RRCGGenerated
             {Name = "Projectile Launcher Get Rec Room Object Damage", Type = "630823d4-c27f-493e-81a3-ae482448403d", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort ProjectileLauncherGetTorsoDamage(ProjectileLauncherPort Target)
@@ -7099,7 +7592,8 @@ namespace RRCGGenerated
             {Name = "Projectile Launcher Get Torso Damage", Type = "0da5a0be-9c01-4fcc-83a4-a660971c8644", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void ProjectileLauncherSetFiringPlayer(ProjectileLauncherPort Target, PlayerPort Player)
@@ -7212,23 +7706,24 @@ namespace RRCGGenerated
             return;
         }
 
-        public static StringPort PromptLocalPlayer(StringPort PromptTitle, StringPort Prompt, AlternativeExec Complete, AlternativeExec Failed)
+        public static StringPort PromptLocalPlayer(StringPort PromptTitle, StringPort Prompt, AlternativeExec<StringPort> Complete, AlternativeExec<StringPort> Failed)
         {
             Node node = new Node()
             {Name = "Prompt Local Player", Type = "46e6b40e-2416-4078-b7dc-a0ecc2c2aa20", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, PromptTitle, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Prompt, new Port{Node = node, Index = 2});
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            Complete();
+            Complete(output_ports);
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 3});
-            Failed();
+            Failed(output_ports);
             ExecFlow.current = mainFlow;
-            return new StringPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
         public static QuaternionPort QuaternionCreate(FloatPort X, FloatPort Y, FloatPort Z, FloatPort W)
@@ -7240,7 +7735,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Y, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Z, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, W, new Port{Node = node, Index = 3});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort QuaternionCreateAngleAxis(FloatPort Angle, Vector3Port Axis)
@@ -7250,7 +7746,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Angle, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Axis, new Port{Node = node, Index = 1});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort QuaternionCreateEulerAngles(Vector3Port Angles)
@@ -7259,7 +7756,8 @@ namespace RRCGGenerated
             {Name = "Quaternion Create Euler Angles", Type = "e320278c-13f0-4fe3-b838-7e671bdd9b49", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Angles, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort QuaternionCreateFromTo(Vector3Port From, Vector3Port To)
@@ -7269,7 +7767,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, From, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, To, new Port{Node = node, Index = 1});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort QuaternionCreateLook(Vector3Port Forward, Vector3Port Upwards)
@@ -7279,7 +7778,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Forward, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Upwards, new Port{Node = node, Index = 1});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort QuaternionDot(QuaternionPort Lhs, QuaternionPort Rhs)
@@ -7289,7 +7789,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Lhs, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Rhs, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port QuaternionEulerAngles(QuaternionPort Value)
@@ -7298,7 +7799,8 @@ namespace RRCGGenerated
             {Name = "Quaternion Euler Angles", Type = "81048ea5-2778-4816-99c5-1c50faad8a87", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (FloatPort Angle, Vector3Port Axis) QuaternionGetAngleAxis(QuaternionPort Quaternion)
@@ -7307,7 +7809,8 @@ namespace RRCGGenerated
             {Name = "Quaternion Get Angle Axis", Type = "b415c3ce-5f9f-472b-8d70-daeb728b7c2d", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Quaternion, new Port{Node = node, Index = 0});
-            return (new FloatPort{Port = new Port{Node = node, Index = 0}}, new Vector3Port{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new FloatPort{Port = new Port{Node = node, Index = 0}}, new Vector3Port{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static QuaternionPort QuaternionInverse(QuaternionPort Value)
@@ -7316,7 +7819,8 @@ namespace RRCGGenerated
             {Name = "Quaternion Inverse", Type = "2097bef3-9ed1-4601-ab5d-f620654bd1c4", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort QuaternionNormalize(QuaternionPort Value)
@@ -7325,7 +7829,8 @@ namespace RRCGGenerated
             {Name = "Quaternion Normalize", Type = "8157b896-fce8-45fc-957a-4407f0d6c42a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort QuaternionRotateTowards(QuaternionPort From, QuaternionPort To, FloatPort MaxDegreesDelta)
@@ -7336,7 +7841,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, From, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, To, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, MaxDegreesDelta, new Port{Node = node, Index = 2});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (FloatPort X, FloatPort Y, FloatPort Z, FloatPort W) QuaternionSplit(QuaternionPort Quaternion)
@@ -7345,7 +7851,8 @@ namespace RRCGGenerated
             {Name = "Quaternion Split", Type = "1d2a37e1-428e-4385-bc96-4ad5adff0a05", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Quaternion, new Port{Node = node, Index = 0});
-            return (new FloatPort{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}}, new FloatPort{Port = new Port{Node = node, Index = 3}});
+            var output_ports = (new FloatPort{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}}, new FloatPort{Port = new Port{Node = node, Index = 3}});
+            return output_ports;
         }
 
         public static QuaternionPort QuaternionVariable(QuaternionPort Port0)
@@ -7354,8 +7861,9 @@ namespace RRCGGenerated
             {Name = "Quaternion Variable", Type = "18a980ff-9a46-472c-b658-96bf42eb61c2", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static FloatPort RandomFloat(FloatPort Min, FloatPort Max)
@@ -7365,8 +7873,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Min, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Max, new Port{Node = node, Index = 2});
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new FloatPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static T RandomFromList<T>(ListPort<T> List)
@@ -7376,8 +7885,9 @@ namespace RRCGGenerated
             {Name = "Random From List", Type = "d253cef6-dd99-4357-b98a-e09a0c23bad7", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, List, new Port{Node = node, Index = 1});
+            var output_ports = new T{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new T{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static T RandomFromListDeprecated<T>(ListPort<T> List)
@@ -7387,8 +7897,9 @@ namespace RRCGGenerated
             {Name = "Random From List (Deprecated)", Type = "0b18cef3-0ea5-4e3c-a0d5-c460f03dbe8c", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, List, new Port{Node = node, Index = 1});
+            var output_ports = new T{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new T{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static IntPort RandomInt(IntPort Min, IntPort Max)
@@ -7398,8 +7909,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Min, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Max, new Port{Node = node, Index = 2});
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new IntPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static (BoolPort Hit, PlayerPort Player, RecRoomObjectPort Object, FloatPort Distance, Vector3Port HitPosition, Vector3Port SurfaceNormal) Raycast(Vector3Port StartPosition, Vector3Port Direction, FloatPort MaxDistance)
@@ -7410,7 +7922,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, StartPosition, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Direction, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, MaxDistance, new Port{Node = node, Index = 2});
-            return (new BoolPort{Port = new Port{Node = node, Index = 0}}, new PlayerPort{Port = new Port{Node = node, Index = 1}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 2}}, new FloatPort{Port = new Port{Node = node, Index = 3}}, new Vector3Port{Port = new Port{Node = node, Index = 4}}, new Vector3Port{Port = new Port{Node = node, Index = 5}});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new PlayerPort{Port = new Port{Node = node, Index = 1}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 2}}, new FloatPort{Port = new Port{Node = node, Index = 3}}, new Vector3Port{Port = new Port{Node = node, Index = 4}}, new Vector3Port{Port = new Port{Node = node, Index = 5}});
+            return output_ports;
         }
 
         public static BoolPort RecalculateRoomAuthority()
@@ -7418,8 +7931,9 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Recalculate Room Authority", Type = "d5df73b6-4b92-4867-ab3a-5d308876598b", InputCount = 1};
             Context.current.Nodes.Add(node);
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static ListPort<RecRoomObjectPort> RecRoomObjectGetAllwithTag(StringPort Tag)
@@ -7428,7 +7942,8 @@ namespace RRCGGenerated
             {Name = "Rec Room Object Get All with Tag", Type = "02d69553-ae96-4c2d-8477-59ada6a66783", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Tag, new Port{Node = node, Index = 0});
-            return new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort RecRoomObjectGetAuthority(RecRoomObjectPort Target)
@@ -7437,7 +7952,8 @@ namespace RRCGGenerated
             {Name = "Rec Room Object Get Authority", Type = "9e51fcdc-87b4-4eee-a7b1-8d6f86a5fa6b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static RecRoomObjectPort RecRoomObjectGetFirstwithTag(StringPort Tag)
@@ -7446,7 +7962,8 @@ namespace RRCGGenerated
             {Name = "Rec Room Object Get First with Tag", Type = "43ff2d3c-c3aa-45bc-a7b7-01587c8a61f6", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Tag, new Port{Node = node, Index = 0});
-            return new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (BoolPort IsHeld, PlayerPort HolderPlayer) RecRoomObjectGetHolderPlayer(RecRoomObjectPort Object)
@@ -7455,7 +7972,8 @@ namespace RRCGGenerated
             {Name = "Rec Room Object Get Holder Player", Type = "cd10a7ff-0c35-4b46-abfb-8e2f18397ad5", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 0});
-            return (new BoolPort{Port = new Port{Node = node, Index = 0}}, new PlayerPort{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new PlayerPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static BoolPort RecRoomObjectGetIsLocalPlayerAuthority(RecRoomObjectPort Target)
@@ -7464,7 +7982,8 @@ namespace RRCGGenerated
             {Name = "Rec Room Object Get Is Local Player Authority", Type = "b0497de0-3dd3-470d-a421-8f0d321bfc3e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (PlayerPort Player, BoolPort CurrentlyHeldOrEquipped) RecRoomObjectGetLastHoldingOrEquippingPlayer(RecRoomObjectPort Object)
@@ -7473,7 +7992,8 @@ namespace RRCGGenerated
             {Name = "Rec Room Object Get Last Holding Or Equipping Player", Type = "a76a9898-4add-4765-9f5b-f366b586e51c", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 0});
-            return (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            var output_ports = (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
         }
 
         public static void RecRoomObjectReset(RecRoomObjectPort Object)
@@ -7503,8 +8023,9 @@ namespace RRCGGenerated
             {Name = "Rec Room Object Variable", Type = "7077d139-9876-495e-9756-58150fef9f3b", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new RecRoomObjectPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new RecRoomObjectPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void RemovePlayerFromRadioChannel(PlayerPort Player)
@@ -7568,7 +8089,8 @@ namespace RRCGGenerated
             {Name = "Reroute", Type = "f8db4ba2-7380-49a0-a0ba-bcdca11fec96", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 0});
-            return new T{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new T{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void ResetPlayerWorldUI(PlayerPort Player)
@@ -7601,8 +8123,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, SpawnRadius, new Port{Node = node, Index = 4});
             node.ConnectInputPort(Context.current, ClearVelocity, new Port{Node = node, Index = 5});
             node.ConnectInputPort(Context.current, UseRezEffects, new Port{Node = node, Index = 6});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort Respawn(PlayerPort Target, Vector3Port Position, QuaternionPort Rotation, FloatPort SpawnRadius, BoolPort ClearVelocity, BoolPort UseRezEffects)
@@ -7616,8 +8139,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, SpawnRadius, new Port{Node = node, Index = 4});
             node.ConnectInputPort(Context.current, ClearVelocity, new Port{Node = node, Index = 5});
             node.ConnectInputPort(Context.current, UseRezEffects, new Port{Node = node, Index = 6});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort Respawn(RecRoomObjectPort Target, Vector3Port Position, Vector3Port Rotation, FloatPort SpawnRadius, BoolPort ClearVelocity, BoolPort UseRezEffects)
@@ -7631,8 +8155,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, SpawnRadius, new Port{Node = node, Index = 4});
             node.ConnectInputPort(Context.current, ClearVelocity, new Port{Node = node, Index = 5});
             node.ConnectInputPort(Context.current, UseRezEffects, new Port{Node = node, Index = 6});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort Respawn(RecRoomObjectPort Target, Vector3Port Position, QuaternionPort Rotation, FloatPort SpawnRadius, BoolPort ClearVelocity, BoolPort UseRezEffects)
@@ -7646,8 +8171,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, SpawnRadius, new Port{Node = node, Index = 4});
             node.ConnectInputPort(Context.current, ClearVelocity, new Port{Node = node, Index = 5});
             node.ConnectInputPort(Context.current, UseRezEffects, new Port{Node = node, Index = 6});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void RespawnDeprecated(PlayerPort Target, Vector3Port Position, Vector3Port Rotation, FloatPort SpawnRadius, BoolPort ClearVelocity, BoolPort UseRezEffects, AlternativeExec Failed)
@@ -7737,8 +8263,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, SpawnPoint, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Role, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void RespawnPointAddAvoidTag(PlayerSpawnPointV2Port SpawnPoint, StringPort Tag)
@@ -7759,8 +8286,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, SpawnPoint, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Role, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void RespawnPointAddSpawnTag(PlayerSpawnPointV2Port SpawnPoint, StringPort Tag)
@@ -7780,7 +8308,8 @@ namespace RRCGGenerated
             {Name = "Respawn Point Get Active", Type = "49bab5c6-d519-4af5-a5ee-466798e3e8bd", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void RespawnPointRemoveAvoidRole(PlayerSpawnPointV2Port SpawnPoint, StringPort Role)
@@ -7868,7 +8397,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Reward", Type = "7f246785-9c56-4896-a1f4-f011988dcd32", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new RewardPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new RewardPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort RGBToColor(FloatPort Red, FloatPort Green, FloatPort Blue)
@@ -7879,22 +8409,24 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Red, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Green, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Blue, new Port{Node = node, Index = 2});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
-        public static BoolPort RoomBackgroundObjectsModify(BackgroundObjectsPort BackgroundObjectsConstant, AlternativeExec BlendFinished)
+        public static BoolPort RoomBackgroundObjectsModify(BackgroundObjectsPort BackgroundObjectsConstant, AlternativeExec<BoolPort> BlendFinished)
         {
             Node node = new Node()
             {Name = "Room Background Objects Modify", Type = "f16741ca-778f-44de-99e6-6a948c7aecfb", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, BackgroundObjectsConstant, new Port{Node = node, Index = 1});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            BlendFinished();
+            BlendFinished(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
         public static void RoomBackgroundObjectsReset(AlternativeExec BlendFinished)
@@ -7916,22 +8448,24 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Room Currency Constant", Type = "7e843432-afde-41c1-9bc1-194112d91226", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new RoomCurrencyPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new RoomCurrencyPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
-        public static BoolPort RoomFogModify(FogPort FogConstant, AlternativeExec BlendFinished)
+        public static BoolPort RoomFogModify(FogPort FogConstant, AlternativeExec<BoolPort> BlendFinished)
         {
             Node node = new Node()
             {Name = "Room Fog Modify", Type = "471f7cf9-a4e4-4162-a6e9-d594b6ec28ef", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, FogConstant, new Port{Node = node, Index = 1});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            BlendFinished();
+            BlendFinished(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
         public static void RoomFogReset(AlternativeExec BlendFinished)
@@ -7953,7 +8487,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Room Get Matchmaking State", Type = "2d358c91-9000-4851-ad37-65759a135ab7", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort RoomIndexGetPlayer(IntPort RoomIndex)
@@ -7962,7 +8497,8 @@ namespace RRCGGenerated
             {Name = "Room Index Get Player", Type = "61e30876-2f28-4ba6-9d70-dfa5cc2af1cc", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, RoomIndex, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static RoomKeyPort RoomKeyConstant()
@@ -7970,7 +8506,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Room Key Constant", Type = "b9b000ca-eb3d-4b9f-9f45-0fd64045f63d", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new RoomKeyPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new RoomKeyPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static RoomLevelHUDPort RoomLevelHUD()
@@ -7978,7 +8515,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Room Level HUD", Type = "0681e9de-2f79-4f6a-9d8a-06140507760c", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new RoomLevelHUDPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new RoomLevelHUDPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void RoomLevels(AnyPort Levels)
@@ -7990,34 +8528,36 @@ namespace RRCGGenerated
             return;
         }
 
-        public static BoolPort RoomSetMatchmakingState(BoolPort MatchmakingPermitted, AlternativeExec OnMatchmakingStateSet)
+        public static BoolPort RoomSetMatchmakingState(BoolPort MatchmakingPermitted, AlternativeExec<BoolPort> OnMatchmakingStateSet)
         {
             Node node = new Node()
             {Name = "Room Set Matchmaking State", Type = "be4decd2-56a0-46af-8e96-091261946fd9", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, MatchmakingPermitted, new Port{Node = node, Index = 1});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            OnMatchmakingStateSet();
+            OnMatchmakingStateSet(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
-        public static BoolPort RoomSkydomeModify(SkydomePort SkydomeConstant, AlternativeExec BlendFinished)
+        public static BoolPort RoomSkydomeModify(SkydomePort SkydomeConstant, AlternativeExec<BoolPort> BlendFinished)
         {
             Node node = new Node()
             {Name = "Room Skydome Modify", Type = "511e85c5-a359-49f1-a83c-a0550e98fe8e", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, SkydomeConstant, new Port{Node = node, Index = 1});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            BlendFinished();
+            BlendFinished(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
         public static void RoomSkydomeReset(AlternativeExec BlendFinished)
@@ -8034,20 +8574,21 @@ namespace RRCGGenerated
             return;
         }
 
-        public static BoolPort RoomSunModify(SunPort SunConstant, SunDirectionPort SunDirection, AlternativeExec BlendFinished)
+        public static BoolPort RoomSunModify(SunPort SunConstant, SunDirectionPort SunDirection, AlternativeExec<BoolPort> BlendFinished)
         {
             Node node = new Node()
             {Name = "Room Sun Modify", Type = "884408a8-5884-41e4-9399-1b0ef5d353e0", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, SunConstant, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, SunDirection, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
-            BlendFinished();
+            BlendFinished(output_ports);
             ExecFlow.current = mainFlow;
-            return new BoolPort{Port = new Port{Node = node, Index = 2}};
+            return output_ports;
         }
 
         public static void RoomSunReset(AlternativeExec BlendFinished)
@@ -8071,7 +8612,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Root, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port RotateVector(QuaternionPort Rotation, Vector3Port Point)
@@ -8081,7 +8623,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Point, new Port{Node = node, Index = 1});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort RotatorGetRotation(RotatorPort Target)
@@ -8090,7 +8633,8 @@ namespace RRCGGenerated
             {Name = "Rotator Get Rotation", Type = "30fe0829-2f08-4bd2-b4b1-9a41764e5a76", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort RotatorGetRotationAcceleration(RotatorPort Target)
@@ -8099,7 +8643,8 @@ namespace RRCGGenerated
             {Name = "Rotator Get Rotation Acceleration", Type = "2d96da47-4d37-4463-a3bd-8f8cd2ab0c58", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort RotatorGetRotationSpeed(RotatorPort Target)
@@ -8108,7 +8653,8 @@ namespace RRCGGenerated
             {Name = "Rotator Get Rotation Speed", Type = "be834de9-91cb-4588-8988-3a6abfd56573", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort RotatorGetTargetRotation(RotatorPort Target)
@@ -8117,7 +8663,8 @@ namespace RRCGGenerated
             {Name = "Rotator Get Target Rotation", Type = "117b8c83-5ada-4665-a0c6-2c6ffdec98b9", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void RotatorSetRotation(RotatorPort Target, FloatPort Value)
@@ -8170,7 +8717,8 @@ namespace RRCGGenerated
             {Name = "Round", Type = "c6cfe49a-4ffb-4714-9564-8ddda0300676", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort RoundtoInt(FloatPort Value)
@@ -8179,7 +8727,8 @@ namespace RRCGGenerated
             {Name = "Round to Int", Type = "0d2a4771-0694-4b84-8e07-2080c26aae22", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static AudioPort SampleAudioConstant()
@@ -8187,7 +8736,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Sample Audio Constant", Type = "2cb45825-f385-414f-9a65-2425963fa720", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new AudioPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new AudioPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort SeatGetLockPlayersIn(SeatPort Target)
@@ -8196,7 +8746,8 @@ namespace RRCGGenerated
             {Name = "Seat Get Lock Players In", Type = "e46a3c37-7d53-4d4c-9484-48b0ac0694c4", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort SeatGetLockPlayersOut(SeatPort Target)
@@ -8205,7 +8756,8 @@ namespace RRCGGenerated
             {Name = "Seat Get Lock Players Out", Type = "e0214877-5f0a-46a2-8278-580f2fd293e0", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static PlayerPort SeatGetSeatedPlayer(SeatPort Target)
@@ -8214,7 +8766,8 @@ namespace RRCGGenerated
             {Name = "Seat Get Seated Player", Type = "7fc01b3a-3f44-4cf1-ad2d-d5898fb35f4d", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void SeatSetLockPlayersIn(SeatPort Target, BoolPort LockPlayersIn)
@@ -8270,7 +8823,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Self", Type = "3d7d40d6-885a-4fa5-bbaa-b19057291ddb", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void Sequence<T>(AlternativeExec _2)
@@ -8518,8 +9072,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort SetPosition(RecRoomObjectPort Target, Vector3Port Position)
@@ -8529,8 +9084,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static void SetPositionDeprecated(PlayerPort Target, Vector3Port Position, AlternativeExec Failed)
@@ -8572,8 +9128,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort SetRotation(PlayerPort Target, QuaternionPort Rotation)
@@ -8583,8 +9140,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort SetRotation(RecRoomObjectPort Target, Vector3Port Rotation)
@@ -8594,8 +9152,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort SetRotation(RecRoomObjectPort Target, QuaternionPort Rotation)
@@ -8605,8 +9164,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort SetTransform(PlayerPort Target, Vector3Port Position, Vector3Port Rotation)
@@ -8617,8 +9177,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort SetTransform(PlayerPort Target, Vector3Port Position, QuaternionPort Rotation)
@@ -8629,8 +9190,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort SetTransform(RecRoomObjectPort Target, Vector3Port Position, Vector3Port Rotation)
@@ -8641,8 +9203,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort SetTransform(RecRoomObjectPort Target, Vector3Port Position, QuaternionPort Rotation)
@@ -8653,8 +9216,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static AudioPort SFXConstant()
@@ -8662,7 +9226,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "SFX Constant", Type = "d65a4666-5036-436b-ad42-a20aafa2174d", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new AudioPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new AudioPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort SFXGetIsPlaying(SFXPort Target)
@@ -8671,7 +9236,8 @@ namespace RRCGGenerated
             {Name = "SFX Get Is Playing", Type = "a0a17fe1-bdb0-4687-81de-141ce97710ed", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort SFXGetVolume(SFXPort Target)
@@ -8680,7 +9246,8 @@ namespace RRCGGenerated
             {Name = "SFX Get Volume", Type = "aaf39143-c5dc-47cd-ad85-c659c3035cab", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void SFXPlay(SFXPort Target)
@@ -8789,7 +9356,8 @@ namespace RRCGGenerated
             {Name = "Sin", Type = "ea824326-5061-411d-980c-30031511c821", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static SkydomePort SkydomeConstant()
@@ -8797,7 +9365,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Skydome Constant", Type = "bff88a1e-4888-4e03-a1f4-804864a2f177", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new SkydomePort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new SkydomePort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static QuaternionPort Slerp(QuaternionPort Start, QuaternionPort End, FloatPort Progress)
@@ -8808,7 +9377,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Progress, new Port{Node = node, Index = 2});
-            return new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Slerp(Vector3Port Start, Vector3Port End, FloatPort Progress)
@@ -8819,7 +9389,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Start, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, End, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Progress, new Port{Node = node, Index = 2});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (FloatPort Result, FloatPort ResultVelocity) SmoothDamp(FloatPort Current, FloatPort Target, FloatPort CurrentVelocity, FloatPort SmoothTime, FloatPort MaxSpeed, FloatPort DeltaTime)
@@ -8833,8 +9404,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, SmoothTime, new Port{Node = node, Index = 4});
             node.ConnectInputPort(Context.current, MaxSpeed, new Port{Node = node, Index = 5});
             node.ConnectInputPort(Context.current, DeltaTime, new Port{Node = node, Index = 6});
+            var output_ports = (new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return (new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static (Vector3Port Result, Vector3Port ResultVelocity) SmoothDamp(Vector3Port Current, Vector3Port Target, Vector3Port CurrentVelocity, FloatPort SmoothTime, FloatPort MaxSpeed, FloatPort DeltaTime)
@@ -8848,8 +9420,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, SmoothTime, new Port{Node = node, Index = 4});
             node.ConnectInputPort(Context.current, MaxSpeed, new Port{Node = node, Index = 5});
             node.ConnectInputPort(Context.current, DeltaTime, new Port{Node = node, Index = 6});
+            var output_ports = (new Vector3Port{Port = new Port{Node = node, Index = 1}}, new Vector3Port{Port = new Port{Node = node, Index = 2}});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return (new Vector3Port{Port = new Port{Node = node, Index = 1}}, new Vector3Port{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static void SpawnerInternalStartSpawning(RecRoomObjectPort Spawner, IntPort Amountofobjectstospawn, FloatPort Timebetweenspawns, Vector3Port SpawnPosition)
@@ -8884,7 +9457,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Radius, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Direction, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, MaxDistance, new Port{Node = node, Index = 3});
-            return (new BoolPort{Port = new Port{Node = node, Index = 0}}, new PlayerPort{Port = new Port{Node = node, Index = 1}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 2}}, new FloatPort{Port = new Port{Node = node, Index = 3}}, new Vector3Port{Port = new Port{Node = node, Index = 4}}, new Vector3Port{Port = new Port{Node = node, Index = 5}});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new PlayerPort{Port = new Port{Node = node, Index = 1}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 2}}, new FloatPort{Port = new Port{Node = node, Index = 3}}, new Vector3Port{Port = new Port{Node = node, Index = 4}}, new Vector3Port{Port = new Port{Node = node, Index = 5}});
+            return output_ports;
         }
 
         public static void State()
@@ -8900,7 +9474,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "State Constant", Type = "bf4f0801-2e6b-4e4b-a2df-a005fe622087", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new AnyPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new AnyPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void StateMachine()
@@ -8928,7 +9503,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Separator, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 1});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort StringContains(StringPort String, StringPort Sequence)
@@ -8938,7 +9514,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Sequence, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort StringFormat(StringPort Format, StringPort Value)
@@ -8948,7 +9525,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Format, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 1});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort StringIndexOf(StringPort String, StringPort Substring)
@@ -8958,7 +9536,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Substring, new Port{Node = node, Index = 1});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort StringLength(StringPort String)
@@ -8967,7 +9546,8 @@ namespace RRCGGenerated
             {Name = "String Length", Type = "dcde9345-00f2-41fb-9a2d-5a938f39bfb5", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort StringReplace(StringPort String, StringPort Pattern, StringPort Replacement)
@@ -8978,7 +9558,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Pattern, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Replacement, new Port{Node = node, Index = 2});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<StringPort> StringSplit(StringPort String, StringPort Divider)
@@ -8988,7 +9569,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Divider, new Port{Node = node, Index = 1});
-            return new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<StringPort> StringSplitAtIndex(StringPort String, IntPort Index)
@@ -8998,7 +9580,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Index, new Port{Node = node, Index = 1});
-            return new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<StringPort> StringSplitWhitespace(StringPort String)
@@ -9007,7 +9590,8 @@ namespace RRCGGenerated
             {Name = "String Split Whitespace", Type = "7695ff77-5b9d-4a41-a894-6602b98f289f", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
-            return new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort StringSubstring(StringPort String, IntPort Index, IntPort Length)
@@ -9018,7 +9602,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Index, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Length, new Port{Node = node, Index = 2});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort StringToLower(StringPort String)
@@ -9027,7 +9612,8 @@ namespace RRCGGenerated
             {Name = "String To Lower", Type = "678f6d33-1e94-4be6-b959-0212c1a2207f", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort StringToUpper(StringPort String)
@@ -9036,7 +9622,8 @@ namespace RRCGGenerated
             {Name = "String To Upper", Type = "8f5995c7-5af0-4064-9cb7-2b80d75d157f", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort StringTrim(StringPort String)
@@ -9045,7 +9632,8 @@ namespace RRCGGenerated
             {Name = "String Trim", Type = "e6f056ee-cf6d-4696-b338-31418275af16", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, String, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort stringVariable(StringPort Port0)
@@ -9054,8 +9642,9 @@ namespace RRCGGenerated
             {Name = "string Variable", Type = "66b6ea20-9a00-4f80-9636-2cfb676b3965", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new StringPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static AudioPort StudioAudioConstant()
@@ -9063,7 +9652,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Studio Audio Constant", Type = "7dc47ad4-9b51-4cb3-8e40-6b76f1243e6f", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new AudioPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new AudioPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void StudioEventSender(StudioObjectPort StudioObject, StringPort Event)
@@ -9184,7 +9774,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, StudioObject, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Property, new Port{Node = node, Index = 1});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort StudioObjectGetPropertyFloat(StudioObjectPort StudioObject, StringPort Property)
@@ -9194,7 +9785,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, StudioObject, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Property, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort StudioObjectGetPropertyInt(StudioObjectPort StudioObject, StringPort Property)
@@ -9204,7 +9796,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, StudioObject, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Property, new Port{Node = node, Index = 1});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort StudioObjectGetPropertyString(StudioObjectPort StudioObject, StringPort Property)
@@ -9214,7 +9807,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, StudioObject, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Property, new Port{Node = node, Index = 1});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static IntPort Subtract(IntPort Value)
@@ -9223,7 +9817,8 @@ namespace RRCGGenerated
             {Name = "Subtract", Type = "1fbb364c-1af0-44bb-a82b-905caeb6819a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static FloatPort Subtract(FloatPort Value)
@@ -9232,7 +9827,8 @@ namespace RRCGGenerated
             {Name = "Subtract", Type = "1fbb364c-1af0-44bb-a82b-905caeb6819a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         internal static Vector3Port Subtract(Vector3Port Value)
@@ -9241,7 +9837,8 @@ namespace RRCGGenerated
             {Name = "Subtract", Type = "1fbb364c-1af0-44bb-a82b-905caeb6819a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static SunPort SunConstant()
@@ -9249,7 +9846,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Sun Constant", Type = "26062297-4aab-4fd4-bfb8-95fbf64f6bb7", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new SunPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new SunPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Tan(FloatPort Value)
@@ -9258,7 +9856,8 @@ namespace RRCGGenerated
             {Name = "Tan", Type = "13dbbd78-11c0-4b4f-9098-1ef59e584324", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ColorPort TextGetColor(TextPort Target)
@@ -9267,7 +9866,8 @@ namespace RRCGGenerated
             {Name = "Text Get Color", Type = "2b28277e-29a1-4b97-b151-2f23ff28c4c2", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort TextGetText(TextPort Target)
@@ -9276,7 +9876,8 @@ namespace RRCGGenerated
             {Name = "Text Get Text", Type = "3e8fbb88-3179-4a4c-9f8f-d9c2db35b9b5", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void TextSetColor(TextPort Target, ColorPort Color)
@@ -9328,7 +9929,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Time Get Precise Seconds", Type = "8722445f-e552-4d4a-bced-8afa63bbf70b", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort TimeGetUniversalSeconds()
@@ -9336,7 +9938,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Time Get Universal Seconds", Type = "bc3059d8-b613-4e91-ac7f-4c3566e01dc2", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (IntPort Year, IntPort Month, IntPort Day, IntPort Hour, IntPort Minute, IntPort Second) TimeGetUniversalTime()
@@ -9344,7 +9947,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Time Get Universal Time", Type = "1b220886-d851-474c-a79e-0a18d0893ee9", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return (new IntPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new IntPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}}, new IntPort{Port = new Port{Node = node, Index = 4}}, new IntPort{Port = new Port{Node = node, Index = 5}});
+            var output_ports = (new IntPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new IntPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}}, new IntPort{Port = new Port{Node = node, Index = 4}}, new IntPort{Port = new Port{Node = node, Index = 5}});
+            return output_ports;
         }
 
         public static IntPort TimeGetUnsyncedUniversalSeconds()
@@ -9352,7 +9956,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Time Get Unsynced Universal Seconds", Type = "d46f6fdc-480c-41e6-9a27-87fadb0ab0fc", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (IntPort Year, IntPort Month, IntPort Day, IntPort Hour, IntPort Minute, IntPort Second) TimeGetUnsyncedUniversalTime()
@@ -9360,7 +9965,8 @@ namespace RRCGGenerated
             Node node = new Node()
             {Name = "Time Get Unsynced Universal Time", Type = "f33e3fb6-79f1-43da-93c1-553d022b9f37", InputCount = 0};
             Context.current.Nodes.Add(node);
-            return (new IntPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new IntPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}}, new IntPort{Port = new Port{Node = node, Index = 4}}, new IntPort{Port = new Port{Node = node, Index = 5}});
+            var output_ports = (new IntPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}}, new IntPort{Port = new Port{Node = node, Index = 2}}, new IntPort{Port = new Port{Node = node, Index = 3}}, new IntPort{Port = new Port{Node = node, Index = 4}}, new IntPort{Port = new Port{Node = node, Index = 5}});
+            return output_ports;
         }
 
         public static CombatantPort ToCombatant(AIPort PlayerorAI)
@@ -9369,7 +9975,8 @@ namespace RRCGGenerated
             {Name = "To Combatant", Type = "75a3a9c2-da17-4762-b87b-1735b44af659", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, PlayerorAI, new Port{Node = node, Index = 0});
-            return new CombatantPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new CombatantPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static CombatantPort ToCombatant(PlayerPort PlayerorAI)
@@ -9378,7 +9985,8 @@ namespace RRCGGenerated
             {Name = "To Combatant", Type = "75a3a9c2-da17-4762-b87b-1735b44af659", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, PlayerorAI, new Port{Node = node, Index = 0});
-            return new CombatantPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new CombatantPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort ToggleButtonGetIsPressed(ToggleButtonPort Target)
@@ -9387,7 +9995,8 @@ namespace RRCGGenerated
             {Name = "Toggle Button Get Is Pressed", Type = "f8a9cb84-dcb1-4a12-ae29-4d7711e14506", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void ToggleButtonSetIsPressed(ToggleButtonPort Target, BoolPort Value)
@@ -9407,7 +10016,8 @@ namespace RRCGGenerated
             {Name = "To Rec Room Object", Type = "315a494e-84cc-4e3c-acff-389bb932b5d0", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort ToString<T>(T Value)
@@ -9417,7 +10027,8 @@ namespace RRCGGenerated
             {Name = "To String", Type = "bddc8e4e-b496-48ee-8e25-5b9fe8e1c6c9", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static StringPort ToStringDepreacted<T>(T Value)
@@ -9427,7 +10038,8 @@ namespace RRCGGenerated
             {Name = "To String", Type = "74e81edb-84bd-4e52-b2f3-a73a62a6b3aa", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (BoolPort IsTouchActive, Vector3Port TouchPosition, Vector3Port WorldPosition) TouchpadComponentGetActiveTouch(TouchpadPort Target)
@@ -9436,7 +10048,8 @@ namespace RRCGGenerated
             {Name = "Touchpad Component Get Active Touch", Type = "b83d2e2f-61e8-4490-8a81-d38c88fff8d1", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return (new BoolPort{Port = new Port{Node = node, Index = 0}}, new Vector3Port{Port = new Port{Node = node, Index = 1}}, new Vector3Port{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new Vector3Port{Port = new Port{Node = node, Index = 1}}, new Vector3Port{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static StringPort TouchpadComponentGetInteractionLabel(TouchpadPort Target)
@@ -9445,7 +10058,8 @@ namespace RRCGGenerated
             {Name = "Touchpad Component Get Interaction Label", Type = "32aa1ef2-a230-430b-9809-19c114b1fe44", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort TouchpadComponentGetIsEnabled(TouchpadPort Target)
@@ -9454,7 +10068,8 @@ namespace RRCGGenerated
             {Name = "Touchpad Component Get Is Enabled", Type = "64ca9ac0-04a8-4460-afe5-64a927f1ca4a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void TouchpadComponentSetInteractionLabel(TouchpadPort Target, StringPort Label)
@@ -9485,7 +10100,8 @@ namespace RRCGGenerated
             {Name = "Trail Get Color", Type = "f8c16cc7-ceaf-471a-b196-5d46ec7ab72a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ColorPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort TrailGetEnabled(MotionTrailPort Target)
@@ -9494,7 +10110,8 @@ namespace RRCGGenerated
             {Name = "Trail Get Enabled", Type = "f3e39f47-1835-4d09-8e19-d3e9d661990b", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort TrailGetLifetime(MotionTrailPort Target)
@@ -9503,7 +10120,8 @@ namespace RRCGGenerated
             {Name = "Trail Get Lifetime", Type = "0f069b0b-6f70-4386-9c7f-1343661e8df6", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort TrailGetOpacity(MotionTrailPort Target)
@@ -9512,7 +10130,8 @@ namespace RRCGGenerated
             {Name = "Trail Get Opacity", Type = "6dcc7a44-0163-4058-97a9-1ef7f482a3d5", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void TrailSetColor(MotionTrailPort Target, ColorPort Color)
@@ -9565,7 +10184,8 @@ namespace RRCGGenerated
             {Name = "Trigger Handle Get Control Prompt", Type = "8ea2fd23-02c2-4055-ab39-68acd0b6ce67", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static BoolPort TriggerHandleGetPrimaryActionHeld(TriggerHandlePort Target)
@@ -9574,7 +10194,8 @@ namespace RRCGGenerated
             {Name = "Trigger Handle Get Primary Action Held", Type = "b309c032-1bcd-4ca1-83cf-b8871e65fb16", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void TriggerHandleSetControlPrompt(TriggerHandlePort Target, StringPort ControlPrompt)
@@ -9594,7 +10215,8 @@ namespace RRCGGenerated
             {Name = "Trigger Volume Get Filter Role", Type = "b49c4e16-93c5-45c3-b457-fb960c661bc5", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new StringPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<StringPort> TriggerVolumeGetFilterTags(TriggerVolumePort Target)
@@ -9603,7 +10225,8 @@ namespace RRCGGenerated
             {Name = "Trigger Volume Get Filter Tags", Type = "8f42f9b7-87fb-4f4b-9160-a45baf269650", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort TriggerVolumeGetObjectCount(TriggerVolumePort Target)
@@ -9612,7 +10235,8 @@ namespace RRCGGenerated
             {Name = "Trigger Volume Get Object Count", Type = "338c7e0a-fa55-49e1-91e8-1609d00f1fd0", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<RecRoomObjectPort> TriggerVolumeGetObjects(TriggerVolumePort Target)
@@ -9621,7 +10245,8 @@ namespace RRCGGenerated
             {Name = "Trigger Volume Get Objects", Type = "530932a7-8781-4b09-a945-b33af6675809", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static IntPort TriggerVolumeGetPlayerCount(TriggerVolumePort Target)
@@ -9630,7 +10255,8 @@ namespace RRCGGenerated
             {Name = "Trigger Volume Get Player Count", Type = "4cbe661b-7053-4c19-9ccf-1600c7a41016", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new IntPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<PlayerPort> TriggerVolumeGetPlayers(TriggerVolumePort Target)
@@ -9639,7 +10265,8 @@ namespace RRCGGenerated
             {Name = "Trigger Volume Get Players", Type = "4c23af85-e05c-4be7-a708-c2f0cc67ebec", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void TriggerVolumeSetFilterRole(TriggerVolumePort Target, StringPort Value)
@@ -9671,8 +10298,9 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static ListPort<RecRoomObjectPort> UnequipfromSlots(PlayerPort Player, BoolPort DominantHand, BoolPort OffHand, BoolPort LeftHipHolster, BoolPort RightHipHolster, BoolPort ShoulderHolster)
@@ -9686,8 +10314,9 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, LeftHipHolster, new Port{Node = node, Index = 4});
             node.ConnectInputPort(Context.current, RightHipHolster, new Port{Node = node, Index = 5});
             node.ConnectInputPort(Context.current, ShoulderHolster, new Port{Node = node, Index = 6});
+            var output_ports = new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static BoolPort UnequipObject(RecRoomObjectPort Object)
@@ -9696,8 +10325,9 @@ namespace RRCGGenerated
             {Name = "Unequip Object", Type = "df6cdb0c-24d7-447d-b29b-3979e51fb865", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 1});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new BoolPort{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static T ValueIntegerSwitch<T>(IntPort Match, T Default)
@@ -9708,7 +10338,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Match, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Default, new Port{Node = node, Index = 1});
-            return new T{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new T{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static T ValueStringSwitch<T>(StringPort Match, T Default)
@@ -9719,7 +10350,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Match, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Default, new Port{Node = node, Index = 1});
-            return new T{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new T{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Vector3ClampMagnitude(Vector3Port Vector, FloatPort MaxLength)
@@ -9729,7 +10361,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Vector, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, MaxLength, new Port{Node = node, Index = 1});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Vector3ClosestPointOnPlane(Vector3Port Position, Vector3Port PlanePosition, Vector3Port PlaneNormal)
@@ -9740,7 +10373,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, PlanePosition, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, PlaneNormal, new Port{Node = node, Index = 2});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Vector3Create(FloatPort X, FloatPort Y, FloatPort Z)
@@ -9751,7 +10385,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, X, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Y, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Z, new Port{Node = node, Index = 2});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Vector3Cross(Vector3Port Lhs, Vector3Port Rhs)
@@ -9761,7 +10396,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Lhs, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Rhs, new Port{Node = node, Index = 1});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort Vector3Dot(Vector3Port Lhs, Vector3Port Rhs)
@@ -9771,7 +10407,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Lhs, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Rhs, new Port{Node = node, Index = 1});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Vector3InverseTransform(Vector3Port WorldPoint, Vector3Port WorldOrigin, QuaternionPort WorldOrientation)
@@ -9782,7 +10419,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, WorldPoint, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, WorldOrigin, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, WorldOrientation, new Port{Node = node, Index = 2});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Vector3MoveTowards(Vector3Port Current, Vector3Port Target, FloatPort MaxDelta)
@@ -9793,7 +10431,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Current, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, MaxDelta, new Port{Node = node, Index = 2});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Vector3Normalize(Vector3Port Value)
@@ -9802,7 +10441,8 @@ namespace RRCGGenerated
             {Name = "Vector3 Normalize", Type = "92ded211-17d6-4c73-b29c-71323c6a40ee", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Vector3Project(Vector3Port Vector, Vector3Port OnNormal)
@@ -9812,7 +10452,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Vector, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, OnNormal, new Port{Node = node, Index = 1});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Vector3ProjectOnPlane(Vector3Port Vector, Vector3Port PlaneNormal)
@@ -9822,7 +10463,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Vector, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, PlaneNormal, new Port{Node = node, Index = 1});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Vector3Scale(Vector3Port Value, IntPort Scalar)
@@ -9832,7 +10474,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Scalar, new Port{Node = node, Index = 1});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Vector3Scale(Vector3Port Value, FloatPort Scalar)
@@ -9842,7 +10485,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Scalar, new Port{Node = node, Index = 1});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static (FloatPort X, FloatPort Y, FloatPort Z) Vector3Split(Vector3Port Vector3)
@@ -9851,7 +10495,8 @@ namespace RRCGGenerated
             {Name = "Vector3 Split", Type = "2d677241-61b7-45d2-aec2-4a302e3483a0", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Vector3, new Port{Node = node, Index = 0});
-            return (new FloatPort{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            var output_ports = (new FloatPort{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
         }
 
         public static Vector3Port Vector3Transform(Vector3Port LocalPoint, Vector3Port WorldOrigin, QuaternionPort WorldOrientation)
@@ -9862,7 +10507,8 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, LocalPoint, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, WorldOrigin, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, WorldOrientation, new Port{Node = node, Index = 2});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static Vector3Port Vector3Variable(Vector3Port Port0)
@@ -9871,8 +10517,9 @@ namespace RRCGGenerated
             {Name = "Vector3 Variable", Type = "fba2accf-44e2-412d-a204-ae3bd04f7dfa", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return new Vector3Port{Port = new Port{Node = node, Index = 1}};
+            return output_ports;
         }
 
         public static Vector3Port VectorComponentGetVector(VectorComponentPort Direction, FloatPort Magnitude)
@@ -9882,7 +10529,8 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Direction, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Magnitude, new Port{Node = node, Index = 1});
-            return new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static FloatPort VectorGetMagnitude(Vector3Port Vector3)
@@ -9891,7 +10539,8 @@ namespace RRCGGenerated
             {Name = "Vector Get Magnitude", Type = "c3b9ba98-6c4a-44c2-9125-043314fba4a6", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Vector3, new Port{Node = node, Index = 0});
-            return new FloatPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void VelocityAdd(PlayerPort Target, FloatPort Speed, Vector3Port Direction, FloatPort MaximumSpeed)
@@ -10002,7 +10651,8 @@ namespace RRCGGenerated
             {Name = "Welcome Mat Get Enabled", Type = "d26c3f7a-7204-471b-a0bb-5e52960983f8", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static void WelcomeMatSetEnabled(WelcomeMatPort Target, BoolPort Enabled)
@@ -10022,7 +10672,8 @@ namespace RRCGGenerated
             {Name = "Xor", Type = "6db8f573-5300-4aa0-bbfa-b5f01533069a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Input, new Port{Node = node, Index = 0});
-            return new BoolPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
     }
 }
