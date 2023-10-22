@@ -235,7 +235,7 @@ namespace RRCGBuild
         {
             var key = CircuitBuilder.Singleton("RequireKey_" + keyName.AsData<string>(), () => new RoomKeyPort(keyName.AsData<string>()));
 
-            var ownsKey = PlayerOwnsRoomKey(PlayerPort.Local, key, (_) => { });
+            var ownsKey = PlayerOwnsRoomKey(PlayerPort.Local, key, () => { });
             ExecFlow.current.Ports[0].Index = 1;
 
             If(ownsKey, delegate () { }, delegate () {
