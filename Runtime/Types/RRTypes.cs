@@ -8,24 +8,27 @@ using System.Threading.Tasks;
 
 namespace RRCGSource
 {
-    public class AI { }
-    public class WelcomeMat { }
-    public class TriggerHandle { }
-    public class StudioObject {
+    public abstract class AnyObject { }
+
+    public class AI : AnyObject { }
+    public class WelcomeMat : AnyObject { }
+    public class TriggerHandle : AnyObject { }
+    public class StudioObject : AnyObject
+    {
         public static implicit operator StudioObject(RecRoomObject data) => null;
     }
-    public class AnalyticsPayload { }
-    public class Player
+    public class AnalyticsPayload : AnyObject { }
+    public class Player : AnyObject
     {
         public static Player Local = new Player();
         public static Player Invalid = null;
     }
-    public class RecRoomObject { }
-    public class Combatant { }
-    public class PatrolPoint { }
-    public class Audio
+    public class RecRoomObject : AnyObject { }
+    public class Combatant : AnyObject { }
+    public class PatrolPoint : AnyObject { }
+    public class Audio : AnyObject
     {
-        public static Audio SFX_Click { get; } 
+        public static Audio SFX_Click { get; }
         public static Audio SFX_Firework { get; }
         public static Audio SFX_UIXP02 { get; }
         public static Audio SFX_CrowdCheer { get; }
@@ -34,18 +37,18 @@ namespace RRCGSource
         public static Audio SFX_UIScore01 { get; }
         public static Audio SFX_UIScore04 { get; }
     }
-    public class AudioPlayer { }
-    public class Consumable { }
-    public class RoomKey { }
-    public class BackgroundObjects { }
-    public class Beacon { }
-    public class Button { }
-    public class TextScreen { }
-    public class CollisionData { }
-    public class Costume { }
-    public class DestinationRoom { }
-    public class Die { }
-    public class PlayerWorldUI
+    public class AudioPlayer : AnyObject { }
+    public class Consumable : AnyObject { }
+    public class RoomKey : AnyObject { }
+    public class BackgroundObjects : AnyObject { }
+    public class Beacon : AnyObject { }
+    public class Button : AnyObject { }
+    public class TextScreen : AnyObject { }
+    public class CollisionData : AnyObject { }
+    public class Costume : AnyObject { }
+    public class DestinationRoom : AnyObject { }
+    public class Die : AnyObject { }
+    public class PlayerWorldUI : AnyObject
     {
         public struct WorldUIBar
         {
@@ -57,48 +60,49 @@ namespace RRCGSource
 
         public PlayerWorldUI(string name, WorldUIBar primary, WorldUIBar secondary, string text, bool synced, bool enableWhileJoining) { }
     }
-    public class RoomDoor { }
-    public class Emitter { }
-    public class ExplosionEmitter { }
-    public class Fog { }
-    public class HUDElement { }
-    public class Reward { }
-    public class GroundVehicle { }
-    public class GunHandle { }
-    public class HolotarProjector { }
-    public class InteractionVolume { }
-    public class InvisibleCollision { }
-    public class LaserPointer { }
-    public class Piston { }
-    public class PlayerOutfitSlot { }
-    public class ProjectileLauncher { }
-    public class RemoteVideoPlayer { }
-    public class PlayerSpawnPointV2 { }
-    public class Skydome { }
-    public class Sun { }
-    public class SunDirection { }
-    public class Rotator { }
-    public class Seat { }
-    public class SFX { }
-    public class Text
+    public class RoomDoor : AnyObject { }
+    public class Emitter : AnyObject { }
+    public class ExplosionEmitter : AnyObject { }
+    public class Fog : AnyObject { }
+    public class HUDElement : AnyObject { }
+    public class Reward : AnyObject { }
+    public class GroundVehicle : AnyObject { }
+    public class GunHandle : AnyObject { }
+    public class HolotarProjector : AnyObject { }
+    public class InteractionVolume : AnyObject { }
+    public class InvisibleCollision : AnyObject { }
+    public class LaserPointer : AnyObject { }
+    public class Piston : AnyObject { }
+    public class PlayerOutfitSlot : AnyObject { }
+    public class ProjectileLauncher : AnyObject { }
+    public class RemoteVideoPlayer : AnyObject { }
+    public class PlayerSpawnPointV2 : AnyObject { }
+    public class Skydome : AnyObject { }
+    public class Sun : AnyObject { }
+    public class SunDirection : AnyObject { }
+    public class Rotator : AnyObject { }
+    public class Seat : AnyObject { }
+    public class SFX : AnyObject { }
+    public class Text : AnyObject
     {
         public static implicit operator Text(RecRoomObject data) => null;
     }
-    public class ToggleButton { }
-    public class MotionTrail { }
-    public class TriggerVolume { }
-    public class VectorComponent { }
-    public class AnimationController { }
-    public class RoomCurrency { 
+    public class ToggleButton : AnyObject { }
+    public class MotionTrail : AnyObject { }
+    public class TriggerVolume : AnyObject { }
+    public class VectorComponent : AnyObject { }
+    public class AnimationController : AnyObject { }
+    public class RoomCurrency : AnyObject
+    {
         public RoomCurrency(string name) { }
     }
-    public class HUDConstant { }
-    public class SteeringEngine { }
-    public class GiftDropShopItem { }
-    public class ObjectiveMarker { }
-    public class MeleeZone { }
-    public class SwingHandle { }
-    public class RoomLevelHUD { }
-    public class Touchpad { }
+    public class HUDConstant : AnyObject { }
+    public class SteeringEngine : AnyObject { }
+    public class GiftDropShopItem : AnyObject { }
+    public class ObjectiveMarker : AnyObject { }
+    public class MeleeZone : AnyObject { }
+    public class SwingHandle : AnyObject { }
+    public class RoomLevelHUD : AnyObject { }
+    public class Touchpad : AnyObject { }
 
 }
