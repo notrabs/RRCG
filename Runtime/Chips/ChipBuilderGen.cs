@@ -2853,13 +2853,14 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static AnyPort FromRecRoomObject(RecRoomObjectPort Target)
+        public static T FromRecRoomObject<T>(RecRoomObjectPort Target)
+            where T : AnyPort, new()
         {
             Node node = new Node()
             {Name = "From Rec Room Object", Type = "7ff685a6-f59c-4c6c-b559-f343d81ea1d4", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            var output_ports = new AnyPort{ Port = new Port{Node = node, Index = 0}};
+            var output_ports = new T{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -10010,7 +10011,8 @@ namespace RRCGGenerated
             return;
         }
 
-        public static RecRoomObjectPort ToRecRoomObject(AnyPort Target)
+        public static RecRoomObjectPort ToRecRoomObject<T>(T Target)
+            where T : AnyPort, new()
         {
             Node node = new Node()
             {Name = "To Rec Room Object", Type = "315a494e-84cc-4e3c-acff-389bb932b5d0", InputCount = 1};
