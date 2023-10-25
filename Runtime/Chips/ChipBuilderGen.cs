@@ -6699,6 +6699,26 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static BoolPort PlayerGetForceVirtualHeightMode(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Force Virtual Height Mode", Type = "1f8923fe-d4dd-45c8-8161-b69bb4a1704e", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort PlayerGetForceVRWalk(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Force VR Walk", Type = "5711c16e-3550-4d35-a549-cfa704b9d556", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static BoolPort PlayerGetIsAuthorityOf(PlayerPort Target, RecRoomObjectPort Object)
         {
             Node node = new Node()
@@ -6707,6 +6727,36 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 1});
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort PlayerGetIsClambering(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Is Clambering", Type = "fea61975-90b0-4187-b28a-b732a14834c0", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort PlayerGetIsCrouching(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Is Crouching", Type = "97a006a4-10fc-43ab-b222-e1d9b3d09d61", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static (BoolPort IsGrounded, FloatPort TimeSinceLastGrounded, RecRoomObjectPort SurfaceObject, Vector3Port SurfaceNormal) PlayerGetIsGrounded(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Is Grounded", Type = "4db35e9d-3a1d-4823-a011-7f94e028a3e7", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 2}}, new Vector3Port{Port = new Port{Node = node, Index = 3}});
             return output_ports;
         }
 
@@ -6730,12 +6780,42 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static BoolPort PlayerGetIsProne(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Is Prone", Type = "781ccd7b-a399-47dd-a174-fab918cea059", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static BoolPort PlayerGetIsRoomOwner(PlayerPort Target)
         {
             Node node = new Node()
             {Name = "Player Get Is Room Owner", Type = "58c5cab7-ddf7-4de8-86c8-25f3d3c19d98", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort PlayerGetIsSliding(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Is Sliding", Type = "a6bf14e7-5f67-415e-b1c0-67adc223b01e", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort PlayerGetIsSprinting(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Is Sprinting", Type = "52544269-fc72-4b7e-97eb-23d9b84af1e2", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
@@ -6757,6 +6837,16 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static FloatPort PlayerGetNormalizedSteeringSpeed(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Normalized Steering Speed", Type = "1eb70662-4a75-4120-9713-11dbbeedc740", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -7222,6 +7312,28 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, ForceManualSprint, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PlayerSetForceVirtualHeightMode(PlayerPort Player, BoolPort ForceVirtualHeightMode)
+        {
+            Node node = new Node()
+            {Name = "Player Set Force Virtual Height Mode", Type = "2d73b51d-5703-4a1a-bb80-acc05161e3dc", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, ForceVirtualHeightMode, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PlayerSetForceVRWalk(PlayerPort Player, BoolPort ForceVRWalk)
+        {
+            Node node = new Node()
+            {Name = "Player Set Force VR Walk", Type = "c4fa9164-e585-4813-93f4-b31da5635a8b", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, ForceVRWalk, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }
@@ -10413,6 +10525,16 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static Vector3Port Vector3Inverse(Vector3Port Value)
+        {
+            Node node = new Node()
+            {Name = "Vector3 Inverse", Type = "429fc835-d971-48fd-a030-d8f7d5a96437", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 0});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static Vector3Port Vector3InverseTransform(Vector3Port WorldPoint, Vector3Port WorldOrigin, QuaternionPort WorldOrientation)
         {
             Node node = new Node()
@@ -10566,6 +10688,32 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Speed, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Direction, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, MaximumSpeed, new Port{Node = node, Index = 4});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void VelocityAddNew(PlayerPort Target, FloatPort Multiplier, Vector3Port Velocity, FloatPort MaximumSpeed)
+        {
+            Node node = new Node()
+            {Name = "Velocity Add (New)", Type = "f94206bd-1903-492f-85fc-07f8f756b9f5", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Multiplier, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Velocity, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, MaximumSpeed, new Port{Node = node, Index = 4});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void VelocityAddNew(RecRoomObjectPort Target, FloatPort Multiplier, Vector3Port Velocity, FloatPort MaximumSpeed)
+        {
+            Node node = new Node()
+            {Name = "Velocity Add (New)", Type = "f94206bd-1903-492f-85fc-07f8f756b9f5", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Multiplier, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Velocity, new Port{Node = node, Index = 3});
             node.ConnectInputPort(Context.current, MaximumSpeed, new Port{Node = node, Index = 4});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;

@@ -449,12 +449,21 @@ namespace RRCGGenerated
         public const string PlayerGetEquippedObjects = "f0827a17-7d21-45ba-b302-c2b068bd50ca";
         public const string PlayerGetFirstwithTag = "48364320-cb02-41d8-9d8f-50291131dad2";
         public const string PlayerGetForceManualSprint = "7b099bfd-965c-4d78-9e7b-59114bf64dbb";
+        public const string PlayerGetForceVirtualHeightMode = "1f8923fe-d4dd-45c8-8161-b69bb4a1704e";
+        public const string PlayerGetForceVRWalk = "5711c16e-3550-4d35-a549-cfa704b9d556";
         public const string PlayerGetIsAuthorityOf = "c35fe6fe-d231-4ee5-80ff-9e69f24eb29e";
+        public const string PlayerGetIsClambering = "fea61975-90b0-4187-b28a-b732a14834c0";
+        public const string PlayerGetIsCrouching = "97a006a4-10fc-43ab-b222-e1d9b3d09d61";
+        public const string PlayerGetIsGrounded = "4db35e9d-3a1d-4823-a011-7f94e028a3e7";
         public const string PlayerGetIsJumpingOrFalling = "a474eca1-e820-4249-a314-fbc0ae223a5f";
         public const string PlayerGetIsLocal = "4646dbed-e616-470e-8e0c-eb446b91838b";
+        public const string PlayerGetIsProne = "781ccd7b-a399-47dd-a174-fab918cea059";
         public const string PlayerGetIsRoomOwner = "58c5cab7-ddf7-4de8-86c8-25f3d3c19d98";
+        public const string PlayerGetIsSliding = "a6bf14e7-5f67-415e-b1c0-67adc223b01e";
+        public const string PlayerGetIsSprinting = "52544269-fc72-4b7e-97eb-23d9b84af1e2";
         public const string PlayerGetJumpHeight = "42dbf319-8d57-41d2-921f-f3f707e6ad81";
         public const string PlayerGetJumpInputEnabled = "e6ec527a-be2e-438d-84f4-f60c4785206c";
+        public const string PlayerGetNormalizedSteeringSpeed = "1eb70662-4a75-4120-9713-11dbbeedc740";
         public const string PlayerGetRadioChannel = "be2f38d2-c6cb-4d9a-b74d-0a664c216a7b";
         public const string PlayerGetRoomIndex = "7683e201-29d3-44d4-abb4-d75ef9233faa";
         public const string PlayerGetRoomLevel = "475ba7d2-6031-4ea7-b7b8-11028971e466";
@@ -499,6 +508,8 @@ namespace RRCGGenerated
         public const string PlayerSetCanTeleport = "de2df219-9d85-4778-a9a3-255d912596a2";
         public const string PlayerSetCrouchInputEnabled = "046d23a2-5f34-40dc-a586-008c7bc391f0";
         public const string PlayerSetForceManualSprint = "25663723-fc4c-454f-9d33-d28120163245";
+        public const string PlayerSetForceVirtualHeightMode = "2d73b51d-5703-4a1a-bb80-acc05161e3dc";
+        public const string PlayerSetForceVRWalk = "c4fa9164-e585-4813-93f4-b31da5635a8b";
         public const string PlayerSetJumpHeight = "5dae4912-b714-4cbe-91ab-c736b517d0d6";
         public const string PlayerSetJumpInputEnabled = "d837f992-bcc3-4571-b402-c39a5378e1ee";
         public const string PlayerSetNameColor = "19d7fe7e-99e9-444c-8e4f-12c5237abe90";
@@ -754,6 +765,7 @@ namespace RRCGGenerated
         public const string Vector3Create = "814e9337-7542-4851-9da0-c73885ab0b4f";
         public const string Vector3Cross = "6bd92538-6889-41f3-b819-9511e6f81944";
         public const string Vector3Dot = "498c4e25-f73b-49a6-912e-ae148ed50dca";
+        public const string Vector3Inverse = "429fc835-d971-48fd-a030-d8f7d5a96437";
         public const string Vector3InverseTransform = "97b150f5-7bd0-4649-96d7-fdf0b5e88ffb";
         public const string Vector3MoveTowards = "266d90c7-403e-4059-a481-ce3e22d61420";
         public const string Vector3Normalize = "92ded211-17d6-4c73-b29c-71323c6a40ee";
@@ -766,6 +778,7 @@ namespace RRCGGenerated
         public const string VectorComponentGetVector = "74ba9189-2880-46fa-b4b0-3c9a7152489e";
         public const string VectorGetMagnitude = "c3b9ba98-6c4a-44c2-9125-043314fba4a6";
         public const string VelocityAdd = "1b5eca75-0e7e-4aff-8adc-c5e043cac29e";
+        public const string VelocityAddNew = "f94206bd-1903-492f-85fc-07f8f756b9f5";
         public const string VelocityReflect = "f0137efc-b3b7-4217-ba8b-1d2e78d451bd";
         public const string VelocitySet = "ea00c655-56ff-4406-8d65-b8399e6d0169";
         public const string VelocitySetDeprecated = "f97c530d-03bf-498c-8854-33e814d2600b";

@@ -4925,9 +4925,49 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Returns whether Virtual Height Mode is required for a given player
+        /// </summary>
+        public static bool PlayerGetForceVirtualHeightMode(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns whether the given player will be forced to use walk mode if they are playing in VR. 
+        /// </summary>
+        public static bool PlayerGetForceVRWalk(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Outputs if a Player is authority of the input object.
         /// </summary>
         public static bool PlayerGetIsAuthorityOf(Player Target, RecRoomObject Object)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Whether or not the player is currently clambering or mantling up a ledge
+        /// </summary>
+        public static bool PlayerGetIsClambering(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns whether the given player is crouching
+        /// </summary>
+        public static bool PlayerGetIsCrouching(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns whether the given player is grounded, a.k.a. not jumping, flying, wall-running, clambering, or falling. Also returns the time (in seconds) since they were last grounded, or 0 if currently grounded. Surface Object returns the Room Object that the player is standing on if they are grounded, or Invalid Object if the player is not grounded or standing on a non-Rec Room Object. Surface Normal returns the normal of the surface if the player is grounded and (0, 1, 0) if they're not.
+        /// </summary>
+        public static (bool IsGrounded, float TimeSinceLastGrounded, RecRoomObject SurfaceObject, Vector3 SurfaceNormal) PlayerGetIsGrounded(Player Player)
         {
             return default;
         }
@@ -4949,9 +4989,33 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Returns whether the given player is prone.
+        /// </summary>
+        public static bool PlayerGetIsProne(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Outputs True if the input Player is one of the current room's owners.
         /// </summary>
         public static bool PlayerGetIsRoomOwner(Player Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns whether the given player is sliding.
+        /// </summary>
+        public static bool PlayerGetIsSliding(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns whether the given player is sprinting.
+        /// </summary>
+        public static bool PlayerGetIsSprinting(Player Player)
         {
             return default;
         }
@@ -4968,6 +5032,14 @@ namespace RRCGGenerated
         /// Returns whether jump input is enabled for a given player
         /// </summary>
         public static bool PlayerGetJumpInputEnabled(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns the normalized (zero to one) steering speed requested by the player. This value represents how fast a player is wanting to move relative to their max speed.
+        /// </summary>
+        public static float PlayerGetNormalizedSteeringSpeed(Player Player)
         {
             return default;
         }
@@ -5317,6 +5389,21 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets whether manual sprint is required for a given player.
         public static void PlayerSetForceManualSprint(Player Player, bool ForceManualSprint)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets whether Virtual Height Mode is required for a given player.
+        public static void PlayerSetForceVirtualHeightMode(Player Player, bool ForceVirtualHeightMode)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Forces the given player to use walk rather than teleport mode if they are playing in VR. This is useful when you need access to their walk inputs which won't fire if they are in teleport mode. You should consider adding a warning to your room so teleport players are aware that you're going to change their movement mode.
+        /// </summary>
+        public static void PlayerSetForceVRWalk(Player Player, bool ForceVRWalk)
         {
             return;
         }
@@ -7577,6 +7664,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Multiplies a vector by -1 to get its inverse.
+        /// </summary>
+        public static Vector3 Vector3Inverse(Vector3 Value)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         public static Vector3 Vector3InverseTransform(Vector3 WorldPoint, Vector3 WorldOrigin, Quaternion WorldOrientation)
@@ -7684,6 +7779,22 @@ namespace RRCGGenerated
         /// Adds velocity to the input target. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
         public static void VelocityAdd(RecRoomObject Target, float Speed, Vector3 Direction, float MaximumSpeed)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Adds velocity to the input target. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
+        /// </summary>
+        public static void VelocityAddNew(Player Target, float Multiplier, Vector3 Velocity, float MaximumSpeed)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Adds velocity to the input target. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
+        /// </summary>
+        public static void VelocityAddNew(RecRoomObject Target, float Multiplier, Vector3 Velocity, float MaximumSpeed)
         {
             return;
         }
