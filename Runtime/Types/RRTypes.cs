@@ -82,7 +82,9 @@ namespace RRCGSource
     public class Sun : AnyObject { }
     public class SunDirection : AnyObject { }
     public class Rotator : AnyObject { }
-    public class Seat : AnyObject { }
+    public class Seat : AnyObject {
+        public static implicit operator Seat(RecRoomObject data) => null;
+    }
     public class SFX : AnyObject { }
     public class Text : AnyObject
     {
