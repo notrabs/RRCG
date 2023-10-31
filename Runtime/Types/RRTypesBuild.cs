@@ -108,6 +108,13 @@ namespace RRCGBuild
     {
         public static Vector3Port zero { get => CircuitBuilder.Singleton("Vector3_zero", () => ChipBuilder.Vector3Create(0, 0, 0)); }
 
+        public Vector3Port() { }
+
+        public Vector3Port(FloatPort x, FloatPort y, FloatPort z)
+        {
+            Port = ChipBuilder.Vector3Create(x, y, z).Port;
+        }
+
         public (FloatPort X, FloatPort Y, FloatPort Z) split
         {
             get
@@ -183,7 +190,8 @@ namespace RRCGBuild
         public static implicit operator AudioPlayerPort(RecRoomObjectPort data) => new AudioPlayerPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
     public class ConsumablePort : AnyPort { }
-    public class RoomKeyPort : AnyPort {
+    public class RoomKeyPort : AnyPort
+    {
         public RoomKeyPort() { }
         public RoomKeyPort(string name)
         {

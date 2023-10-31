@@ -13,7 +13,10 @@ namespace RRCGSource
 
     public class AI : AnyObject { }
     public class WelcomeMat : AnyObject { }
-    public class TriggerHandle : AnyObject { }
+    public class TriggerHandle : AnyObject
+    {
+        public static implicit operator TriggerHandle(RecRoomObject data) => null;
+    }
     public class StudioObject : AnyObject
     {
         public static implicit operator StudioObject(RecRoomObject data) => null;
