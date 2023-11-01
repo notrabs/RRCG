@@ -205,13 +205,13 @@ namespace RRCG
             switch (node.Keyword.ValueText)
             {
                 case "bool":
-                    return SyntaxFactory.IdentifierName("BoolPort");
+                    return IdentifierName("BoolPort");
                 case "string":
-                    return SyntaxFactory.IdentifierName("StringPort");
+                    return IdentifierName("StringPort");
                 case "int":
-                    return SyntaxFactory.IdentifierName("IntPort");
+                    return IdentifierName("IntPort");
                 case "float":
-                    return SyntaxFactory.IdentifierName("FloatPort");
+                    return IdentifierName("FloatPort");
                 case "void":
                     // ignore
                     break;
@@ -228,7 +228,8 @@ namespace RRCG
             switch (node.Identifier.ValueText)
             {
                 case "List":
-                    return SyntaxFactory.IdentifierName(node.Identifier.ValueText + "Port");
+                    return ((GenericNameSyntax)base.VisitGenericName(node))
+                        .WithIdentifier(Identifier(node.Identifier.ValueText + "Port"));
             }
 
             return base.VisitGenericName(node);
@@ -302,7 +303,7 @@ namespace RRCG
                 case "RoomLevelHUD":
                 case "Touchpad":
                 case "AnimationController":
-                    return SyntaxFactory.IdentifierName(node.Identifier.ValueText + "Port");
+                    return IdentifierName(node.Identifier.ValueText + "Port");
             }
 
             return base.VisitIdentifierName(node);
