@@ -45,7 +45,25 @@ namespace RRCGBuild
     }
 
     public class PortBuilderAny : AnyPort { }
-    public class ListPort<T> : AnyPort { }
+    public class ListPort<T> : AnyPort where T : AnyPort, new()
+    {
+        public T this[IntPort i]
+        {
+            get
+            {
+                return ChipBuilder.ListGetElement(this, i);
+            }
+            set
+            {
+                ChipBuilder.ListSetElement<T>(this, i, value);
+            }
+        }
+
+        public IntPort Count
+        {
+            get { return ChipBuilder.ListGetCount(this); }
+        }
+    }
     public class RRTuplePort<T0, T1> : AnyPort { }
     public class ColorPort : AnyPort
     {
@@ -77,6 +95,17 @@ namespace RRCGBuild
             if (data.IsDataPort) return new IntPort { Data = -data.Data };
             return ChipBuilder.Subtract(0, data);
         }
+        public static IntPort operator +(IntPort a, IntPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new IntPort { Data = a.Data + b.Data };
+            return ChipBuilder.Add(a, b);
+        }
+
+        public static IntPort operator -(IntPort a, IntPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new IntPort { Data = a.Data - b.Data };
+            return ChipBuilder.Subtract(a, b);
+        }
     }
     public class FloatPort : AnyPort
     {
@@ -89,6 +118,18 @@ namespace RRCGBuild
         {
             if (data.IsDataPort) return new FloatPort { Data = -data.Data };
             return ChipBuilder.Subtract(0, data);
+        }
+
+        public static FloatPort operator +(FloatPort a, FloatPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new FloatPort { Data = a.Data + b.Data };
+            return ChipBuilder.Add(a, b);
+        }
+
+        public static FloatPort operator -(FloatPort a, FloatPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new FloatPort { Data = a.Data - b.Data };
+            return ChipBuilder.Subtract(a, b);
         }
     }
     public class BoolPort : AnyPort

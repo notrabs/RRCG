@@ -223,6 +223,17 @@ namespace RRCG
             return base.VisitPredefinedType(node);
         }
 
+        public override SyntaxNode VisitGenericName(GenericNameSyntax node)
+        {
+            switch (node.Identifier.ValueText)
+            {
+                case "List":
+                    return SyntaxFactory.IdentifierName(node.Identifier.ValueText + "Port");
+            }
+
+            return base.VisitGenericName(node);
+        }
+
         public override SyntaxNode VisitIdentifierName(IdentifierNameSyntax node)
         {
             switch (node.Identifier.ValueText)
