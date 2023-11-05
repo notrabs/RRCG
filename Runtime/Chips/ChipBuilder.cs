@@ -401,6 +401,16 @@ namespace RRCGBuild
             }
         }
 
+        public static void For(AlternativeExec<IntPort> forEach, IntPort from, IntPort to) {
+            var index = ChipBuilderGen.For(from, to, (_) => { });
+            var node = Context.lastSpawnedNode;
+
+            forEach(index);
+
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(node.Port(0,2));
+        }
+
         public static void ExecutionIntegerSwitch(IntPort match, AlternativeExec failed, Dictionary<IntPort, AlternativeExec> branches)
         {
             ExecutionIntegerSwitch(match);

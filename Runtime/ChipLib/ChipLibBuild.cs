@@ -93,7 +93,7 @@ namespace RRCGBuild
         public static void Log(AnyPort obj)
         {
             StringPort stringPort;
-            if (obj is StringPort) stringPort = (StringPort)obj;
+            if (obj is StringPort sp) stringPort = sp;
             else stringPort = ToString(obj);
 
             LogString(stringPort);

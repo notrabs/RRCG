@@ -2088,7 +2088,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Iterates over the "From" pin (inclusive) to the "To" pin (exclusive).
         /// </summary>
-        public static int For(int From, int To, AlternativeExec<int> Done)
+        internal static int For(int From, int To, AlternativeExec<int> Done)
         {
             return default;
         }
