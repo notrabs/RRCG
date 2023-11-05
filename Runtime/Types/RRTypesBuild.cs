@@ -148,6 +148,7 @@ namespace RRCGBuild
     public class Vector3Port : AnyPort
     {
         public static Vector3Port zero { get => CircuitBuilder.Singleton("Vector3_zero", () => ChipBuilder.Vector3Create(0, 0, 0)); }
+        public static Vector3Port up { get => CircuitBuilder.Singleton("Vector3_up", () => ChipBuilder.Vector3Create(0, 1, 0)); }
 
         public Vector3Port() { }
 
@@ -195,7 +196,13 @@ namespace RRCGBuild
         public static PlayerPort Local = new PlayerPort() { Port = null, Data = 1 };
         public static PlayerPort Invalid = new PlayerPort() { Port = null, Data = 0 };
     }
-    public class RecRoomObjectPort : AnyPort { }
+    public class RecRoomObjectPort : AnyPort
+    {
+        public static RecRoomObjectPort Invalid
+        {
+            get => CircuitBuilder.Singleton("RRCG_Invalid_RRO", () => new NamedVariable<RecRoomObjectPort>("RRCG_Invalid_RRO").Value);
+        }
+    }
     public class CombatantPort : AnyPort { }
     public class PatrolPointPort : AnyPort { }
     public class AudioPort : AnyPort

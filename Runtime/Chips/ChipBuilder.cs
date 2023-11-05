@@ -275,6 +275,22 @@ namespace RRCGBuild
             ChipBuilderGen.Subtract(ports[0]);
             return ConnectDynamicPins(0, ports);
         }
+        public static Vector3Port Multiply(Vector3Port vector, FloatPort scalar)
+        {
+            return ChipBuilderGen.Vector3Scale(vector, scalar);
+        }
+        public static Vector3Port Multiply(FloatPort scalar, Vector3Port vector)
+        {
+            return ChipBuilderGen.Vector3Scale(vector, scalar);
+        }
+        public static Vector3Port Multiply(Vector3Port vector, IntPort scalar)
+        {
+            return ChipBuilderGen.Vector3Scale(vector, scalar);
+        }
+        public static Vector3Port Multiply(IntPort scalar, Vector3Port vector)
+        {
+            return ChipBuilderGen.Vector3Scale(vector, scalar);
+        }
         public static IntPort Multiply(params IntPort[] ports)
         {
             ChipBuilderGen.Multiply(ports[0]);

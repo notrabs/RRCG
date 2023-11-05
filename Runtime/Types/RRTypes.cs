@@ -27,7 +27,9 @@ namespace RRCGSource
         public static Player Local = new Player();
         public static Player Invalid = null;
     }
-    public class RecRoomObject : AnyObject { }
+    public class RecRoomObject : AnyObject {
+        public static RecRoomObject Invalid = null;
+    }
     public class Combatant : AnyObject { }
     public class PatrolPoint : AnyObject { }
     public class Audio : AnyObject
