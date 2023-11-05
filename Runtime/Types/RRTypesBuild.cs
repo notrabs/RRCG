@@ -168,6 +168,17 @@ namespace RRCGBuild
             }
         }
 
+        public Vector3Port normalized
+        {
+            get
+            {
+                if (IsActualPort) return CircuitBuilder.Singleton("Vector3_normalized_" + Port.PortKey(), () => ChipBuilder.Vector3Normalize(this));
+
+                var v = (Vector3)Data;
+                return new Vector3Port() { Data = v.normalized };
+            }
+        }
+
         public FloatPort x { get => split.X; }
         public FloatPort y { get => split.Y; }
         public FloatPort z { get => split.Z; }
