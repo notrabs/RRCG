@@ -14,11 +14,11 @@ namespace RRCGBuild
         public bool IsDataPort => Port == null;
         public bool IsActualPort => Port != null;
 
-        public static implicit operator AnyPort(string data) => new AnyPort { Data = data };
-        public static implicit operator AnyPort(int data) => new AnyPort { Data = data };
-        public static implicit operator AnyPort(float data) => new AnyPort { Data = data };
-        public static implicit operator AnyPort(bool data) => new AnyPort { Data = data };
-        public static implicit operator AnyPort(Color data) => new AnyPort { Data = PortConversionUtils.EncodeColor(data) };
+        public static implicit operator AnyPort(string data) => new StringPort { Data = data };
+        public static implicit operator AnyPort(int data) => new IntPort { Data = data };
+        public static implicit operator AnyPort(float data) => new FloatPort { Data = data };
+        public static implicit operator AnyPort(bool data) => new BoolPort { Data = data };
+        public static implicit operator AnyPort(Color data) => new ColorPort { Data = PortConversionUtils.EncodeColor(data) };
 
         public T AsData<T>()
         {
