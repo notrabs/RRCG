@@ -27,7 +27,8 @@ namespace RRCGSource
         public static Player Local = new Player();
         public static Player Invalid = null;
     }
-    public class RecRoomObject : AnyObject {
+    public class RecRoomObject : AnyObject
+    {
         public static RecRoomObject Invalid = null;
     }
     public class Combatant : AnyObject { }
@@ -87,7 +88,8 @@ namespace RRCGSource
     public class Sun : AnyObject { }
     public class SunDirection : AnyObject { }
     public class Rotator : AnyObject { }
-    public class Seat : AnyObject {
+    public class Seat : AnyObject
+    {
         public static implicit operator Seat(RecRoomObject data) => null;
     }
     public class SFX : AnyObject { }
@@ -116,5 +118,6 @@ namespace RRCGSource
     public class State : AnyObject { }
     public class Grabber : AnyObject { }
     public class EquipmentSlot : AnyObject { }
-
+    public class DialogueUI : AnyObject { }
+    public class CollisionDetectionVolume : AnyObject { }
 }

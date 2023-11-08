@@ -399,6 +399,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Returns the current frame of the given animation controller component.
+        /// </summary>
+        public static int AnimationGetFrame(AnimationController Animator)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Returns whether or not the Animation Controller is currently playing.
         /// </summary>
         public static bool AnimationGetIsPlaying(AnimationController Animator)
@@ -410,6 +418,14 @@ namespace RRCGGenerated
         /// Returns the normalized speed of the given Animation Controller.
         /// </summary>
         public static float AnimationGetSpeed(AnimationController Animator)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns the current time stamp of the given animation controller. The value is not impacted by the animation speed.
+        /// </summary>
+        public static float AnimationGetTimeStamp(AnimationController Animator)
         {
             return default;
         }
@@ -442,6 +458,14 @@ namespace RRCGGenerated
         /// Sets the Animation Controller's play speed. Default value is 1. Negative values play the animation in reverse.
         /// </summary>
         public static void AnimationSetSpeed(AnimationController Animator, float Speed)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the time stamp of the given animation controller to the given time in seconds. The time stamp is not impacted by the animation speed.
+        /// </summary>
+        public static void AnimationSetTimeStamp(AnimationController Animator, float TimeStamp)
         {
             return;
         }
@@ -920,6 +944,22 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
+        public static bool CollisionDetectionVolumeGetEnabled(CollisionDetectionVolume Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void CollisionDetectionVolumeSetEnabled(CollisionDetectionVolume Target, bool Enabled)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static Color ColorConstant()
         {
             return default;
@@ -1331,6 +1371,78 @@ namespace RRCGGenerated
         internal static DestinationRoom DestinationRoomVariable(DestinationRoom Port0)
         {
             return default;
+        }
+
+        /// <summary>
+        /// Returns the current text of the target Dialogue UI’s main body for the local player, and whether or not it’s currently interactive.
+        /// </summary>
+        public static (string BodyText, bool IsInteractive) DialogueUIGetDialogueText(DialogueUI Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns whether or not the target Dialogue UI is enabled for the local player.
+        /// </summary>
+        public static bool DialogueUIGetIsEnabled(DialogueUI Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns whether or not the target Dialogue UI’s title bar is visible for the local player.
+        /// </summary>
+        public static bool DialogueUIGetTitleIsEnabled(DialogueUI Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns the current title of the target Dialogue UI for the local player.
+        /// </summary>
+        public static string DialogueUIGetTitleText(DialogueUI Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Set the visibility and text of up to four buttons on the target Dialogue UI for the local player. Text will truncate after 512 characters. Buttons are automatically interactive when enabled. Each button will fire a Button Pressed event in the Dialogue UI’s board scope when pressed. Button visibility is dependent on the Dialogue UI being enabled.
+        /// </summary>
+        public static void DialogueUISetButtonState(DialogueUI Target, bool Button1Enabled, string Button1Text, bool Button2Enabled, string Button2Text, bool Button3Enabled, string Button3Text, bool Button4Enabled, string Button4Text)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the text of the target Dialogue UI’s main body for the local player. Text will truncate after 256 characters. If “Is interactive” is true, an arrow will appear in the lower right when the text has fully animated in, and the whole panel will be clickable for the player. The Next Pressed event will fire in the Dialogue UI’s board scope when this interactive panel is clicked.
+        /// </summary>
+        public static void DialogueUISetDialogueText(DialogueUI Target, string BodyText, bool IsInteractive)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Toggles whether or not the target Dialogue UI is enabled for the local player.         
+        /// </summary>
+        public static void DialogueUISetIsEnabled(DialogueUI Target, bool IsEnabled)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Toggles visibility of the target Dialogue UI’s title bar for the local player. Visibility is dependent on the Dialogue UI being enabled.
+        /// </summary>
+        public static void DialogueUISetTitleIsEnabled(DialogueUI Target, bool IsEnabled)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the title field of the target Dialogue UI for the local player. Text will truncate after 48 characters.
+        /// </summary>
+        public static void DialogueUISetTitleText(DialogueUI Target, string TitleText)
+        {
+            return;
         }
 
         /// <summary>
@@ -1921,6 +2033,14 @@ namespace RRCGGenerated
         /// Compares the two input values and outputs True if they are the same. False if they are different.
         /// </summary>
         public static bool EqualsDeprecated<T>(T A, T B)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Display up to six interactive buttons that can access Inventory Items (Inventory Slots) or physical objects (Holster Slots.) Configure this chip to configure the settings for a slot. Output type will change based on Type setting.  Use with Player Set Equipment Slot Is Enabled and the various Player Equip chips.
+        /// </summary>
+        public static EquipmentSlot EquipmentSlot()
         {
             return default;
         }
@@ -4334,6 +4454,38 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Get the current displayed content on the Objective Log HUD UI
+        /// </summary>
+        public static (string HeaderText, Color HeaderTextColor, string BodyText, Color BodyTextColor) LocalPlayerGetObjectiveLogContent()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Get if the Objective Log HUD UI is currently enabled
+        /// </summary>
+        public static bool LocalPlayerGetObjectiveLogEnabled()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Set the content to be displayed on the Objective Log HUD UI
+        /// </summary>
+        public static void LocalPlayerSetObjectiveLogContent(string HeaderText, Color HeaderTextColor, string BodyText, Color BodyTextColor)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Set whether the Objective Log HUD UI is enabled
+        /// </summary>
+        public static void LocalPlayerSetObjectiveLogEnabled(bool Enable)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Control whether the player sees the nametag of the target player.It takes priority over role settings.Reset the room to remove the effect of this chip.
         /// </summary>
         public static void LocalPlayerSetPlayerNametagVisibility(Player Player, bool Enabled)
@@ -4901,6 +5053,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// For the target player, get whether the specified equipment slot is enabled.
+        /// </summary>
+        public static bool PlayerGetEquipmentSlotIsEnabled(Player Player, EquipmentSlot EquipmentSlot)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Gets equipped objects from a player.
         /// </summary>
         public static (RecRoomObject DominantHandObject, RecRoomObject OffHandObject, RecRoomObject LeftHipHolsterObject, RecRoomObject RightHipHolsterObject, RecRoomObject ShoulderHolsterObject) PlayerGetEquippedObjects(Player Player)
@@ -5387,6 +5547,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Enables the specified equipment slot on the target player
+        /// </summary>
+        public static void PlayerSetEquipmentSlotIsEnabled(Player Player, EquipmentSlot EquipmentSlot, bool IsEnabled)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Sets whether manual sprint is required for a given player.
         public static void PlayerSetForceManualSprint(Player Player, bool ForceManualSprint)
         {
@@ -5508,6 +5676,14 @@ namespace RRCGGenerated
         /// Outputs True if the input Player subscribes to one of the current room's owners.
         /// </summary>
         public static (bool Result, int SecondsUntilEnabled) PlayerSubscribesToRoomOwner(Player Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// For the specified player, unequip anything which is equipped to the specified slot. If the slot is of Inventory type, this chip will take effect whether or not the slot is enabled.
+        /// </summary>
+        public static bool PlayerUnequipFromSlot(Player Player, EquipmentSlot EquipmentSlot, AlternativeExec<bool> OnUnequipComplete)
         {
             return default;
         }
@@ -6028,6 +6204,22 @@ namespace RRCGGenerated
         /// Removes the input list of tags from the input object or player.
         /// </summary>
         public static void RemoveTags(RecRoomObject Target, List<string> Tags)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the velocity of the input target, similar to Velocity Set, but reapplies every physics tick until either the input duration has elapsed, the authority of the input target has changed, or another impulsing CV2 chip has been executed against the same input target.
+        /// </summary>
+        public static void RequestVelocitySetOverDuration(Player Object, float Multiplier, Vector3 Velocity, float Duration)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the velocity of the input target, similar to Velocity Set, but reapplies every physics tick until either the input duration has elapsed, the authority of the input target has changed, or another impulsing CV2 chip has been executed against the same input target.
+        /// </summary>
+        public static void RequestVelocitySetOverDuration(RecRoomObject Object, float Multiplier, Vector3 Velocity, float Duration)
         {
             return;
         }
@@ -7179,6 +7371,14 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
+        public static void StudioFunction()
+        {
+            return;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static bool StudioObjectGetPropertyBool(StudioObject StudioObject, string Property)
         {
             return default;
@@ -7236,6 +7436,14 @@ namespace RRCGGenerated
         /// Defines values for the room's sun.
         /// </summary>
         public static Sun SunConstant()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static bool SwingHandleGetIsSwinging(SwingHandle Target)
         {
             return default;
         }
@@ -7818,7 +8026,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Momentarily sets the velocity of the input target in the input direction. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public static void VelocitySet(Player Target, float Speed, Vector3 Direction)
+        public static void VelocitySet(Player Target, float Multiplier, Vector3 Velocity)
         {
             return;
         }
@@ -7826,7 +8034,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Momentarily sets the velocity of the input target in the input direction. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public static void VelocitySet(RecRoomObject Target, float Speed, Vector3 Direction)
+        public static void VelocitySet(RecRoomObject Target, float Multiplier, Vector3 Velocity)
         {
             return;
         }

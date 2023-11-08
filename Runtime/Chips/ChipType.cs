@@ -27,12 +27,15 @@ namespace RRCGGenerated
         public const string AngularVelocityAddDeprecated = "87f6886f-fa2b-4961-b0ed-c8014aadc56b";
         public const string AngularVelocitySet = "85dbc1d1-759a-4d08-b129-bf9372188348";
         public const string AngularVelocitySetDeprecated = "98b24bc7-32d8-4386-9348-d44ad00d7702";
+        public const string AnimationGetFrame = "5460ad14-4d51-4925-bd27-1ced46f10cb4";
         public const string AnimationGetIsPlaying = "b45a0e10-189e-4211-b152-f04863d36e8c";
         public const string AnimationGetSpeed = "e73794bd-fd60-4284-90ca-f5169700fa23";
+        public const string AnimationGetTimeStamp = "19a1867b-8322-45b5-9971-c91b246663f3";
         public const string AnimationPause = "16144990-d5b0-4143-83f2-0df3cd30b3f2";
         public const string AnimationPlay = "c2dc73dd-5317-45bf-892a-46864b468960";
         public const string AnimationSetFrame = "c7ae96f2-1792-40ab-a367-6cc159f27080";
         public const string AnimationSetSpeed = "ca4d8318-ff8a-4c05-8628-2573d3c0ab4b";
+        public const string AnimationSetTimeStamp = "2cee5b7c-d9d1-455d-913c-10441527c798";
         public const string AnimationStop = "454c3ee3-5030-4a63-8ae9-1a0c61568f8c";
         public const string Asin = "aaa4e58f-16df-426a-b7a7-a654eab97037";
         public const string Atan = "84646ed2-015e-4a8b-9d37-5115cb9ebadc";
@@ -91,6 +94,8 @@ namespace RRCGGenerated
         public const string CollisionDataGetObject = "8c8931da-1a8e-4164-a3a5-0f68db8cafb5";
         public const string CollisionDataGetPlayer = "2729e8db-62d1-4f9e-b076-74f27cd43332";
         public const string CollisionDataGetPosition = "5910618b-f862-49ce-9779-46130e47f985";
+        public const string CollisionDetectionVolumeGetEnabled = "9b5e9c57-babc-4e7a-a728-97bef7a11cfc";
+        public const string CollisionDetectionVolumeSetEnabled = "711cadd1-24b0-4969-9fba-f65cbaeab3c5";
         public const string ColorConstant = "87a8e178-b15c-4c38-9da0-95ba74f9f4ec";
         public const string ColorToHSV = "d697171e-56ac-41b7-aa1e-dabc4538c029";
         public const string ColorToInt = "8e412141-635d-435c-a900-f40d8a261906";
@@ -123,6 +128,15 @@ namespace RRCGGenerated
         public const string Delay = "cefee2a5-d4a8-4dff-8c4e-bad684ca8d34";
         public const string DestinationRoomConstant = "330f3621-0d37-4cd7-8b92-270c7df43fcb";
         public const string DestinationRoomVariable = "31eab00d-a6f7-4505-9f84-02d3e1eedd86";
+        public const string DialogueUIGetDialogueText = "ecd48cf6-f25a-4650-a120-4bbf05fbfa1c";
+        public const string DialogueUIGetIsEnabled = "24e650ed-b099-44ba-944a-d33ea34fff8b";
+        public const string DialogueUIGetTitleIsEnabled = "44661525-612e-4032-8278-fcb15a72aee0";
+        public const string DialogueUIGetTitleText = "17a13c0d-f5c0-4806-b6ee-1af03eb81bdb";
+        public const string DialogueUISetButtonState = "f4772dae-d4e3-489c-8943-8fe88160ab5c";
+        public const string DialogueUISetDialogueText = "bc6602e4-e88b-4db4-9655-0a6baf50997e";
+        public const string DialogueUISetIsEnabled = "a348af16-bd74-4da6-a3e1-1bf1e2456eba";
+        public const string DialogueUISetTitleIsEnabled = "54a8ee30-21fa-4f74-8f54-5c8936a2e7bb";
+        public const string DialogueUISetTitleText = "45566130-ee6e-4eca-8f05-7e264001afc1";
         public const string DiceGetPlayerRolled = "c1fdc4fa-fcb4-4ea4-b505-7b1d15fb8117";
         public const string DiceGetResult = "c80e2979-c672-4e7a-81fb-0ed1964e3ea6";
         public const string DiceGetRollfinished = "b8735ad9-cd89-4d81-ab9b-be3eb50e3b5a";
@@ -147,6 +161,7 @@ namespace RRCGGenerated
         public const string EmitterStop = "23b278c4-5d3d-439d-afa3-ff30c949df97";
         public const string Equals = "e1f1b65e-8d82-47af-8637-ae2d0afa431f";
         public const string EqualsDeprecated = "3663225d-e18d-40e6-a234-ef10378528be";
+        public const string EquipmentSlot = "1abf31dd-fa6e-43bb-9eb4-94a06e62f139";
         public const string EquipObjecttoDominantHand = "c840f770-80aa-4e96-8677-963a2ca3cff1";
         public const string EquipObjecttoOffHand = "52da50b9-2d34-4128-a1bd-3e056f236e2c";
         public const string EventDefinition = "7d72a1fa-a434-4437-a73a-51f306a3f55f";
@@ -382,6 +397,10 @@ namespace RRCGGenerated
         public const string LocalPlayerEnableInteractionwithTargetPlayer = "47455638-8ac9-4b9c-8201-20a12d43d513";
         public const string LocalPlayerGazeDirection = "6b68c3d8-8e26-43d2-bd6d-37944ae80963";
         public const string LocalPlayerGazeOrigin = "44d9ad9e-8f31-4588-903d-1bbe8d3c3b70";
+        public const string LocalPlayerGetObjectiveLogContent = "809ba66c-8877-4d74-ac4b-2d0730a1b576";
+        public const string LocalPlayerGetObjectiveLogEnabled = "ab20a5af-2d16-494c-b376-0fb5d2c59258";
+        public const string LocalPlayerSetObjectiveLogContent = "a060bad3-3111-4b9d-add3-5e6af3a4a151";
+        public const string LocalPlayerSetObjectiveLogEnabled = "5013021c-3243-4cc2-bd39-06abddb38c9c";
         public const string LocalPlayerSetPlayerNametagVisibility = "a73655df-b37b-4c02-a19a-4eb05ce75a14";
         public const string Logarithm = "28a105ab-a947-4493-a51d-ced76a9601ee";
         public const string LogError = "5aadca49-47b3-423e-b536-6b41b0acbfde";
@@ -446,6 +465,7 @@ namespace RRCGGenerated
         public const string PlayerGetCostume = "c6778471-488c-4bc8-8e05-c322b91e1180";
         public const string PlayerGetCrouchInputEnabled = "974059d8-f0cf-4b33-a467-c3403d56f2a6";
         public const string PlayerGetDominantHandIsRight = "2cc92be4-ca23-4148-88d6-71cfb9b7fd58";
+        public const string PlayerGetEquipmentSlotIsEnabled = "c8470b28-0f2c-4a60-80e5-e6dac582a0ab";
         public const string PlayerGetEquippedObjects = "f0827a17-7d21-45ba-b302-c2b068bd50ca";
         public const string PlayerGetFirstwithTag = "48364320-cb02-41d8-9d8f-50291131dad2";
         public const string PlayerGetForceManualSprint = "7b099bfd-965c-4d78-9e7b-59114bf64dbb";
@@ -507,6 +527,7 @@ namespace RRCGGenerated
         public const string PlayerRightHandVelocity = "aba06411-9c8c-477a-bc7f-76ab5605c85d";
         public const string PlayerSetCanTeleport = "de2df219-9d85-4778-a9a3-255d912596a2";
         public const string PlayerSetCrouchInputEnabled = "046d23a2-5f34-40dc-a586-008c7bc391f0";
+        public const string PlayerSetEquipmentSlotIsEnabled = "8557a9c5-2656-4245-ae4e-c04bb6de0cd8";
         public const string PlayerSetForceManualSprint = "25663723-fc4c-454f-9d33-d28120163245";
         public const string PlayerSetForceVirtualHeightMode = "2d73b51d-5703-4a1a-bb80-acc05161e3dc";
         public const string PlayerSetForceVRWalk = "c4fa9164-e585-4813-93f4-b31da5635a8b";
@@ -523,6 +544,7 @@ namespace RRCGGenerated
         public const string PlayerSetWalkSpeed = "56454777-7c0d-4d1c-acd2-112d7c7a0e31";
         public const string PlayerShowSubtitle = "abaae687-e943-4534-bb78-2c8d7e17c425";
         public const string PlayerSubscribesToRoomOwner = "7e321d9b-4500-4917-9361-a32e1463401c";
+        public const string PlayerUnequipFromSlot = "a672e48b-931e-48d3-ba8c-34b3f415919c";
         public const string PlayerUnequipInventoryItem = "944c8ed8-a0da-465d-95f8-e1b7a850ef2d";
         public const string PlayerVariable = "ea61960b-3a53-426e-b87c-f0e94dd2c3da";
         public const string PlayerVariableDeprecated = "1094590a-ca33-4ca0-8e6b-66d784f4b5d7";
@@ -583,6 +605,7 @@ namespace RRCGGenerated
         public const string RemovePlayerFromRadioChannel = "eb605a54-315e-495e-b051-8d113c32ed7c";
         public const string RemoveTag = "207c6721-b242-4dc2-857d-ebd1ff7c8624";
         public const string RemoveTags = "fb368814-daaf-475f-ae08-1d01b9d63b8e";
+        public const string RequestVelocitySetOverDuration = "73a26510-9160-4e68-93dc-da60aa68a514";
         public const string Reroute = "f8db4ba2-7380-49a0-a0ba-bcdca11fec96";
         public const string ResetPlayerWorldUI = "962aaeb2-b80a-4b5a-9b21-de0917c35a1c";
         public const string ResetRoom = "e921b08d-10c2-4be4-86fe-b8c7155cb97b";
@@ -707,12 +730,14 @@ namespace RRCGGenerated
         public const string StudioEventSenderStringFloat = "e394ced1-c594-4750-a4c1-6e861cfe57c0";
         public const string StudioEventSenderStringInt = "dabac52b-26ef-422d-bded-e9234449b989";
         public const string StudioEventSenderStringString = "06225a58-e343-4cec-b93b-949f69a430c7";
+        public const string StudioFunction = "43847b33-9777-474f-be65-caccfffc8579";
         public const string StudioObjectGetPropertyBool = "7ab38485-8d7c-4c98-b8f3-55a11d4ab741";
         public const string StudioObjectGetPropertyFloat = "0dda9345-0211-4757-8fea-03e05fac89c3";
         public const string StudioObjectGetPropertyInt = "4467dc43-b07c-41fc-9e43-21ebf8f86554";
         public const string StudioObjectGetPropertyString = "a0708f14-89b6-4ef7-97eb-38359a57422f";
         public const string Subtract = "1fbb364c-1af0-44bb-a82b-905caeb6819a";
         public const string SunConstant = "26062297-4aab-4fd4-bfb8-95fbf64f6bb7";
+        public const string SwingHandleGetIsSwinging = "cdebca62-2e6c-4353-8691-d1daae868f5f";
         public const string Tan = "13dbbd78-11c0-4b4f-9098-1ef59e584324";
         public const string TextGetColor = "2b28277e-29a1-4b97-b151-2f23ff28c4c2";
         public const string TextGetText = "3e8fbb88-3179-4a4c-9f8f-d9c2db35b9b5";

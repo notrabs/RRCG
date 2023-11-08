@@ -552,6 +552,16 @@ namespace RRCGGenerated
             return;
         }
 
+        public static IntPort AnimationGetFrame(AnimationControllerPort Animator)
+        {
+            Node node = new Node()
+            {Name = "Animation Get Frame", Type = "5460ad14-4d51-4925-bd27-1ced46f10cb4", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Animator, new Port{Node = node, Index = 0});
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static BoolPort AnimationGetIsPlaying(AnimationControllerPort Animator)
         {
             Node node = new Node()
@@ -566,6 +576,16 @@ namespace RRCGGenerated
         {
             Node node = new Node()
             {Name = "Animation Get Speed", Type = "e73794bd-fd60-4284-90ca-f5169700fa23", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Animator, new Port{Node = node, Index = 0});
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static FloatPort AnimationGetTimeStamp(AnimationControllerPort Animator)
+        {
+            Node node = new Node()
+            {Name = "Animation Get Time Stamp", Type = "19a1867b-8322-45b5-9971-c91b246663f3", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Animator, new Port{Node = node, Index = 0});
             var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
@@ -610,6 +630,17 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Animator, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Speed, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void AnimationSetTimeStamp(AnimationControllerPort Animator, FloatPort TimeStamp)
+        {
+            Node node = new Node()
+            {Name = "Animation Set Time Stamp", Type = "2cee5b7c-d9d1-455d-913c-10441527c798", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Animator, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, TimeStamp, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }
@@ -1256,6 +1287,27 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static BoolPort CollisionDetectionVolumeGetEnabled(CollisionDetectionVolumePort Target)
+        {
+            Node node = new Node()
+            {Name = "Collision Detection Volume Get Enabled", Type = "9b5e9c57-babc-4e7a-a728-97bef7a11cfc", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static void CollisionDetectionVolumeSetEnabled(CollisionDetectionVolumePort Target, BoolPort Enabled)
+        {
+            Node node = new Node()
+            {Name = "Collision Detection Volume Set Enabled", Type = "711cadd1-24b0-4969-9fba-f65cbaeab3c5", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Enabled, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
         public static ColorPort ColorConstant()
         {
             Node node = new Node()
@@ -1808,6 +1860,109 @@ namespace RRCGGenerated
             var output_ports = new DestinationRoomPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return output_ports;
+        }
+
+        public static (StringPort BodyText, BoolPort IsInteractive) DialogueUIGetDialogueText(DialogueUIPort Target)
+        {
+            Node node = new Node()
+            {Name = "Dialogue UI Get Dialogue Text", Type = "ecd48cf6-f25a-4650-a120-4bbf05fbfa1c", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = (new StringPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
+        }
+
+        public static BoolPort DialogueUIGetIsEnabled(DialogueUIPort Target)
+        {
+            Node node = new Node()
+            {Name = "Dialogue UI Get Is Enabled", Type = "24e650ed-b099-44ba-944a-d33ea34fff8b", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort DialogueUIGetTitleIsEnabled(DialogueUIPort Target)
+        {
+            Node node = new Node()
+            {Name = "Dialogue UI Get Title Is Enabled", Type = "44661525-612e-4032-8278-fcb15a72aee0", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static StringPort DialogueUIGetTitleText(DialogueUIPort Target)
+        {
+            Node node = new Node()
+            {Name = "Dialogue UI Get Title Text", Type = "17a13c0d-f5c0-4806-b6ee-1af03eb81bdb", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static void DialogueUISetButtonState(DialogueUIPort Target, BoolPort Button1Enabled, StringPort Button1Text, BoolPort Button2Enabled, StringPort Button2Text, BoolPort Button3Enabled, StringPort Button3Text, BoolPort Button4Enabled, StringPort Button4Text)
+        {
+            Node node = new Node()
+            {Name = "Dialogue UI Set Button State", Type = "f4772dae-d4e3-489c-8943-8fe88160ab5c", InputCount = 10};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Button1Enabled, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Button1Text, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, Button2Enabled, new Port{Node = node, Index = 4});
+            node.ConnectInputPort(Context.current, Button2Text, new Port{Node = node, Index = 5});
+            node.ConnectInputPort(Context.current, Button3Enabled, new Port{Node = node, Index = 6});
+            node.ConnectInputPort(Context.current, Button3Text, new Port{Node = node, Index = 7});
+            node.ConnectInputPort(Context.current, Button4Enabled, new Port{Node = node, Index = 8});
+            node.ConnectInputPort(Context.current, Button4Text, new Port{Node = node, Index = 9});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void DialogueUISetDialogueText(DialogueUIPort Target, StringPort BodyText, BoolPort IsInteractive)
+        {
+            Node node = new Node()
+            {Name = "Dialogue UI Set Dialogue Text", Type = "bc6602e4-e88b-4db4-9655-0a6baf50997e", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, BodyText, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, IsInteractive, new Port{Node = node, Index = 3});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void DialogueUISetIsEnabled(DialogueUIPort Target, BoolPort IsEnabled)
+        {
+            Node node = new Node()
+            {Name = "Dialogue UI Set Is Enabled", Type = "a348af16-bd74-4da6-a3e1-1bf1e2456eba", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, IsEnabled, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void DialogueUISetTitleIsEnabled(DialogueUIPort Target, BoolPort IsEnabled)
+        {
+            Node node = new Node()
+            {Name = "Dialogue UI Set Title Is Enabled", Type = "54a8ee30-21fa-4f74-8f54-5c8936a2e7bb", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, IsEnabled, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void DialogueUISetTitleText(DialogueUIPort Target, StringPort TitleText)
+        {
+            Node node = new Node()
+            {Name = "Dialogue UI Set Title Text", Type = "45566130-ee6e-4eca-8f05-7e264001afc1", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, TitleText, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
         }
 
         public static PlayerPort DiceGetPlayerRolled(DiePort Target)
@@ -2608,6 +2763,15 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, A, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, B, new Port{Node = node, Index = 1});
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static EquipmentSlotPort EquipmentSlot()
+        {
+            Node node = new Node()
+            {Name = "Equipment Slot", Type = "1abf31dd-fa6e-43bb-9eb4-94a06e62f139", InputCount = 0};
+            Context.current.Nodes.Add(node);
+            var output_ports = new EquipmentSlotPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -5921,6 +6085,47 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static (StringPort HeaderText, ColorPort HeaderTextColor, StringPort BodyText, ColorPort BodyTextColor) LocalPlayerGetObjectiveLogContent()
+        {
+            Node node = new Node()
+            {Name = "Local Player Get Objective Log Content", Type = "809ba66c-8877-4d74-ac4b-2d0730a1b576", InputCount = 0};
+            Context.current.Nodes.Add(node);
+            var output_ports = (new StringPort{Port = new Port{Node = node, Index = 0}}, new ColorPort{Port = new Port{Node = node, Index = 1}}, new StringPort{Port = new Port{Node = node, Index = 2}}, new ColorPort{Port = new Port{Node = node, Index = 3}});
+            return output_ports;
+        }
+
+        public static BoolPort LocalPlayerGetObjectiveLogEnabled()
+        {
+            Node node = new Node()
+            {Name = "Local Player Get Objective Log Enabled", Type = "ab20a5af-2d16-494c-b376-0fb5d2c59258", InputCount = 0};
+            Context.current.Nodes.Add(node);
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static void LocalPlayerSetObjectiveLogContent(StringPort HeaderText, ColorPort HeaderTextColor, StringPort BodyText, ColorPort BodyTextColor)
+        {
+            Node node = new Node()
+            {Name = "Local Player Set Objective Log Content", Type = "a060bad3-3111-4b9d-add3-5e6af3a4a151", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, HeaderText, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, HeaderTextColor, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, BodyText, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, BodyTextColor, new Port{Node = node, Index = 4});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void LocalPlayerSetObjectiveLogEnabled(BoolPort Enable)
+        {
+            Node node = new Node()
+            {Name = "Local Player Set Objective Log Enabled", Type = "5013021c-3243-4cc2-bd39-06abddb38c9c", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Enable, new Port{Node = node, Index = 1});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
         public static void LocalPlayerSetPlayerNametagVisibility(PlayerPort Player, BoolPort Enabled)
         {
             Node node = new Node()
@@ -6669,6 +6874,17 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static BoolPort PlayerGetEquipmentSlotIsEnabled(PlayerPort Player, EquipmentSlotPort EquipmentSlot)
+        {
+            Node node = new Node()
+            {Name = "Player Get Equipment Slot Is Enabled", Type = "c8470b28-0f2c-4a60-80e5-e6dac582a0ab", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, EquipmentSlot, new Port{Node = node, Index = 1});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static (RecRoomObjectPort DominantHandObject, RecRoomObjectPort OffHandObject, RecRoomObjectPort LeftHipHolsterObject, RecRoomObjectPort RightHipHolsterObject, RecRoomObjectPort ShoulderHolsterObject) PlayerGetEquippedObjects(PlayerPort Player)
         {
             Node node = new Node()
@@ -7305,6 +7521,18 @@ namespace RRCGGenerated
             return;
         }
 
+        public static void PlayerSetEquipmentSlotIsEnabled(PlayerPort Player, EquipmentSlotPort EquipmentSlot, BoolPort IsEnabled)
+        {
+            Node node = new Node()
+            {Name = "Player Set Equipment Slot Is Enabled", Type = "8557a9c5-2656-4245-ae4e-c04bb6de0cd8", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, EquipmentSlot, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, IsEnabled, new Port{Node = node, Index = 3});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
         public static void PlayerSetForceManualSprint(PlayerPort Player, BoolPort ForceManualSprint)
         {
             Node node = new Node()
@@ -7479,6 +7707,23 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new IntPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
+        }
+
+        public static BoolPort PlayerUnequipFromSlot(PlayerPort Player, EquipmentSlotPort EquipmentSlot, AlternativeExec<BoolPort> OnUnequipComplete)
+        {
+            Node node = new Node()
+            {Name = "Player Unequip From Slot", Type = "a672e48b-931e-48d3-ba8c-34b3f415919c", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, EquipmentSlot, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 2}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnUnequipComplete(output_ports);
+            ExecFlow.current = mainFlow;
             return output_ports;
         }
 
@@ -8191,6 +8436,32 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Tags, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void RequestVelocitySetOverDuration(PlayerPort Object, FloatPort Multiplier, Vector3Port Velocity, FloatPort Duration)
+        {
+            Node node = new Node()
+            {Name = "Request Velocity Set Over Duration", Type = "73a26510-9160-4e68-93dc-da60aa68a514", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Multiplier, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Velocity, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, Duration, new Port{Node = node, Index = 4});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void RequestVelocitySetOverDuration(RecRoomObjectPort Object, FloatPort Multiplier, Vector3Port Velocity, FloatPort Duration)
+        {
+            Node node = new Node()
+            {Name = "Request Velocity Set Over Duration", Type = "73a26510-9160-4e68-93dc-da60aa68a514", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Multiplier, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Velocity, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, Duration, new Port{Node = node, Index = 4});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }
@@ -9880,6 +10151,15 @@ namespace RRCGGenerated
             return;
         }
 
+        public static void StudioFunction()
+        {
+            Node node = new Node()
+            {Name = "Studio Function", Type = "43847b33-9777-474f-be65-caccfffc8579", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
         public static BoolPort StudioObjectGetPropertyBool(StudioObjectPort StudioObject, StringPort Property)
         {
             Node node = new Node()
@@ -9960,6 +10240,16 @@ namespace RRCGGenerated
             {Name = "Sun Constant", Type = "26062297-4aab-4fd4-bfb8-95fbf64f6bb7", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new SunPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort SwingHandleGetIsSwinging(SwingHandlePort Target)
+        {
+            Node node = new Node()
+            {Name = "Swing Handle Get Is Swinging", Type = "cdebca62-2e6c-4353-8691-d1daae868f5f", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -10747,26 +11037,26 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void VelocitySet(PlayerPort Target, FloatPort Speed, Vector3Port Direction)
+        public static void VelocitySet(PlayerPort Target, FloatPort Multiplier, Vector3Port Velocity)
         {
             Node node = new Node()
             {Name = "Velocity Set", Type = "ea00c655-56ff-4406-8d65-b8399e6d0169", InputCount = 4};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            node.ConnectInputPort(Context.current, Speed, new Port{Node = node, Index = 2});
-            node.ConnectInputPort(Context.current, Direction, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, Multiplier, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Velocity, new Port{Node = node, Index = 3});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }
 
-        public static void VelocitySet(RecRoomObjectPort Target, FloatPort Speed, Vector3Port Direction)
+        public static void VelocitySet(RecRoomObjectPort Target, FloatPort Multiplier, Vector3Port Velocity)
         {
             Node node = new Node()
             {Name = "Velocity Set", Type = "ea00c655-56ff-4406-8d65-b8399e6d0169", InputCount = 4};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            node.ConnectInputPort(Context.current, Speed, new Port{Node = node, Index = 2});
-            node.ConnectInputPort(Context.current, Direction, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, Multiplier, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Velocity, new Port{Node = node, Index = 3});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }

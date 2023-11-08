@@ -1,6 +1,5 @@
 ﻿
 using RRCG;
-using RRCGSource;
 using System;
 using UnityEngine;
 
@@ -440,4 +439,6 @@ namespace RRCGBuild
     public class StatePort : AnyPort { }
     public class GrabberPort : AnyPort { }
     public class EquipmentSlotPort : AnyPort { }
+    public class DialogueUIPort : AnyPort { }
+    public class CollisionDetectionVolumePort : AnyPort { }
 }
