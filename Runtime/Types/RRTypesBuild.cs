@@ -80,6 +80,33 @@ namespace RRCGBuild
 
         public static implicit operator StringPort(string data) => new StringPort { Data = data };
         public static explicit operator string(StringPort data) => data.AsData<string>();
+
+        public IntPort Length
+        {
+            get
+            {
+                if (IsActualPort) return CircuitBuilder.Singleton("String_Length_" + Port.PortKey(), () => ChipBuilder.StringLength(this));
+
+                string str = (string)Data;
+                return new IntPort { Data = str.Length };
+            }
+        }
+
+        public StringPort ToUpper()
+        {
+            if (IsActualPort) return CircuitBuilder.Singleton("String_To_Upper_" + Port.PortKey(), () => ChipBuilder.StringToUpper(this));
+
+            string str = (string)Data;
+            return new StringPort { Data = str.ToUpper() };
+        }
+
+        public StringPort ToLower()
+        {
+            if (IsActualPort) return CircuitBuilder.Singleton("String_To_Lower_" + Port.PortKey(), () => ChipBuilder.StringToLower(this));
+
+            string str = (string)Data;
+            return new StringPort { Data = str.ToLower() };
+        }
     }
     public class IntPort : AnyPort
     {
@@ -105,6 +132,9 @@ namespace RRCGBuild
             if (a.IsDataPort && b.IsDataPort) return new IntPort { Data = a.Data - b.Data };
             return ChipBuilder.Subtract(a, b);
         }
+
+        public static IntPort MaxValue => new IntPort { Data = int.MaxValue };
+        public static IntPort MinValue => new IntPort { Data = int.MinValue };
     }
     public class FloatPort : AnyPort
     {
@@ -130,6 +160,9 @@ namespace RRCGBuild
             if (a.IsDataPort && b.IsDataPort) return new FloatPort { Data = a.Data - b.Data };
             return ChipBuilder.Subtract(a, b);
         }
+
+        public static FloatPort PositiveInfinity => new FloatPort { Data = float.PositiveInfinity };
+        public static FloatPort NegativeInfinity => new FloatPort { Data = float.NegativeInfinity };
     }
     public class BoolPort : AnyPort
     {
@@ -185,7 +218,48 @@ namespace RRCGBuild
     public class QuaternionPort : AnyPort
     {
         public static QuaternionPort identity { get => CircuitBuilder.Singleton("Quaternion_identity", () => ChipBuilder.QuaternionCreate(0, 0, 0, 1)); }
+
+        public QuaternionPort() { }
+
+        public QuaternionPort(FloatPort x, FloatPort y, FloatPort z, FloatPort w)
+        {
+            Port = ChipBuilder.QuaternionCreate(x, y, z, w).Port;
+        }
+
+        public Vector3Port eulerAngles
+        {
+            get
+            {
+                if (IsActualPort) return CircuitBuilder.Singleton("Quaternion_eulerAngles_" + Port.PortKey(), () => ChipBuilder.QuaternionEulerAngles(this));
+
+                var q = (Quaternion)Data;
+                return new Vector3Port() { Data = q.eulerAngles };
+            }
+        }
+
+        public QuaternionPort normalized
+        {
+            get
+            {
+                if (IsActualPort) return CircuitBuilder.Singleton("Quaternion_normalized_" + Port.PortKey(), () => ChipBuilder.QuaternionNormalize(this));
+
+                var q = (Quaternion)Data;
+                return new QuaternionPort() { Data = q.normalized };
+            }
+        }
+
+        public (FloatPort X, FloatPort Y, FloatPort Z, FloatPort W) split
+        {
+            get
+            {
+                if (IsActualPort) return CircuitBuilder.Singleton("Quaternion_split_" + Port.PortKey(), () => ChipBuilder.QuaternionSplit(this));
+
+                var q = (Quaternion)Data;
+                return (q.x, q.y, q.z, q.w);
+            }
+        }
     }
+
     public class ObjectPort : AnyPort { }
     public class AIPort : AnyPort { }
     public class WelcomeMatPort : AnyPort
