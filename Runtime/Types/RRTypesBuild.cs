@@ -58,10 +58,7 @@ namespace RRCGBuild
             }
         }
 
-        public IntPort Count
-        {
-            get { return ChipBuilder.ListGetCount(this); }
-        }
+        public IntPort Count => CircuitBuilder.Singleton("List_Get_Count_" + Port.PortKey(), () => ChipBuilder.ListGetCount(this));
     }
     public class RRTuplePort<T0, T1> : AnyPort { }
     public class ColorPort : AnyPort
