@@ -4065,7 +4065,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort GreaterThanDepreacted(IntPort A, IntPort B)
+        public static BoolPort GreaterThanDeprecated(IntPort A, IntPort B)
         {
             Node node = new Node()
             {Name = "Greater Than", Type = "110c29b1-ac90-4a71-b3c0-53372aa134bc", InputCount = 2};
@@ -4076,7 +4076,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort GreaterThanDepreacted(FloatPort A, FloatPort B)
+        public static BoolPort GreaterThanDeprecated(FloatPort A, FloatPort B)
         {
             Node node = new Node()
             {Name = "Greater Than", Type = "110c29b1-ac90-4a71-b3c0-53372aa134bc", InputCount = 2};
@@ -4087,7 +4087,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort GreaterThanOrEqualDepreacted(IntPort A, IntPort B)
+        public static BoolPort GreaterThanOrEqualDeprecated(IntPort A, IntPort B)
         {
             Node node = new Node()
             {Name = "Greater or Equal", Type = "a10e7788-f016-4390-a68e-87d93b47edb1", InputCount = 2};
@@ -4098,7 +4098,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort GreaterThanOrEqualDepreacted(FloatPort A, FloatPort B)
+        public static BoolPort GreaterThanOrEqualDeprecated(FloatPort A, FloatPort B)
         {
             Node node = new Node()
             {Name = "Greater or Equal", Type = "a10e7788-f016-4390-a68e-87d93b47edb1", InputCount = 2};
@@ -5245,7 +5245,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort LessThanDepreacted(IntPort A, IntPort B)
+        public static BoolPort LessThanDeprecated(IntPort A, IntPort B)
         {
             Node node = new Node()
             {Name = "Less Than", Type = "7e58b3f4-2694-4ced-b3a8-0fe23f48f60f", InputCount = 2};
@@ -5256,7 +5256,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort LessThanDepreacted(FloatPort A, FloatPort B)
+        public static BoolPort LessThanDeprecated(FloatPort A, FloatPort B)
         {
             Node node = new Node()
             {Name = "Less Than", Type = "7e58b3f4-2694-4ced-b3a8-0fe23f48f60f", InputCount = 2};
@@ -5267,7 +5267,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort LessThanOrEqualDepreacted(IntPort A, IntPort B)
+        public static BoolPort LessThanOrEqualDeprecated(IntPort A, IntPort B)
         {
             Node node = new Node()
             {Name = "Less or Equal", Type = "a027073f-9189-457f-a53d-8562e8829daf", InputCount = 2};
@@ -5278,7 +5278,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort LessThanOrEqualDepreacted(FloatPort A, FloatPort B)
+        public static BoolPort LessThanOrEqualDeprecated(FloatPort A, FloatPort B)
         {
             Node node = new Node()
             {Name = "Less or Equal", Type = "a027073f-9189-457f-a53d-8562e8829daf", InputCount = 2};
@@ -10435,7 +10435,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static StringPort ToStringDepreacted<T>(T Value)
+        public static StringPort ToStringDeprecated<T>(T Value)
             where T : AnyPort, new()
         {
             Node node = new Node()

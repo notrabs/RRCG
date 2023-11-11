@@ -3032,7 +3032,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if input A is greater than input B.
         /// </summary>
-        public static bool GreaterThanDepreacted(int A, int B)
+        public static bool GreaterThanDeprecated(int A, int B)
         {
             return default;
         }
@@ -3040,7 +3040,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if input A is greater than input B.
         /// </summary>
-        public static bool GreaterThanDepreacted(float A, float B)
+        public static bool GreaterThanDeprecated(float A, float B)
         {
             return default;
         }
@@ -3048,7 +3048,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if input A is greater than or equal to input B.
         /// </summary>
-        public static bool GreaterThanOrEqualDepreacted(int A, int B)
+        public static bool GreaterThanOrEqualDeprecated(int A, int B)
         {
             return default;
         }
@@ -3056,7 +3056,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if input A is greater than or equal to input B.
         /// </summary>
-        public static bool GreaterThanOrEqualDepreacted(float A, float B)
+        public static bool GreaterThanOrEqualDeprecated(float A, float B)
         {
             return default;
         }
@@ -3832,7 +3832,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if input A is less than input B.
         /// </summary>
-        public static bool LessThanDepreacted(int A, int B)
+        public static bool LessThanDeprecated(int A, int B)
         {
             return default;
         }
@@ -3840,7 +3840,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if input A is less than input B.
         /// </summary>
-        public static bool LessThanDepreacted(float A, float B)
+        public static bool LessThanDeprecated(float A, float B)
         {
             return default;
         }
@@ -3848,7 +3848,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if input A is less than or equal to input B.
         /// </summary>
-        public static bool LessThanOrEqualDepreacted(int A, int B)
+        public static bool LessThanOrEqualDeprecated(int A, int B)
         {
             return default;
         }
@@ -3856,7 +3856,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if input A is less than or equal to input B.
         /// </summary>
-        public static bool LessThanOrEqualDepreacted(float A, float B)
+        public static bool LessThanOrEqualDeprecated(float A, float B)
         {
             return default;
         }
@@ -7595,7 +7595,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Converts the input value to the string type. Example: the integer input 10 would output "10" as a string. Helpful for debugging purposes.
         /// </summary>
-        public static string ToStringDepreacted<T>(T Value)
+        public static string ToStringDeprecated<T>(T Value)
         {
             return default;
         }

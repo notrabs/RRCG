@@ -250,8 +250,8 @@ namespace RRCGGenerated
         public const string GraphGetIsActive = "539cb9a4-39a4-4932-8f36-b249748cff9e";
         public const string GreaterorEqual = "f3ced0d8-396e-4311-a807-8ffd9b147060";
         public const string GreaterThan = "65aa2570-98b8-413b-a9a9-2eae9f562871";
-        public const string GreaterThanDepreacted = "110c29b1-ac90-4a71-b3c0-53372aa134bc";
-        public const string GreaterThanOrEqualDepreacted = "a10e7788-f016-4390-a68e-87d93b47edb1";
+        public const string GreaterThanDeprecated = "110c29b1-ac90-4a71-b3c0-53372aa134bc";
+        public const string GreaterThanOrEqualDeprecated = "a10e7788-f016-4390-a68e-87d93b47edb1";
         public const string GroundVehicleAddBoostFuel = "dc78ca9e-29c4-4cba-a6cb-3ea87ffbe780";
         public const string GroundVehicleApplyBoost = "29dd429b-81e5-40c7-b3b6-8d03bcc1eec3";
         public const string GroundVehicleGetBoostFuel = "76d46244-7b8e-43de-bd8c-55375411ffe1";
@@ -334,8 +334,8 @@ namespace RRCGGenerated
         public const string LerpUnclamped = "6e9219ab-89d2-47e3-a105-562a9a1fddda";
         public const string LessorEqual = "8c78eedf-f79e-4f70-b187-65092893d1b6";
         public const string LessThan = "a05cd0de-609a-4d92-93ad-65b635306233";
-        public const string LessThanDepreacted = "7e58b3f4-2694-4ced-b3a8-0fe23f48f60f";
-        public const string LessThanOrEqualDepreacted = "a027073f-9189-457f-a53d-8562e8829daf";
+        public const string LessThanDeprecated = "7e58b3f4-2694-4ced-b3a8-0fe23f48f60f";
+        public const string LessThanOrEqualDeprecated = "a027073f-9189-457f-a53d-8562e8829daf";
         public const string LightGetAngle = "8a6c0623-7585-402c-8734-7fa7248b15a0";
         public const string LightGetColor = "bc45bb9f-619a-48c4-a3ed-14596c83424f";
         public const string LightGetEnabled = "d5eafcf1-1762-4ece-bc31-7e2eddac253e";
@@ -755,7 +755,7 @@ namespace RRCGGenerated
         public const string ToggleButtonSetIsPressed = "fdfb3857-3d13-4d66-9a05-f88586e9f821";
         public const string ToRecRoomObject = "315a494e-84cc-4e3c-acff-389bb932b5d0";
         public const string ToString = "bddc8e4e-b496-48ee-8e25-5b9fe8e1c6c9";
-        public const string ToStringDepreacted = "74e81edb-84bd-4e52-b2f3-a73a62a6b3aa";
+        public const string ToStringDeprecated = "74e81edb-84bd-4e52-b2f3-a73a62a6b3aa";
         public const string TouchpadComponentGetActiveTouch = "b83d2e2f-61e8-4490-8a81-d38c88fff8d1";
         public const string TouchpadComponentGetInteractionLabel = "32aa1ef2-a230-430b-9809-19c114b1fe44";
         public const string TouchpadComponentGetIsEnabled = "64ca9ac0-04a8-4460-afe5-64a927f1ca4a";
