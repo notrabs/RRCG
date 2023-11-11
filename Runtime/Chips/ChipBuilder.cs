@@ -578,14 +578,6 @@ namespace RRCGBuild
 
             return new T() { Port = self.Port };
         }
-
-        //
-        // Configurable
-        // 
-        public static void PlayAudioAtPosition(AudioPort Audio, Vector3Port Position, FloatPort Volume, FloatPort PlaybackSpeed, BoolPort Is2D, PlayAudioAtPositionData config) {
-            PlayAudioAtPosition(Audio, Position, Volume, PlaybackSpeed, Is2D);
-            Context.lastSpawnedNode.PlayAudioAtPositionData = config;
-        }
     }
 }
 

@@ -237,6 +237,9 @@ namespace RRCG
 
         public override SyntaxNode VisitIdentifierName(IdentifierNameSyntax node)
         {
+            // Some RRTypes have chips with identical names. This makes sure their functions can still be called.
+            if (node.Parent is InvocationExpressionSyntax) return base.VisitIdentifierName(node);
+
             switch (node.Identifier.ValueText)
             {
                 case "AI":

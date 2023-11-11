@@ -26,6 +26,8 @@ namespace RRCGBuild
 
         public SFXConstantData? SFXConstantData = null;
         public PlayAudioAtPositionData? PlayAudioAtPositionData = null;
+        public PlayerWorldUIData? PlayerWorldUIData = null;
+
         public string RoomKey = null;
         public string RoomCurrency = null;
 

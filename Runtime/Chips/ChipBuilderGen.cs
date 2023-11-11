@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RRCGBuild;
+using RRCG;
 
 namespace RRCGGenerated
 {
@@ -6726,7 +6727,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void PlayAudioAtPosition(AudioPort Audio, Vector3Port Position, FloatPort Volume, FloatPort PlaybackSpeed, BoolPort Is2D)
+        public static void PlayAudioAtPosition(AudioPort Audio, Vector3Port Position, FloatPort Volume, FloatPort PlaybackSpeed, BoolPort Is2D, PlayAudioAtPositionData config)
         {
             Node node = new Node()
             {Name = "Play Audio At Position", Type = "9b26c819-856c-4678-a3dc-db070ba492cc", InputCount = 6};
@@ -6737,6 +6738,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, PlaybackSpeed, new Port{Node = node, Index = 4});
             node.ConnectInputPort(Context.current, Is2D, new Port{Node = node, Index = 5});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.PlayAudioAtPositionData = config;
             return;
         }
 
@@ -7766,12 +7768,13 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static PlayerWorldUIPort PlayerWorldUI()
+        public static PlayerWorldUIPort PlayerWorldUI(PlayerWorldUIData config)
         {
             Node node = new Node()
             {Name = "Player World UI", Type = "ff2d1f81-d76c-456f-acf0-af1861822681", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new PlayerWorldUIPort{Port = new Port{Node = node, Index = 0}};
+            node.PlayerWorldUIData = config;
             return output_ports;
         }
 
@@ -9605,12 +9608,13 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static AudioPort SFXConstant()
+        public static AudioPort SFXConstant(SFXConstantData config)
         {
             Node node = new Node()
             {Name = "SFX Constant", Type = "d65a4666-5036-436b-ad42-a20aafa2174d", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new AudioPort{Port = new Port{Node = node, Index = 0}};
+            node.SFXConstantData = config;
             return output_ports;
         }
 
@@ -10151,7 +10155,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void StudioFunction()
+        internal static void StudioFunction()
         {
             Node node = new Node()
             {Name = "Studio Function", Type = "43847b33-9777-474f-be65-caccfffc8579", InputCount = 1};

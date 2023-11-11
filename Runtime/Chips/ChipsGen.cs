@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RRCGSource;
+using RRCG;
 
 namespace RRCGGenerated
 {
@@ -4952,7 +4953,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static void PlayAudioAtPosition(Audio Audio, Vector3 Position, float Volume, float PlaybackSpeed, bool Is2D)
+        public static void PlayAudioAtPosition(Audio Audio, Vector3 Position, float Volume, float PlaybackSpeed, bool Is2D, PlayAudioAtPositionData config)
         {
             return;
         }
@@ -5715,7 +5716,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Define a set of world-space UI elements that can appear above a player.
         /// </summary>
-        public static PlayerWorldUI PlayerWorldUI()
+        public static PlayerWorldUI PlayerWorldUI(PlayerWorldUIData config)
         {
             return default;
         }
@@ -6979,7 +6980,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Choose from a selection of SFX, for use with the Audio Player.
         /// </summary>
-        public static Audio SFXConstant()
+        public static Audio SFXConstant(SFXConstantData config)
         {
             return default;
         }
@@ -7371,7 +7372,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static void StudioFunction()
+        internal static void StudioFunction()
         {
             return;
         }

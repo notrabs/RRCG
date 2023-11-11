@@ -29,8 +29,6 @@ namespace RRCGSource
         public static T ValueStringSwitch<T>(int match, T failed, Dictionary<string, T> cases) { return default; }
 
         public static T Self<T>() { return default; }
-
-        public static void PlayAudioAtPosition(Audio Audio, Vector3 Position, float Volume, float PlaybackSpeed, bool Is2D, PlayAudioAtPositionData config) { return; }
     }
 }
 

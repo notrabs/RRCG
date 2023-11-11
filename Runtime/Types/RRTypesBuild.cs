@@ -290,19 +290,9 @@ namespace RRCGBuild
     {
         public SFXConstantData SFXData;
 
-        public static AudioPort AudioSFXConstant(string clipName, float volume, float speedShift, float speedVariation)
-        {
-            ChipBuilder.SFXConstant();
-            var node = Context.lastSpawnedNode;
-
-            node.SFXConstantData = new SFXConstantData(clipName, volume, speedShift, speedVariation);
-
-            return new AudioPort() { Port = node.Port(0, 0) };
-        }
-
         public static AudioPort AudioSFXConstant(string clipName)
         {
-            return AudioSFXConstant(clipName, 1f, 0f, 0f);
+            return ChipBuilder.SFXConstant(new SFXConstantData(clipName));
         }
 
         public static AudioPort SFX_Click { get => CircuitBuilder.Singleton("SFX_Click", () => AudioSFXConstant("Click")); }
@@ -354,18 +344,7 @@ namespace RRCGBuild
     {
         public static implicit operator DiePort(RecRoomObjectPort data) => new DiePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class PlayerWorldUIPort : AnyPort
-    {
-        public PlayerWorldUIPort() { }
-
-        public PlayerWorldUIPort(string name, WorldUIBar primary, WorldUIBar secondary, string text, bool synced, bool enableWhileJoining)
-        {
-            ChipBuilder.PlayerWorldUI();
-            var node = Context.lastSpawnedNode;
-
-            Port = node.Port(0, 0);
-        }
-    }
+    public class PlayerWorldUIPort : AnyPort { }
     public class RoomDoorPort : AnyPort
     {
         public static implicit operator RoomDoorPort(RecRoomObjectPort data) => new RoomDoorPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };

@@ -55,18 +55,7 @@ namespace RRCGSource
     public class Costume : AnyObject { }
     public class DestinationRoom : AnyObject { }
     public class Die : AnyObject { }
-    public class PlayerWorldUI : AnyObject
-    {
-        public struct WorldUIBar
-        {
-            bool Enabled;
-            int Value;
-            int MaxValue;
-            bool Animated;
-        }
-
-        public PlayerWorldUI(string name, WorldUIBar primary, WorldUIBar secondary, string text, bool synced, bool enableWhileJoining) { }
-    }
+    public class PlayerWorldUI : AnyObject { }
     public class RoomDoor : AnyObject { }
     public class Emitter : AnyObject { }
     public class ExplosionEmitter : AnyObject { }
