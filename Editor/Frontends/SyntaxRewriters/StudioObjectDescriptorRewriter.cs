@@ -1,13 +1,9 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using RRCGSource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace RRCG
@@ -66,6 +62,11 @@ namespace RRCG
                                 ).ToArray()
                         )));
                     }
+                    else if (SyntaxUtils.HasAttribute(method, "StudioFunction"))
+                    {
+                        // TODO: Define Syntax and update Studio Events (and leave ExistingStudioFunction intact)
+                        return null;
+                    }
                 }
 
                 return null;
@@ -99,8 +100,57 @@ namespace RRCG
 
         public override SyntaxNode VisitMethodDeclaration(MethodDeclarationSyntax method)
         {
-            if (!IsEventMethod(method)) return method;
+            if (IsStudioFunctionMethod(method)) return VisitStudioFunctionMethod(method);
+            if (IsEventMethod(method)) return VisitStudioEventMethod(method);
 
+            return method;
+        }
+
+        public SyntaxNode VisitStudioFunctionMethod(MethodDeclarationSyntax method)
+        {
+            var parameters = new List<ParameterSyntax>();
+            var statements = new List<StatementSyntax>();
+
+            foreach(var parameter in method.ParameterList.Parameters)
+            {
+                string portType = GetStudioFunctionPortType(parameter.Type.ToString());
+                parameters.Add(method.ParameterList.Parameters[0].WithType(IdentifierName(portType)));
+            }
+
+            statements.Add(ParseStatement($"__SpawnStudioFunctionChip(\"{method.Identifier.Text}\");"));
+
+            return method
+                .WithBody(Block(statements))
+                .WithParameterList(SyntaxUtils.ParameterList(parameters.ToArray()));
+        }
+
+        private string GetStudioFunctionPortType(string type)
+        {
+            switch (type)
+            {
+                case "bool":
+                    return "BoolPort";
+                case "float":
+                    return "FloatPort";
+                case "int":
+                    return "IntPort";
+                case "string":
+                    return "StringPort";
+                case "Color":
+                case "Color32":
+                    return "ColorPort";
+                case "Vector2":
+                case "Vector3":
+                    return "Vector3Port";
+                case "Quaternion":
+                    return "QuaternionPort";
+                default:
+                    throw new Exception("Unsupported type in Studio Function: " + type);
+            }
+        }
+
+        public SyntaxNode VisitStudioEventMethod(MethodDeclarationSyntax method)
+        {
             var parameters = new List<ParameterSyntax>();
             var statements = new List<StatementSyntax>();
 
@@ -167,6 +217,11 @@ namespace RRCG
         /// 
         /// Utils
         /// 
+
+        public bool IsStudioFunctionMethod(MethodDeclarationSyntax method)
+        {
+            return SyntaxUtils.HasAttribute(method, "StudioFunction") || SyntaxUtils.HasAttribute(method, "ExistingStudioFunction");
+        }
 
         public bool IsEventMethod(MethodDeclarationSyntax method)
         {

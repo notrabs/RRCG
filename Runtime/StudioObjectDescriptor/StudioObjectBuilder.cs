@@ -80,6 +80,11 @@ namespace RRCGBuild
             }
         }
 
+        public void __SpawnStudioFunctionChip(string fnName)
+        {
+            ChipBuilder.StudioFunction(new StudioFunctionData(gameObject.name, fnName));
+        }
+
         public IEnumerable<T> EnumerateRange<T>(params T[] rangeParams)
         {
             if (rangeParams.GetType() == typeof(int[]) && rangeParams.Length == 2)
@@ -118,7 +123,7 @@ namespace RRCGBuild
 
                 if (start <= end)
                 {
-                    for (int i = start; i < end; i+= increment) yield return i as dynamic;
+                    for (int i = start; i < end; i += increment) yield return i as dynamic;
                 }
                 else
                 {
@@ -153,4 +158,7 @@ namespace RRCGBuild
         public StudioEventRange(int start, int count, int increment = 1) { }
         public StudioEventRange(params object[] values) { }
     }
+
+    public class StudioFunction : Attribute { }
+    public class ExistingStudioFunction : Attribute { }
 }

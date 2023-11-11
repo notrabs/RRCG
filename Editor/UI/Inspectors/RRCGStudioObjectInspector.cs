@@ -22,10 +22,9 @@ namespace RRCG
 
             if (descriptorSelector.Draw(rrcgMeta)) return;
 
-            GUILayout.Label("Event Builder");
-            if (GUILayout.Button("Update Events", GUILayout.Height(50)))
+            if (GUILayout.Button("Update Events/Functions", GUILayout.Height(50)))
             {
-                RoslynFrontend.UpdateStudioEvents(rrcgMeta);
+                RoslynFrontend.UpdateRRO(rrcgMeta);
             }
         }
     }

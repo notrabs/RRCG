@@ -32,4 +32,7 @@ namespace RRCGSource
         public StudioEventRange(int start, int count, int increment = 1) { }
         public StudioEventRange(params object[] values) { }
     }
+
+    public class StudioFunction : Attribute { }
+    public class ExistingStudioFunction : Attribute { }
 }

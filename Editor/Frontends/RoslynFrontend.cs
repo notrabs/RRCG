@@ -48,7 +48,7 @@ namespace RRCG
             return context;
         }
 
-        public static void UpdateStudioEvents(RRCGStudioObject rrcgMeta)
+        public static void UpdateRRO(RRCGStudioObject rrcgMeta)
         {
             var type = Utils.GetTypeInAssembly(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
 
