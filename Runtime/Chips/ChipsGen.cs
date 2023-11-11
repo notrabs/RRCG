@@ -7372,7 +7372,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        internal static void StudioFunction()
+        internal static void StudioFunction(StudioFunctionData config)
         {
             return;
         }

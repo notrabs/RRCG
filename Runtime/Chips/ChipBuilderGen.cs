@@ -10155,12 +10155,13 @@ namespace RRCGGenerated
             return;
         }
 
-        internal static void StudioFunction()
+        internal static void StudioFunction(StudioFunctionData config)
         {
             Node node = new Node()
             {Name = "Studio Function", Type = "43847b33-9777-474f-be65-caccfffc8579", InputCount = 1};
             Context.current.Nodes.Add(node);
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.StudioFunctionData = config;
             return;
         }
 

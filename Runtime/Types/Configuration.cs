@@ -12,8 +12,8 @@ namespace RRCG
             { "SFXConstant", "SFXConstantData" },
             { "PlayAudioAtPosition", "PlayAudioAtPositionData" },
             { "PlayerWorldUI", "PlayerWorldUIData" },
+            { "StudioFunction", "StudioFunctionData" },
         };
-
     }
 
     public struct WorldUIBar
@@ -44,11 +44,11 @@ namespace RRCG
         public bool EnableWhileJoining;
 
         public PlayerWorldUIData(
-            string Name, 
-            WorldUIBar Primary = new WorldUIBar(), 
-            WorldUIBar Secondary = new WorldUIBar(), 
-            string Text = "", 
-            bool Synced = true, 
+            string Name,
+            WorldUIBar Primary = new WorldUIBar(),
+            WorldUIBar Secondary = new WorldUIBar(),
+            string Text = "",
+            bool Synced = true,
             bool EnableWhileJoining = false
         )
         {
@@ -75,7 +75,6 @@ namespace RRCG
             this.SpeedShift = SpeedShift;
             this.SpeedVariation = SpeedVariation;
         }
-        
     }
 
     public struct PlayAudioAtPositionData
@@ -92,7 +91,17 @@ namespace RRCG
             this.RolloffCurve = RolloffCurve;
             this.Synced = Synced;
         }
+    }
 
+    public struct StudioFunctionData
+    {
+        public string PrefabName;
+        public string FunctionName;
 
+        public StudioFunctionData(string PrefabName, string FunctionName)
+        {
+            this.PrefabName = PrefabName;
+            this.FunctionName = FunctionName;
+        }
     }
 }
