@@ -55,6 +55,15 @@ If you can't fix the error in your source file, delete the erroneous `.rrcg.gen.
 
 If you have a lot of broken generated files, you can use the `Clean All` function in the RRCG window menu to delete all generated files.
 
+#### Troubleshooting
+
+My class doesn't show up in the Inspector UI:
+
+1. Make sure your class is in a `.rrcg.cs` file
+2. Make sure your class extends `[...]Descriptor`, not `RRCGSource.[...]Descriptor` 
+3. Make sure there is no compilation errors in the console
+4. Try `Recompile All` in the window menu
+
 ---
 
 ## Writing Code
@@ -67,6 +76,8 @@ C# Language features should do what you expect.
 The Circuit Descriptor is your entry point. Your chips start building from the `CircuitGraph()` method, but beyond that you can organize your code however you like. 
 
 ```c#
+using RRCGSource;
+
 public class ExampleRoom : CircuitDescriptor
 {
     public override void CircuitGraph()
@@ -91,7 +102,7 @@ public void ExampleCircuit()
 
 ### Data flow
 
-Ports are data. Data is Ports. Don't worry what the type system might say. Write code as you usually would.
+Ports are data. Data is Ports. Don't worry what the type system might say. Write code as you usually would. RRCG will create and connect chips when necessary to execute operations.
 
 ```c#
 public void ExampleCircuit()
@@ -268,7 +279,7 @@ public void ExampleCircuit()
 
 ### Event Helpers
 
-The `EventHelper` class helps you write type-safe code. You can defined the structure of an event once and place all chips with correct typings:
+The `EventHelper` class helps you write type-safe code. You can define the structure of an event once, and then place all event chips with correct typings:
 
 ```c#
 EventHelper<int> onInputEvent = new EventHelper<int>("OnInput", "value");
@@ -370,11 +381,60 @@ public int GameTime()
 }
 ```
 
+### Interfacing with Studio Objects
+
+RRCG provides a built-in mechanism to interface with Studio Objects. The goal is to eventually allow you to create all logic within C#. For this your Studio Object needs to be described by a `StudioObjectDescriptor` class in a `.rrcg.cs` file.
+
+```c#
+using RRCGSource;
+
+public class MyStudioObject : StudioObjectDescriptor
+{
+    // Copy this constructor and change the prefab name to match your prefab.
+    public DescriptorTest(StudioObject target) : base(target, "StudioObjectPrefabName") { }
+
+    // The [ExistingStudioFunction] allows you to call manually defined Studio Functions.
+    // Make sure their interface and name match to the function defined!
+    [ExistingStudioFunction]
+    public void SetScale(Vector3 scale) { }
+
+    // For manually defined functions return "default". The function will work once in-game.
+    [ExistingStudioFunction]   
+    public Vector3 GetPosition() { return default; }
+
+    // If your function has multiple outputs, return a tuple
+    [ExistingStudioFunction]
+    public (Vector3, Quaternion) GetPositionAndRotation() { return default; }
+
+    // Coming soon: A [StudioFunction] attribute to generate Studio Functions automatically from C# code!
+}
+
+```
+To use a function from a CircuitDescriptor, create an instance of your StudioObjectDescriptor class and call its functions directly.
+
+```c#
+public class ExampleRoom : CircuitDescriptor
+{
+    public override void CircuitGraph()
+    {
+        var rro = RecRoomObjectGetFirstWithTag("mystudioobj");
+        
+        // Pass a reference to your studio object. It will be connected to the according event/function pins.
+        var myStudioObject = new MyStudioObject(rro);
+
+        // Directly call the functions defined in your StudioObjectDescriptor
+        myStudioObject.SetScale(new Vector3(1,2,3));
+        var position = myStudioObject.GetPosition();
+    }
+}
+```
+
+
 ### Interfacing with Unity
 
 You can directly call functions in other Editor scripts or libraries. They will be evaluated when you build the circuits.
 
-:warning: Make sure the data passed to outside functions is valid c# data. If it holds a chips' port output, the function needs to support the according `Port` type. Take a look at the next chapter to learn more about the compilation process.
+:warning: Make sure the data passed to outside functions is valid c# data. If it holds a chips' port output, the function needs to support the according `Port` type. Take a look at the "Custom Building Code" chapter to learn more about the compilation process.
 
 ```c#
 public void ExampleCircuit()
