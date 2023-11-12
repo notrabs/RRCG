@@ -11,7 +11,7 @@ namespace RRCGBuild
         public string Id;
 
         public static Context current;
-        public static Node lastSpawnedNode { get => Context.current.Nodes.Last(); }
+        public static Node lastSpawnedNode { get => Context.current.Nodes.FindLast(node => node.IsProperNode); }
 
         public List<Node> Nodes = new List<Node>();
         public List<Connection> Connections = new List<Connection>();

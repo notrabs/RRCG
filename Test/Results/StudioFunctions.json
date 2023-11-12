@@ -68,27 +68,6 @@
       "InputCount": 1
     },
     {
-      "Id": "Vector3_Create_0",
-      "Type": "N5NOgUJ1UUidoMc4hasLTw==",
-      "Name": "Vector3 Create",
-      "SFXConstantData": null,
-      "PlayAudioAtPositionData": null,
-      "PlayerWorldUIData": null,
-      "StudioFunctionData": null,
-      "RoomKeyData": null,
-      "RoomCurrencyData": null,
-      "DefaultValues": [[[0,0],"System.Single",0.0],[[0,1],"System.Single",1.0],[[0,2],"System.Single",0.0]],
-      "EventDefintion": null,
-      "SwitchCases": null,
-      "CircuitBoardId": null,
-      "EventName": null,
-      "VariableName": null,
-      "VariableKind": 0,
-      "VariableType": null,
-      "VariableHomeValue": null,
-      "InputCount": 3
-    },
-    {
       "Id": "Quaternion_Create_0",
       "Type": "Kn3xzzND2kGBrCgl8lv4GQ==",
       "Name": "Quaternion Create",
@@ -134,7 +113,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Vector3_Create_1",
+      "Id": "Vector3_Create_0",
       "Type": "N5NOgUJ1UUidoMc4hasLTw==",
       "Name": "Vector3 Create",
       "SFXConstantData": null,
@@ -143,7 +122,7 @@
       "StudioFunctionData": null,
       "RoomKeyData": null,
       "RoomCurrencyData": null,
-      "DefaultValues": [[[0,0],"System.Single",0.0],[[0,1],"System.Single",0.0],[[0,2],"System.Single",0.0]],
+      "DefaultValues": [[[0,0],"System.Single",0.0],[[0,1],"System.Single",1.0],[[0,2],"System.Single",0.0]],
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
@@ -177,6 +156,27 @@
       "VariableType": null,
       "VariableHomeValue": null,
       "InputCount": 1
+    },
+    {
+      "Id": "Vector3_Create_1",
+      "Type": "N5NOgUJ1UUidoMc4hasLTw==",
+      "Name": "Vector3 Create",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "DefaultValues": [[[0,0],"System.Single",0.0],[[0,1],"System.Single",0.0],[[0,2],"System.Single",0.0]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
     },
     {
       "Id": "To_String_0",

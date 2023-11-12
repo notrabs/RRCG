@@ -21,6 +21,34 @@ namespace RRCGBuild
         public static implicit operator AnyPort(Vector3 data) => new Vector3Port { Data = data };
         public static implicit operator AnyPort(Quaternion data) => new QuaternionPort { Data = data };
 
+        /// <summary>
+        /// Converts complex data value ports into actual ports that can be connected to
+        /// </summary>
+        public AnyPort AsConnectable()
+        {
+            if (IsDataPort)
+            {
+                // This solution is problematic because without the IsProperNode hack it overrides the lastSpawnedNode in the spawning functions.
+                if (Data is Vector3 vec3) return CircuitBuilder.Singleton("Vector3_" + vec3.x + "_" + vec3.y + "_" + vec3.z, () =>
+                {
+                    var port = ChipBuilder.Vector3Create(vec3.x, vec3.y, vec3.z);
+                    Context.lastSpawnedNode.IsProperNode = false;
+                    return port;
+                }
+                );
+                if (Data is Quaternion quat) return CircuitBuilder.Singleton("Quaternion_" + quat.x + "_" + quat.y + "_" + quat.z + "_" + quat.w, () =>
+                {
+                    var port = ChipBuilder.QuaternionCreate(quat.x, quat.y, quat.z, quat.w);
+                    Context.lastSpawnedNode.IsProperNode = false;
+                    return port;
+                });
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Casts the data in the Port into any type. Only use when you are sure the data is correct, as actual ports will crash.
+        /// </summary>
         public T AsData<T>()
         {
             if (IsActualPort) throw new Exception("Cannot convert actual port to data");
@@ -178,14 +206,24 @@ namespace RRCGBuild
     }
     public class Vector3Port : AnyPort
     {
-        public static Vector3Port zero { get => CircuitBuilder.Singleton("Vector3_zero", () => ChipBuilder.Vector3Create(0, 0, 0)); }
-        public static Vector3Port up { get => CircuitBuilder.Singleton("Vector3_up", () => ChipBuilder.Vector3Create(0, 1, 0)); }
+        public static Vector3Port zero { get => CircuitBuilder.Singleton("Vector3_zero", () => new Vector3Port()); }
+        public static Vector3Port up { get => CircuitBuilder.Singleton("Vector3_up", () => new Vector3Port(0, 1, 0)); }
 
-        public Vector3Port() { }
+        public Vector3Port()
+        {
+            Data = new Vector3();
+        }
 
         public Vector3Port(FloatPort x, FloatPort y, FloatPort z)
         {
-            Port = ChipBuilder.Vector3Create(x, y, z).Port;
+            if (x.IsDataPort && y.IsDataPort && z.IsDataPort)
+            {
+                Data = new Vector3(x.AsData<float>(), y.AsData<float>(), z.AsData<float>());
+            }
+            else
+            {
+                Port = ChipBuilder.Vector3Create(x, y, z).Port;
+            }
         }
 
         public (FloatPort X, FloatPort Y, FloatPort Z) split
@@ -427,7 +465,7 @@ namespace RRCGBuild
     {
         public static implicit operator VectorComponentPort(RecRoomObjectPort data) => new VectorComponentPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class RoomCurrencyPort : AnyPort {  }
+    public class RoomCurrencyPort : AnyPort { }
     public class HUDConstantPort : AnyPort
     {
         public static implicit operator HUDConstantPort(RecRoomObjectPort data) => new HUDConstantPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };

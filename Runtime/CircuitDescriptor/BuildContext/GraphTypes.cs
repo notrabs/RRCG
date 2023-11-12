@@ -23,6 +23,11 @@ namespace RRCGBuild
         public Type VariableType { get; internal set; }
         public object VariableHomeValue { get; internal set; }
 
+        // Flag indicating whether the Node should appear in Context.lastSpawnedNode
+        // This can be set to false by the compiler to insert nodes that shouldn't be visible to logic after a spawning function.
+        [JsonIgnore]
+        internal bool IsProperNode = true;
+
         public int InputCount { get; internal set; }
 
         // Configuration data
@@ -54,6 +59,9 @@ namespace RRCGBuild
         public void ConnectInputPort(Context context, AnyPort port, Port input)
         {
             if (port == null) return;
+
+            port = port.AsConnectable();
+
             if (port.IsActualPort)
             {
                 context.Connections.Add(new Connection { From = port.Port, To = input });
