@@ -28,10 +28,12 @@ namespace RRCGBuild
         public static StudioObjectBuilderImpl impl;
 
         public StudioObjectPort __Target;
+        public string __PrefabName;
 
-        public StudioObjectBuilder(StudioObjectPort target)
+        public StudioObjectBuilder(StudioObjectPort target, string prefabName = null)
         {
             __Target = target;
+            __PrefabName = prefabName;
         }
 
         public GameObject gameObject { get => __Target.AsData<GameObject>(); }
@@ -80,9 +82,15 @@ namespace RRCGBuild
             }
         }
 
+        public string __GetPrefabName()
+        {
+            if (__PrefabName == null) throw new Exception("A StudioObjectDescriptor must specifcy a prefabName in the base constructor to use Studio functions");
+            return __PrefabName;
+        }
+
         public void __SpawnStudioFunctionChip(string fnName)
         {
-            ChipBuilder.StudioFunction(new StudioFunctionData(gameObject.name, fnName));
+            ChipBuilder.StudioFunction(new StudioFunctionData(__GetPrefabName(), fnName));
         }
 
         public IEnumerable<T> EnumerateRange<T>(params T[] rangeParams)

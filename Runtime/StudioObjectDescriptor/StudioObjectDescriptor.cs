@@ -10,8 +10,7 @@ namespace RRCGSource
 {
     public abstract class StudioObjectDescriptor
     {
-
-        public StudioObjectDescriptor(StudioObject target) { }
+        public StudioObjectDescriptor(StudioObject target, string prefabName = null) { }
 
         protected void AddListener(Action method) { }
         protected void AddListener<T>(T property, T data) { }
