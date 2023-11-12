@@ -18,6 +18,8 @@ namespace RRCGBuild
         public static implicit operator AnyPort(float data) => new FloatPort { Data = data };
         public static implicit operator AnyPort(bool data) => new BoolPort { Data = data };
         public static implicit operator AnyPort(Color data) => new ColorPort { Data = PortConversionUtils.EncodeColor(data) };
+        public static implicit operator AnyPort(Vector3 data) => new Vector3Port { Data = data };
+        public static implicit operator AnyPort(Quaternion data) => new QuaternionPort { Data = data };
 
         public T AsData<T>()
         {

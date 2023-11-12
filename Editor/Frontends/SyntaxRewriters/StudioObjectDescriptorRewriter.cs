@@ -110,18 +110,57 @@ namespace RRCG
         {
             var parameters = new List<ParameterSyntax>();
             var statements = new List<StatementSyntax>();
+            var arguments = new List<ExpressionSyntax>();
 
-            foreach(var parameter in method.ParameterList.Parameters)
+            var isVoid = method.ReturnType.ToString() == "void";
+
+            foreach (var parameter in method.ParameterList.Parameters)
             {
                 string portType = GetStudioFunctionPortType(parameter.Type.ToString());
-                parameters.Add(method.ParameterList.Parameters[0].WithType(IdentifierName(portType)));
+                parameters.Add(parameter.WithType(IdentifierName(portType)));
+                arguments.Add(IdentifierName(parameter.Identifier));
             }
 
-            statements.Add(ParseStatement($"__SpawnStudioFunctionChip(\"{method.Identifier.Text}\");"));
+            var argumentsString = arguments.Count > 0 ? ", " + string.Join(",", arguments.Select(arg => arg.ToString())) : "";
+
+            statements.Add(ParseStatement($"__SpawnStudioFunctionChip(\"{method.Identifier.Text}\"{argumentsString});"));
+
+            if (!isVoid)
+            {
+                statements.Add(ParseStatement($"var node = Context.lastSpawnedNode;"));
+                statements.Add(ReturnStatement(GetStudioFunctionReturnExpression(method)));
+            }
 
             return method
                 .WithBody(Block(statements))
-                .WithParameterList(SyntaxUtils.ParameterList(parameters.ToArray()));
+                .WithParameterList(SyntaxUtils.ParameterList(parameters.ToArray()))
+                .WithReturnType(GetStudioFunctionReturnType(method));
+        }
+
+        private TypeSyntax GetStudioFunctionReturnType(MethodDeclarationSyntax method)
+        {
+            if (method.ReturnType.ToString() == "void") return method.ReturnType;
+
+            if (method.ReturnType is TupleTypeSyntax tuple)
+            {
+                return SyntaxUtils.TupleType(
+                    tuple.Elements.Select((element, index) => element.WithType(ParseTypeName(GetStudioFunctionPortType(element.Type.ToString())))).ToArray()
+                );
+            }
+
+            return IdentifierName(GetStudioFunctionPortType(method.ReturnType.ToString()));
+        }
+
+        private ExpressionSyntax GetStudioFunctionReturnExpression(MethodDeclarationSyntax method)
+        {
+            if (method.ReturnType is TupleTypeSyntax tuple)
+            {
+                return SyntaxUtils.TupleExpression(
+                    tuple.Elements.Select((element, index) => ParseExpression($"new {GetStudioFunctionPortType(element.Type.ToString())}() {{ Port = node.Port(0,{1 + index}) }}")).ToArray()
+                );
+            }
+
+            return ParseExpression($"new {GetStudioFunctionPortType(method.ReturnType.ToString())}() {{ Port = node.Port(0,1) }}");
         }
 
         private string GetStudioFunctionPortType(string type)

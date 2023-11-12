@@ -18,7 +18,18 @@ namespace RRCG
         {
             return SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(value));
         }
+        public static TypeSyntax TupleType(params TupleElementSyntax[] elements)
+        {
+            var withCommas = CommaSeparated(elements.Select(arg => (SyntaxNodeOrToken)arg));
 
+            return SyntaxFactory.TupleType(SyntaxFactory.SeparatedList<TupleElementSyntax>(withCommas));
+        }
+        public static TupleExpressionSyntax TupleExpression(params ExpressionSyntax[] elements)
+        {
+            var withCommas = CommaSeparated(elements.Select(arg => (SyntaxNodeOrToken)SyntaxFactory.Argument(arg)));
+
+            return SyntaxFactory.TupleExpression(SyntaxFactory.SeparatedList<ArgumentSyntax>(withCommas));
+        }
         public static ArgumentListSyntax ArgumentList(params ExpressionSyntax[] arguments)
         {
             var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)SyntaxFactory.Argument(arg)));

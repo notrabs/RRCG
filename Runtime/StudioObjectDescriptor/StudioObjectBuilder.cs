@@ -88,9 +88,19 @@ namespace RRCGBuild
             return __PrefabName;
         }
 
-        public void __SpawnStudioFunctionChip(string fnName)
+        public void __SpawnStudioFunctionChip(string fnName, params AnyPort[] parameters)
         {
             ChipBuilder.StudioFunction(new StudioFunctionData(__GetPrefabName(), fnName));
+            var node = Context.lastSpawnedNode;
+
+            node.ConnectInputPort(__Target, 1);
+
+            var index = 2;
+            foreach (var parameter in parameters)
+            {
+                node.ConnectInputPort(parameter, index);
+                index++;
+            }
         }
 
         public IEnumerable<T> EnumerateRange<T>(params T[] rangeParams)
