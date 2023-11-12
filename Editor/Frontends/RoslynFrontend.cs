@@ -27,10 +27,15 @@ namespace RRCG
 
         public static Context GetBuilt(RRCG rrcgMeta)
         {
-            Debug.Log("Building: " + rrcgMeta.DescriptorClass);
-            var type = Utils.GetTypeInAssembly(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
+            return GetBuilt(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
+        }
 
-            if (type == null) throw new Exception("Could not find compiled class for '" + rrcgMeta.DescriptorClass + "'. Make sure the class is public in the root namespace and has the same name as its file.");
+        public static Context GetBuilt(string assembly, string descriptorClass)
+        {
+            Debug.Log("Building: " + descriptorClass);
+            var type = Utils.GetTypeInAssembly(assembly, descriptorClass);
+
+            if (type == null) throw new Exception("Could not find compiled class for '" + descriptorClass + "'. Make sure the class is public in the root namespace and has the same name as its file.");
 
             Context context = new Context();
 

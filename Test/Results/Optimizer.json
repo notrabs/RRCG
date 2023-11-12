@@ -1,0 +1,1480 @@
+{
+  "Id": "ouVcs4reHUK7dI8FDpWr4A==",
+  "Nodes": [
+    {
+      "Id": "UNSxsemAaU2gJvges3NbsA==",
+      "Type": "vF7AkmcZpEmUtS0B/h5rhQ==",
+      "Name": "Parse Bool",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,0],"System.String","true"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "Z+ovgr5MEUSysOTe6wDFhg==",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.Boolean",true]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "pfAeCj6z0E2ZB/mq6MEvHg==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","true"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": null,
+          "Data": true,
+          "IsDataPort": true,
+          "IsActualPort": false
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "wM4hEGXL/E2volkExNSqfw==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","false"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": null,
+          "Data": true,
+          "IsDataPort": true,
+          "IsActualPort": false
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "vT3C7XWw4UasoZTdINKjxw==",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.Boolean",false]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "3SPOhbDHmk6GLTQffiwL5Q==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","true"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": null,
+          "Data": false,
+          "IsDataPort": true,
+          "IsActualPort": false
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "u49rz92xME6oH4+K2PQPog==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","false"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": null,
+          "Data": false,
+          "IsDataPort": true,
+          "IsActualPort": false
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "OtVajXQjBUiAq37i3hs3uw==",
+      "Type": "QxJV/7S+DkerSJ1haBjV5A==",
+      "Name": "Not",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,0],"System.Boolean",true]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "8OX/HAdRF0GEwrswo7ZjMw==",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "18AHJacLzkyPtVBphuDJow==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","true"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": {
+            "Node": "OtVajXQjBUiAq37i3hs3uw==",
+            "Group": 0,
+            "Index": 0
+          },
+          "Data": null,
+          "IsDataPort": false,
+          "IsActualPort": true
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "++wIIb4ZN0iBpUag9OxCyQ==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","false"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": {
+            "Node": "OtVajXQjBUiAq37i3hs3uw==",
+            "Group": 0,
+            "Index": 0
+          },
+          "Data": null,
+          "IsDataPort": false,
+          "IsActualPort": true
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Ru/RNoqSsEW4JMTKL0Idsg==",
+      "Type": "vF7AkmcZpEmUtS0B/h5rhQ==",
+      "Name": "Parse Bool",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,0],"System.String","true"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "nzjSMvJI+EyOqRU7U1DGew==",
+      "Type": "QxJV/7S+DkerSJ1haBjV5A==",
+      "Name": "Not",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "3B17R5QvWEq64Y8JCwpq1Q==",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "UwZeTbgo3kCyBlVHY6yukg==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","true"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": {
+            "Node": "nzjSMvJI+EyOqRU7U1DGew==",
+            "Group": 0,
+            "Index": 0
+          },
+          "Data": null,
+          "IsDataPort": false,
+          "IsActualPort": true
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "BjRh1wK4pU2yztxmT2ylSg==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","false"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": {
+            "Node": "nzjSMvJI+EyOqRU7U1DGew==",
+            "Group": 0,
+            "Index": 0
+          },
+          "Data": null,
+          "IsDataPort": false,
+          "IsActualPort": true
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "IE33crxz8Uq1iAnDS/1DzA==",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "gZPp+Qg9l0uBt37DBNzyGg==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "IB0F3v0DD0miFJA88P2OZw==",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "sznzwQNHZkqQSnWVk3Zf+g==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","true"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": {
+            "Node": "UNSxsemAaU2gJvges3NbsA==",
+            "Group": 0,
+            "Index": 0
+          },
+          "Data": null,
+          "IsDataPort": false,
+          "IsActualPort": true
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "OPxYPfjQKECAJjRbXnk5TQ==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","false"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": {
+            "Node": "UNSxsemAaU2gJvges3NbsA==",
+            "Group": 0,
+            "Index": 0
+          },
+          "Data": null,
+          "IsDataPort": false,
+          "IsActualPort": true
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "hc9GR8eec0ihNMAtp8wG4g==",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "hAdbsQbjHUqphx5sSe6X5w==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","true"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": {
+            "Node": "7VgTlsuy+UWIWTUkPYUmBA==",
+            "Group": 0,
+            "Index": 0
+          },
+          "Data": null,
+          "IsDataPort": false,
+          "IsActualPort": true
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "QHtu7Z6swkypw0iBwR6Dug==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","false"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": {
+            "Node": "7VgTlsuy+UWIWTUkPYUmBA==",
+            "Group": 0,
+            "Index": 0
+          },
+          "Data": null,
+          "IsDataPort": false,
+          "IsActualPort": true
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "NZQaM77+NECiCX+M8T7KdQ==",
+      "Type": "lZm0ACKjo0ejK1Uw8rp/7Q==",
+      "Name": "Parse Int",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,0],"System.String","1"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "T2ZLMdeBTE2hPP9n1geUoA==",
+      "Type": "Xrbx4YKNr0eGN64tCvpDHw==",
+      "Name": "Equals",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "5qw1F+fvA0uo7XXhECmGaA==",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "5zUa4kYcgkasvSXy/ViA9A==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","true"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": {
+            "Node": "T2ZLMdeBTE2hPP9n1geUoA==",
+            "Group": 0,
+            "Index": 0
+          },
+          "Data": null,
+          "IsDataPort": false,
+          "IsActualPort": true
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "OL0AoOnq+UCcM8pFEKv39w==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","false"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": {
+            "Node": "T2ZLMdeBTE2hPP9n1geUoA==",
+            "Group": 0,
+            "Index": 0
+          },
+          "Data": null,
+          "IsDataPort": false,
+          "IsActualPort": true
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "MVALKbJnDkOtMz5K6njdrA==",
+      "Type": "lZm0ACKjo0ejK1Uw8rp/7Q==",
+      "Name": "Parse Int",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,0],"System.String","1"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "siXOfp6cZ0W7i3FuJk/2XQ==",
+      "Type": "Xrbx4YKNr0eGN64tCvpDHw==",
+      "Name": "Equals",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "xJ2GrcQMSkeuWklf2Y2V5w==",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {},
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "+cId3YPKG0mQp7QnLBwhdw==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","true"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": {
+            "Node": "s7XpCN8Qr0Wcj9KzB40LgQ==",
+            "Group": 0,
+            "Index": 0
+          },
+          "Data": null,
+          "IsDataPort": false,
+          "IsActualPort": true
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "muVRqziH3kyc5Z3psDpHrA==",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKey": null,
+      "RoomCurrency": null,
+      "DefaultValues": [[[0,1],"System.String","false"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "MetaConditionalContext": {
+        "test": {
+          "Port": {
+            "Node": "s7XpCN8Qr0Wcj9KzB40LgQ==",
+            "Group": 0,
+            "Index": 0
+          },
+          "Data": null,
+          "IsDataPort": false,
+          "IsActualPort": true
+        },
+        "currentBranch": false
+      },
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    }
+  ],
+  "Connections": [
+    {
+      "From": {
+        "Node": "Z+ovgr5MEUSysOTe6wDFhg==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "pfAeCj6z0E2ZB/mq6MEvHg==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Z+ovgr5MEUSysOTe6wDFhg==",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "wM4hEGXL/E2volkExNSqfw==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "vT3C7XWw4UasoZTdINKjxw==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "3SPOhbDHmk6GLTQffiwL5Q==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "vT3C7XWw4UasoZTdINKjxw==",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "u49rz92xME6oH4+K2PQPog==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "pfAeCj6z0E2ZB/mq6MEvHg==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "vT3C7XWw4UasoZTdINKjxw==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "wM4hEGXL/E2volkExNSqfw==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "vT3C7XWw4UasoZTdINKjxw==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "OtVajXQjBUiAq37i3hs3uw==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "8OX/HAdRF0GEwrswo7ZjMw==",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "8OX/HAdRF0GEwrswo7ZjMw==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "18AHJacLzkyPtVBphuDJow==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "8OX/HAdRF0GEwrswo7ZjMw==",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "++wIIb4ZN0iBpUag9OxCyQ==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "3SPOhbDHmk6GLTQffiwL5Q==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "8OX/HAdRF0GEwrswo7ZjMw==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "u49rz92xME6oH4+K2PQPog==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "8OX/HAdRF0GEwrswo7ZjMw==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Ru/RNoqSsEW4JMTKL0Idsg==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "nzjSMvJI+EyOqRU7U1DGew==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Ru/RNoqSsEW4JMTKL0Idsg==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "3B17R5QvWEq64Y8JCwpq1Q==",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "3B17R5QvWEq64Y8JCwpq1Q==",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "UwZeTbgo3kCyBlVHY6yukg==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "3B17R5QvWEq64Y8JCwpq1Q==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "BjRh1wK4pU2yztxmT2ylSg==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "18AHJacLzkyPtVBphuDJow==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "3B17R5QvWEq64Y8JCwpq1Q==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "++wIIb4ZN0iBpUag9OxCyQ==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "3B17R5QvWEq64Y8JCwpq1Q==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "nzjSMvJI+EyOqRU7U1DGew==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "IE33crxz8Uq1iAnDS/1DzA==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "IE33crxz8Uq1iAnDS/1DzA==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "gZPp+Qg9l0uBt37DBNzyGg==",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "UwZeTbgo3kCyBlVHY6yukg==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "gZPp+Qg9l0uBt37DBNzyGg==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "BjRh1wK4pU2yztxmT2ylSg==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "gZPp+Qg9l0uBt37DBNzyGg==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "UNSxsemAaU2gJvges3NbsA==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "IB0F3v0DD0miFJA88P2OZw==",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "IB0F3v0DD0miFJA88P2OZw==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "sznzwQNHZkqQSnWVk3Zf+g==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "IB0F3v0DD0miFJA88P2OZw==",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "OPxYPfjQKECAJjRbXnk5TQ==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "gZPp+Qg9l0uBt37DBNzyGg==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "IB0F3v0DD0miFJA88P2OZw==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "UNSxsemAaU2gJvges3NbsA==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "hc9GR8eec0ihNMAtp8wG4g==",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "hc9GR8eec0ihNMAtp8wG4g==",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "hAdbsQbjHUqphx5sSe6X5w==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "hc9GR8eec0ihNMAtp8wG4g==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "QHtu7Z6swkypw0iBwR6Dug==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "sznzwQNHZkqQSnWVk3Zf+g==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "hc9GR8eec0ihNMAtp8wG4g==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "OPxYPfjQKECAJjRbXnk5TQ==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "hc9GR8eec0ihNMAtp8wG4g==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "NZQaM77+NECiCX+M8T7KdQ==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "T2ZLMdeBTE2hPP9n1geUoA==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "T2ZLMdeBTE2hPP9n1geUoA==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "5qw1F+fvA0uo7XXhECmGaA==",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "5qw1F+fvA0uo7XXhECmGaA==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "5zUa4kYcgkasvSXy/ViA9A==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "5qw1F+fvA0uo7XXhECmGaA==",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "OL0AoOnq+UCcM8pFEKv39w==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "hAdbsQbjHUqphx5sSe6X5w==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "5qw1F+fvA0uo7XXhECmGaA==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "QHtu7Z6swkypw0iBwR6Dug==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "5qw1F+fvA0uo7XXhECmGaA==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "MVALKbJnDkOtMz5K6njdrA==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "siXOfp6cZ0W7i3FuJk/2XQ==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "siXOfp6cZ0W7i3FuJk/2XQ==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "xJ2GrcQMSkeuWklf2Y2V5w==",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "xJ2GrcQMSkeuWklf2Y2V5w==",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "+cId3YPKG0mQp7QnLBwhdw==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "xJ2GrcQMSkeuWklf2Y2V5w==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "muVRqziH3kyc5Z3psDpHrA==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "5zUa4kYcgkasvSXy/ViA9A==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "xJ2GrcQMSkeuWklf2Y2V5w==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "OL0AoOnq+UCcM8pFEKv39w==",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "xJ2GrcQMSkeuWklf2Y2V5w==",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    }
+  ],
+  "SubContexts": [],
+  "MetaExistingCircuitBoard": null,
+  "MetaNewBoard": null
+}
