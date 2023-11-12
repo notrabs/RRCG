@@ -6,7 +6,11 @@ public class Switches : CircuitDescriptor
     {
         SwitchTypes("test", 22);
 
-        LogString("Return from SwitchTypes");
+        LogString("Return from SwitchTypes()");
+
+        ConditionalReturn("test", true);
+
+        LogString("Return from ConditionalReturn()");
     }
     public void SwitchTypes(string switchString, int switchInt)
     {
@@ -50,5 +54,52 @@ public class Switches : CircuitDescriptor
                 LogString("default");
                 break;
         }
+    }
+
+    public void ConditionalReturn(string switchString, bool condition)
+    {
+        switch (switchString)
+        {
+            case "0":
+                if (condition) break;
+                return;
+            case "switch":
+                switch (switchString)
+                {
+                    case "0":
+                        if (condition) break;
+                        return;
+                }
+                LogString("After Switch 2");
+                break;
+            case "while":
+                while (condition)
+                {
+                    switch (switchString)
+                    {
+                        case "0":
+                            LogString("While Switch Case 0");
+                            break;
+                        case "return":
+                            return;
+                    }
+                    LogString("After Switch While Switch Case 0");
+
+                    if (condition)
+                    {
+                        LogString("Break out of while");
+                        break;
+                    }
+                    else if (condition)
+                    {
+                        LogString("Return");
+                        return;
+                    }
+                    LogString("Continue in while");
+                }
+                LogString("After Switch While");
+                break;
+        }
+        LogString("After Switch 1");
     }
 }
