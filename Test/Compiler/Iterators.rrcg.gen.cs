@@ -132,7 +132,7 @@ namespace RRCGBuild
                 __BeginWhileLoop(true);
                 {
                     strStaging.Value = Concat(strStaging.Value, str);
-                    ChipBuilder.If(ChipBuilder.GreaterorEqual(strStaging.Value.Length, ChipBuilder.Multiply(str.Length, count)), delegate
+                    ChipBuilder.If(ChipBuilder.GreaterOrEqual(strStaging.Value.Length, ChipBuilder.Multiply(str.Length, count)), delegate
                     {
                         __Return(rrcg_return_flow, out rrcg_return_data, strStaging.Value);
                     }
