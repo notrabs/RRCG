@@ -25,16 +25,12 @@ namespace RRCGBuild
             entry.Receiver();
             var list = ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10");
             var listCache = ChipLib.EventCache(list);
+            while (ChipBuilder.GreaterThan(listCache.Count, 0))
             {
-                __BeginWhileLoop(ChipBuilder.GreaterThan(listCache.Count, 0));
-                {
-                    ChipLib.Log(Concat("Removing \"", listCache[0], "\" from list"));
-                    ListRemoveAt(listCache, 0);
-                    ChipLib.Log(Concat("List now has ", ToString(listCache.Count), " items."));
-                    ChipLib.AwaitDelay();
-                }
-
-                __EndWhileLoop();
+                ChipLib.Log(Concat("Removing \"", listCache[0], "\" from list"));
+                ListRemoveAt(listCache, 0);
+                ChipLib.Log(Concat("List now has ", ToString(listCache.Count), " items."));
+                ChipLib.AwaitDelay();
             }
 
             ChipLib.Log("While loop done!");
@@ -62,45 +58,32 @@ namespace RRCGBuild
             entry.Receiver();
             var index = new Variable<IntPort>();
             index.Value = 0;
+            while (ChipBuilder.LessThan(index.Value, 100))
             {
-                __BeginWhileLoop(ChipBuilder.LessThan(index.Value, 100));
+                index.Value += 1;
+                ChipBuilder.If(ChipBuilder.Equals(index.Value, 50), delegate
                 {
-                    index.Value += 1;
-                    ChipBuilder.If(ChipBuilder.Equals(index.Value, 50), delegate
-                    {
-                        ChipLib.Log("index.Value == 50, break!");
-                        {
-                            __Break();
-                            return; // Avoid spawning unreachable nodes
-                        }
+                    ChipLib.Log("index.Value == 50, break!");
+                    PlayerShowSubtitle(PlayerPort.Local, "This node is unreachable and should not be placed.", 0, 0);
+                }
 
+                , delegate
+                {
+                    ChipBuilder.If(ChipBuilder.Equals(ChipBuilder.Modulo(index.Value, 5), 0), delegate
+                    {
+                        ChipLib.Log("index.Value % 5 == 0, continue!");
+                        continue;
                         PlayerShowSubtitle(PlayerPort.Local, "This node is unreachable and should not be placed.", 0, 0);
                     }
 
                     , delegate
                     {
-                        ChipBuilder.If(ChipBuilder.Equals(ChipBuilder.Modulo(index.Value, 5), 0), delegate
-                        {
-                            ChipLib.Log("index.Value % 5 == 0, continue!");
-                            {
-                                __Continue();
-                                return; // Avoid spawning unreachable nodes
-                            }
-
-                            PlayerShowSubtitle(PlayerPort.Local, "This node is unreachable and should not be placed.", 0, 0);
-                        }
-
-                        , delegate
-                        {
-                        }
-
-                        );
                     }
 
                     );
                 }
 
-                __EndWhileLoop();
+                );
             }
 
             ChipLib.Log("Unreachable nodes test done!");
@@ -128,23 +111,19 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
             var strStaging = new Variable<StringPort>();
+            while (true)
             {
-                __BeginWhileLoop(true);
+                strStaging.Value = Concat(strStaging.Value, str);
+                ChipBuilder.If(ChipBuilder.GreaterorEqual(strStaging.Value.Length, ChipBuilder.Multiply(str.Length, count)), delegate
                 {
-                    strStaging.Value = Concat(strStaging.Value, str);
-                    ChipBuilder.If(ChipBuilder.GreaterorEqual(strStaging.Value.Length, ChipBuilder.Multiply(str.Length, count)), delegate
-                    {
-                        __Return(rrcg_return_flow, out rrcg_return_data, strStaging.Value);
-                    }
-
-                    , delegate
-                    {
-                    }
-
-                    );
+                    __Return(rrcg_return_flow, out rrcg_return_data, strStaging.Value);
                 }
 
-                __EndWhileLoop();
+                , delegate
+                {
+                }
+
+                );
             }
 
             ExecFlow.current.Merge(rrcg_return_flow);
