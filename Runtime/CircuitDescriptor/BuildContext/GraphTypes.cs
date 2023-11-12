@@ -99,8 +99,17 @@ namespace RRCGBuild
     {
         public override void WriteJson(JsonWriter writer, object valueObj, JsonSerializer serializer)
         {
-            var id = Convert.ToBase64String(Guid.Parse(((Node)valueObj).Id).ToByteArray());
-            writer.WriteValue(id);
+            Guid parsed;
+
+            if (Guid.TryParse(((Node)valueObj).Id, out parsed))
+            {
+                var id = Convert.ToBase64String(parsed.ToByteArray());
+                writer.WriteValue(id);
+            }
+            else
+            {
+                writer.WriteValue(((Node)valueObj).Id);
+            }
         }
     }
 
@@ -108,8 +117,17 @@ namespace RRCGBuild
     {
         public override void WriteJson(JsonWriter writer, object valueObj, JsonSerializer serializer)
         {
-            var id = Convert.ToBase64String((Guid.Parse((string)valueObj)).ToByteArray());
-            writer.WriteValue(id);
+            Guid parsed;
+
+            if (Guid.TryParse((string)valueObj, out parsed))
+            {
+                var id = Convert.ToBase64String(parsed.ToByteArray());
+                writer.WriteValue(id);
+            }
+            else
+            {
+                writer.WriteValue(valueObj);
+            }
         }
     }
     internal class DefaultValuesConverter : JsonWriteConverter
