@@ -6444,7 +6444,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        internal static RoomCurrency RoomCurrencyConstant()
+        public static RoomCurrency RoomCurrencyConstant(RoomCurrencyData config)
         {
             return default;
         }
@@ -6484,7 +6484,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static RoomKey RoomKeyConstant()
+        public static RoomKey RoomKeyConstant(RoomKeyData config)
         {
             return default;
         }

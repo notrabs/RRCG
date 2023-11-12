@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace RRCG
 {
@@ -13,6 +9,8 @@ namespace RRCG
             { "PlayAudioAtPosition", "PlayAudioAtPositionData" },
             { "PlayerWorldUI", "PlayerWorldUIData" },
             { "StudioFunction", "StudioFunctionData" },
+            { "RoomKeyConstant", "RoomKeyData" },
+            { "RoomCurrencyConstant", "RoomCurrencyData" },
         };
     }
 
@@ -102,6 +100,26 @@ namespace RRCG
         {
             this.PrefabName = PrefabName;
             this.FunctionName = FunctionName;
+        }
+    }
+
+    public struct RoomKeyData
+    {
+        public string Id;
+
+        public RoomKeyData(string Id)
+        {
+            this.Id = Id;
+        }
+    }
+
+    public struct RoomCurrencyData
+    {
+        public string Id;
+
+        public RoomCurrencyData(string Id)
+        {
+            this.Id = Id;
         }
     }
 }

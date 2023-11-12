@@ -8830,12 +8830,13 @@ namespace RRCGGenerated
             return;
         }
 
-        public static RoomCurrencyPort RoomCurrencyConstant()
+        public static RoomCurrencyPort RoomCurrencyConstant(RoomCurrencyData config)
         {
             Node node = new Node()
             {Name = "Room Currency Constant", Type = "7e843432-afde-41c1-9bc1-194112d91226", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new RoomCurrencyPort{Port = new Port{Node = node, Index = 0}};
+            node.RoomCurrencyData = config;
             return output_ports;
         }
 
@@ -8888,12 +8889,13 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static RoomKeyPort RoomKeyConstant()
+        public static RoomKeyPort RoomKeyConstant(RoomKeyData config)
         {
             Node node = new Node()
             {Name = "Room Key Constant", Type = "b9b000ca-eb3d-4b9f-9f45-0fd64045f63d", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new RoomKeyPort{Port = new Port{Node = node, Index = 0}};
+            node.RoomKeyData = config;
             return output_ports;
         }
 

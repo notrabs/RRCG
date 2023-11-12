@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RRCG;
+using RRCGSource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,13 +25,13 @@ namespace RRCGBuild
 
         public int InputCount { get; internal set; }
 
+        // Configuration data
         public SFXConstantData? SFXConstantData = null;
         public PlayAudioAtPositionData? PlayAudioAtPositionData = null;
         public PlayerWorldUIData? PlayerWorldUIData = null;
         public StudioFunctionData? StudioFunctionData = null;
-
-        public string RoomKey = null;
-        public string RoomCurrency = null;
+        public RoomKeyData? RoomKeyData = null;
+        public RoomCurrencyData? RoomCurrencyData = null;
 
         [JsonConverter(typeof(DefaultValuesConverter))]
         public Dictionary<(int Group, int Port), object> DefaultValues = new Dictionary<(int Group, int Port), object>();

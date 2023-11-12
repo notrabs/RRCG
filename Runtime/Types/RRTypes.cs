@@ -91,10 +91,7 @@ namespace RRCGSource
     public class TriggerVolume : AnyObject { }
     public class VectorComponent : AnyObject { }
     public class AnimationController : AnyObject { }
-    public class RoomCurrency : AnyObject
-    {
-        public RoomCurrency(string name) { }
-    }
+    public class RoomCurrency : AnyObject { }
     public class HUDConstant : AnyObject { }
     public class SteeringEngine : AnyObject { }
     public class GiftDropShopItem : AnyObject { }

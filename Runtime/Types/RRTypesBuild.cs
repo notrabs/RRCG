@@ -309,18 +309,7 @@ namespace RRCGBuild
         public static implicit operator AudioPlayerPort(RecRoomObjectPort data) => new AudioPlayerPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
     public class ConsumablePort : AnyPort { }
-    public class RoomKeyPort : AnyPort
-    {
-        public RoomKeyPort() { }
-        public RoomKeyPort(string name)
-        {
-            ChipBuilder.RoomKeyConstant();
-            var node = Context.lastSpawnedNode;
-            node.RoomKey = name;
-
-            Port = node.Port(0, 0);
-        }
-    }
+    public class RoomKeyPort : AnyPort { }
     public class BackgroundObjectsPort : AnyPort { }
     public class BeaconPort : AnyPort
     {
@@ -436,19 +425,7 @@ namespace RRCGBuild
     {
         public static implicit operator VectorComponentPort(RecRoomObjectPort data) => new VectorComponentPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class RoomCurrencyPort : AnyPort
-    {
-        public RoomCurrencyPort() { }
-
-        public RoomCurrencyPort(string name)
-        {
-            ChipBuilder.RoomCurrencyConstant();
-            var node = Context.lastSpawnedNode;
-            node.RoomCurrency = name;
-
-            Port = node.Port(0, 0);
-        }
-    }
+    public class RoomCurrencyPort : AnyPort {  }
     public class HUDConstantPort : AnyPort
     {
         public static implicit operator HUDConstantPort(RecRoomObjectPort data) => new HUDConstantPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };

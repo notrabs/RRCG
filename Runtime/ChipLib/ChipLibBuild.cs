@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RRCG;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -233,7 +234,7 @@ namespace RRCGBuild
 
         public static void RequireKey(StringPort keyName)
         {
-            var key = CircuitBuilder.Singleton("RequireKey_" + keyName.AsData<string>(), () => new RoomKeyPort(keyName.AsData<string>()));
+            var key = CircuitBuilder.Singleton("RequireKey_" + keyName.AsData<string>(), () => ChipBuilder.RoomKeyConstant(new RoomKeyData(keyName.AsData<string>())));
 
             var ownsKey = PlayerOwnsRoomKey(PlayerPort.Local, key, (_) => { });
             ExecFlow.current.Ports[0].Index = 1;
