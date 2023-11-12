@@ -12,7 +12,7 @@ namespace RRCG.Optimizer
         static int optimizedStats = 0;
         static IContextOptimization[] ContextOptimizations = new IContextOptimization[]
         {
-            new IfNotOptimization(), new KnownSingletonChipsOptimization()
+            new IfNotOptimization(), new KnownSingletonChipsOptimization(), new VariableCollapserOptimization()
         };
 
         public static Context Optimize(Context context)
