@@ -8,7 +8,7 @@ using RRCG.Optimizer;
 
 namespace RRCG
 {
-    [CustomEditor(typeof(RRCG))]
+    [CustomEditor(typeof(RRCGCircuit))]
     public class RRCGInpsector : Editor
     {
         public static bool EnableOptimizer = true;
@@ -19,7 +19,7 @@ namespace RRCG
         {
             DrawDefaultInspector();
 
-            RRCG rrcgMeta = (RRCG)target;
+            RRCGCircuit rrcgMeta = (RRCGCircuit)target;
 
             if (descriptorSelector.Draw(rrcgMeta)) return;
 

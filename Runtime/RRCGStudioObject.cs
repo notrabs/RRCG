@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace RRCG
 {
-    public class RRCGStudioObject : RRCG
+    public class RRCGStudioObject : RRCGCircuit
     {
 
     }

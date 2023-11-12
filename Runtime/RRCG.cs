@@ -1,9 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace RRCG
 {
-    public class RRCG : MonoBehaviour
+    public abstract class RRCG : MonoBehaviour
     {
         [HideInInspector]
         [FormerlySerializedAs("RoomCircuitAssembly")]

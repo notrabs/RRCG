@@ -25,7 +25,7 @@ namespace RRCG
             FileUtils.WriteGeneratedCode(generatedTree, compiledPath);
         }
 
-        public static Context GetBuilt(RRCG rrcgMeta)
+        public static Context GetBuilt(RRCGCircuit rrcgMeta)
         {
             return GetBuilt(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
         }
