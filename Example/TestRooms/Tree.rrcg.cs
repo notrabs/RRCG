@@ -13,7 +13,7 @@ public class Tree : CircuitDescriptor
     }
     public dynamic ListCreate2()
     {
-        return ListCreate<int>(
+        return ListCreate<List<List<int>>>(
             //ListCreate1(),
             //ListCreate1(),
             //ListCreate1(),
@@ -82,7 +82,7 @@ public class Tree : CircuitDescriptor
     }
     public dynamic ListCreate1()
     {
-        return ListCreate<int>(
+        return ListCreate<List<int>>(
             ListCreate0(),
             ListCreate0(),
             ListCreate0(),

@@ -341,11 +341,16 @@ namespace RRCGBuild
             ChipBuilderGen.Max(ports[0]);
             return ConnectDynamicPins(0, ports);
         }
-        public static T ListCreate<T>(params T[] ports) where T : AnyPort, new()
+
+        public static ListPort<T> ListCreate<T>(params T[] ports) where T : AnyPort, new()
         {
             ChipBuilderGen.ListCreate<T>(ports[0]);
-            return ConnectDynamicPins(0, ports);
+            var node = Context.lastSpawnedNode;
+
+            ConnectDynamicPins(0, ports);
+            return new ListPort<T> { Port = new Port { Node = node } };
         }
+
         public static BoolPort And(params BoolPort[] ports)
         {
             ChipBuilderGen.And(ports[0]);
