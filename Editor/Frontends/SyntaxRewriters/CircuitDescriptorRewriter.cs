@@ -314,7 +314,22 @@ namespace RRCG
 
         public override SyntaxNode VisitBreakStatement(BreakStatementSyntax node)
         {
-            return null;
+            // We need to rewrite one statement into two.
+            // Wrapping them in a block is the easiest solution, and
+            // although it isn't pretty, it's probably fair for generated code.
+
+            return SyntaxFactory.Block(
+                SyntaxFactory.ParseStatement("__Break();"),
+                SyntaxFactory.ParseStatement("return; // Avoid spawning unreachable nodes")
+            ).NormalizeWhitespace();
+        }
+
+        public override SyntaxNode VisitContinueStatement(ContinueStatementSyntax node)
+        {
+            return SyntaxFactory.Block(
+                SyntaxFactory.ParseStatement("__Continue();"),
+                SyntaxFactory.ParseStatement("return; // Avoid spawning unreachable nodes")
+            ).NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitThrowStatement(ThrowStatementSyntax node)
@@ -466,6 +481,26 @@ namespace RRCG
                             )))
                         ))
                 .NormalizeWhitespace();
+        }
+
+        public override SyntaxNode VisitWhileStatement(WhileStatementSyntax node)
+        {
+            ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
+            BlockSyntax whileBlock = (BlockSyntax)Visit(node.Statement);
+
+            var statements = new SyntaxList<SyntaxNode>();
+            statements = statements.Add(ExpressionStatement(
+                InvocationExpression(
+                    IdentifierName("__BeginWhileLoop"))
+                .WithArgumentList(
+                    ArgumentList(
+                        SingletonSeparatedList<ArgumentSyntax>(
+                            Argument(test))))));
+
+            statements = statements.Add(whileBlock);
+            statements = statements.Add(SyntaxFactory.ParseStatement("__EndWhileLoop();"));
+
+            return SyntaxFactory.Block(statements).NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitBinaryExpression(BinaryExpressionSyntax node)

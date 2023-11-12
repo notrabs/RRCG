@@ -279,6 +279,19 @@ namespace RRCGBuild
 
         internal readonly Dictionary<string, object> __RRCG_SHARED_PROPERTIES = new Dictionary<string, object>();
 
+        // Some keywords (break, continue) have to perform different tasks
+        // depending on enclosing scopes. This stack manages these scopes.
+        internal readonly Stack<object> __RRCG_SHARED_KEYWORD_SCOPE_STACK = new();
+
+        private T __GetTopmostSharedKeywordScopeWithType<T>()
+        {
+            object scope = __RRCG_SHARED_KEYWORD_SCOPE_STACK.Peek();
+            if (scope.GetType() == typeof(T))
+                return (T)scope;
+
+            throw new Exception($"Topmost shared keyword scope type was not \"${typeof(T)}\"!");
+        }
+
         protected void __DispatchEventFunction(string name, Action fn)
         {
             if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(name))
@@ -432,6 +445,95 @@ namespace RRCGBuild
             variable = assignedValue;
             return assignedValue;
         }
+
+        struct __SharedKeywordScope_While
+        {
+            public ExecFlow BlockFlow; // Exec flow of the while loop body. Will cycle back to entry "If" node.
+            public ExecFlow DoneFlow; // Exec flow for when the loop is finished/break is invoked.
+            public Node EntryIfNode;
+        }
+
+        public void __BeginWhileLoop(BoolPort condition)
+        {
+            // First, spawn the entry "If" node
+            RRCGGenerated.ChipBuilderGen.If(condition, () => { });
+            var entryIfNode = Context.lastSpawnedNode;
+
+            // Now we create our "while" scope
+            var whileScope = new __SharedKeywordScope_While
+            {
+                BlockFlow = new ExecFlow(),
+                DoneFlow = new ExecFlow(),
+                EntryIfNode = entryIfNode
+            };
+
+            // Add Then/Else ports to Block/Done flows respectively
+            whileScope.BlockFlow.Ports.Add(new Port { Node = entryIfNode });
+            whileScope.DoneFlow.Ports.Add(new Port { Node = entryIfNode, Index = 1 });
+
+            // Finally, push to the shared keyword scope stack,
+            // and set the current exec flow to the block flow.
+            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Push(whileScope);
+            ExecFlow.current = whileScope.BlockFlow;
+        }
+
+        private void __ContinueImpl_While()
+        {
+            var whileScope = __GetTopmostSharedKeywordScopeWithType<__SharedKeywordScope_While>();
+
+            // Advance the current execution flow back to the entry If node.
+            // Nodes spawned after this will start a new flow.
+            ExecFlow.current.Advance(Context.current, new Port { Node = whileScope.EntryIfNode }, null);
+        }
+
+        private void __BreakImpl_While()
+        {
+            var whileScope = __GetTopmostSharedKeywordScopeWithType<__SharedKeywordScope_While>();
+
+            // Merge the current execution flow into the done flow,
+            // then clear the current execution flow.
+            // Nodes spawned after this will start a new flow.
+            whileScope.DoneFlow.Merge(ExecFlow.current);
+            ExecFlow.current.Clear();
+        }
+
+        public void __EndWhileLoop()
+        {
+            var whileScope = __GetTopmostSharedKeywordScopeWithType<__SharedKeywordScope_While>();
+            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Pop();
+
+            // Advance the current execution flow back to the entry If node,
+            // and continue spawning nodes on the Done execution flow.
+            ExecFlow.current.Advance(Context.current, new Port { Node = whileScope.EntryIfNode }, null);
+            ExecFlow.current = whileScope.DoneFlow;
+        }
+
+        public void __Break()
+        {
+            object topmostScope = __RRCG_SHARED_KEYWORD_SCOPE_STACK.Peek();
+            if (topmostScope == null) return;
+
+            switch (topmostScope.GetType().Name)
+            {
+                case "__SharedKeywordScope_While":
+                    __BreakImpl_While();
+                    break;
+            }
+        }
+
+        public void __Continue()
+        {
+            object topmostScope = __RRCG_SHARED_KEYWORD_SCOPE_STACK.Peek();
+            if (topmostScope == null) return;
+
+            switch (topmostScope.GetType().Name)
+            {
+                case "__SharedKeywordScope_While":
+                    __ContinueImpl_While();
+                    break;
+            }
+        }
+
     }
 }
 
