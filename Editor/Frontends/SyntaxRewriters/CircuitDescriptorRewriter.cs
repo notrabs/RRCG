@@ -454,28 +454,24 @@ namespace RRCG
                 }
             }
 
-            return SyntaxFactory.ExpressionStatement(
-                    SyntaxFactory.InvocationExpression(
-                        SyntaxFactory.MemberAccessExpression(
-                            SyntaxKind.SimpleMemberAccessExpression,
-                            SyntaxFactory.IdentifierName("ChipBuilder"),
-                            SyntaxFactory.IdentifierName("ExecutionAnySwitch")))
+            return ExpressionStatement(
+                    InvocationExpression(IdentifierName("__Switch"))
                     .WithArgumentList(
                         SyntaxUtils.ArgumentList(
                             test,
                             defaultCase,
-                            SyntaxFactory.ObjectCreationExpression(
-                                SyntaxFactory.GenericName(
-                                    SyntaxFactory.Identifier("Dictionary"))
+                            ObjectCreationExpression(
+                                GenericName(
+                                    Identifier("Dictionary"))
                                 .WithTypeArgumentList(
-                                    SyntaxFactory.TypeArgumentList(
-                                        SyntaxFactory.SeparatedList<TypeSyntax>(
+                                    TypeArgumentList(
+                                        SeparatedList<TypeSyntax>(
                                             new SyntaxNodeOrToken[]{
-                                                SyntaxFactory.IdentifierName("AnyPort"),
-                                                SyntaxFactory.Token(SyntaxKind.CommaToken),
-                                                SyntaxFactory.IdentifierName("AlternativeExec")}))))
+                                                IdentifierName("AnyPort"),
+                                                Token(SyntaxKind.CommaToken),
+                                                IdentifierName("AlternativeExec")}))))
                                 .WithInitializer(
-                                    SyntaxFactory.InitializerExpression(
+                                    InitializerExpression(
                                         SyntaxKind.CollectionInitializerExpression,
                                         SyntaxUtils.ExpressionList(cases.ToArray())
                             )))

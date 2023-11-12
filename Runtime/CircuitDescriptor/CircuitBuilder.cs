@@ -446,6 +446,8 @@ namespace RRCGBuild
             return assignedValue;
         }
 
+        struct __SharedKeywordScope_Switch { }
+
         struct __SharedKeywordScope_While
         {
             public ExecFlow BlockFlow; // Exec flow of the while loop body. Will cycle back to entry "If" node.
@@ -508,6 +510,20 @@ namespace RRCGBuild
             ExecFlow.current = whileScope.DoneFlow;
         }
 
+        public void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
+        {
+            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Push(new __SharedKeywordScope_Switch());
+
+            ChipBuilder.ExecutionAnySwitch(match, failed, branches);
+
+            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Pop();
+        }
+
+        private void __BreakImpl_Switch()
+        {
+            ExecFlow.current.Clear();
+        }
+
         public void __Break()
         {
             object topmostScope = __RRCG_SHARED_KEYWORD_SCOPE_STACK.Peek();
@@ -517,6 +533,9 @@ namespace RRCGBuild
             {
                 case "__SharedKeywordScope_While":
                     __BreakImpl_While();
+                    break;
+                case "__SharedKeywordScope_Switch":
+                    __BreakImpl_Switch();
                     break;
             }
         }
