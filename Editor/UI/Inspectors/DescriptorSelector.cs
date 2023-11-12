@@ -23,7 +23,7 @@ namespace RRCG
             this.fetchOptions = fetchOptions;
         }
 
-        internal bool Draw(RRCGCircuit rrcgMeta)
+        internal bool Draw(RRCG rrcgMeta)
         {
             if (ShowDescriptors)
             {
