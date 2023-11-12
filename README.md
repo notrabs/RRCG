@@ -391,7 +391,7 @@ using RRCGSource;
 public class MyStudioObject : StudioObjectDescriptor
 {
     // Copy this constructor and change the prefab name to match your prefab.
-    public DescriptorTest(StudioObject target) : base(target, "StudioObjectPrefabName") { }
+    public MyStudioObject(StudioObject target) : base(target, "StudioObjectPrefabName") { }
 
     // The [ExistingStudioFunction] allows you to call manually defined Studio Functions.
     // Make sure their interface and name match to the function defined!
