@@ -469,6 +469,9 @@ namespace RRCGBuild
                 EntryIfNode = entryIfNode
             };
 
+            // Mark Done flow as having advanced
+            whileScope.DoneFlow.hasAdvanced = true;
+
             // Add Then/Else ports to Block/Done flows respectively
             whileScope.BlockFlow.Ports.Add(new Port { Node = entryIfNode });
             whileScope.DoneFlow.Ports.Add(new Port { Node = entryIfNode, Index = 1 });
