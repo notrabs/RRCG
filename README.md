@@ -60,7 +60,7 @@ If you have a lot of broken generated files, you can use the `Clean All` functio
 My class doesn't show up in the Inspector UI:
 
 1. Make sure your class is in a `.rrcg.cs` file
-2. Make sure your class extends `[...]Descriptor`, not `RRCGSource.[...]Descriptor` 
+2. Make sure your class extends `CircuitDescriptor`, not `RRCGSource.CircuitDescriptor` 
 3. Make sure there is no compilation errors in the console
 4. Try `Recompile All` in the window menu
 
