@@ -41,6 +41,7 @@ namespace RRCGBuild
         public string CircuitBoardId;
 
         // The scope of this conditional context
+        [JsonIgnore]
         public ConditionalContext MetaConditionalContext = null;
 
         public Node()

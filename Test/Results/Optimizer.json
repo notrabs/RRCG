@@ -15,7 +15,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -37,7 +36,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -59,15 +57,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": null,
-          "Data": true,
-          "IsDataPort": true,
-          "IsActualPort": false
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -89,15 +78,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": null,
-          "Data": true,
-          "IsDataPort": true,
-          "IsActualPort": false
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -119,7 +99,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -141,15 +120,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": null,
-          "Data": false,
-          "IsDataPort": true,
-          "IsActualPort": false
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -171,15 +141,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": null,
-          "Data": false,
-          "IsDataPort": true,
-          "IsActualPort": false
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -201,7 +162,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -223,7 +183,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -245,19 +204,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": {
-            "Node": "Not_0",
-            "Group": 0,
-            "Index": 0
-          },
-          "Data": null,
-          "IsDataPort": false,
-          "IsActualPort": true
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -279,19 +225,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": {
-            "Node": "Not_0",
-            "Group": 0,
-            "Index": 0
-          },
-          "Data": null,
-          "IsDataPort": false,
-          "IsActualPort": true
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -313,7 +246,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -335,7 +267,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -357,7 +288,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -379,19 +309,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": {
-            "Node": "Not_0",
-            "Group": 0,
-            "Index": 0
-          },
-          "Data": null,
-          "IsDataPort": false,
-          "IsActualPort": true
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -413,19 +330,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": {
-            "Node": "Not_0",
-            "Group": 0,
-            "Index": 0
-          },
-          "Data": null,
-          "IsDataPort": false,
-          "IsActualPort": true
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -447,7 +351,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -469,7 +372,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -491,7 +393,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -513,19 +414,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": {
-            "Node": "Parse_Bool_0",
-            "Group": 0,
-            "Index": 0
-          },
-          "Data": null,
-          "IsDataPort": false,
-          "IsActualPort": true
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -547,19 +435,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": {
-            "Node": "Parse_Bool_0",
-            "Group": 0,
-            "Index": 0
-          },
-          "Data": null,
-          "IsDataPort": false,
-          "IsActualPort": true
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -581,7 +456,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -603,19 +477,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": {
-            "Node": "a/dFfx7+XkuV9gExmpOHBA==",
-            "Group": 0,
-            "Index": 0
-          },
-          "Data": null,
-          "IsDataPort": false,
-          "IsActualPort": true
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -637,19 +498,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": {
-            "Node": "a/dFfx7+XkuV9gExmpOHBA==",
-            "Group": 0,
-            "Index": 0
-          },
-          "Data": null,
-          "IsDataPort": false,
-          "IsActualPort": true
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -671,7 +519,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -693,7 +540,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -715,7 +561,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -737,19 +582,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": {
-            "Node": "Equals_0",
-            "Group": 0,
-            "Index": 0
-          },
-          "Data": null,
-          "IsDataPort": false,
-          "IsActualPort": true
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -771,19 +603,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": {
-            "Node": "Equals_0",
-            "Group": 0,
-            "Index": 0
-          },
-          "Data": null,
-          "IsDataPort": false,
-          "IsActualPort": true
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -805,7 +624,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -827,7 +645,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -849,7 +666,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {},
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -871,19 +687,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": {
-            "Node": "KrFN6MchSEOGsyqWos5cYA==",
-            "Group": 0,
-            "Index": 0
-          },
-          "Data": null,
-          "IsDataPort": false,
-          "IsActualPort": true
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
@@ -905,19 +708,6 @@
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "MetaConditionalContext": {
-        "test": {
-          "Port": {
-            "Node": "KrFN6MchSEOGsyqWos5cYA==",
-            "Group": 0,
-            "Index": 0
-          },
-          "Data": null,
-          "IsDataPort": false,
-          "IsActualPort": true
-        },
-        "currentBranch": false
-      },
       "EventName": null,
       "VariableName": null,
       "VariableKind": 0,
