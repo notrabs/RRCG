@@ -521,7 +521,7 @@ namespace RRCGBuild
 
         private void __BreakImpl_Switch()
         {
-            ExecFlow.current.Clear();
+            // Effectively a noop. The exec flow should stay intact so it can be merged later.
         }
 
         public void __Break()
