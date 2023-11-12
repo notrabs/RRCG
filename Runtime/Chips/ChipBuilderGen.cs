@@ -111,7 +111,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static (StringPort VisionType, FloatPort VisionRange, FloatPort VisionConeAngle, FloatPort HearingRange) AIGetLineofSightParameters(AIPort AI)
+        public static (StringPort VisionType, FloatPort VisionRange, FloatPort VisionConeAngle, FloatPort HearingRange) AIGetLineOfSightParameters(AIPort AI)
         {
             Node node = new Node()
             {Name = "AI Get Line of Sight Parameters", Type = "3edc785f-46ef-4f30-b101-a07126d3a370", InputCount = 1};
@@ -131,7 +131,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort AIHasLineofSightToTarget(AIPort AI, AIPort Target)
+        public static BoolPort AIHasLineOfSightToTarget(AIPort AI, AIPort Target)
         {
             Node node = new Node()
             {Name = "AI Has Line of Sight To Target", Type = "5858a52e-54fb-4bb2-80a0-ec5fce88b3ef", InputCount = 2};
@@ -142,7 +142,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort AIHasLineofSightToTarget(AIPort AI, CombatantPort Target)
+        public static BoolPort AIHasLineOfSightToTarget(AIPort AI, CombatantPort Target)
         {
             Node node = new Node()
             {Name = "AI Has Line of Sight To Target", Type = "5858a52e-54fb-4bb2-80a0-ec5fce88b3ef", InputCount = 2};
@@ -153,7 +153,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort AIHasLineofSightToTarget(AIPort AI, RecRoomObjectPort Target)
+        public static BoolPort AIHasLineOfSightToTarget(AIPort AI, RecRoomObjectPort Target)
         {
             Node node = new Node()
             {Name = "AI Has Line of Sight To Target", Type = "5858a52e-54fb-4bb2-80a0-ec5fce88b3ef", InputCount = 2};
@@ -164,7 +164,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort AIHasLineofSightToTarget(AIPort AI, PatrolPointPort Target)
+        public static BoolPort AIHasLineOfSightToTarget(AIPort AI, PatrolPointPort Target)
         {
             Node node = new Node()
             {Name = "AI Has Line of Sight To Target", Type = "5858a52e-54fb-4bb2-80a0-ec5fce88b3ef", InputCount = 2};
@@ -175,7 +175,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort AIHasLineofSightToTarget(AIPort AI, PlayerPort Target)
+        public static BoolPort AIHasLineOfSightToTarget(AIPort AI, PlayerPort Target)
         {
             Node node = new Node()
             {Name = "AI Has Line of Sight To Target", Type = "5858a52e-54fb-4bb2-80a0-ec5fce88b3ef", InputCount = 2};
@@ -186,7 +186,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort AIHasLineofSightToTarget(AIPort AI, Vector3Port Target)
+        public static BoolPort AIHasLineOfSightToTarget(AIPort AI, Vector3Port Target)
         {
             Node node = new Node()
             {Name = "AI Has Line of Sight To Target", Type = "5858a52e-54fb-4bb2-80a0-ec5fce88b3ef", InputCount = 2};
@@ -368,7 +368,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void AISetLineofSightParameters(AIPort AI, StringPort VisionType, FloatPort VisionRange, FloatPort VisionConeAngle, FloatPort HearingRange, BoolPort RequireLoSfortargeting)
+        public static void AISetLineOfSightParameters(AIPort AI, StringPort VisionType, FloatPort VisionRange, FloatPort VisionConeAngle, FloatPort HearingRange, BoolPort RequireLoSfortargeting)
         {
             Node node = new Node()
             {Name = "AI Set Line of Sight Parameters", Type = "02557d1f-2265-4b6d-8177-92f1802dc106", InputCount = 7};
@@ -1102,7 +1102,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort boolVariable(BoolPort Port0)
+        public static BoolPort BoolVariable(BoolPort Port0)
         {
             Node node = new Node()
             {Name = "bool Variable", Type = "80955588-7f7a-4f7c-b46f-6d1e9057fba0", InputCount = 2};
@@ -1166,7 +1166,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static IntPort CeiltoInt(FloatPort Value)
+        public static IntPort CeilToInt(FloatPort Value)
         {
             Node node = new Node()
             {Name = "Ceil to Int", Type = "38b502dc-dd35-4083-a2b0-8a8e5f69a958", InputCount = 1};
@@ -1986,7 +1986,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort DiceGetRollfinished(DiePort Target)
+        public static BoolPort DiceGetRollFinished(DiePort Target)
         {
             Node node = new Node()
             {Name = "Dice Get Roll finished", Type = "b8735ad9-cd89-4d81-ab9b-be3eb50e3b5a", InputCount = 1};
@@ -2776,7 +2776,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort EquipObjecttoDominantHand(PlayerPort Player, RecRoomObjectPort ObjectToEquip, BoolPort ForceEquip, BoolPort Steal)
+        public static BoolPort EquipObjectToDominantHand(PlayerPort Player, RecRoomObjectPort ObjectToEquip, BoolPort ForceEquip, BoolPort Steal)
         {
             Node node = new Node()
             {Name = "Equip Object to Dominant Hand", Type = "c840f770-80aa-4e96-8677-963a2ca3cff1", InputCount = 5};
@@ -2790,7 +2790,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort EquipObjecttoOffHand(PlayerPort Player, RecRoomObjectPort ObjectToEquip, BoolPort ForceEquip, BoolPort Steal)
+        public static BoolPort EquipObjectToOffHand(PlayerPort Player, RecRoomObjectPort ObjectToEquip, BoolPort ForceEquip, BoolPort Steal)
         {
             Node node = new Node()
             {Name = "Equip Object to Off Hand", Type = "52da50b9-2d34-4128-a1bd-3e056f236e2c", InputCount = 5};
@@ -2944,7 +2944,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static FloatPort floatVariable(FloatPort Port0)
+        public static FloatPort FloatVariable(FloatPort Port0)
         {
             Node node = new Node()
             {Name = "float Variable", Type = "04a31ca5-91d2-4a69-bf3d-484d18411cc0", InputCount = 2};
@@ -2965,7 +2965,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static IntPort FloortoInt(FloatPort Value)
+        public static IntPort FloorToInt(FloatPort Value)
         {
             Node node = new Node()
             {Name = "Floor to Int", Type = "bc451cab-2292-4e60-832d-31060eb82bd0", InputCount = 1};
@@ -3086,7 +3086,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static PlayerPort GetAnyPlayerwithRole(StringPort Role)
+        public static PlayerPort GetAnyPlayerWithRole(StringPort Role)
         {
             Node node = new Node()
             {Name = "Get Any Player with Role", Type = "a924cac0-0245-4846-862d-df4092c5e1c2", InputCount = 1};
@@ -4022,7 +4022,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort GreaterorEqual(IntPort A, IntPort B)
+        public static BoolPort GreaterOrEqual(IntPort A, IntPort B)
         {
             Node node = new Node()
             {Name = "Greater or Equal", Type = "f3ced0d8-396e-4311-a807-8ffd9b147060", InputCount = 2};
@@ -4033,7 +4033,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort GreaterorEqual(FloatPort A, FloatPort B)
+        public static BoolPort GreaterOrEqual(FloatPort A, FloatPort B)
         {
             Node node = new Node()
             {Name = "Greater or Equal", Type = "f3ced0d8-396e-4311-a807-8ffd9b147060", InputCount = 2};
@@ -4787,7 +4787,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static FloatPort InttoFloat(IntPort Value)
+        public static FloatPort IntToFloat(IntPort Value)
         {
             Node node = new Node()
             {Name = "Int to Float", Type = "65cfba8a-b5dc-4946-b824-e6efc5719f3a", InputCount = 1};
@@ -4797,7 +4797,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static IntPort intVariable(IntPort Port0)
+        public static IntPort IntVariable(IntPort Port0)
         {
             Node node = new Node()
             {Name = "int Variable", Type = "33224907-68ff-4102-802e-7c3eed481d37", InputCount = 2};
@@ -5202,7 +5202,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort LessorEqual(IntPort A, IntPort B)
+        public static BoolPort LessOrEqual(IntPort A, IntPort B)
         {
             Node node = new Node()
             {Name = "Less or Equal", Type = "8c78eedf-f79e-4f70-b187-65092893d1b6", InputCount = 2};
@@ -5213,7 +5213,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort LessorEqual(FloatPort A, FloatPort B)
+        public static BoolPort LessOrEqual(FloatPort A, FloatPort B)
         {
             Node node = new Node()
             {Name = "Less or Equal", Type = "8c78eedf-f79e-4f70-b187-65092893d1b6", InputCount = 2};
@@ -6046,7 +6046,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static void LocalPlayerDisableInteractionwithTargetPlayer(PlayerPort Player)
+        public static void LocalPlayerDisableInteractionWithTargetPlayer(PlayerPort Player)
         {
             Node node = new Node()
             {Name = "Local Player Disable Interaction with Target Player", Type = "f99b0a80-f3a6-4e2d-8101-afe3d9e1008d", InputCount = 2};
@@ -6056,7 +6056,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void LocalPlayerEnableInteractionwithTargetPlayer(PlayerPort Player, FloatPort RequiredHoldDuration, StringPort Prompt)
+        public static void LocalPlayerEnableInteractionWithTargetPlayer(PlayerPort Player, FloatPort RequiredHoldDuration, StringPort Prompt)
         {
             Node node = new Node()
             {Name = "Local Player Enable Interaction with Target Player", Type = "47455638-8ac9-4b9c-8201-20a12d43d513", InputCount = 4};
@@ -6826,7 +6826,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static ListPort<PlayerPort> PlayerGetAllwithTag(StringPort Tag)
+        public static ListPort<PlayerPort> PlayerGetAllWithTag(StringPort Tag)
         {
             Node node = new Node()
             {Name = "Player Get All with Tag", Type = "8286a047-19a2-4ad0-bdec-833f35adf4f2", InputCount = 1};
@@ -6897,7 +6897,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static PlayerPort PlayerGetFirstwithTag(StringPort Tag)
+        public static PlayerPort PlayerGetFirstWithTag(StringPort Tag)
         {
             Node node = new Node()
             {Name = "Player Get First with Tag", Type = "48364320-cb02-41d8-9d8f-50291131dad2", InputCount = 1};
@@ -8297,7 +8297,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static ListPort<RecRoomObjectPort> RecRoomObjectGetAllwithTag(StringPort Tag)
+        public static ListPort<RecRoomObjectPort> RecRoomObjectGetAllWithTag(StringPort Tag)
         {
             Node node = new Node()
             {Name = "Rec Room Object Get All with Tag", Type = "02d69553-ae96-4c2d-8477-59ada6a66783", InputCount = 1};
@@ -8317,7 +8317,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static RecRoomObjectPort RecRoomObjectGetFirstwithTag(StringPort Tag)
+        public static RecRoomObjectPort RecRoomObjectGetFirstWithTag(StringPort Tag)
         {
             Node node = new Node()
             {Name = "Rec Room Object Get First with Tag", Type = "43ff2d3c-c3aa-45bc-a7b7-01587c8a61f6", InputCount = 1};
@@ -9110,7 +9110,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static IntPort RoundtoInt(FloatPort Value)
+        public static IntPort RoundToInt(FloatPort Value)
         {
             Node node = new Node()
             {Name = "Round to Int", Type = "0d2a4771-0694-4b84-8e07-2080c26aae22", InputCount = 1};
@@ -10026,7 +10026,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static StringPort stringVariable(StringPort Port0)
+        public static StringPort StringVariable(StringPort Port0)
         {
             Node node = new Node()
             {Name = "string Variable", Type = "66b6ea20-9a00-4f80-9636-2cfb676b3965", InputCount = 2};
@@ -10714,7 +10714,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static ListPort<RecRoomObjectPort> UnequipfromSlots(PlayerPort Player, BoolPort DominantHand, BoolPort OffHand, BoolPort LeftHipHolster, BoolPort RightHipHolster, BoolPort ShoulderHolster)
+        public static ListPort<RecRoomObjectPort> UnequipFromSlots(PlayerPort Player, BoolPort DominantHand, BoolPort OffHand, BoolPort LeftHipHolster, BoolPort RightHipHolster, BoolPort ShoulderHolster)
         {
             Node node = new Node()
             {Name = "Unequip from Slots", Type = "13a06844-ab37-41d6-9358-0383cf3c35d7", InputCount = 7};

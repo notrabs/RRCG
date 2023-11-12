@@ -45,10 +45,10 @@ namespace RRCGBuild
         {
             T data;
 
-            if (value is StringPort) data = ChipBuilder.stringVariable(value as StringPort) as T;
-            else if (value is IntPort) data = ChipBuilder.intVariable(value as IntPort) as T;
-            else if (value is BoolPort) data = ChipBuilder.boolVariable(value as BoolPort) as T;
-            else if (value is FloatPort) data = ChipBuilder.floatVariable(value as FloatPort) as T;
+            if (value is StringPort) data = ChipBuilder.StringVariable(value as StringPort) as T;
+            else if (value is IntPort) data = ChipBuilder.IntVariable(value as IntPort) as T;
+            else if (value is BoolPort) data = ChipBuilder.BoolVariable(value as BoolPort) as T;
+            else if (value is FloatPort) data = ChipBuilder.FloatVariable(value as FloatPort) as T;
             else if (value is PlayerPort) data = ChipBuilder.PlayerVariable(value as PlayerPort) as T;
             else if (value is RecRoomObjectPort) data = ChipBuilder.RecRoomObjectVariable(value as RecRoomObjectPort) as T;
             else if (value is Vector3Port) data = ChipBuilder.Vector3Variable(value as Vector3Port) as T;

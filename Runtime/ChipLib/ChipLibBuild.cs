@@ -221,15 +221,15 @@ namespace RRCGBuild
 
         public static T GetClosest<T>(Vector3Port postion, string tag) where T : AnyPort, new()
         {
-            return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllwithTag(tag)).Closest;
+            return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllWithTag(tag)).Closest;
         }
         public static T GetClosest<T>(PlayerPort postion, string tag) where T : AnyPort, new()
         {
-            return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllwithTag(tag)).Closest;
+            return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllWithTag(tag)).Closest;
         }
         public static T GetClosest<T>(RecRoomObjectPort postion, string tag) where T : AnyPort, new()
         {
-            return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllwithTag(tag)).Closest;
+            return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllWithTag(tag)).Closest;
         }
 
         public static void RequireKey(StringPort keyName)

@@ -90,7 +90,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the current line of sight parameters from the input AI.
         /// </summary>
-        public static (string VisionType, float VisionRange, float VisionConeAngle, float HearingRange) AIGetLineofSightParameters(AI AI)
+        public static (string VisionType, float VisionRange, float VisionConeAngle, float HearingRange) AIGetLineOfSightParameters(AI AI)
         {
             return default;
         }
@@ -106,7 +106,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public static bool AIHasLineofSightToTarget(AI AI, AI Target)
+        public static bool AIHasLineOfSightToTarget(AI AI, AI Target)
         {
             return default;
         }
@@ -114,7 +114,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public static bool AIHasLineofSightToTarget(AI AI, Combatant Target)
+        public static bool AIHasLineOfSightToTarget(AI AI, Combatant Target)
         {
             return default;
         }
@@ -122,7 +122,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public static bool AIHasLineofSightToTarget(AI AI, RecRoomObject Target)
+        public static bool AIHasLineOfSightToTarget(AI AI, RecRoomObject Target)
         {
             return default;
         }
@@ -130,7 +130,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public static bool AIHasLineofSightToTarget(AI AI, PatrolPoint Target)
+        public static bool AIHasLineOfSightToTarget(AI AI, PatrolPoint Target)
         {
             return default;
         }
@@ -138,7 +138,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public static bool AIHasLineofSightToTarget(AI AI, Player Target)
+        public static bool AIHasLineOfSightToTarget(AI AI, Player Target)
         {
             return default;
         }
@@ -146,7 +146,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public static bool AIHasLineofSightToTarget(AI AI, Vector3 Target)
+        public static bool AIHasLineOfSightToTarget(AI AI, Vector3 Target)
         {
             return default;
         }
@@ -274,7 +274,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets an AI’s various LoS paramters. The “Cone” setting acts like a vision cone that sits in front of AIs like eyes, where the “Circle” setting acts like a radius around the AI. The Require LoS For Targetting parameter defines if AIs can see you through walls.
         /// </summary>
-        public static void AISetLineofSightParameters(AI AI, string VisionType, float VisionRange, float VisionConeAngle, float HearingRange, bool RequireLoSfortargeting)
+        public static void AISetLineOfSightParameters(AI AI, string VisionType, float VisionRange, float VisionConeAngle, float HearingRange, bool RequireLoSfortargeting)
         {
             return;
         }
@@ -801,7 +801,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        internal static bool boolVariable(bool Port0)
+        internal static bool BoolVariable(bool Port0)
         {
             return default;
         }
@@ -849,7 +849,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the smallest integer value greater than or equal to the input value.
         /// </summary>
-        public static int CeiltoInt(float Value)
+        public static int CeilToInt(float Value)
         {
             return default;
         }
@@ -1465,7 +1465,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs an exec when the dice finished rolling.
         /// </summary>
-        public static bool DiceGetRollfinished(Die Target)
+        public static bool DiceGetRollFinished(Die Target)
         {
             return default;
         }
@@ -2049,7 +2049,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static bool EquipObjecttoDominantHand(Player Player, RecRoomObject ObjectToEquip, bool ForceEquip, bool Steal)
+        public static bool EquipObjectToDominantHand(Player Player, RecRoomObject ObjectToEquip, bool ForceEquip, bool Steal)
         {
             return default;
         }
@@ -2057,7 +2057,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static bool EquipObjecttoOffHand(Player Player, RecRoomObject ObjectToEquip, bool ForceEquip, bool Steal)
+        public static bool EquipObjectToOffHand(Player Player, RecRoomObject ObjectToEquip, bool ForceEquip, bool Steal)
         {
             return default;
         }
@@ -2177,7 +2177,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        internal static float floatVariable(float Port0)
+        internal static float FloatVariable(float Port0)
         {
             return default;
         }
@@ -2193,7 +2193,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the smallest integer value less than or equal to the input value.
         /// </summary>
-        public static int FloortoInt(float Value)
+        public static int FloorToInt(float Value)
         {
             return default;
         }
@@ -2281,7 +2281,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Gets a player with the role. Returns invalid player if no player has the role.
         /// </summary>
-        public static Player GetAnyPlayerwithRole(string Role)
+        public static Player GetAnyPlayerWithRole(string Role)
         {
             return default;
         }
@@ -3001,7 +3001,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if input A is greater than or equal to input B.
         /// </summary>
-        public static bool GreaterorEqual(int A, int B)
+        public static bool GreaterOrEqual(int A, int B)
         {
             return default;
         }
@@ -3009,7 +3009,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if input A is greater than or equal to input B.
         /// </summary>
-        public static bool GreaterorEqual(float A, float B)
+        public static bool GreaterOrEqual(float A, float B)
         {
             return default;
         }
@@ -3521,7 +3521,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Converts the input int to a float.
         /// </summary>
-        public static float InttoFloat(int Value)
+        public static float IntToFloat(int Value)
         {
             return default;
         }
@@ -3529,7 +3529,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        internal static int intVariable(int Port0)
+        internal static int IntVariable(int Port0)
         {
             return default;
         }
@@ -3801,7 +3801,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if input A is less than or equal to input B.
         /// </summary>
-        public static bool LessorEqual(int A, int B)
+        public static bool LessOrEqual(int A, int B)
         {
             return default;
         }
@@ -3809,7 +3809,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns True if input A is less than or equal to input B.
         /// </summary>
-        public static bool LessorEqual(float A, float B)
+        public static bool LessOrEqual(float A, float B)
         {
             return default;
         }
@@ -4425,7 +4425,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Removes the ability for the local player to interact with the provided player. This state is NOT synced with other users, and player interactivity will be removed only for players that ran this chip.
         /// </summary>
-        public static void LocalPlayerDisableInteractionwithTargetPlayer(Player Player)
+        public static void LocalPlayerDisableInteractionWithTargetPlayer(Player Player)
         {
             return;
         }
@@ -4433,7 +4433,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Enables the local player to interact with the provided player. To respond to interactions, configure a "Event Receiver" chip for the "Local Player... Interaction" events within a Player board. Hold duration is the number of seconds the player needs to hold the interact button to complete an interaction. If Hold duration is 0, the interaction will be a button press or tap on mobile platforms. Prompt is the string that will be displayed when a player interacts with the provided player.  Players will be interactive only for the players that ran this chip with them as the target player. Individual players may have different sets of players they can interact with. A player's interaction state is reset when the room is reset or reloaded. Enabling interactions with a player will make it so gestures do not work with them generally (e.g.: fistbumping, high-fiving, handshaking).
         /// </summary>
-        public static void LocalPlayerEnableInteractionwithTargetPlayer(Player Player, float RequiredHoldDuration, string Prompt)
+        public static void LocalPlayerEnableInteractionWithTargetPlayer(Player Player, float RequiredHoldDuration, string Prompt)
         {
             return;
         }
@@ -5017,7 +5017,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Searches the room for all players with the input tag and outputs them as a list.
         /// </summary>
-        public static List<Player> PlayerGetAllwithTag(string Tag)
+        public static List<Player> PlayerGetAllWithTag(string Tag)
         {
             return default;
         }
@@ -5072,7 +5072,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Gets the first player with the input tag.
         /// </summary>
-        public static Player PlayerGetFirstwithTag(string Tag)
+        public static Player PlayerGetFirstWithTag(string Tag)
         {
             return default;
         }
@@ -6100,7 +6100,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Searches the room for all objects with the input tag and outputs them as a list.
         /// </summary>
-        public static List<RecRoomObject> RecRoomObjectGetAllwithTag(string Tag)
+        public static List<RecRoomObject> RecRoomObjectGetAllWithTag(string Tag)
         {
             return default;
         }
@@ -6116,7 +6116,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Gets the first object with the input tag.
         /// </summary>
-        public static RecRoomObject RecRoomObjectGetFirstwithTag(string Tag)
+        public static RecRoomObject RecRoomObjectGetFirstWithTag(string Tag)
         {
             return default;
         }
@@ -6636,7 +6636,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Rounds an input value to the nearest integer.
         /// </summary>
-        public static int RoundtoInt(float Value)
+        public static int RoundToInt(float Value)
         {
             return default;
         }
@@ -7284,7 +7284,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        internal static string stringVariable(string Port0)
+        internal static string StringVariable(string Port0)
         {
             return default;
         }
@@ -7804,7 +7804,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static List<RecRoomObject> UnequipfromSlots(Player Player, bool DominantHand, bool OffHand, bool LeftHipHolster, bool RightHipHolster, bool ShoulderHolster)
+        public static List<RecRoomObject> UnequipFromSlots(Player Player, bool DominantHand, bool OffHand, bool LeftHipHolster, bool RightHipHolster, bool ShoulderHolster)
         {
             return default;
         }

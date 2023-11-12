@@ -532,10 +532,10 @@ namespace RRCG
                     chip = "LessThan";
                     break;
                 case SyntaxKind.GreaterThanOrEqualExpression:
-                    chip = "GreaterorEqual";
+                    chip = "GreaterOrEqual";
                     break;
                 case SyntaxKind.LessThanOrEqualExpression:
-                    chip = "LessorEqual";
+                    chip = "LessOrEqual";
                     break;
                 case SyntaxKind.EqualsExpression:
                     chip = "Equals";

@@ -1,7 +1,6 @@
-
-using RRCG;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
+
 
 namespace RRCGSource
 {
@@ -29,6 +28,15 @@ namespace RRCGSource
         public static T ValueStringSwitch<T>(int match, T failed, Dictionary<string, T> cases) { return default; }
 
         public static T Self<T>() { return default; }
+
+        //
+        // Deprecations
+        //
+        [Obsolete("Use the PascalCase variant instead")]
+        public static List<RecRoomObject> RecRoomObjectGetAllwithTag(string tag) { return default; }
+
+        [Obsolete("Use the PascalCase variant instead")]
+        public static RecRoomObject RecRoomObjectGetFirstwithTag(string tag) { return default; }
     }
 }
 

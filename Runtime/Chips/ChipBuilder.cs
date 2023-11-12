@@ -554,6 +554,47 @@ namespace RRCGBuild
 
         #endregion
 
+        //
+        // Deprecated
+        //
+        #region Deprecated
+
+        [Obsolete("Use the PascalCase variant instead")]
+        public static ListPort<RecRoomObjectPort> RecRoomObjectGetAllwithTag(StringPort tag)
+        {
+            return RecRoomObjectGetAllWithTag(tag);
+        }
+
+        [Obsolete("Use the PascalCase variant instead")]
+        public static RecRoomObjectPort RecRoomObjectGetFirstwithTag(StringPort tag)
+        {
+            return RecRoomObjectGetFirstWithTag(tag);
+        }
+
+        [Obsolete("Use the PascalCase variant instead")]
+        public static BoolPort GreaterorEqual(IntPort a, IntPort b)
+        {
+            return GreaterOrEqual(a, b);
+        }
+        [Obsolete("Use the PascalCase variant instead")]
+        public static BoolPort GreaterorEqual(FloatPort a, FloatPort b)
+        {
+            return GreaterOrEqual(a, b);
+        }
+        [Obsolete("Use the PascalCase variant instead")]
+        public static BoolPort LessorEqual(IntPort a, IntPort b)
+        {
+            return LessOrEqual(a, b);
+        }
+        [Obsolete("Use the PascalCase variant instead")]
+        public static BoolPort LessorEqual(FloatPort a, FloatPort b)
+        {
+            return LessOrEqual(a, b);
+        }
+
+        #endregion
+
+
         // 
         // Misc
         // 
