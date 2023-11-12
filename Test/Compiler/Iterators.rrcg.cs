@@ -51,7 +51,10 @@ public class Iterators : CircuitDescriptor
         entry.Receiver();
 
         // Test returns from while block within an "inline" graph (functions are transparent)
-        ChipLib.Log(Concat("Repeated string (circuit board): ", StringRepeat("Hello", 5)));
+        ChipLib.Log(Concat("Repeated string (inline graph): ", StringRepeat("Hello", 5)));
+
+        // Test returns from while block within a circuit board
+        ChipLib.Log(Concat("Repeated string (circuit board): ", CircuitBoard<string, int, string>(StringRepeat, "Hey", 7)));
 
         // Test returns from while block within event functions
         ChipLib.Log(Concat("Repeated string (event function): ", StringRepeatEventFunction("Hi", 10)));
