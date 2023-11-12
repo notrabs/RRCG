@@ -314,22 +314,12 @@ namespace RRCG
 
         public override SyntaxNode VisitBreakStatement(BreakStatementSyntax node)
         {
-            // We need to rewrite one statement into two.
-            // Wrapping them in a block is the easiest solution, and
-            // although it isn't pretty, it's probably fair for generated code.
-
-            return SyntaxFactory.Block(
-                SyntaxFactory.ParseStatement("__Break();"),
-                SyntaxFactory.ParseStatement("return; // Avoid spawning unreachable nodes")
-            ).NormalizeWhitespace();
+            return SyntaxFactory.ParseStatement("__Break();").NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitContinueStatement(ContinueStatementSyntax node)
         {
-            return SyntaxFactory.Block(
-                SyntaxFactory.ParseStatement("__Continue();"),
-                SyntaxFactory.ParseStatement("return; // Avoid spawning unreachable nodes")
-            ).NormalizeWhitespace();
+            return SyntaxFactory.ParseStatement("__Continue();").NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitThrowStatement(ThrowStatementSyntax node)

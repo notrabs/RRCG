@@ -21,37 +21,25 @@ namespace RRCGBuild
             __Switch(switchString, delegate
             {
                 LogString("default");
-                {
-                    __Break();
-                    return; // Avoid spawning unreachable nodes
-                }
+                __Break();
             }
 
             , new Dictionary<AnyPort, AlternativeExec>{{"test", delegate
             {
                 {
                     LogString("block case");
-                    {
-                        __Break();
-                        return; // Avoid spawning unreachable nodes
-                    }
+                    __Break();
                 }
             }
             }, {"case2", delegate
             {
                 LogString("fallthrough");
-                {
-                    __Break();
-                    return; // Avoid spawning unreachable nodes
-                }
+                __Break();
             }
             }, {"case3", delegate
             {
                 LogString("fallthrough");
-                {
-                    __Break();
-                    return; // Avoid spawning unreachable nodes
-                }
+                __Break();
             }
             }, {"case4", delegate
             {
@@ -65,37 +53,25 @@ namespace RRCGBuild
             __Switch(switchInt, delegate
             {
                 LogString("default");
-                {
-                    __Break();
-                    return; // Avoid spawning unreachable nodes
-                }
+                __Break();
             }
 
             , new Dictionary<AnyPort, AlternativeExec>{{1, delegate
             {
                 {
                     LogString("block case");
-                    {
-                        __Break();
-                        return; // Avoid spawning unreachable nodes
-                    }
+                    __Break();
                 }
             }
             }, {2, delegate
             {
                 LogString("fallthrough");
-                {
-                    __Break();
-                    return; // Avoid spawning unreachable nodes
-                }
+                __Break();
             }
             }, {3, delegate
             {
                 LogString("fallthrough");
-                {
-                    __Break();
-                    return; // Avoid spawning unreachable nodes
-                }
+                __Break();
             }
             }, {4, delegate
             {
@@ -121,7 +97,6 @@ namespace RRCGBuild
                 ChipBuilder.If(condition, delegate
                 {
                     __Break();
-                    return; // Avoid spawning unreachable nodes
                 }
 
                 , delegate
@@ -142,7 +117,6 @@ namespace RRCGBuild
                     ChipBuilder.If(condition, delegate
                     {
                         __Break();
-                        return; // Avoid spawning unreachable nodes
                     }
 
                     , delegate
@@ -154,10 +128,7 @@ namespace RRCGBuild
                 }
                 }});
                 LogString("After Switch 2");
-                {
-                    __Break();
-                    return; // Avoid spawning unreachable nodes
-                }
+                __Break();
             }
             }, {"while", delegate
             {
@@ -171,10 +142,7 @@ namespace RRCGBuild
                         , new Dictionary<AnyPort, AlternativeExec>{{"0", delegate
                         {
                             LogString("While Switch Case 0");
-                            {
-                                __Break();
-                                return; // Avoid spawning unreachable nodes
-                            }
+                            __Break();
                         }
                         }, {"return", delegate
                         {
@@ -185,10 +153,7 @@ namespace RRCGBuild
                         ChipBuilder.If(condition, delegate
                         {
                             LogString("Break out of while");
-                            {
-                                __Break();
-                                return; // Avoid spawning unreachable nodes
-                            }
+                            __Break();
                         }
 
                         , delegate
@@ -214,10 +179,7 @@ namespace RRCGBuild
                 }
 
                 LogString("After Switch While");
-                {
-                    __Break();
-                    return; // Avoid spawning unreachable nodes
-                }
+                __Break();
             }
             }});
             LogString("After Switch 1");

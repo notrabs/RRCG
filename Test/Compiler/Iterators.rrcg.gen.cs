@@ -14,7 +14,10 @@ namespace RRCGBuild
             // Test returning from within a while loop
             WhileReturnTest();
             // Test unreachable nodes aren't spawned
+            // (this doesn't happen currently. Some day..)
             UnreachableNodesTest();
+            // Test nested while loops
+            NestedWhileTest();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
@@ -51,59 +54,6 @@ namespace RRCGBuild
             ChipLib.Log(Concat("Repeated string (circuit board): ", StringRepeat("Hello", 5)));
             // Test returns from while block within event functions
             ChipLib.Log(Concat("Repeated string (event function): ", StringRepeatEventFunction("Hi", 10)));
-            ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
-        }
-
-        void UnreachableNodesTest()
-        {
-            ExecFlow rrcg_return_flow = new ExecFlow();
-            var entry = new EventHelper("UnreachableNodesTest").Definition();
-            entry.Receiver();
-            var index = new Variable<IntPort>();
-            index.Value = 0;
-            {
-                __BeginWhileLoop(ChipBuilder.LessThan(index.Value, 100));
-                {
-                    index.Value += 1;
-                    ChipBuilder.If(ChipBuilder.Equals(index.Value, 50), delegate
-                    {
-                        ChipLib.Log("index.Value == 50, break!");
-                        {
-                            __Break();
-                            return; // Avoid spawning unreachable nodes
-                        }
-
-                        PlayerShowSubtitle(PlayerPort.Local, "This node is unreachable and should not be placed.", 0, 0);
-                    }
-
-                    , delegate
-                    {
-                        ChipBuilder.If(ChipBuilder.Equals(ChipBuilder.Modulo(index.Value, 5), 0), delegate
-                        {
-                            ChipLib.Log("index.Value % 5 == 0, continue!");
-                            {
-                                __Continue();
-                                return; // Avoid spawning unreachable nodes
-                            }
-
-                            PlayerShowSubtitle(PlayerPort.Local, "This node is unreachable and should not be placed.", 0, 0);
-                        }
-
-                        , delegate
-                        {
-                        }
-
-                        );
-                    }
-
-                    );
-                }
-
-                __EndWhileLoop();
-            }
-
-            ChipLib.Log("Unreachable nodes test done!");
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
@@ -149,6 +99,79 @@ namespace RRCGBuild
 
             ExecFlow.current.Merge(rrcg_return_flow);
             return rrcg_return_data;
+        }
+
+        void UnreachableNodesTest()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            var entry = new EventHelper("UnreachableNodesTest").Definition();
+            entry.Receiver();
+            var index = new Variable<IntPort>();
+            index.Value = 0;
+            {
+                __BeginWhileLoop(ChipBuilder.LessThan(index.Value, 100));
+                {
+                    index.Value += 1;
+                    ChipBuilder.If(ChipBuilder.Equals(index.Value, 50), delegate
+                    {
+                        ChipLib.Log("index.Value == 50, break!");
+                        __Break();
+                        PlayerShowSubtitle(PlayerPort.Local, "This node is unreachable and should not be placed.", 0, 0);
+                    }
+
+                    , delegate
+                    {
+                        ChipBuilder.If(ChipBuilder.Equals(ChipBuilder.Modulo(index.Value, 5), 0), delegate
+                        {
+                            ChipLib.Log("index.Value % 5 == 0, continue!");
+                            __Continue();
+                            PlayerShowSubtitle(PlayerPort.Local, "This node is unreachable and should not be placed.", 0, 0);
+                        }
+
+                        , delegate
+                        {
+                        }
+
+                        );
+                    }
+
+                    );
+                }
+
+                __EndWhileLoop();
+            }
+
+            ChipLib.Log("Unreachable nodes test done!");
+            ExecFlow.current.Clear();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void NestedWhileTest()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            LogString("Start");
+            {
+                __BeginWhileLoop(true);
+                {
+                    {
+                        __BeginWhileLoop(true);
+                        {
+                            LogString("0");
+                            __Break();
+                        }
+
+                        __EndWhileLoop();
+                    }
+
+                    LogString("1");
+                }
+
+                __EndWhileLoop();
+            }
+
+            LogString("2");
+            ExecFlow.current.Clear();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
     }
 }

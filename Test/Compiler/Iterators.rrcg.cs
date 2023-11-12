@@ -13,7 +13,11 @@ public class Iterators : CircuitDescriptor
         WhileReturnTest();
 
         // Test unreachable nodes aren't spawned
+        // (this doesn't happen currently. Some day..)
         UnreachableNodesTest();
+
+        // Test nested while loops
+        NestedWhileTest();
     }
 
     void WhileTest()
@@ -55,6 +59,27 @@ public class Iterators : CircuitDescriptor
         throw null;
     }
 
+    [EventFunction]
+    public string StringRepeatEventFunction(string str, int count)
+    {
+        // Functions are transparent -- this will duplicate the logic
+        // and represent it as an event function.
+        return StringRepeat(str, count);
+    }
+
+    public string StringRepeat(string str, int count)
+    {
+        var strStaging = new Variable<string>();
+
+        while (true)
+        {
+            strStaging.Value = Concat(strStaging.Value, str);
+
+            if (strStaging.Value.Length >= str.Length * count)
+                return strStaging.Value;
+        }
+    }
+
     void UnreachableNodesTest()
     {
         var entry = new EventHelper("UnreachableNodesTest").Definition();
@@ -87,24 +112,21 @@ public class Iterators : CircuitDescriptor
         throw null;
     }
 
-    [EventFunction]
-    public string StringRepeatEventFunction(string str, int count)
+    void NestedWhileTest()
     {
-        // Functions are transparent -- this will duplicate the logic
-        // and represent it as an event function.
-        return StringRepeat(str, count);
-    }
-
-    public string StringRepeat(string str, int count)
-    {
-        var strStaging = new Variable<string>();
-
+        LogString("Start");
         while (true)
         {
-            strStaging.Value = Concat(strStaging.Value, str);
+            while (true)
+            {
+                LogString("0");
+                break;
+            }
 
-            if (strStaging.Value.Length >= str.Length * count)
-                return strStaging.Value;
+            LogString("1");
         }
+
+        LogString("2");
+        throw null;
     }
 }
