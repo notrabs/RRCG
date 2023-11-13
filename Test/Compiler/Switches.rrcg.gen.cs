@@ -12,6 +12,8 @@ namespace RRCGBuild
             LogString("Return from SwitchTypes()");
             ConditionalReturn("test", true);
             LogString("Return from ConditionalReturn()");
+            SwitchInWhileLoop();
+            LogString("Return from SwitchInWhileLoop()");
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
@@ -218,6 +220,36 @@ namespace RRCGBuild
             }
 
             LogString("After Switch 1");
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void SwitchInWhileLoop()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            {
+                __BeginWhileLoop(true);
+                {
+                    {
+                        AlternativeExec rrcg_switch_section_0 = delegate
+                        {
+                            __Continue();
+                        }
+
+                        ;
+                        __Switch(5, delegate
+                        {
+                        }
+
+                        , new Dictionary<AnyPort, AlternativeExec>{{5, rrcg_switch_section_0}});
+                    }
+
+                    LogString("After switch");
+                }
+
+                __EndWhileLoop();
+            }
+
+            LogString("After while");
             ExecFlow.current.Merge(rrcg_return_flow);
         }
     }

@@ -455,6 +455,8 @@ namespace RRCGBuild
             public Node EntryIfNode;
         }
 
+        delegate void SharedKeywordImpl(object scope);
+
         public void __BeginWhileLoop(BoolPort condition)
         {
             // First, spawn the entry "If" node
@@ -482,18 +484,18 @@ namespace RRCGBuild
             ExecFlow.current = whileScope.BlockFlow;
         }
 
-        private void __ContinueImpl_While()
+        private void __ContinueImpl_While(object scope)
         {
-            var whileScope = __GetTopmostSharedKeywordScopeWithType<__SharedKeywordScope_While>();
+            var whileScope = (__SharedKeywordScope_While)scope;
 
             // Advance the current execution flow back to the entry If node.
             // Nodes spawned after this will start a new flow.
             ExecFlow.current.Advance(Context.current, new Port { Node = whileScope.EntryIfNode }, null);
         }
 
-        private void __BreakImpl_While()
+        private void __BreakImpl_While(object scope)
         {
-            var whileScope = __GetTopmostSharedKeywordScopeWithType<__SharedKeywordScope_While>();
+            var whileScope = (__SharedKeywordScope_While)scope;
 
             // Merge the current execution flow into the done flow,
             // then clear the current execution flow.
@@ -522,38 +524,47 @@ namespace RRCGBuild
             __RRCG_SHARED_KEYWORD_SCOPE_STACK.Pop();
         }
 
-        private void __BreakImpl_Switch()
+        private void __BreakImpl_Switch(object scope)
         {
             // Effectively a noop. The exec flow should stay intact so it can be merged later.
         }
 
+        private void RunSharedKeywordImpl(Dictionary<Type, SharedKeywordImpl> typeToMethod)
+        {
+            // Some keywords do not have implementations for some scopes,
+            // and as such they actually affect some parent scope.
+            // (e.g continue in a switch statement)
+
+            // Iterate over the stack in reverse to find a scope we
+            // have an implementation for.
+            int maxIndex = __RRCG_SHARED_KEYWORD_SCOPE_STACK.Count - 1;
+            for (int i=maxIndex; i >= 0; i--)
+            {
+                var scope = __RRCG_SHARED_KEYWORD_SCOPE_STACK.ElementAt(i);
+                var type = scope.GetType();
+                if (!typeToMethod.ContainsKey(type))
+                    continue;
+
+                typeToMethod[type](scope);
+                return;
+            }
+        }
+
         public void __Break()
         {
-            object topmostScope = __RRCG_SHARED_KEYWORD_SCOPE_STACK.Peek();
-            if (topmostScope == null) return;
-
-            switch (topmostScope.GetType().Name)
+            RunSharedKeywordImpl(new Dictionary<Type, SharedKeywordImpl>
             {
-                case "__SharedKeywordScope_While":
-                    __BreakImpl_While();
-                    break;
-                case "__SharedKeywordScope_Switch":
-                    __BreakImpl_Switch();
-                    break;
-            }
+                { typeof(__SharedKeywordScope_While), __BreakImpl_While },
+                { typeof(__SharedKeywordScope_Switch), __BreakImpl_Switch }
+            });
         }
 
         public void __Continue()
         {
-            object topmostScope = __RRCG_SHARED_KEYWORD_SCOPE_STACK.Peek();
-            if (topmostScope == null) return;
-
-            switch (topmostScope.GetType().Name)
+            RunSharedKeywordImpl(new Dictionary<Type, SharedKeywordImpl>
             {
-                case "__SharedKeywordScope_While":
-                    __ContinueImpl_While();
-                    break;
-            }
+                { typeof(__SharedKeywordScope_While), __ContinueImpl_While }
+            });
         }
 
     }

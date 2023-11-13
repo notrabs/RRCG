@@ -11,6 +11,10 @@ public class Switches : CircuitDescriptor
         ConditionalReturn("test", true);
 
         LogString("Return from ConditionalReturn()");
+
+        SwitchInWhileLoop();
+
+        LogString("Return from SwitchInWhileLoop()");
     }
     public void SwitchTypes(string switchString, int switchInt)
     {
@@ -101,5 +105,19 @@ public class Switches : CircuitDescriptor
                 break;
         }
         LogString("After Switch 1");
+    }
+
+    void SwitchInWhileLoop()
+    {
+        while (true)
+        {
+            switch (5)
+            {
+                case 5:
+                    continue;
+            }
+            LogString("After switch");
+        }
+        LogString("After while");
     }
 }
