@@ -441,25 +441,49 @@ namespace RRCGBuild
             var execFlow = ExecFlow.current;
             execFlow.Clear();
 
-            ExecFlow.current = new ExecFlow();
-            ExecFlow.current.Ports.Add(new Port { Node = node });
-            failed();
-            var defaultFlow = ExecFlow.current;
+            // Create exec flow for each delegate
+            var delegateToExecFlow = new Dictionary<AlternativeExec, ExecFlow>();
+            var defaultFlow = new ExecFlow();
 
-            execFlow.Merge(defaultFlow);
+            delegateToExecFlow[failed] = defaultFlow;
+            foreach (var branch in branches)
+                delegateToExecFlow[branch.Value] = new ExecFlow();
 
+            // Now add the necessary ports to each flow
             int branchIndex = 0;
+            delegateToExecFlow[failed].Ports.Add(new Port { Node = node });
+
             foreach (var branch in branches)
             {
-                if (branch.Key.Port != null) throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a string value!");
+                delegateToExecFlow[branch.Value].Ports.Add(new Port { Node = node, Index = 1 + branchIndex });
+                branchIndex++;
+            }
+
+            // Finally we can start building the branches.
+            // Build the failed branch..
+            ExecFlow.current = defaultFlow;
+            failed();
+            execFlow.Merge(defaultFlow);
+
+            // ..then the other branches.
+            branchIndex = 0;
+            var evaluatedBranches = new List<AlternativeExec>() { failed };
+            foreach (var branch in branches)
+            {
+                if (branch.Key.Port != null) throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass an int value!");
                 node.SwitchCases.Add(branch.Key.Data.ToString());
 
-                ExecFlow.current = new ExecFlow();
-                ExecFlow.current.Ports.Add(new Port { Node = node, Index = 1 + branchIndex });
-                branch.Value();
-                var branchFlow = ExecFlow.current;
+                // Only build each branch once.
+                if (!evaluatedBranches.Contains(branch.Value))
+                {
+                    ExecFlow.current = delegateToExecFlow[branch.Value];
+                    branch.Value();
 
-                execFlow.Merge(branchFlow);
+                    var branchFlow = ExecFlow.current;
+                    execFlow.Merge(branchFlow);
+
+                    evaluatedBranches.Add(branch.Value);
+                }
 
                 branchIndex++;
             }
@@ -476,25 +500,50 @@ namespace RRCGBuild
             var execFlow = ExecFlow.current;
             execFlow.Clear();
 
-            ExecFlow.current = new ExecFlow();
-            ExecFlow.current.Ports.Add(new Port { Node = node });
-            failed();
-            var defaultFlow = ExecFlow.current;
+            // Create exec flow for each delegate
+            var delegateToExecFlow = new Dictionary<AlternativeExec, ExecFlow>();
+            var defaultFlow = new ExecFlow();
 
+            delegateToExecFlow[failed] = defaultFlow;
+            foreach (var branch in branches)
+                if (!delegateToExecFlow.ContainsKey(branch.Value))
+                    delegateToExecFlow[branch.Value] = new ExecFlow();
+
+            // Now add the necessary ports to each flow
+            int branchIndex = 0;
+            defaultFlow.Ports.Add(new Port { Node = node });
+
+            foreach (var branch in branches)
+            {
+                delegateToExecFlow[branch.Value].Ports.Add(new Port { Node = node, Index = 1 + branchIndex });
+                branchIndex++;
+            }
+
+            // Finally we can start building the branches.
+            // Build the failed branch..
+            ExecFlow.current = defaultFlow;
+            failed();
             execFlow.Merge(defaultFlow);
 
-            int branchIndex = 0;
+            // ..then the other branches.
+            branchIndex = 0;
+            var evaluatedBranches = new List<AlternativeExec>() { failed };
             foreach (var branch in branches)
             {
                 if (branch.Key.Port != null) throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a string value!");
                 node.SwitchCases.Add(branch.Key.Data.ToString());
 
-                ExecFlow.current = new ExecFlow();
-                ExecFlow.current.Ports.Add(new Port { Node = node, Index = 1 + branchIndex });
-                branch.Value();
-                var branchFlow = ExecFlow.current;
+                // Only build each branch once.
+                if (!evaluatedBranches.Contains(branch.Value))
+                {
+                    ExecFlow.current = delegateToExecFlow[branch.Value];
+                    branch.Value();
 
-                execFlow.Merge(branchFlow);
+                    var branchFlow = ExecFlow.current;
+                    execFlow.Merge(branchFlow);
+
+                    evaluatedBranches.Add(branch.Value);
+                }
 
                 branchIndex++;
             }

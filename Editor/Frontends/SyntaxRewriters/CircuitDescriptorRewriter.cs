@@ -418,38 +418,59 @@ namespace RRCG
         public override SyntaxNode VisitSwitchStatement(SwitchStatementSyntax node)
         {
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Expression);
+            var statements = new SyntaxList<SyntaxNode>();
 
-            var defaultCase = ExecDelegate();
+            // We'll declare the AlternativeExecs for each branch
+            // ahead of time, so that we can pass the same reference
+            // for multiple branches and avoid duplicate chips.
 
-            var cases = new List<ExpressionSyntax>();
+            List<ExpressionSyntax> caseInitializers = new();
+            ExpressionSyntax defaultCaseExpression = ExecDelegate();
 
             foreach (var section in node.Sections)
             {
-                var sectionFn = ExecDelegate().WithBlock((BlockSyntax)Visit(SyntaxFactory.Block(section.Statements)));
+                int sectionIndex = caseInitializers.Count;
+                string sectionName = $"rrcg_switch_section_{sectionIndex}";
 
+                // First, create and store the
+                // key/value initializers for this section.
                 foreach (var label in section.Labels)
                 {
                     if (label.Keyword.Text == "default")
                     {
-                        defaultCase = sectionFn;
+                        defaultCaseExpression = SyntaxFactory.IdentifierName(sectionName);
+                        continue;
                     }
-                    else
-                    {
-                        var caseValue = (ExpressionSyntax)Visit(((CaseSwitchLabelSyntax)label).Value);
 
-                        cases.Add(SyntaxFactory.InitializerExpression(
-                            SyntaxKind.ComplexElementInitializerExpression,
-                            SyntaxUtils.ExpressionList(caseValue, sectionFn)));
-                    }
+                    var caseValue = (ExpressionSyntax)Visit(((CaseSwitchLabelSyntax)label).Value);
+
+                    caseInitializers.Add(SyntaxFactory.InitializerExpression(
+                        SyntaxKind.ComplexElementInitializerExpression,
+                        SyntaxUtils.ExpressionList(caseValue, SyntaxFactory.IdentifierName(sectionName))));
                 }
+
+                // Now generate the declaration statement for the AlternativeExec
+                var sectionFn = ExecDelegate().WithBlock((BlockSyntax)Visit(SyntaxFactory.Block(section.Statements)));
+
+                statements = statements.Add(SyntaxFactory.LocalDeclarationStatement(
+                    SyntaxFactory.VariableDeclaration(
+                        SyntaxFactory.IdentifierName("AlternativeExec"))
+                    .WithVariables(
+                        SyntaxFactory.SingletonSeparatedList<VariableDeclaratorSyntax>(
+                            SyntaxFactory.VariableDeclarator(
+                                SyntaxFactory.Identifier(sectionName))
+                            .WithInitializer(
+                                SyntaxFactory.EqualsValueClause(
+                                    sectionFn))))));
             }
 
-            return ExpressionStatement(
+            // Now that all branches have been defined, we can call __Switch.
+            statements = statements.Add(ExpressionStatement(
                     InvocationExpression(IdentifierName("__Switch"))
                     .WithArgumentList(
                         SyntaxUtils.ArgumentList(
                             test,
-                            defaultCase,
+                            defaultCaseExpression,
                             ObjectCreationExpression(
                                 GenericName(
                                     Identifier("Dictionary"))
@@ -463,10 +484,12 @@ namespace RRCG
                                 .WithInitializer(
                                     InitializerExpression(
                                         SyntaxKind.CollectionInitializerExpression,
-                                        SyntaxUtils.ExpressionList(cases.ToArray())
+                                        SyntaxUtils.ExpressionList(caseInitializers.ToArray())
                             )))
                         ))
-                .NormalizeWhitespace();
+                    );
+
+            return SyntaxFactory.Block(statements).NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitWhileStatement(WhileStatementSyntax node)
