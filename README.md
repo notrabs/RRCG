@@ -11,17 +11,25 @@ What if you never had to move a wire by hand? RRCG brings text-based scripting s
 
 <!-- toc -->
 
+1. [Install](#install)
+2. [Using the Compiler](#using-the-compiler)
+3. [Writing Code](writing-code)
+4. [Troubleshooting](Docs/Troubleshooting.md)
+5. [Feature Matrix](Docs/FeatureMatrix.md)
+
+
 ## Install
 
-### via Git URL
+[Using the Package Manager](https://docs.unity3d.com/Manual/upm-ui-giturl.html) install a package from this Git URL: 
+`https://github.com/notrabs/RRCG.git`
 
-[Using the Package Manager](https://docs.unity3d.com/Manual/upm-ui-giturl.html) install a package from this Git URL: `https://github.com/notrabs/RRCG.git`
-
-### For development
+<details>
+<summary> For development </summary>
 
 For development: Clone the repository into the "Packages" folder of your Studio project.
 
 e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Packages/RRCG`
+</details>
 
 ---
 
@@ -30,24 +38,29 @@ e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Pack
 1. Create a prefab from the `RRCG` window menu. Place it in a location with enough space. The chip area will grow as indicated by the arrows.
 2. Open the Inspector for the `RRCG` prefab
 3. Select a `CircuitDescriptor` (or use the example)
-4. Click `Build Circuit` (placeholder for now. Until we have a Circuits API you can only create the debug DOT graph)
+4. Click `Build Circuit` (placeholder for now. Until we have a Circuits API you can only create the debug DOT Graph)
 
+<details>
+<summary> RRCG script files </summary>
 
-#### RRCG script files
 RRCG compiles every file in your project with a `.rrcg.cs` extension. Any `CircuitDescriptor` class that was successfully compiled by RRCG will be available to select in the RRCG inspector. See the next chapter for how to write valid code.
 
 You can get started with this [example file](https://github.com/notrabs/RRCG/blob/main/Example/ExampleRoom.rrcg.cs) that is configured by default when you spawn the prefab.
+</details>
 
-#### Watch Mode
+<details>
+<summary> Watch Mode </summary>
+
 With watch mode on all `.rrcg.cs` files in your project are compiled automatically when Unity imports them. This also happens every time you make a change to a script file. There's no downside to leaving it watch mode on, but the option to disable it is there if you want to disable automatic compilation during development.
 
 In case you want to manually recompile a file you can use Unity's reimport functionality or use the "Recompile all" feature from the `RRCG` window menu. This should only be needed after you downloaded a new compiler version or during compiler development.
+</details>
 
-#### DOT Graph
+<details>
+<summary> DOT Graph </summary>
 
 DOT is a standard graph format that can be [visualized online](https://dreampuf.github.io/GraphvizOnline/). You can copy a DOT graph for a compiled circuit by pressing the button in the inspector.
-
----
+</details>
 
 ## Writing Code
 
@@ -460,144 +473,6 @@ public void RRCGBuildRealm() {
 
 To use the build realm simply write your code in a non-compiled file.
 More documnentation to come, but looking at the ChipLib source would be a good place to start. Note how there's two version of it so it can be used in the `RRCGSource` and `RRCGBuild` namespace with different types.
-
----
-
-## Troubleshooting
-
-#### My class doesn't show up in the Inspector UI
-
-1. Make sure your class is in a `.rrcg.cs` file
-2. Make sure your class extends `CircuitDescriptor`, not `RRCGSource.CircuitDescriptor` 
-3. Make sure there is no compilation errors in the console
-4. Try `Recompile All` in the window menu
-
-#### There's compilation errors I can't get rid of
-
-1. Check that the language feature you are using is implemented (see Feature Matrix)
-2. Use `Clean All` (and then `Recompile All`) in the window menu to recompile after pulling a new compiler version
-3. If nothing helps, disable `Watch Mode` and submit a bug report
-
-## Feature Matrix
- List of [language features](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/) currently implemented. If something is marked as implemented, but not working properly, please report a bug. If you think a particular feature is especially valuable feel free to suggest it or even contribute yourself.
-
-### Data Types
-
-**Implemented:** `bool`, `int`, `float`, `string`, all the RRTypes
-
-**Partially Implemented:** `Vector3`, `Quaternion`, `Color`
-
-These Unity data types should work as they do in Unity, but not all methods/properties might have translations yet.
-
-Any other type will not be translated. This is intentionally allowed to allow you to write simple statements to access your Unity scene and retrieve information. If you need more complex logic, it should be placed outside of an `rrcg.cs` file.
-
-### Arithmetic Operators
-
-**Implemented**: `+`, `-`, `*`, `/`, `%`, `++`, `--`, `op=`, `()` 
-
-Uses the standard c# operator precendence. 
-Will try to pre-calculate constants in C#, but place CV2 chips once necessary.
-Note that only `int` and `float` are supported (and `string` for concatentaion)
-
-### Boolean Operators
-
-**Implemented**: `!`, `&&`, `||`
-
-Uses the standard c# operator precendence. Will try to pre-calculate constants in C#, but place CV2 chips once necessary.
-
-### Bitwise and shift operators
-
-not implemented yet
-
-### Collection expressions
-
-not implemented. Is there a use-case?
-
-### Equality/Comparison operators
-
-**Implemented**: `==`, `!=`, `>`, `<`, `>=`, `<=`
-
-`!=` is implemeted as `Not(Equals(...))`. If used in an if expressions, the not chip might be optimized away by swapping the then/else branches of the chip.
-
-### Indexer access
-
-**Implemented**: `List[index]`
-
-Using the indexer will create a list get/set element chip if needed.
-
-**Not implemented**: Complex range expresssions using `^` or  `..` 
-
-### Null-conditional operators
-
-not implemented. Could be nice to check validity of objects.
-
-### Type operators
-
-**Implemented**: Explicit cast operations should translate well during compilation
-
-**Not implemented**: `is`, `as`, `typeof`. Type-testing operators have no equivalent in game
-
-### Assignment operator
-
-Implemented partially. With a current limitation that conditional information will be lost. Only assignments within the current scope are safe. There are plans to support automatic insertion of e.g. `If Value` chips when assiging from an if statement eventually.
-
-To Test: Do `ref` assignments and null-coalsescing assignements work?
-
-### Lambda expressions
-
-implemented
-
-### Pattern matching
-
-Not implemented. The `value switch` could be an interesting candidate for the Value Switch chip
-
-### Async/Await
-
-Not implemented. Maybe this would be nice syntax for delays or the async chips?
-
-### Declaration Statements
-
-implemented
-
-### Exception-handling statements
-
-**Implemented:** `throw`
-
- Will end the current execution flow (e.g. `throw null;`)
-
-**Not implemented:** `try`, `catch`, `finally`
-
-### Iteration statements 
-
-**Implemented:** `while`, `do`
-
-Will place equivalent circuitry to implement the loops.
-
-**Not implmented:** `for`, `foreach`
-
-### Selection statements
-
-**Implemented:** `if`, `else`, `switch`
-
-Switch only supports int and string cases and single values without case guards. Basically what the in-game chip also supports.
-
-### Jump statements 
-
-**Implemented:** `break`, `continue`, `return`
-
-Note that return only works as expected for void functions. In a value function only the last returned value will currently be returned. (This is the same limitation as given for the assignment operator)
-
-**Not Implmented:** `goto`
-
-### String interpolation
-
-not implemented yet. You can use string concatention with `+`
-
-### Misc
-
-**Not supported:** `checked`, `unchecked`, `fixed`, `lock`, `using`, `yield`, unsafe code and pointers
-
-These will probably never make sense
 
 ---
 
