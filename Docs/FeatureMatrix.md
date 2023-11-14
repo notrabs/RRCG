@@ -4,7 +4,7 @@
  
  List of [language features](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/) currently implemented. If something is marked as implemented, but not working properly, please report a bug. If you think a particular feature is especially valuable feel free to suggest it or even contribute yourself.
 
-### Data Types
+## Data Types
 
 **Implemented:** `bool`, `int`, `float`, `string`, all the RRTypes
 
@@ -14,7 +14,7 @@ These Unity data types should work as they do in Unity, but not all methods/prop
 
 Any other type will not be translated. This is intentionally allowed to allow you to write simple statements to access your Unity scene and retrieve information. If you need more complex logic, it should be placed outside of an `rrcg.cs` file.
 
-### Arithmetic Operators
+## Arithmetic Operators
 
 **Implemented**: `+`, `-`, `*`, `/`, `%`, `++`, `--`, `op=`, `()` 
 
@@ -22,27 +22,27 @@ Uses the standard c# operator precendence.
 Will try to pre-calculate constants in C#, but place CV2 chips once necessary.
 Note that only `int` and `float` are supported (and `string` for concatentaion)
 
-### Boolean Operators
+## Boolean Operators
 
 **Implemented**: `!`, `&&`, `||`
 
 Uses the standard c# operator precendence. Will try to pre-calculate constants in C#, but place CV2 chips once necessary.
 
-### Bitwise and shift operators
+## Bitwise and shift operators
 
 not implemented yet
 
-### Collection expressions
+## Collection expressions
 
 not implemented. Is there a use-case?
 
-### Equality/Comparison operators
+## Equality/Comparison operators
 
 **Implemented**: `==`, `!=`, `>`, `<`, `>=`, `<=`
 
 `!=` is implemeted as `Not(Equals(...))`. If used in an if expressions, the not chip might be optimized away by swapping the then/else branches of the chip.
 
-### Indexer access
+## Indexer access
 
 **Implemented**: `List[index]`
 
@@ -50,39 +50,39 @@ Using the indexer will create a list get/set element chip if needed.
 
 **Not implemented**: Complex range expresssions using `^` or  `..` 
 
-### Null-conditional operators
+## Null-conditional operators
 
 not implemented. Could be nice to check validity of objects.
 
-### Type operators
+## Type operators
 
 **Implemented**: Explicit cast operations should translate well during compilation
 
 **Not implemented**: `is`, `as`, `typeof`. Type-testing operators have no equivalent in game
 
-### Assignment operator
+## Assignment operator
 
 Implemented partially. With a current limitation that conditional information will be lost. Only assignments within the current scope are safe. There are plans to support automatic insertion of e.g. `If Value` chips when assiging from an if statement eventually.
 
 To Test: Do `ref` assignments and null-coalsescing assignements work?
 
-### Lambda expressions
+## Lambda expressions
 
 implemented
 
-### Pattern matching
+## Pattern matching
 
 Not implemented. The `value switch` could be an interesting candidate for the Value Switch chip
 
-### Async/Await
+## Async/Await
 
 Not implemented. Maybe this would be nice syntax for delays or the async chips?
 
-### Declaration Statements
+## Declaration Statements
 
 implemented
 
-### Exception-handling statements
+## Exception-handling statements
 
 **Implemented:** `throw`
 
@@ -90,7 +90,7 @@ implemented
 
 **Not implemented:** `try`, `catch`, `finally`
 
-### Iteration statements 
+## Iteration statements 
 
 **Implemented:** `while`, `do`
 
@@ -98,13 +98,13 @@ Will place equivalent circuitry to implement the loops.
 
 **Not implmented:** `for`, `foreach`
 
-### Selection statements
+## Selection statements
 
 **Implemented:** `if`, `else`, `switch`
 
 Switch only supports int and string cases and single values without case guards. Basically what the in-game chip also supports.
 
-### Jump statements 
+## Jump statements 
 
 **Implemented:** `break`, `continue`, `return`
 
@@ -112,11 +112,11 @@ Note that return only works as expected for void functions. In a value function 
 
 **Not Implmented:** `goto`
 
-### String interpolation
+## String interpolation
 
 not implemented yet. You can use string concatention with `+`
 
-### Misc
+## Misc
 
 **Not supported:** `checked`, `unchecked`, `fixed`, `lock`, `using`, `yield`, unsafe code and pointers
 
