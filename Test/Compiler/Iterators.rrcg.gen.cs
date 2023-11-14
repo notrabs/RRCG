@@ -18,6 +18,12 @@ namespace RRCGBuild
             UnreachableNodesTest();
             // Test nested while loops
             NestedWhileTest();
+            // Test do while loops
+            DoWhileTest();
+            // Test returning from within a do while loop
+            DoWhileReturnTest();
+            // Test nested do while loops
+            NestedDoWhileTest();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
@@ -142,6 +148,8 @@ namespace RRCGBuild
         void NestedWhileTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
+            var ev = new EventHelper("NestedWhileTest").Definition();
+            ev.Receiver();
             LogString("Start");
             __While(true, delegate
             {
@@ -158,6 +166,167 @@ namespace RRCGBuild
             );
             LogString("2");
             ExecFlow.current.Clear();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void DoWhileTest()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            var ev = new EventHelper("DoWhileTest").Definition();
+            ev.Receiver();
+            __DoWhile(true, delegate
+            {
+                LogString("Do while loop");
+                ChipBuilder.If(true, delegate
+                {
+                    LogString("Break");
+                    __Break();
+                }
+
+                , delegate
+                {
+                    ChipBuilder.If(true, delegate
+                    {
+                        LogString("Continue");
+                        __Continue();
+                    }
+
+                    , delegate
+                    {
+                    }
+
+                    );
+                }
+
+                );
+                LogString("Check condition");
+            }
+
+            );
+            LogString("Do while loop done");
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void DoWhileReturnTest()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            var entry = new EventHelper("DoWhileReturnTest").Definition();
+            entry.Receiver();
+            // Test returns from do while block within an "inline" graph (functions are transparent)
+            ChipLib.Log(Concat("Repeated string (do while, inline graph): ", StringRepeatDoWhile("Hello", 5)));
+            // Test returns from do while block within a circuit board
+            ChipLib.Log(Concat("Repeated string (do while, circuit board): ", CircuitBoard<StringPort, IntPort, StringPort>(StringRepeatDoWhile, "Hey", 7)));
+            // Test returns from do while block within event functions
+            ChipLib.Log(Concat("Repeated string (do while, event function): ", StringRepeatDoWhileEventFunction("Hi", 10)));
+            ExecFlow.current.Clear();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        [EventFunction]
+        public StringPort StringRepeatDoWhileEventFunction(StringPort str, IntPort count)
+        {
+            return __DispatchEventFunction<StringPort, StringPort, IntPort>("StringRepeatDoWhileEventFunction", delegate (StringPort str, IntPort count)
+            {
+                ExecFlow rrcg_return_flow = new ExecFlow();
+                dynamic rrcg_return_data = default;
+                __Return(rrcg_return_flow, out rrcg_return_data, StringRepeatDoWhile(str, count));
+                ExecFlow.current.Merge(rrcg_return_flow);
+                return rrcg_return_data;
+            }
+
+            , str, count);
+        }
+
+        public StringPort StringRepeatDoWhile(StringPort str, IntPort count)
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            dynamic rrcg_return_data = default;
+            var strStaging = new Variable<StringPort>();
+            __DoWhile(true, delegate
+            {
+                strStaging.Value = Concat(strStaging.Value, str);
+                ChipBuilder.If(ChipBuilder.GreaterOrEqual(strStaging.Value.Length, ChipBuilder.Multiply(str.Length, count)), delegate
+                {
+                    __Return(rrcg_return_flow, out rrcg_return_data, strStaging.Value);
+                }
+
+                , delegate
+                {
+                }
+
+                );
+            }
+
+            );
+            ExecFlow.current.Merge(rrcg_return_flow);
+            return rrcg_return_data;
+        }
+
+        void NestedDoWhileTest()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            var ev = new EventHelper("NestedDoWhileTest").Definition();
+            ev.Receiver();
+            __DoWhile(true, delegate
+            {
+                LogString("Do while loop 1");
+                ChipBuilder.If(true, delegate
+                {
+                    LogString("Loop 1 break");
+                    __Break();
+                }
+
+                , delegate
+                {
+                    ChipBuilder.If(true, delegate
+                    {
+                        LogString("Loop 1 continue");
+                        __Continue();
+                    }
+
+                    , delegate
+                    {
+                    }
+
+                    );
+                }
+
+                );
+                __DoWhile(true, delegate
+                {
+                    LogString("Do while loop 2");
+                    ChipBuilder.If(true, delegate
+                    {
+                        LogString("Loop 2 break");
+                        __Break();
+                    }
+
+                    , delegate
+                    {
+                        ChipBuilder.If(true, delegate
+                        {
+                            LogString("Loop 2 continue");
+                            __Continue();
+                        }
+
+                        , delegate
+                        {
+                        }
+
+                        );
+                    }
+
+                    );
+                    LogString("Loop 2 check condition");
+                }
+
+                );
+                LogString("Loop 2 done");
+                LogString("Loop 1 check condition");
+            }
+
+            );
+            LogString("Loop 1 done");
             ExecFlow.current.Merge(rrcg_return_flow);
         }
     }

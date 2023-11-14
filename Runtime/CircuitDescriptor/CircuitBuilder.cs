@@ -458,6 +458,13 @@ namespace RRCGBuild
             public Node EntryIfNode;
         }
 
+        struct __SharedKeywordScope_DoWhile
+        {
+            public ExecFlow ContinueFlow; // Will jump to the input exec of the loopback "If" node
+            public ExecFlow DoneFlow; // Exec flow for when the loop is finished/break is invoked.
+            public Node LoopbackIfNode;
+        }
+
         delegate void SharedKeywordImpl(object scope);
 
         public void __While(BoolPort condition, AlternativeExec block)
@@ -516,6 +523,67 @@ namespace RRCGBuild
             ExecFlow.current.Clear();
         }
 
+        public void __DoWhile(BoolPort condition, AlternativeExec block)
+        {
+            // Build the loopback If chip on a new
+            // ExecFlow to preserve the current one.
+            ExecFlow prevFlow = ExecFlow.current;
+
+            ExecFlow.current = new ExecFlow();
+            RRCGGenerated.ChipBuilderGen.If(condition, () => { });
+            var loopbackIfNode = Context.lastSpawnedNode;
+            ExecFlow.current = prevFlow;
+
+            // Create our DoWhile scope & exec flows
+            var doWhileScope = new __SharedKeywordScope_DoWhile()
+            {
+                ContinueFlow = new ExecFlow(),
+                DoneFlow = new ExecFlow(),
+                LoopbackIfNode = loopbackIfNode
+            };
+
+            // Mark done flow as advanced, add Then port to the current ExecFlow
+            doWhileScope.DoneFlow.hasAdvanced = true;
+            ExecFlow.current.Ports.Add(new Port { Node = loopbackIfNode });
+
+            // Push scope to the stack and build the block contents
+            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Push(doWhileScope);
+            block();
+            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Pop();
+
+            // Merge the continue flow into the current flow,
+            // then advance execution to the loopback If node.
+            ExecFlow.current.Merge(doWhileScope.ContinueFlow);
+            ExecFlow.current.Advance(Context.current, new Port { Node = loopbackIfNode }, null);
+
+            // Move to the "done" flow, add the Else port
+            // of the loopback If node, and continue building from there.
+            ExecFlow.current = doWhileScope.DoneFlow;
+            ExecFlow.current.Ports.Add(new Port { Node = loopbackIfNode, Index = 1 });
+        }
+
+        private void __ContinueImpl_DoWhile(object scope)
+        {
+            var doWhileScope = (__SharedKeywordScope_DoWhile)scope;
+
+            // Merge the current exec flow into
+            // the continue flow, then clear the current flow.
+            // Nodes spawned after this will create a new flow.
+            doWhileScope.ContinueFlow.Merge(ExecFlow.current);
+            ExecFlow.current.Clear();
+        }
+
+        private void __BreakImpl_DoWhile(object scope)
+        {
+            var doWhileScope = (__SharedKeywordScope_DoWhile)scope;
+
+            // Merge the current exec flow into
+            // the done flow, then clear the current flow.
+            // Nodes spawned after this will create a new flow.
+            doWhileScope.DoneFlow.Merge(ExecFlow.current);
+            ExecFlow.current.Clear();
+        }
+
         public void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
         {
             // Create & push our switch scope
@@ -551,8 +619,7 @@ namespace RRCGBuild
             // and as such they actually affect some parent scope.
             // (e.g continue in a switch statement)
 
-            // Iterate over the stack in reverse to find a scope we
-            // have an implementation for.
+            // Iterate over the stack to find a scope we have an implementation for.
             for (int i=0; i < __RRCG_SHARED_KEYWORD_SCOPE_STACK.Count; i++)
             {
                 var scope = __RRCG_SHARED_KEYWORD_SCOPE_STACK.ElementAt(i);
@@ -570,7 +637,8 @@ namespace RRCGBuild
             RunSharedKeywordImpl(new Dictionary<Type, SharedKeywordImpl>
             {
                 { typeof(__SharedKeywordScope_While), __BreakImpl_While },
-                { typeof(__SharedKeywordScope_Switch), __BreakImpl_Switch }
+                { typeof(__SharedKeywordScope_Switch), __BreakImpl_Switch },
+                { typeof(__SharedKeywordScope_DoWhile), __BreakImpl_DoWhile }
             });
         }
 
@@ -578,7 +646,8 @@ namespace RRCGBuild
         {
             RunSharedKeywordImpl(new Dictionary<Type, SharedKeywordImpl>
             {
-                { typeof(__SharedKeywordScope_While), __ContinueImpl_While }
+                { typeof(__SharedKeywordScope_While), __ContinueImpl_While },
+                { typeof(__SharedKeywordScope_DoWhile), __ContinueImpl_DoWhile }
             });
         }
 

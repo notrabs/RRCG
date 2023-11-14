@@ -18,6 +18,15 @@ public class Iterators : CircuitDescriptor
 
         // Test nested while loops
         NestedWhileTest();
+
+        // Test do while loops
+        DoWhileTest();
+
+        // Test returning from within a do while loop
+        DoWhileReturnTest();
+
+        // Test nested do while loops
+        NestedDoWhileTest();
     }
 
     void WhileTest()
@@ -117,6 +126,9 @@ public class Iterators : CircuitDescriptor
 
     void NestedWhileTest()
     {
+        var ev = new EventHelper("NestedWhileTest").Definition();
+        ev.Receiver();
+
         LogString("Start");
         while (true)
         {
@@ -131,5 +143,113 @@ public class Iterators : CircuitDescriptor
 
         LogString("2");
         throw null;
+    }
+
+    void DoWhileTest()
+    {
+        var ev = new EventHelper("DoWhileTest").Definition();
+        ev.Receiver();
+
+        do
+        {
+            LogString("Do while loop");
+
+            if (true)
+            {
+                LogString("Break");
+                break;
+            }
+            else if (true)
+            {
+                LogString("Continue");
+                continue;
+            }
+
+            LogString("Check condition");
+        } while (true);
+
+        LogString("Do while loop done");
+    }
+
+    void DoWhileReturnTest()
+    {
+        var entry = new EventHelper("DoWhileReturnTest").Definition();
+        entry.Receiver();
+
+        // Test returns from do while block within an "inline" graph (functions are transparent)
+        ChipLib.Log(Concat("Repeated string (do while, inline graph): ", StringRepeatDoWhile("Hello", 5)));
+
+        // Test returns from do while block within a circuit board
+        ChipLib.Log(Concat("Repeated string (do while, circuit board): ", CircuitBoard<string, int, string>(StringRepeatDoWhile, "Hey", 7)));
+
+        // Test returns from do while block within event functions
+        ChipLib.Log(Concat("Repeated string (do while, event function): ", StringRepeatDoWhileEventFunction("Hi", 10)));
+
+        throw null;
+    }
+
+    [EventFunction]
+    public string StringRepeatDoWhileEventFunction(string str, int count)
+    {
+        return StringRepeatDoWhile(str, count);
+    }
+
+    public string StringRepeatDoWhile(string str, int count)
+    {
+        var strStaging = new Variable<string>();
+
+        do
+        {
+            strStaging.Value = Concat(strStaging.Value, str);
+
+            if (strStaging.Value.Length >= str.Length * count)
+                return strStaging.Value;
+        } while (true);
+    }
+
+    void NestedDoWhileTest()
+    {
+        var ev = new EventHelper("NestedDoWhileTest").Definition();
+        ev.Receiver();
+
+        do
+        {
+            LogString("Do while loop 1");
+
+            if (true)
+            {
+                LogString("Loop 1 break");
+                break;
+            }
+            else if (true)
+            {
+                LogString("Loop 1 continue");
+                continue;
+            }
+
+            do
+            {
+                LogString("Do while loop 2");
+
+                if (true)
+                {
+                    LogString("Loop 2 break");
+                    break;
+                }
+                else if (true)
+                {
+                    LogString("Loop 2 continue");
+                    continue;
+                }
+
+                LogString("Loop 2 check condition");
+            } while (true);
+
+            LogString("Loop 2 done");
+
+            LogString("Loop 1 check condition");
+        } while (true);
+
+        LogString("Loop 1 done");
     }
 }

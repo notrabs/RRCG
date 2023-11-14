@@ -509,6 +509,23 @@ namespace RRCG
                                 SyntaxFactory.Argument(whileBlock)})))).NormalizeWhitespace();
         }
 
+        public override SyntaxNode VisitDoStatement(DoStatementSyntax node)
+        {
+            ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
+            var whileBlock = ExecDelegate().WithBlock((BlockSyntax)Visit(node.Statement));
+
+            return SyntaxFactory.ExpressionStatement(
+                SyntaxFactory.InvocationExpression(
+                    SyntaxFactory.IdentifierName("__DoWhile"))
+                .WithArgumentList(
+                    SyntaxFactory.ArgumentList(
+                        SyntaxFactory.SeparatedList<ArgumentSyntax>(
+                            new SyntaxNodeOrToken[]{
+                                SyntaxFactory.Argument(test),
+                                SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                SyntaxFactory.Argument(whileBlock)})))).NormalizeWhitespace();
+        }
+
         public override SyntaxNode VisitBinaryExpression(BinaryExpressionSyntax node)
         {
             string chip = null;
