@@ -50,6 +50,10 @@ Using the indexer will create a list get/set element chip if needed.
 
 **Not implemented**: Complex range expresssions using `^` or  `..` 
 
+## Ternary operator
+
+not implemented yet
+
 ## Null-conditional operators
 
 not implemented. Could be nice to check validity of objects.
