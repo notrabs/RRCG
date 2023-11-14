@@ -636,7 +636,7 @@ namespace RRCG
             }
 
             return SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.IdentifierName("Concat"))
+                    SyntaxFactory.IdentifierName("__StringInterpolation"))
                 .WithArgumentList(
                     SyntaxFactory.ArgumentList(
                         SyntaxFactory.SeparatedList<ArgumentSyntax>(

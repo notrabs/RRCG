@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -651,5 +652,22 @@ namespace RRCGBuild
             });
         }
 
+        public StringPort __StringInterpolation(params AnyPort[] ports)
+        {
+            var stringPorts = new List<StringPort>();
+            foreach (var port in ports)
+            {
+                if (port is StringPort)
+                {
+                    stringPorts.Add((StringPort)port);
+                    continue;
+                }
+
+                var stringPort = ToString(port);
+                stringPorts.Add(stringPort);
+            }
+
+            return Concat(stringPorts.ToArray());
+        }
     }
 }
