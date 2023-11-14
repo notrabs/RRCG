@@ -95,7 +95,7 @@ namespace RRCGBuild
         {
             StringPort stringPort;
             if (obj is StringPort sp) stringPort = sp;
-            else stringPort = ToString(obj);
+            else stringPort = obj.ToString();
 
             LogString(stringPort);
         }

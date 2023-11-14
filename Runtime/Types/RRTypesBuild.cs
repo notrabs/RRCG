@@ -59,6 +59,13 @@ namespace RRCGBuild
         /// Use this method ONLY in RRCG source code to trick the compiler into accepting your port.
         /// </summary>
         public T AsSourcePort<T>() => this as dynamic;
+
+        public new StringPort ToString()
+        {
+            if (IsDataPort) return Data.ToString();
+            if (this is StringPort sp) return sp;
+            return CircuitBuilder.Singleton("ToString_" + Port.PortKey(), () => ChipBuilder.ToString(this));
+        }
     }
 
     public class PortConversionUtils
