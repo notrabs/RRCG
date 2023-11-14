@@ -13,7 +13,7 @@ What if you never had to move a wire by hand? RRCG brings text-based scripting s
 
 1. [Install](#install)
 2. [Using the Compiler](#using-the-compiler)
-3. [Writing Code](writing-code)
+3. [Writing Code](#writing-code)
 4. [Troubleshooting](Docs/Troubleshooting.md)
 5. [Feature Matrix](Docs/FeatureMatrix.md)
 
