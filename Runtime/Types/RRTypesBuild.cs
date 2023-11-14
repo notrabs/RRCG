@@ -155,6 +155,19 @@ namespace RRCGBuild
             if (data.IsDataPort) return new IntPort { Data = -data.Data };
             return ChipBuilder.Subtract(0, data);
         }
+
+        public static IntPort operator ++(IntPort a)
+        {
+            if (a.IsDataPort) return new IntPort { Data = a.Data + 1 };
+            return ChipBuilder.Add(a, 1);
+        }
+
+        public static IntPort operator --(IntPort a)
+        {
+            if (a.IsDataPort) return new IntPort { Data = a.Data - 1 };
+            return ChipBuilder.Add(a, -1);
+        }
+
         public static IntPort operator +(IntPort a, IntPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new IntPort { Data = a.Data + b.Data };
@@ -181,6 +194,18 @@ namespace RRCGBuild
         {
             if (data.IsDataPort) return new FloatPort { Data = -data.Data };
             return ChipBuilder.Subtract(0, data);
+        }
+
+        public static FloatPort operator ++(FloatPort a)
+        {
+            if (a.IsDataPort) return new FloatPort { Data = a.Data + 1 };
+            return ChipBuilder.Add(a, 1);
+        }
+
+        public static FloatPort operator --(FloatPort a)
+        {
+            if (a.IsDataPort) return new FloatPort { Data = a.Data - 1 };
+            return ChipBuilder.Add(a, -1);
         }
 
         public static FloatPort operator +(FloatPort a, FloatPort b)
