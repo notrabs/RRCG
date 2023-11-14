@@ -228,6 +228,27 @@
       "InputCount": 2
     },
     {
+      "Id": "If_0",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "DefaultValues": [[[0,1],"System.Boolean",true]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
       "Id": "Execution_String_Switch_2",
       "Type": "A9jHgEDfpUWse7/MsLURxw==",
       "Name": "Execution String Switch",
@@ -242,6 +263,27 @@
       "SwitchCases": [
         "0"
       ],
+      "CircuitBoardId": null,
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "If_1",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "DefaultValues": [[[0,1],"System.Boolean",true]],
+      "EventDefintion": null,
+      "SwitchCases": null,
       "CircuitBoardId": null,
       "EventName": null,
       "VariableName": null,
@@ -272,7 +314,7 @@
       "InputCount": 2
     },
     {
-      "Id": "If_0",
+      "Id": "If_2",
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "SFXConstantData": null,
@@ -359,7 +401,7 @@
       "InputCount": 2
     },
     {
-      "Id": "If_1",
+      "Id": "If_3",
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "SFXConstantData": null,
@@ -401,7 +443,7 @@
       "InputCount": 2
     },
     {
-      "Id": "If_2",
+      "Id": "If_4",
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "SFXConstantData": null,
@@ -527,7 +569,7 @@
       "InputCount": 2
     },
     {
-      "Id": "If_3",
+      "Id": "If_5",
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "SFXConstantData": null,
@@ -860,6 +902,19 @@
       "From": {
         "Node": "Execution_String_Switch_1",
         "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "If_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_String_Switch_1",
+        "Group": 0,
         "Index": 2
       },
       "To": {
@@ -872,6 +927,32 @@
     {
       "From": {
         "Node": "Execution_String_Switch_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "If_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_String_Switch_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_1",
         "Group": 0,
         "Index": 0
       },
@@ -889,7 +970,7 @@
         "Index": 3
       },
       "To": {
-        "Node": "If_0",
+        "Node": "If_2",
         "Group": 0,
         "Index": 0
       },
@@ -897,7 +978,7 @@
     },
     {
       "From": {
-        "Node": "If_0",
+        "Node": "If_2",
         "Group": 0,
         "Index": 0
       },
@@ -949,7 +1030,7 @@
     },
     {
       "From": {
-        "Node": "If_1",
+        "Node": "If_3",
         "Group": 0,
         "Index": 0
       },
@@ -962,7 +1043,7 @@
     },
     {
       "From": {
-        "Node": "If_2",
+        "Node": "If_4",
         "Group": 0,
         "Index": 0
       },
@@ -975,12 +1056,12 @@
     },
     {
       "From": {
-        "Node": "If_1",
+        "Node": "If_3",
         "Group": 0,
         "Index": 1
       },
       "To": {
-        "Node": "If_2",
+        "Node": "If_4",
         "Group": 0,
         "Index": 0
       },
@@ -993,7 +1074,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "If_1",
+        "Node": "If_3",
         "Group": 0,
         "Index": 0
       },
@@ -1001,7 +1082,7 @@
     },
     {
       "From": {
-        "Node": "If_2",
+        "Node": "If_4",
         "Group": 0,
         "Index": 1
       },
@@ -1019,7 +1100,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "If_0",
+        "Node": "If_2",
         "Group": 0,
         "Index": 0
       },
@@ -1027,7 +1108,7 @@
     },
     {
       "From": {
-        "Node": "If_0",
+        "Node": "If_2",
         "Group": 0,
         "Index": 1
       },
@@ -1054,6 +1135,19 @@
     {
       "From": {
         "Node": "Execution_String_Switch_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_14",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_0",
         "Group": 0,
         "Index": 0
       },
@@ -1105,7 +1199,7 @@
     },
     {
       "From": {
-        "Node": "Execution_String_Switch_1",
+        "Node": "If_0",
         "Group": 0,
         "Index": 1
       },
@@ -1118,7 +1212,7 @@
     },
     {
       "From": {
-        "Node": "Execution_String_Switch_2",
+        "Node": "If_1",
         "Group": 0,
         "Index": 1
       },
@@ -1162,7 +1256,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "If_3",
+        "Node": "If_5",
         "Group": 0,
         "Index": 0
       },
@@ -1170,7 +1264,7 @@
     },
     {
       "From": {
-        "Node": "If_3",
+        "Node": "If_5",
         "Group": 0,
         "Index": 0
       },
@@ -1188,7 +1282,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "If_3",
+        "Node": "If_5",
         "Group": 0,
         "Index": 0
       },
@@ -1214,7 +1308,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "If_3",
+        "Node": "If_5",
         "Group": 0,
         "Index": 0
       },
@@ -1222,7 +1316,7 @@
     },
     {
       "From": {
-        "Node": "If_3",
+        "Node": "If_5",
         "Group": 0,
         "Index": 1
       },

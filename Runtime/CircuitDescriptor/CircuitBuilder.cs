@@ -446,7 +446,10 @@ namespace RRCGBuild
             return assignedValue;
         }
 
-        struct __SharedKeywordScope_Switch { }
+        struct __SharedKeywordScope_Switch
+        {
+            public ExecFlow BreakFlow;
+        }
 
         struct __SharedKeywordScope_While
         {
@@ -517,16 +520,31 @@ namespace RRCGBuild
 
         public void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
         {
-            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Push(new __SharedKeywordScope_Switch());
+            // Create & push our switch scope
+            var switchScope = new __SharedKeywordScope_Switch()
+            {
+                BreakFlow = new ExecFlow()
+            };
+            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Push(switchScope);
 
+            // Build the switch chip & all the branches
             ChipBuilder.ExecutionAnySwitch(match, failed, branches);
+
+            // Merge the break flow back into the current flow
+            ExecFlow current = ExecFlow.current;
+            current.Merge(switchScope.BreakFlow);
 
             __RRCG_SHARED_KEYWORD_SCOPE_STACK.Pop();
         }
 
         private void __BreakImpl_Switch(object scope)
         {
-            // Effectively a noop. The exec flow should stay intact so it can be merged later.
+            // Merge the current exec flow into the break flow,
+            // then clear the current exec flow.
+            var switchScope = (__SharedKeywordScope_Switch)scope;
+
+            switchScope.BreakFlow.Merge(ExecFlow.current);
+            ExecFlow.current.Clear();
         }
 
         private void RunSharedKeywordImpl(Dictionary<Type, SharedKeywordImpl> typeToMethod)
@@ -568,8 +586,3 @@ namespace RRCGBuild
 
     }
 }
-
-
-
-
-
