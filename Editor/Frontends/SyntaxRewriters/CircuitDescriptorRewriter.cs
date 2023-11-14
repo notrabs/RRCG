@@ -612,6 +612,40 @@ namespace RRCG
             return base.VisitBinaryExpression(node);
         }
 
+        public override SyntaxNode VisitInterpolatedStringExpression(InterpolatedStringExpressionSyntax node)
+        {
+            var components = new List<ExpressionSyntax>();
+
+            foreach (var item in node.Contents)
+            {
+                switch (item.Kind())
+                {
+                    case SyntaxKind.InterpolatedStringText:
+                        var text = ((InterpolatedStringTextSyntax)item).TextToken.ValueText;
+                        components.Add(SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression,
+                                                                       SyntaxFactory.Literal(text)));
+                        break;
+                    case SyntaxKind.Interpolation:
+                        var interp = (InterpolationSyntax)item;
+                        if (interp.AlignmentClause != null || interp.FormatClause != null)
+                            throw new Exception("String interpolation does not currently support alignment/format clauses");
+
+                        components.Add((ExpressionSyntax)Visit(interp.Expression));
+                        break;
+                }
+            }
+
+            return SyntaxFactory.InvocationExpression(
+                    SyntaxFactory.IdentifierName("Concat"))
+                .WithArgumentList(
+                    SyntaxFactory.ArgumentList(
+                        SyntaxFactory.SeparatedList<ArgumentSyntax>(
+                            components.Select(c => SyntaxFactory.Argument(c))
+                        )
+                    )
+                );
+        }
+
         //
         // Helpers 
         //
