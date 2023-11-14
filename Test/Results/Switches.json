@@ -1001,19 +1001,6 @@
     },
     {
       "From": {
-        "Node": "Log_String_10",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_12",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
         "Node": "If_2",
         "Group": 0,
         "Index": 1
@@ -1043,6 +1030,19 @@
         "Node": "If_0",
         "Group": 0,
         "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_10",
+        "Group": 0,
+        "Index": 0
       },
       "To": {
         "Node": "Log_String_13",

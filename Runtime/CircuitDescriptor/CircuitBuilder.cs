@@ -537,8 +537,7 @@ namespace RRCGBuild
 
             // Iterate over the stack in reverse to find a scope we
             // have an implementation for.
-            int maxIndex = __RRCG_SHARED_KEYWORD_SCOPE_STACK.Count - 1;
-            for (int i=maxIndex; i >= 0; i--)
+            for (int i=0; i < __RRCG_SHARED_KEYWORD_SCOPE_STACK.Count; i++)
             {
                 var scope = __RRCG_SHARED_KEYWORD_SCOPE_STACK.ElementAt(i);
                 var type = scope.GetType();
