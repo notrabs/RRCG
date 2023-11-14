@@ -154,59 +154,56 @@ namespace RRCGBuild
                 ;
                 AlternativeExec rrcg_switch_section_2 = delegate
                 {
+                    __While(condition, delegate
                     {
-                        __BeginWhileLoop(condition);
                         {
+                            AlternativeExec rrcg_switch_section_0 = delegate
                             {
-                                AlternativeExec rrcg_switch_section_0 = delegate
-                                {
-                                    LogString("While Switch Case 0");
-                                    __Break();
-                                }
-
-                                ;
-                                AlternativeExec rrcg_switch_section_1 = delegate
-                                {
-                                    __Return(rrcg_return_flow);
-                                }
-
-                                ;
-                                __Switch(switchString, delegate
-                                {
-                                }
-
-                                , new Dictionary<AnyPort, AlternativeExec>{{"0", rrcg_switch_section_0}, {"return", rrcg_switch_section_1}});
+                                LogString("While Switch Case 0");
+                                __Break();
                             }
 
-                            LogString("After Switch While Switch Case 0");
+                            ;
+                            AlternativeExec rrcg_switch_section_1 = delegate
+                            {
+                                __Return(rrcg_return_flow);
+                            }
+
+                            ;
+                            __Switch(switchString, delegate
+                            {
+                            }
+
+                            , new Dictionary<AnyPort, AlternativeExec>{{"0", rrcg_switch_section_0}, {"return", rrcg_switch_section_1}});
+                        }
+
+                        LogString("After Switch While Switch Case 0");
+                        ChipBuilder.If(condition, delegate
+                        {
+                            LogString("Break out of while");
+                            __Break();
+                        }
+
+                        , delegate
+                        {
                             ChipBuilder.If(condition, delegate
                             {
-                                LogString("Break out of while");
-                                __Break();
+                                LogString("Return");
+                                __Return(rrcg_return_flow);
                             }
 
                             , delegate
                             {
-                                ChipBuilder.If(condition, delegate
-                                {
-                                    LogString("Return");
-                                    __Return(rrcg_return_flow);
-                                }
-
-                                , delegate
-                                {
-                                }
-
-                                );
                             }
 
                             );
-                            LogString("Continue in while");
                         }
 
-                        __EndWhileLoop();
+                        );
+                        LogString("Continue in while");
                     }
 
+                    );
                     LogString("After Switch While");
                     __Break();
                 }
@@ -226,29 +223,26 @@ namespace RRCGBuild
         void SwitchInWhileLoop()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __While(true, delegate
             {
-                __BeginWhileLoop(true);
                 {
+                    AlternativeExec rrcg_switch_section_0 = delegate
                     {
-                        AlternativeExec rrcg_switch_section_0 = delegate
-                        {
-                            __Continue();
-                        }
-
-                        ;
-                        __Switch(5, delegate
-                        {
-                        }
-
-                        , new Dictionary<AnyPort, AlternativeExec>{{5, rrcg_switch_section_0}});
+                        __Continue();
                     }
 
-                    LogString("After switch");
+                    ;
+                    __Switch(5, delegate
+                    {
+                    }
+
+                    , new Dictionary<AnyPort, AlternativeExec>{{5, rrcg_switch_section_0}});
                 }
 
-                __EndWhileLoop();
+                LogString("After switch");
             }
 
+            );
             LogString("After while");
             ExecFlow.current.Merge(rrcg_return_flow);
         }

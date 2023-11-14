@@ -460,7 +460,7 @@ namespace RRCGBuild
 
         delegate void SharedKeywordImpl(object scope);
 
-        public void __BeginWhileLoop(BoolPort condition)
+        public void __While(BoolPort condition, AlternativeExec block)
         {
             // First, spawn the entry "If" node
             RRCGGenerated.ChipBuilderGen.If(condition, () => { });
@@ -481,10 +481,19 @@ namespace RRCGBuild
             whileScope.BlockFlow.Ports.Add(new Port { Node = entryIfNode });
             whileScope.DoneFlow.Ports.Add(new Port { Node = entryIfNode, Index = 1 });
 
-            // Finally, push to the shared keyword scope stack,
-            // and set the current exec flow to the block flow.
+            // Push scope to the stack, move to the block flow,
+            // and build the block contents
             __RRCG_SHARED_KEYWORD_SCOPE_STACK.Push(whileScope);
+
             ExecFlow.current = whileScope.BlockFlow;
+            block();
+
+            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Pop();
+
+            // Advance the current execution flow back to the entry If node,
+            // and continue spawning nodes on the Done execution flow.
+            ExecFlow.current.Advance(Context.current, new Port { Node = whileScope.EntryIfNode }, null);
+            ExecFlow.current = whileScope.DoneFlow;
         }
 
         private void __ContinueImpl_While(object scope)
@@ -505,17 +514,6 @@ namespace RRCGBuild
             // Nodes spawned after this will start a new flow.
             whileScope.DoneFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();
-        }
-
-        public void __EndWhileLoop()
-        {
-            var whileScope = __GetTopmostSharedKeywordScopeWithType<__SharedKeywordScope_While>();
-            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Pop();
-
-            // Advance the current execution flow back to the entry If node,
-            // and continue spawning nodes on the Done execution flow.
-            ExecFlow.current.Advance(Context.current, new Port { Node = whileScope.EntryIfNode }, null);
-            ExecFlow.current = whileScope.DoneFlow;
         }
 
         public void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)

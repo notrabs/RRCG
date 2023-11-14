@@ -495,21 +495,18 @@ namespace RRCG
         public override SyntaxNode VisitWhileStatement(WhileStatementSyntax node)
         {
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
-            BlockSyntax whileBlock = (BlockSyntax)Visit(node.Statement);
+            var whileBlock = ExecDelegate().WithBlock((BlockSyntax)Visit(node.Statement));
 
-            var statements = new SyntaxList<SyntaxNode>();
-            statements = statements.Add(ExpressionStatement(
-                InvocationExpression(
-                    IdentifierName("__BeginWhileLoop"))
+            return SyntaxFactory.ExpressionStatement(
+                SyntaxFactory.InvocationExpression(
+                    SyntaxFactory.IdentifierName("__While"))
                 .WithArgumentList(
-                    ArgumentList(
-                        SingletonSeparatedList<ArgumentSyntax>(
-                            Argument(test))))));
-
-            statements = statements.Add(whileBlock);
-            statements = statements.Add(SyntaxFactory.ParseStatement("__EndWhileLoop();"));
-
-            return SyntaxFactory.Block(statements).NormalizeWhitespace();
+                    SyntaxFactory.ArgumentList(
+                        SyntaxFactory.SeparatedList<ArgumentSyntax>(
+                            new SyntaxNodeOrToken[]{
+                                SyntaxFactory.Argument(test),
+                                SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                SyntaxFactory.Argument(whileBlock)})))).NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitBinaryExpression(BinaryExpressionSyntax node)
