@@ -26,7 +26,7 @@ What if you never had to move a wire by hand? RRCG brings text-based scripting s
 <details>
 <summary> For development </summary>
 
-For development: Clone the repository into the "Packages" folder of your Studio project.
+Clone the repository into the "Packages" folder of your Studio project.
 
 e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Packages/RRCG`
 </details>
