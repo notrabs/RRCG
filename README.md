@@ -481,6 +481,16 @@ More documnentation to come, but looking at the ChipLib source would be a good p
 ## Feature Matrix
  List of [language features](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/) currently implemented. If something is marked as implemented, but not working properly, please report a bug. If you think a particular feature is especially valuable feel free to suggest it or even contribute yourself.
 
+### Data Types
+
+**Implemented:** `bool`, `int`, `float`, `string`, all the RRTypes
+
+**Partially Implemented:** `Vector3`, `Quaternion`, `Color`
+
+These Unity data types should work as they do in Unity, but not all methods/properties might have translations yet.
+
+Any other type will not be translated. This is intentionally allowed to allow you to write simple statements to access your Unity scene and retrieve information. If you need more complex logic, it should be placed outside of an `rrcg.cs` file.
+
 ### Arithmetic Operators
 
 **Implemented**: `+`, `-`, `*`, `/`, `%`, `++`, `--`, `op=`, `()` 
@@ -585,7 +595,7 @@ not implemented yet. You can use string concatention with `+`
 
 ### Misc
 
-**Not supported:** `checked`, `unchecked`, `fixed`, `lock`, `using`, `yield`, pointers
+**Not supported:** `checked`, `unchecked`, `fixed`, `lock`, `using`, `yield`, unsafe code and pointers
 
 These will probably never make sense
 
