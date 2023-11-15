@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace RRCGBuild
 {
+#pragma warning disable CS0162 // Unreachable code detected
+
     public class Switches : CircuitBuilder
     {
         public override void CircuitGraph()
@@ -248,3 +250,5 @@ namespace RRCGBuild
         }
     }
 }
+#pragma warning restore CS0162 // Unreachable code detected
+

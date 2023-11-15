@@ -159,7 +159,7 @@ namespace RRCGGenerated
         public const string EmitterSetSpeed = "12446960-d971-475f-b64e-b5c7bb422eca";
         public const string EmitterStart = "56ebaa0b-256a-40ed-a066-f5663dfa2b59";
         public const string EmitterStop = "23b278c4-5d3d-439d-afa3-ff30c949df97";
-        public const string Equals = "e1f1b65e-8d82-47af-8637-ae2d0afa431f";
+        public new const string Equals = "e1f1b65e-8d82-47af-8637-ae2d0afa431f";
         public const string EqualsDeprecated = "3663225d-e18d-40e6-a234-ef10378528be";
         public const string EquipmentSlot = "1abf31dd-fa6e-43bb-9eb4-94a06e62f139";
         public const string EquipObjectToDominantHand = "c840f770-80aa-4e96-8677-963a2ca3cff1";
@@ -754,7 +754,7 @@ namespace RRCGGenerated
         public const string ToggleButtonGetIsPressed = "f8a9cb84-dcb1-4a12-ae29-4d7711e14506";
         public const string ToggleButtonSetIsPressed = "fdfb3857-3d13-4d66-9a05-f88586e9f821";
         public const string ToRecRoomObject = "315a494e-84cc-4e3c-acff-389bb932b5d0";
-        public const string ToString = "bddc8e4e-b496-48ee-8e25-5b9fe8e1c6c9";
+        public new const string ToString = "bddc8e4e-b496-48ee-8e25-5b9fe8e1c6c9";
         public const string ToStringDeprecated = "74e81edb-84bd-4e52-b2f3-a73a62a6b3aa";
         public const string TouchpadComponentGetActiveTouch = "b83d2e2f-61e8-4490-8a81-d38c88fff8d1";
         public const string TouchpadComponentGetInteractionLabel = "32aa1ef2-a230-430b-9809-19c114b1fe44";

@@ -1,9 +1,11 @@
 using RRCG;
-using System.Collections.Generic;
 using RRCGBuild;
+using System.Collections.Generic;
 
 namespace RRCGBuild
 {
+#pragma warning disable CS0162 // Unreachable code detected
+
     public class Iterators : CircuitBuilder
     {
         public override void CircuitGraph()
@@ -331,3 +333,5 @@ namespace RRCGBuild
         }
     }
 }
+#pragma warning restore CS0162 // Unreachable code detected
+

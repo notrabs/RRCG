@@ -1,5 +1,6 @@
 ﻿using RRCGSource;
 
+#pragma warning disable CS0162 // Unreachable code detected
 public class Switches : CircuitDescriptor
 {
     public override void CircuitGraph()
@@ -121,3 +122,4 @@ public class Switches : CircuitDescriptor
         LogString("After while");
     }
 }
+#pragma warning restore CS0162 // Unreachable code detected

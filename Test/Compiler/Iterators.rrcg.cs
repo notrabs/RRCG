@@ -1,7 +1,7 @@
 ﻿using RRCG;
 using RRCGSource;
-using System.Collections.Generic;
 
+#pragma warning disable CS0162 // Unreachable code detected
 public class Iterators : CircuitDescriptor
 {
     public override void CircuitGraph()
@@ -253,3 +253,4 @@ public class Iterators : CircuitDescriptor
         LogString("Loop 1 done");
     }
 }
+#pragma warning restore CS0162 // Unreachable code detected
