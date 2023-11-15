@@ -118,7 +118,11 @@ Note that return only works as expected for void functions. In a value function 
 
 ## String interpolation
 
-not implemented yet. You can use string concatention with `+`
+**Implemented:** String interpolation with data & real ports: `$"Hello, {nameVar.Value}!";`
+
+Automatically converts ports/data to strings where necessary: `$"My favourite colour is {new Color(0, 0, 1)}!";`
+
+**Not implemented:** Alignment clauses, format clauses.
 
 ## Misc
 
