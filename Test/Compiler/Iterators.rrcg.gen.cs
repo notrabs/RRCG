@@ -86,7 +86,7 @@ namespace RRCGBuild
             __While(true, delegate
             {
                 strStaging.Value = Concat(strStaging.Value, str);
-                ChipBuilder.If(ChipBuilder.GreaterOrEqual(strStaging.Value.Length, ChipBuilder.Multiply(str.Length, count)), delegate
+                ChipBuilder.If(ChipBuilder.GreaterOrEqual(strStaging.Value.Length, str.Length * count), delegate
                 {
                     __Return(rrcg_return_flow, out rrcg_return_data, strStaging.Value);
                 }
@@ -122,7 +122,7 @@ namespace RRCGBuild
 
                 , delegate
                 {
-                    ChipBuilder.If(ChipBuilder.Equals(ChipBuilder.Modulo(index.Value, 5), 0), delegate
+                    ChipBuilder.If(ChipBuilder.Equals(index.Value % 5, 0), delegate
                     {
                         ChipLib.Log("index.Value % 5 == 0, continue!");
                         __Continue();
@@ -245,7 +245,7 @@ namespace RRCGBuild
             __DoWhile(true, delegate
             {
                 strStaging.Value = Concat(strStaging.Value, str);
-                ChipBuilder.If(ChipBuilder.GreaterOrEqual(strStaging.Value.Length, ChipBuilder.Multiply(str.Length, count)), delegate
+                ChipBuilder.If(ChipBuilder.GreaterOrEqual(strStaging.Value.Length, str.Length * count), delegate
                 {
                     __Return(rrcg_return_flow, out rrcg_return_data, strStaging.Value);
                 }

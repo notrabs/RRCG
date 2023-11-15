@@ -29,7 +29,7 @@ namespace RRCGBuild
             EventReceiver(RoomEvents.Hz30);
             var rand1 = RandomInt(0, 10);
             var rand2 = RandomInt(0, 10);
-            ChipBuilder.If(ChipBuilder.GreaterThan(ChipBuilder.Add(rand1, rand2), 10), delegate
+            ChipBuilder.If(ChipBuilder.GreaterThan(rand1 + rand2, 10), delegate
             {
                 LogString("Today's your lucky day");
             }
@@ -48,7 +48,7 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             EventReceiver(RoomEvents.Hz30);
             var rand1 = RandomInt(0, 10);
-            var sum = ChipBuilder.Add((ChipBuilder.Add(rand1, 3)), (ChipBuilder.Add(4, 5)));
+            var sum = (rand1 + 3) + (4 + 5);
             var cached = ChipLib.EventCache<IntPort>(sum);
             PlayerShowSubtitle(GetLocalPlayer(), ToString(cached), 3.0f, 0);
             ExecFlow.current.Merge(rrcg_return_flow);
@@ -59,7 +59,7 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             IntPort input1 = ExistingDataInput<IntPort>("value0");
             IntPort input2 = ExistingDataInput<IntPort>("value1");
-            var result = ChipBuilder.Add(input1, input2);
+            var result = input1 + input2;
             ExistingDataOutput<IntPort>("result", result);
             ExecFlow.current.Merge(rrcg_return_flow);
         }
@@ -78,7 +78,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
-            __Return(rrcg_return_flow, out rrcg_return_data, ChipBuilder.Add(RandomInt(0, 100), RandomInt(0, 100)));
+            __Return(rrcg_return_flow, out rrcg_return_data, RandomInt(0, 100) + RandomInt(0, 100));
             ExecFlow.current.Merge(rrcg_return_flow);
             return rrcg_return_data;
         }

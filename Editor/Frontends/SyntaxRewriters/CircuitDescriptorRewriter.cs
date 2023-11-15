@@ -533,21 +533,6 @@ namespace RRCG
 
             switch (node.Kind())
             {
-                case SyntaxKind.AddExpression:
-                    chip = "Add";
-                    break;
-                case SyntaxKind.SubtractExpression:
-                    chip = "Subtract";
-                    break;
-                case SyntaxKind.MultiplyExpression:
-                    chip = "Multiply";
-                    break;
-                case SyntaxKind.DivideExpression:
-                    chip = "Divide";
-                    break;
-                case SyntaxKind.ModuloExpression:
-                    chip = "Modulo";
-                    break;
                 case SyntaxKind.GreaterThanExpression:
                     chip = "GreaterThan";
                     break;

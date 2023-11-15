@@ -1,3 +1,4 @@
+using UnityEngine;
 using RRCGBuild;
 using System.Collections.Generic;
 
@@ -12,6 +13,7 @@ namespace RRCGBuild
             NativeFloatOperators();
             PortIntOperators();
             PortFloatOperators();
+            VectorOperators();
             MixedOperators();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
@@ -21,11 +23,11 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             IntPort nativeA = 1;
             IntPort nativeB = 2;
-            ChipLib.Log(ChipBuilder.Add(nativeA, nativeB));
-            ChipLib.Log(ChipBuilder.Subtract(nativeA, nativeB));
-            ChipLib.Log(ChipBuilder.Multiply(nativeA, nativeB));
-            ChipLib.Log(ChipBuilder.Divide(nativeA, nativeB));
-            ChipLib.Log(ChipBuilder.Modulo(nativeA, nativeB));
+            ChipLib.Log(nativeA + nativeB);
+            ChipLib.Log(nativeA - nativeB);
+            ChipLib.Log(nativeA * nativeB);
+            ChipLib.Log(nativeA / nativeB);
+            ChipLib.Log(nativeA % nativeB);
             IntPort postIncrement = 0;
             ChipLib.Log(postIncrement++);
             ChipLib.Log(postIncrement);
@@ -46,11 +48,11 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             FloatPort nativeA = 1;
             FloatPort nativeB = 2;
-            ChipLib.Log(ChipBuilder.Add(nativeA, nativeB));
-            ChipLib.Log(ChipBuilder.Subtract(nativeA, nativeB));
-            ChipLib.Log(ChipBuilder.Multiply(nativeA, nativeB));
-            ChipLib.Log(ChipBuilder.Divide(nativeA, nativeB));
-            ChipLib.Log(ChipBuilder.Modulo(nativeA, nativeB));
+            ChipLib.Log(nativeA + nativeB);
+            ChipLib.Log(nativeA - nativeB);
+            ChipLib.Log(nativeA * nativeB);
+            ChipLib.Log(nativeA / nativeB);
+            ChipLib.Log(nativeA % nativeB);
             FloatPort postIncrement = 0;
             ChipLib.Log(postIncrement++);
             ChipLib.Log(postIncrement);
@@ -71,11 +73,11 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             IntPort portA = RandomInt(0, 0);
             IntPort portB = RandomInt(0, 0);
-            ChipLib.Log(ChipBuilder.Add(portA, portB));
-            ChipLib.Log(ChipBuilder.Subtract(portA, portB));
-            ChipLib.Log(ChipBuilder.Multiply(portA, portB));
-            ChipLib.Log(ChipBuilder.Divide(portA, portB));
-            ChipLib.Log(ChipBuilder.Modulo(portA, portB));
+            ChipLib.Log(portA + portB);
+            ChipLib.Log(portA - portB);
+            ChipLib.Log(portA * portB);
+            ChipLib.Log(portA / portB);
+            ChipLib.Log(portA % portB);
             IntPort postIncrement = RandomInt(0, 0);
             ChipLib.Log(postIncrement++);
             ChipLib.Log(postIncrement);
@@ -96,11 +98,11 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             FloatPort portA = RandomFloat(1, 1);
             FloatPort portB = RandomFloat(2, 2);
-            ChipLib.Log(ChipBuilder.Add(portA, portB));
-            ChipLib.Log(ChipBuilder.Subtract(portA, portB));
-            ChipLib.Log(ChipBuilder.Multiply(portA, portB));
-            ChipLib.Log(ChipBuilder.Divide(portA, portB));
-            ChipLib.Log(ChipBuilder.Modulo(portA, portB));
+            ChipLib.Log(portA + portB);
+            ChipLib.Log(portA - portB);
+            ChipLib.Log(portA * portB);
+            ChipLib.Log(portA / portB);
+            ChipLib.Log(portA % portB);
             FloatPort postIncrement = RandomFloat(0, 0);
             ChipLib.Log(postIncrement++);
             ChipLib.Log(postIncrement);
@@ -116,6 +118,25 @@ namespace RRCGBuild
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
+        public void VectorOperators()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            Vector3Port vectorA = Vector3Create(1, 2, 3);
+            Vector3Port vectorB = Vector3Create(4, 5, 6);
+            FloatPort portA = RandomFloat(1, 1);
+            IntPort portB = RandomInt(2, 2);
+            ChipLib.Log(vectorA + vectorB);
+            ChipLib.Log(vectorA - vectorB);
+            // Should be converted to VectorScale
+            ChipLib.Log(vectorA * portA);
+            ChipLib.Log(vectorB * portB);
+            ChipLib.Log(portA * vectorA);
+            ChipLib.Log(portB * vectorB);
+            ChipLib.Log(vectorA / portA);
+            ChipLib.Log(vectorB / portB);
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
         public void MixedOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
@@ -123,11 +144,10 @@ namespace RRCGBuild
             IntPort portB = RandomInt(2, 2);
             FloatPort nativeA = 3;
             IntPort nativeB = 4;
+            ChipLib.Log(portA + portB * nativeA / nativeB);
+            ChipLib.Log(portA + portB * 5);
+            ChipLib.Log(portA * portB + 5);
             ExecFlow.current.Merge(rrcg_return_flow);
-        // TODO: These are not working!
-        //ChipLib.Log(portA + portB * nativeA / nativeB);
-        //ChipLib.Log(portA + portB * 5);
-        //ChipLib.Log(portA * portB + 5);
         }
     }
 }
