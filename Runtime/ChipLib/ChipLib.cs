@@ -71,6 +71,11 @@ namespace RRCGSource
         public static void RequireKey(string keyName) { }
 
         /// <summary>
+        /// Creates a list with [count] inputs and the given value assigned to all elements
+        /// </summary>
+        public static List<T> ListFill<T>(int count, T value) { return default; }
+
+        /// <summary>
         /// A Look-Up-Table to generate a shared, switch-based accessor for a large list of data.
         /// </summary>
         public class LUT<T>

@@ -245,6 +245,16 @@ namespace RRCGBuild
             });
         }
 
+        public static ListPort<T> ListFill<T>(IntPort count, T value) where T: AnyPort, new() {
+            int intCount = count.AsData<int>();
+
+            if (intCount < 0 || intCount > 64) throw new Exception("ListFill count must be within [0, 64]");
+
+            var intialValues = new T[intCount];
+            Array.Fill(intialValues, value);
+            return ListCreate<T>(intialValues);
+        }
+
         public class LUT<T> where T : AnyPort, new()
         {
             public T UnsafeReadPort;
