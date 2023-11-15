@@ -1544,7 +1544,7 @@
       "StudioFunctionData": null,
       "RoomKeyData": null,
       "RoomCurrencyData": null,
-      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "DefaultValues": [[[0,1],"System.Int32",1],[[0,2],"System.Int32",1]],
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
@@ -1553,7 +1553,7 @@
       "VariableKind": 0,
       "VariableType": null,
       "VariableHomeValue": null,
-      "InputCount": 2
+      "InputCount": 3
     },
     {
       "Id": "To_String_18",
@@ -2405,7 +2405,7 @@
       "StudioFunctionData": null,
       "RoomKeyData": null,
       "RoomCurrencyData": null,
-      "DefaultValues": [[[0,1],"System.Single",1.0]],
+      "DefaultValues": [[[0,1],"System.Single",1.0],[[0,2],"System.Single",1.0]],
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
@@ -2414,7 +2414,7 @@
       "VariableKind": 0,
       "VariableType": null,
       "VariableHomeValue": null,
-      "InputCount": 2
+      "InputCount": 3
     },
     {
       "Id": "To_String_30",
@@ -3840,19 +3840,6 @@
     },
     {
       "From": {
-        "Node": "Add_4",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Add_5",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
         "Node": "Add_5",
         "Group": 0,
         "Index": 0
@@ -4607,19 +4594,6 @@
     },
     {
       "From": {
-        "Node": "Add_10",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Add_11",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
         "Node": "Add_11",
         "Group": 0,
         "Index": 0
@@ -4877,6 +4851,32 @@
         "Index": 0
       },
       "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Random_Int_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Random_Float_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
     }
   ],
   "SubContexts": [],

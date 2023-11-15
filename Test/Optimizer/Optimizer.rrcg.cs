@@ -11,6 +11,8 @@ public class Optimizer : CircuitDescriptor
         TestKnownSingletonChipsOptimizer();
 
         TestVariableCollapseOptimizer();
+
+        TestAssociativeOperationCollapseOptimizer();
     }
 
     void TestNotIfOptimizer()
@@ -95,6 +97,21 @@ public class Optimizer : CircuitDescriptor
         var3.Value = RandomFloat(0, 100);
         ChipLib.Log(var3.Value);
 
+        throw null;
+    }
+
+    void TestAssociativeOperationCollapseOptimizer()
+    {
+        var e = new EventHelper("TestAssociativeOperationCollapseOptimizer").Definition();
+        e.Receiver();
+
+        var variable = new Variable<float>();
+        variable.Value = variable.Value + 2f + 3f + 4f + 5f + 6f * 7f * 8f * 9f * 10f;
+
+        float undeletableAdd = variable.Value + 5f;
+        float collapsible = undeletableAdd + 1f + 2f + 3f + 4f;
+        ChipLib.Log(undeletableAdd);
+        ChipLib.Log(collapsible);
         throw null;
     }
 }

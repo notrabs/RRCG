@@ -14,6 +14,7 @@ namespace RRCGBuild
             TestNotIfOptimizer();
             TestKnownSingletonChipsOptimizer();
             TestVariableCollapseOptimizer();
+            TestAssociativeOperationCollapseOptimizer();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
@@ -155,6 +156,21 @@ namespace RRCGBuild
             ChipLib.Log(var2.Value);
             var3.Value = RandomFloat(0, 100);
             ChipLib.Log(var3.Value);
+            ExecFlow.current.Clear();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void TestAssociativeOperationCollapseOptimizer()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            var e = new EventHelper("TestAssociativeOperationCollapseOptimizer").Definition();
+            e.Receiver();
+            var variable = new Variable<FloatPort>();
+            variable.Value = ChipBuilder.Add(ChipBuilder.Add(ChipBuilder.Add(ChipBuilder.Add(ChipBuilder.Add(variable.Value, 2f), 3f), 4f), 5f), ChipBuilder.Multiply(ChipBuilder.Multiply(ChipBuilder.Multiply(ChipBuilder.Multiply(6f, 7f), 8f), 9f), 10f));
+            FloatPort undeletableAdd = ChipBuilder.Add(variable.Value, 5f);
+            FloatPort collapsible = ChipBuilder.Add(ChipBuilder.Add(ChipBuilder.Add(ChipBuilder.Add(undeletableAdd, 1f), 2f), 3f), 4f);
+            ChipLib.Log(undeletableAdd);
+            ChipLib.Log(collapsible);
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
