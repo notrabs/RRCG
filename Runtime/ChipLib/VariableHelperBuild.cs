@@ -17,7 +17,7 @@ namespace RRCGBuild
     }
 
 
-    public class NamedVariable<T>: IVariable<T> where T : AnyPort, new()
+    public class NamedVariable<T> : IVariable<T> where T : AnyPort, new()
     {
         private string name;
         private VariableKind kind;
@@ -43,18 +43,36 @@ namespace RRCGBuild
 
         private T CreateVariableNode(T value)
         {
-            T data;
+            T data = value switch
+            {
+                IntPort typed => ChipBuilder.IntVariable(typed) as T,
+                BoolPort typed => ChipBuilder.BoolVariable(typed) as T,
+                FloatPort typed => ChipBuilder.FloatVariable(typed) as T,
+                StringPort typed => ChipBuilder.StringVariable(typed) as T,
+                PlayerPort typed => ChipBuilder.PlayerVariable(typed) as T,
+                RecRoomObjectPort typed => ChipBuilder.RecRoomObjectVariable(typed) as T,
+                Vector3Port typed => ChipBuilder.Vector3Variable(typed) as T,
+                QuaternionPort typed => ChipBuilder.QuaternionVariable(typed) as T,
+                ColorPort typed => ChipBuilder.ColorVariable(typed) as T,
+                AIPort typed => ChipBuilder.AIVariable(typed) as T,
+                CombatantPort typed => ChipBuilder.CombatantVariable(typed) as T,
+                DestinationRoomPort typed => ChipBuilder.DestinationRoomVariable(typed) as T,
 
-            if (value is StringPort) data = ChipBuilder.StringVariable(value as StringPort) as T;
-            else if (value is IntPort) data = ChipBuilder.IntVariable(value as IntPort) as T;
-            else if (value is BoolPort) data = ChipBuilder.BoolVariable(value as BoolPort) as T;
-            else if (value is FloatPort) data = ChipBuilder.FloatVariable(value as FloatPort) as T;
-            else if (value is PlayerPort) data = ChipBuilder.PlayerVariable(value as PlayerPort) as T;
-            else if (value is RecRoomObjectPort) data = ChipBuilder.RecRoomObjectVariable(value as RecRoomObjectPort) as T;
-            else if (value is Vector3Port) data = ChipBuilder.Vector3Variable(value as Vector3Port) as T;
-            else if (value is QuaternionPort) data = ChipBuilder.QuaternionVariable(value as QuaternionPort) as T;
-            else if (value is ListPort<RecRoomObjectPort>) data = ChipBuilder.ListRecRoomObjectVariable(value as ListPort<RecRoomObjectPort>) as T;
-            else throw new Exception("Variable type not supported yet: "+value.GetType().ToString());
+                ListPort<IntPort> typed => ChipBuilder.ListIntVariable(typed) as T,
+                ListPort<BoolPort> typed => ChipBuilder.ListBoolVariable(typed) as T,
+                ListPort<FloatPort> typed => ChipBuilder.ListFloatVariable(typed) as T,
+                ListPort<StringPort> typed => ChipBuilder.ListStringVariable(typed) as T,
+                ListPort<PlayerPort> typed => ChipBuilder.ListPlayerVariable(typed) as T,
+                ListPort<RecRoomObjectPort> typed => ChipBuilder.ListRecRoomObjectVariable(typed) as T,
+                ListPort<Vector3Port> typed => ChipBuilder.ListVector3Variable(typed) as T,
+                ListPort<QuaternionPort> typed => ChipBuilder.ListQuaternionVariable(typed) as T,
+                ListPort<ColorPort> typed => ChipBuilder.ListColorVariable(typed) as T,
+                ListPort<DestinationRoomPort> typed => ChipBuilder.ListDestinationRoomVariable(typed) as T,
+                ListPort<ObjectiveMarkerPort> typed => ChipBuilder.ListObjectiveMarkerVariable(typed) as T,
+                ListPort<RewardPort> typed => ChipBuilder.ListRewardVariable(typed) as T,
+
+                _ => throw new Exception("Variable type not supported yet: " + value.GetType().ToString())
+            };
 
             Context.lastSpawnedNode.VariableName = name;
             Context.lastSpawnedNode.VariableKind = kind;
