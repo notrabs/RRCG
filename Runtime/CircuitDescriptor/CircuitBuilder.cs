@@ -667,31 +667,5 @@ namespace RRCGBuild
 
             return Concat(stringPorts.ToArray());
         }
-
-        public dynamic __Ternary(BoolPort test, AnyPort whenTrue, AnyPort whenFalse)
-        {
-            // Without the rewritten generic parameter (type -> TypePort), IfValue
-            // is likely to generate an error stating there's no boxing conversion.
-            // So, to avoid this, we'll use reflection magic instead.
-
-            // At least in this case the implicit conversion to AnyPort works,
-            // so we can use that to get the correct return type & ensure type safety.
-
-            // TODO: Can we solve this issue without reflection magic?
-
-            Type ifType = whenTrue.GetType();
-            Type elseType = whenFalse.GetType();
-
-            if (ifType != elseType)
-                throw new Exception($"Type mismatch in ternary statement: {ifType}, {elseType}");
-
-            AnyPort result = ChipBuilder.IfValue(test, whenTrue, whenFalse);
-
-            // Create a new port with the correct type
-            dynamic port = Activator.CreateInstance(ifType);
-            port.Port = result.Port;
-            port.Data = result.Data;
-            return port;
-        }
     }
 }
