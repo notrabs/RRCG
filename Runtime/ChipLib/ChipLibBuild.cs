@@ -13,16 +13,16 @@ namespace RRCGBuild
         {
             var eventName = "RRCG_EventCache_" + Context.current.GetUniqueId();
 
-            EventDefinition<T0>(eventName, "value0");
+            var cacheEvent = new EventHelper<T0>(eventName, "value0").Definition();
 
             T0 port = null;
 
             CircuitBuilder.InlineGraph(() =>
             {
-                port = EventReceiver<T0>(eventName);
+                port = cacheEvent.Receiver();
             });
 
-            EventSender<T0>(eventName, value0);
+            cacheEvent.SendLocal(value0);
 
             return port;
         }
@@ -33,16 +33,16 @@ namespace RRCGBuild
         {
             var eventName = "RRCG_EventCache_" + Context.current.GetUniqueId();
 
-            EventDefinition<T0, T1>(eventName, "value0", "value1");
+            var cacheEvent = new EventHelper<T0, T1>(eventName, "value0", "value1").Definition();
 
             (T0, T1) ports = default;
 
             CircuitBuilder.InlineGraph(() =>
             {
-                ports = EventReceiver<T0, T1>(eventName);
+                ports = cacheEvent.Receiver();
             });
 
-            EventSender<T0, T1>(eventName, value0, value1);
+            cacheEvent.SendLocal(value0, value1);
 
             return ports;
         }
@@ -54,16 +54,16 @@ namespace RRCGBuild
         {
             var eventName = "RRCG_EventCache_" + Context.current.GetUniqueId();
 
-            EventDefinition<T0, T1, T2>(eventName, "value0", "value1", "value2");
+            var cacheEvent = new EventHelper<T0, T1, T2>(eventName, "value0", "value1", "value2").Definition();
 
             (T0, T1, T2) ports = default;
 
             CircuitBuilder.InlineGraph(() =>
             {
-                ports = EventReceiver<T0, T1, T2>(eventName);
+                ports = cacheEvent.Receiver();
             });
 
-            EventSender<T0, T1, T2>(eventName, value0, value1, value2);
+            cacheEvent.SendLocal(value0, value1, value2);
 
             return ports;
         }
@@ -76,16 +76,16 @@ namespace RRCGBuild
         {
             var eventName = "RRCG_EventCache_" + Context.current.GetUniqueId();
 
-            EventDefinition<T0, T1, T2, T3>(eventName, "value0", "value1", "value2", "value3");
+            var cacheEvent = new EventHelper<T0, T1, T2, T3>(eventName, "value0", "value1", "value2", "value3").Definition();
 
             (T0, T1, T2, T3) ports = default;
 
             CircuitBuilder.InlineGraph(() =>
             {
-                ports = EventReceiver<T0, T1, T2, T3>(eventName);
+                ports = cacheEvent.Receiver();
             });
 
-            EventSender<T0, T1, T2, T3>(eventName, value0, value1, value2, value3);
+            cacheEvent.SendLocal(value0, value1, value2, value3);
 
             return ports;
         }

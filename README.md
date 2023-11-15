@@ -288,8 +288,8 @@ public void ExampleCircuit()
     // Start new circuit graphs at the receiver
     var data = onInputEvent.Receiver();
 
-    // Send Events using the sender
-    onInputEvent.Sender(123);
+    // Send Events using one of the sender functions
+    onInputEvent.SendLocal(123);
 }
 ```
 

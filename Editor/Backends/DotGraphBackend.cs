@@ -22,7 +22,9 @@ namespace RRCG
         private static string GetNodeName(Node node)
         {
             if (node.VariableName != null) return node.VariableName;
-            if (node.EventName != null) return $"{node.Name} ({node.EventName})";
+            if (node.EventDefinitionData != null) return $"{node.Name} ({node.EventDefinitionData.EventName})";
+            if (node.EventReceiverData != null) return $"{node.Name} ({node.EventReceiverData.EventName})";
+            if (node.EventSenderData != null) return $"{node.Name} ({node.EventSenderData.EventName})";
             return node.Name;
         }
     }
