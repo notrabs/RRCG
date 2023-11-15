@@ -1,4 +1,5 @@
 ﻿using RRCGSource;
+using UnityEngine;
 
 public class Operators : CircuitDescriptor
 {
@@ -11,6 +12,8 @@ public class Operators : CircuitDescriptor
         PortIntOperators();
 
         PortFloatOperators();
+
+        VectorOperators();
 
         MixedOperators();
     }
@@ -127,6 +130,25 @@ public class Operators : CircuitDescriptor
         ChipLib.Log(preDecrement);
     }
 
+    public void VectorOperators()
+    {
+        Vector3 vectorA = Vector3Create(1, 2, 3);
+        Vector3 vectorB = Vector3Create(4, 5, 6);
+        float portA = RandomFloat(1, 1);
+        int portB = RandomInt(2, 2);
+
+        ChipLib.Log(vectorA + vectorB);
+        ChipLib.Log(vectorA - vectorB);
+
+        // Should be converted to VectorScale
+        ChipLib.Log(vectorA * portA);
+        ChipLib.Log(vectorB * portB);
+        ChipLib.Log(portA * vectorA);
+        ChipLib.Log(portB * vectorB);
+        ChipLib.Log(vectorA / portA);
+        ChipLib.Log(vectorB / portB);
+    }
+
     public void MixedOperators()
     {
         float portA = RandomFloat(1, 1);
@@ -134,9 +156,8 @@ public class Operators : CircuitDescriptor
         float nativeA = 3;
         int nativeB = 4;
 
-        // TODO: These are not working!
-        //ChipLib.Log(portA + portB * nativeA / nativeB);
-        //ChipLib.Log(portA + portB * 5);
-        //ChipLib.Log(portA * portB + 5);
+        ChipLib.Log(portA + portB * nativeA / nativeB);
+        ChipLib.Log(portA + portB * 5);
+        ChipLib.Log(portA * portB + 5);
     }
 }
