@@ -171,6 +171,8 @@ namespace RRCGBuild
             FloatPort collapsible = ChipBuilder.Add(ChipBuilder.Add(ChipBuilder.Add(ChipBuilder.Add(undeletableAdd, 1f), 2f), 3f), 4f);
             ChipLib.Log(undeletableAdd);
             ChipLib.Log(collapsible);
+            var stringPort = Reroute<StringPort>(" ");
+            ChipLib.Log(ChipBuilder.Add(ChipBuilder.Add("Hello", stringPort), "World"));
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }

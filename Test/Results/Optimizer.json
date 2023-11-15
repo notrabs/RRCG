@@ -1554,6 +1554,69 @@
       "VariableType": null,
       "VariableHomeValue": null,
       "InputCount": 2
+    },
+    {
+      "Id": "Reroute_0",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "DefaultValues": [[[0,0],"System.String"," "]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_0",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Hello"],[[0,3],"System.String","World"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 4
+    },
+    {
+      "Id": "Log_String_23",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "DefaultValues": [],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
     }
   ],
   "Connections": [
@@ -2703,6 +2766,32 @@
     },
     {
       "From": {
+        "Node": "String_Concat_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_23",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_22",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_23",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
         "Node": "float_Variable_10",
         "Group": 0,
         "Index": 1
@@ -2737,6 +2826,19 @@
         "Node": "Add_2",
         "Group": 0,
         "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_0",
+        "Group": 0,
+        "Index": 2
       },
       "isExec": false
     }

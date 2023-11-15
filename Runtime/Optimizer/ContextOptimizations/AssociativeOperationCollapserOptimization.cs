@@ -13,6 +13,7 @@ namespace RRCG.Optimizer.ContextOptimizations
         {
             { ChipType.Add, BasicCollapse },
             { ChipType.Multiply, BasicCollapse },
+            { ChipType.StringConcat, StringConcatCollapse }
         };
 
         public int OptimizeContext(Context context)
@@ -95,6 +96,39 @@ namespace RRCG.Optimizer.ContextOptimizations
             into.RemoveAt(index);
             into.InsertRange(index, from);
             return true;
+        }
+
+        static bool StringConcatCollapse(int index, List<AnyPort> from, List<AnyPort> into)
+        {
+            // Validate we aren't trying to collapse into the seperator port
+            if (index == 0)
+                return false;
+
+            // Validate the seperator ports are equal
+            if (!PortsEqualForCollapse(from[0], into[0]))
+                return false;
+
+            // Collapse the ports (excluding seperator)
+            into.RemoveAt(index);
+            into.InsertRange(index, from.Skip(1));
+            return true;
+        }
+
+        static bool PortsEqualForCollapse(AnyPort a, AnyPort b)
+        {
+            // Actual port status must match
+            if (a.IsActualPort != b.IsActualPort) return false;
+
+            if (a.IsActualPort)
+            {
+                // Port source must match
+                return a.Port.Group == b.Port.Group &&
+                       a.Port.Index == b.Port.Index &&
+                       a.Port.Node == b.Port.Node;
+            }
+
+            // Data must match
+            return a.Data == b.Data;
         }
 
         // Gets all input connections, both default values & actual ports.

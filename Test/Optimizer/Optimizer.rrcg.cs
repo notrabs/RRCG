@@ -112,6 +112,9 @@ public class Optimizer : CircuitDescriptor
         float collapsible = undeletableAdd + 1f + 2f + 3f + 4f;
         ChipLib.Log(undeletableAdd);
         ChipLib.Log(collapsible);
+
+        var stringPort = Reroute<string>(" ");
+        ChipLib.Log("Hello" + stringPort + "World");
         throw null;
     }
 }
