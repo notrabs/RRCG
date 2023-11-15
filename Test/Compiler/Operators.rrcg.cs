@@ -88,7 +88,7 @@ public class Operators : CircuitDescriptor
 
         int preIncrement = RandomInt(0, 0);
         ChipLib.Log(++preIncrement);
-        ChipLib.Log(++preIncrement);
+        ChipLib.Log(preIncrement);
 
         int postDecrement = RandomInt(0, 0);
         ChipLib.Log(postDecrement--);
@@ -116,7 +116,7 @@ public class Operators : CircuitDescriptor
 
         float preIncrement = RandomFloat(0, 0);
         ChipLib.Log(++preIncrement);
-        ChipLib.Log(++preIncrement);
+        ChipLib.Log(preIncrement);
 
         float postDecrement = RandomFloat(0, 0);
         ChipLib.Log(postDecrement--);

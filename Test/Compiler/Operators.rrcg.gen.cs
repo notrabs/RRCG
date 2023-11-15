@@ -81,7 +81,7 @@ namespace RRCGBuild
             ChipLib.Log(postIncrement);
             IntPort preIncrement = RandomInt(0, 0);
             ChipLib.Log(++preIncrement);
-            ChipLib.Log(++preIncrement);
+            ChipLib.Log(preIncrement);
             IntPort postDecrement = RandomInt(0, 0);
             ChipLib.Log(postDecrement--);
             ChipLib.Log(postDecrement);
@@ -106,7 +106,7 @@ namespace RRCGBuild
             ChipLib.Log(postIncrement);
             FloatPort preIncrement = RandomFloat(0, 0);
             ChipLib.Log(++preIncrement);
-            ChipLib.Log(++preIncrement);
+            ChipLib.Log(preIncrement);
             FloatPort postDecrement = RandomFloat(0, 0);
             ChipLib.Log(postDecrement--);
             ChipLib.Log(postDecrement);
