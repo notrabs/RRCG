@@ -663,8 +663,7 @@ namespace RRCGBuild
                     continue;
                 }
 
-                var stringPort = ToString(port);
-                stringPorts.Add(stringPort);
+                stringPorts.Add(port.ToString());
             }
 
             return Concat(stringPorts.ToArray());
