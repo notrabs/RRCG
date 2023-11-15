@@ -18,5 +18,15 @@ namespace RRCG
         STRING_FLOAT,
         STRING_STRING,
     }
+
+    public enum EventTarget
+    {
+        LOCAL = 0,
+        OTHERS = 1,
+        ROOM_AUTHORITY = 2,
+        AUTHORITY = 3,
+        ALL = 4,
+        PLAYER = 5,
+    }
 }
 

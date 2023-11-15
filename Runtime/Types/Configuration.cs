@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RRCG
 {
@@ -11,115 +12,68 @@ namespace RRCG
             { "StudioFunction", "StudioFunctionData" },
             { "RoomKeyConstant", "RoomKeyData" },
             { "RoomCurrencyConstant", "RoomCurrencyData" },
+            { "EventDefinition", "EventDefinitionData" },
+            { "EventSender", "EventSenderData" },
+            { "EventReceiver", "EventReceiverData" },
         };
     }
 
-    public struct WorldUIBar
-    {
-        public bool Enabled;
-        public int Value;
-        public int MaxValue;
-        public bool Animated;
+    public record WorldUIBar(
+        bool Enabled = false,
+        int Value = 0,
+        int MaxValue = 100,
+        bool Animated = true
+    );
 
-        public WorldUIBar(bool Enabled = false, int Value = 0, int MaxValue = 100, bool Animated = true)
-        {
-            this.Enabled = Enabled;
-            this.Value = Value;
-            this.MaxValue = MaxValue;
-            this.Animated = Animated;
-        }
-    }
-
-    public struct PlayerWorldUIData
-    {
-        public string Name;
-
-        public WorldUIBar Primary;
-        public WorldUIBar Secondary;
-
-        public string Text;
-        public bool Synced;
-        public bool EnableWhileJoining;
-
-        public PlayerWorldUIData(
+    public record PlayerWorldUIData(
             string Name,
-            WorldUIBar Primary = new WorldUIBar(),
-            WorldUIBar Secondary = new WorldUIBar(),
+            WorldUIBar Primary = null,
+            WorldUIBar Secondary = null,
             string Text = "",
             bool Synced = true,
             bool EnableWhileJoining = false
-        )
-        {
-            this.Name = Name;
-            this.Primary = Primary;
-            this.Secondary = Secondary;
-            this.Text = Text;
-            this.Synced = Synced;
-            this.EnableWhileJoining = EnableWhileJoining;
-        }
-    }
+    );
 
-    public struct SFXConstantData
-    {
-        public string ClipName;
-        public float Volume;
-        public float SpeedShift;
-        public float SpeedVariation;
+    public record SFXConstantData(
+        string ClipName,
+        float Volume = 1.0f,
+        float SpeedShift = 0.0f,
+        float SpeedVariation = 0.0f
+    );
 
-        public SFXConstantData(string ClipName, float Volume = 1.0f, float SpeedShift = 0.0f, float SpeedVariation = 0.0f)
-        {
-            this.ClipName = ClipName;
-            this.Volume = Volume;
-            this.SpeedShift = SpeedShift;
-            this.SpeedVariation = SpeedVariation;
-        }
-    }
+    public record PlayAudioAtPositionData(
+        int AudioChannel = 1,
+        float MaxRolloffDistance = 80,
+        int RolloffCurve = 0,
+        bool Synced = false
+    );
 
-    public struct PlayAudioAtPositionData
-    {
-        public int AudioChannel;
-        public float MaxRolloffDistance;
-        public int RolloffCurve;
-        public bool Synced;
+    public record StudioFunctionData(
+        string PrefabName,
+        string FunctionName
+    );
 
-        public PlayAudioAtPositionData(int AudioChannel = 1, float MaxRolloffDistance = 80, int RolloffCurve = 0, bool Synced = false)
-        {
-            this.AudioChannel = AudioChannel;
-            this.MaxRolloffDistance = MaxRolloffDistance;
-            this.RolloffCurve = RolloffCurve;
-            this.Synced = Synced;
-        }
-    }
+    public record RoomKeyData(string Id);
+    public record RoomCurrencyData(string Id);
 
-    public struct StudioFunctionData
-    {
-        public string PrefabName;
-        public string FunctionName;
+    public record EventDefinitionData(
+       string EventName,
+       (string, Type)[] EventDefinition
+    );
 
-        public StudioFunctionData(string PrefabName, string FunctionName)
-        {
-            this.PrefabName = PrefabName;
-            this.FunctionName = FunctionName;
-        }
-    }
+    public record EventReceiverData(
+       string EventName
+    );
 
-    public struct RoomKeyData
-    {
-        public string Id;
-
-        public RoomKeyData(string Id)
-        {
-            this.Id = Id;
-        }
-    }
-
-    public struct RoomCurrencyData
-    {
-        public string Id;
-
-        public RoomCurrencyData(string Id)
-        {
-            this.Id = Id;
-        }
-    }
+    public record EventSenderData(
+        string EventName,
+        EventTarget EventTarget
+    );
 }
+
+namespace System.Runtime.CompilerServices
+{
+    // Without this class the record initializers don't work
+    public class IsExternalInit { }
+}
+

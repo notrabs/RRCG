@@ -2065,7 +2065,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        internal static void EventDefinition()
+        internal static void EventDefinition(EventDefinitionData config)
         {
             return;
         }
@@ -2073,7 +2073,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Events are the entry points for all circuit graphs. Events are execution hooks for things like a player loading into the room, or knowing when a Button is pressed. After creating this chip, make sure to use the configure tool to choose the event you want to listen for. You can use the Event Defintion chip to create your own events to add to this list and use with the Event Sender chip.
         /// </summary>
-        internal static void EventReceiver()
+        internal static void EventReceiver(EventReceiverData config)
         {
             return;
         }
@@ -2081,7 +2081,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Use the Event Sender to fire your custom events defined in Event Defintions. After creating this chip, make sure to use the configure tool to change the event that you want to fire. You can also change who you want to send the event to from the config menu.
         /// </summary>
-        internal static void EventSender()
+        internal static void EventSender(EventSenderData config)
         {
             return;
         }

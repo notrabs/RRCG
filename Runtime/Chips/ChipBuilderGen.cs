@@ -2804,29 +2804,32 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static void EventDefinition()
+        public static void EventDefinition(EventDefinitionData config)
         {
             Node node = new Node()
             {Name = "Event Definition", Type = "7d72a1fa-a434-4437-a73a-51f306a3f55f", InputCount = 0};
             Context.current.Nodes.Add(node);
+            node.EventDefinitionData = config;
             return;
         }
 
-        public static void EventReceiver()
+        public static void EventReceiver(EventReceiverData config)
         {
             Node node = new Node()
             {Name = "Event Receiver", Type = "8b533ccb-643a-491d-982c-94417ce99954", InputCount = 0};
             Context.current.Nodes.Add(node);
             ExecFlow.current.Advance(Context.current, null, new Port{Node = node});
+            node.EventReceiverData = config;
             return;
         }
 
-        public static void EventSender()
+        public static void EventSender(EventSenderData config)
         {
             Node node = new Node()
             {Name = "Event Sender", Type = "96a8fe50-bc37-458b-bac9-582d45314779", InputCount = 1};
             Context.current.Nodes.Add(node);
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.EventSenderData = config;
             return;
         }
 

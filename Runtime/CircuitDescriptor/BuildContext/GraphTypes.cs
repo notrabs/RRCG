@@ -16,8 +16,6 @@ namespace RRCGBuild
         public string Type;
 
         public string Name;
-
-        public string EventName { get; internal set; }
         public string VariableName { get; internal set; }
         public VariableKind VariableKind { get; internal set; }
         public Type VariableType { get; internal set; }
@@ -31,16 +29,18 @@ namespace RRCGBuild
         public int InputCount { get; internal set; }
 
         // Configuration data
-        public SFXConstantData? SFXConstantData = null;
-        public PlayAudioAtPositionData? PlayAudioAtPositionData = null;
-        public PlayerWorldUIData? PlayerWorldUIData = null;
-        public StudioFunctionData? StudioFunctionData = null;
-        public RoomKeyData? RoomKeyData = null;
-        public RoomCurrencyData? RoomCurrencyData = null;
+        public SFXConstantData SFXConstantData = null;
+        public PlayAudioAtPositionData PlayAudioAtPositionData = null;
+        public PlayerWorldUIData PlayerWorldUIData = null;
+        public StudioFunctionData StudioFunctionData = null;
+        public RoomKeyData RoomKeyData = null;
+        public RoomCurrencyData RoomCurrencyData = null;
+        public EventDefinitionData EventDefinitionData = null;
+        public EventSenderData EventSenderData = null;
+        public EventReceiverData EventReceiverData = null;
 
         [JsonConverter(typeof(DefaultValuesConverter))]
         public Dictionary<(int Group, int Port), object> DefaultValues = new Dictionary<(int Group, int Port), object>();
-        public List<(string, Type)> EventDefintion = null;
         public List<string> SwitchCases = null;
 
         [JsonConverter(typeof(GuidConverter))]
