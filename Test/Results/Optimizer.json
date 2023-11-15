@@ -1617,6 +1617,90 @@
       "VariableType": null,
       "VariableHomeValue": null,
       "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_1",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Undeletable"],[[0,3],"System.String","concat"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 4
+    },
+    {
+      "Id": "Log_String_24",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "DefaultValues": [],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_2",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Here's the undeletable concat: "],[[0,2],"System.String","Undeletable"],[[0,4],"System.String","concat"]],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 5
+    },
+    {
+      "Id": "Log_String_25",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "DefaultValues": [],
+      "EventDefintion": null,
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "EventName": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
     }
   ],
   "Connections": [
@@ -2792,6 +2876,58 @@
     },
     {
       "From": {
+        "Node": "String_Concat_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_24",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_23",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_24",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "String_Concat_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_25",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_24",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_25",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
         "Node": "float_Variable_10",
         "Group": 0,
         "Index": 1
@@ -2839,6 +2975,32 @@
         "Node": "String_Concat_0",
         "Group": 0,
         "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_1",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_2",
+        "Group": 0,
+        "Index": 3
       },
       "isExec": false
     }

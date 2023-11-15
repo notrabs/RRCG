@@ -110,11 +110,15 @@ public class Optimizer : CircuitDescriptor
 
         float undeletableAdd = variable.Value + 5f;
         float collapsible = undeletableAdd + 1f + 2f + 3f + 4f;
-        ChipLib.Log(undeletableAdd);
+        ChipLib.Log(undeletableAdd); // Log directly to make it undeletable
         ChipLib.Log(collapsible);
 
-        var stringPort = Reroute<string>(" ");
-        ChipLib.Log("Hello" + stringPort + "World");
+        var spacePort = Reroute<string>(" ");
+        ChipLib.Log("Hello" + spacePort + "World");
+
+        var undeletableConcat = "Undeletable" + spacePort + "concat";
+        ChipLib.Log(undeletableConcat); // Log directly to make it undeletable
+        ChipLib.Log("Here's the undeletable concat: " + undeletableConcat);
         throw null;
     }
 }

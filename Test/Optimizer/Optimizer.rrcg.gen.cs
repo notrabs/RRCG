@@ -169,10 +169,13 @@ namespace RRCGBuild
             variable.Value = ChipBuilder.Add(ChipBuilder.Add(ChipBuilder.Add(ChipBuilder.Add(ChipBuilder.Add(variable.Value, 2f), 3f), 4f), 5f), ChipBuilder.Multiply(ChipBuilder.Multiply(ChipBuilder.Multiply(ChipBuilder.Multiply(6f, 7f), 8f), 9f), 10f));
             FloatPort undeletableAdd = ChipBuilder.Add(variable.Value, 5f);
             FloatPort collapsible = ChipBuilder.Add(ChipBuilder.Add(ChipBuilder.Add(ChipBuilder.Add(undeletableAdd, 1f), 2f), 3f), 4f);
-            ChipLib.Log(undeletableAdd);
+            ChipLib.Log(undeletableAdd); // Log directly to make it undeletable
             ChipLib.Log(collapsible);
-            var stringPort = Reroute<StringPort>(" ");
-            ChipLib.Log(ChipBuilder.Add(ChipBuilder.Add("Hello", stringPort), "World"));
+            var spacePort = Reroute<StringPort>(" ");
+            ChipLib.Log(ChipBuilder.Add(ChipBuilder.Add("Hello", spacePort), "World"));
+            var undeletableConcat = ChipBuilder.Add(ChipBuilder.Add("Undeletable", spacePort), "concat");
+            ChipLib.Log(undeletableConcat); // Log directly to make it undeletable
+            ChipLib.Log(ChipBuilder.Add("Here's the undeletable concat: ", undeletableConcat));
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
