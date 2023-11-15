@@ -17,14 +17,7 @@ namespace RRCGBuild
         #region EventNodes
         public static void EventReceiver(StringPort eventName)
         {
-            EventReceiver();
-
-            if (eventName.Port != null)
-            {
-                throw new Exception("Can't create EventReceivers with dynamic data. Make sure to pass a string value!");
-            }
-
-            Context.lastSpawnedNode.EventName = eventName.Data;
+            EventReceiver(new EventReceiverData(eventName.AsData<string>()));
         }
 
         public static T0 EventReceiver<T0>(StringPort eventName) where T0 : AnyPort, new()
@@ -78,142 +71,21 @@ namespace RRCGBuild
             );
         }
 
-        public static void EventSender(StringPort eventName)
+        internal static void EventSender(StringPort eventName, EventTarget eventTarget, params AnyPort[] inputs)
         {
-            EventSender();
-
-            if (eventName.Port != null)
-            {
-                throw new Exception("Can't create EventSenders with dynamic data. Make sure to pass a string value!");
-            }
-
-            Context.lastSpawnedNode.EventName = eventName.Data;
-        }
-
-        public static void EventSender<T0>(StringPort eventName, T0 value0) where T0 : AnyPort
-        {
-            EventSender(eventName);
+            EventSender(new EventSenderData(eventName.AsData<string>(), eventTarget));
             var node = Context.lastSpawnedNode;
 
-            node.ConnectInputPort(Context.current, value0, new Port { Node = node, Index = 1 });
+            for (var i = 0; i < inputs.Length; i++)
+                node.ConnectInputPort(Context.current, inputs[i], node.Port(0, 1 + i));
         }
 
-        public static void EventSender<T0, T1>(StringPort eventName, T0 value0, T1 value1)
-            where T0 : AnyPort
-            where T1 : AnyPort
+        internal static void EventDefinition(StringPort eventName, params (StringPort, Type)[] eventDefinition)
         {
-            EventSender(eventName);
-            var node = Context.lastSpawnedNode;
-
-            node.ConnectInputPort(Context.current, value0, new Port { Node = node, Index = 1 });
-            node.ConnectInputPort(Context.current, value1, new Port { Node = node, Index = 2 });
-        }
-        public static void EventSender<T0, T1, T2>(StringPort eventName, T0 value0, T1 value1, T2 value2)
-            where T0 : AnyPort
-            where T1 : AnyPort
-            where T2 : AnyPort
-        {
-            EventSender(eventName);
-            var node = Context.lastSpawnedNode;
-
-            node.ConnectInputPort(Context.current, value0, new Port { Node = node, Index = 1 });
-            node.ConnectInputPort(Context.current, value1, new Port { Node = node, Index = 2 });
-            node.ConnectInputPort(Context.current, value2, new Port { Node = node, Index = 3 });
-        }
-        public static void EventSender<T0, T1, T2, T3>(StringPort eventName, T0 value0, T1 value1, T2 value2, T3 value3)
-            where T0 : AnyPort
-            where T1 : AnyPort
-            where T2 : AnyPort
-            where T3 : AnyPort
-        {
-            EventSender(eventName);
-            var node = Context.lastSpawnedNode;
-
-            node.ConnectInputPort(Context.current, value0, new Port { Node = node, Index = 1 });
-            node.ConnectInputPort(Context.current, value1, new Port { Node = node, Index = 2 });
-            node.ConnectInputPort(Context.current, value2, new Port { Node = node, Index = 3 });
-            node.ConnectInputPort(Context.current, value3, new Port { Node = node, Index = 4 });
-        }
-
-        public static void EventDefinition(StringPort eventName)
-        {
-            EventDefinition();
-            var node = Context.lastSpawnedNode;
-
-            if (eventName.IsActualPort)
-            {
-                throw new Exception("Can't create EventDefinitions with dynamic data. Make sure to pass a string value!");
-            }
-
-            node.EventName = eventName.Data;
-            node.EventDefintion = new List<(string, Type)>();
-        }
-
-
-        public static void EventDefinition<T0>(StringPort eventName, StringPort param0) where T0 : AnyPort, new()
-        {
-            EventDefinition(eventName);
-            var node = Context.lastSpawnedNode;
-
-            if (param0.IsActualPort)
-            {
-                throw new Exception("Can't create EventDefinitions with dynamic data. Make sure to pass a string value!");
-            }
-
-            node.EventDefintion.Add((param0.Data, typeof(T0)));
-        }
-
-        public static void EventDefinition<T0, T1>(StringPort eventName, StringPort param0, StringPort param1)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-        {
-            EventDefinition(eventName);
-            var node = Context.lastSpawnedNode;
-
-            if (param0.IsActualPort || param1.IsActualPort)
-            {
-                throw new Exception("Can't create EventDefinitions with dynamic data. Make sure to pass a string value!");
-            }
-
-            node.EventDefintion.Add((param0.Data, typeof(T0)));
-            node.EventDefintion.Add((param1.Data, typeof(T1)));
-        }
-
-        public static void EventDefinition<T0, T1, T2>(StringPort eventName, StringPort param0, StringPort param1, StringPort param2)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-        {
-            EventDefinition(eventName);
-            var node = Context.lastSpawnedNode;
-
-            if (param0.IsActualPort || param1.IsActualPort || param2.IsActualPort)
-            {
-                throw new Exception("Can't create EventDefinitions with dynamic data. Make sure to pass a string value!");
-            }
-
-            node.EventDefintion.Add((param0.Data, typeof(T0)));
-            node.EventDefintion.Add((param1.Data, typeof(T1)));
-            node.EventDefintion.Add((param2.Data, typeof(T2)));
-        }
-        public static void EventDefinition<T0, T1, T2, T3>(StringPort eventName, StringPort param0, StringPort param1, StringPort param2, StringPort param3)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-        {
-            EventDefinition(eventName);
-            var node = Context.lastSpawnedNode;
-
-            if (param0.IsActualPort || param1.IsActualPort || param2.IsActualPort || param3.IsActualPort)
-            {
-                throw new Exception("Can't create EventDefinitions with dynamic data. Make sure to pass a string value!");
-            }
-
-            node.EventDefintion.Add((param0.Data, typeof(T0)));
-            node.EventDefintion.Add((param1.Data, typeof(T1)));
-            node.EventDefintion.Add((param2.Data, typeof(T2)));
-            node.EventDefintion.Add((param2.Data, typeof(T3)));
+            EventDefinition(new EventDefinitionData(
+                eventName.AsData<string>(),
+                eventDefinition.Select(t => (t.Item1.AsData<string>(), t.Item2)).ToArray()
+            ));
         }
 
         #endregion
@@ -396,14 +268,15 @@ namespace RRCGBuild
             }
         }
 
-        public static void For(AlternativeExec<IntPort> forEach, IntPort from, IntPort to) {
+        public static void For(AlternativeExec<IntPort> forEach, IntPort from, IntPort to)
+        {
             var index = ChipBuilderGen.For(from, to, (_) => { });
             var node = Context.lastSpawnedNode;
 
             forEach(index);
 
             ExecFlow.current = new ExecFlow();
-            ExecFlow.current.Ports.Add(node.Port(0,2));
+            ExecFlow.current.Ports.Add(node.Port(0, 2));
         }
 
         public static void ExecutionIntegerSwitch(IntPort match, AlternativeExec failed, Dictionary<IntPort, AlternativeExec> branches)
