@@ -1,6 +1,7 @@
 ﻿
 using RRCG;
 using System;
+using System.Globalization;
 using UnityEngine;
 
 namespace RRCGBuild
@@ -62,7 +63,21 @@ namespace RRCGBuild
 
         public new StringPort ToString()
         {
-            if (IsDataPort) return Data.ToString();
+            if (IsDataPort)
+            {
+                // Type-specific overrides to match CV2's string representation
+                if (this is FloatPort)
+                    return ((float)Data).ToString(CultureInfo.InvariantCulture);
+
+                if (this is IntPort)
+                    return ((int)Data).ToString(CultureInfo.InvariantCulture);
+
+                if (this is ColorPort)
+                    return $"#{((int)Data) - 1000:X6}";
+
+                return Data.ToString();
+            }
+
             if (this is StringPort sp) return sp;
             return CircuitBuilder.Singleton("ToString_" + Port.PortKey(), () => ChipBuilder.ToString(this));
         }
