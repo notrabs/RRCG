@@ -156,11 +156,18 @@ namespace RRCGBuild
             string str = (string)Data;
             return new StringPort { Data = str.ToLower() };
         }
+        public static StringPort operator +(StringPort a, StringPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new StringPort { Data = a.Data + b.Data };
+            return ChipBuilder.Concat(a, b);
+        }
     }
     public class IntPort : AnyPort
     {
         public static implicit operator IntPort(int data) => new IntPort { Data = data };
         public static explicit operator int(IntPort data) => data.AsData<int>();
+
+        public static implicit operator FloatPort(IntPort data) => data.IsDataPort ? new FloatPort() { Data = (float)data.Data } : ChipBuilder.IntToFloat(data);
 
         public static explicit operator string(IntPort data) => data.AsData<int>().ToString();
         public static explicit operator StringPort(IntPort data) => (string)data;
@@ -195,6 +202,22 @@ namespace RRCGBuild
             return ChipBuilder.Subtract(a, b);
         }
 
+        public static IntPort operator *(IntPort a, IntPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new IntPort { Data = a.Data * b.Data };
+            return ChipBuilder.Multiply(a, b);
+        }
+        public static IntPort operator /(IntPort a, IntPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new IntPort { Data = a.Data / b.Data };
+            return ChipBuilder.Divide(a, b);
+        }
+        public static IntPort operator %(IntPort a, IntPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new IntPort { Data = a.Data % b.Data };
+            return ChipBuilder.Modulo(a, b);
+        }
+
         public static IntPort MaxValue => new IntPort { Data = int.MaxValue };
         public static IntPort MinValue => new IntPort { Data = int.MinValue };
     }
@@ -202,6 +225,8 @@ namespace RRCGBuild
     {
         public static implicit operator FloatPort(float data) => new FloatPort { Data = data };
         public static explicit operator float(FloatPort data) => data.AsData<float>();
+
+        public static explicit operator IntPort(FloatPort data) => data.IsDataPort ? new IntPort() { Data = (int)data.Data } : ChipBuilder.FloorToInt(data);
 
         public static explicit operator string(FloatPort data) => data.AsData<int>().ToString();
         public static explicit operator StringPort(FloatPort data) => (string)data;
@@ -216,23 +241,35 @@ namespace RRCGBuild
             if (a.IsDataPort) return new FloatPort { Data = a.Data + 1 };
             return ChipBuilder.Add(a, 1);
         }
-
         public static FloatPort operator --(FloatPort a)
         {
             if (a.IsDataPort) return new FloatPort { Data = a.Data - 1 };
             return ChipBuilder.Add(a, -1);
         }
-
         public static FloatPort operator +(FloatPort a, FloatPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new FloatPort { Data = a.Data + b.Data };
             return ChipBuilder.Add(a, b);
         }
-
         public static FloatPort operator -(FloatPort a, FloatPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new FloatPort { Data = a.Data - b.Data };
             return ChipBuilder.Subtract(a, b);
+        }
+        public static FloatPort operator *(FloatPort a, FloatPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new FloatPort { Data = a.Data * b.Data };
+            return ChipBuilder.Multiply(a, b);
+        }
+        public static FloatPort operator /(FloatPort a, FloatPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new FloatPort { Data = a.Data / b.Data };
+            return ChipBuilder.Divide(a, b);
+        }
+        public static FloatPort operator %(FloatPort a, FloatPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new FloatPort { Data = a.Data % b.Data };
+            return ChipBuilder.Modulo(a, b);
         }
 
         public static FloatPort PositiveInfinity => new FloatPort { Data = float.PositiveInfinity };
@@ -298,6 +335,46 @@ namespace RRCGBuild
         public FloatPort x { get => split.X; }
         public FloatPort y { get => split.Y; }
         public FloatPort z { get => split.Z; }
+
+        public static Vector3Port operator +(Vector3Port a, Vector3Port b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data + b.Data };
+            return ChipBuilder.Add(a, b);
+        }
+        public static Vector3Port operator -(Vector3Port a, Vector3Port b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data - b.Data };
+            return ChipBuilder.Subtract(a, b);
+        }
+        public static Vector3Port operator *(Vector3Port a, FloatPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data * b.Data };
+            return ChipBuilder.Vector3Scale(a, b);
+        }
+        public static Vector3Port operator *(FloatPort a, Vector3Port b)
+        {
+            return b * a;
+        }
+        public static Vector3Port operator *(Vector3Port a, IntPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data * b.Data };
+            return ChipBuilder.Vector3Scale(a, b);
+        }
+        public static Vector3Port operator *(IntPort a, Vector3Port b)
+        {
+            return b * a;
+        }
+
+        public static Vector3Port operator /(Vector3Port a, FloatPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data / b.Data };
+            return ChipBuilder.Vector3Scale(a, 1f / b);
+        }
+        public static Vector3Port operator /(Vector3Port a, IntPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data / b.Data };
+            return ChipBuilder.Vector3Scale(a, 1 / b);
+        }
     }
     public class QuaternionPort : AnyPort
     {

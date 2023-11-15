@@ -228,27 +228,11 @@ namespace RRCGBuild
             ChipBuilderGen.StringConcat("", ports[0]);
             return ConnectDynamicPins(1, ports);
         }
-        public static string Add(params string[] ports)
-        {
-            return String.Join("", ports);
-        }
-        public static StringPort Add(params StringPort[] ports)
-        {
-            return Concat(ports);
-        }
 
-        public static int Add(params int[] ports)
-        {
-            return ports.Sum();
-        }
         public static IntPort Add(params IntPort[] ports)
         {
             ChipBuilderGen.Add(ports[0]);
             return ConnectDynamicPins(0, ports);
-        }
-        public static float Add(params float[] ports)
-        {
-            return ports.Sum();
         }
         public static FloatPort Add(params FloatPort[] ports)
         {
@@ -260,6 +244,7 @@ namespace RRCGBuild
             ChipBuilderGen.Add(ports[0]);
             return ConnectDynamicPins(0, ports);
         }
+
         public static IntPort Subtract(params IntPort[] ports)
         {
             ChipBuilderGen.Subtract(ports[0]);
@@ -275,22 +260,7 @@ namespace RRCGBuild
             ChipBuilderGen.Subtract(ports[0]);
             return ConnectDynamicPins(0, ports);
         }
-        public static Vector3Port Multiply(Vector3Port vector, FloatPort scalar)
-        {
-            return ChipBuilderGen.Vector3Scale(vector, scalar);
-        }
-        public static Vector3Port Multiply(FloatPort scalar, Vector3Port vector)
-        {
-            return ChipBuilderGen.Vector3Scale(vector, scalar);
-        }
-        public static Vector3Port Multiply(Vector3Port vector, IntPort scalar)
-        {
-            return ChipBuilderGen.Vector3Scale(vector, scalar);
-        }
-        public static Vector3Port Multiply(IntPort scalar, Vector3Port vector)
-        {
-            return ChipBuilderGen.Vector3Scale(vector, scalar);
-        }
+
         public static IntPort Multiply(params IntPort[] ports)
         {
             ChipBuilderGen.Multiply(ports[0]);
@@ -301,6 +271,7 @@ namespace RRCGBuild
             ChipBuilderGen.Multiply(ports[0]);
             return ConnectDynamicPins(0, ports);
         }
+
         public static IntPort Divide(params IntPort[] ports)
         {
             ChipBuilderGen.Divide(ports[0]);
@@ -311,6 +282,7 @@ namespace RRCGBuild
             ChipBuilderGen.Divide(ports[0]);
             return ConnectDynamicPins(0, ports);
         }
+
         public static IntPort Modulo(params IntPort[] ports)
         {
             ChipBuilderGen.Modulo(ports[0]);
@@ -321,6 +293,7 @@ namespace RRCGBuild
             ChipBuilderGen.Modulo(ports[0]);
             return ConnectDynamicPins(0, ports);
         }
+
         public static IntPort Min(params IntPort[] ports)
         {
             ChipBuilderGen.Min(ports[0]);
@@ -331,6 +304,7 @@ namespace RRCGBuild
             ChipBuilderGen.Min(ports[0]);
             return ConnectDynamicPins(0, ports);
         }
+
         public static IntPort Max(params IntPort[] ports)
         {
             ChipBuilderGen.Max(ports[0]);
