@@ -22,8 +22,8 @@ namespace RRCGBuild
         public void Init(IntPort count, Action initGlobal, Action initCB)
         {
             variables = new SyncedVariable<T>[count.AsData<int>()];
-            readEvent = new EventHelper<IntPort>("SyncedArray_Read");
-            writeEvent = new EventHelper<IntPort, T>("SyncedArray_Write");
+            readEvent = new EventHelper<IntPort>("SyncedArray_Read_" + Context.current.GetUniqueId());
+            writeEvent = new EventHelper<IntPort, T>("SyncedArray_Write_" + Context.current.GetUniqueId());
 
             initGlobal();
 
@@ -32,7 +32,7 @@ namespace RRCGBuild
                 readEvent.Definition();
                 writeEvent.Definition();
 
-                readPort = CircuitBuilder.CircuitBoard(() =>
+                readPort = CircuitBuilder.CircuitBoard("SyncedArray", () =>
                 {
                     for (int i = 0; i < count.AsData<int>(); i++)
                     {
@@ -51,6 +51,10 @@ namespace RRCGBuild
                     initCB();
 
                     var readIndex = readEvent.Receiver();
+
+                    // prevents an exit pin on the board
+                    CircuitBuilder.ClearExec();
+
                     return ChipLib.ValueSwitch(readIndex, variables.Select(v => v.Value).ToArray());
                 });
             });
@@ -78,7 +82,7 @@ namespace RRCGBuild
         {
             Init(count, () =>
             {
-                addEvent = new EventHelper<IntPort, IntPort>("SyncedArray_Add").Definition();
+                addEvent = new EventHelper<IntPort, IntPort>("SyncedArray_Add_" + Context.current.GetUniqueId()).Definition();
             }, () =>
             {
                 var (addIndex, addAmount) = addEvent.Receiver();
