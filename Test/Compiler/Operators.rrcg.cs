@@ -16,6 +16,8 @@ public class Operators : CircuitDescriptor
         VectorOperators();
 
         MixedOperators();
+
+        TernaryOperator();
     }
 
     public void NativeIntOperators()
@@ -165,5 +167,21 @@ public class Operators : CircuitDescriptor
         ChipLib.Log(portA + portB * nativeA / nativeB);
         ChipLib.Log(portA + portB * 5);
         ChipLib.Log(portA * portB + 5);
+    }
+
+    public void TernaryOperator()
+    {
+        // Data / data
+        float dataA = 0;
+        float dataB = 1;
+        ChipLib.EventCache(true ? dataA : dataB);
+
+        // Port / port
+        float portA = RandomFloat(0, 0);
+        float portB = RandomFloat(1, 1);
+        ChipLib.EventCache(true ? portA : portB);
+
+        // Port / data
+        ChipLib.EventCache(true ? portA : dataB);
     }
 }

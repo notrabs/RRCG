@@ -631,6 +631,29 @@ namespace RRCG
                 );
         }
 
+        public override SyntaxNode VisitConditionalExpression(ConditionalExpressionSyntax node)
+        {
+            ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
+            ExpressionSyntax whenFalse = (ExpressionSyntax)Visit(node.WhenFalse);
+            ExpressionSyntax whenTrue = (ExpressionSyntax)Visit(node.WhenTrue);
+
+            return SyntaxFactory.InvocationExpression(
+                    SyntaxFactory.IdentifierName("__Ternary"))
+                .WithArgumentList(
+                    SyntaxFactory.ArgumentList(
+                        SyntaxFactory.SeparatedList<ArgumentSyntax>(
+                            new SyntaxNodeOrToken[]{
+                                SyntaxFactory.Argument(test),
+                                SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                SyntaxFactory.Argument(whenTrue),
+                                SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                SyntaxFactory.Argument(whenFalse)
+                            }
+                        )
+                    )
+                ).NormalizeWhitespace();
+        }
+
         //
         // Helpers 
         //
