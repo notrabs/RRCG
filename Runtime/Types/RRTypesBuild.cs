@@ -301,14 +301,25 @@ namespace RRCGBuild
     }
     public class QuaternionPort : AnyPort
     {
-        public static QuaternionPort identity { get => CircuitBuilder.Singleton("Quaternion_identity", () => ChipBuilder.QuaternionCreate(0, 0, 0, 1)); }
+        public static QuaternionPort identity { get => new QuaternionPort(0, 0, 0, 1); }
 
-        public QuaternionPort() { }
+        public QuaternionPort()
+        {
+            Data = new Quaternion();
+        }
 
         public QuaternionPort(FloatPort x, FloatPort y, FloatPort z, FloatPort w)
         {
-            Port = ChipBuilder.QuaternionCreate(x, y, z, w).Port;
+            if (x.IsDataPort && y.IsDataPort && z.IsDataPort && w.IsDataPort)
+            {
+                Data = new Quaternion(x.AsData<float>(), y.AsData<float>(), z.AsData<float>(), w.AsData<float>());
+            }
+            else
+            {
+                Port = ChipBuilder.QuaternionCreate(x, y, z, w).Port;
+            }
         }
+
 
         public Vector3Port eulerAngles
         {
