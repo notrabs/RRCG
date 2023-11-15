@@ -147,6 +147,12 @@ public class Operators : CircuitDescriptor
         ChipLib.Log(portB * vectorB);
         ChipLib.Log(vectorA / portA);
         ChipLib.Log(vectorB / portB);
+
+        // TODO: These will loose their default value in game. Can we detect this?
+        ChipLib.Log(vectorA * 5f);
+        ChipLib.Log(vectorA * 6);
+        ChipLib.Log(7f * vectorB);
+        ChipLib.Log(8 * vectorB);
     }
 
     public void MixedOperators()

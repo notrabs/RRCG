@@ -1367,27 +1367,6 @@
       "InputCount": 0
     },
     {
-      "Id": "Multiply_0",
-      "Type": "ltY4R1rQ7kKhgnZBxCmuBg==",
-      "Name": "Multiply",
-      "SFXConstantData": null,
-      "PlayAudioAtPositionData": null,
-      "PlayerWorldUIData": null,
-      "StudioFunctionData": null,
-      "RoomKeyData": null,
-      "RoomCurrencyData": null,
-      "DefaultValues": [[[0,0],"System.Single",6.0],[[0,1],"System.Single",7.0],[[0,2],"System.Single",8.0],[[0,3],"System.Single",9.0],[[0,4],"System.Single",10.0]],
-      "EventDefintion": null,
-      "SwitchCases": null,
-      "CircuitBoardId": null,
-      "EventName": null,
-      "VariableName": null,
-      "VariableKind": 0,
-      "VariableType": null,
-      "VariableHomeValue": null,
-      "InputCount": 5
-    },
-    {
       "Id": "Add_0",
       "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
       "Name": "Add",
@@ -1397,7 +1376,7 @@
       "StudioFunctionData": null,
       "RoomKeyData": null,
       "RoomCurrencyData": null,
-      "DefaultValues": [[[0,1],"System.Single",2.0],[[0,2],"System.Single",3.0],[[0,3],"System.Single",4.0],[[0,4],"System.Single",5.0]],
+      "DefaultValues": [[[0,1],"System.Single",2.0],[[0,2],"System.Single",3.0],[[0,3],"System.Single",4.0],[[0,4],"System.Single",5.0],[[0,5],"System.Single",30240.0]],
       "EventDefintion": null,
       "SwitchCases": null,
       "CircuitBoardId": null,
@@ -2936,19 +2915,6 @@
         "Node": "Add_0",
         "Group": 0,
         "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Multiply_0",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Add_0",
-        "Group": 0,
-        "Index": 5
       },
       "isExec": false
     },
