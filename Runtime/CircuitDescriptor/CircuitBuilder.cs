@@ -299,7 +299,7 @@ namespace RRCGBuild
         // Compilation Helpers
         //
 
-        internal readonly Dictionary<string, EventHelper> __RRCG_EVENT_FUNCTIONS = new Dictionary<string, EventHelper>();
+        internal readonly Dictionary<string, dynamic> __RRCG_EVENT_FUNCTIONS = new Dictionary<string, dynamic>();
         internal readonly Dictionary<string, object> __RRCG_EVENT_FUNCTION_RETURNS = new Dictionary<string, object>();
         internal readonly Dictionary<string, dynamic> __RRCG_EVENT_FUNCTIONS_P1 = new Dictionary<string, dynamic>();
         internal readonly Dictionary<string, object> __RRCG_EVENT_FUNCTION_RETURNS_P1 = new Dictionary<string, object>();
@@ -695,6 +695,12 @@ namespace RRCGBuild
             }
 
             return Concat(stringPorts.ToArray());
+        }
+
+        public static T __VariableDeclaratorExpression<T>(string identifer, Func<T> valueFn)
+        {
+            var value = valueFn();
+            return value;
         }
     }
 }

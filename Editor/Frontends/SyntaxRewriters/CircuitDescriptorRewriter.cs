@@ -370,6 +370,24 @@ namespace RRCG
         // Assignments
         // 
 
+        public override SyntaxNode VisitVariableDeclarator(VariableDeclaratorSyntax node)
+        {
+            if (node.Initializer is EqualsValueClauseSyntax equalsValueClause)
+            {
+                return node.WithInitializer(
+                    equalsValueClause.WithValue(
+                        InvocationExpression(IdentifierName("__VariableDeclaratorExpression"))
+                        .WithArgumentList(SyntaxUtils.ArgumentList(
+                            SyntaxUtils.StringLiteral(node.Identifier.ToString()),
+                            ParenthesizedLambdaExpression((ExpressionSyntax)base.Visit(equalsValueClause.Value))
+                        ))
+                    )
+                );
+            }
+
+            return base.VisitVariableDeclarator(node);
+        }
+
         public override SyntaxNode VisitAssignmentExpression(AssignmentExpressionSyntax node)
         {
             //var info = SemanticModel.GetSymbolInfo(node);
