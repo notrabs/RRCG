@@ -665,8 +665,10 @@ namespace RRCGBuild
 
         public static T __VariableDeclaratorExpression<T>(string identifer, Func<T> valueFn)
         {
-            
+            SemanticStack.current.Push(new SemanticStack.NamedAssignmentScope { Identifier = identifer });
             var value = valueFn();
+            SemanticStack.current.Pop();
+
             return value;
         }
     }

@@ -31,6 +31,13 @@ namespace RRCGBuild
             public Node LoopbackIfNode;
         }
 
+        // Scope valid in the expression of an assignment to an identifier. (currently only implemented for declaration intiailizers)
+        public struct NamedAssignmentScope
+        {
+            // The Left-Hand side Identifier of the assignment
+            public string Identifier;
+        }
+
         public delegate void ScopedImpl(object scope);
 
 
