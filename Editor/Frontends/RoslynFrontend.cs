@@ -47,6 +47,7 @@ namespace RRCG
 
             if (type == null) throw new Exception("Could not find compiled class for '" + descriptorClass + "'. Make sure the class is public in the root namespace and has the same name as its file.");
 
+            SemanticStack.current = new SemanticStack();
             Context context = new Context();
 
             Context.current = context;
@@ -59,6 +60,8 @@ namespace RRCG
             ConditionalContext.Clear();
             ExecFlow.current = null;
             Context.current = null;
+
+            if (SemanticStack.current.Count() > 0) Debug.LogWarning("Expected SemanticStack to be empty at end of compilation");
 
             return context;
         }

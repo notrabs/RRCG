@@ -308,12 +308,6 @@ namespace RRCGBuild
 
         internal readonly Dictionary<string, object> __RRCG_SHARED_PROPERTIES = new Dictionary<string, object>();
 
-        // In this stack we store all semantic information that leads down to
-        // the current runtime environment.
-        // E.g this allows some keywords (break, continue) to perform different tasks
-        // depending on enclosing scopes or variables to know their assigned names in the source.
-        internal readonly SemanticStack __RRCG_SEMANTIC_STACK = new();
-
         protected void __DispatchEventFunction(string name, Action fn)
         {
             if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(name))
@@ -491,12 +485,12 @@ namespace RRCGBuild
 
             // Push scope to the stack, move to the block flow,
             // and build the block contents
-            __RRCG_SEMANTIC_STACK.Push(whileScope);
+            SemanticStack.current.Push(whileScope);
 
             ExecFlow.current = whileScope.BlockFlow;
             block();
 
-            __RRCG_SEMANTIC_STACK.Pop();
+            SemanticStack.current.Pop();
 
             // Advance the current execution flow back to the entry If node,
             // and continue spawning nodes on the Done execution flow.
@@ -548,9 +542,9 @@ namespace RRCGBuild
             ExecFlow.current.Ports.Add(new Port { Node = loopbackIfNode });
 
             // Push scope to the stack and build the block contents
-            __RRCG_SEMANTIC_STACK.Push(doWhileScope);
+            SemanticStack.current.Push(doWhileScope);
             block();
-            __RRCG_SEMANTIC_STACK.Pop();
+            SemanticStack.current.Pop();
 
             // Merge the continue flow into the current flow,
             // then advance execution to the loopback If node.
@@ -592,7 +586,7 @@ namespace RRCGBuild
             {
                 BreakFlow = new ExecFlow()
             };
-            __RRCG_SEMANTIC_STACK.Push(switchScope);
+            SemanticStack.current.Push(switchScope);
 
             // Build the switch chip & all the branches
             ChipBuilder.ExecutionAnySwitch(match, failed, branches);
@@ -601,7 +595,7 @@ namespace RRCGBuild
             ExecFlow current = ExecFlow.current;
             current.Merge(switchScope.BreakFlow);
 
-            __RRCG_SEMANTIC_STACK.Pop();
+            SemanticStack.current.Pop();
         }
 
         private void __BreakImpl_Switch(object scope)
@@ -621,9 +615,9 @@ namespace RRCGBuild
             // (e.g continue in a switch statement)
 
             // Iterate over the stack to find a scope we have an implementation for.
-            for (int i = 0; i < __RRCG_SEMANTIC_STACK.Count; i++)
+            for (int i = 0; i < SemanticStack.current.Count; i++)
             {
-                var scope = __RRCG_SEMANTIC_STACK.ElementAt(i);
+                var scope = SemanticStack.current.ElementAt(i);
                 var type = scope.GetType();
                 if (!typeToMethod.ContainsKey(type))
                     continue;
@@ -671,6 +665,7 @@ namespace RRCGBuild
 
         public static T __VariableDeclaratorExpression<T>(string identifer, Func<T> valueFn)
         {
+            
             var value = valueFn();
             return value;
         }

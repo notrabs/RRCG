@@ -6,6 +6,11 @@ namespace RRCGBuild
 {
     public class SemanticStack : Stack<object>
     {
+        // In this stack we store all semantic information that leads down to
+        // the current runtime environment.
+        // E.g this allows some keywords (break, continue) to perform different tasks
+        // depending on enclosing scopes or variables to know their assigned names in the source.
+        public static SemanticStack current;
 
         public struct SwitchScope
         {
