@@ -275,21 +275,19 @@ public void ExampleCircuit()
 
 ### Event Helpers
 
-The `EventHelper` class helps you write type-safe code. You can define the structure of an event once, and then place all event chips with correct typings:
+The `EventDefintion` class helps you to write type-safe code. You can define the structure of an event once, and then place all event chips with correct typings:
 
 ```c#
-EventHelper<int> onInputEvent = new EventHelper<int>("OnInput", "value");
+// This will create a new event definition named "onInput"
+EventDefintion<int> onInput = new EventDefintion<int>("value");
 
 public void ExampleCircuit()
 {
-    // Place a definition chip in the proper scope, if you need one
-    onInputEvent.Definition();
-
     // Start new circuit graphs at the receiver
-    var data = onInputEvent.Receiver();
+    var data = onInput.Receiver();
 
     // Send Events using one of the sender functions
-    onInputEvent.SendLocal(123);
+    onInput.SendLocal(123);
 }
 ```
 
@@ -301,6 +299,13 @@ public void StudioBoard()
     EventReceiver(RoomEvents.Hz30);
     // ... react to event
 }
+```
+
+Access your existing events with the `ExistingEvent` function:
+
+```c#
+// This assumes an Event definition with name "EventName" and one int value is already placed in the room
+EventDefintion<int> onInput = ExistingEvent<int>("EventName");
 ```
 
 Studio Events are referenced by name. There is a small helper to make this more readable, but a named event receiver also works:
@@ -333,7 +338,7 @@ public void ExpensiveFunction(string parameter)
 
 ### Variable Helpers
 
-The `Variable`, `SyncedVariable` and `CloudVariable` classes help you to write type-safe code. Instance and Synced Variables are named automatically.
+The `Variable`, `SyncedVariable` and `CloudVariable` classes help you to write type-safe code. Instance and Synced Variables are named automatically and uniquely.
 
 ```c#
 Variable<int> count = new Variable<int>();
