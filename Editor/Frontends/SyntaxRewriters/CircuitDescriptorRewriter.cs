@@ -558,6 +558,12 @@ namespace RRCG
                 case SyntaxKind.LogicalOrExpression:
                     chip = "Or";
                     break;
+                case SyntaxKind.LeftShiftExpression:
+                    chip = "BitShiftLeft";
+                    break;
+                case SyntaxKind.RightShiftExpression:
+                    chip = "BitShiftRight";
+                    break;
             }
 
             if (chip != null)
