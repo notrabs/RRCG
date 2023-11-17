@@ -1,9 +1,91 @@
 ﻿using RRCG;
 using RRCGBuild;
+using System;
+using System.Linq;
 
 namespace RRCGBuild
 {
+    public abstract class BaseEvent
+    {
+        protected string EventName;
 
+        protected BaseEvent() { }
+
+        protected void InitNewEvent(params (StringPort, Type)[] eventDefinition)
+        {
+            EventName = "RRCG_Event_" + Context.current.GetUniqueId();
+
+            ChipBuilder.EventDefinition(EventName, eventDefinition);
+        }
+
+        protected void InitExistingEvent(string eventName)
+        {
+            EventName = eventName;
+        }
+
+        public void SendLocal(params AnyPort[] values) => ChipBuilder.EventSender(EventName, EventTarget.LOCAL, values);
+        public void SendOthers(params AnyPort[] values) => ChipBuilder.EventSender(EventName, EventTarget.OTHERS, values);
+        public void SendAll(params AnyPort[] values) => ChipBuilder.EventSender(EventName, EventTarget.ALL, values);
+        public void SendAuthority(params AnyPort[] values) => ChipBuilder.EventSender(EventName, EventTarget.AUTHORITY, values);
+        public void SendRoomAuthority(params AnyPort[] values) => ChipBuilder.EventSender(EventName, EventTarget.ROOM_AUTHORITY, values);
+        public void SendPlayer(PlayerPort player, params AnyPort[] values) => ChipBuilder.EventSender(EventName, EventTarget.PLAYER, new[] { player }.Concat(values).ToArray());
+    }
+
+
+    public class EventDefinition : BaseEvent
+    {
+        public EventDefinition() => InitNewEvent();
+        internal EventDefinition(string existingEvent) => InitExistingEvent(existingEvent);
+
+        public void SendLocal() => base.SendLocal();
+        public void SendOthers() => base.SendOthers();
+        public void SendAll() => base.SendAll();
+        public void SendAuthority() => base.SendAuthority();
+        public void SendRoomAuthority() => base.SendRoomAuthority();
+        public void SendPlayer(PlayerPort player) => base.SendPlayer(player);
+
+        public void Receiver() => ChipBuilder.EventReceiver(EventName);
+
+    }
+
+    public class EventDefinition<T0> : BaseEvent
+        where T0 : AnyPort, new()
+    {
+        public Event(StringPort param0Name = null) => InitNewEvent((param0Name ?? "value0", typeof(T0)));
+
+        // The bool param is a hack to make the signature different to the normal constructor, since string implicitly casts to StringPort.
+        internal Event(bool _, string existingEvent) => InitExistingEvent(existingEvent);
+
+        public void SendLocal(T0 value0) => base.SendLocal(value0);
+        public void SendOthers(T0 value0) => base.SendOthers(value0);
+        public void SendAll(T0 value0) => base.SendAll(value0);
+        public void SendAuthority(T0 value0) => base.SendAuthority(value0);
+        public void SendRoomAuthority(T0 value0) => base.SendRoomAuthority(value0);
+        public void SendPlayer(PlayerPort player, T0 value0) => base.SendPlayer(player, value0);
+
+        public T0 Receiver() => ChipBuilder.EventReceiver<T0>(EventName);
+    }
+
+    public class EventDefinition<T0, T1> : BaseEvent
+           where T0 : AnyPort, new()
+           where T1 : AnyPort, new()
+    {
+        public EventDefinition(StringPort param0Name = null, StringPort param1Name = null) => InitNewEvent((param0Name ?? "value0", typeof(T0)), (param1Name ?? "value1", typeof(T1)));
+        internal EventDefinition(string existingEvent) => InitExistingEvent(existingEvent);
+
+        public void SendLocal(T0 value0, T1 value1) => base.SendLocal(value0, value1);
+        public void SendOthers(T0 value0, T1 value1) => base.SendOthers(value0, value1);
+        public void SendAll(T0 value0, T1 value1) => base.SendAll(value0, value1);
+        public void SendAuthority(T0 value0, T1 value1) => base.SendAuthority(value0, value1);
+        public void SendRoomAuthority(T0 value0, T1 value1) => base.SendRoomAuthority(value0, value1);
+        public void SendPlayer(PlayerPort player, T0 value0, T1 value1) => base.SendPlayer(player, value0, value1);
+
+        public (T0, T1) Receiver() => ChipBuilder.EventReceiver<T0, T1>(EventName);
+    }
+
+
+
+    [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
     public class EventHelper
     {
         private StringPort eventName;
@@ -29,6 +111,7 @@ namespace RRCGBuild
         public void Receiver() => ChipBuilder.EventReceiver(eventName);
     }
 
+    [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
     public class EventHelper<T0> where T0 : AnyPort, new()
     {
         private StringPort eventName;
@@ -56,6 +139,7 @@ namespace RRCGBuild
         public T0 Receiver() => ChipBuilder.EventReceiver<T0>(eventName);
     }
 
+    [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
     public class EventHelper<T0, T1>
         where T0 : AnyPort, new()
         where T1 : AnyPort, new()
@@ -94,6 +178,7 @@ namespace RRCGBuild
         public (T0, T1) Receiver() => ChipBuilder.EventReceiver<T0, T1>(eventName);
     }
 
+    [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
     public class EventHelper<T0, T1, T2>
         where T0 : AnyPort, new()
         where T1 : AnyPort, new()
@@ -137,6 +222,7 @@ namespace RRCGBuild
         public (T0, T1, T2) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2>(eventName);
     }
 
+    [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
     public class EventHelper<T0, T1, T2, T3>
         where T0 : AnyPort, new()
         where T1 : AnyPort, new()

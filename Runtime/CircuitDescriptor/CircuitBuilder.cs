@@ -266,6 +266,35 @@ namespace RRCGBuild
             EventReceiver(eventName);
         }
 
+        /// <summary>
+        /// Returns an Instance of the Event class for an already exising Event in the room
+        /// </summary>
+        public EventDefinition ExistingEvent(string eventName)
+        {
+            return new EventDefinition(eventName);
+        }
+
+        /// <summary>
+        /// Returns an Instance of the Event class for an already exising Event in the room. 
+        /// With one Event parameter.
+        /// </summary>
+        public EventDefinition<T0> ExistingEvent<T0>(string eventName)
+            where T0 : AnyPort, new()
+        {
+            return new EventDefinition<T0>(true, eventName);
+        }
+
+        /// <summary>
+        /// Returns an Instance of the Event class for an already exising Event in the room. 
+        /// With two Event parameter.
+        /// </summary>
+        public EventDefinition<T0, T1> ExistingEvent<T0, T1>(string eventName)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+        {
+            return new EventDefinition<T0, T1>(eventName);
+        }
+
         //
         // Compilation Helpers
         //
