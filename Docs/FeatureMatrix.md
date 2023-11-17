@@ -52,7 +52,20 @@ Using the indexer will create a list get/set element chip if needed.
 
 ## Ternary operator
 
-not implemented yet
+**Implemented:** Ternary operators are supported and map to If Value chips.
+
+```
+float a = 12.34f;
+float b = 19.87f;
+RandomFloat(0, true ? a : b);
+````
+
+Implicit conversions are also supported, for inputs and the result:
+```
+float portA = RandomFloat(0, 1);
+int portB = RandomInt(0, 10);
+ChipLib.Log($"Result: {(false ? portB : portA)}");
+````
 
 ## Null-conditional operators
 
