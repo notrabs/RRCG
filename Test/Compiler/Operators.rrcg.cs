@@ -184,12 +184,15 @@ public class Operators : CircuitDescriptor
         // Port / data
         ChipLib.EventCache(true ? portA : dataB);
 
-        // Type conversions
+        // Implicit conversions
         // Floats without -f suffix
         RandomFloat(0, true ? 123 : 456);
 
-        // Type conversions w/ real ports
+        // Implicit conversions w/ real ports
         int intPort = RandomInt(0, 0);
         RandomFloat(0, true ? 1.5f : intPort);
+
+        // Implicit conversion for result
+        ChipLib.Log($"Result: {(false ? intPort : portA)}");
     }
 }

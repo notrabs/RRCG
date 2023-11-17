@@ -167,11 +167,13 @@ namespace RRCGBuild
             ChipLib.EventCache(ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, portA, portB));
             // Port / data
             ChipLib.EventCache(ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, portA, dataB));
-            // Type conversions
+            // Implicit conversions
             // Floats without -f suffix
             RandomFloat(0, ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, 123, 456));
             IntPort intPort = RandomInt(0, 0);
             RandomFloat(0, ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, 1.5f, intPort));
+            // Implicit conversion for result
+            ChipLib.Log(__StringInterpolation("Result: ", (ChipBuilder.IfValue<RRCGBuild.FloatPort>(false, intPort, portA))));
             ExecFlow.current.Merge(rrcg_return_flow);
         }
     }
