@@ -84,18 +84,18 @@ namespace RRCGSource
         /// <summary>
         /// Returns an Instance of the Event class for an already exising Event in the room
         /// </summary>
-        public EventDefinition ExistingEvent(string eventName) { return default; }
+        public static EventDefinition ExistingEvent(string eventName) { return default; }
 
         /// <summary>
         /// Returns an Instance of the Event class for an already exising Event in the room. 
         /// With one Event parameter.
         /// </summary>
-        public EventDefinition<T0> ExistingEvent<T0>(string eventName) { return default; }
+        public static EventDefinition<T0> ExistingEvent<T0>(string eventName) { return default; }
 
         /// <summary>
         /// Returns an Instance of the Event class for an already exising Event in the room. 
         /// With two Event parameter.
         /// </summary>
-        public EventDefinition<T0, T1> ExistingEvent<T0, T1>(string eventName) { return default; }
+        public static EventDefinition<T0, T1> ExistingEvent<T0, T1>(string eventName) { return default; }
     }
 }
