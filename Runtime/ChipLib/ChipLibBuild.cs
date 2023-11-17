@@ -336,6 +336,11 @@ namespace RRCGBuild
 
         public static StringPort BitString(IntPort bits)
         {
+            // If bits is a data port, let's precalculate it
+            if (bits.IsDataPort)
+                return new StringPort { Data = Convert.ToString(bits.Data, 2).PadLeft(32, '0') };
+            
+            // Otherwise we have to implement this in circuits
             // Climb up to the root context
             Context prevContext = Context.current;
             while (Context.current.ParentContext != null)
