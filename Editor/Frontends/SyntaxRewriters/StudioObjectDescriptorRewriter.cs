@@ -98,8 +98,16 @@ namespace RRCG
             return node.WithParameterList(SyntaxUtils.ParameterList(node.ParameterList.Parameters[0].WithType(IdentifierName("StudioObjectPort"))));
         }
 
+        public override SyntaxNode VisitUnsafeStatement(UnsafeStatementSyntax node)
+        {
+            return node.Block;
+        }
+
         public override SyntaxNode VisitMethodDeclaration(MethodDeclarationSyntax method)
         {
+            if (method.Modifiers.Where(t => t.Kind() == SyntaxKind.UnsafeKeyword).Count() > 0)
+                return method.WithModifiers(new SyntaxTokenList(method.Modifiers.Where(t => t.Kind() != SyntaxKind.UnsafeKeyword)));
+
             if (IsStudioFunctionMethod(method)) return VisitStudioFunctionMethod(method);
             if (IsEventMethod(method)) return VisitStudioEventMethod(method);
 
