@@ -16,6 +16,7 @@ namespace RRCGBuild
             VectorOperators();
             MixedOperators();
             TernaryOperator();
+            BitwiseOperators();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
@@ -175,6 +176,32 @@ namespace RRCGBuild
             // Implicit conversion for result
             ChipLib.Log(__StringInterpolation("Result: ", (ChipBuilder.IfValue<RRCGBuild.FloatPort>(false, intPort, portA))));
             ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        public void BitwiseOperators()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            IntPort dataA = BinaryLiteral(0b00000000000011111111111111111111);
+            IntPort dataB = BinaryLiteral(0b11111111111111111111000000000000);
+            IntPort portA = Reroute(dataA);
+            ChipLib.Log(__StringInterpolation("Bitwise AND, pure data: ", ChipLib.BitString(dataA & dataB)));
+            ChipLib.Log(__StringInterpolation("Bitwise AND, with ports: ", ChipLib.BitString(portA & dataB)));
+            ChipLib.Log(__StringInterpolation("Bitwise OR, pure data: ", ChipLib.BitString(dataA | dataB)));
+            ChipLib.Log(__StringInterpolation("Bitwise OR, with ports: ", ChipLib.BitString(portA | dataB)));
+            ChipLib.Log(__StringInterpolation("Bitwise XOR, pure data: ", ChipLib.BitString(dataA ^ dataB)));
+            ChipLib.Log(__StringInterpolation("Bitwise XOR, with ports: ", ChipLib.BitString(portA ^ dataB)));
+            IntPort dataC = BinaryLiteral(0b00000000000011111111000000000000);
+            IntPort portC = Reroute(dataC);
+            ChipLib.Log(__StringInterpolation("Bit shift left, pure data: ", ChipLib.BitString(ChipBuilder.BitShiftLeft(dataC, 12))));
+            ChipLib.Log(__StringInterpolation("Bit shift left, with ports: ", ChipLib.BitString(ChipBuilder.BitShiftLeft(portC, 12))));
+            ChipLib.Log(__StringInterpolation("Bit shift right, pure data: ", ChipLib.BitString(ChipBuilder.BitShiftRight(dataC, 12))));
+            ChipLib.Log(__StringInterpolation("Bit shift right, with ports: ", ChipLib.BitString(ChipBuilder.BitShiftRight(portC, 12))));
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        int BinaryLiteral(uint literal)
+        {
+            return unchecked((int)literal);
         }
     }
 }

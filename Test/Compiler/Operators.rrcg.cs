@@ -18,6 +18,8 @@ public class Operators : CircuitDescriptor
         MixedOperators();
 
         TernaryOperator();
+
+        BitwiseOperators();
     }
 
     public void NativeIntOperators()
@@ -194,5 +196,35 @@ public class Operators : CircuitDescriptor
 
         // Implicit conversion for result
         ChipLib.Log($"Result: {(false ? intPort : portA)}");
+    }
+
+    public void BitwiseOperators()
+    {
+        int dataA = BinaryLiteral(0b00000000000011111111111111111111);
+        int dataB = BinaryLiteral(0b11111111111111111111000000000000);
+        int portA = Reroute(dataA);
+
+        ChipLib.Log($"Bitwise AND, pure data: {ChipLib.BitString(dataA & dataB)}");
+        ChipLib.Log($"Bitwise AND, with ports: {ChipLib.BitString(portA & dataB)}");
+
+        ChipLib.Log($"Bitwise OR, pure data: {ChipLib.BitString(dataA | dataB)}");
+        ChipLib.Log($"Bitwise OR, with ports: {ChipLib.BitString(portA | dataB)}");
+
+        ChipLib.Log($"Bitwise XOR, pure data: {ChipLib.BitString(dataA ^ dataB)}");
+        ChipLib.Log($"Bitwise XOR, with ports: {ChipLib.BitString(portA ^ dataB)}");
+
+        int dataC = BinaryLiteral(0b00000000000011111111000000000000);
+        int portC = Reroute(dataC);
+
+        ChipLib.Log($"Bit shift left, pure data: {ChipLib.BitString(dataC << 12)}");
+        ChipLib.Log($"Bit shift left, with ports: {ChipLib.BitString(portC << 12)}");
+
+        ChipLib.Log($"Bit shift right, pure data: {ChipLib.BitString(dataC >> 12)}");
+        ChipLib.Log($"Bit shift right, with ports: {ChipLib.BitString(portC >> 12)}");
+    }
+
+    unsafe int BinaryLiteral(uint literal)
+    {
+        return unchecked((int)literal);
     }
 }
