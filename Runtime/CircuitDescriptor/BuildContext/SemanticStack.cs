@@ -60,4 +60,12 @@ namespace RRCGBuild
             return null;
         }
     }
+
+    public class SemanticStackUtils
+    {
+        public static string GetNamedAssignmentName(string defaultName)
+        {
+            return SemanticStack.current.GetNextScopeWithType<SemanticStack.NamedAssignmentScope>()?.Identifier ?? defaultName;
+        }
+    }
 }

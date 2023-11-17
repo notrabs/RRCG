@@ -1,5 +1,4 @@
 ﻿using RRCG;
-using RRCGBuild;
 using System;
 using System.Linq;
 
@@ -13,7 +12,9 @@ namespace RRCGBuild
 
         protected void InitNewEvent(params (StringPort, Type)[] eventDefinition)
         {
-            EventName = "RRCG_Event_" + Context.current.GetUniqueId();
+            var sourceName = SanitizeUtils.SantizeCV2Name(SemanticStackUtils.GetNamedAssignmentName("Event"));
+
+            EventName = $"RRCG_{sourceName}_{Context.current.GetUniqueId()}";
 
             ChipBuilder.EventDefinition(EventName, eventDefinition);
         }

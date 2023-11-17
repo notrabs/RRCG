@@ -12,7 +12,7 @@
       "RoomKeyData": null,
       "RoomCurrencyData": null,
       "EventDefinitionData": {
-        "EventName": "RRCG_Event_0",
+        "EventName": "RRCG_params0_0",
         "EventDefinition": []
       },
       "EventSenderData": null,
@@ -39,7 +39,7 @@
       "EventDefinitionData": null,
       "EventSenderData": null,
       "EventReceiverData": {
-        "EventName": "RRCG_Event_0"
+        "EventName": "RRCG_params0_0"
       },
       "DefaultValues": [],
       "SwitchCases": null,
@@ -62,7 +62,7 @@
       "RoomCurrencyData": null,
       "EventDefinitionData": null,
       "EventSenderData": {
-        "EventName": "RRCG_Event_0",
+        "EventName": "RRCG_params0_0",
         "EventTarget": 0
       },
       "EventReceiverData": null,
@@ -86,7 +86,7 @@
       "RoomKeyData": null,
       "RoomCurrencyData": null,
       "EventDefinitionData": {
-        "EventName": "RRCG_Event_1",
+        "EventName": "RRCG_params1_1",
         "EventDefinition": [
           {
             "Item1": "param0",
@@ -118,7 +118,7 @@
       "EventDefinitionData": null,
       "EventSenderData": null,
       "EventReceiverData": {
-        "EventName": "RRCG_Event_1"
+        "EventName": "RRCG_params1_1"
       },
       "DefaultValues": [],
       "SwitchCases": null,
@@ -141,7 +141,7 @@
       "RoomCurrencyData": null,
       "EventDefinitionData": null,
       "EventSenderData": {
-        "EventName": "RRCG_Event_1",
+        "EventName": "RRCG_params1_1",
         "EventTarget": 0
       },
       "EventReceiverData": null,
@@ -165,7 +165,7 @@
       "RoomKeyData": null,
       "RoomCurrencyData": null,
       "EventDefinitionData": {
-        "EventName": "RRCG_Event_2",
+        "EventName": "RRCG_params2_2",
         "EventDefinition": [
           {
             "Item1": "param0",
@@ -201,7 +201,7 @@
       "EventDefinitionData": null,
       "EventSenderData": null,
       "EventReceiverData": {
-        "EventName": "RRCG_Event_2"
+        "EventName": "RRCG_params2_2"
       },
       "DefaultValues": [],
       "SwitchCases": null,
@@ -224,7 +224,7 @@
       "RoomCurrencyData": null,
       "EventDefinitionData": null,
       "EventSenderData": {
-        "EventName": "RRCG_Event_2",
+        "EventName": "RRCG_params2_2",
         "EventTarget": 0
       },
       "EventReceiverData": null,
@@ -248,7 +248,7 @@
       "RoomKeyData": null,
       "RoomCurrencyData": null,
       "EventDefinitionData": {
-        "EventName": "RRCG_Event_3",
+        "EventName": "RRCG_params0_3",
         "EventDefinition": []
       },
       "EventSenderData": null,
@@ -275,7 +275,7 @@
       "EventDefinitionData": null,
       "EventSenderData": null,
       "EventReceiverData": {
-        "EventName": "RRCG_Event_3"
+        "EventName": "RRCG_params0_3"
       },
       "DefaultValues": [],
       "SwitchCases": null,
@@ -298,7 +298,7 @@
       "RoomCurrencyData": null,
       "EventDefinitionData": null,
       "EventSenderData": {
-        "EventName": "RRCG_Event_3",
+        "EventName": "RRCG_params0_3",
         "EventTarget": 0
       },
       "EventReceiverData": null,
@@ -323,7 +323,7 @@
       "RoomCurrencyData": null,
       "EventDefinitionData": null,
       "EventSenderData": {
-        "EventName": "RRCG_Event_3",
+        "EventName": "RRCG_params0_3",
         "EventTarget": 1
       },
       "EventReceiverData": null,
@@ -348,7 +348,7 @@
       "RoomCurrencyData": null,
       "EventDefinitionData": null,
       "EventSenderData": {
-        "EventName": "RRCG_Event_3",
+        "EventName": "RRCG_params0_3",
         "EventTarget": 4
       },
       "EventReceiverData": null,
@@ -373,7 +373,7 @@
       "RoomCurrencyData": null,
       "EventDefinitionData": null,
       "EventSenderData": {
-        "EventName": "RRCG_Event_3",
+        "EventName": "RRCG_params0_3",
         "EventTarget": 3
       },
       "EventReceiverData": null,
@@ -398,7 +398,7 @@
       "RoomCurrencyData": null,
       "EventDefinitionData": null,
       "EventSenderData": {
-        "EventName": "RRCG_Event_3",
+        "EventName": "RRCG_params0_3",
         "EventTarget": 2
       },
       "EventReceiverData": null,
@@ -423,7 +423,7 @@
       "RoomCurrencyData": null,
       "EventDefinitionData": null,
       "EventSenderData": {
-        "EventName": "RRCG_Event_3",
+        "EventName": "RRCG_params0_3",
         "EventTarget": 5
       },
       "EventReceiverData": null,
@@ -470,7 +470,7 @@
       "RoomCurrencyData": null,
       "EventDefinitionData": null,
       "EventSenderData": {
-        "EventName": "RRCG_Event_3",
+        "EventName": "RRCG_params0_3",
         "EventTarget": 5
       },
       "EventReceiverData": null,
