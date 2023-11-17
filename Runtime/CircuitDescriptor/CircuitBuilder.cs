@@ -308,18 +308,11 @@ namespace RRCGBuild
 
         internal readonly Dictionary<string, object> __RRCG_SHARED_PROPERTIES = new Dictionary<string, object>();
 
-        // Some keywords (break, continue) have to perform different tasks
-        // depending on enclosing scopes. This stack manages these scopes.
-        internal readonly Stack<object> __RRCG_SHARED_KEYWORD_SCOPE_STACK = new();
-
-        private T __GetTopmostSharedKeywordScopeWithType<T>()
-        {
-            object scope = __RRCG_SHARED_KEYWORD_SCOPE_STACK.Peek();
-            if (scope.GetType() == typeof(T))
-                return (T)scope;
-
-            throw new Exception($"Topmost shared keyword scope type was not \"${typeof(T)}\"!");
-        }
+        // In this stack we store all semantic information that leads down to
+        // the current runtime environment.
+        // E.g this allows some keywords (break, continue) to perform different tasks
+        // depending on enclosing scopes or variables to know their assigned names in the source.
+        internal readonly SemanticStack __RRCG_SEMANTIC_STACK = new();
 
         protected void __DispatchEventFunction(string name, Action fn)
         {
@@ -475,27 +468,6 @@ namespace RRCGBuild
             return assignedValue;
         }
 
-        struct __SharedKeywordScope_Switch
-        {
-            public ExecFlow BreakFlow;
-        }
-
-        struct __SharedKeywordScope_While
-        {
-            public ExecFlow BlockFlow; // Exec flow of the while loop body. Will cycle back to entry "If" node.
-            public ExecFlow DoneFlow; // Exec flow for when the loop is finished/break is invoked.
-            public Node EntryIfNode;
-        }
-
-        struct __SharedKeywordScope_DoWhile
-        {
-            public ExecFlow ContinueFlow; // Will jump to the input exec of the loopback "If" node
-            public ExecFlow DoneFlow; // Exec flow for when the loop is finished/break is invoked.
-            public Node LoopbackIfNode;
-        }
-
-        delegate void SharedKeywordImpl(object scope);
-
         public void __While(BoolPort condition, AlternativeExec block)
         {
             // First, spawn the entry "If" node
@@ -503,7 +475,7 @@ namespace RRCGBuild
             var entryIfNode = Context.lastSpawnedNode;
 
             // Now we create our "while" scope
-            var whileScope = new __SharedKeywordScope_While
+            var whileScope = new SemanticStack.WhileScope
             {
                 BlockFlow = new ExecFlow(),
                 DoneFlow = new ExecFlow(),
@@ -519,12 +491,12 @@ namespace RRCGBuild
 
             // Push scope to the stack, move to the block flow,
             // and build the block contents
-            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Push(whileScope);
+            __RRCG_SEMANTIC_STACK.Push(whileScope);
 
             ExecFlow.current = whileScope.BlockFlow;
             block();
 
-            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Pop();
+            __RRCG_SEMANTIC_STACK.Pop();
 
             // Advance the current execution flow back to the entry If node,
             // and continue spawning nodes on the Done execution flow.
@@ -534,7 +506,7 @@ namespace RRCGBuild
 
         private void __ContinueImpl_While(object scope)
         {
-            var whileScope = (__SharedKeywordScope_While)scope;
+            var whileScope = (SemanticStack.WhileScope)scope;
 
             // Advance the current execution flow back to the entry If node.
             // Nodes spawned after this will start a new flow.
@@ -543,7 +515,7 @@ namespace RRCGBuild
 
         private void __BreakImpl_While(object scope)
         {
-            var whileScope = (__SharedKeywordScope_While)scope;
+            var whileScope = (SemanticStack.WhileScope)scope;
 
             // Merge the current execution flow into the done flow,
             // then clear the current execution flow.
@@ -564,7 +536,7 @@ namespace RRCGBuild
             ExecFlow.current = prevFlow;
 
             // Create our DoWhile scope & exec flows
-            var doWhileScope = new __SharedKeywordScope_DoWhile()
+            var doWhileScope = new SemanticStack.DoWhileScope()
             {
                 ContinueFlow = new ExecFlow(),
                 DoneFlow = new ExecFlow(),
@@ -576,9 +548,9 @@ namespace RRCGBuild
             ExecFlow.current.Ports.Add(new Port { Node = loopbackIfNode });
 
             // Push scope to the stack and build the block contents
-            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Push(doWhileScope);
+            __RRCG_SEMANTIC_STACK.Push(doWhileScope);
             block();
-            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Pop();
+            __RRCG_SEMANTIC_STACK.Pop();
 
             // Merge the continue flow into the current flow,
             // then advance execution to the loopback If node.
@@ -593,7 +565,7 @@ namespace RRCGBuild
 
         private void __ContinueImpl_DoWhile(object scope)
         {
-            var doWhileScope = (__SharedKeywordScope_DoWhile)scope;
+            var doWhileScope = (SemanticStack.DoWhileScope)scope;
 
             // Merge the current exec flow into
             // the continue flow, then clear the current flow.
@@ -604,7 +576,7 @@ namespace RRCGBuild
 
         private void __BreakImpl_DoWhile(object scope)
         {
-            var doWhileScope = (__SharedKeywordScope_DoWhile)scope;
+            var doWhileScope = (SemanticStack.DoWhileScope)scope;
 
             // Merge the current exec flow into
             // the done flow, then clear the current flow.
@@ -616,11 +588,11 @@ namespace RRCGBuild
         public void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
         {
             // Create & push our switch scope
-            var switchScope = new __SharedKeywordScope_Switch()
+            var switchScope = new SemanticStack.SwitchScope()
             {
                 BreakFlow = new ExecFlow()
             };
-            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Push(switchScope);
+            __RRCG_SEMANTIC_STACK.Push(switchScope);
 
             // Build the switch chip & all the branches
             ChipBuilder.ExecutionAnySwitch(match, failed, branches);
@@ -629,29 +601,29 @@ namespace RRCGBuild
             ExecFlow current = ExecFlow.current;
             current.Merge(switchScope.BreakFlow);
 
-            __RRCG_SHARED_KEYWORD_SCOPE_STACK.Pop();
+            __RRCG_SEMANTIC_STACK.Pop();
         }
 
         private void __BreakImpl_Switch(object scope)
         {
             // Merge the current exec flow into the break flow,
             // then clear the current exec flow.
-            var switchScope = (__SharedKeywordScope_Switch)scope;
+            var switchScope = (SemanticStack.SwitchScope)scope;
 
             switchScope.BreakFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();
         }
 
-        private void RunSharedKeywordImpl(Dictionary<Type, SharedKeywordImpl> typeToMethod)
+        private void RunSharedKeywordImpl(Dictionary<Type, SemanticStack.ScopedImpl> typeToMethod)
         {
             // Some keywords do not have implementations for some scopes,
             // and as such they actually affect some parent scope.
             // (e.g continue in a switch statement)
 
             // Iterate over the stack to find a scope we have an implementation for.
-            for (int i=0; i < __RRCG_SHARED_KEYWORD_SCOPE_STACK.Count; i++)
+            for (int i = 0; i < __RRCG_SEMANTIC_STACK.Count; i++)
             {
-                var scope = __RRCG_SHARED_KEYWORD_SCOPE_STACK.ElementAt(i);
+                var scope = __RRCG_SEMANTIC_STACK.ElementAt(i);
                 var type = scope.GetType();
                 if (!typeToMethod.ContainsKey(type))
                     continue;
@@ -663,20 +635,20 @@ namespace RRCGBuild
 
         public void __Break()
         {
-            RunSharedKeywordImpl(new Dictionary<Type, SharedKeywordImpl>
+            RunSharedKeywordImpl(new Dictionary<Type, SemanticStack.ScopedImpl>
             {
-                { typeof(__SharedKeywordScope_While), __BreakImpl_While },
-                { typeof(__SharedKeywordScope_Switch), __BreakImpl_Switch },
-                { typeof(__SharedKeywordScope_DoWhile), __BreakImpl_DoWhile }
+                { typeof(SemanticStack.WhileScope), __BreakImpl_While },
+                { typeof(SemanticStack.SwitchScope), __BreakImpl_Switch },
+                { typeof(SemanticStack.DoWhileScope), __BreakImpl_DoWhile }
             });
         }
 
         public void __Continue()
         {
-            RunSharedKeywordImpl(new Dictionary<Type, SharedKeywordImpl>
+            RunSharedKeywordImpl(new Dictionary<Type, SemanticStack.ScopedImpl>
             {
-                { typeof(__SharedKeywordScope_While), __ContinueImpl_While },
-                { typeof(__SharedKeywordScope_DoWhile), __ContinueImpl_DoWhile }
+                { typeof(SemanticStack.WhileScope), __ContinueImpl_While },
+                { typeof(SemanticStack.DoWhileScope), __ContinueImpl_DoWhile }
             });
         }
 
