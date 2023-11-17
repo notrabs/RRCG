@@ -23,6 +23,8 @@ namespace RRCGBuild
         public void NativeIntOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
+            var e = new EventHelper("NativeIntOperators").Definition();
+            e.Receiver();
             IntPort nativeA = 1;
             IntPort nativeB = 2;
             ChipLib.Log(nativeA + nativeB);
@@ -42,12 +44,15 @@ namespace RRCGBuild
             IntPort preDecrement = 0;
             ChipLib.Log(--preDecrement);
             ChipLib.Log(preDecrement);
+            ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         public void NativeFloatOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
+            var e = new EventHelper("NativeFloatOperators").Definition();
+            e.Receiver();
             FloatPort nativeA = 1;
             FloatPort nativeB = 2;
             ChipLib.Log(nativeA + nativeB);
@@ -67,12 +72,15 @@ namespace RRCGBuild
             FloatPort preDecrement = 0;
             ChipLib.Log(--preDecrement);
             ChipLib.Log(preDecrement);
+            ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         public void PortIntOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
+            var e = new EventHelper("PortIntOperators").Definition();
+            e.Receiver();
             IntPort portA = RandomInt(0, 0);
             IntPort portB = RandomInt(0, 0);
             ChipLib.Log(portA + portB);
@@ -92,12 +100,15 @@ namespace RRCGBuild
             IntPort preDecrement = RandomInt(0, 0);
             ChipLib.Log(--preDecrement);
             ChipLib.Log(preDecrement);
+            ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         public void PortFloatOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
+            var e = new EventHelper("PortFloatOperators").Definition();
+            e.Receiver();
             FloatPort portA = RandomFloat(1, 1);
             FloatPort portB = RandomFloat(2, 2);
             ChipLib.Log(portA + portB);
@@ -117,12 +128,15 @@ namespace RRCGBuild
             FloatPort preDecrement = RandomFloat(0, 0);
             ChipLib.Log(--preDecrement);
             ChipLib.Log(preDecrement);
+            ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         public void VectorOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
+            var e = new EventHelper("VectorOperators").Definition();
+            e.Receiver();
             Vector3Port vectorA = Vector3Create(1, 2, 3);
             Vector3Port vectorB = Vector3Create(4, 5, 6);
             FloatPort portA = RandomFloat(1, 1);
@@ -141,12 +155,15 @@ namespace RRCGBuild
             ChipLib.Log(vectorA * 6);
             ChipLib.Log(7f * vectorB);
             ChipLib.Log(8 * vectorB);
+            ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         public void MixedOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
+            var e = new EventHelper("MixedOperators").Definition();
+            e.Receiver();
             FloatPort portA = RandomFloat(1, 1);
             IntPort portB = RandomInt(2, 2);
             FloatPort nativeA = 3;
@@ -154,12 +171,15 @@ namespace RRCGBuild
             ChipLib.Log(portA + portB * nativeA / nativeB);
             ChipLib.Log(portA + portB * 5);
             ChipLib.Log(portA * portB + 5);
+            ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         public void TernaryOperator()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
+            var e = new EventHelper("TernaryOperator").Definition();
+            e.Receiver();
             FloatPort dataA = 0;
             FloatPort dataB = 1;
             ChipLib.EventCache(ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, dataA, dataB));
@@ -175,12 +195,15 @@ namespace RRCGBuild
             RandomFloat(0, ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, 1.5f, intPort));
             // Implicit conversion for result
             ChipLib.Log(__StringInterpolation("Result: ", (ChipBuilder.IfValue<RRCGBuild.FloatPort>(false, intPort, portA))));
+            ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         public void BitwiseOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
+            var e = new EventHelper("BitwiseOperators").Definition();
+            e.Receiver();
             IntPort dataA = BinaryLiteral(0b00000000000011111111111111111111);
             IntPort dataB = BinaryLiteral(0b11111111111111111111000000000000);
             IntPort portA = Reroute(dataA);
@@ -196,6 +219,7 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation("Bit shift left, with ports: ", ChipLib.BitString(ChipBuilder.BitShiftLeft(portC, 12))));
             ChipLib.Log(__StringInterpolation("Bit shift right, pure data: ", ChipLib.BitString(ChipBuilder.BitShiftRight(dataC, 12))));
             ChipLib.Log(__StringInterpolation("Bit shift right, with ports: ", ChipLib.BitString(ChipBuilder.BitShiftRight(portC, 12))));
+            ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 

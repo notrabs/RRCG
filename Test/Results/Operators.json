@@ -2,6 +2,55 @@
   "Id": "0",
   "Nodes": [
     {
+      "Id": "Event_Definition_0",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": {
+        "EventName": "NativeIntOperators",
+        "EventDefinition": []
+      },
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_0",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": {
+        "EventName": "NativeIntOperators"
+      },
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
       "Id": "Log_String_0",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
@@ -288,6 +337,55 @@
       "InputCount": 2
     },
     {
+      "Id": "Event_Definition_1",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": {
+        "EventName": "NativeFloatOperators",
+        "EventDefinition": []
+      },
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_1",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": {
+        "EventName": "NativeFloatOperators"
+      },
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
       "Id": "Log_String_13",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
@@ -572,6 +670,55 @@
       "VariableType": null,
       "VariableHomeValue": null,
       "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_2",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": {
+        "EventName": "PortIntOperators",
+        "EventDefinition": []
+      },
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_2",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": {
+        "EventName": "PortIntOperators"
+      },
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
     },
     {
       "Id": "Random_Int_0",
@@ -1432,6 +1579,55 @@
       "InputCount": 2
     },
     {
+      "Id": "Event_Definition_3",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": {
+        "EventName": "PortFloatOperators",
+        "EventDefinition": []
+      },
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_3",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": {
+        "EventName": "PortFloatOperators"
+      },
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
       "Id": "Random_Float_0",
       "Type": "R/LLThSrnk+AlOQKRdKD5g==",
       "Name": "Random Float",
@@ -2288,6 +2484,55 @@
       "VariableType": null,
       "VariableHomeValue": null,
       "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_4",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": {
+        "EventName": "VectorOperators",
+        "EventDefinition": []
+      },
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_4",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": {
+        "EventName": "VectorOperators"
+      },
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
     },
     {
       "Id": "Vector3_Create_0",
@@ -3214,6 +3459,55 @@
       "InputCount": 2
     },
     {
+      "Id": "Event_Definition_5",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": {
+        "EventName": "MixedOperators",
+        "EventDefinition": []
+      },
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_5",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": {
+        "EventName": "MixedOperators"
+      },
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
       "Id": "Random_Float_7",
       "Type": "R/LLThSrnk+AlOQKRdKD5g==",
       "Name": "Random Float",
@@ -3610,6 +3904,55 @@
       "InputCount": 2
     },
     {
+      "Id": "Event_Definition_6",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": {
+        "EventName": "TernaryOperator",
+        "EventDefinition": []
+      },
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_6",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": {
+        "EventName": "TernaryOperator"
+      },
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
       "Id": "If_Value_0",
       "Type": "oan4pHv9AkeDRZOuTVfzMw==",
       "Name": "If Value",
@@ -3632,7 +3975,7 @@
       "InputCount": 3
     },
     {
-      "Id": "Event_Definition_0",
+      "Id": "Event_Definition_7",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "SFXConstantData": null,
@@ -3662,7 +4005,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_0",
+      "Id": "Event_Receiver_7",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "SFXConstantData": null,
@@ -3777,7 +4120,7 @@
       "InputCount": 3
     },
     {
-      "Id": "Event_Definition_1",
+      "Id": "Event_Definition_8",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "SFXConstantData": null,
@@ -3807,7 +4150,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_1",
+      "Id": "Event_Receiver_8",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "SFXConstantData": null,
@@ -3878,7 +4221,7 @@
       "InputCount": 3
     },
     {
-      "Id": "Event_Definition_2",
+      "Id": "Event_Definition_9",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "SFXConstantData": null,
@@ -3908,7 +4251,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_2",
+      "Id": "Event_Receiver_9",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "SFXConstantData": null,
@@ -4197,9 +4540,990 @@
       "VariableType": null,
       "VariableHomeValue": null,
       "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_10",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": {
+        "EventName": "BitwiseOperators",
+        "EventDefinition": []
+      },
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_10",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": {
+        "EventName": "BitwiseOperators"
+      },
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "Reroute_0",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.Int32",1048575]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_1",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise AND, pure data: "],[[0,2],"System.String","00000000000011111111000000000000"]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_68",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Bit_And_0",
+      "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+      "Name": "Bit And",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.Int32",-4096]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_11",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": {
+        "EventName": "ChipLib_BitString",
+        "EventDefinition": [
+          {
+            "Item1": "value0",
+            "Item2": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Definition_12",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": {
+        "EventName": "ChipLib_BitString_Read",
+        "EventDefinition": [
+          {
+            "Item1": "value0",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "RRCG_ChipLibBitString_3_0",
+      "Type": "et7rFMB230ew3QGx2qUIIQ==",
+      "Name": "RRCG_ChipLibBitString_3",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": "0_0",
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_3",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": {
+        "EventName": "ChipLib_BitString",
+        "EventTarget": 0
+      },
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_11",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": {
+        "EventName": "ChipLib_BitString_Read"
+      },
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 0
+    },
+    {
+      "Id": "String_Concat_2",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise AND, with ports: "]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_69",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_3",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise OR, pure data: "],[[0,2],"System.String","11111111111111111111111111111111"]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_70",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Bit_Or_0",
+      "Type": "EbwkLEOVOEeMbAxeP63ZRA==",
+      "Name": "Bit Or",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.Int32",-4096]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Sender_4",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": {
+        "EventName": "ChipLib_BitString",
+        "EventTarget": 0
+      },
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_4",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise OR, with ports: "]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_71",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_5",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise XOR, pure data: "],[[0,2],"System.String","11111111111100000000111111111111"]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_72",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Bit_Xor_0",
+      "Type": "lJOJo9keQU2oNiL/+vTpDQ==",
+      "Name": "Bit Xor",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.Int32",-4096]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Sender_5",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": {
+        "EventName": "ChipLib_BitString",
+        "EventTarget": 0
+      },
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_6",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise XOR, with ports: "]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_73",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Reroute_1",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.Int32",1044480]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "Bit_Shift_Left_0",
+      "Type": "WEB7CtqxL0SDQYHfZpeWYw==",
+      "Name": "Bit Shift Left",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.Int32",1044480],[[0,1],"System.Int32",12]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Sender_6",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": {
+        "EventName": "ChipLib_BitString",
+        "EventTarget": 0
+      },
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_7",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bit shift left, pure data: "]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_74",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Bit_Shift_Left_1",
+      "Type": "WEB7CtqxL0SDQYHfZpeWYw==",
+      "Name": "Bit Shift Left",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.Int32",12]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Sender_7",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": {
+        "EventName": "ChipLib_BitString",
+        "EventTarget": 0
+      },
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_8",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bit shift left, with ports: "]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_75",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Bit_Shift_Right_0",
+      "Type": "g7QkQD2roE+zmbM1C4AAgQ==",
+      "Name": "Bit Shift Right",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.Int32",1044480],[[0,1],"System.Int32",12]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Sender_8",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": {
+        "EventName": "ChipLib_BitString",
+        "EventTarget": 0
+      },
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_9",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bit shift right, pure data: "]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_76",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Bit_Shift_Right_1",
+      "Type": "g7QkQD2roE+zmbM1C4AAgQ==",
+      "Name": "Bit Shift Right",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.Int32",12]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Sender_9",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": {
+        "EventName": "ChipLib_BitString",
+        "EventTarget": 0
+      },
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_10",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bit shift right, with ports: "]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_77",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
     }
   ],
   "Connections": [
+    {
+      "From": {
+        "Node": "Event_Receiver_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
     {
       "From": {
         "Node": "Log_String_0",
@@ -4358,7 +5682,7 @@
     },
     {
       "From": {
-        "Node": "Log_String_12",
+        "Node": "Event_Receiver_1",
         "Group": 0,
         "Index": 0
       },
@@ -4527,7 +5851,7 @@
     },
     {
       "From": {
-        "Node": "Log_String_25",
+        "Node": "Event_Receiver_2",
         "Group": 0,
         "Index": 0
       },
@@ -5268,7 +6592,7 @@
     },
     {
       "From": {
-        "Node": "Log_String_38",
+        "Node": "Event_Receiver_3",
         "Group": 0,
         "Index": 0
       },
@@ -6009,7 +7333,7 @@
     },
     {
       "From": {
-        "Node": "Log_String_51",
+        "Node": "Event_Receiver_4",
         "Group": 0,
         "Index": 0
       },
@@ -6789,7 +8113,7 @@
     },
     {
       "From": {
-        "Node": "Log_String_63",
+        "Node": "Event_Receiver_5",
         "Group": 0,
         "Index": 0
       },
@@ -7101,7 +8425,7 @@
     },
     {
       "From": {
-        "Node": "Log_String_66",
+        "Node": "Event_Receiver_6",
         "Group": 0,
         "Index": 0
       },
@@ -7423,9 +8747,3495 @@
         "Index": 0
       },
       "isExec": true
+    },
+    {
+      "From": {
+        "Node": "String_Concat_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_68",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_68",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Bit_And_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_68",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Bit_And_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_2",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_69",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_69",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "String_Concat_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_70",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_69",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_70",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Bit_Or_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_70",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Bit_Or_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_4",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_71",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_71",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "String_Concat_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_72",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_71",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_72",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Bit_Xor_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_72",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Bit_Xor_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_5",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_6",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_73",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_73",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_73",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Bit_Shift_Left_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_7",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_74",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_74",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Reroute_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Bit_Shift_Left_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_74",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Bit_Shift_Left_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_7",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_8",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_75",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_75",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_75",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Bit_Shift_Right_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_8",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_9",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_76",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_76",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Reroute_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Bit_Shift_Right_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_76",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Bit_Shift_Right_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_9",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_10",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_77",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_77",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
     }
   ],
-  "SubContexts": [],
+  "SubContexts": [
+    {
+      "Id": "0_0",
+      "Nodes": [
+        {
+          "Id": "In_0",
+          "Type": "iCvgE/VGAkaXNYhWrrPrew==",
+          "Name": "In",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 0
+        },
+        {
+          "Id": "Event_Receiver_12",
+          "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+          "Name": "Event Receiver",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": {
+            "EventName": "ChipLib_BitString"
+          },
+          "DefaultValues": [],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 0
+        },
+        {
+          "Id": "Bit_And_1",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",-2147483648]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_0",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "-2147483648"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_2",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",1073741824]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_1",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "1073741824"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_3",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",536870912]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_2",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "536870912"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_4",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",268435456]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_3",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "268435456"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_5",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",134217728]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_4",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "134217728"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_6",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",67108864]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_5",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "67108864"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_7",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",33554432]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_6",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "33554432"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_8",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",16777216]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_7",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "16777216"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_9",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",8388608]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_8",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "8388608"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_10",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",4194304]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_9",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "4194304"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_11",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",2097152]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_10",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "2097152"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_12",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",1048576]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_11",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "1048576"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_13",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",524288]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_12",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "524288"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_14",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",262144]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_13",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "262144"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_15",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",131072]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_14",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "131072"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_16",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",65536]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_15",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "65536"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_17",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",32768]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_16",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "32768"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_18",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",16384]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_17",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "16384"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_19",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",8192]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_18",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "8192"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_20",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",4096]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_19",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "4096"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_21",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",2048]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_20",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "2048"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_22",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",1024]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_21",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "1024"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_23",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",512]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_22",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "512"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_24",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",256]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_23",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "256"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_25",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",128]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_24",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "128"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_26",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",64]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_25",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "64"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_27",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",32]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_26",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "32"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_28",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",16]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_27",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "16"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_29",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",8]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_28",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "8"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_30",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",4]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_29",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "4"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_31",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",2]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_30",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "2"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "Bit_And_32",
+          "Type": "w1upKAirrkiwwBa0EWi/Rw==",
+          "Name": "Bit And",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Int32",1]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Value_Integer_Switch_31",
+          "Type": "OEBTvj5HrUC04qvTinZxGw==",
+          "Name": "Value Integer Switch",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","0"],[[0,2],"System.String","1"]],
+          "SwitchCases": [
+            "1"
+          ],
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 3
+        },
+        {
+          "Id": "String_Concat_11",
+          "Type": "on7tc63OWkCznB/sS/1CNg==",
+          "Name": "String Concat",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,0],"System.String",""]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 33
+        },
+        {
+          "Id": "Event_Sender_10",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": {
+            "EventName": "ChipLib_BitString_Read",
+            "EventTarget": 0
+          },
+          "EventReceiverData": null,
+          "DefaultValues": [],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 1
+        },
+        {
+          "Id": "Out_0",
+          "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
+          "Name": "Out",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 0
+        }
+      ],
+      "Connections": [
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_1",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_1",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_0",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_2",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_2",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_1",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_3",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_3",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_2",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_3",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_6",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_6",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_7",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_7",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_6",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_8",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_8",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_7",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_9",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_9",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_8",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_10",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_10",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_9",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_11",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_11",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_10",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_12",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_12",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_11",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_13",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_13",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_12",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_14",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_14",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_13",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_15",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_15",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_14",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_16",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_16",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_15",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_17",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_17",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_16",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_18",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_18",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_17",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_19",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_19",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_18",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_20",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_20",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_19",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_21",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_21",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_20",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_22",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_22",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_21",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_23",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_23",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_22",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_24",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_24",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_23",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_25",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_25",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_24",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_26",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_26",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_25",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_27",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_27",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_26",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_28",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_28",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_27",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_29",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_29",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_28",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_30",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_30",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_29",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_31",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_31",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_30",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Bit_And_32",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Bit_And_32",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Value_Integer_Switch_31",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_0",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_1",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 2
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_2",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 3
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_3",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 4
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 5
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 6
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_6",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 7
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_7",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 8
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_8",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 9
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_9",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 10
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_10",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 11
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_11",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 12
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_12",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 13
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_13",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 14
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_14",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 15
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_15",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 16
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_16",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 17
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_17",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 18
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_18",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 19
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_19",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 20
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_20",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 21
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_21",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 22
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_22",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 23
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_23",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 24
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_24",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 25
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_25",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 26
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_26",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 27
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_27",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 28
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_28",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 29
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_29",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 30
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_30",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 31
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Value_Integer_Switch_31",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 32
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_12",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_10",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "String_Concat_11",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_10",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        }
+      ],
+      "SubContexts": [],
+      "MetaExistingCircuitBoard": null,
+      "MetaNewBoard": [
+        {
+          "Name": "Dummy",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Exec",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Data",
+          "Inputs": [],
+          "Outputs": []
+        }
+      ]
+    }
+  ],
   "MetaExistingCircuitBoard": null,
   "MetaNewBoard": null
 }

@@ -24,6 +24,9 @@ public class Operators : CircuitDescriptor
 
     public void NativeIntOperators()
     {
+        var e = new EventHelper("NativeIntOperators").Definition();
+        e.Receiver();
+
         int nativeA = 1;
         int nativeB = 2;
 
@@ -48,10 +51,15 @@ public class Operators : CircuitDescriptor
         int preDecrement = 0;
         ChipLib.Log(--preDecrement);
         ChipLib.Log(preDecrement);
+
+        throw null;
     }
 
     public void NativeFloatOperators()
     {
+        var e = new EventHelper("NativeFloatOperators").Definition();
+        e.Receiver();
+
         float nativeA = 1;
         float nativeB = 2;
 
@@ -76,10 +84,15 @@ public class Operators : CircuitDescriptor
         float preDecrement = 0;
         ChipLib.Log(--preDecrement);
         ChipLib.Log(preDecrement);
+
+        throw null;
     }
 
     public void PortIntOperators()
     {
+        var e = new EventHelper("PortIntOperators").Definition();
+        e.Receiver();
+
         int portA = RandomInt(0, 0);
         int portB = RandomInt(0, 0);
 
@@ -104,10 +117,15 @@ public class Operators : CircuitDescriptor
         int preDecrement = RandomInt(0, 0);
         ChipLib.Log(--preDecrement);
         ChipLib.Log(preDecrement);
+
+        throw null;
     }
 
     public void PortFloatOperators()
     {
+        var e = new EventHelper("PortFloatOperators").Definition();
+        e.Receiver();
+
         float portA = RandomFloat(1, 1);
         float portB = RandomFloat(2, 2);
 
@@ -132,10 +150,15 @@ public class Operators : CircuitDescriptor
         float preDecrement = RandomFloat(0, 0);
         ChipLib.Log(--preDecrement);
         ChipLib.Log(preDecrement);
+
+        throw null;
     }
 
     public void VectorOperators()
     {
+        var e = new EventHelper("VectorOperators").Definition();
+        e.Receiver();
+
         Vector3 vectorA = Vector3Create(1, 2, 3);
         Vector3 vectorB = Vector3Create(4, 5, 6);
         float portA = RandomFloat(1, 1);
@@ -157,10 +180,15 @@ public class Operators : CircuitDescriptor
         ChipLib.Log(vectorA * 6);
         ChipLib.Log(7f * vectorB);
         ChipLib.Log(8 * vectorB);
+
+        throw null;
     }
 
     public void MixedOperators()
     {
+        var e = new EventHelper("MixedOperators").Definition();
+        e.Receiver();
+
         float portA = RandomFloat(1, 1);
         int portB = RandomInt(2, 2);
         float nativeA = 3;
@@ -169,10 +197,15 @@ public class Operators : CircuitDescriptor
         ChipLib.Log(portA + portB * nativeA / nativeB);
         ChipLib.Log(portA + portB * 5);
         ChipLib.Log(portA * portB + 5);
+
+        throw null;
     }
 
     public void TernaryOperator()
     {
+        var e = new EventHelper("TernaryOperator").Definition();
+        e.Receiver();
+
         // Data / data
         float dataA = 0;
         float dataB = 1;
@@ -196,10 +229,15 @@ public class Operators : CircuitDescriptor
 
         // Implicit conversion for result
         ChipLib.Log($"Result: {(false ? intPort : portA)}");
+
+        throw null;
     }
 
     public void BitwiseOperators()
     {
+        var e = new EventHelper("BitwiseOperators").Definition();
+        e.Receiver();
+
         int dataA = BinaryLiteral(0b00000000000011111111111111111111);
         int dataB = BinaryLiteral(0b11111111111111111111000000000000);
         int portA = Reroute(dataA);
@@ -221,6 +259,8 @@ public class Operators : CircuitDescriptor
 
         ChipLib.Log($"Bit shift right, pure data: {ChipLib.BitString(dataC >> 12)}");
         ChipLib.Log($"Bit shift right, with ports: {ChipLib.BitString(portC >> 12)}");
+
+        throw null;
     }
 
     unsafe int BinaryLiteral(uint literal)
