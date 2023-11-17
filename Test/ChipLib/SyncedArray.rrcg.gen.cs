@@ -17,10 +17,10 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             ChipLib.Log("Start before inline definitions.");
-            var arrayInt = new SyncedArray<IntPort>(2);
-            var arrayFloat = new SyncedArray<FloatPort>(4);
-            var arrayString = new SyncedArray<StringPort>(6);
-            var arrayBool = new SyncedArray<BoolPort>(8);
+            var arrayInt = __VariableDeclaratorExpression("arrayInt", () => new SyncedArray<IntPort>(2));
+            var arrayFloat = __VariableDeclaratorExpression("arrayFloat", () => new SyncedArray<FloatPort>(4));
+            var arrayString = __VariableDeclaratorExpression("arrayString", () => new SyncedArray<StringPort>(6));
+            var arrayBool = __VariableDeclaratorExpression("arrayBool", () => new SyncedArray<BoolPort>(8));
             arrayInt[0] = 0;
             ChipLib.Log(arrayInt[1]);
             arrayFloat[3] = RandomInt(0, 3);
@@ -35,10 +35,10 @@ namespace RRCGBuild
         public void SyncedArrayInt()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var arrayInt = new SyncedArrayInt(5);
+            var arrayInt = __VariableDeclaratorExpression("arrayInt", () => new SyncedArrayInt(5));
             arrayInt[0] = 0;
             ChipLib.Log(arrayInt[1]);
-            SyncedArray<IntPort> casted = arrayInt;
+            SyncedArray<IntPort> casted = __VariableDeclaratorExpression("casted", () => arrayInt);
             casted[0] = 0;
             ChipLib.Log(casted[1]);
             arrayInt.Add(4, 5);

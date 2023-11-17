@@ -21,9 +21,9 @@ namespace RRCGBuild
         void TestNotIfOptimizer()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var entry = new EventHelper("TestNotIfOptimizer").Definition();
+            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("TestNotIfOptimizer").Definition());
             entry.Receiver();
-            var optimizableBool = ParseBool("true").Result;
+            var optimizableBool = __VariableDeclaratorExpression("optimizableBool", () => ParseBool("true").Result);
             ChipBuilder.If(true, delegate
             {
                 LogString("true");
@@ -57,7 +57,7 @@ namespace RRCGBuild
             }
 
             );
-            var optimizableButNotDeletable = !ParseBool("true").Result;
+            var optimizableButNotDeletable = __VariableDeclaratorExpression("optimizableButNotDeletable", () => !ParseBool("true").Result);
             ChipBuilder.If(optimizableButNotDeletable, delegate
             {
                 LogString("true");
@@ -121,9 +121,9 @@ namespace RRCGBuild
         void TestKnownSingletonChipsOptimizer()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var entry = new EventHelper("TestKnownSingletonChipsOptimizer").Definition();
+            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("TestKnownSingletonChipsOptimizer").Definition());
             entry.Receiver();
-            var floatVar = new Variable<FloatPort>();
+            var floatVar = __VariableDeclaratorExpression("floatVar", () => new Variable<FloatPort>());
             // All these Time Get Precise Seconds nodes
             // will be collapsed into a single node.
             floatVar.Value = TimeGetPreciseSeconds();
@@ -139,12 +139,12 @@ namespace RRCGBuild
         void TestVariableCollapseOptimizer()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var entry = new EventHelper("TestVariableCollapseOptimiser").Definition();
+            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("TestVariableCollapseOptimiser").Definition());
             entry.Receiver();
-            var var0 = new Variable<FloatPort>();
-            var var1 = new Variable<FloatPort>();
-            var var2 = new Variable<FloatPort>();
-            var var3 = new Variable<FloatPort>();
+            var var0 = __VariableDeclaratorExpression("var0", () => new Variable<FloatPort>());
+            var var1 = __VariableDeclaratorExpression("var1", () => new Variable<FloatPort>());
+            var var2 = __VariableDeclaratorExpression("var2", () => new Variable<FloatPort>());
+            var var3 = __VariableDeclaratorExpression("var3", () => new Variable<FloatPort>());
             // All read-only instances of each
             // variable will be collapsed into
             // the "writing" instance.
@@ -163,17 +163,17 @@ namespace RRCGBuild
         void TestAssociativeOperationCollapseOptimizer()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var e = new EventHelper("TestAssociativeOperationCollapseOptimizer").Definition();
+            var e = __VariableDeclaratorExpression("e", () => new EventHelper("TestAssociativeOperationCollapseOptimizer").Definition());
             e.Receiver();
-            var variable = new Variable<FloatPort>();
+            var variable = __VariableDeclaratorExpression("variable", () => new Variable<FloatPort>());
             variable.Value = variable.Value + 2f + 3f + 4f + 5f + 6f * 7f * 8f * 9f * 10f;
-            FloatPort undeletableAdd = variable.Value + 5f;
-            FloatPort collapsible = undeletableAdd + 1f + 2f + 3f + 4f;
+            FloatPort undeletableAdd = __VariableDeclaratorExpression("undeletableAdd", () => variable.Value + 5f);
+            FloatPort collapsible = __VariableDeclaratorExpression("collapsible", () => undeletableAdd + 1f + 2f + 3f + 4f);
             ChipLib.Log(undeletableAdd); // Log directly to make it undeletable
             ChipLib.Log(collapsible);
-            var spacePort = Reroute<StringPort>(" ");
+            var spacePort = __VariableDeclaratorExpression("spacePort", () => Reroute<StringPort>(" "));
             ChipLib.Log("Hello" + spacePort + "World");
-            var undeletableConcat = "Undeletable" + spacePort + "concat";
+            var undeletableConcat = __VariableDeclaratorExpression("undeletableConcat", () => "Undeletable" + spacePort + "concat");
             ChipLib.Log(undeletableConcat); // Log directly to make it undeletable
             ChipLib.Log("Here's the undeletable concat: " + undeletableConcat);
             ExecFlow.current.Clear();

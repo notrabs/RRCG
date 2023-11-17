@@ -15,7 +15,7 @@ namespace RRCGBuild
         void DelayTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var delay = new Delay(5);
+            var delay = __VariableDeclaratorExpression("delay", () => new Delay(5));
             ChipLib.Log("Delay Test 1");
             delay.Cancel().Run();
             ChipLib.Log("Delay is scheduled");

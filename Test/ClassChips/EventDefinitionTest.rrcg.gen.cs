@@ -17,14 +17,14 @@ namespace RRCGBuild
         void ParamCounts()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var params0 = new EventDefinition();
+            var params0 = __VariableDeclaratorExpression("params0", () => new EventDefinition());
             params0.Receiver();
             params0.SendLocal();
-            var params1 = new EventDefinition<IntPort>("param0");
-            var params1Value = params1.Receiver();
+            var params1 = __VariableDeclaratorExpression("params1", () => new EventDefinition<IntPort>("param0"));
+            var params1Value = __VariableDeclaratorExpression("params1Value", () => params1.Receiver());
             params1.SendLocal(params1Value);
-            var params2 = new EventDefinition<StringPort, BoolPort>("param0", "param1");
-            var params2Value = params2.Receiver();
+            var params2 = __VariableDeclaratorExpression("params2", () => new EventDefinition<StringPort, BoolPort>("param0", "param1"));
+            var params2Value = __VariableDeclaratorExpression("params2Value", () => params2.Receiver());
             params2.SendLocal(params2Value.Item1, params2Value.Item2);
             ExecFlow.current.Merge(rrcg_return_flow);
         }
@@ -32,7 +32,7 @@ namespace RRCGBuild
         void SendTypes()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var params0 = new EventDefinition();
+            var params0 = __VariableDeclaratorExpression("params0", () => new EventDefinition());
             params0.Receiver();
             params0.SendLocal();
             params0.SendOthers();
@@ -47,14 +47,14 @@ namespace RRCGBuild
         void Existing()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var params0 = ExistingEvent("Existing0");
+            var params0 = __VariableDeclaratorExpression("params0", () => ExistingEvent("Existing0"));
             params0.Receiver();
             params0.SendLocal();
-            var params1 = ExistingEvent<IntPort>("Existing1");
-            var params1Value = params1.Receiver();
+            var params1 = __VariableDeclaratorExpression("params1", () => ExistingEvent<IntPort>("Existing1"));
+            var params1Value = __VariableDeclaratorExpression("params1Value", () => params1.Receiver());
             params1.SendLocal(params1Value);
-            var params2 = ExistingEvent<IntPort, StringPort>("Existing2");
-            var params2Value = params2.Receiver();
+            var params2 = __VariableDeclaratorExpression("params2", () => ExistingEvent<IntPort, StringPort>("Existing2"));
+            var params2Value = __VariableDeclaratorExpression("params2Value", () => params2.Receiver());
             params2.SendLocal(params2Value.Item1, params2Value.Item2);
             ExecFlow.current.Merge(rrcg_return_flow);
         }

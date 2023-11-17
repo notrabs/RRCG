@@ -32,10 +32,10 @@ namespace RRCGBuild
         void WhileTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var entry = new EventHelper("WhileTest").Definition();
+            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("WhileTest").Definition());
             entry.Receiver();
-            var list = ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10");
-            var listCache = ChipLib.EventCache(list);
+            var list = __VariableDeclaratorExpression("list", () => ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"));
+            var listCache = __VariableDeclaratorExpression("listCache", () => ChipLib.EventCache(list));
             __While(ChipBuilder.GreaterThan(listCache.Count, 0), delegate
             {
                 ChipLib.Log(Concat("Removing \"", listCache[0], "\" from list"));
@@ -53,7 +53,7 @@ namespace RRCGBuild
         void WhileReturnTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var entry = new EventHelper("WhileReturnTest").Definition();
+            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("WhileReturnTest").Definition());
             entry.Receiver();
             // Test returns from while block within an "inline" graph (functions are transparent)
             ChipLib.Log(Concat("Repeated string (inline graph): ", StringRepeat("Hello", 5)));
@@ -84,7 +84,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
-            var strStaging = new Variable<StringPort>();
+            var strStaging = __VariableDeclaratorExpression("strStaging", () => new Variable<StringPort>());
             __While(true, delegate
             {
                 strStaging.Value = Concat(strStaging.Value, str);
@@ -108,9 +108,9 @@ namespace RRCGBuild
         void UnreachableNodesTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var entry = new EventHelper("UnreachableNodesTest").Definition();
+            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("UnreachableNodesTest").Definition());
             entry.Receiver();
-            var index = new Variable<IntPort>();
+            var index = __VariableDeclaratorExpression("index", () => new Variable<IntPort>());
             index.Value = 0;
             __While(ChipBuilder.LessThan(index.Value, 100), delegate
             {
@@ -150,7 +150,7 @@ namespace RRCGBuild
         void NestedWhileTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var ev = new EventHelper("NestedWhileTest").Definition();
+            var ev = __VariableDeclaratorExpression("ev", () => new EventHelper("NestedWhileTest").Definition());
             ev.Receiver();
             LogString("Start");
             __While(true, delegate
@@ -174,7 +174,7 @@ namespace RRCGBuild
         void DoWhileTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var ev = new EventHelper("DoWhileTest").Definition();
+            var ev = __VariableDeclaratorExpression("ev", () => new EventHelper("DoWhileTest").Definition());
             ev.Receiver();
             __DoWhile(true, delegate
             {
@@ -212,7 +212,7 @@ namespace RRCGBuild
         void DoWhileReturnTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var entry = new EventHelper("DoWhileReturnTest").Definition();
+            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("DoWhileReturnTest").Definition());
             entry.Receiver();
             // Test returns from do while block within an "inline" graph (functions are transparent)
             ChipLib.Log(Concat("Repeated string (do while, inline graph): ", StringRepeatDoWhile("Hello", 5)));
@@ -243,7 +243,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
-            var strStaging = new Variable<StringPort>();
+            var strStaging = __VariableDeclaratorExpression("strStaging", () => new Variable<StringPort>());
             __DoWhile(true, delegate
             {
                 strStaging.Value = Concat(strStaging.Value, str);
@@ -267,7 +267,7 @@ namespace RRCGBuild
         void NestedDoWhileTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var ev = new EventHelper("NestedDoWhileTest").Definition();
+            var ev = __VariableDeclaratorExpression("ev", () => new EventHelper("NestedDoWhileTest").Definition());
             ev.Receiver();
             __DoWhile(true, delegate
             {

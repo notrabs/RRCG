@@ -9,9 +9,9 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            var a = RandomInt(1, 10);
+            var a = __VariableDeclaratorExpression("a", () => RandomInt(1, 10));
             CircuitBoard(ContentsExec);
-            var b = CircuitBoard(ContentsMixed, a);
+            var b = __VariableDeclaratorExpression("b", () => CircuitBoard(ContentsMixed, a));
             ChipLib.Log(b);
             var(c, d) = CircuitBoard(ContentsData, b, b);
             ChipLib.Log(c);
