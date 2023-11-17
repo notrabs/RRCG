@@ -92,5 +92,11 @@ namespace RRCGSource
             /// </summary>
             public T UnsafeReadPort;
         }
+
+        /// <summary>
+        /// Returns a string containing the bit representation of the number.
+        /// This operation is quite expensive!
+        /// </summary>
+        public static string BitString(int bits) { return default; }
     }
 }

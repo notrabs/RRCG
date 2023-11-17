@@ -333,5 +333,72 @@ namespace RRCGBuild
                     yield return new List<Type>(source.Skip(size * i).Take(size));
             }
         }
+
+        public static StringPort BitString(IntPort bits)
+        {
+            // Climb up to the root context
+            Context prevContext = Context.current;
+            while (Context.current.ParentContext != null)
+                Context.current = Context.current.ParentContext;
+
+            // Now build the implementation
+            var callEvent = new EventHelper<IntPort>("ChipLib_BitString");
+            var returnEvent = new EventHelper<StringPort>("ChipLib_BitString_Read");
+
+            CircuitBuilder.InlineGraph(() => CircuitBuilder.Singleton("_ChipLib_BitString", () =>
+            {
+                // Place definitions in root context
+                callEvent.Definition();
+                returnEvent.Definition();
+
+                // Place method implementation in a circuit board
+                CircuitBuilder.Singleton("_ChipLib_BitString_CircuitBoard",
+                    () => CircuitBuilder.CircuitBoard("ChipLibBitString", () =>
+                {
+                    IntPort bits = callEvent.Receiver();
+                    returnEvent.SendLocal(BitStringImpl(bits));
+
+                    // Prevent exec output
+                    CircuitBuilder.ClearExec();
+                }));
+            }));
+
+            // Now we go back to the original context
+            // and place the necessary chips.
+            Context.current = prevContext;
+
+            // Send the event
+            callEvent.SendLocal(bits);
+
+            // And read from a singleton receiver, one per context
+            StringPort readPort = null;
+            CircuitBuilder.InlineGraph(() =>
+                readPort = CircuitBuilder.Singleton("_ChipLib_BitString_Read", () => returnEvent.Receiver()));
+            return readPort;
+        }
+
+        private static StringPort BitStringImpl(IntPort bits)
+        {
+            // Collect outputs of value switches for concatenation later
+            var digits = new List<StringPort>();
+
+            for (int i=31; i >= 0; i--)
+            {
+                // Test for bit i to be set
+                int mask = 1 << i;
+                IntPort maskedValue = ChipBuilder.BitAnd(bits, mask);
+
+                // If the bit is set, output 1, otherwise 0
+                StringPort digit = ChipBuilder.ValueIntegerSwitch<StringPort>(maskedValue, "0", new()
+                {
+                    { mask, "1" }
+                });
+
+                digits.Add(digit);
+            }
+
+            // Now concatenate the digits
+            return ChipBuilder.Concat(digits.ToArray());
+        }
     }
 }
