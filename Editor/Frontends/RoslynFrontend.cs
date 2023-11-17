@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using RRCGBuild;
 using System.IO;
+using System.Linq;
 
 namespace RRCG
 {
@@ -16,10 +17,19 @@ namespace RRCG
 
             SyntaxTree sourceTree = CSharpSyntaxTree.ParseText(code);
 
-            var compilation = CSharpCompilation.Create("RRCG.SemanticModel", syntaxTrees: new[] { sourceTree });
-            var semanticModel = compilation.GetSemanticModel(sourceTree);
+            // Create compilation with references to all loaded assemblies
+            var references = AppDomain.CurrentDomain.GetAssemblies().Select(
+                a =>
+                {
+                    try { return MetadataReference.CreateFromFile(a.Location); }
+                    catch (NotSupportedException) { return null; } // dynamic assemblies
+                }
+            ).Where(a => a != null);
 
-            var rewriter = new RRCGSyntaxRewriter(semanticModel);
+            var compilation = CSharpCompilation.Create("RRCG.SemanticModel")
+                .WithReferences(references);
+
+            var rewriter = new RRCGSyntaxRewriter(compilation);
             var generatedTree = rewriter.Visit(sourceTree.GetRoot());
 
             FileUtils.WriteGeneratedCode(generatedTree, compiledPath);

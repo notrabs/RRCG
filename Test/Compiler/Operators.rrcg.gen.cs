@@ -15,6 +15,7 @@ namespace RRCGBuild
             PortFloatOperators();
             VectorOperators();
             MixedOperators();
+            TernaryOperator();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
@@ -152,6 +153,25 @@ namespace RRCGBuild
             ChipLib.Log(portA + portB * nativeA / nativeB);
             ChipLib.Log(portA + portB * 5);
             ChipLib.Log(portA * portB + 5);
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        public void TernaryOperator()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            FloatPort dataA = 0;
+            FloatPort dataB = 1;
+            ChipLib.EventCache(ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, dataA, dataB));
+            FloatPort portA = RandomFloat(0, 0);
+            FloatPort portB = RandomFloat(1, 1);
+            ChipLib.EventCache(ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, portA, portB));
+            // Port / data
+            ChipLib.EventCache(ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, portA, dataB));
+            // Type conversions
+            // Floats without -f suffix
+            RandomFloat(0, ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, 123, 456));
+            IntPort intPort = RandomInt(0, 0);
+            RandomFloat(0, ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, 1.5f, intPort));
             ExecFlow.current.Merge(rrcg_return_flow);
         }
     }

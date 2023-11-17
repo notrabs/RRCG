@@ -10,18 +10,25 @@ namespace RRCG
 {
     public class RRCGSyntaxRewriter : CSharpSyntaxRewriter
     {
-        private SemanticModel SemanticModel { get; }
-
         private CircuitDescriptorRewriter circuitDescriptorRewriter;
         private StudioObjectDescriptorRewriter studioObjectDescriptorRewriter;
+        private CSharpCompilation Compilation;
 
-        public RRCGSyntaxRewriter(SemanticModel semanticModel)
+        public RRCGSyntaxRewriter(CSharpCompilation initialCompilation)
         {
-            SemanticModel = semanticModel;
-
+            Compilation = initialCompilation;
             circuitDescriptorRewriter = new CircuitDescriptorRewriter(this);
             studioObjectDescriptorRewriter = new StudioObjectDescriptorRewriter(this);
         }
+
+        public SemanticModel GetUpdatedSemanticModel(SyntaxTree tree)
+        {
+            // Update compilation with new tree if necessary
+            if (!Compilation.ContainsSyntaxTree(tree))
+                Compilation = Compilation.AddSyntaxTrees(tree);
+
+            return Compilation.GetSemanticModel(tree);
+    }
 
         //
         // Class and Module

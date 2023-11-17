@@ -631,6 +631,55 @@ namespace RRCG
                 );
         }
 
+        public override SyntaxNode VisitConditionalExpression(ConditionalExpressionSyntax node)
+        {
+            ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
+            ExpressionSyntax whenTrue = (ExpressionSyntax)Visit(node.WhenTrue);
+            ExpressionSyntax whenFalse = (ExpressionSyntax)Visit(node.WhenFalse);
+
+            // Query the semantic model for the result type of the expression.
+            // We'll use the converted type (result type after implicit conversions).
+            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
+            var typeInfo = semanticModel.GetTypeInfo(node);
+
+            // If we're unable to resolve the type, inform the user & fail
+            if (typeInfo.ConvertedType is IErrorTypeSymbol)
+                throw new Exception($"Unable to determine result type of ternary expression: {node}");
+
+            var originalValueType = typeInfo.ConvertedType.GetFullName();
+            var valueType = originalValueType;
+
+            // If valueType is already a build-realm type, then awesome!
+            // Otherwise we'll need to check the mapping.
+            if (!TypeNameMapping.SourceToBuildRealmTypeNames.Values.Contains(valueType) &&
+                !TypeNameMapping.SourceToBuildRealmTypeNames.TryGetValue(valueType, out valueType))
+                throw new Exception($"Unable to determine build-realm type for: {originalValueType}");
+
+            return SyntaxFactory.InvocationExpression(
+                    SyntaxFactory.MemberAccessExpression(
+                        SyntaxKind.SimpleMemberAccessExpression,
+                        SyntaxFactory.IdentifierName("ChipBuilder"),
+                        SyntaxFactory.GenericName(
+                            SyntaxFactory.Identifier("IfValue"))
+                        .WithTypeArgumentList(
+                            SyntaxFactory.TypeArgumentList(
+                                SyntaxFactory.SingletonSeparatedList<TypeSyntax>(
+                                    SyntaxFactory.IdentifierName(valueType))))))
+                .WithArgumentList(
+                    SyntaxFactory.ArgumentList(
+                        SyntaxFactory.SeparatedList<ArgumentSyntax>(
+                            new SyntaxNodeOrToken[]{
+                                SyntaxFactory.Argument(test),
+                                SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                SyntaxFactory.Argument(whenTrue),
+                                SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                SyntaxFactory.Argument(whenFalse)
+                            }
+                        )
+                    )
+                );
+        }
+
         //
         // Helpers 
         //
@@ -664,6 +713,5 @@ namespace RRCG
         {
             return SyntaxFactory.AnonymousMethodExpression();
         }
-
     }
 }
