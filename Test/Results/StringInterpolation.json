@@ -159,7 +159,7 @@
       "DefaultValues": [[[0,1],"System.String","port"]],
       "SwitchCases": null,
       "CircuitBoardId": null,
-      "VariableName": "RRCG_var_0",
+      "VariableName": "RRCG_variable_0",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "VariableHomeValue": null,
