@@ -27,8 +27,8 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             EventReceiver(RoomEvents.Hz30);
-            var rand1 = RandomInt(0, 10);
-            var rand2 = RandomInt(0, 10);
+            var rand1 = __VariableDeclaratorExpression("rand1", () => RandomInt(0, 10));
+            var rand2 = __VariableDeclaratorExpression("rand2", () => RandomInt(0, 10));
             ChipBuilder.If(ChipBuilder.GreaterThan(rand1 + rand2, 10), delegate
             {
                 LogString("Today's your lucky day");
@@ -47,9 +47,9 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             EventReceiver(RoomEvents.Hz30);
-            var rand1 = RandomInt(0, 10);
-            var sum = (rand1 + 3) + (4 + 5);
-            var cached = ChipLib.EventCache<IntPort>(sum);
+            var rand1 = __VariableDeclaratorExpression("rand1", () => RandomInt(0, 10));
+            var sum = __VariableDeclaratorExpression("sum", () => (rand1 + 3) + (4 + 5));
+            var cached = __VariableDeclaratorExpression("cached", () => ChipLib.EventCache<IntPort>(sum));
             PlayerShowSubtitle(GetLocalPlayer(), ToString(cached), 3.0f, 0);
             ExecFlow.current.Merge(rrcg_return_flow);
         }
@@ -57,9 +57,9 @@ namespace RRCGBuild
         public void AdderCircuitBoard()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            IntPort input1 = ExistingDataInput<IntPort>("value0");
-            IntPort input2 = ExistingDataInput<IntPort>("value1");
-            var result = input1 + input2;
+            IntPort input1 = __VariableDeclaratorExpression("input1", () => ExistingDataInput<IntPort>("value0"));
+            IntPort input2 = __VariableDeclaratorExpression("input2", () => ExistingDataInput<IntPort>("value1"));
+            var result = __VariableDeclaratorExpression("result", () => input1 + input2);
             ExistingDataOutput<IntPort>("result", result);
             ExecFlow.current.Merge(rrcg_return_flow);
         }
@@ -68,7 +68,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             ExistingExecInput("Exec");
-            var result = GenerateRandomNumber();
+            var result = __VariableDeclaratorExpression("result", () => GenerateRandomNumber());
             ExistingDataOutput<IntPort>("result", result);
             ExistingExecOutput("Exec");
             ExecFlow.current.Merge(rrcg_return_flow);
@@ -114,7 +114,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
-            IntPort b = 0;
+            IntPort b = __VariableDeclaratorExpression("b", () => 0);
             ChipBuilder.If(ChipBuilder.Equals(RandomInt(0, 10), 5), delegate
             {
                 __Return(rrcg_return_flow, out rrcg_return_data, (1, 1));
@@ -124,7 +124,7 @@ namespace RRCGBuild
             {
                 ChipBuilder.If(ChipBuilder.Equals(RandomInt(0, 10), 5), delegate
                 {
-                    var c = 3;
+                    var c = __VariableDeclaratorExpression("c", () => 3);
                     ChipBuilder.If(ChipBuilder.Equals(RandomInt(0, 10), 5), delegate
                     {
                         c = 4;

@@ -50,9 +50,14 @@ namespace RRCGBuild
             throw new Exception($"Topmost semantic scope type was not \"${typeof(T)}\"!");
         }
 
-        public T GetNextScopeWithType<T>()
+        public T? GetNextScopeWithType<T>() where T : struct
         {
-            return (T) this.FirstOrDefault(scope => scope.GetType() == typeof(T));
+            try
+            {
+                return (T?)this.First(scope => scope.GetType() == typeof(T));
+            }
+            catch (Exception) { }
+            return null;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace RRCGBuild
 {
@@ -98,7 +99,12 @@ namespace RRCGBuild
         public AutoNamedVariable(T homeValue, VariableKind kind) : base(GenerateName(), homeValue, kind) { }
         public static string GenerateName()
         {
-            return "RRCG_var_" + Context.current.GetUniqueId();
+            var namedAssignment = SemanticStack.current.GetNextScopeWithType<SemanticStack.NamedAssignmentScope>();
+
+            var sourceName = namedAssignment?.Identifier ?? "var";
+            sourceName = new Regex("[^a-zA-Z0-9-]").Replace(sourceName, "").Replace(" ", "");
+
+            return $"RRCG_{sourceName}_{Context.current.GetUniqueId()}";
         }
     }
 
