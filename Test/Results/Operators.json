@@ -5508,6 +5508,163 @@
       "VariableType": null,
       "VariableHomeValue": null,
       "InputCount": 2
+    },
+    {
+      "Id": "Reroute_2",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.Int32",252645132]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_11",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise complement, pure data: "],[[0,2],"System.String","11110000111100001111000011110011"]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_78",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Bit_Not_0",
+      "Type": "Qep07OUkHEmJGaUCY4WD+Q==",
+      "Name": "Bit Not",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_10",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": {
+        "EventName": "ChipLib_BitString",
+        "EventTarget": 0
+      },
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_12",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise complement, with ports: "]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_79",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
     }
   ],
   "Connections": [
@@ -9345,6 +9502,110 @@
         "Index": 0
       },
       "isExec": true
+    },
+    {
+      "From": {
+        "Node": "String_Concat_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_78",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_77",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_78",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Reroute_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Bit_Not_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_78",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Bit_Not_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_10",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_12",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_79",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_79",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
     }
   ],
   "SubContexts": [
@@ -10870,7 +11131,7 @@
           "InputCount": 3
         },
         {
-          "Id": "String_Concat_11",
+          "Id": "String_Concat_13",
           "Type": "on7tc63OWkCznB/sS/1CNg==",
           "Name": "String Concat",
           "SFXConstantData": null,
@@ -10892,7 +11153,7 @@
           "InputCount": 33
         },
         {
-          "Id": "Event_Sender_10",
+          "Id": "Event_Sender_11",
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "SFXConstantData": null,
@@ -11779,7 +12040,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 1
           },
@@ -11792,7 +12053,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 2
           },
@@ -11805,7 +12066,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 3
           },
@@ -11818,7 +12079,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 4
           },
@@ -11831,7 +12092,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 5
           },
@@ -11844,7 +12105,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 6
           },
@@ -11857,7 +12118,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 7
           },
@@ -11870,7 +12131,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 8
           },
@@ -11883,7 +12144,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 9
           },
@@ -11896,7 +12157,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 10
           },
@@ -11909,7 +12170,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 11
           },
@@ -11922,7 +12183,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 12
           },
@@ -11935,7 +12196,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 13
           },
@@ -11948,7 +12209,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 14
           },
@@ -11961,7 +12222,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 15
           },
@@ -11974,7 +12235,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 16
           },
@@ -11987,7 +12248,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 17
           },
@@ -12000,7 +12261,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 18
           },
@@ -12013,7 +12274,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 19
           },
@@ -12026,7 +12287,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 20
           },
@@ -12039,7 +12300,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 21
           },
@@ -12052,7 +12313,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 22
           },
@@ -12065,7 +12326,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 23
           },
@@ -12078,7 +12339,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 24
           },
@@ -12091,7 +12352,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 25
           },
@@ -12104,7 +12365,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 26
           },
@@ -12117,7 +12378,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 27
           },
@@ -12130,7 +12391,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 28
           },
@@ -12143,7 +12404,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 29
           },
@@ -12156,7 +12417,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 30
           },
@@ -12169,7 +12430,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 31
           },
@@ -12182,7 +12443,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 32
           },
@@ -12195,7 +12456,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Event_Sender_10",
+            "Node": "Event_Sender_11",
             "Group": 0,
             "Index": 0
           },
@@ -12203,12 +12464,12 @@
         },
         {
           "From": {
-            "Node": "String_Concat_11",
+            "Node": "String_Concat_13",
             "Group": 0,
             "Index": 0
           },
           "To": {
-            "Node": "Event_Sender_10",
+            "Node": "Event_Sender_11",
             "Group": 0,
             "Index": 1
           },

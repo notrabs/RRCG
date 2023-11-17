@@ -236,6 +236,12 @@ namespace RRCGBuild
             return ChipBuilder.BitXor(a, b);
         }
 
+        public static IntPort operator ~(IntPort a)
+        {
+            if (a.IsDataPort) return new IntPort { Data = ~a.Data };
+            return CircuitBuilder.Singleton("Bit_Not_" + a.Port.PortKey(), () => ChipBuilder.BitNot(a));
+        }
+
         public static IntPort MaxValue => new IntPort { Data = int.MaxValue };
         public static IntPort MinValue => new IntPort { Data = int.MinValue };
     }

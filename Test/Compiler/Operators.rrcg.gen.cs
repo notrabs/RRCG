@@ -219,6 +219,10 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation("Bit shift left, with ports: ", ChipLib.BitString(ChipBuilder.BitShiftLeft(portC, 12))));
             ChipLib.Log(__StringInterpolation("Bit shift right, pure data: ", ChipLib.BitString(ChipBuilder.BitShiftRight(dataC, 12))));
             ChipLib.Log(__StringInterpolation("Bit shift right, with ports: ", ChipLib.BitString(ChipBuilder.BitShiftRight(portC, 12))));
+            IntPort dataD = BinaryLiteral(0b_0000_1111_0000_1111_0000_1111_0000_1100);
+            IntPort portD = Reroute(dataD);
+            ChipLib.Log(__StringInterpolation("Bitwise complement, pure data: ", ChipLib.BitString(~dataD)));
+            ChipLib.Log(__StringInterpolation("Bitwise complement, with ports: ", ChipLib.BitString(~portD)));
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
         }

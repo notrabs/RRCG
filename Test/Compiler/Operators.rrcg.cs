@@ -260,6 +260,12 @@ public class Operators : CircuitDescriptor
         ChipLib.Log($"Bit shift right, pure data: {ChipLib.BitString(dataC >> 12)}");
         ChipLib.Log($"Bit shift right, with ports: {ChipLib.BitString(portC >> 12)}");
 
+        int dataD = BinaryLiteral(0b_0000_1111_0000_1111_0000_1111_0000_1100);
+        int portD = Reroute(dataD);
+
+        ChipLib.Log($"Bitwise complement, pure data: {ChipLib.BitString(~dataD)}");
+        ChipLib.Log($"Bitwise complement, with ports: {ChipLib.BitString(~portD)}");
+
         throw null;
     }
 
