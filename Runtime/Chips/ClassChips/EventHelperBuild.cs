@@ -51,10 +51,10 @@ namespace RRCGBuild
     public class EventDefinition<T0> : BaseEvent
         where T0 : AnyPort, new()
     {
-        public Event(StringPort param0Name = null) => InitNewEvent((param0Name ?? "value0", typeof(T0)));
+        public EventDefinition(StringPort param0Name = null) => InitNewEvent((param0Name ?? "value0", typeof(T0)));
 
         // The bool param is a hack to make the signature different to the normal constructor, since string implicitly casts to StringPort.
-        internal Event(bool _, string existingEvent) => InitExistingEvent(existingEvent);
+        internal EventDefinition(bool _, string existingEvent) => InitExistingEvent(existingEvent);
 
         public void SendLocal(T0 value0) => base.SendLocal(value0);
         public void SendOthers(T0 value0) => base.SendOthers(value0);
