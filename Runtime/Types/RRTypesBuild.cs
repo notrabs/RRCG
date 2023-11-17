@@ -218,6 +218,24 @@ namespace RRCGBuild
             return ChipBuilder.Modulo(a, b);
         }
 
+        public static IntPort operator &(IntPort a, IntPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new IntPort { Data = a.Data & b.Data };
+            return ChipBuilder.BitAnd(a, b);
+        }
+
+        public static IntPort operator |(IntPort a, IntPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new IntPort { Data = a.Data | b.Data };
+            return ChipBuilder.BitOr(a, b);
+        }
+
+        public static IntPort operator ^(IntPort a, IntPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new IntPort { Data = a.Data ^ b.Data };
+            return ChipBuilder.BitXor(a, b);
+        }
+
         public static IntPort MaxValue => new IntPort { Data = int.MaxValue };
         public static IntPort MinValue => new IntPort { Data = int.MinValue };
     }
