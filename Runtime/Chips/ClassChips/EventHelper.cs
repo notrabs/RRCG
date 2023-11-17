@@ -44,7 +44,7 @@ namespace RRCGSource
         public (T0, T1) Receiver() { return default; }
     }
 
-    [Obsolete("Use new Event() or ExistingEvent() instead")]
+    [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
     public class EventHelper
     {
         public EventHelper(string eventName) { }
