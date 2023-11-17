@@ -30,7 +30,9 @@ Uses the standard c# operator precendence. Will try to pre-calculate constants i
 
 ## Bitwise and shift operators
 
-not implemented yet
+**Implemented:** `~`, `<<`, `>>`, `&`, `^`, `|`
+
+Like boolean operators, results for constants will be calculated ahead of time, but chips will be placed where necessary.
 
 ## Collection expressions
 
@@ -137,8 +139,14 @@ Automatically converts ports/data to strings where necessary: `$"My favourite co
 
 **Not implemented:** Alignment clauses, format clauses.
 
+## Unsafe Code
+
+Supported, but not in the way you expect. The `unsafe` keyword is used when declaring a block or method as a way to tell RRCG not to rewrite their syntax. It does not allow you to use pointers or any other C# features that require an unsafe context.
+
+This is a more advanced feature, mainly intended for when you need untranslated helpers that wouldn't quite fit having their own (non-`.rrcg.cs`) file.
+
 ## Misc
 
-**Not supported:** `checked`, `unchecked`, `fixed`, `lock`, `using`, `yield`, unsafe code and pointers
+**Not supported:** `checked`, `unchecked`, `fixed`, `lock`, `using`, `yield`, and pointers
 
 These will probably never make sense
