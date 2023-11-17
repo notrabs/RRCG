@@ -269,7 +269,7 @@ namespace RRCGBuild
         /// <summary>
         /// Returns an Instance of the Event class for an already exising Event in the room
         /// </summary>
-        public EventDefinition ExistingEvent(string eventName)
+        public static EventDefinition ExistingEvent(string eventName)
         {
             return new EventDefinition(eventName);
         }
@@ -278,7 +278,7 @@ namespace RRCGBuild
         /// Returns an Instance of the Event class for an already exising Event in the room. 
         /// With one Event parameter.
         /// </summary>
-        public EventDefinition<T0> ExistingEvent<T0>(string eventName)
+        public static EventDefinition<T0> ExistingEvent<T0>(string eventName)
             where T0 : AnyPort, new()
         {
             return new EventDefinition<T0>(true, eventName);
@@ -288,7 +288,7 @@ namespace RRCGBuild
         /// Returns an Instance of the Event class for an already exising Event in the room. 
         /// With two Event parameter.
         /// </summary>
-        public EventDefinition<T0, T1> ExistingEvent<T0, T1>(string eventName)
+        public static EventDefinition<T0, T1> ExistingEvent<T0, T1>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
         {
