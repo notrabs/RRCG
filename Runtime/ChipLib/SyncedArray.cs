@@ -8,8 +8,12 @@
     {
         public SyncedArray(int count) { }
 
+        // Reads a value and stores it in a temporary cache to make it safe for subsequent reads.
+        public T GetSafe(int index) { return default; }
+
         public T this[int i]
         {
+            // Reads a value. WARDNING: Only the last read value is safe to use. Use GetSafe to access a cached copy.
             get { return default; }
             set { }
         }

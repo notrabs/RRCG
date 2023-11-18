@@ -60,6 +60,7 @@ namespace RRCGBuild
             });
         }
 
+        public T GetSafe(IntPort index) => ChipLib.EventCache(this[index]);
         public T this[IntPort i]
         {
             get
