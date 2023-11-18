@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using UnityEngine;
+using Microsoft.CodeAnalysis.Operations;
 
 namespace RRCG
 {
@@ -87,7 +88,11 @@ namespace RRCG
                                 SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
                                 SyntaxFactory.AnonymousMethodExpression()
                                             .WithParameterList(method.ParameterList)
-                                            .WithBlock(SyntaxFactory.Block(statements))
+                                            .WithBlock(
+                                                WrapBlockInLabelAccessibilityScope(
+                                                    SyntaxFactory.Block(statements), false
+                                                )
+                                            )
                             }.Concat(
                                 method.ParameterList.Parameters.Select(parameter => SyntaxFactory.IdentifierName(parameter.Identifier.ToString()))
                             ).ToArray()
@@ -95,9 +100,6 @@ namespace RRCG
                     );
 
                 StatementSyntax statement = isVoid ? SyntaxFactory.ExpressionStatement(invocation) : SyntaxFactory.ReturnStatement(invocation);
-
-
-
 
                 method = method.WithBody(
                     method.Body.WithStatements(SyntaxFactory.SingletonList(statement))
@@ -117,7 +119,11 @@ namespace RRCG
                             SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
                             SyntaxFactory.AnonymousMethodExpression()
                                         .WithParameterList(SyntaxFactory.ParameterList())
-                                        .WithBlock(SyntaxFactory.Block(statements))
+                                        .WithBlock(
+                                                WrapBlockInLabelAccessibilityScope(
+                                                    SyntaxFactory.Block(statements), false
+                                                )
+                                            )
                         )
                     )
                 ).NormalizeWhitespace();
@@ -128,7 +134,11 @@ namespace RRCG
             }
             else
             {
-                method = method.WithBody(method.Body.WithStatements(statements));
+                method = method.WithBody(
+                    method.Body.WithStatements(
+                        WrapStatementsInLabelAccessibilityScope(statements, false)
+                    )
+                );
             }
 
 
@@ -158,7 +168,11 @@ namespace RRCG
                 SyntaxUtils.IsBlockVoid(method.Block)
             );
 
-            return (T)method.WithBody(SyntaxFactory.Block(statements));
+            return (T)method.WithBody(
+                SyntaxFactory.Block(
+                    WrapStatementsInLabelAccessibilityScope(statements, false)
+                )
+            );
         }
 
         public SyntaxList<StatementSyntax> WrapFunctionStatements(SyntaxList<StatementSyntax> statements, bool isVoid)
@@ -170,6 +184,33 @@ namespace RRCG
             if (!isVoid) statements = statements.Add(SyntaxFactory.ParseStatement("return rrcg_return_data;"));
 
             return statements;
+        }
+
+        public BlockSyntax WrapBlockInLabelAccessibilityScope(BlockSyntax block, bool gotoCanAccessParents)
+        {
+            var statements = block.Statements;
+            return SyntaxFactory.Block(WrapStatementsInLabelAccessibilityScope(statements, gotoCanAccessParents));
+        }
+
+        public SyntaxList<StatementSyntax> WrapStatementsInLabelAccessibilityScope(SyntaxList<StatementSyntax> statements, bool gotoCanAccessParents)
+        {
+            statements = statements.Insert(0, SyntaxFactory.ExpressionStatement(
+                    SyntaxFactory.InvocationExpression(
+                        SyntaxFactory.IdentifierName("__BeginLabelAccessibilityScope"))
+                    .WithArgumentList(
+                        SyntaxFactory.ArgumentList(
+                            SyntaxFactory.SingletonSeparatedList<ArgumentSyntax>(
+                                SyntaxFactory.Argument(
+                                    SyntaxFactory.LiteralExpression(
+                                        gotoCanAccessParents ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression
+                                    )))))));
+
+            // Insert end before return
+            int insertIndex = statements.Count;
+            if (statements[insertIndex - 1].Kind() == SyntaxKind.ReturnStatement)
+                insertIndex -= 1;
+
+            return statements.Insert(insertIndex, SyntaxFactory.ParseStatement("__EndLabelAccessibilityScope();"));
         }
 
 
@@ -335,6 +376,54 @@ namespace RRCG
             return SyntaxFactory.ParseStatement("ExecFlow.current.Clear();");
         }
 
+        public override SyntaxNode VisitGotoStatement(GotoStatementSyntax node)
+        {
+            var labelName = node.Expression.ToFullString();
+
+            if (node.CaseOrDefaultKeyword.Kind() == SyntaxKind.CaseKeyword)
+                labelName = $"rrcg_switch_case_label_{labelName}";
+
+            return SyntaxFactory.ExpressionStatement(
+                SyntaxFactory.InvocationExpression(
+                    SyntaxFactory.IdentifierName("__Goto"))
+                .WithArgumentList(
+                    SyntaxFactory.ArgumentList(
+                        SyntaxFactory.SingletonSeparatedList<ArgumentSyntax>(
+                            SyntaxFactory.Argument(
+                                SyntaxFactory.LiteralExpression(
+                                    SyntaxKind.StringLiteralExpression,
+                                    SyntaxFactory.Literal(labelName)
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+
+        public override SyntaxNode VisitLabeledStatement(LabeledStatementSyntax node)
+        {
+            // Need to rewrite one statement into two: first calling __Label with
+            // the label name, then just the enclosed statement.
+            // A block is the easiest way to do this, but to avoid scoping issues,
+            // we'll give it missing open/close braces. A bit of a hack.
+            return SyntaxFactory.Block(
+                SyntaxFactory.ExpressionStatement(
+                SyntaxFactory.InvocationExpression(
+                    SyntaxFactory.IdentifierName("__LabelDecl"))
+                .WithArgumentList(
+                    SyntaxFactory.ArgumentList(
+                        SyntaxFactory.SingletonSeparatedList<ArgumentSyntax>(
+                            SyntaxFactory.Argument(
+                                SyntaxFactory.LiteralExpression(
+                                    SyntaxKind.StringLiteralExpression,
+                                    SyntaxFactory.Literal(node.Identifier.ValueText))))))),
+                (StatementSyntax)Visit(node.Statement))
+                .WithOpenBraceToken(SyntaxFactory.MissingToken(SyntaxKind.OpenBraceToken))
+                .WithCloseBraceToken(SyntaxFactory.MissingToken(SyntaxKind.CloseBraceToken))
+                .NormalizeWhitespace();
+        }
+
         public override SyntaxNode VisitReturnStatement(ReturnStatementSyntax node)
         {
             var expression = (ExpressionSyntax)base.Visit(node.Expression);
@@ -432,10 +521,10 @@ namespace RRCG
                     SyntaxUtils.ArgumentList(
                         test,
                         ExecDelegate().WithBlock(
-                            SyntaxUtils.WrapInBlock(trueStatement)
+                            WrapBlockInLabelAccessibilityScope(SyntaxUtils.WrapInBlock(trueStatement), true)
                         ),
                         ExecDelegate().WithBlock(
-                            SyntaxUtils.WrapInBlock(falseStatement)
+                            WrapBlockInLabelAccessibilityScope(SyntaxUtils.WrapInBlock(falseStatement), true)
                         )
                  )))
             .NormalizeWhitespace();
@@ -522,7 +611,9 @@ namespace RRCG
         public override SyntaxNode VisitWhileStatement(WhileStatementSyntax node)
         {
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
-            var whileBlock = ExecDelegate().WithBlock((BlockSyntax)Visit(node.Statement));
+            var whileBlock = ExecDelegate().WithBlock(
+                WrapBlockInLabelAccessibilityScope((BlockSyntax)Visit(node.Statement), true)
+            );
 
             return SyntaxFactory.ExpressionStatement(
                 SyntaxFactory.InvocationExpression(
@@ -539,7 +630,9 @@ namespace RRCG
         public override SyntaxNode VisitDoStatement(DoStatementSyntax node)
         {
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
-            var whileBlock = ExecDelegate().WithBlock((BlockSyntax)Visit(node.Statement));
+            var whileBlock = ExecDelegate().WithBlock(
+                WrapBlockInLabelAccessibilityScope((BlockSyntax)Visit(node.Statement), true)
+            );
 
             return SyntaxFactory.ExpressionStatement(
                 SyntaxFactory.InvocationExpression(

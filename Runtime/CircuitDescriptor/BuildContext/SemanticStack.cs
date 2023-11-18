@@ -38,17 +38,31 @@ namespace RRCGBuild
             public string Identifier;
         }
 
-        public delegate void ScopedImpl(object scope);
-
-
-        public T GetTopmostScopeWithType<T>()
+        // TODO: It may be worth refactoring this into a generalized "accessibility scope"
+        //       that extends beyond labels. We could put variables in here for example.
+        //       I'm not doing this now because I don't know what that should look like yet,
+        //       let's discuss sometime
+        public struct LabelAccessibilityScope
         {
-            object scope = this.Peek();
-            if (scope.GetType() == typeof(T))
-                return (T)scope;
+            // Goto statements to labels not yet defined
+            // (exec flow contains ports waiting to be advanced
+            //  once the label is declared)
+            public Dictionary<string, ExecFlow> PendingGotos;
 
-            throw new Exception($"Topmost semantic scope type was not \"${typeof(T)}\"!");
+            // Labels that have been defined, but are awaiting
+            // a suitable Port to resolve to
+            public List<string> PendingLabels;
+
+            // Fully resolved labels, ready to jump to
+            public Dictionary<string, Port> DeclaredLabels;
+
+            // While performing a goto, as we iterate over
+            // the stack, can we climb any higher than here?
+            // (so that we don't have any cross-context gotos)
+            public bool GotoCanAccessParent;
         }
+
+        public delegate void ScopedImpl(object scope);
 
         public T? GetNextScopeWithType<T>() where T : struct
         {

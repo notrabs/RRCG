@@ -17,8 +17,31 @@ namespace RRCGBuild
 
         public void Advance(Context context, Port inPort, Port outPort)
         {
+
             if (inPort != null)
             {
+                // We're about to advance into an execution port,
+                // let's try to process pending labels
+                var accessScopeOrNull = SemanticStack.current.GetNextScopeWithType<SemanticStack.LabelAccessibilityScope>();
+
+                while (accessScopeOrNull is SemanticStack.LabelAccessibilityScope accessScope &&
+                       accessScope.PendingLabels.Count > 0)
+                {
+                    var labelName = accessScope.PendingLabels[0];
+                    accessScope.PendingLabels.RemoveAt(0);
+
+                    // Merge pending goto exec flows in with us
+                    if (accessScope.PendingGotos.TryGetValue(labelName, out var flow))
+                    {
+                        Merge(flow);
+                        accessScope.PendingGotos.Remove(labelName);
+                    }
+
+                    // Declare the label in the access scope
+                    accessScope.PendingLabels.Remove(labelName);
+                    accessScope.DeclaredLabels[labelName] = inPort;
+                }
+
                 foreach (Port port in Ports)
                 {
                     context.Connections.Add(new Connection
@@ -28,7 +51,6 @@ namespace RRCGBuild
                         isExec = true,
                     });
                 }
-
             }
 
             Ports.Clear();
