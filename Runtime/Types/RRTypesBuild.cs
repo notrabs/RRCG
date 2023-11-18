@@ -218,6 +218,30 @@ namespace RRCGBuild
             return ChipBuilder.Modulo(a, b);
         }
 
+        // These float variants are needed, because the automatic casting for [IntPort op float] will not look into the FloatPort class
+        public static FloatPort operator +(IntPort a, float b) => a + (FloatPort)b;
+        public static FloatPort operator -(IntPort a, float b) => a - (FloatPort)b;
+        public static FloatPort operator *(IntPort a, float b) => a * (FloatPort)b;
+        public static FloatPort operator /(IntPort a, float b) => a / (FloatPort)b;
+        public static FloatPort operator %(IntPort a, float b) => a % (FloatPort)b;
+        public static FloatPort operator +(float a, IntPort b) => (FloatPort)a + b;
+        public static FloatPort operator -(float a, IntPort b) => (FloatPort)a - b;
+        public static FloatPort operator *(float a, IntPort b) => (FloatPort)a * b;
+        public static FloatPort operator /(float a, IntPort b) => (FloatPort)a / b;
+        public static FloatPort operator %(float a, IntPort b) => (FloatPort)a % b;
+
+        // These int variants are needed to disambiguate the float variants above
+        public static IntPort operator +(IntPort a, int b) => a + (IntPort)b;
+        public static IntPort operator -(IntPort a, int b) => a - (IntPort)b;
+        public static IntPort operator *(IntPort a, int b) => a * (IntPort)b;
+        public static IntPort operator /(IntPort a, int b) => a / (IntPort)b;
+        public static IntPort operator %(IntPort a, int b) => a % (IntPort)b;
+        public static IntPort operator +(int a, IntPort b) => (IntPort)a + b;
+        public static IntPort operator -(int a, IntPort b) => (IntPort)a - b;
+        public static IntPort operator *(int a, IntPort b) => (IntPort)a * b;
+        public static IntPort operator /(int a, IntPort b) => (IntPort)a / b;
+        public static IntPort operator %(int a, IntPort b) => (IntPort)a % b;
+
         public static IntPort operator &(IntPort a, IntPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new IntPort { Data = a.Data & b.Data };
