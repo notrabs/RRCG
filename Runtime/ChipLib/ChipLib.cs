@@ -6,7 +6,16 @@ namespace RRCGSource
     public class ChipLib
     {
         /// <summary>
-        /// Creates a temporary event to cache the value for further executions
+        /// Creates a temporary variable to cache a value for further executions.
+        /// If you intend to read it a lot of times, consider using the more heat efficient EventCache instead.
+        /// </summary>
+        /// <typeparam name="T0">The type of port to cache</typeparam>
+        /// <param name="value0">The value to cache</param>
+        /// <returns>The cached value</returns>
+        public static T0 VariableCache<T0>(T0 value0) { return default; }
+
+        /// <summary>
+        /// Creates a temporary event to cache the value for further executions.
         /// </summary>
         /// <typeparam name="T0">The type of port to cache</typeparam>
         /// <param name="value0">The value to cache</param>

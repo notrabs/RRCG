@@ -7,6 +7,13 @@ namespace RRCGBuild
 {
     public class ChipLib : ChipBuilder
     {
+        public static T0 VariableCache<T0>(T0 value0)
+            where T0 : AnyPort, new()
+        {
+            var variableCache = new Variable<T0>();
+            variableCache.Value = value0;
+            return variableCache.Value;
+        }
 
         public static T0 EventCache<T0>(T0 value0)
             where T0 : AnyPort, new()
@@ -239,13 +246,15 @@ namespace RRCGBuild
             var ownsKey = PlayerOwnsRoomKey(PlayerPort.Local, key, (_) => { });
             ExecFlow.current.Ports[0].Index = 1;
 
-            If(ownsKey, delegate () { }, delegate () {
+            If(ownsKey, delegate () { }, delegate ()
+            {
                 ShowPurchasePrompt(key, PlayerPort.Local);
                 CircuitBuilder.ClearExec();
             });
         }
 
-        public static ListPort<T> ListFill<T>(IntPort count, T value) where T: AnyPort, new() {
+        public static ListPort<T> ListFill<T>(IntPort count, T value) where T : AnyPort, new()
+        {
             int intCount = count.AsData<int>();
 
             if (intCount < 0 || intCount > 64) throw new Exception("ListFill count must be within [0, 64]");
@@ -339,7 +348,7 @@ namespace RRCGBuild
             // If bits is a data port, let's precalculate it
             if (bits.IsDataPort)
                 return new StringPort { Data = Convert.ToString(bits.Data, 2).PadLeft(32, '0') };
-            
+
             // Otherwise we have to implement this in circuits
             // Climb up to the root context
             Context prevContext = Context.current;
