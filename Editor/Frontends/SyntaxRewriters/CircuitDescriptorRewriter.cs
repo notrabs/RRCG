@@ -476,7 +476,8 @@ namespace RRCG
                 }
 
                 // Now generate the declaration statement for the AlternativeExec
-                var sectionFn = ExecDelegate().WithBlock((BlockSyntax)Visit(SyntaxFactory.Block(section.Statements)));
+                var newStatements = section.Statements.Select(s => (StatementSyntax)Visit(s));
+                var sectionFn = ExecDelegate().WithBlock(SyntaxFactory.Block(newStatements));
 
                 statements = statements.Add(SyntaxFactory.LocalDeclarationStatement(
                     SyntaxFactory.VariableDeclaration(
