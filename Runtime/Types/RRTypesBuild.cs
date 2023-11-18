@@ -1,7 +1,9 @@
 ﻿
 using RRCG;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using UnityEngine;
 
 namespace RRCGBuild
@@ -107,6 +109,64 @@ namespace RRCGBuild
             set
             {
                 ChipBuilder.ListSetElement<T>(this, i, value);
+            }
+        }
+
+        public IntPort IndexOf(T value)
+        {
+            if (IsActualPort) return CircuitBuilder.Singleton("List_IndexOf_" + Port.PortKey(), () => ChipBuilder.ListGetFirstIndexOf(this, value));
+            return Data.IndexOf(value);
+        }
+
+        public T Min()
+        {
+            if (IsActualPort)
+            {
+                var minValue = this switch
+                {
+                    ListPort<FloatPort> floatList => CircuitBuilder.Singleton("List_Min_" + Port.PortKey(), () => ChipBuilder.ListMin(floatList)),
+                    ListPort<IntPort> intList => CircuitBuilder.Singleton("List_Min_" + Port.PortKey(), () => ChipBuilder.ListMin(intList)),
+
+                    _ => throw new Exception("Min() is only supported on number ports")
+                };
+                return minValue as T;
+            }
+            else
+            {
+                var minValue = Data switch
+                {
+                    List<float> floatList => floatList.Min(),
+                    List<int> intList => intList.Min(),
+
+                    _ => throw new Exception("Min() is only supported on number ports")
+                };
+                return minValue as T;
+            }
+        }
+
+        public T Max()
+        {
+            if (IsActualPort)
+            {
+                var maxValue = this switch
+                {
+                    ListPort<FloatPort> floatList => CircuitBuilder.Singleton("List_Max_" + Port.PortKey(), () => ChipBuilder.ListMax(floatList)),
+                    ListPort<IntPort> intList => CircuitBuilder.Singleton("List_Max_" + Port.PortKey(), () => ChipBuilder.ListMax(intList)),
+
+                    _ => throw new Exception("Max() is only supported on number ports")
+                };
+                return maxValue as T;
+            }
+            else
+            {
+                var maxValue = Data switch
+                {
+                    List<float> floatList => floatList.Max(),
+                    List<int> intList => intList.Max(),
+
+                    _ => throw new Exception("Max() is only supported on number ports")
+                };
+                return maxValue as T;
             }
         }
 
@@ -322,6 +382,8 @@ namespace RRCGBuild
 
         public static FloatPort PositiveInfinity => new FloatPort { Data = float.PositiveInfinity };
         public static FloatPort NegativeInfinity => new FloatPort { Data = float.NegativeInfinity };
+        public static FloatPort MaxValue => new FloatPort { Data = float.MaxValue };
+        public static FloatPort MinValue => new FloatPort { Data = float.MinValue };
     }
     public class BoolPort : AnyPort
     {
