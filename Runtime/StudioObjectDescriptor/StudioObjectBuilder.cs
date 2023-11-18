@@ -92,6 +92,7 @@ namespace RRCGBuild
         {
             ChipBuilder.StudioFunction(new StudioFunctionData(__GetPrefabName(), fnName));
             var node = Context.lastSpawnedNode;
+            node.InputCount = 2 + parameters.Length;
 
             node.ConnectInputPort(__Target, 1);
 

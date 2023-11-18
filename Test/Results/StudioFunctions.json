@@ -68,7 +68,7 @@
       "VariableKind": 0,
       "VariableType": null,
       "VariableHomeValue": null,
-      "InputCount": 1
+      "InputCount": 2
     },
     {
       "Id": "Studio_Function_1",
@@ -93,7 +93,7 @@
       "VariableKind": 0,
       "VariableType": null,
       "VariableHomeValue": null,
-      "InputCount": 1
+      "InputCount": 9
     },
     {
       "Id": "Vector3_Create_0",
@@ -162,7 +162,7 @@
       "VariableKind": 0,
       "VariableType": null,
       "VariableHomeValue": null,
-      "InputCount": 1
+      "InputCount": 3
     },
     {
       "Id": "Vector3_Create_1",
@@ -253,7 +253,7 @@
       "VariableKind": 0,
       "VariableType": null,
       "VariableHomeValue": null,
-      "InputCount": 1
+      "InputCount": 2
     },
     {
       "Id": "To_String_1",
