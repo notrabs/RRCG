@@ -305,6 +305,8 @@ namespace RRCGBuild
         internal readonly Dictionary<string, object> __RRCG_EVENT_FUNCTION_RETURNS_P1 = new Dictionary<string, object>();
         internal readonly Dictionary<string, dynamic> __RRCG_EVENT_FUNCTIONS_P2 = new Dictionary<string, dynamic>();
         internal readonly Dictionary<string, object> __RRCG_EVENT_FUNCTION_RETURNS_P2 = new Dictionary<string, object>();
+        internal readonly Dictionary<string, dynamic> __RRCG_EVENT_FUNCTIONS_P3 = new Dictionary<string, dynamic>();
+        internal readonly Dictionary<string, object> __RRCG_EVENT_FUNCTION_RETURNS_P3 = new Dictionary<string, object>();
 
         internal readonly Dictionary<string, object> __RRCG_SHARED_PROPERTIES = new Dictionary<string, object>();
 
@@ -420,6 +422,48 @@ namespace RRCGBuild
             __RRCG_EVENT_FUNCTIONS_P2[name].Sender(param0, param1);
 
             return (T)__RRCG_EVENT_FUNCTION_RETURNS_P2[name];
+        }
+
+        protected void __DispatchEventFunction<T0, T1, T2>(string name, Action<T0, T1, T2> fn, T0 param0, T1 param1, T2 param2)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+        {
+            if (!__RRCG_EVENT_FUNCTIONS_P3.ContainsKey(name))
+            {
+                __RRCG_EVENT_FUNCTIONS_P3[name] = new EventHelper<T0, T1, T2>("RRCG_EventFunction_" + name, "value0", "value1", "value2");
+
+                InlineGraph(() =>
+                {
+                    __RRCG_EVENT_FUNCTIONS_P3[name].Definition();
+                    var (param0, param1, param2) = ((EventHelper<T0, T1, T2>)__RRCG_EVENT_FUNCTIONS_P3[name]).Receiver();
+                    fn(param0, param1, param2);
+                });
+            }
+
+            __RRCG_EVENT_FUNCTIONS_P3[name].Sender(param0, param1, param2);
+        }
+
+        protected T __DispatchEventFunction<T, T0, T1, T2>(string name, Func<T0, T1, T2, T> fn, T0 param0, T1 param1, T2 param2)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+        {
+            if (!__RRCG_EVENT_FUNCTIONS_P3.ContainsKey(name))
+            {
+                __RRCG_EVENT_FUNCTIONS_P3[name] = new EventHelper<T0, T1, T2>("RRCG_EventFunction_" + name, "value0", "value1", "value2");
+
+                InlineGraph(() =>
+                {
+                    __RRCG_EVENT_FUNCTIONS_P3[name].Definition();
+                    var (param0, param1, param2) = ((EventHelper<T0, T1, T2>)__RRCG_EVENT_FUNCTIONS_P3[name]).Receiver();
+                    __RRCG_EVENT_FUNCTION_RETURNS_P3[name] = fn(param0, param1, param2);
+                });
+            }
+
+            __RRCG_EVENT_FUNCTIONS_P3[name].Sender(param0, param1);
+
+            return (T)__RRCG_EVENT_FUNCTION_RETURNS_P3[name];
         }
 
         protected T __DispatchSharedPropertyFunction<T>(string name, Func<T> fn) where T : AnyPort
