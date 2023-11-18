@@ -28,6 +28,8 @@ Note that only `int` and `float` are supported (and `string` for concatentaion)
 
 Uses the standard c# operator precendence. Will try to pre-calculate constants in C#, but place CV2 chips once necessary.
 
+Note: There is no short-circuiting similar to the in-game chips. Use multiple if's to emulate this behavior.
+
 ## Bitwise and shift operators
 
 **Implemented:** `~`, `<<`, `>>`, `&`, `^`, `|`
