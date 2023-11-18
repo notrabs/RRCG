@@ -18,7 +18,7 @@ namespace RRCGSource
 
     public class EventDefinition<T0>
     {
-        public EventDefinition(string param0Name) { }
+        public EventDefinition(string param0Name = null) { }
 
         public void SendLocal(T0 value0) { }
         public void SendOthers(T0 value0) { }
@@ -32,7 +32,7 @@ namespace RRCGSource
 
     public class EventDefinition<T0, T1>
     {
-        public EventDefinition(string param0Name, string param1Name) { }
+        public EventDefinition(string param0Name = null, string param1Name = null) { }
 
         public void SendLocal(T0 value0, T1 value1) { }
         public void SendOthers(T0 value0, T1 value1) { }
