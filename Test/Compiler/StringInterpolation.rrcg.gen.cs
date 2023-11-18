@@ -9,16 +9,19 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             InterpolatePureData();
             InterpolateDataWithPort();
             InterpolateNonStrings();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         // maybe "value switch" pattern matching
         }
 
         void InterpolatePureData()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("InterpolatePureData").Definition());
             e.Receiver();
@@ -27,10 +30,12 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation(port1, ", ", port2, "!"));
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         void InterpolateDataWithPort()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("InterpolateDataWithPort").Definition());
             e.Receiver();
@@ -40,10 +45,12 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation("String interpolation works with both ", port1, " and ", variable.Value, "s!"));
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         void InterpolateNonStrings()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("InterpolateNonStrings").Definition());
             e.Receiver();
@@ -67,6 +74,7 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation("Interpolating with Quaternions. Data: ", quatData, ", Port: ", quatPort));
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
     }
 }

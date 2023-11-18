@@ -7,13 +7,16 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             DelayTest();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         void DelayTest()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var delay = __VariableDeclaratorExpression("delay", () => new Delay(5));
             ChipLib.Log("Delay Test 1");
@@ -29,6 +32,7 @@ namespace RRCGBuild
             ChipLib.Log("Delay Test 3");
             delay.Run();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
     }
 }

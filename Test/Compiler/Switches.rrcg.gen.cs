@@ -9,6 +9,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             SwitchTypes("test", 22);
             LogString("Return from SwitchTypes()");
@@ -17,10 +18,12 @@ namespace RRCGBuild
             SwitchInWhileLoop();
             LogString("Return from SwitchInWhileLoop()");
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         public void SwitchTypes(StringPort switchString, IntPort switchInt)
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             {
                 AlternativeExec rrcg_switch_section_0 = delegate
@@ -101,21 +104,27 @@ namespace RRCGBuild
             }
 
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         public void ConditionalReturn(StringPort switchString, BoolPort condition)
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             {
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     ChipBuilder.If(condition, delegate
                     {
+                        __BeginLabelAccessibilityScope(true);
                         __Break();
+                        __EndLabelAccessibilityScope();
                     }
 
                     , delegate
                     {
+                        __BeginLabelAccessibilityScope(true);
+                        __EndLabelAccessibilityScope();
                     }
 
                     );
@@ -130,11 +139,15 @@ namespace RRCGBuild
                         {
                             ChipBuilder.If(condition, delegate
                             {
+                                __BeginLabelAccessibilityScope(true);
                                 __Break();
+                                __EndLabelAccessibilityScope();
                             }
 
                             , delegate
                             {
+                                __BeginLabelAccessibilityScope(true);
+                                __EndLabelAccessibilityScope();
                             }
 
                             );
@@ -158,6 +171,7 @@ namespace RRCGBuild
                 {
                     __While(condition, delegate
                     {
+                        __BeginLabelAccessibilityScope(true);
                         {
                             AlternativeExec rrcg_switch_section_0 = delegate
                             {
@@ -182,27 +196,36 @@ namespace RRCGBuild
                         LogString("After Switch While Switch Case 0");
                         ChipBuilder.If(condition, delegate
                         {
+                            __BeginLabelAccessibilityScope(true);
                             LogString("Break out of while");
                             __Break();
+                            __EndLabelAccessibilityScope();
                         }
 
                         , delegate
                         {
+                            __BeginLabelAccessibilityScope(true);
                             ChipBuilder.If(condition, delegate
                             {
+                                __BeginLabelAccessibilityScope(true);
                                 LogString("Return");
                                 __Return(rrcg_return_flow);
+                                __EndLabelAccessibilityScope();
                             }
 
                             , delegate
                             {
+                                __BeginLabelAccessibilityScope(true);
+                                __EndLabelAccessibilityScope();
                             }
 
                             );
+                            __EndLabelAccessibilityScope();
                         }
 
                         );
                         LogString("Continue in while");
+                        __EndLabelAccessibilityScope();
                     }
 
                     );
@@ -220,13 +243,16 @@ namespace RRCGBuild
 
             LogString("After Switch 1");
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         void SwitchInWhileLoop()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             __While(true, delegate
             {
+                __BeginLabelAccessibilityScope(true);
                 {
                     AlternativeExec rrcg_switch_section_0 = delegate
                     {
@@ -242,11 +268,13 @@ namespace RRCGBuild
                 }
 
                 LogString("After switch");
+                __EndLabelAccessibilityScope();
             }
 
             );
             LogString("After while");
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
     }
 }

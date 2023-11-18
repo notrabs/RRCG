@@ -8,6 +8,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             NativeIntOperators();
             NativeFloatOperators();
@@ -18,10 +19,12 @@ namespace RRCGBuild
             TernaryOperator();
             BitwiseOperators();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         public void NativeIntOperators()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("NativeIntOperators").Definition());
             e.Receiver();
@@ -46,10 +49,12 @@ namespace RRCGBuild
             ChipLib.Log(preDecrement);
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         public void NativeFloatOperators()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("NativeFloatOperators").Definition());
             e.Receiver();
@@ -74,10 +79,12 @@ namespace RRCGBuild
             ChipLib.Log(preDecrement);
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         public void PortIntOperators()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("PortIntOperators").Definition());
             e.Receiver();
@@ -102,10 +109,12 @@ namespace RRCGBuild
             ChipLib.Log(preDecrement);
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         public void PortFloatOperators()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("PortFloatOperators").Definition());
             e.Receiver();
@@ -130,10 +139,12 @@ namespace RRCGBuild
             ChipLib.Log(preDecrement);
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         public void VectorOperators()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("VectorOperators").Definition());
             e.Receiver();
@@ -157,10 +168,12 @@ namespace RRCGBuild
             ChipLib.Log(8 * vectorB);
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         public void MixedOperators()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("MixedOperators").Definition());
             e.Receiver();
@@ -173,10 +186,12 @@ namespace RRCGBuild
             ChipLib.Log(portA * portB + 5);
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         public void TernaryOperator()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("TernaryOperator").Definition());
             e.Receiver();
@@ -197,10 +212,12 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation("Result: ", (ChipBuilder.IfValue<RRCGBuild.FloatPort>(false, intPort, portA))));
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         public void BitwiseOperators()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("BitwiseOperators").Definition());
             e.Receiver();
@@ -225,6 +242,7 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation("Bitwise complement, with ports: ", ChipLib.BitString(~portD)));
             ExecFlow.current.Clear();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         int BinaryLiteral(uint literal)

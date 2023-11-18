@@ -8,6 +8,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var studioObject = __VariableDeclaratorExpression("studioObject", () => new StudioFunctionsObject(RecRoomObjectPort.Invalid));
             studioObject.VoidFunction();
@@ -17,6 +18,7 @@ namespace RRCGBuild
             ChipLib.Log(multiReturn.Item1);
             ChipLib.Log(multiReturn.Item2);
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
     }
 

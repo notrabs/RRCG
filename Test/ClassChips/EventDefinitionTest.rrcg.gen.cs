@@ -7,15 +7,18 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             ParamCounts();
             SendTypes();
             Existing();
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         void ParamCounts()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var params0 = __VariableDeclaratorExpression("params0", () => new EventDefinition());
             params0.Receiver();
@@ -27,10 +30,12 @@ namespace RRCGBuild
             var params2Value = __VariableDeclaratorExpression("params2Value", () => params2.Receiver());
             params2.SendLocal(params2Value.Item1, params2Value.Item2);
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         void SendTypes()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var params0 = __VariableDeclaratorExpression("params0", () => new EventDefinition());
             params0.Receiver();
@@ -42,10 +47,12 @@ namespace RRCGBuild
             params0.SendPlayer(PlayerPort.Local);
             params0.SendPlayer(GetLocalPlayer());
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
 
         void Existing()
         {
+            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             var params0 = __VariableDeclaratorExpression("params0", () => ExistingEvent("Existing0"));
             params0.Receiver();
@@ -57,6 +64,7 @@ namespace RRCGBuild
             var params2Value = __VariableDeclaratorExpression("params2Value", () => params2.Receiver());
             params2.SendLocal(params2Value.Item1, params2Value.Item2);
             ExecFlow.current.Merge(rrcg_return_flow);
+            __EndLabelAccessibilityScope();
         }
     }
 }
