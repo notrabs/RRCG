@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExampleRoom : CircuitDescriptor
 {
+    EventDefinition<int> testEvent = new EventDefinition<int>("intValue");
 
     public override void CircuitGraph()
     {
@@ -11,18 +12,7 @@ public class ExampleRoom : CircuitDescriptor
 
         EventCacheExample();
 
-        // These are WIP
-        //ExistingCircuitBoard("Adder Board", AdderCircuitBoard);
-        //ExistingCircuitBoard("Random Board", RandomCircuitBoard);
-
-        //ReturnTest1();
-        //RandomInt(0, 10);
-        //var (a, b) = ReturnTest2();
-
-        //ChipLib.Log(a);
-        //ChipLib.Log(b);
-
-        
+        VariableLoopExample();
     }
 
     public void RandomExample()
@@ -51,69 +41,17 @@ public class ExampleRoom : CircuitDescriptor
         );
     }
 
-    public void AdderCircuitBoard()
+    public void VariableLoopExample()
     {
-        int input1 = ExistingDataInput<int>("value0");
-        int input2 = ExistingDataInput<int>("value1");
+        var intValue = testEvent.Receiver();
 
-        var result = input1 + input2;
+        var counter = new Variable<int>();
 
-        ExistingDataOutput<int>("result", result);
-    }
-
-
-    public void RandomCircuitBoard()
-    {
-        ExistingExecInput("Exec");
-
-        var result = GenerateRandomNumber();
-
-        ExistingDataOutput<int>("result", result);
-        ExistingExecOutput("Exec");
-    }
-
-    public int GenerateRandomNumber()
-    {
-        return RandomInt(0, 100) + RandomInt(0, 100);
-    }
-
-    public void ReturnTest1()
-    {
-        if (RandomInt(0, 10) == 5)
+        while (counter.Value < intValue)
         {
-            return;
+            ChipLib.Log(counter.Value);
+            counter.Value++;
         }
-        else if (RandomInt(0, 10) == 5)
-        {
-            return;
-        }
-
-        return;
-    }
-
-    public (int, int) ReturnTest2()
-    {
-        int b = 0;
-
-        if (RandomInt(0, 10) == 5)
-        {
-            return (1, 1);
-        }
-        else if (RandomInt(0, 10) == 5)
-        {
-            var c = 3;
-
-            if (RandomInt(0, 10) == 5) c = 4;
-
-            b = 4;
-            return (b, c);
-        }
-        else if (RandomInt(0, 10) == 5)
-        {
-            b = 4;
-        }
-
-        return (1, b);
     }
 }
 

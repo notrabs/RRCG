@@ -37,7 +37,7 @@ e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Pack
 
 1. Create a prefab from the `RRCG` window menu. Place it in a location with enough space. The chip area will grow as indicated by the arrows.
 2. Open the Inspector for the `RRCG` prefab
-3. Select a `CircuitDescriptor` (or use the example)
+3. Select a `CircuitDescriptor` (or use the [example](https://github.com/notrabs/RRCG/blob/main/Example/ExampleRoom.rrcg.cs))
 4. Click `Build Circuit` (placeholder for now. Until we have a Circuits API you can only create the debug DOT Graph)
 
 <details>
@@ -69,7 +69,7 @@ C# Language features should do what you expect.
 
 ### The Circuit Descriptor
 
-The Circuit Descriptor is your entry point. Your chips start building from the `CircuitGraph()` method, but beyond that you can organize your code however you like. 
+The Circuit Descriptor is your entry point. Your chips start building from the `CircuitGraph()` method, but beyond that you can organize your code however you like. Place it inside a `.rrcg.cs` file anywhere in your project.
 
 ```c#
 using RRCGSource;
