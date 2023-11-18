@@ -44,6 +44,21 @@ namespace RRCGSource
         public (T0, T1) Receiver() { return default; }
     }
 
+    public class EventDefinition<T0, T1, T2>
+    {
+        public EventDefinition(string param0Name = null, string param1Name = null, string param2Name = null) { }
+
+        public void SendLocal(T0 value0, T1 value1, T2 value2) { }
+        public void SendOthers(T0 value0, T1 value1, T2 value2) { }
+        public void SendAll(T0 value0, T1 value1, T2 value2) { }
+        public void SendAuthority(T0 value0, T1 value1, T2 value2) { }
+        public void SendRoomAuthority(T0 value0, T1 value1, T2 value2) { }
+        public void SendPlayer(Player player, T0 value0, T1 value1, T2 value2) { }
+
+        public (T0, T1, T2) Receiver() { return default; }
+    }
+
+
     [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
     public class EventHelper
     {
