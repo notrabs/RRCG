@@ -379,6 +379,27 @@ namespace RRCGBuild
                 return new Vector3Port() { Data = v.normalized };
             }
         }
+        public FloatPort magnitude
+        {
+            get
+            {
+                if (IsActualPort) return CircuitBuilder.Singleton("Vector3_magnitude_" + Port.PortKey(), () => ChipBuilder.VectorGetMagnitude(this));
+
+                var v = (Vector3)Data;
+                return new FloatPort() { Data = v.magnitude };
+            }
+        }
+        public FloatPort sqrMagnitude
+        {
+            get
+            {
+                // The RR philosophy: Calculate the efficient value by calculating the expensive value first...
+                if (IsActualPort) return CircuitBuilder.Singleton("Vector3_sqrMagnitude_" + Port.PortKey(), () => this.magnitude * this.magnitude);
+
+                var v = (Vector3)Data;
+                return new FloatPort() { Data = v.sqrMagnitude };
+            }
+        }
 
         public FloatPort x { get => split.X; }
         public FloatPort y { get => split.Y; }
