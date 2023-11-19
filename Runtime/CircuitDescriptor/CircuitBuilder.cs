@@ -323,7 +323,7 @@ namespace RRCGBuild
         internal readonly Dictionary<string, dynamic> __RRCG_EVENT_FUNCTIONS_P3 = new Dictionary<string, dynamic>();
         internal readonly Dictionary<string, object> __RRCG_EVENT_FUNCTION_RETURNS_P3 = new Dictionary<string, object>();
 
-        internal readonly Dictionary<string, object> __RRCG_SHARED_PROPERTIES = new Dictionary<string, object>();
+        internal readonly Dictionary<string, dynamic> __RRCG_SHARED_PROPERTIES = new Dictionary<string, dynamic>();
 
         protected void __DispatchEventFunction(string name, Action fn)
         {
@@ -481,7 +481,7 @@ namespace RRCGBuild
             return (T)__RRCG_EVENT_FUNCTION_RETURNS_P3[name];
         }
 
-        protected T __DispatchSharedPropertyFunction<T>(string name, Func<T> fn) where T : AnyPort
+        protected dynamic __DispatchSharedPropertyFunction<T>(string name, Func<T> fn)
         {
             if (!__RRCG_SHARED_PROPERTIES.ContainsKey(name))
             {
@@ -491,7 +491,7 @@ namespace RRCGBuild
                 });
             }
 
-            return __RRCG_SHARED_PROPERTIES[name] as T;
+            return __RRCG_SHARED_PROPERTIES[name];
         }
 
         public static void __Return(ExecFlow returnFlow)
