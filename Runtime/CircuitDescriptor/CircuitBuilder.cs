@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using UnityEngine;
 
 namespace RRCGBuild
 {
@@ -744,7 +745,7 @@ namespace RRCGBuild
             if (accessScope.PendingLabels.Count > 0)
             {
                 if (!canCarry)
-                    throw new Exception("Label accessibility scope had pending labels waiting on execution to advance.");
+                    Debug.LogWarning("Label accessibility scope had pending labels waiting on execution to advance.");
 
                 parentScope.Value.PendingLabels.AddRange(accessScope.PendingLabels);
             }
@@ -752,8 +753,8 @@ namespace RRCGBuild
             if (accessScope.PendingGotos.Count > 0)
             {
                 if (!canCarry)
-                    throw new Exception("Label accessibility scope had pending gotos waiting for labels that were never defined " +
-                                        "(or had no suitable exec port to advance to)");
+                    Debug.LogWarning("Label accessibility scope had pending gotos waiting for labels that were never defined " +
+                                     "(or had no suitable exec port to advance to)");
                     
                 foreach (var kvp in accessScope.PendingGotos)
                 {

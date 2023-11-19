@@ -117,6 +117,17 @@ public class Goto : CircuitDescriptor
                 break;
         }
 
+        // Goto case label (string)
+        switch ("Hello")
+        {
+            case "World":
+                LogString("Hello World");
+                break;
+            case "World2":
+                LogString("Goto case world");
+                goto case "World";
+        }
+
         // Goto label defined in another case
         switch (2)
         {
@@ -127,7 +138,6 @@ public class Goto : CircuitDescriptor
             case 1:
                 goto testLabel;
         }
-        //goto testLabel;
     }
 }
 #pragma warning restore CS0162 // Unreachable code detected

@@ -93,6 +93,9 @@ namespace RRCG.Optimizer.ContextOptimizations
         // Collapse implementations
         static bool BasicCollapse(int index, List<AnyPort> from, List<AnyPort> into)
         {
+            // Ensure we don't exceed the maximum inputs
+            if (from.Count + into.Count > 64) return false;
+
             into.RemoveAt(index);
             into.InsertRange(index, from);
             return true;
@@ -101,12 +104,13 @@ namespace RRCG.Optimizer.ContextOptimizations
         static bool StringConcatCollapse(int index, List<AnyPort> from, List<AnyPort> into)
         {
             // Validate we aren't trying to collapse into the seperator port
-            if (index == 0)
-                return false;
+            if (index == 0) return false;
+
+            // Ensure we don't exceed the maximum inputs
+            if ((from.Count - 1) + (into.Count - 1) > 64) return false;
 
             // Validate the seperator ports are equal
-            if (!PortsEqualForCollapse(from[0], into[0]))
-                return false;
+            if (!PortsEqualForCollapse(from[0], into[0])) return false;
 
             // Collapse the ports (excluding seperator)
             into.RemoveAt(index);

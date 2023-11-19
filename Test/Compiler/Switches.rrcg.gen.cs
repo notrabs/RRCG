@@ -26,8 +26,10 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
             {
+                __BeginLabelAccessibilityScope(true);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_\"test\"");
                     {
                         __BeginLabelAccessibilityScope(true);
                         LogString("block case");
@@ -39,6 +41,8 @@ namespace RRCGBuild
                 ;
                 AlternativeExec rrcg_switch_section_1 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_\"case3\"");
+                    __LabelDecl("rrcg_switch_case_label_\"case2\"");
                     LogString("fallthrough");
                     __Break();
                 }
@@ -46,29 +50,35 @@ namespace RRCGBuild
                 ;
                 AlternativeExec rrcg_switch_section_3 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_\"case4\"");
                     ExecFlow.current.Clear();
                 }
 
                 ;
                 AlternativeExec rrcg_switch_section_4 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_\"case5\"");
                     __Return(rrcg_return_flow);
                 }
 
                 ;
                 AlternativeExec rrcg_switch_section_5 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_default");
                     LogString("default");
                     __Break();
                 }
 
                 ;
                 __Switch(switchString, rrcg_switch_section_5, new Dictionary<AnyPort, AlternativeExec>{{"test", rrcg_switch_section_0}, {"case2", rrcg_switch_section_1}, {"case3", rrcg_switch_section_1}, {"case4", rrcg_switch_section_3}, {"case5", rrcg_switch_section_4}});
+                __EndLabelAccessibilityScope();
             }
 
             {
+                __BeginLabelAccessibilityScope(true);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_1");
                     {
                         __BeginLabelAccessibilityScope(true);
                         LogString("block case");
@@ -80,6 +90,8 @@ namespace RRCGBuild
                 ;
                 AlternativeExec rrcg_switch_section_1 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_3");
+                    __LabelDecl("rrcg_switch_case_label_2");
                     LogString("fallthrough");
                     __Break();
                 }
@@ -87,24 +99,28 @@ namespace RRCGBuild
                 ;
                 AlternativeExec rrcg_switch_section_3 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_4");
                     ExecFlow.current.Clear();
                 }
 
                 ;
                 AlternativeExec rrcg_switch_section_4 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_5");
                     __Return(rrcg_return_flow);
                 }
 
                 ;
                 AlternativeExec rrcg_switch_section_5 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_default");
                     LogString("default");
                     __Break();
                 }
 
                 ;
                 __Switch(switchInt, rrcg_switch_section_5, new Dictionary<AnyPort, AlternativeExec>{{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}, {3, rrcg_switch_section_1}, {4, rrcg_switch_section_3}, {5, rrcg_switch_section_4}});
+                __EndLabelAccessibilityScope();
             }
 
             __EndLabelAccessibilityScope();
@@ -116,8 +132,10 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
             {
+                __BeginLabelAccessibilityScope(true);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_\"0\"");
                     ChipBuilder.If(condition, delegate
                     {
                         __BeginLabelAccessibilityScope(true);
@@ -138,9 +156,12 @@ namespace RRCGBuild
                 ;
                 AlternativeExec rrcg_switch_section_1 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_\"switch\"");
                     {
+                        __BeginLabelAccessibilityScope(true);
                         AlternativeExec rrcg_switch_section_0 = delegate
                         {
+                            __LabelDecl("rrcg_switch_case_label_\"0\"");
                             ChipBuilder.If(condition, delegate
                             {
                                 __BeginLabelAccessibilityScope(true);
@@ -164,6 +185,7 @@ namespace RRCGBuild
                         }
 
                         , new Dictionary<AnyPort, AlternativeExec>{{"0", rrcg_switch_section_0}});
+                        __EndLabelAccessibilityScope();
                     }
 
                     LogString("After Switch 2");
@@ -173,12 +195,15 @@ namespace RRCGBuild
                 ;
                 AlternativeExec rrcg_switch_section_2 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_\"while\"");
                     __While(condition, delegate
                     {
                         __BeginLabelAccessibilityScope(true);
                         {
+                            __BeginLabelAccessibilityScope(true);
                             AlternativeExec rrcg_switch_section_0 = delegate
                             {
+                                __LabelDecl("rrcg_switch_case_label_\"0\"");
                                 LogString("While Switch Case 0");
                                 __Break();
                             }
@@ -186,6 +211,7 @@ namespace RRCGBuild
                             ;
                             AlternativeExec rrcg_switch_section_1 = delegate
                             {
+                                __LabelDecl("rrcg_switch_case_label_\"return\"");
                                 __Return(rrcg_return_flow);
                             }
 
@@ -195,6 +221,7 @@ namespace RRCGBuild
                             }
 
                             , new Dictionary<AnyPort, AlternativeExec>{{"0", rrcg_switch_section_0}, {"return", rrcg_switch_section_1}});
+                            __EndLabelAccessibilityScope();
                         }
 
                         LogString("After Switch While Switch Case 0");
@@ -243,6 +270,7 @@ namespace RRCGBuild
                 }
 
                 , new Dictionary<AnyPort, AlternativeExec>{{"0", rrcg_switch_section_0}, {"switch", rrcg_switch_section_1}, {"while", rrcg_switch_section_2}});
+                __EndLabelAccessibilityScope();
             }
 
             LogString("After Switch 1");
@@ -258,8 +286,10 @@ namespace RRCGBuild
             {
                 __BeginLabelAccessibilityScope(true);
                 {
+                    __BeginLabelAccessibilityScope(true);
                     AlternativeExec rrcg_switch_section_0 = delegate
                     {
+                        __LabelDecl("rrcg_switch_case_label_5");
                         __Continue();
                     }
 
@@ -269,6 +299,7 @@ namespace RRCGBuild
                     }
 
                     , new Dictionary<AnyPort, AlternativeExec>{{5, rrcg_switch_section_0}});
+                    __EndLabelAccessibilityScope();
                 }
 
                 LogString("After switch");

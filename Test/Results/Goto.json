@@ -476,6 +476,75 @@
       "InputCount": 2
     },
     {
+      "Id": "Execution_String_Switch_0",
+      "Type": "A9jHgEDfpUWse7/MsLURxw==",
+      "Name": "Execution String Switch",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.String","Hello"]],
+      "SwitchCases": [
+        "World",
+        "World2"
+      ],
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_12",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.String","Hello World"]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_13",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.String","Goto case world"]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
       "Id": "Execution_Integer_Switch_2",
       "Type": "x+SHAxe5GU2Tf12je59BzA==",
       "Name": "Execution Integer Switch",
@@ -501,7 +570,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Log_String_12",
+      "Id": "Log_String_14",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "SFXConstantData": null,
@@ -869,7 +938,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "Execution_Integer_Switch_2",
+        "Node": "Execution_String_Switch_0",
         "Group": 0,
         "Index": 0
       },
@@ -882,7 +951,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Execution_Integer_Switch_2",
+        "Node": "Execution_String_Switch_0",
         "Group": 0,
         "Index": 0
       },
@@ -891,6 +960,71 @@
     {
       "From": {
         "Node": "Log_String_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Execution_String_Switch_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_String_Switch_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_String_Switch_0",
+        "Group": 0,
+        "Index": 2
+      },
+      "To": {
+        "Node": "Log_String_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_String_Switch_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Execution_Integer_Switch_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_12",
         "Group": 0,
         "Index": 0
       },
@@ -908,7 +1042,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Log_String_12",
+        "Node": "Log_String_14",
         "Group": 0,
         "Index": 0
       },
@@ -921,7 +1055,7 @@
         "Index": 2
       },
       "To": {
-        "Node": "Log_String_12",
+        "Node": "Log_String_14",
         "Group": 0,
         "Index": 0
       },
@@ -955,7 +1089,7 @@
           "InputCount": 0
         },
         {
-          "Id": "Log_String_13",
+          "Id": "Log_String_15",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -999,7 +1133,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_14",
+          "Id": "Log_String_16",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -1043,7 +1177,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_15",
+          "Id": "Log_String_17",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -1065,7 +1199,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_16",
+          "Id": "Log_String_18",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -1087,7 +1221,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_17",
+          "Id": "Log_String_19",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -1135,7 +1269,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_18",
+          "Id": "Log_String_20",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -1157,7 +1291,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_19",
+          "Id": "Log_String_21",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -1179,7 +1313,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_20",
+          "Id": "Log_String_22",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -1231,7 +1365,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Log_String_13",
+            "Node": "Log_String_15",
             "Group": 0,
             "Index": 0
           },
@@ -1244,7 +1378,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Log_String_13",
+            "Node": "Log_String_15",
             "Group": 0,
             "Index": 0
           },
@@ -1252,7 +1386,7 @@
         },
         {
           "From": {
-            "Node": "Log_String_13",
+            "Node": "Log_String_15",
             "Group": 0,
             "Index": 0
           },
@@ -1270,7 +1404,7 @@
             "Index": 1
           },
           "To": {
-            "Node": "Log_String_14",
+            "Node": "Log_String_16",
             "Group": 0,
             "Index": 0
           },
@@ -1278,7 +1412,7 @@
         },
         {
           "From": {
-            "Node": "Log_String_14",
+            "Node": "Log_String_16",
             "Group": 0,
             "Index": 0
           },
@@ -1296,7 +1430,7 @@
             "Index": 1
           },
           "To": {
-            "Node": "Log_String_15",
+            "Node": "Log_String_17",
             "Group": 0,
             "Index": 0
           },
@@ -1304,12 +1438,12 @@
         },
         {
           "From": {
-            "Node": "Log_String_15",
+            "Node": "Log_String_17",
             "Group": 0,
             "Index": 0
           },
           "To": {
-            "Node": "Log_String_16",
+            "Node": "Log_String_18",
             "Group": 0,
             "Index": 0
           },
@@ -1322,7 +1456,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Log_String_16",
+            "Node": "Log_String_18",
             "Group": 0,
             "Index": 0
           },
@@ -1330,12 +1464,12 @@
         },
         {
           "From": {
-            "Node": "Log_String_16",
+            "Node": "Log_String_18",
             "Group": 0,
             "Index": 0
           },
           "To": {
-            "Node": "Log_String_17",
+            "Node": "Log_String_19",
             "Group": 0,
             "Index": 0
           },
@@ -1343,7 +1477,7 @@
         },
         {
           "From": {
-            "Node": "Log_String_17",
+            "Node": "Log_String_19",
             "Group": 0,
             "Index": 0
           },
@@ -1361,7 +1495,7 @@
             "Index": 1
           },
           "To": {
-            "Node": "Log_String_18",
+            "Node": "Log_String_20",
             "Group": 0,
             "Index": 0
           },
@@ -1369,12 +1503,12 @@
         },
         {
           "From": {
-            "Node": "Log_String_18",
+            "Node": "Log_String_20",
             "Group": 0,
             "Index": 0
           },
           "To": {
-            "Node": "Log_String_17",
+            "Node": "Log_String_19",
             "Group": 0,
             "Index": 0
           },
@@ -1387,7 +1521,7 @@
             "Index": 2
           },
           "To": {
-            "Node": "Log_String_19",
+            "Node": "Log_String_21",
             "Group": 0,
             "Index": 0
           },
@@ -1395,12 +1529,12 @@
         },
         {
           "From": {
-            "Node": "Log_String_19",
+            "Node": "Log_String_21",
             "Group": 0,
             "Index": 0
           },
           "To": {
-            "Node": "Log_String_17",
+            "Node": "Log_String_19",
             "Group": 0,
             "Index": 0
           },
@@ -1413,7 +1547,7 @@
             "Index": 3
           },
           "To": {
-            "Node": "Log_String_20",
+            "Node": "Log_String_22",
             "Group": 0,
             "Index": 0
           },
@@ -1421,12 +1555,12 @@
         },
         {
           "From": {
-            "Node": "Log_String_20",
+            "Node": "Log_String_22",
             "Group": 0,
             "Index": 0
           },
           "To": {
-            "Node": "Log_String_17",
+            "Node": "Log_String_19",
             "Group": 0,
             "Index": 0
           },

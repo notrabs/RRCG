@@ -570,10 +570,26 @@ namespace RRCG
                 // and insert the required label declarations to the section statements.
                 foreach (var label in section.Labels)
                 {
-                    // Label declaration
-                    var caseValue = (ExpressionSyntax)Visit(((CaseSwitchLabelSyntax)label).Value);
-                    var labelName = $"rrcg_switch_case_label_{caseValue.ToFullString()}";
+                    // If this is the default label, add the label declaration "default",
+                    // do not create a key/value initializer, store the section delegate identifier
+                    string labelName = "default";
+                    if (label.Keyword.Text == "default" && defaultCaseExpression == null)
+                    {
+                        defaultCaseExpression = SyntaxFactory.IdentifierName(sectionName);
+                    }
+                    else
+                    {
+                        // Calculate actual label name
+                        var caseValue = (ExpressionSyntax)Visit(((CaseSwitchLabelSyntax)label).Value);
+                        labelName = caseValue.ToFullString();
 
+                        // Create key/value initializer
+                        caseInitializers.Add(SyntaxFactory.InitializerExpression(
+                            SyntaxKind.ComplexElementInitializerExpression,
+                            SyntaxUtils.ExpressionList(caseValue, SyntaxFactory.IdentifierName(sectionName))));
+                    }
+
+                    // Insert label declaration with calculated label name
                     sectionStatements = sectionStatements.Insert(0, SyntaxFactory.ExpressionStatement(
                         SyntaxFactory.InvocationExpression(
                             SyntaxFactory.IdentifierName("__LabelDecl"))
@@ -583,19 +599,7 @@ namespace RRCG
                                     SyntaxFactory.Argument(
                                         SyntaxFactory.LiteralExpression(
                                             SyntaxKind.StringLiteralExpression,
-                                            SyntaxFactory.Literal(labelName))))))));
-
-                    // If this is the default case, store & don't add a case initializer
-                    if (label.Keyword.Text == "default" && defaultCaseExpression == null)
-                    {
-                        defaultCaseExpression = SyntaxFactory.IdentifierName(sectionName);
-                        continue;
-                    }
-
-                    // Create key/value initializer
-                    caseInitializers.Add(SyntaxFactory.InitializerExpression(
-                        SyntaxKind.ComplexElementInitializerExpression,
-                        SyntaxUtils.ExpressionList(caseValue, SyntaxFactory.IdentifierName(sectionName))));
+                                            SyntaxFactory.Literal($"rrcg_switch_case_label_{labelName}"))))))));
                 }
 
                 // Now create an AlternativeExec from our statements

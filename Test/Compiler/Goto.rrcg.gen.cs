@@ -227,6 +227,32 @@ namespace RRCGBuild
                 __BeginLabelAccessibilityScope(true);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
+                    __LabelDecl("rrcg_switch_case_label_\"World\"");
+                    LogString("Hello World");
+                    __Break();
+                }
+
+                ;
+                AlternativeExec rrcg_switch_section_1 = delegate
+                {
+                    __LabelDecl("rrcg_switch_case_label_\"World2\"");
+                    LogString("Goto case world");
+                    __Goto("rrcg_switch_case_label_\"World\"");
+                }
+
+                ;
+                __Switch("Hello", delegate
+                {
+                }
+
+                , new Dictionary<AnyPort, AlternativeExec>{{"World", rrcg_switch_section_0}, {"World2", rrcg_switch_section_1}});
+                __EndLabelAccessibilityScope();
+            }
+
+            {
+                __BeginLabelAccessibilityScope(true);
+                AlternativeExec rrcg_switch_section_0 = delegate
+                {
                     __LabelDecl("rrcg_switch_case_label_0");
                         __LabelDecl("testLabel");
                         LogString("TestLabel");
