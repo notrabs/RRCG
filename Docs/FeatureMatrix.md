@@ -127,11 +127,16 @@ Switch only supports int and string cases and single values without case guards.
 
 ## Jump statements 
 
-**Implemented:** `break`, `continue`, `return`
+**Implemented:** `break`, `continue`, `return`, `goto` (and `goto case`)
 
 Note that return only works as expected for void functions. In a value function only the last returned value will currently be returned. (This is the same limitation as given for the assignment operator)
 
-**Not Implmented:** `goto`
+Gotos will jump to the first exec input after the label declaration. If you declare a label but don't use a chip that takes an exec input somewhere ahead of it, it will not resolve correctly and you'll get an error when building your graph.
+
+C# scoping rules apply to labels: 
+* you *can't* goto a label declared in a child scope
+* you *can* goto a label defined in a parent scope
+* you *can't* goto a label defined in a different function (also meaning no cross-context gotos, e.g. Circuit Boards, etc)
 
 ## String interpolation
 
