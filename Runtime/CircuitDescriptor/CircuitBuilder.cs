@@ -219,7 +219,7 @@ namespace RRCGBuild
                 for (var i = 0; i < cbResultTuple.Length; i++)
                 {
                     dynamic port = Activator.CreateInstance(cbResultTuple[i].GetType());
-                    port.Port = cbNode.Port(dataPortGroup, 0);
+                    port.Port = cbNode.Port(dataPortGroup, i);
                     port.Data = (cbResultTuple[i] as AnyPort).Data;
                     cbOutPorts.Add(port);
                 }

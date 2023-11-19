@@ -178,6 +178,28 @@
       "InputCount": 2
     },
     {
+      "Id": "To_String_2",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
       "Id": "Log_String_2",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
@@ -412,7 +434,20 @@
     },
     {
       "From": {
-        "Node": "To_String_1",
+        "Node": "RRCG_ContentsData_2_0",
+        "Group": 2,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_2",
         "Group": 0,
         "Index": 0
       },
