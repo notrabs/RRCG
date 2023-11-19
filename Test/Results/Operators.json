@@ -3107,6 +3107,28 @@
       "InputCount": 2
     },
     {
+      "Id": "Int_to_Float_0",
+      "Type": "irrPZdy1Rkm4JObvxXGfOg==",
+      "Name": "Int to Float",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
       "Id": "Divide_3",
       "Type": "eP3q8iNfyUSicY/y8HYucQ==",
       "Name": "Divide",
@@ -3119,7 +3141,7 @@
       "EventDefinitionData": null,
       "EventSenderData": null,
       "EventReceiverData": null,
-      "DefaultValues": [[[0,0],"System.Int32",1]],
+      "DefaultValues": [[[0,0],"System.Single",1.0]],
       "SwitchCases": null,
       "CircuitBoardId": null,
       "VariableName": null,
@@ -3195,6 +3217,50 @@
       "InputCount": 2
     },
     {
+      "Id": "Reroute_0",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.Single",5.0]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "Round_0",
+      "Type": "muTPxvtPFEeVZI3doDAGdg==",
+      "Name": "Round",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
       "Id": "Vector3_Scale_6",
       "Type": "sReqh2B3B0uMRKLVMFkFlw==",
       "Name": "Vector3 Scale",
@@ -3207,7 +3273,7 @@
       "EventDefinitionData": null,
       "EventSenderData": null,
       "EventReceiverData": null,
-      "DefaultValues": [[[0,1],"System.Single",5.0]],
+      "DefaultValues": [],
       "SwitchCases": null,
       "CircuitBoardId": null,
       "VariableName": null,
@@ -3261,6 +3327,50 @@
       "InputCount": 2
     },
     {
+      "Id": "Reroute_1",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.Int32",6]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "Int_to_Float_1",
+      "Type": "irrPZdy1Rkm4JObvxXGfOg==",
+      "Name": "Int to Float",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
       "Id": "Vector3_Scale_7",
       "Type": "sReqh2B3B0uMRKLVMFkFlw==",
       "Name": "Vector3 Scale",
@@ -3273,7 +3383,7 @@
       "EventDefinitionData": null,
       "EventSenderData": null,
       "EventReceiverData": null,
-      "DefaultValues": [[[0,1],"System.Int32",6]],
+      "DefaultValues": [],
       "SwitchCases": null,
       "CircuitBoardId": null,
       "VariableName": null,
@@ -3327,6 +3437,50 @@
       "InputCount": 2
     },
     {
+      "Id": "Reroute_2",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.Single",7.0]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "Round_1",
+      "Type": "muTPxvtPFEeVZI3doDAGdg==",
+      "Name": "Round",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
       "Id": "Vector3_Scale_8",
       "Type": "sReqh2B3B0uMRKLVMFkFlw==",
       "Name": "Vector3 Scale",
@@ -3339,7 +3493,7 @@
       "EventDefinitionData": null,
       "EventSenderData": null,
       "EventReceiverData": null,
-      "DefaultValues": [[[0,1],"System.Single",7.0]],
+      "DefaultValues": [],
       "SwitchCases": null,
       "CircuitBoardId": null,
       "VariableName": null,
@@ -3393,6 +3547,50 @@
       "InputCount": 2
     },
     {
+      "Id": "Reroute_3",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,0],"System.Int32",8]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
+      "Id": "Int_to_Float_2",
+      "Type": "irrPZdy1Rkm4JObvxXGfOg==",
+      "Name": "Int to Float",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 1
+    },
+    {
       "Id": "Vector3_Scale_9",
       "Type": "sReqh2B3B0uMRKLVMFkFlw==",
       "Name": "Vector3 Scale",
@@ -3405,7 +3603,7 @@
       "EventDefinitionData": null,
       "EventSenderData": null,
       "EventReceiverData": null,
-      "DefaultValues": [[[0,1],"System.Int32",8]],
+      "DefaultValues": [],
       "SwitchCases": null,
       "CircuitBoardId": null,
       "VariableName": null,
@@ -3552,7 +3750,7 @@
       "InputCount": 3
     },
     {
-      "Id": "Int_to_Float_0",
+      "Id": "Int_to_Float_3",
       "Type": "irrPZdy1Rkm4JObvxXGfOg==",
       "Name": "Int to Float",
       "SFXConstantData": null,
@@ -3706,7 +3904,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Int_to_Float_1",
+      "Id": "Int_to_Float_4",
       "Type": "irrPZdy1Rkm4JObvxXGfOg==",
       "Name": "Int to Float",
       "SFXConstantData": null,
@@ -3794,7 +3992,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Int_to_Float_2",
+      "Id": "Int_to_Float_5",
       "Type": "irrPZdy1Rkm4JObvxXGfOg==",
       "Name": "Int to Float",
       "SFXConstantData": null,
@@ -4366,7 +4564,7 @@
       "InputCount": 3
     },
     {
-      "Id": "Int_to_Float_3",
+      "Id": "Int_to_Float_6",
       "Type": "irrPZdy1Rkm4JObvxXGfOg==",
       "Name": "Int to Float",
       "SFXConstantData": null,
@@ -4432,7 +4630,7 @@
       "InputCount": 3
     },
     {
-      "Id": "Int_to_Float_4",
+      "Id": "Int_to_Float_7",
       "Type": "irrPZdy1Rkm4JObvxXGfOg==",
       "Name": "Int to Float",
       "SFXConstantData": null,
@@ -4591,7 +4789,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Reroute_0",
+      "Id": "Reroute_4",
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "SFXConstantData": null,
@@ -5124,7 +5322,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Reroute_1",
+      "Id": "Reroute_5",
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "SFXConstantData": null,
@@ -5510,7 +5708,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Reroute_2",
+      "Id": "Reroute_6",
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "SFXConstantData": null,
@@ -7989,6 +8187,19 @@
         "Index": 1
       },
       "To": {
+        "Node": "Int_to_Float_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Int_to_Float_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
         "Node": "Divide_3",
         "Group": 0,
         "Index": 1
@@ -8062,6 +8273,19 @@
     },
     {
       "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Round_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
         "Node": "Vector3_Create_0",
         "Group": 0,
         "Index": 0
@@ -8070,6 +8294,19 @@
         "Node": "Vector3_Scale_6",
         "Group": 0,
         "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Vector3_Scale_6",
+        "Group": 0,
+        "Index": 1
       },
       "isExec": false
     },
@@ -8114,6 +8351,19 @@
     },
     {
       "From": {
+        "Node": "Reroute_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Int_to_Float_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
         "Node": "Vector3_Create_0",
         "Group": 0,
         "Index": 0
@@ -8122,6 +8372,19 @@
         "Node": "Vector3_Scale_7",
         "Group": 0,
         "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Reroute_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Vector3_Scale_7",
+        "Group": 0,
+        "Index": 1
       },
       "isExec": false
     },
@@ -8166,6 +8429,19 @@
     },
     {
       "From": {
+        "Node": "Reroute_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Round_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
         "Node": "Vector3_Create_1",
         "Group": 0,
         "Index": 0
@@ -8174,6 +8450,19 @@
         "Node": "Vector3_Scale_8",
         "Group": 0,
         "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Reroute_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Vector3_Scale_8",
+        "Group": 0,
+        "Index": 1
       },
       "isExec": false
     },
@@ -8218,6 +8507,19 @@
     },
     {
       "From": {
+        "Node": "Reroute_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Int_to_Float_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
         "Node": "Vector3_Create_1",
         "Group": 0,
         "Index": 0
@@ -8226,6 +8528,19 @@
         "Node": "Vector3_Scale_9",
         "Group": 0,
         "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Reroute_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Vector3_Scale_9",
+        "Group": 0,
+        "Index": 1
       },
       "isExec": false
     },
@@ -8301,7 +8616,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Int_to_Float_0",
+        "Node": "Int_to_Float_3",
         "Group": 0,
         "Index": 0
       },
@@ -8309,7 +8624,7 @@
     },
     {
       "From": {
-        "Node": "Int_to_Float_0",
+        "Node": "Int_to_Float_3",
         "Group": 0,
         "Index": 0
       },
@@ -8418,7 +8733,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "Int_to_Float_1",
+        "Node": "Int_to_Float_4",
         "Group": 0,
         "Index": 0
       },
@@ -8439,7 +8754,7 @@
     },
     {
       "From": {
-        "Node": "Int_to_Float_1",
+        "Node": "Int_to_Float_4",
         "Group": 0,
         "Index": 0
       },
@@ -8496,7 +8811,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Int_to_Float_2",
+        "Node": "Int_to_Float_5",
         "Group": 0,
         "Index": 0
       },
@@ -8517,7 +8832,7 @@
     },
     {
       "From": {
-        "Node": "Int_to_Float_2",
+        "Node": "Int_to_Float_5",
         "Group": 0,
         "Index": 0
       },
@@ -8769,7 +9084,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Int_to_Float_3",
+        "Node": "Int_to_Float_6",
         "Group": 0,
         "Index": 0
       },
@@ -8777,7 +9092,7 @@
     },
     {
       "From": {
-        "Node": "Int_to_Float_3",
+        "Node": "Int_to_Float_6",
         "Group": 0,
         "Index": 0
       },
@@ -8821,7 +9136,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Int_to_Float_4",
+        "Node": "Int_to_Float_7",
         "Group": 0,
         "Index": 0
       },
@@ -8829,7 +9144,7 @@
     },
     {
       "From": {
-        "Node": "Int_to_Float_4",
+        "Node": "Int_to_Float_7",
         "Group": 0,
         "Index": 0
       },
@@ -8933,7 +9248,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_0",
+        "Node": "Reroute_4",
         "Group": 0,
         "Index": 0
       },
@@ -9037,7 +9352,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_0",
+        "Node": "Reroute_4",
         "Group": 0,
         "Index": 0
       },
@@ -9141,7 +9456,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_0",
+        "Node": "Reroute_4",
         "Group": 0,
         "Index": 0
       },
@@ -9284,7 +9599,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_1",
+        "Node": "Reroute_5",
         "Group": 0,
         "Index": 0
       },
@@ -9427,7 +9742,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_1",
+        "Node": "Reroute_5",
         "Group": 0,
         "Index": 0
       },
@@ -9531,7 +9846,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_2",
+        "Node": "Reroute_6",
         "Group": 0,
         "Index": 0
       },
