@@ -138,38 +138,45 @@ namespace RRCG
 
         public override SyntaxNode VisitSimpleLambdaExpression(SimpleLambdaExpressionSyntax method)
         {
-            return VisitAnonymousFunction((SimpleLambdaExpressionSyntax)base.VisitSimpleLambdaExpression(method));
+            return VisitAnonymousFunction(method, base.VisitSimpleLambdaExpression);
         }
         public override SyntaxNode VisitParenthesizedLambdaExpression(ParenthesizedLambdaExpressionSyntax method)
         {
-            return VisitAnonymousFunction((ParenthesizedLambdaExpressionSyntax)base.VisitParenthesizedLambdaExpression(method));
+            return VisitAnonymousFunction(method, base.VisitParenthesizedLambdaExpression);
         }
 
         public override SyntaxNode VisitAnonymousMethodExpression(AnonymousMethodExpressionSyntax method)
         {
-            return VisitAnonymousFunction((AnonymousMethodExpressionSyntax)base.VisitAnonymousMethodExpression(method));
+            return VisitAnonymousFunction(method, base.VisitAnonymousMethodExpression);
         }
 
-        public T VisitAnonymousFunction<T>(T method) where T : AnonymousFunctionExpressionSyntax
+        public T VisitAnonymousFunction<T>(T method, Func<T, SyntaxNode> visitMethod) where T : AnonymousFunctionExpressionSyntax
         {
             SyntaxList<StatementSyntax> statements;
+            var visitedMethod = (T)visitMethod(method);
+
             if (method.Block != null)
             {
                 statements = WrapFunctionStatements(
-                    method.Block.Statements,
-                    SyntaxUtils.IsBlockVoid(method.Block)
+                    visitedMethod.Block.Statements,
+                    SyntaxUtils.IsBlockVoid(visitedMethod.Block)
                 );
             } else
             {
                 // .ExpressionBody and .Block are mutually exclusive -- this function is without a block.
                 // We need one for label accessibility scopes, so let's create one.
+                var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(method.SyntaxTree);
+                var needsReturn = !(semanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnsVoid;
+
                 statements = SyntaxFactory.SingletonList<StatementSyntax>(
-                                SyntaxFactory.ExpressionStatement(method.ExpressionBody));
+                                needsReturn ? SyntaxFactory.ReturnStatement(visitedMethod.ExpressionBody)
+                                            : SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
+                                );
 
                 statements = WrapStatementsInLabelAccessibilityScope(statements, false);
             }
 
-            return (T)method.WithBody(
+            return (T)visitedMethod.WithBody(
                 SyntaxFactory.Block(statements)
             );
         }
