@@ -37,7 +37,9 @@ namespace RRCG
 
         public override SyntaxNode VisitSimpleBaseType(SimpleBaseTypeSyntax node)
         {
+            // Rewriting isn't really necessary. But it helps with Autocomplete when looking for these types.
             if (node.Type.ToString() == "CircuitDescriptor") node = node.WithType(ParseTypeName("CircuitBuilder"));
+            if (node.Type.ToString() == "CircuitLibrary") node = node.WithType(ParseTypeName("CircuitLibraryBuilder"));
             return base.VisitSimpleBaseType(node);
         }
 

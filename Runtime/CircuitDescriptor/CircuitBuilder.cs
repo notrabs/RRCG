@@ -9,6 +9,20 @@ namespace RRCGBuild
 {
     public class EventFunction : Attribute { }
     public class SharedProperty : Attribute { }
+
+    /// <summary>
+    /// A compiled RRCG building class containing parts of a circuit.
+    /// </summary>
+    public abstract class CircuitLibraryBuilder : CircuitBuilder {
+        public override void CircuitGraph() {
+            // A library needs no entry point. Maybe it makes sense to clean up the structure here some day.
+            // The CircuitBuilder would make more sense to inherit from CircuitLibraryBuilder
+        }
+    }
+
+    /// <summary>
+    /// A RRCG class for building a complete circuit from an entry point.
+    /// </summary>
     public abstract class CircuitBuilder : ChipBuilder
     {
         public abstract void CircuitGraph();
@@ -480,13 +494,13 @@ namespace RRCGBuild
             return __RRCG_SHARED_PROPERTIES[name] as T;
         }
 
-        public void __Return(ExecFlow returnFlow)
+        public static void __Return(ExecFlow returnFlow)
         {
             returnFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();
         }
 
-        public void __Return<T>(ExecFlow returnFlow, out T returnData, T expression)
+        public static void __Return<T>(ExecFlow returnFlow, out T returnData, T expression)
         {
             returnFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();

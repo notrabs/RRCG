@@ -16,6 +16,20 @@ namespace RRCGSource
     /// </summary>
     public class SharedProperty : Attribute { }
 
+    /// <summary>
+    /// A compiled RRCG class containing parts of a circuit.
+    /// </summary>
+    public abstract class CircuitLibrary: CircuitDescriptor {
+        public override void CircuitGraph()
+        {
+            // A library needs no entry point. Maybe it makes sense to clean up the structure here some day.
+            // The CircuitDescriptor would make more sense to inherit from CircuitLibrary
+        }
+    }
+
+    /// <summary>
+    /// A RRCG class describing a complete circuit from an entry point.
+    /// </summary>
     public abstract class CircuitDescriptor : Chips
     {
         /// <summary>
