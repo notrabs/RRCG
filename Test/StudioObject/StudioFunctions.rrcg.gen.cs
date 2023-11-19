@@ -8,8 +8,8 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var studioObject = __VariableDeclaratorExpression("studioObject", () => new StudioFunctionsObject(RecRoomObjectPort.Invalid));
             studioObject.VoidFunction();
             studioObject.AllParameterTypes(true, 23f, 7, "test", new ColorPort(1.0f, 0, 0), Vector3Port.up, QuaternionPort.identity);
@@ -17,8 +17,8 @@ namespace RRCGBuild
             var multiReturn = __VariableDeclaratorExpression("multiReturn", () => studioObject.MultiReturn());
             ChipLib.Log(multiReturn.Item1);
             ChipLib.Log(multiReturn.Item2);
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
     }
 

@@ -8,8 +8,8 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var a = __VariableDeclaratorExpression("a", () => RandomInt(1, 10));
             CircuitBoard(ContentsExec);
             var b = __VariableDeclaratorExpression("b", () => CircuitBoard(ContentsMixed, a));
@@ -27,66 +27,66 @@ namespace RRCGBuild
             //});
             CircuitBoard((IntPort test) =>
             {
-                __BeginLabelAccessibilityScope(false);
                 ExecFlow rrcg_return_flow = new ExecFlow();
+                __BeginLabelAccessibilityScope(false);
                 ChipLib.Log("Anonymous Parameter");
-                ExecFlow.current.Merge(rrcg_return_flow);
                 __EndLabelAccessibilityScope();
+                ExecFlow.current.Merge(rrcg_return_flow);
             }
 
             , a);
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void ContentsExec()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             RandomInt(1, 10);
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         IntPort ContentsMixed(IntPort a)
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
+            __BeginLabelAccessibilityScope(false);
             __Return(rrcg_return_flow, out rrcg_return_data, RandomInt(a, 10));
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
             return rrcg_return_data;
         }
 
         (IntPort namedValue, IntPort) ContentsData(IntPort a, IntPort b)
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
+            __BeginLabelAccessibilityScope(false);
             __Return(rrcg_return_flow, out rrcg_return_data, (a, b));
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
             return rrcg_return_data;
         }
 
         void ExecOut()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             EventReceiver(RoomEvents.Hz30);
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void ExecIn()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             RandomInt(1, 10);
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
     }
 }

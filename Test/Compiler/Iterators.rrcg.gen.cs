@@ -10,8 +10,8 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             // Test using while loops
             WhileTest();
             // Test returning from within a while loop
@@ -27,14 +27,14 @@ namespace RRCGBuild
             DoWhileReturnTest();
             // Test nested do while loops
             NestedDoWhileTest();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void WhileTest()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("WhileTest").Definition());
             entry.Receiver();
             var list = __VariableDeclaratorExpression("list", () => ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"));
@@ -52,14 +52,14 @@ namespace RRCGBuild
             );
             ChipLib.Log("While loop done!");
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void WhileReturnTest()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("WhileReturnTest").Definition());
             entry.Receiver();
             // Test returns from while block within an "inline" graph (functions are transparent)
@@ -69,8 +69,8 @@ namespace RRCGBuild
             // Test returns from while block within event functions
             ChipLib.Log(Concat("Repeated string (event function): ", StringRepeatEventFunction("Hi", 10)));
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         [EventFunction]
@@ -78,12 +78,12 @@ namespace RRCGBuild
         {
             return __DispatchEventFunction<StringPort, StringPort, IntPort>("StringRepeatEventFunction", delegate (StringPort str, IntPort count)
             {
-                __BeginLabelAccessibilityScope(false);
                 ExecFlow rrcg_return_flow = new ExecFlow();
                 dynamic rrcg_return_data = default;
+                __BeginLabelAccessibilityScope(false);
                 __Return(rrcg_return_flow, out rrcg_return_data, StringRepeat(str, count));
-                ExecFlow.current.Merge(rrcg_return_flow);
                 __EndLabelAccessibilityScope();
+                ExecFlow.current.Merge(rrcg_return_flow);
                 return rrcg_return_data;
             }
 
@@ -92,9 +92,9 @@ namespace RRCGBuild
 
         public StringPort StringRepeat(StringPort str, IntPort count)
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
+            __BeginLabelAccessibilityScope(false);
             var strStaging = __VariableDeclaratorExpression("strStaging", () => new Variable<StringPort>());
             __While(true, delegate
             {
@@ -118,15 +118,15 @@ namespace RRCGBuild
             }
 
             );
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
             return rrcg_return_data;
         }
 
         void UnreachableNodesTest()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("UnreachableNodesTest").Definition());
             entry.Receiver();
             var index = __VariableDeclaratorExpression("index", () => new Variable<IntPort>());
@@ -173,14 +173,14 @@ namespace RRCGBuild
             );
             ChipLib.Log("Unreachable nodes test done!");
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void NestedWhileTest()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var ev = __VariableDeclaratorExpression("ev", () => new EventHelper("NestedWhileTest").Definition());
             ev.Receiver();
             LogString("Start");
@@ -203,14 +203,14 @@ namespace RRCGBuild
             );
             LogString("2");
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void DoWhileTest()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var ev = __VariableDeclaratorExpression("ev", () => new EventHelper("DoWhileTest").Definition());
             ev.Receiver();
             __DoWhile(true, delegate
@@ -253,14 +253,14 @@ namespace RRCGBuild
 
             );
             LogString("Do while loop done");
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void DoWhileReturnTest()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("DoWhileReturnTest").Definition());
             entry.Receiver();
             // Test returns from do while block within an "inline" graph (functions are transparent)
@@ -270,8 +270,8 @@ namespace RRCGBuild
             // Test returns from do while block within event functions
             ChipLib.Log(Concat("Repeated string (do while, event function): ", StringRepeatDoWhileEventFunction("Hi", 10)));
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         [EventFunction]
@@ -279,12 +279,12 @@ namespace RRCGBuild
         {
             return __DispatchEventFunction<StringPort, StringPort, IntPort>("StringRepeatDoWhileEventFunction", delegate (StringPort str, IntPort count)
             {
-                __BeginLabelAccessibilityScope(false);
                 ExecFlow rrcg_return_flow = new ExecFlow();
                 dynamic rrcg_return_data = default;
+                __BeginLabelAccessibilityScope(false);
                 __Return(rrcg_return_flow, out rrcg_return_data, StringRepeatDoWhile(str, count));
-                ExecFlow.current.Merge(rrcg_return_flow);
                 __EndLabelAccessibilityScope();
+                ExecFlow.current.Merge(rrcg_return_flow);
                 return rrcg_return_data;
             }
 
@@ -293,9 +293,9 @@ namespace RRCGBuild
 
         public StringPort StringRepeatDoWhile(StringPort str, IntPort count)
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
+            __BeginLabelAccessibilityScope(false);
             var strStaging = __VariableDeclaratorExpression("strStaging", () => new Variable<StringPort>());
             __DoWhile(true, delegate
             {
@@ -319,15 +319,15 @@ namespace RRCGBuild
             }
 
             );
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
             return rrcg_return_data;
         }
 
         void NestedDoWhileTest()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var ev = __VariableDeclaratorExpression("ev", () => new EventHelper("NestedDoWhileTest").Definition());
             ev.Receiver();
             __DoWhile(true, delegate
@@ -410,8 +410,8 @@ namespace RRCGBuild
 
             );
             LogString("Loop 1 done");
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
     }
 }

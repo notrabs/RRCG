@@ -9,34 +9,33 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             InterpolatePureData();
             InterpolateDataWithPort();
             InterpolateNonStrings();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
-        // maybe "value switch" pattern matching
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void InterpolatePureData()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("InterpolatePureData").Definition());
             e.Receiver();
             StringPort port1 = __VariableDeclaratorExpression("port1", () => "Hello");
             StringPort port2 = __VariableDeclaratorExpression("port2", () => "World");
             ChipLib.Log(__StringInterpolation(port1, ", ", port2, "!"));
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void InterpolateDataWithPort()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("InterpolateDataWithPort").Definition());
             e.Receiver();
             var variable = __VariableDeclaratorExpression("variable", () => new Variable<StringPort>());
@@ -44,14 +43,14 @@ namespace RRCGBuild
             variable.Value = "port";
             ChipLib.Log(__StringInterpolation("String interpolation works with both ", port1, " and ", variable.Value, "s!"));
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void InterpolateNonStrings()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("InterpolateNonStrings").Definition());
             e.Receiver();
             var intData = __VariableDeclaratorExpression("intData", () => 5);
@@ -73,8 +72,8 @@ namespace RRCGBuild
             var quatPort = __VariableDeclaratorExpression("quatPort", () => QuaternionCreate(5, 6, 7, 8));
             ChipLib.Log(__StringInterpolation("Interpolating with Quaternions. Data: ", quatData, ", Port: ", quatPort));
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
     }
 }

@@ -361,6 +361,166 @@
       "VariableType": null,
       "VariableHomeValue": null,
       "InputCount": 2
+    },
+    {
+      "Id": "Execution_Integer_Switch_1",
+      "Type": "x+SHAxe5GU2Tf12je59BzA==",
+      "Name": "Execution Integer Switch",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "SwitchCases": [
+        "1",
+        "2"
+      ],
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_9",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.String","Case 1"]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "If_3",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.Boolean",true]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_10",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.String","Going to case 2"]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_11",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.String","Case 2"]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Execution_Integer_Switch_2",
+      "Type": "x+SHAxe5GU2Tf12je59BzA==",
+      "Name": "Execution Integer Switch",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.Int32",2]],
+      "SwitchCases": [
+        "0",
+        "1"
+      ],
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_12",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "SFXConstantData": null,
+      "PlayAudioAtPositionData": null,
+      "PlayerWorldUIData": null,
+      "StudioFunctionData": null,
+      "RoomKeyData": null,
+      "RoomCurrencyData": null,
+      "EventDefinitionData": null,
+      "EventSenderData": null,
+      "EventReceiverData": null,
+      "DefaultValues": [[[0,1],"System.String","TestLabel"]],
+      "SwitchCases": null,
+      "CircuitBoardId": null,
+      "VariableName": null,
+      "VariableKind": 0,
+      "VariableType": null,
+      "VariableHomeValue": null,
+      "InputCount": 2
     }
   ],
   "Connections": [
@@ -610,6 +770,162 @@
         "Index": 0
       },
       "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Execution_Integer_Switch_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Execution_Integer_Switch_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_1",
+        "Group": 0,
+        "Index": 2
+      },
+      "To": {
+        "Node": "Log_String_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Execution_Integer_Switch_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Execution_Integer_Switch_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Execution_Integer_Switch_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_2",
+        "Group": 0,
+        "Index": 2
+      },
+      "To": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
     }
   ],
   "SubContexts": [
@@ -639,7 +955,7 @@
           "InputCount": 0
         },
         {
-          "Id": "Log_String_9",
+          "Id": "Log_String_13",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -652,50 +968,6 @@
           "EventSenderData": null,
           "EventReceiverData": null,
           "DefaultValues": [[[0,1],"System.String","Inner label 1"]],
-          "SwitchCases": null,
-          "CircuitBoardId": null,
-          "VariableName": null,
-          "VariableKind": 0,
-          "VariableType": null,
-          "VariableHomeValue": null,
-          "InputCount": 2
-        },
-        {
-          "Id": "If_3",
-          "Type": "sWrceqv8RkeuxgBjUuKc3A==",
-          "Name": "If",
-          "SFXConstantData": null,
-          "PlayAudioAtPositionData": null,
-          "PlayerWorldUIData": null,
-          "StudioFunctionData": null,
-          "RoomKeyData": null,
-          "RoomCurrencyData": null,
-          "EventDefinitionData": null,
-          "EventSenderData": null,
-          "EventReceiverData": null,
-          "DefaultValues": [[[0,1],"System.Boolean",true]],
-          "SwitchCases": null,
-          "CircuitBoardId": null,
-          "VariableName": null,
-          "VariableKind": 0,
-          "VariableType": null,
-          "VariableHomeValue": null,
-          "InputCount": 2
-        },
-        {
-          "Id": "Log_String_10",
-          "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
-          "Name": "Log String",
-          "SFXConstantData": null,
-          "PlayAudioAtPositionData": null,
-          "PlayerWorldUIData": null,
-          "StudioFunctionData": null,
-          "RoomKeyData": null,
-          "RoomCurrencyData": null,
-          "EventDefinitionData": null,
-          "EventSenderData": null,
-          "EventReceiverData": null,
-          "DefaultValues": [[[0,1],"System.String","Did not go to innerLabel1"]],
           "SwitchCases": null,
           "CircuitBoardId": null,
           "VariableName": null,
@@ -727,7 +999,51 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_11",
+          "Id": "Log_String_14",
+          "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+          "Name": "Log String",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.String","Did not go to innerLabel1"]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "If_5",
+          "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+          "Name": "If",
+          "SFXConstantData": null,
+          "PlayAudioAtPositionData": null,
+          "PlayerWorldUIData": null,
+          "StudioFunctionData": null,
+          "RoomKeyData": null,
+          "RoomCurrencyData": null,
+          "EventDefinitionData": null,
+          "EventSenderData": null,
+          "EventReceiverData": null,
+          "DefaultValues": [[[0,1],"System.Boolean",true]],
+          "SwitchCases": null,
+          "CircuitBoardId": null,
+          "VariableName": null,
+          "VariableKind": 0,
+          "VariableType": null,
+          "VariableHomeValue": null,
+          "InputCount": 2
+        },
+        {
+          "Id": "Log_String_15",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -749,7 +1065,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_12",
+          "Id": "Log_String_16",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -771,7 +1087,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_13",
+          "Id": "Log_String_17",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -793,7 +1109,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Execution_Integer_Switch_1",
+          "Id": "Execution_Integer_Switch_3",
           "Type": "x+SHAxe5GU2Tf12je59BzA==",
           "Name": "Execution Integer Switch",
           "SFXConstantData": null,
@@ -819,7 +1135,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_14",
+          "Id": "Log_String_18",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -841,7 +1157,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_15",
+          "Id": "Log_String_19",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -863,7 +1179,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Log_String_16",
+          "Id": "Log_String_20",
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "SFXConstantData": null,
@@ -915,59 +1231,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Log_String_9",
-            "Group": 0,
-            "Index": 0
-          },
-          "isExec": true
-        },
-        {
-          "From": {
-            "Node": "If_3",
-            "Group": 0,
-            "Index": 0
-          },
-          "To": {
-            "Node": "Log_String_9",
-            "Group": 0,
-            "Index": 0
-          },
-          "isExec": true
-        },
-        {
-          "From": {
-            "Node": "Log_String_9",
-            "Group": 0,
-            "Index": 0
-          },
-          "To": {
-            "Node": "If_3",
-            "Group": 0,
-            "Index": 0
-          },
-          "isExec": true
-        },
-        {
-          "From": {
-            "Node": "If_3",
-            "Group": 0,
-            "Index": 1
-          },
-          "To": {
-            "Node": "Log_String_10",
-            "Group": 0,
-            "Index": 0
-          },
-          "isExec": true
-        },
-        {
-          "From": {
-            "Node": "Log_String_10",
-            "Group": 0,
-            "Index": 0
-          },
-          "To": {
-            "Node": "If_4",
+            "Node": "Log_String_13",
             "Group": 0,
             "Index": 0
           },
@@ -976,45 +1240,6 @@
         {
           "From": {
             "Node": "If_4",
-            "Group": 0,
-            "Index": 1
-          },
-          "To": {
-            "Node": "Log_String_11",
-            "Group": 0,
-            "Index": 0
-          },
-          "isExec": true
-        },
-        {
-          "From": {
-            "Node": "Log_String_11",
-            "Group": 0,
-            "Index": 0
-          },
-          "To": {
-            "Node": "Log_String_12",
-            "Group": 0,
-            "Index": 0
-          },
-          "isExec": true
-        },
-        {
-          "From": {
-            "Node": "If_4",
-            "Group": 0,
-            "Index": 0
-          },
-          "To": {
-            "Node": "Log_String_12",
-            "Group": 0,
-            "Index": 0
-          },
-          "isExec": true
-        },
-        {
-          "From": {
-            "Node": "Log_String_12",
             "Group": 0,
             "Index": 0
           },
@@ -1032,7 +1257,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Execution_Integer_Switch_1",
+            "Node": "If_4",
             "Group": 0,
             "Index": 0
           },
@@ -1040,7 +1265,7 @@
         },
         {
           "From": {
-            "Node": "Execution_Integer_Switch_1",
+            "Node": "If_4",
             "Group": 0,
             "Index": 1
           },
@@ -1058,7 +1283,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Log_String_13",
+            "Node": "If_5",
             "Group": 0,
             "Index": 0
           },
@@ -1066,12 +1291,103 @@
         },
         {
           "From": {
-            "Node": "Execution_Integer_Switch_1",
+            "Node": "If_5",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Log_String_15",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Log_String_15",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Log_String_16",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "If_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Log_String_16",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Log_String_16",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Log_String_17",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Log_String_17",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Execution_Integer_Switch_3",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Execution_Integer_Switch_3",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Log_String_18",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Log_String_18",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Log_String_17",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Execution_Integer_Switch_3",
             "Group": 0,
             "Index": 2
           },
           "To": {
-            "Node": "Log_String_15",
+            "Node": "Log_String_19",
             "Group": 0,
             "Index": 0
           },
@@ -1079,12 +1395,12 @@
         },
         {
           "From": {
-            "Node": "Log_String_15",
+            "Node": "Log_String_19",
             "Group": 0,
             "Index": 0
           },
           "To": {
-            "Node": "Log_String_13",
+            "Node": "Log_String_17",
             "Group": 0,
             "Index": 0
           },
@@ -1092,12 +1408,12 @@
         },
         {
           "From": {
-            "Node": "Execution_Integer_Switch_1",
+            "Node": "Execution_Integer_Switch_3",
             "Group": 0,
             "Index": 3
           },
           "To": {
-            "Node": "Log_String_16",
+            "Node": "Log_String_20",
             "Group": 0,
             "Index": 0
           },
@@ -1105,12 +1421,12 @@
         },
         {
           "From": {
-            "Node": "Log_String_16",
+            "Node": "Log_String_20",
             "Group": 0,
             "Index": 0
           },
           "To": {
-            "Node": "Log_String_13",
+            "Node": "Log_String_17",
             "Group": 0,
             "Index": 0
           },
@@ -1118,7 +1434,7 @@
         },
         {
           "From": {
-            "Node": "Execution_Integer_Switch_1",
+            "Node": "Execution_Integer_Switch_3",
             "Group": 0,
             "Index": 0
           },

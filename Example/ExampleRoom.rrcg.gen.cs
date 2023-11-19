@@ -10,19 +10,19 @@ namespace RRCGBuild
         EventDefinition<IntPort> testEvent = __VariableDeclaratorExpression("testEvent", () => new EventDefinition<IntPort>("intValue"));
         public override void CircuitGraph()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             RandomExample();
             EventCacheExample();
             VariableLoopExample();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         public void RandomExample()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             EventReceiver(RoomEvents.Hz30);
             var rand1 = __VariableDeclaratorExpression("rand1", () => RandomInt(0, 10));
             var rand2 = __VariableDeclaratorExpression("rand2", () => RandomInt(0, 10));
@@ -41,27 +41,27 @@ namespace RRCGBuild
             }
 
             );
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         public void EventCacheExample()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             EventReceiver(RoomEvents.Hz30);
             var rand1 = __VariableDeclaratorExpression("rand1", () => RandomInt(0, 10));
             var sum = __VariableDeclaratorExpression("sum", () => (rand1 + 3) + (4 + 5));
             var cached = __VariableDeclaratorExpression("cached", () => ChipLib.EventCache<IntPort>(sum));
             PlayerShowSubtitle(GetLocalPlayer(), ToString(cached), 3.0f, 0);
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         public void VariableLoopExample()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var intValue = __VariableDeclaratorExpression("intValue", () => testEvent.Receiver());
             var counter = __VariableDeclaratorExpression("counter", () => new Variable<IntPort>());
             __While(ChipBuilder.LessThan(counter.Value, intValue), delegate
@@ -73,8 +73,8 @@ namespace RRCGBuild
             }
 
             );
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
     }
 }

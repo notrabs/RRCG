@@ -10,20 +10,20 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             TestNotIfOptimizer();
             TestKnownSingletonChipsOptimizer();
             TestVariableCollapseOptimizer();
             TestAssociativeOperationCollapseOptimizer();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void TestNotIfOptimizer()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("TestNotIfOptimizer").Definition());
             entry.Receiver();
             var optimizableBool = __VariableDeclaratorExpression("optimizableBool", () => ParseBool("true").Result);
@@ -150,14 +150,14 @@ namespace RRCGBuild
 
             );
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void TestKnownSingletonChipsOptimizer()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("TestKnownSingletonChipsOptimizer").Definition());
             entry.Receiver();
             var floatVar = __VariableDeclaratorExpression("floatVar", () => new Variable<FloatPort>());
@@ -170,14 +170,14 @@ namespace RRCGBuild
             floatVar.Value = TimeGetPreciseSeconds();
             floatVar.Value = TimeGetPreciseSeconds();
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void TestVariableCollapseOptimizer()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("TestVariableCollapseOptimiser").Definition());
             entry.Receiver();
             var var0 = __VariableDeclaratorExpression("var0", () => new Variable<FloatPort>());
@@ -196,14 +196,14 @@ namespace RRCGBuild
             var3.Value = RandomFloat(0, 100);
             ChipLib.Log(var3.Value);
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void TestAssociativeOperationCollapseOptimizer()
         {
-            __BeginLabelAccessibilityScope(false);
             ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginLabelAccessibilityScope(false);
             var e = __VariableDeclaratorExpression("e", () => new EventHelper("TestAssociativeOperationCollapseOptimizer").Definition());
             e.Receiver();
             var variable = __VariableDeclaratorExpression("variable", () => new Variable<FloatPort>());
@@ -218,8 +218,8 @@ namespace RRCGBuild
             ChipLib.Log(undeletableConcat); // Log directly to make it undeletable
             ChipLib.Log("Here's the undeletable concat: " + undeletableConcat);
             ExecFlow.current.Clear();
-            ExecFlow.current.Merge(rrcg_return_flow);
             __EndLabelAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
         }
     }
 }
