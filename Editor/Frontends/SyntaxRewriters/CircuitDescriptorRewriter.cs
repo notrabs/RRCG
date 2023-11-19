@@ -556,33 +556,51 @@ namespace RRCG
             // for multiple branches and avoid duplicate chips.
 
             List<ExpressionSyntax> caseInitializers = new();
-            ExpressionSyntax defaultCaseExpression = ExecDelegate();
+            ExpressionSyntax? defaultCaseExpression = null;
 
             foreach (var section in node.Sections)
             {
                 int sectionIndex = caseInitializers.Count;
                 string sectionName = $"rrcg_switch_section_{sectionIndex}";
 
-                // First, create and store the
-                // key/value initializers for this section.
+                // First, visit the statements in this section
+                var sectionStatements = new SyntaxList<StatementSyntax>(section.Statements.Select(s => (StatementSyntax)Visit(s)));
+
+                // Then, create and store the key/value initializers for this section,
+                // and insert the required label declarations to the section statements.
                 foreach (var label in section.Labels)
                 {
-                    if (label.Keyword.Text == "default")
+                    // Label declaration
+                    var caseValue = (ExpressionSyntax)Visit(((CaseSwitchLabelSyntax)label).Value);
+                    var labelName = $"rrcg_switch_case_label_{caseValue.ToFullString()}";
+
+                    sectionStatements = sectionStatements.Insert(0, SyntaxFactory.ExpressionStatement(
+                        SyntaxFactory.InvocationExpression(
+                            SyntaxFactory.IdentifierName("__LabelDecl"))
+                        .WithArgumentList(
+                            SyntaxFactory.ArgumentList(
+                                SyntaxFactory.SingletonSeparatedList<ArgumentSyntax>(
+                                    SyntaxFactory.Argument(
+                                        SyntaxFactory.LiteralExpression(
+                                            SyntaxKind.StringLiteralExpression,
+                                            SyntaxFactory.Literal(labelName))))))));
+
+                    // If this is the default case, store & don't add a case initializer
+                    if (label.Keyword.Text == "default" && defaultCaseExpression == null)
                     {
                         defaultCaseExpression = SyntaxFactory.IdentifierName(sectionName);
                         continue;
                     }
 
-                    var caseValue = (ExpressionSyntax)Visit(((CaseSwitchLabelSyntax)label).Value);
-
+                    // Create key/value initializer
                     caseInitializers.Add(SyntaxFactory.InitializerExpression(
                         SyntaxKind.ComplexElementInitializerExpression,
                         SyntaxUtils.ExpressionList(caseValue, SyntaxFactory.IdentifierName(sectionName))));
                 }
 
-                // Now generate the declaration statement for the AlternativeExec
-                var newStatements = section.Statements.Select(s => (StatementSyntax)Visit(s));
-                var sectionFn = ExecDelegate().WithBlock(SyntaxFactory.Block(newStatements));
+                // Now create an AlternativeExec from our statements
+                // and declare it a local variable.
+                var sectionFn = ExecDelegate().WithBlock(SyntaxFactory.Block(sectionStatements));
 
                 statements = statements.Add(SyntaxFactory.LocalDeclarationStatement(
                     SyntaxFactory.VariableDeclaration(
@@ -602,7 +620,7 @@ namespace RRCG
                     .WithArgumentList(
                         SyntaxUtils.ArgumentList(
                             test,
-                            defaultCaseExpression,
+                            defaultCaseExpression ?? ExecDelegate(),
                             ObjectCreationExpression(
                                 GenericName(
                                     Identifier("Dictionary"))
@@ -621,7 +639,10 @@ namespace RRCG
                         ))
                     );
 
-            return SyntaxFactory.Block(statements).NormalizeWhitespace();
+            // Wrap our statements in a label accessibility scope & return
+            return SyntaxFactory.Block(
+                    WrapStatementsInLabelAccessibilityScope(statements, true)
+                ).NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitWhileStatement(WhileStatementSyntax node)

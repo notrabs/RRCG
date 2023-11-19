@@ -101,6 +101,33 @@ public class Goto : CircuitDescriptor
         }
 
         //goto blockLabel;
+
+        // Goto case label
+        switch (1)
+        {
+            case 1:
+                LogString("Case 1");
+                if (true)
+                {
+                    LogString("Going to case 2");
+                    goto case 2;
+                }
+            case 2:
+                LogString("Case 2");
+                break;
+        }
+
+        // Goto label defined in another case
+        switch (2)
+        {
+            case 0:
+            testLabel:
+                LogString("TestLabel");
+                break;
+            case 1:
+                goto testLabel;
+        }
+        //goto testLabel;
     }
 }
 #pragma warning restore CS0162 // Unreachable code detected
