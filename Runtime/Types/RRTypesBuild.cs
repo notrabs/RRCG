@@ -480,6 +480,8 @@ namespace RRCGBuild
         public static Vector3Port operator *(Vector3Port a, FloatPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data * b.Data };
+            // This will fix the simple case for missing default value types. Leave it up to the user to force more complex types for now.
+            if (b.IsDataPort) b = ChipLib.FloatConst(b);
             return ChipBuilder.Vector3Scale(a, b);
         }
         public static Vector3Port operator *(FloatPort a, Vector3Port b)
@@ -489,6 +491,8 @@ namespace RRCGBuild
         public static Vector3Port operator *(Vector3Port a, IntPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data * b.Data };
+            // This will fix the simple case for missing default value types. Leave it up to the user to force more complex types for now.
+            if (b.IsDataPort) b = ChipLib.IntConst(b);
             return ChipBuilder.Vector3Scale(a, b);
         }
         public static Vector3Port operator *(IntPort a, Vector3Port b)
@@ -499,12 +503,13 @@ namespace RRCGBuild
         public static Vector3Port operator /(Vector3Port a, FloatPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data / b.Data };
+            // This will fix the simple case for missing default value types. Leave it up to the user to force more complex types for now.
+            if (b.IsDataPort) b = ChipLib.FloatConst(b);
             return ChipBuilder.Vector3Scale(a, 1f / b);
         }
         public static Vector3Port operator /(Vector3Port a, IntPort b)
         {
-            if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data / b.Data };
-            return ChipBuilder.Vector3Scale(a, 1 / b);
+            return a / (FloatPort)b;
         }
     }
     public class QuaternionPort : AnyPort

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RRCGBuild;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RRCGSource
@@ -107,5 +108,17 @@ namespace RRCGSource
         /// This operation is quite expensive!
         /// </summary>
         public static string BitString(int bits) { return default; }
+
+        /// <summary>
+        /// A float constant that forces its type. Use e.g. to pass a float constant into the Vector3Scale chip.
+        /// Maybe this can be done automatic at some point...
+        /// </summary>
+        public static float FloatConst(float value) { return default; }
+
+        /// <summary>
+        /// A int constant that forces its type. Use e.g. to pass a int constant into the Vector3Scale chip.
+        /// Maybe this can be done automatic at some point...
+        /// </summary>
+        public static int IntConst(int value) { return default; }
     }
 }
