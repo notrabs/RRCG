@@ -28,7 +28,7 @@ namespace RRCG
                 Compilation = Compilation.AddSyntaxTrees(tree);
 
             return Compilation.GetSemanticModel(tree);
-    }
+        }
 
         //
         // Class and Module
@@ -75,9 +75,15 @@ namespace RRCG
 
         public override SyntaxNode VisitClassDeclaration(ClassDeclarationSyntax node)
         {
-            if (node.BaseList.Types.Any(t => t.ToString() == "StudioObjectDescriptor")) return studioObjectDescriptorRewriter.VisitClassDeclarationRoot(node);
+            if (node.BaseList?.Types.Any(t =>
+                t.ToString().Contains("StudioObjectDescriptor")) ?? false)
+                return studioObjectDescriptorRewriter.VisitClassDeclarationRoot(node);
+            if (node.BaseList?.Types.Any(t =>
+                t.ToString().Contains("CircuitDescriptor") ||
+                t.ToString().Contains("CircuitLibrary")) ?? false)
+                return circuitDescriptorRewriter.VisitClassDeclarationRoot(node);
 
-            return circuitDescriptorRewriter.VisitClassDeclarationRoot(node);
+            return base.VisitClassDeclaration(node);
         }
     }
 }
