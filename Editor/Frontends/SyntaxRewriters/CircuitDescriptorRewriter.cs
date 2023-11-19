@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using UnityEngine;
-using Microsoft.CodeAnalysis.Operations;
 
 namespace RRCG
 {
@@ -88,11 +87,7 @@ namespace RRCG
                                 SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
                                 SyntaxFactory.AnonymousMethodExpression()
                                             .WithParameterList(method.ParameterList)
-                                            .WithBlock(
-                                                WrapBlockInLabelAccessibilityScope(
-                                                    SyntaxFactory.Block(statements), false
-                                                )
-                                            )
+                                            .WithBlock(SyntaxFactory.Block(statements))
                             }.Concat(
                                 method.ParameterList.Parameters.Select(parameter => SyntaxFactory.IdentifierName(parameter.Identifier.ToString()))
                             ).ToArray()
@@ -119,11 +114,7 @@ namespace RRCG
                             SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
                             SyntaxFactory.AnonymousMethodExpression()
                                         .WithParameterList(SyntaxFactory.ParameterList())
-                                        .WithBlock(
-                                                WrapBlockInLabelAccessibilityScope(
-                                                    SyntaxFactory.Block(statements), false
-                                                )
-                                            )
+                                        .WithBlock(SyntaxFactory.Block(statements))
                         )
                     )
                 ).NormalizeWhitespace();
@@ -135,9 +126,7 @@ namespace RRCG
             else
             {
                 method = method.WithBody(
-                    method.Body.WithStatements(
-                        WrapStatementsInLabelAccessibilityScope(statements, false)
-                    )
+                    method.Body.WithStatements(statements)
                 );
             }
 
@@ -161,17 +150,25 @@ namespace RRCG
 
         public T VisitAnonymousFunction<T>(T method) where T : AnonymousFunctionExpressionSyntax
         {
-            if (method.ExpressionBody != null) return method;
+            SyntaxList<StatementSyntax> statements;
+            if (method.Block != null)
+            {
+                statements = WrapFunctionStatements(
+                    method.Block.Statements,
+                    SyntaxUtils.IsBlockVoid(method.Block)
+                );
+            } else
+            {
+                // .ExpressionBody and .Block are mutually exclusive -- this function is without a block.
+                // We need one for label accessibility scopes, so let's create one.
+                statements = SyntaxFactory.SingletonList<StatementSyntax>(
+                                SyntaxFactory.ExpressionStatement(method.ExpressionBody));
 
-            var statements = WrapFunctionStatements(
-                method.Block.Statements,
-                SyntaxUtils.IsBlockVoid(method.Block)
-            );
+                statements = WrapStatementsInLabelAccessibilityScope(statements, false);
+            }
 
             return (T)method.WithBody(
-                SyntaxFactory.Block(
-                    WrapStatementsInLabelAccessibilityScope(statements, false)
-                )
+                SyntaxFactory.Block(statements)
             );
         }
 
@@ -218,6 +215,20 @@ namespace RRCG
         // Method contents
         // 
 
+        public override SyntaxNode VisitBlock(BlockSyntax node)
+        {
+            bool canAccessParent = false;
+            if (node.Parent != null)
+                canAccessParent = node.Parent.Kind() != SyntaxKind.MethodDeclaration &&
+                                  node.Parent.Kind() != SyntaxKind.AnonymousMethodExpression &&
+                                  node.Parent.Kind() != SyntaxKind.ParenthesizedLambdaExpression &&
+                                  node.Parent.Kind() != SyntaxKind.SimpleLambdaExpression;
+
+            var newStatements = new SyntaxList<StatementSyntax>(node.Statements.Select(s => (StatementSyntax)Visit(s)));
+            return SyntaxFactory.Block(
+                        WrapStatementsInLabelAccessibilityScope(newStatements, canAccessParent)
+                    );
+        }
         public override SyntaxNode VisitUnsafeStatement(UnsafeStatementSyntax node)
         {
             return node.Block;
@@ -511,6 +522,15 @@ namespace RRCG
             StatementSyntax trueStatement = (StatementSyntax)Visit(node.Statement);
             StatementSyntax falseStatement = node.Else != null ? (StatementSyntax)Visit(node.Else.Statement) : null;
 
+            // If true/false statements are blocks, we'll have already
+            // wrapped them in a label accessibility scope (in VisitBlock).
+            // Otherwise we'll do this ourselves
+
+            if (trueStatement is not BlockSyntax trueBlock)
+                trueBlock = WrapBlockInLabelAccessibilityScope(SyntaxUtils.WrapInBlock(trueStatement), true);
+            if (falseStatement is not BlockSyntax falseBlock)
+                falseBlock = WrapBlockInLabelAccessibilityScope(SyntaxUtils.WrapInBlock(falseStatement), true);
+
             return SyntaxFactory.ExpressionStatement(
                 SyntaxFactory.InvocationExpression(
                     SyntaxFactory.MemberAccessExpression(
@@ -520,12 +540,8 @@ namespace RRCG
                 .WithArgumentList(
                     SyntaxUtils.ArgumentList(
                         test,
-                        ExecDelegate().WithBlock(
-                            WrapBlockInLabelAccessibilityScope(SyntaxUtils.WrapInBlock(trueStatement), true)
-                        ),
-                        ExecDelegate().WithBlock(
-                            WrapBlockInLabelAccessibilityScope(SyntaxUtils.WrapInBlock(falseStatement), true)
-                        )
+                        ExecDelegate().WithBlock(trueBlock),
+                        ExecDelegate().WithBlock(falseBlock)
                  )))
             .NormalizeWhitespace();
         }
@@ -611,9 +627,15 @@ namespace RRCG
         public override SyntaxNode VisitWhileStatement(WhileStatementSyntax node)
         {
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
-            var whileBlock = ExecDelegate().WithBlock(
-                WrapBlockInLabelAccessibilityScope((BlockSyntax)Visit(node.Statement), true)
-            );
+            StatementSyntax whileStatement = (StatementSyntax)Visit(node.Statement);
+
+            // Like with If translation -- if the statement is a block,
+            // we'll have already wrapped it in a label accessibility scope.
+            // Otherwise we need to do this here.
+            if (whileStatement is not BlockSyntax whileBlock)
+                whileBlock = WrapBlockInLabelAccessibilityScope(SyntaxUtils.WrapInBlock(whileStatement), true);
+
+            var whileDelegate = ExecDelegate().WithBlock(whileBlock);
 
             return SyntaxFactory.ExpressionStatement(
                 SyntaxFactory.InvocationExpression(
@@ -624,15 +646,21 @@ namespace RRCG
                             new SyntaxNodeOrToken[]{
                                 SyntaxFactory.Argument(test),
                                 SyntaxFactory.Token(SyntaxKind.CommaToken),
-                                SyntaxFactory.Argument(whileBlock)})))).NormalizeWhitespace();
+                                SyntaxFactory.Argument(whileDelegate)})))).NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitDoStatement(DoStatementSyntax node)
         {
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
-            var whileBlock = ExecDelegate().WithBlock(
-                WrapBlockInLabelAccessibilityScope((BlockSyntax)Visit(node.Statement), true)
-            );
+            StatementSyntax doWhileStatement = (StatementSyntax)Visit(node.Statement);
+
+            // Like with If translation -- if the statement is a block,
+            // we'll have already wrapped it in a label accessibility scope.
+            // Otherwise we need to do this here.
+            if (doWhileStatement is not BlockSyntax doBlock)
+                doBlock = WrapBlockInLabelAccessibilityScope(SyntaxUtils.WrapInBlock(doWhileStatement), true);
+
+            var doDelegate = ExecDelegate().WithBlock(doBlock);
 
             return SyntaxFactory.ExpressionStatement(
                 SyntaxFactory.InvocationExpression(
@@ -643,7 +671,7 @@ namespace RRCG
                             new SyntaxNodeOrToken[]{
                                 SyntaxFactory.Argument(test),
                                 SyntaxFactory.Token(SyntaxKind.CommaToken),
-                                SyntaxFactory.Argument(whileBlock)})))).NormalizeWhitespace();
+                                SyntaxFactory.Argument(doDelegate)})))).NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitBinaryExpression(BinaryExpressionSyntax node)
