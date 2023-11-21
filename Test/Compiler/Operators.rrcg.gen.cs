@@ -223,7 +223,7 @@ namespace RRCGBuild
             e.Receiver();
             IntPort dataA = __VariableDeclaratorExpression("dataA", () => BinaryLiteral(0b00000000000011111111111111111111));
             IntPort dataB = __VariableDeclaratorExpression("dataB", () => BinaryLiteral(0b11111111111111111111000000000000));
-            IntPort portA = __VariableDeclaratorExpression("portA", () => Reroute(dataA));
+            IntPort portA = __VariableDeclaratorExpression("portA", () => Reroute<IntPort>(dataA));
             ChipLib.Log(__StringInterpolation("Bitwise AND, pure data: ", ChipLib.BitString(dataA & dataB)));
             ChipLib.Log(__StringInterpolation("Bitwise AND, with ports: ", ChipLib.BitString(portA & dataB)));
             ChipLib.Log(__StringInterpolation("Bitwise OR, pure data: ", ChipLib.BitString(dataA | dataB)));
@@ -231,13 +231,13 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation("Bitwise XOR, pure data: ", ChipLib.BitString(dataA ^ dataB)));
             ChipLib.Log(__StringInterpolation("Bitwise XOR, with ports: ", ChipLib.BitString(portA ^ dataB)));
             IntPort dataC = __VariableDeclaratorExpression("dataC", () => BinaryLiteral(0b00000000000011111111000000000000));
-            IntPort portC = __VariableDeclaratorExpression("portC", () => Reroute(dataC));
+            IntPort portC = __VariableDeclaratorExpression("portC", () => Reroute<IntPort>(dataC));
             ChipLib.Log(__StringInterpolation("Bit shift left, pure data: ", ChipLib.BitString(ChipBuilder.BitShiftLeft(dataC, 12))));
             ChipLib.Log(__StringInterpolation("Bit shift left, with ports: ", ChipLib.BitString(ChipBuilder.BitShiftLeft(portC, 12))));
             ChipLib.Log(__StringInterpolation("Bit shift right, pure data: ", ChipLib.BitString(ChipBuilder.BitShiftRight(dataC, 12))));
             ChipLib.Log(__StringInterpolation("Bit shift right, with ports: ", ChipLib.BitString(ChipBuilder.BitShiftRight(portC, 12))));
             IntPort dataD = __VariableDeclaratorExpression("dataD", () => BinaryLiteral(0b_0000_1111_0000_1111_0000_1111_0000_1100));
-            IntPort portD = __VariableDeclaratorExpression("portD", () => Reroute(dataD));
+            IntPort portD = __VariableDeclaratorExpression("portD", () => Reroute<IntPort>(dataD));
             ChipLib.Log(__StringInterpolation("Bitwise complement, pure data: ", ChipLib.BitString(~dataD)));
             ChipLib.Log(__StringInterpolation("Bitwise complement, with ports: ", ChipLib.BitString(~portD)));
             ExecFlow.current.Clear();

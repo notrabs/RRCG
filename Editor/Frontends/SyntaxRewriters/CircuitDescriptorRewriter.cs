@@ -245,15 +245,80 @@ namespace RRCG
 
         public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax node)
         {
-            if (node.Expression is MemberAccessExpressionSyntax ma && ma.Expression is IdentifierNameSyntax ins)
+            // First, visit the node and store the transformed result.
+            var visitedNode = (InvocationExpressionSyntax)base.VisitInvocationExpression(node);
+            var expression = visitedNode.Expression;
+
+            // Rewrite Chips -> ChipBuilder
+            if (expression is MemberAccessExpressionSyntax ma && ma.Expression is SimpleNameSyntax ins)
             {
                 if (ins.Identifier.Text == "Chips")
                 {
-                    node = node.WithExpression(ma.WithExpression(SyntaxFactory.IdentifierName("ChipBuilder")));
+                    visitedNode = visitedNode.WithExpression(ma.WithExpression(SyntaxFactory.IdentifierName("ChipBuilder")));
                 }
             }
 
-            return base.VisitInvocationExpression(node);
+            // Attempt to fixup ommitted type parameters
+            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree); // original node!
+            var symbolInfo = semanticModel.GetSymbolInfo(node);
+            var methodSymbol = (IMethodSymbol)symbolInfo.Symbol;
+            if (methodSymbol == null) return visitedNode;
+
+            // Get the method name syntax
+            // A bit clunky but we have to do this..
+            SimpleNameSyntax methodName;
+            var expressionKind = expression.Kind();
+
+            switch (expressionKind)
+            {
+                case SyntaxKind.GenericName:
+                case SyntaxKind.IdentifierName:
+                    methodName = (SimpleNameSyntax)expression;
+                    break;
+
+                case SyntaxKind.SimpleMemberAccessExpression:
+                    methodName = ((MemberAccessExpressionSyntax)expression).Name;
+                    break;
+
+                default:
+                    return visitedNode;
+            }
+
+            // If the method is not a generic method, or the name is already a generic name
+            // (meaning type assignments were written manually), bail out
+            if (!methodSymbol.IsGenericMethod || methodName is GenericNameSyntax) return visitedNode;
+
+            // Otherwise we need to rewrite the types
+            var rewrittenTypes = new SeparatedSyntaxList<TypeSyntax>();
+            var resolvedTypeArgs = methodSymbol.TypeArguments;
+
+            foreach (var resolvedType in resolvedTypeArgs)
+            {
+                // Ensure the type resolved correctly
+                if (resolvedType.ToString() == "?") return visitedNode;
+
+                // Rewrite & store the type
+                var typeSyntax = resolvedType.ToTypeSyntax();
+                rewrittenTypes = rewrittenTypes.Add((TypeSyntax)Visit(typeSyntax));
+            }
+
+            // Apply the type parameters to the expression & return
+            var genericName = SyntaxFactory.GenericName(methodName.Identifier, TypeArgumentList(rewrittenTypes));
+
+            switch (expressionKind)
+            {
+                case SyntaxKind.GenericName:
+                case SyntaxKind.IdentifierName:
+                    return visitedNode.WithExpression(genericName);
+                
+                case SyntaxKind.SimpleMemberAccessExpression:
+                    return visitedNode.WithExpression(
+                            ((MemberAccessExpressionSyntax)visitedNode.Expression).WithName(genericName)
+                        );
+
+                default:
+                    return visitedNode;
+            }
         }
 
         //public override SyntaxNode VisitMemberAccessExpression(MemberAccessExpressionSyntax node)
@@ -511,14 +576,14 @@ namespace RRCG
                 // the type assignment for invocation.
                 if (resolvedType != null && resolvedType.ToString() != "?")
                 {
-                    var name = resolvedType.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat);
-                    var parsedType = (TypeSyntax)Visit(SyntaxFactory.ParseTypeName(name));
+                    var type = resolvedType.ToTypeSyntax();
+                    var rewrittenType = (TypeSyntax)Visit(type);
 
                     invocationName = GenericName("__VariableDeclaratorExpression").
                         WithTypeArgumentList(
                             TypeArgumentList(
                                 SingletonSeparatedList<TypeSyntax>(
-                                    parsedType
+                                    rewrittenType
                                 )
                             )
                         );
@@ -873,8 +938,8 @@ namespace RRCG
             if (typeInfo.ConvertedType is IErrorTypeSymbol)
                 throw new Exception($"Unable to determine result type of ternary expression: {node}");
 
-            var convertedType = typeInfo.ConvertedType.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat);
-            var typeAssignment = (TypeSyntax)Visit(SyntaxFactory.ParseTypeName(convertedType));
+            var convertedType = typeInfo.ConvertedType.ToTypeSyntax();
+            var typeAssignment = (TypeSyntax)Visit(convertedType);
 
             return SyntaxFactory.InvocationExpression(
                     SyntaxFactory.MemberAccessExpression(

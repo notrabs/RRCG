@@ -106,5 +106,14 @@ namespace RRCG
             }
             return null;
         }
+
+        public static TypeSyntax ToTypeSyntax(this ITypeSymbol symbol)
+        {
+            var str = symbol.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat);
+            if (str == "?")
+                throw new Exception("Type symbol did not resolve correctly!");
+
+            return SyntaxFactory.ParseTypeName(str);
+        }
     }
 }

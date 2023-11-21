@@ -12,9 +12,9 @@ namespace RRCGBuild
             __BeginLabelAccessibilityScope(false);
             var a = __VariableDeclaratorExpression("a", () => RandomInt(1, 10));
             CircuitBoard(ContentsExec);
-            var b = __VariableDeclaratorExpression("b", () => CircuitBoard(ContentsMixed, a));
+            var b = __VariableDeclaratorExpression("b", () => CircuitBoard<IntPort, IntPort>(ContentsMixed, a));
             ChipLib.Log(b);
-            var(c, d) = CircuitBoard(ContentsData, b, b);
+            var(c, d) = CircuitBoard<IntPort, IntPort, (IntPort namedValue, IntPort)>(ContentsData, b, b);
             ChipLib.Log(c);
             ChipLib.Log(d);
             CircuitBoard(ExecOut);
