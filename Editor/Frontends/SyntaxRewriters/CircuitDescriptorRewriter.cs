@@ -159,7 +159,7 @@ namespace RRCG
             {
                 statements = WrapFunctionStatements(
                     visitedMethod.Block.Statements,
-                    SyntaxUtils.IsBlockVoid(visitedMethod.Block)
+                    SyntaxUtils.IsBlockVoid(method.Block)
                 );
             } else
             {
