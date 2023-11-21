@@ -106,12 +106,5 @@ namespace RRCG
             }
             return null;
         }
-
-        public static string GetFullName(this ITypeSymbol symbol)
-        {
-            var format = new SymbolDisplayFormat(typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypesAndNamespaces);
-            return symbol.ToDisplayString(format);
-        }
-
     }
 }

@@ -197,19 +197,19 @@ namespace RRCGBuild
             e.Receiver();
             FloatPort dataA = __VariableDeclaratorExpression("dataA", () => 0);
             FloatPort dataB = __VariableDeclaratorExpression("dataB", () => 1);
-            ChipLib.EventCache(ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, dataA, dataB));
+            ChipLib.EventCache(ChipBuilder.IfValue<FloatPort>(true, dataA, dataB));
             FloatPort portA = __VariableDeclaratorExpression("portA", () => RandomFloat(0, 0));
             FloatPort portB = __VariableDeclaratorExpression("portB", () => RandomFloat(1, 1));
-            ChipLib.EventCache(ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, portA, portB));
+            ChipLib.EventCache(ChipBuilder.IfValue<FloatPort>(true, portA, portB));
             // Port / data
-            ChipLib.EventCache(ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, portA, dataB));
+            ChipLib.EventCache(ChipBuilder.IfValue<FloatPort>(true, portA, dataB));
             // Implicit conversions
             // Floats without -f suffix
-            RandomFloat(0, ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, 123, 456));
+            RandomFloat(0, ChipBuilder.IfValue<FloatPort>(true, 123, 456));
             IntPort intPort = __VariableDeclaratorExpression("intPort", () => RandomInt(0, 0));
-            RandomFloat(0, ChipBuilder.IfValue<RRCGBuild.FloatPort>(true, 1.5f, intPort));
+            RandomFloat(0, ChipBuilder.IfValue<FloatPort>(true, 1.5f, intPort));
             // Implicit conversion for result
-            ChipLib.Log(__StringInterpolation("Result: ", (ChipBuilder.IfValue<RRCGBuild.FloatPort>(false, intPort, portA))));
+            ChipLib.Log(__StringInterpolation("Result: ", (ChipBuilder.IfValue<FloatPort>(false, intPort, portA))));
             ExecFlow.current.Clear();
             __EndLabelAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);

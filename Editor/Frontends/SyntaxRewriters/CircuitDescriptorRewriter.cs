@@ -873,14 +873,8 @@ namespace RRCG
             if (typeInfo.ConvertedType is IErrorTypeSymbol)
                 throw new Exception($"Unable to determine result type of ternary expression: {node}");
 
-            var originalValueType = typeInfo.ConvertedType.GetFullName();
-            var valueType = originalValueType;
-
-            // If valueType is already a build-realm type, then awesome!
-            // Otherwise we'll need to check the mapping.
-            if (!TypeNameMapping.SourceToBuildRealmTypeNames.Values.Contains(valueType) &&
-                !TypeNameMapping.SourceToBuildRealmTypeNames.TryGetValue(valueType, out valueType))
-                throw new Exception($"Unable to determine build-realm type for: {originalValueType}");
+            var convertedType = typeInfo.ConvertedType.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat);
+            var typeAssignment = (TypeSyntax)Visit(SyntaxFactory.ParseTypeName(convertedType));
 
             return SyntaxFactory.InvocationExpression(
                     SyntaxFactory.MemberAccessExpression(
@@ -891,7 +885,7 @@ namespace RRCG
                         .WithTypeArgumentList(
                             SyntaxFactory.TypeArgumentList(
                                 SyntaxFactory.SingletonSeparatedList<TypeSyntax>(
-                                    SyntaxFactory.IdentifierName(valueType))))))
+                                    typeAssignment)))))
                 .WithArgumentList(
                     SyntaxFactory.ArgumentList(
                         SyntaxFactory.SeparatedList<ArgumentSyntax>(
