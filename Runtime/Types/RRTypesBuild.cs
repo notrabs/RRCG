@@ -401,7 +401,15 @@ namespace RRCGBuild
     public class Vector3Port : AnyPort
     {
         public static Vector3Port zero { get => CircuitBuilder.Singleton("Vector3_zero", () => new Vector3Port()); }
+        public static Vector3Port one { get => CircuitBuilder.Singleton("Vector3_one", () => new Vector3Port(1, 1, 1)); }
         public static Vector3Port up { get => CircuitBuilder.Singleton("Vector3_up", () => new Vector3Port(0, 1, 0)); }
+        public static Vector3Port down { get => CircuitBuilder.Singleton("Vector3_down", () => new Vector3Port(0, -1, 0)); }
+        public static Vector3Port forward { get => CircuitBuilder.Singleton("Vector3_forward", () => new Vector3Port(0, 0, 1)); }
+        public static Vector3Port back { get => CircuitBuilder.Singleton("Vector3_back", () => new Vector3Port(0, 0, -1)); }
+        public static Vector3Port right { get => CircuitBuilder.Singleton("Vector3_right", () => new Vector3Port(1, 0, 0)); }
+        public static Vector3Port left { get => CircuitBuilder.Singleton("Vector3_left", () => new Vector3Port(-1, 0, 0)); }
+        public static Vector3Port positiveInfinity { get => CircuitBuilder.Singleton("Vector3_positiveInfinity", () => new Vector3Port(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity)); }
+        public static Vector3Port negativeInfinity { get => CircuitBuilder.Singleton("Vector3_negativeInfinity", () => new Vector3Port(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity)); }
 
         public Vector3Port()
         {
@@ -467,6 +475,24 @@ namespace RRCGBuild
         public FloatPort y { get => split.Y; }
         public FloatPort z { get => split.Z; }
 
+        public FloatPort this[IntPort index]
+        {
+            get
+            {
+                if (IsDataPort && index.IsDataPort) return new FloatPort() { Data = Data[index.Data] };
+                if (index.IsDataPort) return index.Data switch
+                {
+                    0 => split.X,
+                    1 => split.Y,
+                    2 => split.Z,
+                    _ => throw new Exception("Vector index out of bounds")
+                };
+
+                var (x, y, z) = split;
+                return ChipLib.ValueSwitch(index, x, y, z);
+            }
+        }
+
         public static Vector3Port operator +(Vector3Port a, Vector3Port b)
         {
             if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data + b.Data };
@@ -509,6 +535,7 @@ namespace RRCGBuild
         }
         public static Vector3Port operator /(Vector3Port a, IntPort b)
         {
+            if (b.IsDataPort) return a / ChipLib.FloatConst(b);
             return a / (FloatPort)b;
         }
     }
