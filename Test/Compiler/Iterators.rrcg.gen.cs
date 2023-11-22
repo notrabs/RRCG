@@ -38,13 +38,13 @@ namespace RRCGBuild
             var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("WhileTest").Definition());
             entry.Receiver();
             var list = __VariableDeclaratorExpression("list", () => ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"));
-            var listCache = __VariableDeclaratorExpression("listCache", () => ChipLib.EventCache(list));
+            var listCache = __VariableDeclaratorExpression("listCache", () => ChipLib.EventCache<ListPort<StringPort>>(list));
             __While(ChipBuilder.GreaterThan(listCache.Count, 0), delegate
             {
                 __BeginLabelAccessibilityScope(true);
                 ChipLib.Log(Concat("Removing \"", listCache[0], "\" from list"));
-                ListRemoveAt(listCache, 0);
-                ChipLib.Log(Concat("List now has ", ToString(listCache.Count), " items."));
+                ListRemoveAt<StringPort>(listCache, 0);
+                ChipLib.Log(Concat("List now has ", ToString<IntPort>(listCache.Count), " items."));
                 ChipLib.AwaitDelay();
                 __EndLabelAccessibilityScope();
             }

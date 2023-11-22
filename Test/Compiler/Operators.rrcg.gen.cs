@@ -197,12 +197,12 @@ namespace RRCGBuild
             e.Receiver();
             FloatPort dataA = __VariableDeclaratorExpression("dataA", () => 0);
             FloatPort dataB = __VariableDeclaratorExpression("dataB", () => 1);
-            ChipLib.EventCache(ChipBuilder.IfValue<FloatPort>(true, dataA, dataB));
+            ChipLib.EventCache<FloatPort>(ChipBuilder.IfValue<FloatPort>(true, dataA, dataB));
             FloatPort portA = __VariableDeclaratorExpression("portA", () => RandomFloat(0, 0));
             FloatPort portB = __VariableDeclaratorExpression("portB", () => RandomFloat(1, 1));
-            ChipLib.EventCache(ChipBuilder.IfValue<FloatPort>(true, portA, portB));
+            ChipLib.EventCache<FloatPort>(ChipBuilder.IfValue<FloatPort>(true, portA, portB));
             // Port / data
-            ChipLib.EventCache(ChipBuilder.IfValue<FloatPort>(true, portA, dataB));
+            ChipLib.EventCache<FloatPort>(ChipBuilder.IfValue<FloatPort>(true, portA, dataB));
             // Implicit conversions
             // Floats without -f suffix
             RandomFloat(0, ChipBuilder.IfValue<FloatPort>(true, 123, 456));

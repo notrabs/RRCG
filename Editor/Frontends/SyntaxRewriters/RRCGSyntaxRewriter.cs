@@ -36,22 +36,24 @@ namespace RRCG
 
         public override SyntaxNode VisitCompilationUnit(CompilationUnitSyntax node)
         {
-            if (!node.Usings.Any(u => u.Name.ToString() == "RRCGSource"))
-            {
-                node.RemoveNode(node.Usings.First(u => u.Name.ToString() == "RRCGSource"), SyntaxRemoveOptions.KeepNoTrivia);
-            }
-
-            if (!node.Usings.Any(u => u.Name.ToString() == "RRCGBuild"))
-            {
-                node = node.AddUsings(UsingDirective(ParseName("RRCGBuild")).WithAdditionalAnnotations(Formatter.Annotation));
-            }
-
-            if (!node.Usings.Any(u => u.Name.ToString() == "System.Collections.Generic"))
-            {
-                node = node.AddUsings(UsingDirective(ParseName("System.Collections.Generic")).WithAdditionalAnnotations(Formatter.Annotation));
-            }
-
+            // We visit the compilation unit before altering its usings
+            // so that method symbols can resolve correctly to their source-realm versions.
             var compiled = (CompilationUnitSyntax)base.VisitCompilationUnit(node);
+
+            if (compiled.Usings.Any(u => u.Name.ToString() == "RRCGSource"))
+            {
+                compiled.RemoveNode(compiled.Usings.First(u => u.Name.ToString() == "RRCGSource"), SyntaxRemoveOptions.KeepNoTrivia);
+            }
+
+            if (!compiled.Usings.Any(u => u.Name.ToString() == "RRCGBuild"))
+            {
+                compiled = compiled.AddUsings(UsingDirective(ParseName("RRCGBuild")).WithAdditionalAnnotations(Formatter.Annotation));
+            }
+
+            if (!compiled.Usings.Any(u => u.Name.ToString() == "System.Collections.Generic"))
+            {
+                compiled = compiled.AddUsings(UsingDirective(ParseName("System.Collections.Generic")).WithAdditionalAnnotations(Formatter.Annotation));
+            }
 
             return compiled.WithMembers(SingletonList<MemberDeclarationSyntax>(
                 NamespaceDeclaration(IdentifierName("RRCGBuild"))

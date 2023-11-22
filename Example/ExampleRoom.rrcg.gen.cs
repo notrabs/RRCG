@@ -53,7 +53,7 @@ namespace RRCGBuild
             var rand1 = __VariableDeclaratorExpression("rand1", () => RandomInt(0, 10));
             var sum = __VariableDeclaratorExpression("sum", () => (rand1 + 3) + (4 + 5));
             var cached = __VariableDeclaratorExpression("cached", () => ChipLib.EventCache<IntPort>(sum));
-            PlayerShowSubtitle(GetLocalPlayer(), ToString(cached), 3.0f, 0);
+            PlayerShowSubtitle(GetLocalPlayer(), ToString<IntPort>(cached), 3.0f, 0);
             __EndLabelAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }

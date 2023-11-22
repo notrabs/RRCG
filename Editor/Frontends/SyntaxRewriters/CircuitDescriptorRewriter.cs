@@ -262,6 +262,8 @@ namespace RRCG
             var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree); // original node!
             var symbolInfo = semanticModel.GetSymbolInfo(node);
             var methodSymbol = (IMethodSymbol)symbolInfo.Symbol;
+
+            // Bail out if we failed to resolve the method symbol.
             if (methodSymbol == null) return visitedNode;
 
             // Get the method name syntax

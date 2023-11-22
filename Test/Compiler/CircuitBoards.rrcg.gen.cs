@@ -25,7 +25,7 @@ namespace RRCGBuild
             //    ChipLib.Log("Anonymous Function");
             //    return "test";
             //});
-            CircuitBoard((IntPort test) =>
+            CircuitBoard<IntPort>((IntPort test) =>
             {
                 ExecFlow rrcg_return_flow = new ExecFlow();
                 __BeginLabelAccessibilityScope(false);
