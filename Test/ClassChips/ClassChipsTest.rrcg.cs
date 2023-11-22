@@ -5,6 +5,8 @@ internal class ClassChipsTest : CircuitDescriptor
     public override void CircuitGraph()
     {
         DelayTest();
+
+        ErrorTest();
     }
 
     void DelayTest()
@@ -26,7 +28,18 @@ internal class ClassChipsTest : CircuitDescriptor
 
         StartNewGraph();
         ChipLib.Log("Delay Test 3");
-        delay.Run(); 
+        delay.Run();
+    }
+
+    void ErrorTest()
+    {
+        TestUtils.ExpectToThrow(() =>
+        {
+            var delay = new Delay(1);
+
+            delay.Await();
+            delay.Await();
+        }, "Await can only be called once");
     }
 }
 
