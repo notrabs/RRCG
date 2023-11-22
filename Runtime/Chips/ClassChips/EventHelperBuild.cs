@@ -10,11 +10,13 @@ namespace RRCGBuild
 
         protected BaseEvent() { }
 
-        protected void InitNewEvent(params (StringPort, Type)[] eventDefinition)
+        protected void InitNewEvent(string eventName, params (StringPort, Type)[] eventDefinition)
         {
             var sourceName = SanitizeUtils.SantizeCV2Name(SemanticStackUtils.GetNamedAssignmentName("Event"));
 
-            EventName = $"RRCG_{sourceName}_{Context.current.GetUniqueId()}";
+            var eventNameBase = eventName ?? sourceName;
+
+            EventName = $"RRCG_{eventNameBase}_{Context.current.GetUniqueId()}";
 
             ChipBuilder.EventDefinition(EventName, eventDefinition);
         }
@@ -35,8 +37,11 @@ namespace RRCGBuild
 
     public class EventDefinition : BaseEvent
     {
-        public EventDefinition() => InitNewEvent();
-        internal EventDefinition(string existingEvent) => InitExistingEvent(existingEvent);
+        public EventDefinition() => InitNewEvent(null);
+        public EventDefinition(StringPort eventName) => InitNewEvent(eventName.AsData<string>());
+
+        // The bool param is only used to make the signature different from the other constructors
+        internal EventDefinition(bool _, string existingEvent) => InitExistingEvent(existingEvent);
 
         public void SendLocal() => base.SendLocal();
         public void SendOthers() => base.SendOthers();
@@ -53,10 +58,13 @@ namespace RRCGBuild
         where T0 : AnyPort, new()
     {
         public EventDefinition(StringPort param0Name = null) => InitNewEvent(
+            null,
             (param0Name ?? "value0", typeof(T0))
         );
-
-        // The bool param is a hack to make the signature different to the normal constructor, since string implicitly casts to StringPort.
+        public EventDefinition(StringPort eventName, StringPort param0Name) => InitNewEvent(
+            eventName.AsData<string>(),
+            (param0Name ?? "value0", typeof(T0))
+        );
         internal EventDefinition(bool _, string existingEvent) => InitExistingEvent(existingEvent);
 
         public void SendLocal(T0 value0) => base.SendLocal(value0);
@@ -74,10 +82,16 @@ namespace RRCGBuild
            where T1 : AnyPort, new()
     {
         public EventDefinition(StringPort param0Name = null, StringPort param1Name = null) => InitNewEvent(
-            (param0Name ?? "value0", typeof(T0)), 
+            null,
+            (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1))
         );
-        internal EventDefinition(string existingEvent) => InitExistingEvent(existingEvent);
+        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name) => InitNewEvent(
+            eventName.AsData<string>(),
+            (param0Name ?? "value0", typeof(T0)),
+            (param1Name ?? "value1", typeof(T1))
+        );
+        internal EventDefinition(bool _, string existingEvent) => InitExistingEvent(existingEvent);
 
         public void SendLocal(T0 value0, T1 value1) => base.SendLocal(value0, value1);
         public void SendOthers(T0 value0, T1 value1) => base.SendOthers(value0, value1);
@@ -95,7 +109,14 @@ namespace RRCGBuild
        where T2 : AnyPort, new()
     {
         public EventDefinition(StringPort param0Name = null, StringPort param1Name = null, StringPort param2Name = null) => InitNewEvent(
-            (param0Name ?? "value0", typeof(T0)), 
+            null,
+            (param0Name ?? "value0", typeof(T0)),
+            (param1Name ?? "value1", typeof(T1)),
+            (param2Name ?? "value2", typeof(T2))
+        );
+        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name) => InitNewEvent(
+            eventName.AsData<string>(),
+            (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2))
         );
@@ -111,7 +132,9 @@ namespace RRCGBuild
         public (T0, T1, T2) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2>(EventName);
     }
 
-
+    //
+    // Old classes
+    //
 
     [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
     public class EventHelper

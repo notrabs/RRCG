@@ -286,7 +286,7 @@ namespace RRCGBuild
         /// </summary>
         public static EventDefinition ExistingEvent(string eventName)
         {
-            return new EventDefinition(eventName);
+            return new EventDefinition(true, eventName);
         }
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace RRCGBuild
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
         {
-            return new EventDefinition<T0, T1>(eventName);
+            return new EventDefinition<T0, T1>(true, eventName);
         }
 
         //

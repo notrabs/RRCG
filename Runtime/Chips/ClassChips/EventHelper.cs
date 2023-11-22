@@ -2,8 +2,10 @@
 
 namespace RRCGSource
 {
-    public class EventDefinition {
+    public class EventDefinition
+    {
         public EventDefinition() { }
+        public EventDefinition(string baseEventName) { }
 
         public void SendLocal() { }
         public void SendOthers() { }
@@ -19,6 +21,7 @@ namespace RRCGSource
     public class EventDefinition<T0>
     {
         public EventDefinition(string param0Name = null) { }
+        public EventDefinition(string baseEventName, string param0Name) { }
 
         public void SendLocal(T0 value0) { }
         public void SendOthers(T0 value0) { }
@@ -33,6 +36,7 @@ namespace RRCGSource
     public class EventDefinition<T0, T1>
     {
         public EventDefinition(string param0Name = null, string param1Name = null) { }
+        public EventDefinition(string baseEventName, string param0Name, string param1Name) { }
 
         public void SendLocal(T0 value0, T1 value1) { }
         public void SendOthers(T0 value0, T1 value1) { }
@@ -47,6 +51,7 @@ namespace RRCGSource
     public class EventDefinition<T0, T1, T2>
     {
         public EventDefinition(string param0Name = null, string param1Name = null, string param2Name = null) { }
+        public EventDefinition(string baseEventName, string param0Name, string param1Name, string param2Name) { }
 
         public void SendLocal(T0 value0, T1 value1, T2 value2) { }
         public void SendOthers(T0 value0, T1 value1, T2 value2) { }
@@ -81,7 +86,7 @@ namespace RRCGSource
     [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
     public class EventHelper<T0>
     {
-        public EventHelper(string eventName, string value0 = "value0"){ }
+        public EventHelper(string eventName, string value0 = "value0") { }
         public EventHelper<T0> Definition() { return this; }
 
         [Obsolete("Use SendLocal() instead")]
