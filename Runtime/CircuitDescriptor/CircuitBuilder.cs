@@ -329,34 +329,32 @@ namespace RRCGBuild
         {
             if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(name))
             {
-                __RRCG_EVENT_FUNCTIONS[name] = new EventHelper("RRCG_EventFunction_" + name);
+                __RRCG_EVENT_FUNCTIONS[name] = new EventDefinition("EventFunction_" + name);
 
                 InlineGraph(() =>
                 {
-                    __RRCG_EVENT_FUNCTIONS[name].Definition();
                     __RRCG_EVENT_FUNCTIONS[name].Receiver();
                     fn();
                 });
             }
 
-            __RRCG_EVENT_FUNCTIONS[name].Sender();
+            __RRCG_EVENT_FUNCTIONS[name].SendLocal();
         }
 
         protected T __DispatchEventFunction<T>(string name, Func<T> fn)
         {
             if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(name))
             {
-                __RRCG_EVENT_FUNCTIONS[name] = new EventHelper("RRCG_EventFunction_" + name);
+                __RRCG_EVENT_FUNCTIONS[name] = new EventDefinition("EventFunction_" + name);
 
                 InlineGraph(() =>
                 {
-                    __RRCG_EVENT_FUNCTIONS[name].Definition();
                     __RRCG_EVENT_FUNCTIONS[name].Receiver();
                     __RRCG_EVENT_FUNCTION_RETURNS[name] = fn();
                 });
             }
 
-            __RRCG_EVENT_FUNCTIONS[name].Sender();
+            __RRCG_EVENT_FUNCTIONS[name].SendLocal();
 
             return (T)__RRCG_EVENT_FUNCTION_RETURNS[name];
         }
@@ -366,17 +364,16 @@ namespace RRCGBuild
         {
             if (!__RRCG_EVENT_FUNCTIONS_P1.ContainsKey(name))
             {
-                __RRCG_EVENT_FUNCTIONS_P1[name] = new EventHelper<T0>("RRCG_EventFunction_" + name, "value0");
+                __RRCG_EVENT_FUNCTIONS_P1[name] = new EventDefinition<T0>("EventFunction_" + name, "value0");
 
                 InlineGraph(() =>
                 {
-                    __RRCG_EVENT_FUNCTIONS_P1[name].Definition();
                     var param0 = __RRCG_EVENT_FUNCTIONS_P1[name].Receiver();
                     fn((T0)param0);
                 });
             }
 
-            __RRCG_EVENT_FUNCTIONS_P1[name].Sender(param0);
+            __RRCG_EVENT_FUNCTIONS_P1[name].SendLocal(param0);
         }
 
         protected T __DispatchEventFunction<T, T0>(string name, Func<T0, T> fn, T0 param0)
@@ -384,17 +381,16 @@ namespace RRCGBuild
         {
             if (!__RRCG_EVENT_FUNCTIONS_P1.ContainsKey(name))
             {
-                __RRCG_EVENT_FUNCTIONS_P1[name] = new EventHelper<T0>("RRCG_EventFunction_" + name, "value0");
+                __RRCG_EVENT_FUNCTIONS_P1[name] = new EventDefinition<T0>("EventFunction_" + name, "value0");
 
                 InlineGraph(() =>
                 {
-                    __RRCG_EVENT_FUNCTIONS_P1[name].Definition();
                     var param0 = __RRCG_EVENT_FUNCTIONS_P1[name].Receiver();
                     __RRCG_EVENT_FUNCTION_RETURNS_P1[name] = fn(param0);
                 });
             }
 
-            __RRCG_EVENT_FUNCTIONS_P1[name].Sender(param0);
+            __RRCG_EVENT_FUNCTIONS_P1[name].SendLocal(param0);
 
             return (T)__RRCG_EVENT_FUNCTION_RETURNS_P1[name];
         }
@@ -405,17 +401,16 @@ namespace RRCGBuild
         {
             if (!__RRCG_EVENT_FUNCTIONS_P2.ContainsKey(name))
             {
-                __RRCG_EVENT_FUNCTIONS_P2[name] = new EventHelper<T0, T1>("RRCG_EventFunction_" + name, "value0", "value1");
+                __RRCG_EVENT_FUNCTIONS_P2[name] = new EventDefinition<T0, T1>("EventFunction_" + name, "value0", "value1");
 
                 InlineGraph(() =>
                 {
-                    __RRCG_EVENT_FUNCTIONS_P2[name].Definition();
-                    var (param0, param1) = ((EventHelper<T0, T1>)__RRCG_EVENT_FUNCTIONS_P2[name]).Receiver();
+                    var (param0, param1) = ((EventDefinition<T0, T1>)__RRCG_EVENT_FUNCTIONS_P2[name]).Receiver();
                     fn(param0, param1);
                 });
             }
 
-            __RRCG_EVENT_FUNCTIONS_P2[name].Sender(param0, param1);
+            __RRCG_EVENT_FUNCTIONS_P2[name].SendLocal(param0, param1);
         }
 
         protected T __DispatchEventFunction<T, T0, T1>(string name, Func<T0, T1, T> fn, T0 param0, T1 param1)
@@ -424,17 +419,16 @@ namespace RRCGBuild
         {
             if (!__RRCG_EVENT_FUNCTIONS_P2.ContainsKey(name))
             {
-                __RRCG_EVENT_FUNCTIONS_P2[name] = new EventHelper<T0, T1>("RRCG_EventFunction_" + name, "value0", "value1");
+                __RRCG_EVENT_FUNCTIONS_P2[name] = new EventDefinition<T0, T1>("EventFunction_" + name, "value0", "value1");
 
                 InlineGraph(() =>
                 {
-                    __RRCG_EVENT_FUNCTIONS_P2[name].Definition();
-                    var (param0, param1) = ((EventHelper<T0, T1>)__RRCG_EVENT_FUNCTIONS_P2[name]).Receiver();
+                    var (param0, param1) = ((EventDefinition<T0, T1>)__RRCG_EVENT_FUNCTIONS_P2[name]).Receiver();
                     __RRCG_EVENT_FUNCTION_RETURNS_P2[name] = fn(param0, param1);
                 });
             }
 
-            __RRCG_EVENT_FUNCTIONS_P2[name].Sender(param0, param1);
+            __RRCG_EVENT_FUNCTIONS_P2[name].SendLocal(param0, param1);
 
             return (T)__RRCG_EVENT_FUNCTION_RETURNS_P2[name];
         }
@@ -446,17 +440,16 @@ namespace RRCGBuild
         {
             if (!__RRCG_EVENT_FUNCTIONS_P3.ContainsKey(name))
             {
-                __RRCG_EVENT_FUNCTIONS_P3[name] = new EventHelper<T0, T1, T2>("RRCG_EventFunction_" + name, "value0", "value1", "value2");
+                __RRCG_EVENT_FUNCTIONS_P3[name] = new EventDefinition<T0, T1, T2>("EventFunction_" + name, "value0", "value1", "value2");
 
                 InlineGraph(() =>
                 {
-                    __RRCG_EVENT_FUNCTIONS_P3[name].Definition();
-                    var (param0, param1, param2) = ((EventHelper<T0, T1, T2>)__RRCG_EVENT_FUNCTIONS_P3[name]).Receiver();
+                    var (param0, param1, param2) = ((EventDefinition<T0, T1, T2>)__RRCG_EVENT_FUNCTIONS_P3[name]).Receiver();
                     fn(param0, param1, param2);
                 });
             }
 
-            __RRCG_EVENT_FUNCTIONS_P3[name].Sender(param0, param1, param2);
+            __RRCG_EVENT_FUNCTIONS_P3[name].SendLocal(param0, param1, param2);
         }
 
         protected T __DispatchEventFunction<T, T0, T1, T2>(string name, Func<T0, T1, T2, T> fn, T0 param0, T1 param1, T2 param2)
@@ -466,17 +459,16 @@ namespace RRCGBuild
         {
             if (!__RRCG_EVENT_FUNCTIONS_P3.ContainsKey(name))
             {
-                __RRCG_EVENT_FUNCTIONS_P3[name] = new EventHelper<T0, T1, T2>("RRCG_EventFunction_" + name, "value0", "value1", "value2");
+                __RRCG_EVENT_FUNCTIONS_P3[name] = new EventDefinition<T0, T1, T2>("EventFunction_" + name, "value0", "value1", "value2");
 
                 InlineGraph(() =>
                 {
-                    __RRCG_EVENT_FUNCTIONS_P3[name].Definition();
-                    var (param0, param1, param2) = ((EventHelper<T0, T1, T2>)__RRCG_EVENT_FUNCTIONS_P3[name]).Receiver();
+                    var (param0, param1, param2) = ((EventDefinition<T0, T1, T2>)__RRCG_EVENT_FUNCTIONS_P3[name]).Receiver();
                     __RRCG_EVENT_FUNCTION_RETURNS_P3[name] = fn(param0, param1, param2);
                 });
             }
 
-            __RRCG_EVENT_FUNCTIONS_P3[name].Sender(param0, param1);
+            __RRCG_EVENT_FUNCTIONS_P3[name].SendLocal(param0, param1, param2);
 
             return (T)__RRCG_EVENT_FUNCTION_RETURNS_P3[name];
         }

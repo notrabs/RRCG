@@ -18,9 +18,7 @@ namespace RRCGBuild
         public static T0 EventCache<T0>(T0 value0)
             where T0 : AnyPort, new()
         {
-            var eventName = "RRCG_EventCache_" + Context.current.GetUniqueId();
-
-            var cacheEvent = new EventHelper<T0>(eventName, "value0").Definition();
+            var cacheEvent = new EventDefinition<T0>("EventCache", "value0");
 
             T0 port = null;
 
@@ -38,9 +36,7 @@ namespace RRCGBuild
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
         {
-            var eventName = "RRCG_EventCache_" + Context.current.GetUniqueId();
-
-            var cacheEvent = new EventHelper<T0, T1>(eventName, "value0", "value1").Definition();
+            var cacheEvent = new EventDefinition<T0, T1>("EventCache", "value0", "value1");
 
             (T0, T1) ports = default;
 
@@ -59,9 +55,7 @@ namespace RRCGBuild
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
         {
-            var eventName = "RRCG_EventCache_" + Context.current.GetUniqueId();
-
-            var cacheEvent = new EventHelper<T0, T1, T2>(eventName, "value0", "value1", "value2").Definition();
+            var cacheEvent = new EventDefinition<T0, T1, T2>("EventCache", "value0", "value1", "value2");
 
             (T0, T1, T2) ports = default;
 
@@ -81,9 +75,7 @@ namespace RRCGBuild
             where T2 : AnyPort, new()
             where T3 : AnyPort, new()
         {
-            var eventName = "RRCG_EventCache_" + Context.current.GetUniqueId();
-
-            var cacheEvent = new EventHelper<T0, T1, T2, T3>(eventName, "value0", "value1", "value2", "value3").Definition();
+            var cacheEvent = new EventDefinition<T0, T1, T2, T3>("EventCache", "value0", "value1", "value2", "value3");
 
             (T0, T1, T2, T3) ports = default;
 
@@ -267,15 +259,13 @@ namespace RRCGBuild
         public class LUT<T> where T : AnyPort, new()
         {
             public T UnsafeReadPort;
-            private EventHelper<IntPort> readEvent;
+            private EventDefinition<IntPort> readEvent;
 
             private IEnumerable<object> list;
 
             public LUT(IEnumerable<object> list)
             {
-                readEvent = new EventHelper<IntPort>("LUT_" + Context.current.GetUniqueId(), "index");
-
-                readEvent.Definition();
+                readEvent = new EventDefinition<IntPort>("LUT", "index");
 
                 this.list = list;
 
@@ -332,7 +322,7 @@ namespace RRCGBuild
 
             public T Read(IntPort index)
             {
-                readEvent.Sender(index);
+                readEvent.SendLocal(index);
                 return UnsafeReadPort;
             }
 
@@ -356,26 +346,31 @@ namespace RRCGBuild
                 Context.current = Context.current.ParentContext;
 
             // Now build the implementation
-            var callEvent = new EventHelper<IntPort>("ChipLib_BitString");
-            var returnEvent = new EventHelper<StringPort>("ChipLib_BitString_Read");
+            EventDefinition<IntPort> callEvent = null;
+            EventDefinition<StringPort> returnEvent = null;
 
-            CircuitBuilder.InlineGraph(() => CircuitBuilder.Singleton("_ChipLib_BitString", () =>
+            CircuitBuilder.InlineGraph(() =>
             {
-                // Place definitions in root context
-                callEvent.Definition();
-                returnEvent.Definition();
-
-                // Place method implementation in a circuit board
-                CircuitBuilder.Singleton("_ChipLib_BitString_CircuitBoard",
-                    () => CircuitBuilder.CircuitBoard("ChipLibBitString", () =>
+                (callEvent, returnEvent) = CircuitBuilder.Singleton("_ChipLib_BitString", () =>
                 {
-                    IntPort bits = callEvent.Receiver();
-                    returnEvent.SendLocal(BitStringImpl(bits));
+                    // Place definitions in root context
+                    var callEvent = new EventDefinition<IntPort>("ChipLib_BitString", "int");
+                    var returnEvent = new EventDefinition<StringPort>("ChipLib_BitString_Read", "string");
 
-                    // Prevent exec output
-                    CircuitBuilder.ClearExec();
-                }));
-            }));
+                    // Place method implementation in a circuit board
+                    CircuitBuilder.Singleton("_ChipLib_BitString_CircuitBoard",
+                        () => CircuitBuilder.CircuitBoard("ChipLibBitString", () =>
+                    {
+                        IntPort bits = callEvent.Receiver();
+                        returnEvent.SendLocal(BitStringImpl(bits));
+
+                        // Prevent exec output
+                        CircuitBuilder.ClearExec();
+                    }));
+
+                    return (callEvent, returnEvent);
+                });
+            });
 
             // Now we go back to the original context
             // and place the necessary chips.

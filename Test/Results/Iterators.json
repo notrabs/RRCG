@@ -287,7 +287,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_EventFunction_StringRepeatEventFunction",
+        "EventName": "RRCG_EventFunction_StringRepeatEventFunction_6",
         "EventDefinition": [
           {
             "Item1": "value0",
@@ -308,7 +308,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_EventFunction_StringRepeatEventFunction"
+        "EventName": "RRCG_EventFunction_StringRepeatEventFunction_6"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -335,7 +335,7 @@
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_strStaging_6",
+      "VariableName": "RRCG_strStaging_7",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -385,7 +385,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_EventFunction_StringRepeatEventFunction",
+        "EventName": "RRCG_EventFunction_StringRepeatEventFunction_6",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.String","Hi"],[[0,2],"System.Int32",10]],
@@ -413,7 +413,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_UnreachableNodesTest_7",
+        "EventName": "RRCG_UnreachableNodesTest_8",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -425,7 +425,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_UnreachableNodesTest_7"
+        "EventName": "RRCG_UnreachableNodesTest_8"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -436,7 +436,7 @@
       "Type": "B0kiM/9oAkGALnw+7UgdNw==",
       "Name": "int Variable",
       "DefaultValues": [[[0,1],"System.Int32",0]],
-      "VariableName": "RRCG_index_8",
+      "VariableName": "RRCG_index_9",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -470,7 +470,7 @@
       "Type": "B0kiM/9oAkGALnw+7UgdNw==",
       "Name": "int Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_index_8",
+      "VariableName": "RRCG_index_9",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -560,7 +560,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_NestedWhileTest_9",
+        "EventName": "RRCG_NestedWhileTest_10",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -572,7 +572,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_NestedWhileTest_9"
+        "EventName": "RRCG_NestedWhileTest_10"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -631,7 +631,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_DoWhileTest_10",
+        "EventName": "RRCG_DoWhileTest_11",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -643,7 +643,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_DoWhileTest_10"
+        "EventName": "RRCG_DoWhileTest_11"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -718,7 +718,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_DoWhileReturnTest_11",
+        "EventName": "RRCG_DoWhileReturnTest_12",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -730,7 +730,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_DoWhileReturnTest_11"
+        "EventName": "RRCG_DoWhileReturnTest_12"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -757,7 +757,7 @@
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_strStaging_12",
+      "VariableName": "RRCG_strStaging_13",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -803,9 +803,9 @@
       "InputCount": 2
     },
     {
-      "Id": "RRCG_StringRepeatDoWhile_14_0",
+      "Id": "RRCG_StringRepeatDoWhile_15_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_StringRepeatDoWhile_14",
+      "Name": "RRCG_StringRepeatDoWhile_15",
       "DefaultValues": [[[2,0],"System.String","Hey"],[[2,1],"System.Int32",7]],
       "CircuitBoardId": "0_1",
       "VariableKind": 0,
@@ -832,7 +832,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_EventFunction_StringRepeatDoWhileEventFunction",
+        "EventName": "RRCG_EventFunction_StringRepeatDoWhileEventFunction_16",
         "EventDefinition": [
           {
             "Item1": "value0",
@@ -853,7 +853,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_EventFunction_StringRepeatDoWhileEventFunction"
+        "EventName": "RRCG_EventFunction_StringRepeatDoWhileEventFunction_16"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -880,7 +880,7 @@
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_strStaging_15",
+      "VariableName": "RRCG_strStaging_17",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -930,7 +930,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_EventFunction_StringRepeatDoWhileEventFunction",
+        "EventName": "RRCG_EventFunction_StringRepeatDoWhileEventFunction_16",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.String","Hi"],[[0,2],"System.Int32",10]],
@@ -958,7 +958,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_NestedDoWhileTest_16",
+        "EventName": "RRCG_NestedDoWhileTest_18",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -970,7 +970,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_NestedDoWhileTest_16"
+        "EventName": "RRCG_NestedDoWhileTest_18"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -2517,7 +2517,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "RRCG_StringRepeatDoWhile_14_0",
+        "Node": "RRCG_StringRepeatDoWhile_15_0",
         "Group": 1,
         "Index": 0
       },
@@ -2525,7 +2525,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_StringRepeatDoWhile_14_0",
+        "Node": "RRCG_StringRepeatDoWhile_15_0",
         "Group": 2,
         "Index": 0
       },
@@ -2551,7 +2551,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_StringRepeatDoWhile_14_0",
+        "Node": "RRCG_StringRepeatDoWhile_15_0",
         "Group": 1,
         "Index": 0
       },
@@ -3468,7 +3468,7 @@
           "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
           "Name": "string Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_strStaging_13",
+          "VariableName": "RRCG_strStaging_14",
           "VariableKind": 0,
           "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2

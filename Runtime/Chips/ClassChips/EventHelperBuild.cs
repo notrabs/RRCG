@@ -120,7 +120,7 @@ namespace RRCGBuild
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2))
         );
-        internal EventDefinition(string existingEvent) => InitExistingEvent(existingEvent);
+        internal EventDefinition(bool _, string existingEvent) => InitExistingEvent(existingEvent);
 
         public void SendLocal(T0 value0, T1 value1, T2 value2) => base.SendLocal(value0, value1, value2);
         public void SendOthers(T0 value0, T1 value1, T2 value2) => base.SendOthers(value0, value1, value2);
@@ -130,6 +130,38 @@ namespace RRCGBuild
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2) => base.SendPlayer(player, value0, value1, value2);
 
         public (T0, T1, T2) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2>(EventName);
+    }
+
+    public class EventDefinition<T0, T1, T2, T3> : BaseEvent
+       where T0 : AnyPort, new()
+       where T1 : AnyPort, new()
+       where T2 : AnyPort, new()
+       where T3 : AnyPort, new()
+    {
+        public EventDefinition(StringPort param0Name = null, StringPort param1Name = null, StringPort param2Name = null, StringPort param3Name = null) => InitNewEvent(
+            null,
+            (param0Name ?? "value0", typeof(T0)),
+            (param1Name ?? "value1", typeof(T1)),
+            (param2Name ?? "value2", typeof(T2)),
+            (param3Name ?? "value3", typeof(T3))
+        );
+        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name = null) => InitNewEvent(
+            eventName.AsData<string>(),
+            (param0Name ?? "value0", typeof(T0)),
+            (param1Name ?? "value1", typeof(T1)),
+            (param2Name ?? "value2", typeof(T2)),
+            (param3Name ?? "value3", typeof(T3))
+        );
+        internal EventDefinition(bool _, string existingEvent) => InitExistingEvent(existingEvent);
+
+        public void SendLocal(T0 value0, T1 value1, T2 value2, T3 value3) => base.SendLocal(value0, value1, value2, value3);
+        public void SendOthers(T0 value0, T1 value1, T2 value2, T3 value3) => base.SendOthers(value0, value1, value2, value3);
+        public void SendAll(T0 value0, T1 value1, T2 value2, T3 value3) => base.SendAll(value0, value1, value2, value3);
+        public void SendAuthority(T0 value0, T1 value1, T2 value2, T3 value3) => base.SendAuthority(value0, value1, value2, value3);
+        public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3) => base.SendRoomAuthority(value0, value1, value2, value3);
+        public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3) => base.SendPlayer(player, value0, value1, value2, value3);
+
+        public (T0, T1, T2, T3) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3>(EventName);
     }
 
     //

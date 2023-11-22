@@ -1854,10 +1854,10 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "ChipLib_BitString",
+        "EventName": "RRCG_ChipLib_BitString_11",
         "EventDefinition": [
           {
-            "Item1": "value0",
+            "Item1": "int",
             "Item2": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
           }
         ]
@@ -1871,10 +1871,10 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "ChipLib_BitString_Read",
+        "EventName": "RRCG_ChipLib_BitString_Read_12",
         "EventDefinition": [
           {
-            "Item1": "value0",
+            "Item1": "string",
             "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
           }
         ]
@@ -1884,9 +1884,9 @@
       "InputCount": 0
     },
     {
-      "Id": "RRCG_ChipLibBitString_11_0",
+      "Id": "RRCG_ChipLibBitString_13_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_ChipLibBitString_11",
+      "Name": "RRCG_ChipLibBitString_13",
       "DefaultValues": [],
       "CircuitBoardId": "0_0",
       "VariableKind": 0,
@@ -1897,7 +1897,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "ChipLib_BitString",
+        "EventName": "RRCG_ChipLib_BitString_11",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -1909,7 +1909,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "ChipLib_BitString_Read"
+        "EventName": "RRCG_ChipLib_BitString_Read_12"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -1960,7 +1960,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "ChipLib_BitString",
+        "EventName": "RRCG_ChipLib_BitString_11",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -2012,7 +2012,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "ChipLib_BitString",
+        "EventName": "RRCG_ChipLib_BitString_11",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -2056,7 +2056,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "ChipLib_BitString",
+        "EventName": "RRCG_ChipLib_BitString_11",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -2092,7 +2092,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "ChipLib_BitString",
+        "EventName": "RRCG_ChipLib_BitString_11",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -2128,7 +2128,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "ChipLib_BitString",
+        "EventName": "RRCG_ChipLib_BitString_11",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -2164,7 +2164,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "ChipLib_BitString",
+        "EventName": "RRCG_ChipLib_BitString_11",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -2224,7 +2224,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "ChipLib_BitString",
+        "EventName": "RRCG_ChipLib_BitString_11",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -6323,7 +6323,7 @@
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
-            "EventName": "ChipLib_BitString"
+            "EventName": "RRCG_ChipLib_BitString_11"
           },
           "DefaultValues": [],
           "VariableKind": 0,
@@ -6950,7 +6950,7 @@
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
-            "EventName": "ChipLib_BitString_Read",
+            "EventName": "RRCG_ChipLib_BitString_Read_12",
             "EventTarget": 0
           },
           "DefaultValues": [],
