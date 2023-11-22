@@ -88,7 +88,6 @@ namespace RRCGBuild
             prevContext.SubContexts.Add(cbContext);
             cbContext.ParentContext = prevContext;
             Context.current = cbContext;
-            ConditionalContext.Push(new RootConditionalContext());
             ExecFlow.current = new ExecFlow();
 
             var returnType = circuitBoardFn.GetMethodInfo().ReturnType;
@@ -506,10 +505,7 @@ namespace RRCGBuild
         {
             var assignedValue = value;
 
-            if (ConditionalContext.current != null)
-            {
-                //ConditionalContext.current.ConnectValuePort(value);
-            }
+            // TODO: If a variable is assigned out of a conditional context, it should either be replaced by a ifvalue/switch or be promoted to a proper Variable
 
             variable = assignedValue;
             return assignedValue;

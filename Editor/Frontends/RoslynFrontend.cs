@@ -52,12 +52,10 @@ namespace RRCG
 
             Context.current = context;
             ExecFlow.current = new ExecFlow();
-            ConditionalContext.Push(new RootConditionalContext());
 
             var instance = (CircuitBuilder)Activator.CreateInstance(type);
             instance.CircuitGraph();
 
-            ConditionalContext.Clear();
             ExecFlow.current = null;
             Context.current = null;
 

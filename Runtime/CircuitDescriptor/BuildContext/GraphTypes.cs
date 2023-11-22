@@ -46,14 +46,9 @@ namespace RRCGBuild
         [JsonConverter(typeof(GuidConverter))]
         public string CircuitBoardId;
 
-        // The scope of this conditional context
-        [JsonIgnore]
-        public ConditionalContext MetaConditionalContext = null;
-
         public Node()
         {
             Id = Guid.NewGuid().ToString();
-            MetaConditionalContext = ConditionalContext.current;
         }
 
         public void ConnectInputPort(Context context, AnyPort port, Port input)

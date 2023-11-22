@@ -241,15 +241,12 @@ namespace RRCGBuild
 
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port { Node = node });
-            var conditionalContext = ConditionalContext.Push(new IfConditionalContext() { test = test, currentBranch = true });
             ifBranch();
             var ifFlow = ExecFlow.current;
 
             ExecFlow.current = new ExecFlow();
             ExecFlow.current.Ports.Add(new Port { Node = node, Index = 1 });
-            conditionalContext.currentBranch = false;
             elseBranch();
-            ConditionalContext.Pop();
             var elseFlow = ExecFlow.current;
 
             ExecFlow.current = prevFlow;
