@@ -35,8 +35,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("WhileTest").Definition());
-            entry.Receiver();
+            new EventDefinition("WhileTest").Receiver();
             var list = __VariableDeclaratorExpression("list", () => ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"));
             var listCache = __VariableDeclaratorExpression("listCache", () => ChipLib.EventCache<ListPort<StringPort>>(list));
             __While(ChipBuilder.GreaterThan(listCache.Count, 0), delegate
@@ -60,7 +59,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("WhileReturnTest").Definition());
+            var entry = __VariableDeclaratorExpression("entry", () => new EventDefinition("WhileReturnTest"));
             entry.Receiver();
             // Test returns from while block within an "inline" graph (functions are transparent)
             ChipLib.Log(Concat("Repeated string (inline graph): ", StringRepeat("Hello", 5)));
@@ -127,8 +126,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("UnreachableNodesTest").Definition());
-            entry.Receiver();
+            new EventDefinition("UnreachableNodesTest").Receiver();
             var index = __VariableDeclaratorExpression("index", () => new Variable<IntPort>());
             index.Value = 0;
             __While(ChipBuilder.LessThan(index.Value, 100), delegate
@@ -181,8 +179,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var ev = __VariableDeclaratorExpression("ev", () => new EventHelper("NestedWhileTest").Definition());
-            ev.Receiver();
+            new EventDefinition("NestedWhileTest").Receiver();
             LogString("Start");
             __While(true, delegate
             {
@@ -211,8 +208,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var ev = __VariableDeclaratorExpression("ev", () => new EventHelper("DoWhileTest").Definition());
-            ev.Receiver();
+            new EventDefinition("DoWhileTest").Receiver();
             __DoWhile(true, delegate
             {
                 __BeginLabelAccessibilityScope(true);
@@ -261,8 +257,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("DoWhileReturnTest").Definition());
-            entry.Receiver();
+            new EventDefinition("DoWhileReturnTest").Receiver();
             // Test returns from do while block within an "inline" graph (functions are transparent)
             ChipLib.Log(Concat("Repeated string (do while, inline graph): ", StringRepeatDoWhile("Hello", 5)));
             // Test returns from do while block within a circuit board
@@ -328,8 +323,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var ev = __VariableDeclaratorExpression("ev", () => new EventHelper("NestedDoWhileTest").Definition());
-            ev.Receiver();
+            new EventDefinition("NestedDoWhileTest").Receiver();
             __DoWhile(true, delegate
             {
                 __BeginLabelAccessibilityScope(true);

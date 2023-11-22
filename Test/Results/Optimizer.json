@@ -6,7 +6,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "TestNotIfOptimizer",
+        "EventName": "RRCG_TestNotIfOptimizer_0",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -18,7 +18,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "TestNotIfOptimizer"
+        "EventName": "RRCG_TestNotIfOptimizer_0"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -301,7 +301,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "TestKnownSingletonChipsOptimizer",
+        "EventName": "RRCG_TestKnownSingletonChipsOptimizer_1",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -313,7 +313,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "TestKnownSingletonChipsOptimizer"
+        "EventName": "RRCG_TestKnownSingletonChipsOptimizer_1"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -332,7 +332,7 @@
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_floatVar_0",
+      "VariableName": "RRCG_floatVar_2",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -342,7 +342,7 @@
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_floatVar_0",
+      "VariableName": "RRCG_floatVar_2",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -352,7 +352,7 @@
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_floatVar_0",
+      "VariableName": "RRCG_floatVar_2",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -362,7 +362,7 @@
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_floatVar_0",
+      "VariableName": "RRCG_floatVar_2",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -372,7 +372,7 @@
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_floatVar_0",
+      "VariableName": "RRCG_floatVar_2",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -382,7 +382,7 @@
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_floatVar_0",
+      "VariableName": "RRCG_floatVar_2",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -392,7 +392,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "TestVariableCollapseOptimiser",
+        "EventName": "RRCG_TestVariableCollapseOptimiser_3",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -404,7 +404,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "TestVariableCollapseOptimiser"
+        "EventName": "RRCG_TestVariableCollapseOptimiser_3"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -423,7 +423,7 @@
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_var0_1",
+      "VariableName": "RRCG_var0_4",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -457,7 +457,7 @@
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_var1_2",
+      "VariableName": "RRCG_var1_5",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -491,7 +491,7 @@
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_var2_3",
+      "VariableName": "RRCG_var2_6",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -525,7 +525,7 @@
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_var3_4",
+      "VariableName": "RRCG_var3_7",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -551,7 +551,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "TestAssociativeOperationCollapseOptimizer",
+        "EventName": "RRCG_TestAssociativeOperationCollapseOptimizer_8",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -563,7 +563,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "TestAssociativeOperationCollapseOptimizer"
+        "EventName": "RRCG_TestAssociativeOperationCollapseOptimizer_8"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -582,7 +582,7 @@
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
       "DefaultValues": [],
-      "VariableName": "RRCG_variable_5",
+      "VariableName": "RRCG_variable_9",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2

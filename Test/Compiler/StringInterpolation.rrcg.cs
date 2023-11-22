@@ -17,8 +17,7 @@ public class StringInterpolation : CircuitDescriptor
 
     void InterpolatePureData()
     {
-        var e = new EventHelper("InterpolatePureData").Definition();
-        e.Receiver();
+        new EventDefinition("InterpolatePureData").Receiver();
 
         string port1 = "Hello";
         string port2 = "World";
@@ -29,8 +28,7 @@ public class StringInterpolation : CircuitDescriptor
 
     void InterpolateDataWithPort()
     {
-        var e = new EventHelper("InterpolateDataWithPort").Definition();
-        e.Receiver();
+        new EventDefinition("InterpolateDataWithPort").Receiver();
 
         var variable = new Variable<string>();
         string port1 = "data";
@@ -42,8 +40,7 @@ public class StringInterpolation : CircuitDescriptor
 
     void InterpolateNonStrings()
     {
-        var e = new EventHelper("InterpolateNonStrings").Definition();
-        e.Receiver();
+        new EventDefinition("InterpolateNonStrings").Receiver();
 
         var intData = 5;
         var intPort = ParseInt("10").Result;

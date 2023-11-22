@@ -31,8 +31,7 @@ public class Iterators : CircuitDescriptor
 
     void WhileTest()
     {
-        var entry = new EventHelper("WhileTest").Definition();
-        entry.Receiver();
+        new EventDefinition("WhileTest").Receiver();
 
         var list = ListCreate<string>(
             "Item 1", "Item 2", "Item 3", "Item 4", "Item 5",
@@ -56,7 +55,7 @@ public class Iterators : CircuitDescriptor
 
     void WhileReturnTest()
     {
-        var entry = new EventHelper("WhileReturnTest").Definition();
+        var entry = new EventDefinition("WhileReturnTest");
         entry.Receiver();
 
         // Test returns from while block within an "inline" graph (functions are transparent)
@@ -94,8 +93,7 @@ public class Iterators : CircuitDescriptor
 
     void UnreachableNodesTest()
     {
-        var entry = new EventHelper("UnreachableNodesTest").Definition();
-        entry.Receiver();
+        new EventDefinition("UnreachableNodesTest").Receiver();
 
         var index = new Variable<int>();
         index.Value = 0;
@@ -126,8 +124,7 @@ public class Iterators : CircuitDescriptor
 
     void NestedWhileTest()
     {
-        var ev = new EventHelper("NestedWhileTest").Definition();
-        ev.Receiver();
+        new EventDefinition("NestedWhileTest").Receiver();
 
         LogString("Start");
         while (true)
@@ -147,8 +144,7 @@ public class Iterators : CircuitDescriptor
 
     void DoWhileTest()
     {
-        var ev = new EventHelper("DoWhileTest").Definition();
-        ev.Receiver();
+        new EventDefinition("DoWhileTest").Receiver();
 
         do
         {
@@ -173,8 +169,7 @@ public class Iterators : CircuitDescriptor
 
     void DoWhileReturnTest()
     {
-        var entry = new EventHelper("DoWhileReturnTest").Definition();
-        entry.Receiver();
+        new EventDefinition("DoWhileReturnTest").Receiver();
 
         // Test returns from do while block within an "inline" graph (functions are transparent)
         ChipLib.Log(Concat("Repeated string (do while, inline graph): ", StringRepeatDoWhile("Hello", 5)));
@@ -209,8 +204,7 @@ public class Iterators : CircuitDescriptor
 
     void NestedDoWhileTest()
     {
-        var ev = new EventHelper("NestedDoWhileTest").Definition();
-        ev.Receiver();
+        new EventDefinition("NestedDoWhileTest").Receiver();
 
         do
         {

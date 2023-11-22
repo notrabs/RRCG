@@ -24,8 +24,7 @@ public class Operators : CircuitDescriptor
 
     public void NativeIntOperators()
     {
-        var e = new EventHelper("NativeIntOperators").Definition();
-        e.Receiver();
+        new EventDefinition("NativeIntOperators").Receiver();
 
         int nativeA = 1;
         int nativeB = 2;
@@ -57,8 +56,7 @@ public class Operators : CircuitDescriptor
 
     public void NativeFloatOperators()
     {
-        var e = new EventHelper("NativeFloatOperators").Definition();
-        e.Receiver();
+        new EventDefinition("NativeFloatOperators").Receiver();
 
         float nativeA = 1;
         float nativeB = 2;
@@ -90,8 +88,7 @@ public class Operators : CircuitDescriptor
 
     public void PortIntOperators()
     {
-        var e = new EventHelper("PortIntOperators").Definition();
-        e.Receiver();
+        new EventDefinition("PortIntOperators").Receiver();
 
         int portA = RandomInt(0, 0);
         int portB = RandomInt(0, 0);
@@ -123,8 +120,7 @@ public class Operators : CircuitDescriptor
 
     public void PortFloatOperators()
     {
-        var e = new EventHelper("PortFloatOperators").Definition();
-        e.Receiver();
+        new EventDefinition("PortFloatOperators").Receiver();
 
         float portA = RandomFloat(1, 1);
         float portB = RandomFloat(2, 2);
@@ -156,8 +152,7 @@ public class Operators : CircuitDescriptor
 
     public void VectorOperators()
     {
-        var e = new EventHelper("VectorOperators").Definition();
-        e.Receiver();
+        new EventDefinition("VectorOperators").Receiver();
 
         Vector3 vectorA = Vector3Create(1, 2, 3);
         Vector3 vectorB = Vector3Create(4, 5, 6);
@@ -186,8 +181,7 @@ public class Operators : CircuitDescriptor
 
     public void MixedOperators()
     {
-        var e = new EventHelper("MixedOperators").Definition();
-        e.Receiver();
+        new EventDefinition("MixedOperators").Receiver();
 
         float portA = RandomFloat(1, 1);
         int portB = RandomInt(2, 2);
@@ -203,8 +197,7 @@ public class Operators : CircuitDescriptor
 
     public void TernaryOperator()
     {
-        var e = new EventHelper("TernaryOperator").Definition();
-        e.Receiver();
+        new EventDefinition("TernaryOperator").Receiver();
 
         // Data / data
         float dataA = 0;
@@ -235,8 +228,7 @@ public class Operators : CircuitDescriptor
 
     public void BitwiseOperators()
     {
-        var e = new EventHelper("BitwiseOperators").Definition();
-        e.Receiver();
+        new EventDefinition("BitwiseOperators").Receiver();
 
         int dataA = BinaryLiteral(0b00000000000011111111111111111111);
         int dataB = BinaryLiteral(0b11111111111111111111000000000000);

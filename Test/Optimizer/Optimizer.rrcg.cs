@@ -17,8 +17,7 @@ public class Optimizer : CircuitDescriptor
 
     void TestNotIfOptimizer()
     {
-        var entry = new EventHelper("TestNotIfOptimizer").Definition();
-        entry.Receiver();
+        new EventDefinition("TestNotIfOptimizer").Receiver();
 
         var optimizableBool = ParseBool("true").Result;
 
@@ -55,8 +54,7 @@ public class Optimizer : CircuitDescriptor
 
     void TestKnownSingletonChipsOptimizer()
     {
-        var entry = new EventHelper("TestKnownSingletonChipsOptimizer").Definition();
-        entry.Receiver();
+        new EventDefinition("TestKnownSingletonChipsOptimizer").Receiver();
 
         var floatVar = new Variable<float>();
 
@@ -74,8 +72,7 @@ public class Optimizer : CircuitDescriptor
 
     void TestVariableCollapseOptimizer()
     {
-        var entry = new EventHelper("TestVariableCollapseOptimiser").Definition();
-        entry.Receiver();
+        new EventDefinition("TestVariableCollapseOptimiser").Receiver();
 
         var var0 = new Variable<float>();
         var var1 = new Variable<float>();
@@ -102,8 +99,7 @@ public class Optimizer : CircuitDescriptor
 
     void TestAssociativeOperationCollapseOptimizer()
     {
-        var e = new EventHelper("TestAssociativeOperationCollapseOptimizer").Definition();
-        e.Receiver();
+        new EventDefinition("TestAssociativeOperationCollapseOptimizer").Receiver();
 
         var variable = new Variable<float>();
         variable.Value = variable.Value + 2f + 3f + 4f + 5f + 6f * 7f * 8f * 9f * 10f;

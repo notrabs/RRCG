@@ -6,7 +6,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "NativeIntOperators",
+        "EventName": "RRCG_NativeIntOperators_0",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -18,7 +18,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "NativeIntOperators"
+        "EventName": "RRCG_NativeIntOperators_0"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -133,7 +133,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "NativeFloatOperators",
+        "EventName": "RRCG_NativeFloatOperators_1",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -145,7 +145,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "NativeFloatOperators"
+        "EventName": "RRCG_NativeFloatOperators_1"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -260,7 +260,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "PortIntOperators",
+        "EventName": "RRCG_PortIntOperators_2",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -272,7 +272,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "PortIntOperators"
+        "EventName": "RRCG_PortIntOperators_2"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -595,7 +595,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "PortFloatOperators",
+        "EventName": "RRCG_PortFloatOperators_3",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -607,7 +607,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "PortFloatOperators"
+        "EventName": "RRCG_PortFloatOperators_3"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -930,7 +930,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "VectorOperators",
+        "EventName": "RRCG_VectorOperators_4",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -942,7 +942,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "VectorOperators"
+        "EventName": "RRCG_VectorOperators_4"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -1361,7 +1361,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "MixedOperators",
+        "EventName": "RRCG_MixedOperators_5",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -1373,7 +1373,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "MixedOperators"
+        "EventName": "RRCG_MixedOperators_5"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -1528,7 +1528,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "TernaryOperator",
+        "EventName": "RRCG_TernaryOperator_6",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -1540,7 +1540,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "TernaryOperator"
+        "EventName": "RRCG_TernaryOperator_6"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -1559,7 +1559,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_EventCache_0",
+        "EventName": "RRCG_EventCache_7",
         "EventDefinition": [
           {
             "Item1": "value0",
@@ -1576,7 +1576,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_EventCache_0"
+        "EventName": "RRCG_EventCache_7"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -1587,7 +1587,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_EventCache_0",
+        "EventName": "RRCG_EventCache_7",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -1623,7 +1623,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_EventCache_1",
+        "EventName": "RRCG_EventCache_8",
         "EventDefinition": [
           {
             "Item1": "value0",
@@ -1640,7 +1640,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_EventCache_1"
+        "EventName": "RRCG_EventCache_8"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -1651,7 +1651,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_EventCache_1",
+        "EventName": "RRCG_EventCache_8",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -1671,7 +1671,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_EventCache_2",
+        "EventName": "RRCG_EventCache_9",
         "EventDefinition": [
           {
             "Item1": "value0",
@@ -1688,7 +1688,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_EventCache_2"
+        "EventName": "RRCG_EventCache_9"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -1699,7 +1699,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_EventCache_2",
+        "EventName": "RRCG_EventCache_9",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -1799,7 +1799,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "BitwiseOperators",
+        "EventName": "RRCG_BitwiseOperators_10",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -1811,7 +1811,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "BitwiseOperators"
+        "EventName": "RRCG_BitwiseOperators_10"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -1884,9 +1884,9 @@
       "InputCount": 0
     },
     {
-      "Id": "RRCG_ChipLibBitString_3_0",
+      "Id": "RRCG_ChipLibBitString_11_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_ChipLibBitString_3",
+      "Name": "RRCG_ChipLibBitString_11",
       "DefaultValues": [],
       "CircuitBoardId": "0_0",
       "VariableKind": 0,

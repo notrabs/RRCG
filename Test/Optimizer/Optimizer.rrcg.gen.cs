@@ -24,8 +24,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("TestNotIfOptimizer").Definition());
-            entry.Receiver();
+            new EventDefinition("TestNotIfOptimizer").Receiver();
             var optimizableBool = __VariableDeclaratorExpression("optimizableBool", () => ParseBool("true").Result);
             ChipBuilder.If(true, delegate
             {
@@ -158,8 +157,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("TestKnownSingletonChipsOptimizer").Definition());
-            entry.Receiver();
+            new EventDefinition("TestKnownSingletonChipsOptimizer").Receiver();
             var floatVar = __VariableDeclaratorExpression("floatVar", () => new Variable<FloatPort>());
             // All these Time Get Precise Seconds nodes
             // will be collapsed into a single node.
@@ -178,8 +176,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var entry = __VariableDeclaratorExpression("entry", () => new EventHelper("TestVariableCollapseOptimiser").Definition());
-            entry.Receiver();
+            new EventDefinition("TestVariableCollapseOptimiser").Receiver();
             var var0 = __VariableDeclaratorExpression("var0", () => new Variable<FloatPort>());
             var var1 = __VariableDeclaratorExpression("var1", () => new Variable<FloatPort>());
             var var2 = __VariableDeclaratorExpression("var2", () => new Variable<FloatPort>());
@@ -204,8 +201,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var e = __VariableDeclaratorExpression("e", () => new EventHelper("TestAssociativeOperationCollapseOptimizer").Definition());
-            e.Receiver();
+            new EventDefinition("TestAssociativeOperationCollapseOptimizer").Receiver();
             var variable = __VariableDeclaratorExpression("variable", () => new Variable<FloatPort>());
             variable.Value = variable.Value + 2f + 3f + 4f + 5f + 6f * 7f * 8f * 9f * 10f;
             FloatPort undeletableAdd = __VariableDeclaratorExpression("undeletableAdd", () => variable.Value + 5f);

@@ -6,8 +6,7 @@ public class Goto : CircuitDescriptor
 {
     public override void CircuitGraph()
     {
-        var GotoTest = new EventDefinition();
-        GotoTest.Receiver();
+        new EventDefinition("GotoTest").Receiver();
 
         // Go to label that's already defined
     label1:

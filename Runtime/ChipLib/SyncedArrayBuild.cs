@@ -8,8 +8,8 @@ namespace RRCGBuild
     public class SyncedArray<T> where T : AnyPort, new()
     {
         protected SyncedVariable<T>[] variables;
-        protected EventHelper<IntPort> readEvent;
-        protected EventHelper<IntPort, T> writeEvent;
+        protected EventDefinition<IntPort> readEvent;
+        protected EventDefinition<IntPort, T> writeEvent;
 
         protected T readPort;
 
@@ -22,16 +22,13 @@ namespace RRCGBuild
         public void Init(IntPort count, Action initGlobal, Action initCB)
         {
             variables = new SyncedVariable<T>[count.AsData<int>()];
-            readEvent = new EventHelper<IntPort>("SyncedArray_Read_" + Context.current.GetUniqueId());
-            writeEvent = new EventHelper<IntPort, T>("SyncedArray_Write_" + Context.current.GetUniqueId());
+            readEvent = new EventDefinition<IntPort>("SyncedArray_Read", "index");
+            writeEvent = new EventDefinition<IntPort, T>("SyncedArray_Write", "index", "data");
 
             initGlobal();
 
             CircuitBuilder.InlineGraph(() =>
             {
-                readEvent.Definition();
-                writeEvent.Definition();
-
                 readPort = CircuitBuilder.CircuitBoard("SyncedArray", () =>
                 {
                     for (int i = 0; i < count.AsData<int>(); i++)
@@ -65,36 +62,36 @@ namespace RRCGBuild
         {
             get
             {
-                readEvent.Sender(i);
+                readEvent.SendLocal(i);
                 return readPort;
             }
             set
             {
-                writeEvent.Sender(i, value);
+                writeEvent.SendLocal(i, value);
             }
         }
     }
 
     public class SyncedArrayInt : SyncedArray<IntPort>
     {
-        EventHelper<IntPort, IntPort> addEvent;
+        EventDefinition<IntPort, IntPort> addEvent;
 
         public SyncedArrayInt(IntPort count) : base()
         {
             Init(count, () =>
             {
-                addEvent = new EventHelper<IntPort, IntPort>("SyncedArray_Add_" + Context.current.GetUniqueId()).Definition();
+                addEvent = new EventDefinition<IntPort, IntPort>("SyncedArray_Add", "index", "count");
             }, () =>
             {
                 var (addIndex, addAmount) = addEvent.Receiver();
                 var addCurrent = ChipLib.ValueSwitch(addIndex, variables.Select(v => v.Value).ToArray());
-                writeEvent.Sender(addIndex, addCurrent + addAmount);
+                writeEvent.SendLocal(addIndex, addCurrent + addAmount);
             });
         }
 
         public void Add(IntPort index, IntPort value)
         {
-            addEvent.Sender(index, value);
+            addEvent.SendLocal(index, value);
         }
     }
 }

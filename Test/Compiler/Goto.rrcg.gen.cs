@@ -12,8 +12,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var GotoTest = __VariableDeclaratorExpression("GotoTest", () => new EventDefinition());
-            GotoTest.Receiver();
+            new EventDefinition("GotoTest").Receiver();
                 __LabelDecl("label1");
                 LogString("Label 1!");
             ChipBuilder.If(true, delegate

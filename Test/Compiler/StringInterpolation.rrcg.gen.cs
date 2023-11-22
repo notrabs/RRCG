@@ -22,8 +22,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var e = __VariableDeclaratorExpression("e", () => new EventHelper("InterpolatePureData").Definition());
-            e.Receiver();
+            new EventDefinition("InterpolatePureData").Receiver();
             StringPort port1 = __VariableDeclaratorExpression("port1", () => "Hello");
             StringPort port2 = __VariableDeclaratorExpression("port2", () => "World");
             ChipLib.Log(__StringInterpolation(port1, ", ", port2, "!"));
@@ -36,8 +35,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var e = __VariableDeclaratorExpression("e", () => new EventHelper("InterpolateDataWithPort").Definition());
-            e.Receiver();
+            new EventDefinition("InterpolateDataWithPort").Receiver();
             var variable = __VariableDeclaratorExpression("variable", () => new Variable<StringPort>());
             StringPort port1 = __VariableDeclaratorExpression("port1", () => "data");
             variable.Value = "port";
@@ -51,8 +49,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
-            var e = __VariableDeclaratorExpression("e", () => new EventHelper("InterpolateNonStrings").Definition());
-            e.Receiver();
+            new EventDefinition("InterpolateNonStrings").Receiver();
             var intData = __VariableDeclaratorExpression("intData", () => 5);
             var intPort = __VariableDeclaratorExpression("intPort", () => ParseInt("10").Result);
             ChipLib.Log(__StringInterpolation("Interpolating with ints. Data: ", intData, ", Port: ", intPort));
