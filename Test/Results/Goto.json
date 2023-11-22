@@ -6,7 +6,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_GotoTest_0",
+        "EventName": "RRCG_GotoTest",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -18,7 +18,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_GotoTest_0"
+        "EventName": "RRCG_GotoTest"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -118,9 +118,9 @@
       "InputCount": 2
     },
     {
-      "Id": "RRCG_<CircuitGraph>b__0_4_1_0",
+      "Id": "RRCG_<CircuitGraph>b__0_4_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_<CircuitGraph>b__0_4_1",
+      "Name": "RRCG_<CircuitGraph>b__0_4",
       "DefaultValues": [],
       "CircuitBoardId": "0_0",
       "VariableKind": 0,
@@ -451,7 +451,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "RRCG_<CircuitGraph>b__0_4_1_0",
+        "Node": "RRCG_<CircuitGraph>b__0_4_0",
         "Group": 1,
         "Index": 0
       },
@@ -472,7 +472,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_<CircuitGraph>b__0_4_1_0",
+        "Node": "RRCG_<CircuitGraph>b__0_4_0",
         "Group": 1,
         "Index": 0
       },

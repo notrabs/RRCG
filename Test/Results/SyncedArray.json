@@ -14,7 +14,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_SyncedArray_Read_0",
+        "EventName": "RRCG_SyncedArray_Read",
         "EventDefinition": [
           {
             "Item1": "index",
@@ -31,7 +31,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_SyncedArray_Write_1",
+        "EventName": "RRCG_SyncedArray_Write",
         "EventDefinition": [
           {
             "Item1": "index",
@@ -48,9 +48,9 @@
       "InputCount": 0
     },
     {
-      "Id": "RRCG_SyncedArray_4_0",
+      "Id": "RRCG_SyncedArray_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_SyncedArray_4",
+      "Name": "RRCG_SyncedArray",
       "DefaultValues": [],
       "CircuitBoardId": "0_0",
       "VariableKind": 0,
@@ -61,7 +61,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_SyncedArray_Read_5",
+        "EventName": "RRCG_SyncedArray_Read_1",
         "EventDefinition": [
           {
             "Item1": "index",
@@ -78,7 +78,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_SyncedArray_Write_6",
+        "EventName": "RRCG_SyncedArray_Write_1",
         "EventDefinition": [
           {
             "Item1": "index",
@@ -95,9 +95,9 @@
       "InputCount": 0
     },
     {
-      "Id": "RRCG_SyncedArray_11_0",
+      "Id": "RRCG_SyncedArray_1_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_SyncedArray_11",
+      "Name": "RRCG_SyncedArray_1",
       "DefaultValues": [],
       "CircuitBoardId": "0_1",
       "VariableKind": 0,
@@ -108,7 +108,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_SyncedArray_Read_12",
+        "EventName": "RRCG_SyncedArray_Read_2",
         "EventDefinition": [
           {
             "Item1": "index",
@@ -125,7 +125,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_SyncedArray_Write_13",
+        "EventName": "RRCG_SyncedArray_Write_2",
         "EventDefinition": [
           {
             "Item1": "index",
@@ -142,9 +142,9 @@
       "InputCount": 0
     },
     {
-      "Id": "RRCG_SyncedArray_20_0",
+      "Id": "RRCG_SyncedArray_2_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_SyncedArray_20",
+      "Name": "RRCG_SyncedArray_2",
       "DefaultValues": [],
       "CircuitBoardId": "0_2",
       "VariableKind": 0,
@@ -155,7 +155,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_SyncedArray_Read_21",
+        "EventName": "RRCG_SyncedArray_Read_3",
         "EventDefinition": [
           {
             "Item1": "index",
@@ -172,7 +172,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_SyncedArray_Write_22",
+        "EventName": "RRCG_SyncedArray_Write_3",
         "EventDefinition": [
           {
             "Item1": "index",
@@ -189,9 +189,9 @@
       "InputCount": 0
     },
     {
-      "Id": "RRCG_SyncedArray_31_0",
+      "Id": "RRCG_SyncedArray_3_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_SyncedArray_31",
+      "Name": "RRCG_SyncedArray_3",
       "DefaultValues": [],
       "CircuitBoardId": "0_3",
       "VariableKind": 0,
@@ -202,7 +202,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Write_1",
+        "EventName": "RRCG_SyncedArray_Write",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",0],[[0,2],"System.Int32",0]],
@@ -214,7 +214,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Read_0",
+        "EventName": "RRCG_SyncedArray_Read",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",1]],
@@ -258,7 +258,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Write_6",
+        "EventName": "RRCG_SyncedArray_Write_1",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",3]],
@@ -270,7 +270,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Read_5",
+        "EventName": "RRCG_SyncedArray_Read_1",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",2]],
@@ -298,7 +298,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Write_13",
+        "EventName": "RRCG_SyncedArray_Write_2",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",3],[[0,2],"System.String","test"]],
@@ -310,7 +310,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Read_12",
+        "EventName": "RRCG_SyncedArray_Read_2",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",5]],
@@ -330,7 +330,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Write_22",
+        "EventName": "RRCG_SyncedArray_Write_3",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",3],[[0,2],"System.Boolean",true]],
@@ -342,7 +342,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Read_21",
+        "EventName": "RRCG_SyncedArray_Read_3",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",0]],
@@ -370,7 +370,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_SyncedArray_Read_32",
+        "EventName": "RRCG_SyncedArray_Read_4",
         "EventDefinition": [
           {
             "Item1": "index",
@@ -387,7 +387,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_SyncedArray_Write_33",
+        "EventName": "RRCG_SyncedArray_Write_4",
         "EventDefinition": [
           {
             "Item1": "index",
@@ -408,7 +408,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_SyncedArray_Add_34",
+        "EventName": "RRCG_SyncedArray_Add",
         "EventDefinition": [
           {
             "Item1": "index",
@@ -425,9 +425,9 @@
       "InputCount": 0
     },
     {
-      "Id": "RRCG_SyncedArray_40_0",
+      "Id": "RRCG_SyncedArray_4_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_SyncedArray_40",
+      "Name": "RRCG_SyncedArray_4",
       "DefaultValues": [],
       "CircuitBoardId": "0_4",
       "VariableKind": 0,
@@ -438,7 +438,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Write_33",
+        "EventName": "RRCG_SyncedArray_Write_4",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",0],[[0,2],"System.Int32",0]],
@@ -450,7 +450,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Read_32",
+        "EventName": "RRCG_SyncedArray_Read_4",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",1]],
@@ -478,7 +478,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Write_33",
+        "EventName": "RRCG_SyncedArray_Write_4",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",0],[[0,2],"System.Int32",0]],
@@ -490,7 +490,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Read_32",
+        "EventName": "RRCG_SyncedArray_Read_4",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",1]],
@@ -510,7 +510,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_SyncedArray_Add_34",
+        "EventName": "RRCG_SyncedArray_Add",
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.Int32",4],[[0,2],"System.Int32",5]],
@@ -547,7 +547,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_SyncedArray_4_0",
+        "Node": "RRCG_SyncedArray_0",
         "Group": 2,
         "Index": 0
       },
@@ -651,7 +651,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_SyncedArray_11_0",
+        "Node": "RRCG_SyncedArray_1_0",
         "Group": 2,
         "Index": 0
       },
@@ -716,7 +716,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_SyncedArray_20_0",
+        "Node": "RRCG_SyncedArray_2_0",
         "Group": 2,
         "Index": 0
       },
@@ -768,7 +768,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_SyncedArray_31_0",
+        "Node": "RRCG_SyncedArray_3_0",
         "Group": 2,
         "Index": 0
       },
@@ -833,7 +833,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_SyncedArray_40_0",
+        "Node": "RRCG_SyncedArray_4_0",
         "Group": 2,
         "Index": 0
       },
@@ -953,7 +953,7 @@
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
-            "EventName": "RRCG_SyncedArray_Write_1"
+            "EventName": "RRCG_SyncedArray_Write"
           },
           "DefaultValues": [],
           "VariableKind": 0,
@@ -976,7 +976,7 @@
           "Type": "B0kiM/9oAkGALnw+7UgdNw==",
           "Name": "int Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayInt_2",
+          "VariableName": "RRCG_arrayInt",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -986,7 +986,7 @@
           "Type": "B0kiM/9oAkGALnw+7UgdNw==",
           "Name": "int Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayInt_3",
+          "VariableName": "RRCG_arrayInt_1",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -996,7 +996,7 @@
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
-            "EventName": "RRCG_SyncedArray_Read_0"
+            "EventName": "RRCG_SyncedArray_Read"
           },
           "DefaultValues": [],
           "VariableKind": 0,
@@ -1194,7 +1194,7 @@
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
-            "EventName": "RRCG_SyncedArray_Write_6"
+            "EventName": "RRCG_SyncedArray_Write_1"
           },
           "DefaultValues": [],
           "VariableKind": 0,
@@ -1219,7 +1219,7 @@
           "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
           "Name": "float Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayFloat_7",
+          "VariableName": "RRCG_arrayFloat",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -1229,7 +1229,7 @@
           "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
           "Name": "float Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayFloat_8",
+          "VariableName": "RRCG_arrayFloat_1",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -1239,7 +1239,7 @@
           "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
           "Name": "float Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayFloat_9",
+          "VariableName": "RRCG_arrayFloat_2",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -1249,7 +1249,7 @@
           "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
           "Name": "float Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayFloat_10",
+          "VariableName": "RRCG_arrayFloat_3",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -1259,7 +1259,7 @@
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
-            "EventName": "RRCG_SyncedArray_Read_5"
+            "EventName": "RRCG_SyncedArray_Read_1"
           },
           "DefaultValues": [],
           "VariableKind": 0,
@@ -1537,7 +1537,7 @@
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
-            "EventName": "RRCG_SyncedArray_Write_13"
+            "EventName": "RRCG_SyncedArray_Write_2"
           },
           "DefaultValues": [],
           "VariableKind": 0,
@@ -1564,7 +1564,7 @@
           "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
           "Name": "string Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayString_14",
+          "VariableName": "RRCG_arrayString",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -1574,7 +1574,7 @@
           "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
           "Name": "string Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayString_15",
+          "VariableName": "RRCG_arrayString_1",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -1584,7 +1584,7 @@
           "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
           "Name": "string Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayString_16",
+          "VariableName": "RRCG_arrayString_2",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -1594,7 +1594,7 @@
           "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
           "Name": "string Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayString_17",
+          "VariableName": "RRCG_arrayString_3",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -1604,7 +1604,7 @@
           "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
           "Name": "string Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayString_18",
+          "VariableName": "RRCG_arrayString_4",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -1614,7 +1614,7 @@
           "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
           "Name": "string Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayString_19",
+          "VariableName": "RRCG_arrayString_5",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -1624,7 +1624,7 @@
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
-            "EventName": "RRCG_SyncedArray_Read_12"
+            "EventName": "RRCG_SyncedArray_Read_2"
           },
           "DefaultValues": [],
           "VariableKind": 0,
@@ -1982,7 +1982,7 @@
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
-            "EventName": "RRCG_SyncedArray_Write_22"
+            "EventName": "RRCG_SyncedArray_Write_3"
           },
           "DefaultValues": [],
           "VariableKind": 0,
@@ -2011,7 +2011,7 @@
           "Type": "iFWVgHp/fE+0b20ekFf7oA==",
           "Name": "bool Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayBool_23",
+          "VariableName": "RRCG_arrayBool",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.BoolPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2021,7 +2021,7 @@
           "Type": "iFWVgHp/fE+0b20ekFf7oA==",
           "Name": "bool Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayBool_24",
+          "VariableName": "RRCG_arrayBool_1",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.BoolPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2031,7 +2031,7 @@
           "Type": "iFWVgHp/fE+0b20ekFf7oA==",
           "Name": "bool Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayBool_25",
+          "VariableName": "RRCG_arrayBool_2",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.BoolPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2041,7 +2041,7 @@
           "Type": "iFWVgHp/fE+0b20ekFf7oA==",
           "Name": "bool Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayBool_26",
+          "VariableName": "RRCG_arrayBool_3",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.BoolPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2051,7 +2051,7 @@
           "Type": "iFWVgHp/fE+0b20ekFf7oA==",
           "Name": "bool Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayBool_27",
+          "VariableName": "RRCG_arrayBool_4",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.BoolPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2061,7 +2061,7 @@
           "Type": "iFWVgHp/fE+0b20ekFf7oA==",
           "Name": "bool Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayBool_28",
+          "VariableName": "RRCG_arrayBool_5",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.BoolPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2071,7 +2071,7 @@
           "Type": "iFWVgHp/fE+0b20ekFf7oA==",
           "Name": "bool Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayBool_29",
+          "VariableName": "RRCG_arrayBool_6",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.BoolPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2081,7 +2081,7 @@
           "Type": "iFWVgHp/fE+0b20ekFf7oA==",
           "Name": "bool Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayBool_30",
+          "VariableName": "RRCG_arrayBool_7",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.BoolPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2091,7 +2091,7 @@
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
-            "EventName": "RRCG_SyncedArray_Read_21"
+            "EventName": "RRCG_SyncedArray_Read_3"
           },
           "DefaultValues": [],
           "VariableKind": 0,
@@ -2529,7 +2529,7 @@
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
-            "EventName": "RRCG_SyncedArray_Write_33"
+            "EventName": "RRCG_SyncedArray_Write_4"
           },
           "DefaultValues": [],
           "VariableKind": 0,
@@ -2555,7 +2555,7 @@
           "Type": "B0kiM/9oAkGALnw+7UgdNw==",
           "Name": "int Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayInt_35",
+          "VariableName": "RRCG_arrayInt_2",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2565,7 +2565,7 @@
           "Type": "B0kiM/9oAkGALnw+7UgdNw==",
           "Name": "int Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayInt_36",
+          "VariableName": "RRCG_arrayInt_3",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2575,7 +2575,7 @@
           "Type": "B0kiM/9oAkGALnw+7UgdNw==",
           "Name": "int Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayInt_37",
+          "VariableName": "RRCG_arrayInt_4",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2585,7 +2585,7 @@
           "Type": "B0kiM/9oAkGALnw+7UgdNw==",
           "Name": "int Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayInt_38",
+          "VariableName": "RRCG_arrayInt_5",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2595,7 +2595,7 @@
           "Type": "B0kiM/9oAkGALnw+7UgdNw==",
           "Name": "int Variable",
           "DefaultValues": [],
-          "VariableName": "RRCG_arrayInt_39",
+          "VariableName": "RRCG_arrayInt_6",
           "VariableKind": 1,
           "VariableType": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
@@ -2605,7 +2605,7 @@
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
-            "EventName": "RRCG_SyncedArray_Add_34"
+            "EventName": "RRCG_SyncedArray_Add"
           },
           "DefaultValues": [],
           "VariableKind": 0,
@@ -2638,7 +2638,7 @@
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
-            "EventName": "RRCG_SyncedArray_Write_33",
+            "EventName": "RRCG_SyncedArray_Write_4",
             "EventTarget": 0
           },
           "DefaultValues": [],
@@ -2650,7 +2650,7 @@
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
-            "EventName": "RRCG_SyncedArray_Read_32"
+            "EventName": "RRCG_SyncedArray_Read_4"
           },
           "DefaultValues": [],
           "VariableKind": 0,

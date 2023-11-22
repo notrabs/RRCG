@@ -71,12 +71,19 @@ namespace RRCGBuild
             return children;
         }
 
-        private int idCounter = 0;
-        public int GetUniqueId()
+        private Dictionary<string, int> idCounters = new Dictionary<string, int>();
+        public string GetUniqueId(string prefix)
         {
             if (ParentContext != null)
-                return ParentContext.GetUniqueId();
-            return idCounter++;
+                return ParentContext.GetUniqueId(prefix);
+
+            if (!idCounters.ContainsKey(prefix))
+            {
+                idCounters.Add(prefix, 1);
+                return prefix;
+            }
+
+            return prefix + "_" + idCounters[prefix]++;
         }
     }
 

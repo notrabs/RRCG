@@ -6,7 +6,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_InterpolatePureData_0",
+        "EventName": "RRCG_InterpolatePureData",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -18,7 +18,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_InterpolatePureData_0"
+        "EventName": "RRCG_InterpolatePureData"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -45,7 +45,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_InterpolateDataWithPort_1",
+        "EventName": "RRCG_InterpolateDataWithPort",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -57,7 +57,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_InterpolateDataWithPort_1"
+        "EventName": "RRCG_InterpolateDataWithPort"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -68,7 +68,7 @@
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
       "DefaultValues": [[[0,1],"System.String","port"]],
-      "VariableName": "RRCG_variable_2",
+      "VariableName": "RRCG_variable",
       "VariableKind": 0,
       "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
@@ -94,7 +94,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_InterpolateNonStrings_3",
+        "EventName": "RRCG_InterpolateNonStrings",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -106,7 +106,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_InterpolateNonStrings_3"
+        "EventName": "RRCG_InterpolateNonStrings"
       },
       "DefaultValues": [],
       "VariableKind": 0,

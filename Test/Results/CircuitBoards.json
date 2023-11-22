@@ -10,18 +10,18 @@
       "InputCount": 3
     },
     {
-      "Id": "RRCG_ContentsExec_0_0",
+      "Id": "RRCG_ContentsExec_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_ContentsExec_0",
+      "Name": "RRCG_ContentsExec",
       "DefaultValues": [],
       "CircuitBoardId": "0_0",
       "VariableKind": 0,
       "InputCount": 0
     },
     {
-      "Id": "RRCG_ContentsMixed_1_0",
+      "Id": "RRCG_ContentsMixed_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_ContentsMixed_1",
+      "Name": "RRCG_ContentsMixed",
       "DefaultValues": [],
       "CircuitBoardId": "0_1",
       "VariableKind": 0,
@@ -44,9 +44,9 @@
       "InputCount": 2
     },
     {
-      "Id": "RRCG_ContentsData_2_0",
+      "Id": "RRCG_ContentsData_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_ContentsData_2",
+      "Name": "RRCG_ContentsData",
       "DefaultValues": [],
       "CircuitBoardId": "0_2",
       "VariableKind": 0,
@@ -85,27 +85,27 @@
       "InputCount": 2
     },
     {
-      "Id": "RRCG_ExecOut_3_0",
+      "Id": "RRCG_ExecOut_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_ExecOut_3",
+      "Name": "RRCG_ExecOut",
       "DefaultValues": [],
       "CircuitBoardId": "0_3",
       "VariableKind": 0,
       "InputCount": 0
     },
     {
-      "Id": "RRCG_ExecIn_4_0",
+      "Id": "RRCG_ExecIn_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_ExecIn_4",
+      "Name": "RRCG_ExecIn",
       "DefaultValues": [],
       "CircuitBoardId": "0_4",
       "VariableKind": 0,
       "InputCount": 0
     },
     {
-      "Id": "RRCG_<CircuitGraph>b__0_2_5_0",
+      "Id": "RRCG_<CircuitGraph>b__0_2_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_<CircuitGraph>b__0_2_5",
+      "Name": "RRCG_<CircuitGraph>b__0_2",
       "DefaultValues": [],
       "CircuitBoardId": "0_5",
       "VariableKind": 0,
@@ -120,7 +120,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "RRCG_ContentsExec_0_0",
+        "Node": "RRCG_ContentsExec_0",
         "Group": 1,
         "Index": 0
       },
@@ -128,12 +128,12 @@
     },
     {
       "From": {
-        "Node": "RRCG_ContentsExec_0_0",
+        "Node": "RRCG_ContentsExec_0",
         "Group": 1,
         "Index": 0
       },
       "To": {
-        "Node": "RRCG_ContentsMixed_1_0",
+        "Node": "RRCG_ContentsMixed_0",
         "Group": 1,
         "Index": 0
       },
@@ -146,7 +146,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "RRCG_ContentsMixed_1_0",
+        "Node": "RRCG_ContentsMixed_0",
         "Group": 2,
         "Index": 0
       },
@@ -154,7 +154,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_ContentsMixed_1_0",
+        "Node": "RRCG_ContentsMixed_0",
         "Group": 2,
         "Index": 0
       },
@@ -180,7 +180,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_ContentsMixed_1_0",
+        "Node": "RRCG_ContentsMixed_0",
         "Group": 1,
         "Index": 0
       },
@@ -193,12 +193,12 @@
     },
     {
       "From": {
-        "Node": "RRCG_ContentsMixed_1_0",
+        "Node": "RRCG_ContentsMixed_0",
         "Group": 2,
         "Index": 0
       },
       "To": {
-        "Node": "RRCG_ContentsData_2_0",
+        "Node": "RRCG_ContentsData_0",
         "Group": 2,
         "Index": 0
       },
@@ -206,12 +206,12 @@
     },
     {
       "From": {
-        "Node": "RRCG_ContentsMixed_1_0",
+        "Node": "RRCG_ContentsMixed_0",
         "Group": 2,
         "Index": 0
       },
       "To": {
-        "Node": "RRCG_ContentsData_2_0",
+        "Node": "RRCG_ContentsData_0",
         "Group": 2,
         "Index": 1
       },
@@ -219,7 +219,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_ContentsData_2_0",
+        "Node": "RRCG_ContentsData_0",
         "Group": 2,
         "Index": 0
       },
@@ -258,7 +258,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_ContentsData_2_0",
+        "Node": "RRCG_ContentsData_0",
         "Group": 2,
         "Index": 1
       },
@@ -297,12 +297,12 @@
     },
     {
       "From": {
-        "Node": "RRCG_ExecOut_3_0",
+        "Node": "RRCG_ExecOut_0",
         "Group": 1,
         "Index": 0
       },
       "To": {
-        "Node": "RRCG_ExecIn_4_0",
+        "Node": "RRCG_ExecIn_0",
         "Group": 1,
         "Index": 0
       },
@@ -315,7 +315,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "RRCG_<CircuitGraph>b__0_2_5_0",
+        "Node": "RRCG_<CircuitGraph>b__0_2_0",
         "Group": 2,
         "Index": 0
       },

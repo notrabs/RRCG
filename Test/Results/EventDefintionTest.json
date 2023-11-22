@@ -6,7 +6,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_params0_0",
+        "EventName": "RRCG_params0",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -18,7 +18,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_params0_0"
+        "EventName": "RRCG_params0"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -29,7 +29,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_params0_0",
+        "EventName": "RRCG_params0",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -41,7 +41,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_params1_1",
+        "EventName": "RRCG_params1",
         "EventDefinition": [
           {
             "Item1": "param0",
@@ -58,7 +58,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_params1_1"
+        "EventName": "RRCG_params1"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -69,7 +69,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_params1_1",
+        "EventName": "RRCG_params1",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -81,7 +81,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_params2_2",
+        "EventName": "RRCG_params2",
         "EventDefinition": [
           {
             "Item1": "param0",
@@ -102,7 +102,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_params2_2"
+        "EventName": "RRCG_params2"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -113,7 +113,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_params2_2",
+        "EventName": "RRCG_params2",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -125,7 +125,7 @@
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
-        "EventName": "RRCG_params0_3",
+        "EventName": "RRCG_params0_1",
         "EventDefinition": []
       },
       "DefaultValues": [],
@@ -137,7 +137,7 @@
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
-        "EventName": "RRCG_params0_3"
+        "EventName": "RRCG_params0_1"
       },
       "DefaultValues": [],
       "VariableKind": 0,
@@ -148,7 +148,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_params0_3",
+        "EventName": "RRCG_params0_1",
         "EventTarget": 0
       },
       "DefaultValues": [],
@@ -160,7 +160,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_params0_3",
+        "EventName": "RRCG_params0_1",
         "EventTarget": 1
       },
       "DefaultValues": [],
@@ -172,7 +172,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_params0_3",
+        "EventName": "RRCG_params0_1",
         "EventTarget": 4
       },
       "DefaultValues": [],
@@ -184,7 +184,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_params0_3",
+        "EventName": "RRCG_params0_1",
         "EventTarget": 3
       },
       "DefaultValues": [],
@@ -196,7 +196,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_params0_3",
+        "EventName": "RRCG_params0_1",
         "EventTarget": 2
       },
       "DefaultValues": [],
@@ -208,7 +208,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_params0_3",
+        "EventName": "RRCG_params0_1",
         "EventTarget": 5
       },
       "DefaultValues": [[[0,1],"System.Int32",1]],
@@ -228,7 +228,7 @@
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
-        "EventName": "RRCG_params0_3",
+        "EventName": "RRCG_params0_1",
         "EventTarget": 5
       },
       "DefaultValues": [],

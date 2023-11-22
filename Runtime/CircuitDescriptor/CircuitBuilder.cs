@@ -13,8 +13,10 @@ namespace RRCGBuild
     /// <summary>
     /// A compiled RRCG building class containing parts of a circuit.
     /// </summary>
-    public abstract class CircuitLibraryBuilder : CircuitBuilder {
-        public override void CircuitGraph() {
+    public abstract class CircuitLibraryBuilder : CircuitBuilder
+    {
+        public override void CircuitGraph()
+        {
             // A library needs no entry point. Maybe it makes sense to clean up the structure here some day.
             // The CircuitBuilder would make more sense to inherit from CircuitLibraryBuilder
         }
@@ -190,7 +192,7 @@ namespace RRCGBuild
             ChipBuilder.CircuitBoard();
             var cbNode = Context.lastSpawnedNode;
             cbNode.CircuitBoardId = cbContext.Id.ToString();
-            cbNode.Name = "RRCG_" + name + "_" + Context.current.GetUniqueId();
+            cbNode.Name = Context.current.GetUniqueId("RRCG_" + name);
 
             if (hasExecIn && hasExecOut) ExecFlow.current.Advance(Context.current, cbNode.Port(execPortGroup, 0), cbNode.Port(execPortGroup, 0));
             else if (hasExecIn) ExecFlow.current.Advance(Context.current, cbNode.Port(execPortGroup, 0), null);
@@ -761,7 +763,7 @@ namespace RRCGBuild
                 if (!canCarry)
                     Debug.LogWarning("Label accessibility scope had pending gotos waiting for labels that were never defined " +
                                      "(or had no suitable exec port to advance to)");
-                    
+
                 foreach (var kvp in accessScope.PendingGotos)
                 {
                     if (!parentScope.Value.PendingGotos.ContainsKey(kvp.Key))
@@ -791,7 +793,7 @@ namespace RRCGBuild
         public static void __Goto(string labelName)
         {
             // See if this label exists in the current/a parent LabelAccessibilityScope
-            for (int i=0; i < SemanticStack.current.Count; i++)
+            for (int i = 0; i < SemanticStack.current.Count; i++)
             {
                 var item = SemanticStack.current.ElementAt(i);
                 if (item is not SemanticStack.LabelAccessibilityScope accessScope) continue;

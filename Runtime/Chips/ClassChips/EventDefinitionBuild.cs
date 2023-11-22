@@ -16,7 +16,7 @@ namespace RRCGBuild
 
             var eventNameBase = eventName ?? sourceName;
 
-            EventName = $"RRCG_{eventNameBase}_{Context.current.GetUniqueId()}";
+            EventName = Context.current.GetUniqueId($"RRCG_{eventNameBase}");
 
             ChipBuilder.EventDefinition(EventName, eventDefinition);
         }

@@ -102,7 +102,7 @@ namespace RRCGBuild
         {
             var sourceName = SanitizeUtils.SantizeCV2Name(SemanticStackUtils.GetNamedAssignmentName("var"));
 
-            return $"RRCG_{sourceName}_{Context.current.GetUniqueId()}";
+            return Context.current.GetUniqueId($"RRCG_{sourceName}");
         }
     }
 
