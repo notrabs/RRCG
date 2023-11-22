@@ -82,6 +82,7 @@ namespace RRCG
                 return studioObjectDescriptorRewriter.VisitClassDeclarationRoot(node);
             if (node.BaseList?.Types.Any(t =>
                 t.ToString().Contains("CircuitDescriptor") ||
+                t.ToString().Contains("IntPacker") || // This is really not ideal...
                 t.ToString().Contains("CircuitLibrary")) ?? false)
                 return circuitDescriptorRewriter.VisitClassDeclarationRoot(node);
 
