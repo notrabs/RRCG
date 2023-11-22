@@ -57,14 +57,28 @@ namespace RRCG
 
             var methodName = method.Identifier.ToString();
 
+            var isVoid = method.ReturnType.ToString() == "void";
+            var hasParameters = method.ParameterList.Parameters.Count > 0;
+
+            // Make sure the function has a block body
+            if (method.ExpressionBody != null)
+            {
+                method = method
+                    .WithExpressionBody(null)
+                    .WithSemicolonToken(Token(SyntaxKind.None))
+                    .WithBody(
+                       isVoid ?
+                            Block(ExpressionStatement(method.ExpressionBody.Expression)) :
+                            Block(ReturnStatement(method.ExpressionBody.Expression))
+                );
+            }
+
             var statements = WrapFunctionStatements(method.Body.Statements, method.ReturnType.ToString() == "void");
 
             // special functions
             var isEventFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "EventFunction"));
             var isSharedPropertyFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "SharedProperty"));
 
-            var isVoid = method.ReturnType.ToString() == "void";
-            var hasParameters = method.ParameterList.Parameters.Count > 0;
 
             if (isEventFunction)
             {
