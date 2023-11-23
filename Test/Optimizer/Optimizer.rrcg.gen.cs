@@ -202,17 +202,27 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginLabelAccessibilityScope(false);
             new EventDefinition("TestAssociativeOperationCollapseOptimizer").Receiver();
+            // Addition
             var variable = __VariableDeclaratorExpression("variable", () => new Variable<FloatPort>());
             variable.Value = variable.Value + 2f + 3f + 4f + 5f + 6f * 7f * 8f * 9f * 10f;
             FloatPort undeletableAdd = __VariableDeclaratorExpression("undeletableAdd", () => variable.Value + 5f);
             FloatPort collapsible = __VariableDeclaratorExpression("collapsible", () => undeletableAdd + 1f + 2f + 3f + 4f);
             ChipLib.Log(undeletableAdd); // Log directly to make it undeletable
             ChipLib.Log(collapsible);
+            // String concatenation
             var spacePort = __VariableDeclaratorExpression("spacePort", () => Reroute<StringPort>(" "));
             ChipLib.Log("Hello" + spacePort + "World");
             var undeletableConcat = __VariableDeclaratorExpression("undeletableConcat", () => "Undeletable" + spacePort + "concat");
             ChipLib.Log(undeletableConcat); // Log directly to make it undeletable
             ChipLib.Log("Here's the undeletable concat: " + undeletableConcat);
+            // Subtraction
+            var undeletableSubtract = __VariableDeclaratorExpression("undeletableSubtract", () => ChipLib.FloatConst(50f) - ChipLib.FloatConst(10f) - (ChipLib.FloatConst(5f) - ChipLib.FloatConst(3f)));
+            ChipLib.Log(undeletableSubtract); // Log to make it undeletable
+            ChipLib.Log(undeletableSubtract - 5f);
+            // Division
+            var undeletableDivide = __VariableDeclaratorExpression("undeletableDivide", () => ChipLib.FloatConst(50f) / ChipLib.FloatConst(0.2f) / (ChipLib.FloatConst(0.4f) / ChipLib.FloatConst(0.8f)));
+            ChipLib.Log(undeletableDivide); // Log to make it undeletable
+            ChipLib.Log(undeletableDivide / 5f);
             ExecFlow.current.Clear();
             __EndLabelAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);

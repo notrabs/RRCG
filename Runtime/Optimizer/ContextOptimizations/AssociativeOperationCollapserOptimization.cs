@@ -13,7 +13,9 @@ namespace RRCG.Optimizer.ContextOptimizations
         {
             { ChipType.Add, BasicCollapse },
             { ChipType.Multiply, BasicCollapse },
-            { ChipType.StringConcat, StringConcatCollapse }
+            { ChipType.StringConcat, StringConcatCollapse },
+            { ChipType.Subtract, DissociativeCollapse },
+            { ChipType.Divide, DissociativeCollapse }
         };
 
         public int OptimizeContext(Context context)
@@ -116,6 +118,16 @@ namespace RRCG.Optimizer.ContextOptimizations
             into.RemoveAt(index);
             into.InsertRange(index, from.Skip(1));
             return true;
+        }
+
+        static bool DissociativeCollapse(int index, List<AnyPort> from, List<AnyPort> into)
+        {
+            // We can only collapse the node if it is connected to the first input.
+            // Otherwise we'd change the meaning of the calculation.
+            // e.g. Subtract(Subtract(1, 2), 3) -> Subtract(1, 2, 3)
+            if (index != 0) return false;
+
+            return BasicCollapse(index, from, into);
         }
 
         static bool PortsEqualForCollapse(AnyPort a, AnyPort b)
