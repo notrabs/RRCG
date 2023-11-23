@@ -707,7 +707,7 @@ namespace RRCGBuild
             });
         }
 
-        public StringPort __StringInterpolation(params AnyPort[] ports)
+        public static StringPort __StringInterpolation(params AnyPort[] ports)
         {
             var stringPorts = new List<StringPort>();
             foreach (var port in ports)
