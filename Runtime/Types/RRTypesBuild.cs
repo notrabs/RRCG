@@ -617,6 +617,11 @@ namespace RRCGBuild
     }
     public class RecRoomObjectPort : AnyPort
     {
+        public static implicit operator RecRoomObjectPort(TriggerHandlePort data) => new RecRoomObjectPort() { Port = data.Port };
+        public static implicit operator RecRoomObjectPort(StudioObjectPort data) => new RecRoomObjectPort() { Port = data.Port };
+        public static implicit operator RecRoomObjectPort(SeatPort data) => new RecRoomObjectPort() { Port = data.Port };
+        public static implicit operator RecRoomObjectPort(TextPort data) => new RecRoomObjectPort() { Port = data.Port };
+
         public static RecRoomObjectPort Invalid
         {
             get => CircuitBuilder.Singleton("RRCG_Invalid_RRO", () => new NamedVariable<RecRoomObjectPort>("RRCG_Invalid_RRO").Value);

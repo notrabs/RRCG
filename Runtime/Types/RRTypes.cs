@@ -29,6 +29,11 @@ namespace RRCGSource
     }
     public class RecRoomObject : AnyObject
     {
+        public static implicit operator RecRoomObject(TriggerHandle data) => null;
+        public static implicit operator RecRoomObject(StudioObject data) => null;
+        public static implicit operator RecRoomObject(Seat data) => null;
+        public static implicit operator RecRoomObject(Text data) => null;
+
         public static RecRoomObject Invalid = null;
     }
     public class Combatant : AnyObject { }
