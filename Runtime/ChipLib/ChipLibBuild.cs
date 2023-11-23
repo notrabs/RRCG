@@ -425,5 +425,11 @@ namespace RRCGBuild
             IntToFloat(reroute);
             return reroute;
         }
+
+
+        public static (BoolPort Hit, PlayerPort Player, RecRoomObjectPort Object, FloatPort Distance, Vector3Port HitPosition, Vector3Port SurfaceNormal) Raycast(Vector3Port from, Vector3Port to, RaycastData config)
+        {
+            return ChipBuilder.Raycast(from, to - from, Distance(from, to), config);
+        }
     }
 }
