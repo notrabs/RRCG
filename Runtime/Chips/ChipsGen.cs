@@ -4825,7 +4825,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Get information about all the objects/players within a box defined by its center, extents, and orientation. (position, distance, direction, etc.)
         /// </summary>
-        public static List<CollisionData> OverlapBox(Vector3 Center, Vector3 Extents, Quaternion Orientation)
+        public static List<CollisionData> OverlapBox(Vector3 Center, Vector3 Extents, Quaternion Orientation, RaycastData config)
         {
             return default;
         }
@@ -4833,7 +4833,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Get information about all the objects/players within a certain distance of a point in space (position, distance, direction, etc.)
         /// </summary>
-        public static List<CollisionData> OverlapSphere(Vector3 Origin, float Radius)
+        public static List<CollisionData> OverlapSphere(Vector3 Origin, float Radius, RaycastData config)
         {
             return default;
         }
@@ -6084,7 +6084,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Fires an invisible ray from the "Start Position", in the "Direction" specified. Returns True if any object or player is hit within the target "Max Distance". Otherwise, returns False. You can configure the chip itself to ignore players or objects specifically.
         /// </summary>
-        public static (bool Hit, Player Player, RecRoomObject Object, float Distance, Vector3 HitPosition, Vector3 SurfaceNormal) Raycast(Vector3 StartPosition, Vector3 Direction, float MaxDistance)
+        public static (bool Hit, Player Player, RecRoomObject Object, float Distance, Vector3 HitPosition, Vector3 SurfaceNormal) Raycast(Vector3 StartPosition, Vector3 Direction, float MaxDistance, RaycastData config)
         {
             return default;
         }
@@ -7140,7 +7140,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Fires an invisible sphere of the specified Radius from the Start Position, in the Direction specified. Returns true if any object or player is hit within the target Max Distance. Otherwise, returns false. You can configure the chip itself to ignore players or objects specifically.
         /// </summary>
-        public static (bool Hit, Player Player, RecRoomObject Object, float Distance, Vector3 HitPosition, Vector3 SurfaceNormal) Spherecast(Vector3 StartPosition, float Radius, Vector3 Direction, float MaxDistance)
+        public static (bool Hit, Player Player, RecRoomObject Object, float Distance, Vector3 HitPosition, Vector3 SurfaceNormal) Spherecast(Vector3 StartPosition, float Radius, Vector3 Direction, float MaxDistance, RaycastData config)
         {
             return default;
         }

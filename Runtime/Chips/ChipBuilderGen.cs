@@ -6560,7 +6560,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static ListPort<CollisionDataPort> OverlapBox(Vector3Port Center, Vector3Port Extents, QuaternionPort Orientation)
+        public static ListPort<CollisionDataPort> OverlapBox(Vector3Port Center, Vector3Port Extents, QuaternionPort Orientation, RaycastData config)
         {
             Node node = new Node()
             {Name = "Overlap Box", Type = "5df93bc7-4bb7-44c6-b260-d7b2836436c8", InputCount = 4};
@@ -6570,10 +6570,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Orientation, new Port{Node = node, Index = 3});
             var output_ports = new ListPort<CollisionDataPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.RaycastData = config;
             return output_ports;
         }
 
-        public static ListPort<CollisionDataPort> OverlapSphere(Vector3Port Origin, FloatPort Radius)
+        public static ListPort<CollisionDataPort> OverlapSphere(Vector3Port Origin, FloatPort Radius, RaycastData config)
         {
             Node node = new Node()
             {Name = "Overlap Sphere", Type = "23ce1dae-7585-43af-92c1-9a72fa5d0101", InputCount = 3};
@@ -6582,6 +6583,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Radius, new Port{Node = node, Index = 2});
             var output_ports = new ListPort<CollisionDataPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.RaycastData = config;
             return output_ports;
         }
 
@@ -8278,7 +8280,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static (BoolPort Hit, PlayerPort Player, RecRoomObjectPort Object, FloatPort Distance, Vector3Port HitPosition, Vector3Port SurfaceNormal) Raycast(Vector3Port StartPosition, Vector3Port Direction, FloatPort MaxDistance)
+        public static (BoolPort Hit, PlayerPort Player, RecRoomObjectPort Object, FloatPort Distance, Vector3Port HitPosition, Vector3Port SurfaceNormal) Raycast(Vector3Port StartPosition, Vector3Port Direction, FloatPort MaxDistance, RaycastData config)
         {
             Node node = new Node()
             {Name = "Raycast", Type = "af203a1f-f3c9-479b-86f0-72224b094179", InputCount = 3};
@@ -8287,6 +8289,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Direction, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, MaxDistance, new Port{Node = node, Index = 2});
             var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new PlayerPort{Port = new Port{Node = node, Index = 1}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 2}}, new FloatPort{Port = new Port{Node = node, Index = 3}}, new Vector3Port{Port = new Port{Node = node, Index = 4}}, new Vector3Port{Port = new Port{Node = node, Index = 5}});
+            node.RaycastData = config;
             return output_ports;
         }
 
@@ -9841,7 +9844,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static (BoolPort Hit, PlayerPort Player, RecRoomObjectPort Object, FloatPort Distance, Vector3Port HitPosition, Vector3Port SurfaceNormal) Spherecast(Vector3Port StartPosition, FloatPort Radius, Vector3Port Direction, FloatPort MaxDistance)
+        public static (BoolPort Hit, PlayerPort Player, RecRoomObjectPort Object, FloatPort Distance, Vector3Port HitPosition, Vector3Port SurfaceNormal) Spherecast(Vector3Port StartPosition, FloatPort Radius, Vector3Port Direction, FloatPort MaxDistance, RaycastData config)
         {
             Node node = new Node()
             {Name = "Spherecast", Type = "0ea23792-e987-459e-8cd7-c0c60f667e08", InputCount = 4};
@@ -9851,6 +9854,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Direction, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, MaxDistance, new Port{Node = node, Index = 3});
             var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new PlayerPort{Port = new Port{Node = node, Index = 1}}, new RecRoomObjectPort{Port = new Port{Node = node, Index = 2}}, new FloatPort{Port = new Port{Node = node, Index = 3}}, new Vector3Port{Port = new Port{Node = node, Index = 4}}, new Vector3Port{Port = new Port{Node = node, Index = 5}});
+            node.RaycastData = config;
             return output_ports;
         }
 

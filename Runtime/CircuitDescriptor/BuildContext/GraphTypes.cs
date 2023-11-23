@@ -38,6 +38,7 @@ namespace RRCGBuild
         public EventDefinitionData EventDefinitionData = null;
         public EventSenderData EventSenderData = null;
         public EventReceiverData EventReceiverData = null;
+        public RaycastData RaycastData = null;
 
         [JsonConverter(typeof(DefaultValuesConverter))]
         public Dictionary<(int Group, int Port), object> DefaultValues = new Dictionary<(int Group, int Port), object>();

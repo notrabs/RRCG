@@ -15,6 +15,10 @@ namespace RRCG
             { "EventDefinition", "EventDefinitionData" },
             { "EventSender", "EventSenderData" },
             { "EventReceiver", "EventReceiverData" },
+            { "Raycast", "RaycastData" },
+            { "Spherecast", "RaycastData" },
+            { "OverlapBox", "RaycastData" },
+            { "OverlapSphere", "RaycastData" },
         };
     }
 
@@ -68,6 +72,11 @@ namespace RRCG
     public record EventSenderData(
         string EventName,
         EventTarget EventTarget
+    );
+
+    public record RaycastData(
+        bool IgnorePlayers = false,
+        bool IgnoreObjects = false
     );
 }
 
