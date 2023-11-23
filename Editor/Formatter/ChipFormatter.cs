@@ -24,10 +24,10 @@ namespace RRCG
             {
                 var nodesToPlace = context.Nodes.ToList();
 
-                var execConnections = context.Connections.Where(c => c.isExec);
-                var dataConnections = context.Connections.Where(c => !c.isExec);
+                var execConnections = context.Connections.Where(c => c.isExec).ToArray();
+                var dataConnections = context.Connections.Where(c => !c.isExec).ToArray();
                 var entryNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n) && execConnections.All(c => c.To.Node != n));
-                var allExecConnectedNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n || c.To.Node == n));
+                var allExecConnectedNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n || c.To.Node == n)).ToArray();
 
                 // Calculate a structured version of the graph
                 var entryGroups = new List<EntryGroup>();
