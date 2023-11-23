@@ -1,6 +1,5 @@
 ﻿using RRCG.Optimizer.ContextOptimizations;
 using RRCGBuild;
-using RRCGGenerated;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -19,10 +18,11 @@ namespace RRCG.Optimizer
         public static Context Optimize(Context context)
         {
             optimizedStats = 0;
+            var timer = new ProfilingTimer();
 
             var optimized = OptimizeContext(context);
 
-            Debug.Log("Optimized " + optimizedStats + " Nodes");
+            Debug.Log($"Optimized {optimizedStats} Nodes in {timer.Formatted}");
 
             return optimized;
         }
