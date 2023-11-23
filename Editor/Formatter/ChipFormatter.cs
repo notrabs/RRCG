@@ -224,6 +224,9 @@ namespace RRCG
             tempObj.transform.parent = parent.transform;
             var rect = tempObj.AddComponent<RectTransform>();
 
+            // The pivot in Studio is misleading. In-Game the pivot is on top.
+            rect.pivot = new Vector2(0.5f, 1);
+
             rect.sizeDelta = GetNodeSize(node) * PX_SCALE;
 
             var reference = tempObj.AddComponent<LayoutNodeReference>();
