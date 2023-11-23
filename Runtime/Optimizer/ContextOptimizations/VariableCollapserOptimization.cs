@@ -8,18 +8,6 @@ namespace RRCG.Optimizer.ContextOptimizations
 {
     class VariableCollapserOptimization : IContextOptimization
     {
-        private static List<string> VariableTypes = new()
-        {
-            ChipType.AIVariable, ChipType.BoolVariable, ChipType.ColorVariable,
-            ChipType.CombatantVariable, ChipType.DestinationRoomVariable, ChipType.FloatVariable,
-            ChipType.IntVariable, ChipType.ListBoolVariable, ChipType.ListColorVariable,
-            ChipType.ListDestinationRoomVariable, ChipType.ListFloatVariable, ChipType.ListIntVariable,
-            ChipType.ListObjectiveMarkerVariable, ChipType.ListPlayerVariable, ChipType.ListQuaternionVariable,
-            ChipType.ListRecRoomObjectVariable, ChipType.ListRewardVariable, ChipType.ListStringVariable,
-            ChipType.ListVector3Variable, ChipType.PlayerVariable, ChipType.PlayerVariableDeprecated,
-            ChipType.QuaternionVariable, ChipType.RecRoomObjectVariable, ChipType.StringVariable, ChipType.Vector3Variable
-        };
-
         public int OptimizeContext(Context context)
         {
             int removedNodes = 0;
@@ -30,7 +18,7 @@ namespace RRCG.Optimizer.ContextOptimizations
             // Initialize usage map
             foreach (var node in context.Nodes)
             {
-                if (!VariableTypes.Contains(node.Type))
+                if (!ChipTypeUtils.VariableTypes.Contains(node.Type))
                     continue;
 
                 if (!varUsageMap.ContainsKey(node.VariableName))

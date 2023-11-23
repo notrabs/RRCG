@@ -1,4 +1,5 @@
 ﻿using RRCGBuild;
+using RRCGGenerated;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -224,10 +225,13 @@ namespace RRCG
             tempObj.transform.parent = parent.transform;
             var rect = tempObj.AddComponent<RectTransform>();
 
-            // The pivot in Studio is misleading. In-Game the pivot is on top.
-            rect.pivot = new Vector2(0.5f, 1);
+            var nodeSize = GetNodeSize(node);
 
-            rect.sizeDelta = GetNodeSize(node) * PX_SCALE;
+            // The pivot in Studio is misleading. In-Game the pivot is on top.
+            var pivotOffset = GetNodeOffset(node) / nodeSize.y;
+            rect.pivot = new Vector2(0.5f, 1 + pivotOffset);
+
+            rect.sizeDelta = nodeSize * PX_SCALE;
 
             var reference = tempObj.AddComponent<LayoutNodeReference>();
             reference.node = node;
@@ -247,6 +251,21 @@ namespace RRCG
             size.y += Math.Max(node.InputCount, node.SwitchCases?.Count ?? 0) * 0.03f;
 
             return size;
+        }
+
+        // Some nodes have their exec pins at different heights. This offset is meant to align them.
+        private static float GetNodeOffset(Node node)
+        {
+            // Headless chips have a bit of margin in their 
+            if (ChipTypeUtils.HeadlessChips.Contains(node.Type)) return 0.02f;
+
+            // Variables have a special shape
+            if (ChipTypeUtils.VariableTypes.Contains(node.Type)) return 0.07f;
+
+            // Align as if the first pin of the board was an exec pin
+            if (node.Type == ChipType.CircuitBoard || node.Type == ChipType.ControlPanel) return 0.04f;
+
+            return 0f;
         }
 
         public static void CreateContentSizeFitter(GameObject obj)
