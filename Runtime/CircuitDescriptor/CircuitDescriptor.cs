@@ -51,6 +51,8 @@ namespace RRCGSource
         /// Define a new graph from your current context without destroying your current execution state.
         /// </summary>
         public void InlineGraph(AlternativeExec graphFn) { }
+        /// <inheritdoc cref="InlineGraph(AlternativeExec)" />
+        public T InlineGraph<T>(Func<T> graphFn) { return default; }
 
         /// <summary>
         /// Constructs a simple circuit board from a function. If the function contains executable chips, the board will have one exec input and output.

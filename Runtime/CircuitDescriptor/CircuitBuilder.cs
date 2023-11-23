@@ -52,6 +52,18 @@ namespace RRCGBuild
             ExecFlow.current = prevExec;
         }
 
+        public static T InlineGraph<T>(Func<T> graphFn)
+        {
+            var prevExec = ExecFlow.current;
+
+            ExecFlow.current = new ExecFlow();
+            var result = graphFn();
+
+            ExecFlow.current = prevExec;
+
+            return result;
+        }
+
         public static void Singleton(string key, Action creator)
         {
             if (!Context.current.SingletonChips.ContainsKey(key))
