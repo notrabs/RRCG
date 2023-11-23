@@ -59,7 +59,7 @@ namespace RRCG
                         {
                             bfs = new List<Node> { exec.execNode };
 
-                            while ((bfs = nodesToPlace.Where(n => dataConnections.Any(c => c.From.Node == n && bfs.Contains(c.To.Node))).ToList()).Count > 0)
+                            while ((bfs = nodesToPlace.Where(n => !allExecConnectedNodes.Contains(n) && dataConnections.Any(c => c.From.Node == n && bfs.Contains(c.To.Node))).ToList()).Count > 0)
                             {
                                 exec.deps.Add(bfs.ToList());
                                 nodesToPlace.RemoveAll(n => bfs.Contains(n));
