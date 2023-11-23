@@ -14,7 +14,16 @@ namespace RRCGSource
         public void SendRoomAuthority() { }
         public void SendPlayer(Player player) { }
 
+        /// <summary>
+        /// Places an EventReceiver chip to continue execution on.
+        /// </summary>
         public void Receiver() { }
+
+        /// <summary>
+        /// Shorthand to create an inline receiver graph for this event. 
+        /// The Receiver chip is already placed when the callback is called.
+        /// </summary>
+        public EventDefinition Receiver(AlternativeExec inlineGraph) => default;
 
     }
 
@@ -30,7 +39,8 @@ namespace RRCGSource
         public void SendRoomAuthority(T0 value0) { }
         public void SendPlayer(Player player, T0 value0) { }
 
-        public T0 Receiver() { return default; }
+        public T0 Receiver() => default;
+        public EventDefinition<T0> Receiver(AlternativeExec<T0> inlineGraph) => default;
     }
 
     public class EventDefinition<T0, T1>
@@ -45,7 +55,8 @@ namespace RRCGSource
         public void SendRoomAuthority(T0 value0, T1 value1) { }
         public void SendPlayer(Player player, T0 value0, T1 value1) { }
 
-        public (T0, T1) Receiver() { return default; }
+        public (T0, T1) Receiver() => default;
+        public EventDefinition<T0, T1> Receiver(AlternativeExec<(T0, T1)> inlineGraph) => default;
     }
 
     public class EventDefinition<T0, T1, T2>
@@ -60,7 +71,8 @@ namespace RRCGSource
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2) { }
         public void SendPlayer(Player player, T0 value0, T1 value1, T2 value2) { }
 
-        public (T0, T1, T2) Receiver() { return default; }
+        public (T0, T1, T2) Receiver() => default;
+        public EventDefinition<T0, T1, T2> Receiver(AlternativeExec<(T0, T1, T2)> inlineGraph) => default;
     }
 
 

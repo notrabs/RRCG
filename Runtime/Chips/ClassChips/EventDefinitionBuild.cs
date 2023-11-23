@@ -51,6 +51,11 @@ namespace RRCGBuild
         public void SendPlayer(PlayerPort player) => base.SendPlayer(player);
 
         public void Receiver() => ChipBuilder.EventReceiver(EventName);
+        public EventDefinition Receiver(AlternativeExec inlineGraph)
+        {
+            CircuitBuilder.InlineGraph(() => { Receiver(); inlineGraph(); });
+            return this;
+        }
 
     }
 
@@ -75,6 +80,11 @@ namespace RRCGBuild
         public void SendPlayer(PlayerPort player, T0 value0) => base.SendPlayer(player, value0);
 
         public T0 Receiver() => ChipBuilder.EventReceiver<T0>(EventName);
+        public EventDefinition<T0> Receiver(AlternativeExec<T0> inlineGraph)
+        {
+            CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
+            return this;
+        }
     }
 
     public class EventDefinition<T0, T1> : BaseEvent
@@ -101,6 +111,11 @@ namespace RRCGBuild
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1) => base.SendPlayer(player, value0, value1);
 
         public (T0, T1) Receiver() => ChipBuilder.EventReceiver<T0, T1>(EventName);
+        public EventDefinition<T0, T1> Receiver(AlternativeExec<(T0, T1)> inlineGraph)
+        {
+            CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
+            return this;
+        }
     }
 
     public class EventDefinition<T0, T1, T2> : BaseEvent
@@ -130,6 +145,11 @@ namespace RRCGBuild
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2) => base.SendPlayer(player, value0, value1, value2);
 
         public (T0, T1, T2) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2>(EventName);
+        public EventDefinition<T0, T1, T2> Receiver(AlternativeExec<(T0, T1, T2)> inlineGraph)
+        {
+            CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
+            return this;
+        }
     }
 
     public class EventDefinition<T0, T1, T2, T3> : BaseEvent
@@ -162,6 +182,11 @@ namespace RRCGBuild
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3) => base.SendPlayer(player, value0, value1, value2, value3);
 
         public (T0, T1, T2, T3) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3>(EventName);
+        public EventDefinition<T0, T1, T2, T3> Receiver(AlternativeExec<(T0, T1, T2, T3)> inlineGraph)
+        {
+            CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
+            return this;
+        }
     }
 
     //

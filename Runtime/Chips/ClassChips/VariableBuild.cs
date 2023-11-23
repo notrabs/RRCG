@@ -16,6 +16,7 @@ namespace RRCGBuild
         public T Value { get; set; }
 
         public void ChangedEvent();
+        public IVariable<T> ChangedEvent(AlternativeExec OnChanged);
     }
 
 
@@ -92,6 +93,15 @@ namespace RRCGBuild
         public void ChangedEvent()
         {
             ChipBuilder.EventReceiver(name + " Changed");
+        }
+        public IVariable<T> ChangedEvent(AlternativeExec OnChanged)
+        {
+            CircuitBuilder.InlineGraph(() =>
+            {
+                ChangedEvent();
+                OnChanged();
+            });
+            return this;
         }
     }
 
