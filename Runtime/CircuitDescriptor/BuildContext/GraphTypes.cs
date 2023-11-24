@@ -101,6 +101,23 @@ namespace RRCGBuild
         public bool isExec = false;
     }
 
+    //
+    // Misc Utils for the graph types
+    //
+
+    /// <summary>
+    /// Use to sort ports by their group and index
+    /// </summary>
+    public class PortComparer : IComparer<Port>
+    {
+        public int Compare(Port a, Port b)
+        {
+            var compareGroup = a.Group.CompareTo(b.Group);
+            if (compareGroup != 0) return compareGroup;
+            return a.Index.CompareTo(b.Index);
+        }
+    }
+
     internal class NodeAsIdConverter : JsonWriteConverter
     {
         public override void WriteJson(JsonWriter writer, object valueObj, JsonSerializer serializer)

@@ -20,7 +20,7 @@ namespace RRCG.Formatter
         // Updates the layout world positions by passing down the top-left position and returning the size bottom-up
         public abstract Vector2 CalculateLayout(Vector2 worldPos);
 
-        public virtual void ApplyLayoutToChips(Vector3 rootPos, Quaternion rootRot) 
+        public virtual void ApplyLayoutToChips(Vector3 rootPos, Quaternion rootRot)
         {
             foreach (var child in children) child.ApplyLayoutToChips(rootPos, rootRot);
         }
@@ -38,7 +38,7 @@ namespace RRCG.Formatter
 
     public class ChipLayoutNode : ChipLayout
     {
-        float depth = 0;
+        bool isExec;
         Node node;
         GameObject instance;
 
@@ -46,6 +46,7 @@ namespace RRCG.Formatter
         {
             this.node = node;
             this.instance = instance;
+            this.isExec = isExec;
 
             var size = new Vector2(0.4f, 0.2f);
 
@@ -55,8 +56,6 @@ namespace RRCG.Formatter
             }
 
             size.y += Math.Max(node.InputCount, node.SwitchCases?.Count ?? 0) * 0.03f;
-
-            depth = isExec ? -0.025f : -0.015f;
 
             Size = size;
         }
@@ -74,6 +73,8 @@ namespace RRCG.Formatter
             // Chips have their pivot in the top-center, the layout in the top-left
             var chipPivot = WorldPos + new Vector2(Size.x / 2, 0);
 
+            var depth = isExec ? -0.025f : -0.015f;
+
             var chipPos = new Vector3(chipPivot.x, chipPivot.y + HeightOffset(), depth);
 
             instance.transform.rotation = rootRot;
@@ -89,8 +90,9 @@ namespace RRCG.Formatter
             // Variables have a special shape
             if (ChipTypeUtils.VariableTypes.Contains(node.Type)) return 0.07f;
 
-            // Align as if the first pin of the board was an exec pin
-            if (node.Type == ChipType.CircuitBoard || node.Type == ChipType.ControlPanel) return 0.04f;
+            // Align as if the first pin of the board was an exec pin, or align on top when it only has data pins
+            if (node.Type == ChipType.CircuitBoard || node.Type == ChipType.ControlPanel)
+                return isExec ? 0.04f : -0.02f;
 
             return 0f;
         }

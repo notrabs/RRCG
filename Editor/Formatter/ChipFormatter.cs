@@ -15,12 +15,15 @@ namespace RRCG.Formatter
             ChipFormatter.rrcgNodeToInstances = rrcgNodeToInstances;
             var nodesToPlace = context.Nodes.ToList();
 
+            //
+            // Allocate some data for faster queries later
+            //
+
             var execConnections = context.Connections.Where(c => c.isExec).OrderBy(c => c.From, new PortComparer()).ToArray();
             var dataConnections = context.Connections.Where(c => !c.isExec).OrderBy(c => c.To, new PortComparer()).ToArray();
             var allExecConnectedNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n || c.To.Node == n)).ToArray();
             var entryNodes = allExecConnectedNodes.Where(n => execConnections.All(c => c.To.Node != n));
 
-            // Dicts for faster queries
             var execInNodes = new Dictionary<Node, List<Node>>();
             var execOutNodes = new Dictionary<Node, List<Node>>();
 
@@ -45,7 +48,7 @@ namespace RRCG.Formatter
             }
 
             //
-            // Calculate a structured version of the graph
+            // Calculate an abstract version of the formatted graph, describing its semantic structure
             //
 
             var entryBranches = new List<ExecBranch>();
@@ -57,6 +60,10 @@ namespace RRCG.Formatter
                 var entryBranch = new ExecBranch();
                 entryBranches.Add(entryBranch);
 
+                // Step 1: Compute a DFS of the graph. 
+                // This establises a trunk. The Structure is constructed in "shells", so any branch will only have at most branching node as its last child after this step.
+                // In a later step these inner "shells" will be pulled out as needed according to their dependency relationships.
+
                 {
                     Action<Node, ExecBranch> Visit = null;
                     Visit = (node, branch) =>
@@ -64,7 +71,7 @@ namespace RRCG.Formatter
                         // Check if the node is already placed
                         if (!nodesToPlace.Remove(node)) return;
 
-                        var execGroup = new ExecGroup { execNode = node };
+                        var execGroup = new ExecOrBranchGroup { execNode = node };
                         branch.execGroups.Add(execGroup);
 
                         var nextNodes = execOutNodes.GetValueOrDefault(node, EMPTY_NODES);
@@ -88,9 +95,81 @@ namespace RRCG.Formatter
                     Visit(entryNode, entryBranch);
                 }
 
-                // Search for data dependencies
+                // Step 2: Collapse the graph.
+                // Try to find dependencies from the outer "shells" of the graph into an inner graph
+                // This is a heuristic for a topological sorting, that works reasonably well for the main path
+
+                {
+                    Action<ExecBranch> VisitBranch = null;
+                    Func<ExecOrBranchGroup, ExecOrBranchGroup> VisitExecGroup = null;
+
+                    VisitBranch = (branch) =>
+                    {
+                        // Use a manual for loop, as more execGroups will be inserted when groups are "pulled out"
+                        for (var i = 0; i < branch.execGroups.Count; i++)
+                        {
+                            var newGroup = VisitExecGroup(branch.execGroups[i]);
+
+                            if (newGroup != null) branch.execGroups.Insert(i + 1, newGroup);
+                        }
+                    };
+
+                    VisitExecGroup = (execGroup) =>
+                    {
+                        for (var i = execGroup.branches.Count - 1; i >= 0; i--)
+                        {
+                            VisitBranch(execGroup.branches[i]);
+                        }
+
+                        if (execGroup.branches.Count > 1)
+                        {
+                            var nodesInBranches = execGroup.branches.Select(branch => branch.GetAllNodes().ToArray()).ToArray();
+                            var nodeToBranch = new Dictionary<Node, int>();
+
+                            int nodesBranchIndex = 0;
+                            foreach (var nodes in nodesInBranches)
+                            {
+                                foreach (var node in nodes) nodeToBranch.Add(node, nodesBranchIndex);
+                                nodesBranchIndex++;
+                            }
+
+                            for (var targetBranchIndex = execGroup.branches.Count - 2; targetBranchIndex >= 0; targetBranchIndex--)
+                            {
+                                var nodesInBranch = nodesInBranches[targetBranchIndex];
+
+                                if (nodesInBranch.Any((nodeInBranch) =>
+                                {
+                                    var inNodes = execInNodes.GetValueOrDefault(nodeInBranch, EMPTY_NODES);
+                                    return inNodes.Any(inNode => nodeToBranch.GetValueOrDefault(inNode, -1) > targetBranchIndex);
+                                }))
+                                {
+                                    // targetBranchIndex shall be pulled out into a newGroup
+
+                                    var pulledOutBranches = execGroup.branches.GetRange(0, targetBranchIndex + 1);
+
+                                    var newGroup = new ExecOrBranchGroup() { branches = pulledOutBranches.ToList() };
+
+                                    execGroup.branches.RemoveRange(0, targetBranchIndex + 1);
+
+                                    execGroup.ThroughLinePadding = true;
+
+                                    return newGroup;
+                                }
+                            }
+                        }
+                        return null;
+                    };
+
+                    VisitBranch(entryBranch);
+                }
+
+                // Step 3: Search for data dependencies
+                // This assigns all the data-only nodes to their first usage in an exec chip
+
                 foreach (var execGroup in entryBranch.GetAllExecGroups())
                 {
+                    if (execGroup.execNode == null) continue;
+
                     var bfs = new List<Node> { execGroup.execNode };
 
                     List<Node> UpdateBfs()
@@ -108,7 +187,7 @@ namespace RRCG.Formatter
             }
 
             //
-            // Convert the structured graph into layouts
+            // Convert the abstract graph into layouts
             //
 
             var rootLayout = new ChipLayoutVertical();
@@ -160,18 +239,22 @@ namespace RRCG.Formatter
             return container;
         }
 
-        public static ChipLayout CreateExecGroupContainer(ExecGroup exec)
+        public static ChipLayout CreateExecGroupContainer(ExecOrBranchGroup execGroup)
         {
             var container = new ChipLayoutHorizontal();
 
-            container.AddChild(CreateDependencies(exec.deps));
-            container.AddChild(CreateNodeContainer(exec.execNode, true));
+            if (execGroup.execNode != null)
+            {
+                container.AddChild(CreateDependencies(execGroup.deps));
+                container.AddChild(CreateNodeContainer(execGroup.execNode, true));
+            }
 
-            if (exec.branches.Count > 0)
+            if (execGroup.branches.Count > 0)
             {
                 var branchContainer = new ChipLayoutVertical();
+                if (execGroup.ThroughLinePadding) branchContainer.Padding = branchContainer.Padding with { Top = 0.1f };
 
-                foreach (var branch in exec.branches) branchContainer.AddChild(CreateBranchContainer(branch));
+                foreach (var branch in execGroup.branches) branchContainer.AddChild(CreateBranchContainer(branch));
 
                 container.AddChild(branchContainer);
             }
@@ -210,23 +293,18 @@ namespace RRCG.Formatter
             return new ChipLayoutNode(node, rrcgNodeToInstances[node].gameObject, isExec);
         }
     }
-    public class PortComparer : IComparer<Port>
-    {
-        public int Compare(Port a, Port b)
-        {
-            var compareGroup = a.Group.CompareTo(b.Group);
-            if (compareGroup != 0) return compareGroup;
-            return a.Index.CompareTo(b.Index);
-        }
-    }
+
+    //
+    // Abstract Layout Graph types (describing the semantic structure)
+    //
 
     public class ExecBranch
     {
-        public List<ExecGroup> execGroups = new List<ExecGroup>();
+        public List<ExecOrBranchGroup> execGroups = new List<ExecOrBranchGroup>();
 
-        public IEnumerable<ExecGroup> GetAllExecGroups()
+        public IEnumerable<ExecOrBranchGroup> GetAllExecGroups()
         {
-            IEnumerable<ExecGroup> all = new List<ExecGroup>();
+            IEnumerable<ExecOrBranchGroup> all = new List<ExecOrBranchGroup>();
 
             foreach (var execGroup in execGroups)
             {
@@ -235,9 +313,17 @@ namespace RRCG.Formatter
 
             return all;
         }
+
+        public IEnumerable<Node> GetAllNodes()
+        {
+            foreach (var execGroup in execGroups)
+            {
+                foreach (var node in execGroup.GetAllNodes()) yield return node;
+            }
+        }
     }
 
-    public class ExecGroup
+    public class ExecOrBranchGroup
     {
         public Node execNode;
 
@@ -245,15 +331,30 @@ namespace RRCG.Formatter
 
         public List<ExecBranch> branches = new List<ExecBranch>();
 
-        public IEnumerable<ExecGroup> GetAllExecGroups()
+        // True if the group has been "pulled out" from in the formatting process
+        // This indicates that some padding should be left before the first branch
+        public bool ThroughLinePadding = false;
+
+        public IEnumerable<ExecOrBranchGroup> GetAllExecGroups()
         {
             yield return this;
+
             foreach (var branch in branches)
             {
                 foreach (var execGroup in branch.GetAllExecGroups())
                 {
                     yield return execGroup;
                 }
+            }
+        }
+
+        public IEnumerable<Node> GetAllNodes()
+        {
+            if (execNode != null) yield return execNode;
+
+            foreach (var branch in branches)
+            {
+                foreach (var node in branch.GetAllNodes()) yield return node;
             }
         }
     }
