@@ -506,6 +506,10 @@ namespace RRCGBuild
         public static Vector3Port operator *(Vector3Port a, FloatPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data * b.Data };
+
+            if (b.IsDataPort && (float)b.Data == -1f) // -1 is exactly representable
+                return CircuitBuilder.Singleton("Vector3_Inverse_" + a.Port.PortKey(), () => ChipBuilder.Vector3Inverse(a));
+
             // This will fix the simple case for missing default value types. Leave it up to the user to force more complex types for now.
             if (b.IsDataPort) b = ChipLib.FloatConst(b);
             return ChipBuilder.Vector3Scale(a, b);
@@ -517,6 +521,10 @@ namespace RRCGBuild
         public static Vector3Port operator *(Vector3Port a, IntPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data * b.Data };
+
+            if (b.IsDataPort && (int)b.Data == -1)
+                return CircuitBuilder.Singleton("Vector3_Inverse_" + a.Port.PortKey(), () => ChipBuilder.Vector3Inverse(a));
+
             // This will fix the simple case for missing default value types. Leave it up to the user to force more complex types for now.
             if (b.IsDataPort) b = ChipLib.IntConst(b);
             return ChipBuilder.Vector3Scale(a, b);
