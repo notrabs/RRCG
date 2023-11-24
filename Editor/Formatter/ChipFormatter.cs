@@ -1,278 +1,165 @@
 ﻿using RRCGBuild;
-using RRCGGenerated;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEngine.UI.ContentSizeFitter;
 
-namespace RRCG
+namespace RRCG.Formatter
 {
     public static class ChipFormatter
     {
-        static float PX_SCALE = 100f;
+        static Dictionary<Node, Component> rrcgNodeToInstances;
 
-        static Dictionary<RRCGBuild.Node, Component> rrcgNodeToInstances;
-
-        public static async Task<Vector2> OrganizeCircuits(Transform root, Context context, Dictionary<RRCGBuild.Node, Component> rrcgNodeToInstances)
+        public static Vector2 OrganizeCircuits(Transform root, Context context, Dictionary<Node, Component> rrcgNodeToInstances)
         {
             ChipFormatter.rrcgNodeToInstances = rrcgNodeToInstances;
-            var tempLayoutRoot = CreateRootContainer();
+            var nodesToPlace = context.Nodes.ToList();
 
-            try
+            var execConnections = context.Connections.Where(c => c.isExec).ToArray();
+            var dataConnections = context.Connections.Where(c => !c.isExec).ToArray();
+            var entryNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n) && execConnections.All(c => c.To.Node != n));
+            var allExecConnectedNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n || c.To.Node == n)).ToArray();
+
+            //
+            // Calculate a structured version of the graph
+            //
+
+            var entryGroups = new List<EntryGroup>();
+
+            foreach (var entryNode in entryNodes)
             {
-                var nodesToPlace = context.Nodes.ToList();
+                var entryGroup = new EntryGroup();
+                entryGroups.Add(entryGroup);
 
-                var execConnections = context.Connections.Where(c => c.isExec).ToArray();
-                var dataConnections = context.Connections.Where(c => !c.isExec).ToArray();
-                var entryNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n) && execConnections.All(c => c.To.Node != n));
-                var allExecConnectedNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n || c.To.Node == n)).ToArray();
+                var bfs = new List<Node>() { entryNode };
 
-                // Calculate a structured version of the graph
-                var entryGroups = new List<EntryGroup>();
-
-                foreach (var entryNode in entryNodes)
+                while (bfs.Count > 0)
                 {
-                    var entryGroup = new EntryGroup();
-                    entryGroups.Add(entryGroup);
+                    var execGroup = new ExecGroup();
+                    entryGroup.execGroups.Add(execGroup);
 
-                    var bfs = new List<Node>() { entryNode };
+                    execGroup.execs = bfs.Select(n => new ExecNode() { execNode = n }).ToList();
 
-                    while (bfs.Count > 0)
+                    nodesToPlace.RemoveAll(n => bfs.Contains(n));
+
+                    bfs = nodesToPlace.Where(n => execConnections.Any(c => c.To.Node == n && bfs.Contains(c.From.Node))).ToList();
+                }
+
+
+                // Search for data dependencies
+                foreach (var execGroup in entryGroup.execGroups)
+                {
+                    foreach (var exec in execGroup.execs)
                     {
-                        var execGroup = new ExecGroup();
-                        entryGroup.execGroups.Add(execGroup);
+                        bfs = new List<Node> { exec.execNode };
 
-                        execGroup.execs = bfs.Select(n => new ExecNode() { execNode = n }).ToList();
-
-                        nodesToPlace.RemoveAll(n => bfs.Contains(n));
-
-                        bfs = nodesToPlace.Where(n => execConnections.Any(c => c.To.Node == n && bfs.Contains(c.From.Node))).ToList();
-                    }
-
-
-                    // Search for data dependencies
-                    foreach (var execGroup in entryGroup.execGroups)
-                    {
-                        foreach (var exec in execGroup.execs)
+                        while ((bfs = nodesToPlace.Where(n => !allExecConnectedNodes.Contains(n) && dataConnections.Any(c => c.From.Node == n && bfs.Contains(c.To.Node))).ToList()).Count > 0)
                         {
-                            bfs = new List<Node> { exec.execNode };
-
-                            while ((bfs = nodesToPlace.Where(n => !allExecConnectedNodes.Contains(n) && dataConnections.Any(c => c.From.Node == n && bfs.Contains(c.To.Node))).ToList()).Count > 0)
-                            {
-                                exec.deps.Add(bfs.ToList());
-                                nodesToPlace.RemoveAll(n => bfs.Contains(n));
-                            }
+                            exec.deps.Add(bfs.ToList());
+                            nodesToPlace.RemoveAll(n => bfs.Contains(n));
                         }
                     }
                 }
-
-
-                // Calculate the Layout of the structured graph
-                foreach (var entryGroup in entryGroups)
-                {
-                    var entryContainer = CreateExecEntryLayout(tempLayoutRoot);
-
-                    foreach (var execGroup in entryGroup.execGroups)
-                    {
-                        CreateExecsContainer(entryContainer, execGroup);
-                    }
-                }
-
-                foreach (var node in nodesToPlace)
-                {
-                    CreateNodeContainer(tempLayoutRoot, node);
-                }
-
-                // Apply the calculated layout to the actual nodes
-                for (int i = 0; i < 10; i++)
-                {
-                    LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)tempLayoutRoot.transform);
-                }
-
-                await Utils.awaitNextTick();
-
-                var nodeDummys = tempLayoutRoot.GetComponentsInChildren<LayoutNodeReference>();
-
-                foreach (var nodeDummy in nodeDummys)
-                {
-                    var dummyPosition = ((RectTransform)nodeDummy.transform).position;
-
-                    var rrcgNode = nodeDummy.node;
-                    var node = rrcgNodeToInstances[rrcgNode];
-
-                    if (node == null) continue;
-
-                    if (root != null) node.transform.rotation = root.rotation;
-
-                    var isExec = allExecConnectedNodes.Contains(rrcgNode);
-                    var depth = isExec ? 0.025f : 0.015f;
-
-                    if (root != null)
-                    {
-                        // Align to Background Plane
-                        node.transform.Rotate(new Vector3(0, -90, 0));
-
-                        var point = new Vector3(depth, 0, 0) + new Vector3(0, dummyPosition.y / PX_SCALE, dummyPosition.x / PX_SCALE);
-                        node.transform.position = root != null ? root.TransformPoint(point) : point;
-                    }
-                    else
-                    {
-                        // Align inside CircuitBoard
-                        var point = new Vector3(depth, 0, 0) + new Vector3(dummyPosition.x / PX_SCALE, dummyPosition.y / PX_SCALE, 0);
-                        node.transform.position = root != null ? root.TransformPoint(point) : point;
-                    }
-                }
-
-                var size = ((RectTransform)tempLayoutRoot.transform).sizeDelta;
-
-                return size / PX_SCALE;
             }
-            finally
+
+            //
+            // Convert the structured graph into layouts
+            //
+
+            var rootLayout = new ChipLayoutVertical();
+            rootLayout.Padding = new ChipLayoutPadding(0.2f);
+
+            foreach (var entryGroup in entryGroups)
             {
-                GameObject.DestroyImmediate(tempLayoutRoot);
+                var entryContainer = rootLayout.AddChild(new ChipLayoutHorizontal());
+
+                foreach (var execGroup in entryGroup.execGroups)
+                {
+                    entryContainer.AddChild(CreateExecsContainer(execGroup));
+                }
             }
+
+            var singleNodesContainer = rootLayout.AddChild(new ChipLayoutHorizontal());
+
+            foreach (var node in nodesToPlace)
+            {
+                singleNodesContainer.AddChild(CreateNodeContainer(node, false));
+            }
+
+            //
+            // Apply the calculated layout to the actual nodes
+            //
+
+            var totalSize = rootLayout.CalculateLayout(new Vector2());
+
+            var rootPos = root != null ?
+                // rootPos needs to be the top-left corner of the plane
+                root.TransformPoint(new Vector3(0, totalSize.y, 0)) :
+                // Place the circuit boards in front of the In/Out chips in circuit boards
+                new Vector3(0, 0, -0.2f);
+            var rootRot = root != null ?
+                // Align the Circuits to the plane
+                root.rotation * Quaternion.Euler(0, -90, 0) :
+                // chips in circuit boards have no rotation
+                new Quaternion();
+
+            rootLayout.ApplyLayoutToChips(rootPos, rootRot);
+
+            return totalSize;
         }
 
-        public static GameObject CreateRootContainer()
+
+        public static ChipLayout CreateExecsContainer(ExecGroup execs)
         {
-            var tempObj = new GameObject("tempRoot");
-            var vl = tempObj.AddComponent<VerticalLayoutGroup>();
-            vl.padding.left = vl.padding.right = vl.padding.top = vl.padding.bottom = 10;
-
-            ((RectTransform)tempObj.transform).pivot = new Vector2(0, 0);
-
-            CreateContentSizeFitter(tempObj);
-            return tempObj;
-        }
-
-        public static GameObject CreateExecEntryLayout(GameObject parent)
-        {
-            var tempObj = new GameObject("entry");
-            tempObj.transform.parent = parent.transform;
-            tempObj.AddComponent<HorizontalLayoutGroup>();
-            CreateContentSizeFitter(tempObj);
-
-            return tempObj;
-        }
-
-
-        public static GameObject CreateExecsContainer(GameObject parent, ExecGroup execs)
-        {
-            var tempObj = new GameObject("execs");
-            tempObj.transform.parent = parent.transform;
-            tempObj.AddComponent<VerticalLayoutGroup>();
-            CreateContentSizeFitter(tempObj);
+            var container = new ChipLayoutVertical();
 
             foreach (var exec in execs.execs)
             {
-                CreateExecContainer(tempObj, exec);
+                container.AddChild(CreateExecContainer(exec));
             }
 
-            return tempObj;
+            return container;
         }
 
-        public static GameObject CreateExecContainer(GameObject parent, ExecNode exec)
+        public static ChipLayout CreateExecContainer(ExecNode exec)
         {
-            var tempObj = new GameObject("exec");
-            tempObj.transform.parent = parent.transform;
-            tempObj.AddComponent<HorizontalLayoutGroup>();
-            CreateContentSizeFitter(tempObj);
+            var container = new ChipLayoutHorizontal();
 
-            CreateDependencies(tempObj, exec.deps);
-            CreateNodeContainer(tempObj, exec.execNode);
+            container.AddChild(CreateDependencies(exec.deps));
+            container.AddChild(CreateNodeContainer(exec.execNode, true));
 
-            return tempObj;
+            return container;
         }
 
-        public static GameObject CreateDependencies(GameObject parent, List<List<Node>> deps)
+        public static ChipLayout CreateDependencies(List<List<Node>> deps)
         {
-            var tempObj = new GameObject("deps");
-            tempObj.transform.parent = parent.transform;
-            var hl = tempObj.AddComponent<HorizontalLayoutGroup>();
-            hl.padding.top = 10;
-            CreateContentSizeFitter(tempObj);
+            var container = new ChipLayoutHorizontal();
+            container.Padding = new ChipLayoutPadding(0.1f, 0, 0, 0);
 
             foreach (var col in deps.ToArray().Reverse())
             {
-                CreateDependencyColumn(tempObj, col);
+                container.AddChild(CreateDependencyColumn(col));
             }
 
-            return tempObj;
+            return container;
         }
 
-        public static GameObject CreateDependencyColumn(GameObject parent, List<Node> deps)
+        public static ChipLayout CreateDependencyColumn(List<Node> deps)
         {
-            var tempObj = new GameObject("deps");
-            tempObj.transform.parent = parent.transform;
-            tempObj.AddComponent<VerticalLayoutGroup>();
-            CreateContentSizeFitter(tempObj);
+            var container = new ChipLayoutVertical();
 
             foreach (var node in deps)
             {
-                CreateNodeContainer(tempObj, node);
+                container.AddChild(CreateNodeContainer(node, false));
             }
 
-            return tempObj;
+            return container;
         }
 
 
-        public static GameObject CreateNodeContainer(GameObject parent, Node node)
+        public static ChipLayoutNode CreateNodeContainer(Node node, bool isExec)
         {
-            var tempObj = new GameObject("node " + node.Name);
-            tempObj.transform.parent = parent.transform;
-            var rect = tempObj.AddComponent<RectTransform>();
-
-            var nodeSize = GetNodeSize(node);
-
-            // The pivot in Studio is misleading. In-Game the pivot is on top.
-            var pivotOffset = GetNodeOffset(node) / nodeSize.y;
-            rect.pivot = new Vector2(0.5f, 1 + pivotOffset);
-
-            rect.sizeDelta = nodeSize * PX_SCALE;
-
-            var reference = tempObj.AddComponent<LayoutNodeReference>();
-            reference.node = node;
-
-            return tempObj;
-        }
-
-        public static Vector2 GetNodeSize(Node node)
-        {
-            var size = new Vector2(0.4f, 0.2f);
-
-            if (rrcgNodeToInstances.ContainsKey(node))
-            {
-                size.x += rrcgNodeToInstances[node].gameObject.name.Length * 0.01f;
-            }
-
-            size.y += Math.Max(node.InputCount, node.SwitchCases?.Count ?? 0) * 0.03f;
-
-            return size;
-        }
-
-        // Some nodes have their exec pins at different heights. This offset is meant to align them.
-        private static float GetNodeOffset(Node node)
-        {
-            // Headless chips have a bit of margin in their 
-            if (ChipTypeUtils.HeadlessChips.Contains(node.Type)) return 0.02f;
-
-            // Variables have a special shape
-            if (ChipTypeUtils.VariableTypes.Contains(node.Type)) return 0.07f;
-
-            // Align as if the first pin of the board was an exec pin
-            if (node.Type == ChipType.CircuitBoard || node.Type == ChipType.ControlPanel) return 0.04f;
-
-            return 0f;
-        }
-
-        public static void CreateContentSizeFitter(GameObject obj)
-        {
-            var csf = obj.AddComponent<ContentSizeFitter>();
-            csf.verticalFit = FitMode.MinSize;
-            csf.horizontalFit = FitMode.MinSize;
+            return new ChipLayoutNode(node, rrcgNodeToInstances[node].gameObject, isExec);
         }
     }
 

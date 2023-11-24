@@ -2,7 +2,6 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis;
 using System.Linq;
-using Microsoft.CodeAnalysis.Formatting;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using System;
 
@@ -47,12 +46,12 @@ namespace RRCG
 
             if (!compiled.Usings.Any(u => u.Name.ToString() == "RRCGBuild"))
             {
-                compiled = compiled.AddUsings(UsingDirective(ParseName("RRCGBuild")).WithAdditionalAnnotations(Formatter.Annotation));
+                compiled = compiled.AddUsings(UsingDirective(ParseName("RRCGBuild")).WithAdditionalAnnotations(Microsoft.CodeAnalysis.Formatting.Formatter.Annotation));
             }
 
             if (!compiled.Usings.Any(u => u.Name.ToString() == "System.Collections.Generic"))
             {
-                compiled = compiled.AddUsings(UsingDirective(ParseName("System.Collections.Generic")).WithAdditionalAnnotations(Formatter.Annotation));
+                compiled = compiled.AddUsings(UsingDirective(ParseName("System.Collections.Generic")).WithAdditionalAnnotations(Microsoft.CodeAnalysis.Formatting.Formatter.Annotation));
             }
 
             return compiled.WithMembers(SingletonList<MemberDeclarationSyntax>(
