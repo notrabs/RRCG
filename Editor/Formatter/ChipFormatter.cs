@@ -36,15 +36,20 @@ namespace RRCG.Formatter
                 execOutNodes[execConnection.From.Node].Add(execConnection.To.Node);
             }
 
+            // only contains pure data nodes (without execs)
             var dataInNodes = new Dictionary<Node, List<Node>>();
+            var dataOutNodes = new Dictionary<Node, List<Node>>();
 
             foreach (var dataConnection in dataConnections)
             {
-                if (allExecConnectedNodes.Contains(dataConnection.From.Node)) continue;
-
                 if (!dataInNodes.ContainsKey(dataConnection.To.Node)) dataInNodes[dataConnection.To.Node] = new List<Node>();
+                if (!dataOutNodes.ContainsKey(dataConnection.From.Node)) dataOutNodes[dataConnection.From.Node] = new List<Node>();
 
-                dataInNodes[dataConnection.To.Node].Add(dataConnection.From.Node);
+                if (!allExecConnectedNodes.Contains(dataConnection.From.Node))
+                    dataInNodes[dataConnection.To.Node].Add(dataConnection.From.Node);
+
+                if (!allExecConnectedNodes.Contains(dataConnection.To.Node))
+                    dataOutNodes[dataConnection.From.Node].Add(dataConnection.To.Node);
             }
 
             //
@@ -61,7 +66,7 @@ namespace RRCG.Formatter
                 entryBranches.Add(entryBranch);
 
                 // Step 1: Compute a DFS of the graph. 
-                // This establises a trunk. The Structure is constructed in "shells", so any branch will only have at most branching node as its last child after this step.
+                // This establises a trunk. The structure is constructed in "shells", so any branch will only have at most one branching node as its last child after this step.
                 // In a later step these inner "shells" will be pulled out as needed according to their dependency relationships.
 
                 {
@@ -135,22 +140,17 @@ namespace RRCG.Formatter
 
                             for (var targetBranchIndex = execGroup.branches.Count - 2; targetBranchIndex >= 0; targetBranchIndex--)
                             {
-                                var nodesInBranch = nodesInBranches[targetBranchIndex];
-
-                                if (nodesInBranch.Any((nodeInBranch) =>
+                                if (nodesInBranches[targetBranchIndex].Any((nodeInBranch) =>
                                 {
                                     var inNodes = execInNodes.GetValueOrDefault(nodeInBranch, EMPTY_NODES);
                                     return inNodes.Any(inNode => nodeToBranch.GetValueOrDefault(inNode, -1) > targetBranchIndex);
                                 }))
                                 {
                                     // targetBranchIndex shall be pulled out into a newGroup
-
                                     var pulledOutBranches = execGroup.branches.GetRange(0, targetBranchIndex + 1);
-
                                     var newGroup = new ExecOrBranchGroup() { branches = pulledOutBranches.ToList() };
 
                                     execGroup.branches.RemoveRange(0, targetBranchIndex + 1);
-
                                     execGroup.ThroughLinePadding = true;
 
                                     return newGroup;
@@ -183,6 +183,10 @@ namespace RRCG.Formatter
                         execGroup.deps.Add(bfs.ToList());
                         nodesToPlace.RemoveAll(n => bfs.Contains(n));
                     }
+
+                    var execDataOut = dataOutNodes.GetValueOrDefault(execGroup.execNode, EMPTY_NODES);
+
+                    if (execGroup.deps.Any(nodes => nodes.Any(n => execDataOut.Contains(n)))) execGroup.HasLoopingDependency = true;
                 }
             }
 
@@ -208,7 +212,7 @@ namespace RRCG.Formatter
             // Apply the calculated layout to the actual nodes
             //
 
-            var totalSize = rootLayout.CalculateLayout(new Vector2());
+            var totalSize = rootLayout.Calculate();
 
             var rootPos = root != null ?
                 // rootPos needs to be the top-left corner of the plane
@@ -245,8 +249,29 @@ namespace RRCG.Formatter
 
             if (execGroup.execNode != null)
             {
-                container.AddChild(CreateDependencies(execGroup.deps));
-                container.AddChild(CreateNodeContainer(execGroup.execNode, true));
+                var deps = CreateDependencies(execGroup.deps);
+                var node = CreateNodeContainer(execGroup.execNode, true);
+
+                if (execGroup.HasLoopingDependency)
+                {
+                    // place looping dependencies below node
+                    var vertical = new ChipLayoutVertical();
+                    container.AddChild(vertical);
+
+                    vertical.AddChild(node);
+                    vertical.AddChild(deps);
+
+                    deps.Padding = new ChipLayoutPadding(0);
+                    node.Alignment = ChipLayoutAlignment.CENTER;
+                    deps.Alignment = ChipLayoutAlignment.CENTER;
+                }
+                else
+                {
+                    // place dependencies left of node
+                    container.AddChild(deps);
+                    container.AddChild(node);
+                }
+
             }
 
             if (execGroup.branches.Count > 0)
@@ -334,6 +359,9 @@ namespace RRCG.Formatter
         // True if the group has been "pulled out" from in the formatting process
         // This indicates that some padding should be left before the first branch
         public bool ThroughLinePadding = false;
+
+        // True if at least one of the dependencies reads and writes to the execNode
+        public bool HasLoopingDependency = false;
 
         public IEnumerable<ExecOrBranchGroup> GetAllExecGroups()
         {

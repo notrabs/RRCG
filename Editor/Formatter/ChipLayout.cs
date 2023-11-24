@@ -7,18 +7,34 @@ using UnityEngine;
 
 namespace RRCG.Formatter
 {
+    public enum ChipLayoutAlignment
+    {
+        START = 0,
+        CENTER = 1,
+    }
+
     public abstract class ChipLayout
     {
         public Vector2 WorldPos { get; protected set; } = Vector2.zero;
-
         public Vector2 Size { get; protected set; } = Vector2.zero;
 
         public ChipLayoutPadding Padding = new ChipLayoutPadding(0);
 
+        public ChipLayoutAlignment Alignment = ChipLayoutAlignment.START;
+
         public List<ChipLayout> children = new List<ChipLayout>();
 
         // Updates the layout world positions by passing down the top-left position and returning the size bottom-up
-        public abstract Vector2 CalculateLayout(Vector2 worldPos);
+        internal abstract Vector2 CalculateSize();
+        internal abstract void CalculateLayout(Vector2 worldPos);
+
+        public Vector2 Calculate()
+        {
+            var size = CalculateSize();
+            CalculateLayout(WorldPos);
+
+            return size;
+        }
 
         public virtual void ApplyLayoutToChips(Vector3 rootPos, Quaternion rootRot)
         {
@@ -59,12 +75,9 @@ namespace RRCG.Formatter
 
             Size = size;
         }
+        internal override Vector2 CalculateSize() => Size + Padding.Size;
+        internal override void CalculateLayout(Vector2 worldPos) => WorldPos = worldPos;
 
-        public override Vector2 CalculateLayout(Vector2 worldPos)
-        {
-            WorldPos = worldPos;
-            return Size + Padding.Size;
-        }
 
         public override void ApplyLayoutToChips(Vector3 rootPos, Quaternion rootRot)
         {
@@ -100,31 +113,22 @@ namespace RRCG.Formatter
 
     public class ChipLayoutVertical : ChipLayout
     {
-        public override Vector2 CalculateLayout(Vector2 worldPos)
+        internal override Vector2 CalculateSize()
         {
-            WorldPos = worldPos;
-
-            var nextChildWorldPos = worldPos + Padding.TopLeft;
-
             foreach (var child in children)
             {
-                var childSize = child.CalculateLayout(nextChildWorldPos);
+                var childSize = child.CalculateSize();
 
                 Size = new Vector2(
                     Mathf.Max(childSize.x, Size.x),
                     Size.y + childSize.y
                 );
-
-                nextChildWorldPos += new Vector2(0, -childSize.y);
             }
 
             return Size + Padding.Size;
         }
-    }
 
-    public class ChipLayoutHorizontal : ChipLayout
-    {
-        public override Vector2 CalculateLayout(Vector2 worldPos)
+        internal override void CalculateLayout(Vector2 worldPos)
         {
             WorldPos = worldPos;
 
@@ -132,17 +136,56 @@ namespace RRCG.Formatter
 
             foreach (var child in children)
             {
-                var childSize = child.CalculateLayout(nextChildWorldPos);
+                var alignmentOffset = child.Alignment switch
+                {
+                    ChipLayoutAlignment.START => new Vector2(0, 0),
+                    ChipLayoutAlignment.CENTER => new Vector2((Size.x - child.Size.x) / 2f, 0),
+                    _ => throw new NotImplementedException(),
+                };
+
+                child.CalculateLayout(nextChildWorldPos + alignmentOffset);
+
+                nextChildWorldPos += new Vector2(0, -child.Size.y);
+            }
+        }
+    }
+
+    public class ChipLayoutHorizontal : ChipLayout
+    {
+        internal override Vector2 CalculateSize()
+        {
+            foreach (var child in children)
+            {
+                var childSize = child.CalculateSize();
 
                 Size = new Vector2(
                     Size.x + childSize.x,
                     Mathf.Max(childSize.y, Size.y)
                 );
-
-                nextChildWorldPos += new Vector2(childSize.x, 0);
             }
 
             return Size + Padding.Size;
+        }
+
+        internal override void CalculateLayout(Vector2 worldPos)
+        {
+            WorldPos = worldPos;
+
+            var nextChildWorldPos = worldPos + Padding.TopLeft;
+
+            foreach (var child in children)
+            {
+                var alignmentOffset = child.Alignment switch
+                {
+                    ChipLayoutAlignment.START => new Vector2(0, 0),
+                    ChipLayoutAlignment.CENTER => new Vector2(0, (Size.y - child.Size.y) / 2f),
+                    _ => throw new NotImplementedException(),
+                };
+
+                child.CalculateLayout(nextChildWorldPos + alignmentOffset);
+
+                nextChildWorldPos += new Vector2(child.Size.x, 0);
+            }
         }
     }
 }
