@@ -15,49 +15,77 @@ namespace RRCG.Formatter
             ChipFormatter.rrcgNodeToInstances = rrcgNodeToInstances;
             var nodesToPlace = context.Nodes.ToList();
 
-            var execConnections = context.Connections.Where(c => c.isExec).ToArray();
-            var dataConnections = context.Connections.Where(c => !c.isExec).ToArray();
-            var entryNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n) && execConnections.All(c => c.To.Node != n));
+            var execConnections = context.Connections.Where(c => c.isExec).OrderBy(c => c.From, new PortComparer()).ToArray();
+            var dataConnections = context.Connections.Where(c => !c.isExec).OrderBy(c => c.To, new PortComparer()).ToArray();
             var allExecConnectedNodes = context.Nodes.Where(n => execConnections.Any(c => c.From.Node == n || c.To.Node == n)).ToArray();
+            var entryNodes = allExecConnectedNodes.Where(n => execConnections.All(c => c.To.Node != n));
+
+            // Dicts for faster queries
+            var execInNodes = new Dictionary<Node, List<Node>>();
+            var execOutNodes = new Dictionary<Node, List<Node>>();
+
+            foreach (var execConnection in execConnections)
+            {
+                if (!execInNodes.ContainsKey(execConnection.To.Node)) execInNodes[execConnection.To.Node] = new List<Node>();
+                if (!execOutNodes.ContainsKey(execConnection.From.Node)) execOutNodes[execConnection.From.Node] = new List<Node>();
+
+                execInNodes[execConnection.To.Node].Add(execConnection.From.Node);
+                execOutNodes[execConnection.From.Node].Add(execConnection.To.Node);
+            }
 
             //
             // Calculate a structured version of the graph
             //
 
-            var entryGroups = new List<EntryGroup>();
+            var entryBranches = new List<ExecBranch>();
+
+            var EMPTY_NODES = new List<Node>();
 
             foreach (var entryNode in entryNodes)
             {
-                var entryGroup = new EntryGroup();
-                entryGroups.Add(entryGroup);
+                var entryBranch = new ExecBranch();
+                entryBranches.Add(entryBranch);
 
-                var bfs = new List<Node>() { entryNode };
-
-                while (bfs.Count > 0)
                 {
-                    var execGroup = new ExecGroup();
-                    entryGroup.execGroups.Add(execGroup);
+                    Action<Node, ExecBranch> Visit = null;
+                    Visit = (node, branch) =>
+                    {
+                        // Check if the node is already placed
+                        if (!nodesToPlace.Remove(node)) return;
 
-                    execGroup.execs = bfs.Select(n => new ExecNode() { execNode = n }).ToList();
+                        var execGroup = new ExecGroup { execNode = node };
+                        branch.execGroups.Add(execGroup);
 
-                    nodesToPlace.RemoveAll(n => bfs.Contains(n));
+                        var nextNodes = execOutNodes.GetValueOrDefault(node, EMPTY_NODES);
 
-                    bfs = nodesToPlace.Where(n => execConnections.Any(c => c.To.Node == n && bfs.Contains(c.From.Node))).ToList();
+                        if (nextNodes.Count == 0) return;
+
+                        if (nextNodes.Count == 1)
+                        {
+                            Visit(nextNodes[0], branch);
+                            return;
+                        }
+
+                        foreach (var nextNode in nextNodes)
+                        {
+                            var newBranch = new ExecBranch();
+                            execGroup.branches.Add(newBranch);
+                            Visit(nextNode, newBranch);
+                        }
+                    };
+
+                    Visit(entryNode, entryBranch);
                 }
 
-
                 // Search for data dependencies
-                foreach (var execGroup in entryGroup.execGroups)
+                foreach (var execGroup in entryBranch.GetAllExecGroups())
                 {
-                    foreach (var exec in execGroup.execs)
-                    {
-                        bfs = new List<Node> { exec.execNode };
+                    var bfs = new List<Node> { execGroup.execNode };
 
-                        while ((bfs = nodesToPlace.Where(n => !allExecConnectedNodes.Contains(n) && dataConnections.Any(c => c.From.Node == n && bfs.Contains(c.To.Node))).ToList()).Count > 0)
-                        {
-                            exec.deps.Add(bfs.ToList());
-                            nodesToPlace.RemoveAll(n => bfs.Contains(n));
-                        }
+                    while ((bfs = nodesToPlace.Where(n => !allExecConnectedNodes.Contains(n) && dataConnections.Any(c => c.From.Node == n && bfs.Contains(c.To.Node))).ToList()).Count > 0)
+                    {
+                        execGroup.deps.Add(bfs.ToList());
+                        nodesToPlace.RemoveAll(n => bfs.Contains(n));
                     }
                 }
             }
@@ -69,18 +97,12 @@ namespace RRCG.Formatter
             var rootLayout = new ChipLayoutVertical();
             rootLayout.Padding = new ChipLayoutPadding(0.2f);
 
-            foreach (var entryGroup in entryGroups)
+            foreach (var entryBranch in entryBranches)
             {
-                var entryContainer = rootLayout.AddChild(new ChipLayoutHorizontal());
-
-                foreach (var execGroup in entryGroup.execGroups)
-                {
-                    entryContainer.AddChild(CreateExecsContainer(execGroup));
-                }
+                rootLayout.AddChild(CreateBranchContainer(entryBranch));
             }
 
             var singleNodesContainer = rootLayout.AddChild(new ChipLayoutHorizontal());
-
             foreach (var node in nodesToPlace)
             {
                 singleNodesContainer.AddChild(CreateNodeContainer(node, false));
@@ -109,24 +131,33 @@ namespace RRCG.Formatter
         }
 
 
-        public static ChipLayout CreateExecsContainer(ExecGroup execs)
+        public static ChipLayout CreateBranchContainer(ExecBranch branch)
         {
-            var container = new ChipLayoutVertical();
+            var container = new ChipLayoutHorizontal();
 
-            foreach (var exec in execs.execs)
+            foreach (var execGroup in branch.execGroups)
             {
-                container.AddChild(CreateExecContainer(exec));
+                container.AddChild(CreateExecGroupContainer(execGroup));
             }
 
             return container;
         }
 
-        public static ChipLayout CreateExecContainer(ExecNode exec)
+        public static ChipLayout CreateExecGroupContainer(ExecGroup exec)
         {
             var container = new ChipLayoutHorizontal();
 
             container.AddChild(CreateDependencies(exec.deps));
             container.AddChild(CreateNodeContainer(exec.execNode, true));
+
+            if (exec.branches.Count > 0)
+            {
+                var branchContainer = new ChipLayoutVertical();
+
+                foreach (var branch in exec.branches) branchContainer.AddChild(CreateBranchContainer(branch));
+
+                container.AddChild(branchContainer);
+            }
 
             return container;
         }
@@ -162,22 +193,51 @@ namespace RRCG.Formatter
             return new ChipLayoutNode(node, rrcgNodeToInstances[node].gameObject, isExec);
         }
     }
+    public class PortComparer : IComparer<Port>
+    {
+        public int Compare(Port a, Port b)
+        {
+            var compareGroup = a.Group.CompareTo(b.Group);
+            if (compareGroup != 0) return compareGroup;
+            return a.Index.CompareTo(b.Index);
+        }
+    }
 
-    public class EntryGroup
+    public class ExecBranch
     {
         public List<ExecGroup> execGroups = new List<ExecGroup>();
 
+        public IEnumerable<ExecGroup> GetAllExecGroups()
+        {
+            IEnumerable<ExecGroup> all = new List<ExecGroup>();
+
+            foreach (var execGroup in execGroups)
+            {
+                all = all.Concat(execGroup.GetAllExecGroups());
+            }
+
+            return all;
+        }
     }
 
     public class ExecGroup
     {
-        public List<ExecNode> execs = new List<ExecNode>();
-    }
-
-    public class ExecNode
-    {
         public Node execNode;
 
         public List<List<Node>> deps = new List<List<Node>>();
+
+        public List<ExecBranch> branches = new List<ExecBranch>();
+
+        public IEnumerable<ExecGroup> GetAllExecGroups()
+        {
+            yield return this;
+            foreach (var branch in branches)
+            {
+                foreach (var execGroup in branch.GetAllExecGroups())
+                {
+                    yield return execGroup;
+                }
+            }
+        }
     }
 }
