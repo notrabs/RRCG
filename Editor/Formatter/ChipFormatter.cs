@@ -33,6 +33,17 @@ namespace RRCG.Formatter
                 execOutNodes[execConnection.From.Node].Add(execConnection.To.Node);
             }
 
+            var dataInNodes = new Dictionary<Node, List<Node>>();
+
+            foreach (var dataConnection in dataConnections)
+            {
+                if (allExecConnectedNodes.Contains(dataConnection.From.Node)) continue;
+
+                if (!dataInNodes.ContainsKey(dataConnection.To.Node)) dataInNodes[dataConnection.To.Node] = new List<Node>();
+
+                dataInNodes[dataConnection.To.Node].Add(dataConnection.From.Node);
+            }
+
             //
             // Calculate a structured version of the graph
             //
@@ -82,7 +93,13 @@ namespace RRCG.Formatter
                 {
                     var bfs = new List<Node> { execGroup.execNode };
 
-                    while ((bfs = nodesToPlace.Where(n => !allExecConnectedNodes.Contains(n) && dataConnections.Any(c => c.From.Node == n && bfs.Contains(c.To.Node))).ToList()).Count > 0)
+                    List<Node> UpdateBfs()
+                    {
+                        var deps = bfs.SelectMany(n => dataInNodes.GetValueOrDefault(n, EMPTY_NODES)).ToArray();
+                        return nodesToPlace.Where(n => deps.Contains(n)).ToList();
+                    }
+
+                    while ((bfs = UpdateBfs()).Count > 0)
                     {
                         execGroup.deps.Add(bfs.ToList());
                         nodesToPlace.RemoveAll(n => bfs.Contains(n));
