@@ -29,6 +29,7 @@ namespace RRCGBuild
         public int InputCount { get; internal set; }
 
         // Configuration data
+        public TransformData TransformData = null;
         public SFXConstantData SFXConstantData = null;
         public PlayAudioAtPositionData PlayAudioAtPositionData = null;
         public PlayerWorldUIData PlayerWorldUIData = null;

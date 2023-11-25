@@ -24,6 +24,19 @@ What if you never had to move a wire by hand? RRCG brings text-based scripting s
 `https://github.com/notrabs/RRCG.git`
 
 <details>
+<summary> How to Update </summary>
+
+Occasionally an update might include breaking changes, most likely if chips get changed or the compiler internals are changed. This can invalidate RRCG's generated files. To safely update, please follow these steps:
+
+1. **Make sure Unity is open before you update**
+2. Update using the Package Manager (or git) 
+3. If you get errors in generated files => Use "Clean All" in the window menu
+4. If you get errors in source files => Resolve them manually (e.g. adjust to chip changes)
+5. Hit "Recompile All" to make sure your files are compiled with the latest compiler
+
+</details>
+
+<details>
 <summary> For development </summary>
 
 Clone the repository into the "Packages" folder of your Studio project.

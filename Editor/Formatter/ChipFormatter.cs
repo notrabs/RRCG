@@ -8,11 +8,22 @@ namespace RRCG.Formatter
 {
     public static class ChipFormatter
     {
-        static Dictionary<Node, Component> rrcgNodeToInstances;
-
-        public static Vector2 OrganizeCircuits(Transform root, Context context, Dictionary<Node, Component> rrcgNodeToInstances)
+        public static Vector2 Organize(Transform root, Context context)
         {
-            ChipFormatter.rrcgNodeToInstances = rrcgNodeToInstances;
+            var timer = new ProfilingTimer();
+
+            var rootSize = OrganizeContext(root, context);
+
+            foreach (var childContext in context.GetAllChildren())
+                OrganizeContext(null, childContext);
+
+            Debug.Log($"Finished Formatting in {timer.Formatted}");
+
+            return rootSize;
+        }
+
+        public static Vector2 OrganizeContext(Transform root, Context context)
+        {
             var nodesToPlace = context.Nodes.ToList();
 
             //
@@ -315,7 +326,7 @@ namespace RRCG.Formatter
 
         public static ChipLayoutNode CreateNodeContainer(Node node, bool isExec)
         {
-            return new ChipLayoutNode(node, rrcgNodeToInstances[node].gameObject, isExec);
+            return new ChipLayoutNode(node, isExec);
         }
     }
 

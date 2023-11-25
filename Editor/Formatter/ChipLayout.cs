@@ -56,33 +56,22 @@ namespace RRCG.Formatter
     {
         bool isExec;
         Node node;
-        GameObject instance;
 
-        public ChipLayoutNode(Node node, GameObject instance, bool isExec)
+        public ChipLayoutNode(Node node, bool isExec)
         {
             this.node = node;
-            this.instance = instance;
             this.isExec = isExec;
 
-            var size = new Vector2(0.4f, 0.2f);
-
-            if (instance != null)
-            {
-                size.x += instance.name.Length * 0.01f;
-            }
-
-            size.y += Math.Max(node.InputCount, node.SwitchCases?.Count ?? 0) * 0.03f;
-
-            Size = size;
+            Size = new Vector2(
+                0.4f + node.Name.Length * 0.01f,
+                0.2f + Math.Max(node.InputCount, node.SwitchCases?.Count ?? 0) * 0.03f
+            );
         }
         internal override Vector2 CalculateSize() => Size + Padding.Size;
         internal override void CalculateLayout(Vector2 worldPos) => WorldPos = worldPos;
 
-
         public override void ApplyLayoutToChips(Vector3 rootPos, Quaternion rootRot)
         {
-            if (instance == null) return;
-
             // Chips have their pivot in the top-center, the layout in the top-left
             var chipPivot = WorldPos + new Vector2(Size.x / 2, 0);
 
@@ -90,8 +79,10 @@ namespace RRCG.Formatter
 
             var chipPos = new Vector3(chipPivot.x, chipPivot.y + HeightOffset(), depth);
 
-            instance.transform.rotation = rootRot;
-            instance.transform.position = rootPos + rootRot * chipPos;
+            node.TransformData = new TransformData(
+                rootPos + rootRot * chipPos,
+                rootRot
+            );
         }
 
         // Some nodes have their exec pins at different heights. This offset is meant to align them.

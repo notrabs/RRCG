@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace RRCG
 {
@@ -20,6 +21,22 @@ namespace RRCG
             { "OverlapBox", "RaycastData" },
             { "OverlapSphere", "RaycastData" },
         };
+    }
+
+    public record Vector3Data(float X, float Y, float Z);
+    public record QuaternionData(float X, float Y, float Z, float W);
+    public record TransformData(
+        Vector3Data Position,
+        QuaternionData Rotation
+    )
+    {
+        public TransformData(
+            Vector3 Position,
+            Quaternion Rotation
+        ) : this(
+            new Vector3Data(Position.x, Position.y, Position.z),
+            new QuaternionData(Rotation.x, Rotation.y, Rotation.z, Rotation.w))
+        { }
     }
 
     public record WorldUIBar(
