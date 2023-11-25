@@ -8,18 +8,18 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             ParamCounts();
             SendTypes();
             Existing();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void ParamCounts()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             var params0 = __VariableDeclaratorExpression("params0", () => new EventDefinition());
             params0.Receiver();
             params0.SendLocal();
@@ -29,14 +29,14 @@ namespace RRCGBuild
             var params2 = __VariableDeclaratorExpression("params2", () => new EventDefinition<StringPort, BoolPort>("param0", "param1"));
             var params2Value = __VariableDeclaratorExpression("params2Value", () => params2.Receiver());
             params2.SendLocal(params2Value.Item1, params2Value.Item2);
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void SendTypes()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             var params0 = __VariableDeclaratorExpression("params0", () => new EventDefinition());
             params0.Receiver();
             params0.SendLocal();
@@ -46,14 +46,14 @@ namespace RRCGBuild
             params0.SendRoomAuthority();
             params0.SendPlayer(PlayerPort.Local);
             params0.SendPlayer(GetLocalPlayer());
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void Existing()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             var params0 = __VariableDeclaratorExpression("params0", () => ExistingEvent("Existing0"));
             params0.Receiver();
             params0.SendLocal();
@@ -63,7 +63,7 @@ namespace RRCGBuild
             var params2 = __VariableDeclaratorExpression("params2", () => ExistingEvent<IntPort, StringPort>("Existing2"));
             var params2Value = __VariableDeclaratorExpression("params2Value", () => params2.Receiver());
             params2.SendLocal(params2Value.Item1, params2Value.Item2);
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
     }

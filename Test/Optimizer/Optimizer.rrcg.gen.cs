@@ -11,152 +11,152 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             TestNotIfOptimizer();
             TestKnownSingletonChipsOptimizer();
             TestVariableCollapseOptimizer();
             TestAssociativeOperationCollapseOptimizer();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void TestNotIfOptimizer()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             new EventDefinition("TestNotIfOptimizer").Receiver();
             var optimizableBool = __VariableDeclaratorExpression("optimizableBool", () => ParseBool("true").Result);
             ChipBuilder.If(true, delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("true");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("false");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             );
             ChipBuilder.If(!true, delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("true");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("false");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             );
             ChipBuilder.If(Not(true), delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("true");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("false");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             );
             var optimizableButNotDeletable = __VariableDeclaratorExpression("optimizableButNotDeletable", () => !ParseBool("true").Result);
             ChipBuilder.If(optimizableButNotDeletable, delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("true");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("false");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             );
             ChipLib.Log(optimizableButNotDeletable);
             ChipBuilder.If(optimizableBool, delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("true");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("false");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             );
             ChipBuilder.If(!optimizableBool, delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("true");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("false");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             );
             ChipBuilder.If(ChipBuilder.Equals(ParseInt("1").Result, 1), delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("true");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("false");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             );
             ChipBuilder.If(ChipBuilder.Not(ChipBuilder.Equals(ParseInt("1").Result, 1)), delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("true");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 LogString("false");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             );
             ExecFlow.current.Clear();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void TestKnownSingletonChipsOptimizer()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             new EventDefinition("TestKnownSingletonChipsOptimizer").Receiver();
             var floatVar = __VariableDeclaratorExpression("floatVar", () => new Variable<FloatPort>());
             // All these Time Get Precise Seconds nodes
@@ -168,14 +168,14 @@ namespace RRCGBuild
             floatVar.Value = TimeGetPreciseSeconds();
             floatVar.Value = TimeGetPreciseSeconds();
             ExecFlow.current.Clear();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void TestVariableCollapseOptimizer()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             new EventDefinition("TestVariableCollapseOptimiser").Receiver();
             var var0 = __VariableDeclaratorExpression("var0", () => new Variable<FloatPort>());
             var var1 = __VariableDeclaratorExpression("var1", () => new Variable<FloatPort>());
@@ -193,14 +193,14 @@ namespace RRCGBuild
             var3.Value = RandomFloat(0, 100);
             ChipLib.Log(var3.Value);
             ExecFlow.current.Clear();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void TestAssociativeOperationCollapseOptimizer()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             new EventDefinition("TestAssociativeOperationCollapseOptimizer").Receiver();
             // Addition
             var variable = __VariableDeclaratorExpression("variable", () => new Variable<FloatPort>());
@@ -224,7 +224,7 @@ namespace RRCGBuild
             ChipLib.Log(undeletableDivide); // Log to make it undeletable
             ChipLib.Log(undeletableDivide / 5f);
             ExecFlow.current.Clear();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
     }

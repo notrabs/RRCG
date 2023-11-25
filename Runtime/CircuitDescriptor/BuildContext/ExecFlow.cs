@@ -22,9 +22,9 @@ namespace RRCGBuild
             {
                 // We're about to advance into an execution port,
                 // let's try to process pending labels
-                var accessScopeOrNull = SemanticStack.current.GetNextScopeWithType<SemanticStack.LabelAccessibilityScope>();
+                var accessScopeOrNull = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
 
-                while (accessScopeOrNull is SemanticStack.LabelAccessibilityScope accessScope &&
+                while (accessScopeOrNull is SemanticStack.AccessibilityScope accessScope &&
                        accessScope.PendingLabels.Count > 0)
                 {
                     var labelName = accessScope.PendingLabels[0];

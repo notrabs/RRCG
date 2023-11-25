@@ -9,7 +9,7 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             var a = __VariableDeclaratorExpression("a", () => RandomInt(1, 10));
             CircuitBoard(ContentsExec);
             var b = __VariableDeclaratorExpression("b", () => CircuitBoard<IntPort, IntPort>(ContentsMixed, a));
@@ -28,23 +28,23 @@ namespace RRCGBuild
             CircuitBoard<IntPort>((IntPort test) =>
             {
                 ExecFlow rrcg_return_flow = new ExecFlow();
-                __BeginLabelAccessibilityScope(false);
+                __BeginAccessibilityScope(false);
                 ChipLib.Log("Anonymous Parameter");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
                 ExecFlow.current.Merge(rrcg_return_flow);
             }
 
             , a);
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void ContentsExec()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             RandomInt(1, 10);
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
@@ -52,9 +52,9 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             __Return(rrcg_return_flow, out rrcg_return_data, RandomInt(a, 10));
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
             return rrcg_return_data;
         }
@@ -63,9 +63,9 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             __Return(rrcg_return_flow, out rrcg_return_data, (a, b));
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
             return rrcg_return_data;
         }
@@ -73,19 +73,19 @@ namespace RRCGBuild
         void ExecOut()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             EventReceiver(RoomEvents.Hz30);
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void ExecIn()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             RandomInt(1, 10);
             ExecFlow.current.Clear();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
     }

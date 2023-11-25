@@ -178,7 +178,7 @@ namespace RRCG
             } else
             {
                 // .ExpressionBody and .Block are mutually exclusive -- this function is without a block.
-                // We need one for label accessibility scopes, so let's create one.
+                // We need one for accessibility scopes, so let's create one.
                 var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(method.SyntaxTree);
                 var needsReturn = !(semanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnsVoid;
 
@@ -187,7 +187,7 @@ namespace RRCG
                                             : SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
                                 );
 
-                statements = WrapStatementsInLabelAccessibilityScope(statements, false);
+                statements = WrapStatementsInAccessibilityScope(statements, false);
             }
 
             return (T)visitedMethod.WithBody(
@@ -206,23 +206,23 @@ namespace RRCG
             return statements;
         }
 
-        public BlockSyntax WrapBlockInLabelAccessibilityScope(BlockSyntax block, bool gotoCanAccessParents)
+        public BlockSyntax WrapBlockInAccessibilityScope(BlockSyntax block, bool canAccessParent)
         {
             var statements = block.Statements;
-            return SyntaxFactory.Block(WrapStatementsInLabelAccessibilityScope(statements, gotoCanAccessParents));
+            return SyntaxFactory.Block(WrapStatementsInAccessibilityScope(statements, canAccessParent));
         }
 
-        public SyntaxList<StatementSyntax> WrapStatementsInLabelAccessibilityScope(SyntaxList<StatementSyntax> statements, bool gotoCanAccessParents)
+        public SyntaxList<StatementSyntax> WrapStatementsInAccessibilityScope(SyntaxList<StatementSyntax> statements, bool canAccessParent)
         {
             statements = statements.Insert(0, SyntaxFactory.ExpressionStatement(
                     SyntaxFactory.InvocationExpression(
-                        SyntaxFactory.IdentifierName("__BeginLabelAccessibilityScope"))
+                        SyntaxFactory.IdentifierName("__BeginAccessibilityScope"))
                     .WithArgumentList(
                         SyntaxFactory.ArgumentList(
                             SyntaxFactory.SingletonSeparatedList<ArgumentSyntax>(
                                 SyntaxFactory.Argument(
                                     SyntaxFactory.LiteralExpression(
-                                        gotoCanAccessParents ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression
+                                        canAccessParent ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression
                                     )))))));
 
             // Insert end before return
@@ -230,7 +230,7 @@ namespace RRCG
             if (statements[insertIndex - 1].Kind() == SyntaxKind.ReturnStatement)
                 insertIndex -= 1;
 
-            return statements.Insert(insertIndex, SyntaxFactory.ParseStatement("__EndLabelAccessibilityScope();"));
+            return statements.Insert(insertIndex, SyntaxFactory.ParseStatement("__EndAccessibilityScope();"));
         }
 
 
@@ -249,7 +249,7 @@ namespace RRCG
 
             var newStatements = new SyntaxList<StatementSyntax>(node.Statements.Select(s => (StatementSyntax)Visit(s)));
             return SyntaxFactory.Block(
-                        WrapStatementsInLabelAccessibilityScope(newStatements, canAccessParent)
+                        WrapStatementsInAccessibilityScope(newStatements, canAccessParent)
                     );
         }
         public override SyntaxNode VisitUnsafeStatement(UnsafeStatementSyntax node)
@@ -652,13 +652,13 @@ namespace RRCG
             StatementSyntax falseStatement = node.Else != null ? (StatementSyntax)Visit(node.Else.Statement) : null;
 
             // If true/false statements are blocks, we'll have already
-            // wrapped them in a label accessibility scope (in VisitBlock).
+            // wrapped them in an accessibility scope (in VisitBlock).
             // Otherwise we'll do this ourselves
 
             if (trueStatement is not BlockSyntax trueBlock)
-                trueBlock = WrapBlockInLabelAccessibilityScope(SyntaxUtils.WrapInBlock(trueStatement), true);
+                trueBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(trueStatement), true);
             if (falseStatement is not BlockSyntax falseBlock)
-                falseBlock = WrapBlockInLabelAccessibilityScope(SyntaxUtils.WrapInBlock(falseStatement), true);
+                falseBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(falseStatement), true);
 
             return SyntaxFactory.ExpressionStatement(
                 SyntaxFactory.InvocationExpression(
@@ -772,9 +772,9 @@ namespace RRCG
                         ))
                     );
 
-            // Wrap our statements in a label accessibility scope & return
+            // Wrap our statements in an accessibility scope & return
             return SyntaxFactory.Block(
-                    WrapStatementsInLabelAccessibilityScope(statements, true)
+                    WrapStatementsInAccessibilityScope(statements, true)
                 ).NormalizeWhitespace();
         }
 
@@ -784,10 +784,10 @@ namespace RRCG
             StatementSyntax whileStatement = (StatementSyntax)Visit(node.Statement);
 
             // Like with If translation -- if the statement is a block,
-            // we'll have already wrapped it in a label accessibility scope.
+            // we'll have already wrapped it in an accessibility scope.
             // Otherwise we need to do this here.
             if (whileStatement is not BlockSyntax whileBlock)
-                whileBlock = WrapBlockInLabelAccessibilityScope(SyntaxUtils.WrapInBlock(whileStatement), true);
+                whileBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(whileStatement), true);
 
             var whileDelegate = ExecDelegate().WithBlock(whileBlock);
 
@@ -809,10 +809,10 @@ namespace RRCG
             StatementSyntax doWhileStatement = (StatementSyntax)Visit(node.Statement);
 
             // Like with If translation -- if the statement is a block,
-            // we'll have already wrapped it in a label accessibility scope.
+            // we'll have already wrapped it in an accessibility scope.
             // Otherwise we need to do this here.
             if (doWhileStatement is not BlockSyntax doBlock)
-                doBlock = WrapBlockInLabelAccessibilityScope(SyntaxUtils.WrapInBlock(doWhileStatement), true);
+                doBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(doWhileStatement), true);
 
             var doDelegate = ExecDelegate().WithBlock(doBlock);
 

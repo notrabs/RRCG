@@ -8,17 +8,17 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             DelayTest();
             ErrorTest();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void DelayTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             var delay = __VariableDeclaratorExpression("delay", () => new Delay(5));
             ChipLib.Log("Delay Test 1");
             delay.Cancel().Run();
@@ -32,27 +32,27 @@ namespace RRCGBuild
             StartNewGraph();
             ChipLib.Log("Delay Test 3");
             delay.Run();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void ErrorTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             TestUtils.ExpectToThrow(() =>
             {
                 ExecFlow rrcg_return_flow = new ExecFlow();
-                __BeginLabelAccessibilityScope(false);
+                __BeginAccessibilityScope(false);
                 var delay = __VariableDeclaratorExpression("delay", () => new Delay(1));
                 delay.Await();
                 delay.Await();
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
                 ExecFlow.current.Merge(rrcg_return_flow);
             }
 
             , "Await can only be called once");
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
     }

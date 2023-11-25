@@ -10,45 +10,45 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             InterpolatePureData();
             InterpolateDataWithPort();
             InterpolateNonStrings();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void InterpolatePureData()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             new EventDefinition("InterpolatePureData").Receiver();
             StringPort port1 = __VariableDeclaratorExpression("port1", () => "Hello");
             StringPort port2 = __VariableDeclaratorExpression("port2", () => "World");
             ChipLib.Log(__StringInterpolation(port1, ", ", port2, "!"));
             ExecFlow.current.Clear();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void InterpolateDataWithPort()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             new EventDefinition("InterpolateDataWithPort").Receiver();
             var variable = __VariableDeclaratorExpression("variable", () => new Variable<StringPort>());
             StringPort port1 = __VariableDeclaratorExpression("port1", () => "data");
             variable.Value = "port";
             ChipLib.Log(__StringInterpolation("String interpolation works with both ", port1, " and ", variable.Value, "s!"));
             ExecFlow.current.Clear();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
 
         void InterpolateNonStrings()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             new EventDefinition("InterpolateNonStrings").Receiver();
             var intData = __VariableDeclaratorExpression("intData", () => 5);
             var intPort = __VariableDeclaratorExpression("intPort", () => ParseInt("10").Result);
@@ -69,7 +69,7 @@ namespace RRCGBuild
             var quatPort = __VariableDeclaratorExpression("quatPort", () => QuaternionCreate(5, 6, 7, 8));
             ChipLib.Log(__StringInterpolation("Interpolating with Quaternions. Data: ", quatData, ", Port: ", quatPort));
             ExecFlow.current.Clear();
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
     }

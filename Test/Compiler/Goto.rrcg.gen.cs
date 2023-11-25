@@ -11,36 +11,36 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginLabelAccessibilityScope(false);
+            __BeginAccessibilityScope(false);
             new EventDefinition("GotoTest").Receiver();
                 __LabelDecl("label1");
                 LogString("Label 1!");
             ChipBuilder.If(true, delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 __Goto("label1");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginLabelAccessibilityScope(true);
-                __EndLabelAccessibilityScope();
+                __BeginAccessibilityScope(true);
+                __EndAccessibilityScope();
             }
 
             );
             LogString("Did not go to label1");
             ChipBuilder.If(true, delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 __Goto("label2");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginLabelAccessibilityScope(true);
-                __EndLabelAccessibilityScope();
+                __BeginAccessibilityScope(true);
+                __EndAccessibilityScope();
             }
 
             );
@@ -52,7 +52,7 @@ namespace RRCGBuild
                         __LabelDecl("label5");
                         LogString("Label 3, 4, 5");
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_1");
@@ -82,42 +82,42 @@ namespace RRCGBuild
                 }
 
                 , new Dictionary<AnyPort, AlternativeExec>{{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}, {3, rrcg_switch_section_2}});
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             // No scoping weirdness
             CircuitBoard(() =>
             {
                 ExecFlow rrcg_return_flow = new ExecFlow();
-                __BeginLabelAccessibilityScope(false);
+                __BeginAccessibilityScope(false);
                     __LabelDecl("innerLabel1");
                     LogString("Inner label 1");
                 ChipBuilder.If(true, delegate
                 {
-                    __BeginLabelAccessibilityScope(true);
+                    __BeginAccessibilityScope(true);
                     __Goto("innerLabel1");
-                    __EndLabelAccessibilityScope();
+                    __EndAccessibilityScope();
                 }
 
                 , delegate
                 {
-                    __BeginLabelAccessibilityScope(true);
-                    __EndLabelAccessibilityScope();
+                    __BeginAccessibilityScope(true);
+                    __EndAccessibilityScope();
                 }
 
                 );
                 LogString("Did not go to innerLabel1");
                 ChipBuilder.If(true, delegate
                 {
-                    __BeginLabelAccessibilityScope(true);
+                    __BeginAccessibilityScope(true);
                     __Goto("innerLabel2");
-                    __EndLabelAccessibilityScope();
+                    __EndAccessibilityScope();
                 }
 
                 , delegate
                 {
-                    __BeginLabelAccessibilityScope(true);
-                    __EndLabelAccessibilityScope();
+                    __BeginAccessibilityScope(true);
+                    __EndAccessibilityScope();
                 }
 
                 );
@@ -129,7 +129,7 @@ namespace RRCGBuild
                             __LabelDecl("innerLabel5");
                             LogString("Inner label 3, 4, 5");
                 {
-                    __BeginLabelAccessibilityScope(true);
+                    __BeginAccessibilityScope(true);
                     AlternativeExec rrcg_switch_section_0 = delegate
                     {
                         __LabelDecl("rrcg_switch_case_label_1");
@@ -159,47 +159,47 @@ namespace RRCGBuild
                     }
 
                     , new Dictionary<AnyPort, AlternativeExec>{{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}, {3, rrcg_switch_section_2}});
-                    __EndLabelAccessibilityScope();
+                    __EndAccessibilityScope();
                 }
 
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
                 ExecFlow.current.Merge(rrcg_return_flow);
             }
 
             );
             ChipBuilder.If(true, delegate
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                     __LabelDecl("blockLabel");
                     LogString("Block label");
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginLabelAccessibilityScope(true);
-                __EndLabelAccessibilityScope();
+                __BeginAccessibilityScope(true);
+                __EndAccessibilityScope();
             }
 
             );
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_1");
                     LogString("Case 1");
                     ChipBuilder.If(true, delegate
                     {
-                        __BeginLabelAccessibilityScope(true);
+                        __BeginAccessibilityScope(true);
                         LogString("Going to case 2");
                         __Goto("rrcg_switch_case_label_2");
-                        __EndLabelAccessibilityScope();
+                        __EndAccessibilityScope();
                     }
 
                     , delegate
                     {
-                        __BeginLabelAccessibilityScope(true);
-                        __EndLabelAccessibilityScope();
+                        __BeginAccessibilityScope(true);
+                        __EndAccessibilityScope();
                     }
 
                     );
@@ -219,11 +219,11 @@ namespace RRCGBuild
                 }
 
                 , new Dictionary<AnyPort, AlternativeExec>{{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}});
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"World\"");
@@ -245,11 +245,11 @@ namespace RRCGBuild
                 }
 
                 , new Dictionary<AnyPort, AlternativeExec>{{"World", rrcg_switch_section_0}, {"World2", rrcg_switch_section_1}});
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
             {
-                __BeginLabelAccessibilityScope(true);
+                __BeginAccessibilityScope(true);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_0");
@@ -271,10 +271,10 @@ namespace RRCGBuild
                 }
 
                 , new Dictionary<AnyPort, AlternativeExec>{{0, rrcg_switch_section_0}, {1, rrcg_switch_section_1}});
-                __EndLabelAccessibilityScope();
+                __EndAccessibilityScope();
             }
 
-            __EndLabelAccessibilityScope();
+            __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
     }

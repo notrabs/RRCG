@@ -733,35 +733,32 @@ namespace RRCGBuild
             return value;
         }
 
-        public static void __BeginLabelAccessibilityScope(bool canAccessParent)
+        public static void __BeginAccessibilityScope(bool canAccessParent)
         {
-            SemanticStack.current.Push(new SemanticStack.LabelAccessibilityScope
+            SemanticStack.current.Push(new SemanticStack.AccessibilityScope
             {
                 PendingGotos = new Dictionary<string, ExecFlow>(),
                 PendingLabels = new List<string>(),
                 DeclaredLabels = new Dictionary<string, Port>(),
-                GotoCanAccessParent = canAccessParent
+                CanAccessParent = canAccessParent
             });
         }
 
-        public static void __EndLabelAccessibilityScope()
+        public static void __EndAccessibilityScope()
         {
-            // Ensure item on the top of the stack is a LabelAccessibilityScope
-            var scope = SemanticStack.current.Peek();
-            if (scope is not SemanticStack.LabelAccessibilityScope accessScope)
-                throw new Exception("Attempt to end label scope, but topmost element of current SemanticStack was not LabelAccessibilityScope!");
+            var scope = SemanticStack.current.Pop();
 
-            // Remove it from the stack
-            SemanticStack.current.Pop();
+            if (scope is not SemanticStack.AccessibilityScope accessScope)
+                throw new Exception("Attempt to end accessibility scope, but topmost element of current SemanticStack was not AccessibilityScope!");
 
-            var parentScope = SemanticStack.current.GetNextScopeWithType<SemanticStack.LabelAccessibilityScope>();
-            bool canCarry = parentScope != null && accessScope.GotoCanAccessParent;
+            var parentScope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
+            bool canCarry = parentScope != null && accessScope.CanAccessParent;
 
             // Attempt to carry pending items into the parent scope, if allowed
             if (accessScope.PendingLabels.Count > 0)
             {
                 if (!canCarry)
-                    Debug.LogWarning("Label accessibility scope had pending labels waiting on execution to advance.");
+                    Debug.LogWarning("Accessibility scope had pending labels waiting on execution to advance.");
 
                 parentScope.Value.PendingLabels.AddRange(accessScope.PendingLabels);
             }
@@ -769,7 +766,7 @@ namespace RRCGBuild
             if (accessScope.PendingGotos.Count > 0)
             {
                 if (!canCarry)
-                    Debug.LogWarning("Label accessibility scope had pending gotos waiting for labels that were never defined " +
+                    Debug.LogWarning("Accessibility scope had pending gotos waiting for labels that were never defined " +
                                      "(or had no suitable exec port to advance to)");
 
                 foreach (var kvp in accessScope.PendingGotos)
@@ -786,13 +783,13 @@ namespace RRCGBuild
         public static void __LabelDecl(string labelName)
         {
             // Ensure we're enclosed by a LabelAccessibilityScope
-            var scope = SemanticStack.current.GetNextScopeWithType<SemanticStack.LabelAccessibilityScope>();
-            if (scope is not SemanticStack.LabelAccessibilityScope accessScope)
-                throw new Exception("Attempt to declare label outside of a LabelAccessibilityScope!");
+            var scope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
+            if (scope is not SemanticStack.AccessibilityScope accessScope)
+                throw new Exception("Attempt to declare label outside of an AccessibilityScope!");
 
             // Ensure name isn't already declared
             if (accessScope.DeclaredLabels.ContainsKey(labelName))
-                throw new Exception($"Label {labelName} was already defined within the enclosing LabelAccessibilityScope!");
+                throw new Exception($"Label {labelName} was already defined within the enclosing AccessibilityScope!");
 
             // Add to pending labels
             accessScope.PendingLabels.Add(labelName);
@@ -800,11 +797,11 @@ namespace RRCGBuild
 
         public static void __Goto(string labelName)
         {
-            // See if this label exists in the current/a parent LabelAccessibilityScope
+            // See if this label exists in the current/a parent AccessibilityScope
             for (int i = 0; i < SemanticStack.current.Count; i++)
             {
                 var item = SemanticStack.current.ElementAt(i);
-                if (item is not SemanticStack.LabelAccessibilityScope accessScope) continue;
+                if (item is not SemanticStack.AccessibilityScope accessScope) continue;
 
                 // Any pending gotos for this label?
                 if (accessScope.PendingGotos.TryGetValue(labelName, out var flow))
@@ -824,13 +821,13 @@ namespace RRCGBuild
                 }
 
                 // And are we allowed to climb any higher?
-                if (!accessScope.GotoCanAccessParent) break;
+                if (!accessScope.CanAccessParent) break;
             }
 
             // Otherwise, we'll add a pending goto in the current accessibility scope
-            var scope = SemanticStack.current.GetNextScopeWithType<SemanticStack.LabelAccessibilityScope>();
-            if (scope is not SemanticStack.LabelAccessibilityScope currAccessScope)
-                throw new Exception("Attempt to goto label outside of a LabelAccessibilityScope!");
+            var scope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
+            if (scope is not SemanticStack.AccessibilityScope currAccessScope)
+                throw new Exception("Attempt to goto label outside of an AccessibilityScope!");
 
             if (!currAccessScope.PendingGotos.ContainsKey(labelName))
                 currAccessScope.PendingGotos[labelName] = new ExecFlow();
