@@ -68,8 +68,9 @@ namespace RRCG
                     .WithSemicolonToken(Token(SyntaxKind.None))
                     .WithBody(
                        isVoid ?
-                            Block(ExpressionStatement(method.ExpressionBody.Expression)) :
-                            Block(ReturnStatement(method.ExpressionBody.Expression))
+                            Block(ExpressionStatement(method.ExpressionBody.Expression)):
+                            // The return needs to be applied already translated here, as to not invalidate the semantic model further down
+                            Block(ValueReturnStatement(method.ExpressionBody.Expression))
                 );
             }
 
@@ -175,7 +176,8 @@ namespace RRCG
                     visitedMethod.Block.Statements,
                     SyntaxUtils.IsBlockVoid(method.Block)
                 );
-            } else
+            }
+            else
             {
                 // .ExpressionBody and .Block are mutually exclusive -- this function is without a block.
                 // We need one for accessibility scopes, so let's create one.
@@ -531,29 +533,32 @@ namespace RRCG
 
             if (expression == null)
             {
-                return SyntaxFactory.ExpressionStatement(
-                    SyntaxFactory.InvocationExpression(
-                        SyntaxFactory.IdentifierName("__Return"))
+                return ExpressionStatement(
+                    InvocationExpression(IdentifierName("__Return"))
                     .WithArgumentList(
                         SyntaxUtils.ArgumentList(
-                            (ExpressionSyntax)SyntaxFactory.IdentifierName("rrcg_return_flow")
+                            IdentifierName("rrcg_return_flow")
                         )
                     )
                 );
             }
 
-            return SyntaxFactory.ExpressionStatement(
-                SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.IdentifierName("__Return"))
+            return ValueReturnStatement(expression);
+        }
+
+        public ExpressionStatementSyntax ValueReturnStatement(ExpressionSyntax expression)
+        {
+            return ExpressionStatement(
+                InvocationExpression(
+                    IdentifierName("__Return"))
                 .WithArgumentList(
                     SyntaxUtils.ArgumentList(
-                        (ExpressionSyntax)SyntaxFactory.IdentifierName("rrcg_return_flow"),
-                        (ExpressionSyntax)SyntaxFactory.IdentifierName("out rrcg_return_data"),
+                        IdentifierName("rrcg_return_flow"),
+                        IdentifierName("out rrcg_return_data"),
                         expression
                     )
                 )
             );
-
         }
 
         // 
