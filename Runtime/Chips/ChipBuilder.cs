@@ -517,6 +517,22 @@ namespace RRCGBuild
 
             return new T() { Port = self.Port };
         }
+
+        public static FloatPort Power(FloatPort value, FloatPort power)
+        {
+            var port = ChipBuilderGen.Power(value);
+            Context.lastSpawnedNode.InputCount = 2;
+            Context.lastSpawnedNode.ConnectInputPort(power, 1);
+            return port;
+        }
+
+        public static IntPort Power(IntPort value, IntPort power)
+        {
+            var port = ChipBuilderGen.Power(value);
+            Context.lastSpawnedNode.InputCount = 2;
+            Context.lastSpawnedNode.ConnectInputPort(power, 1);
+            return port;
+        }
     }
 }
 

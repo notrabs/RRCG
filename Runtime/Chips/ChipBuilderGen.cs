@@ -7819,7 +7819,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static IntPort Power(IntPort Value)
+        internal static IntPort Power(IntPort Value)
         {
             Node node = new Node()
             {Name = "Power", Type = "288d4e89-ebed-41ed-a522-4c79bd48471a", InputCount = 1};
@@ -7829,7 +7829,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static FloatPort Power(FloatPort Value)
+        internal static FloatPort Power(FloatPort Value)
         {
             Node node = new Node()
             {Name = "Power", Type = "288d4e89-ebed-41ed-a522-4c79bd48471a", InputCount = 1};

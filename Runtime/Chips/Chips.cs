@@ -29,6 +29,9 @@ namespace RRCGSource
 
         public static T Self<T>() { return default; }
 
+        public static float Power(float Value, float Power) { return default; }
+        public static int Power(int Value, int Power) { return default; }
+
         //
         // Deprecations
         //
