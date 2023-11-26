@@ -533,6 +533,11 @@ namespace RRCGBuild
         {
             return b * a;
         }
+        public static Vector3Port operator *(QuaternionPort a, Vector3Port b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = (Quaternion)a.Data * (Vector3)b.Data };
+            return ChipBuilder.RotateVector(a, b);
+        }
 
         public static Vector3Port operator /(Vector3Port a, FloatPort b)
         {
@@ -600,6 +605,12 @@ namespace RRCGBuild
                 var q = (Quaternion)Data;
                 return (q.x, q.y, q.z, q.w);
             }
+        }
+
+        public static QuaternionPort operator *(QuaternionPort a, QuaternionPort b)
+        {
+            if (a.IsDataPort && b.IsDataPort) return new QuaternionPort { Data = (Quaternion)a.Data * (Quaternion)b.Data };
+            return ChipBuilder.Multiply(a, b);
         }
     }
 

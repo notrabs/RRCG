@@ -143,6 +143,11 @@ namespace RRCGBuild
             ChipBuilderGen.Multiply(ports[0]);
             return ConnectDynamicPins(0, ports);
         }
+        public static QuaternionPort Multiply(params QuaternionPort[] ports)
+        {
+            ChipBuilderGen.Multiply(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
 
         public static IntPort Divide(params IntPort[] ports)
         {
