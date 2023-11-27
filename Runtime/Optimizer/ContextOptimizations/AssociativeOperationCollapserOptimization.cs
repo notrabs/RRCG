@@ -13,6 +13,8 @@ namespace RRCG.Optimizer.ContextOptimizations
         {
             { ChipType.Add, BasicCollapse },
             { ChipType.Multiply, BasicCollapse },
+            { ChipType.And, BasicCollapse },
+            { ChipType.Or, BasicCollapse },
             { ChipType.StringConcat, StringConcatCollapse },
             { ChipType.Subtract, DissociativeCollapse },
             { ChipType.Divide, DissociativeCollapse }
