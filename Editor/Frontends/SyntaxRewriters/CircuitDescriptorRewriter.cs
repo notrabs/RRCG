@@ -38,9 +38,11 @@ namespace RRCG
         public override SyntaxNode VisitSimpleBaseType(SimpleBaseTypeSyntax node)
         {
             // Rewriting isn't really necessary. But it helps with Autocomplete when looking for these types.
-            if (node.Type.ToString() == "CircuitDescriptor") node = node.WithType(ParseTypeName("CircuitBuilder"));
-            if (node.Type.ToString() == "CircuitLibrary") node = node.WithType(ParseTypeName("CircuitLibraryBuilder"));
-            return base.VisitSimpleBaseType(node);
+            var visited = (SimpleBaseTypeSyntax)base.VisitSimpleBaseType(node);
+
+            if (visited.Type.ToString() == "CircuitDescriptor") visited = visited.WithType(ParseTypeName("CircuitBuilder"));
+            if (visited.Type.ToString() == "CircuitLibrary") visited = visited.WithType(ParseTypeName("CircuitLibraryBuilder"));
+            return visited;
         }
 
         //
@@ -389,8 +391,19 @@ namespace RRCG
 
         public override SyntaxNode VisitIdentifierName(IdentifierNameSyntax node)
         {
-            // Some RRTypes have chips with identical names. This makes sure their functions can still be called.
-            if (node.Parent is InvocationExpressionSyntax) return base.VisitIdentifierName(node);
+            // We only want to rewrite types, which requires checking the semantic model.
+            // However, there are some places (like visiting variable declarators) where we
+            // want to rewrite a type from a node that isn't part of the original compilation.
+            // Thankfully we can just check for this, but maybe there's another way?
+            var root = node.SyntaxTree.GetRoot();
+            if (root is not TypeSyntax)
+            {
+                var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
+                var symbolInfo = semanticModel.GetSymbolInfo(node);
+
+                // Only rewrite if the symbol is referring to a type
+                if (symbolInfo.Symbol is not INamedTypeSymbol) return base.VisitIdentifierName(node);
+            }
 
             switch (node.Identifier.ValueText)
             {
