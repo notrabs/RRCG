@@ -10,11 +10,11 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
-            var studioObject = __VariableDeclaratorExpression("studioObject", () => new StudioFunctionsObject(RecRoomObjectPort.Invalid));
+            var studioObject = __VariableDeclaratorExpression<StudioFunctionsObject>("studioObject", () => new StudioFunctionsObject(RecRoomObjectPort.Invalid));
             studioObject.VoidFunction();
             studioObject.AllParameterTypes(true, 23f, 7, "test", new ColorPort(1.0f, 0, 0), Vector3Port.up, QuaternionPort.identity);
             ChipLib.Log(studioObject.SingleReturn(Vector3Port.zero));
-            var multiReturn = __VariableDeclaratorExpression("multiReturn", () => studioObject.MultiReturn());
+            var multiReturn = __VariableDeclaratorExpression<(Vector3Port, QuaternionPort)>("multiReturn", () => studioObject.MultiReturn());
             ChipLib.Log(multiReturn.Item1);
             ChipLib.Log(multiReturn.Item2);
             __EndAccessibilityScope();

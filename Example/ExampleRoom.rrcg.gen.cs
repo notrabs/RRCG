@@ -7,7 +7,7 @@ namespace RRCGBuild
 {
     public class ExampleRoom : CircuitBuilder
     {
-        EventDefinition<IntPort> testEvent = __VariableDeclaratorExpression("testEvent", () => new EventDefinition<IntPort>("intValue"));
+        EventDefinition<IntPort> testEvent = __VariableDeclaratorExpression<EventDefinition<IntPort>>("testEvent", () => new EventDefinition<IntPort>("intValue"));
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
@@ -24,8 +24,8 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
             EventReceiver(RoomEvents.Hz30);
-            var rand1 = __VariableDeclaratorExpression("rand1", () => RandomInt(0, 10));
-            var rand2 = __VariableDeclaratorExpression("rand2", () => RandomInt(0, 10));
+            var rand1 = __VariableDeclaratorExpression<IntPort>("rand1", () => RandomInt(0, 10));
+            var rand2 = __VariableDeclaratorExpression<IntPort>("rand2", () => RandomInt(0, 10));
             ChipBuilder.If(ChipBuilder.GreaterThan(rand1 + rand2, 10), delegate
             {
                 __BeginAccessibilityScope(true);
@@ -50,9 +50,9 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
             EventReceiver(RoomEvents.Hz30);
-            var rand1 = __VariableDeclaratorExpression("rand1", () => RandomInt(0, 10));
-            var sum = __VariableDeclaratorExpression("sum", () => (rand1 + 3) + (4 + 5));
-            var cached = __VariableDeclaratorExpression("cached", () => ChipLib.EventCache<IntPort>(sum));
+            var rand1 = __VariableDeclaratorExpression<IntPort>("rand1", () => RandomInt(0, 10));
+            var sum = __VariableDeclaratorExpression<IntPort>("sum", () => (rand1 + 3) + (4 + 5));
+            var cached = __VariableDeclaratorExpression<IntPort>("cached", () => ChipLib.EventCache<IntPort>(sum));
             PlayerShowSubtitle(GetLocalPlayer(), ToString<IntPort>(cached), 3.0f, 0);
             __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
@@ -62,8 +62,8 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
-            var intValue = __VariableDeclaratorExpression("intValue", () => testEvent.Receiver());
-            var counter = __VariableDeclaratorExpression("counter", () => new Variable<IntPort>());
+            var intValue = __VariableDeclaratorExpression<IntPort>("intValue", () => testEvent.Receiver());
+            var counter = __VariableDeclaratorExpression<Variable<IntPort>>("counter", () => new Variable<IntPort>());
             __While(ChipBuilder.LessThan(counter.Value, intValue), delegate
             {
                 __BeginAccessibilityScope(true);

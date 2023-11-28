@@ -585,43 +585,40 @@ namespace RRCG
 
             SimpleNameSyntax invocationName = IdentifierName("__VariableDeclaratorExpression");
 
-            if (equalsValueClause.Value is ImplicitObjectCreationExpressionSyntax)
+            // Attempt to resolve build-realm type for the declaration.
+            // Write it as the generic parameter for the call to __VariableDeclaratorExpression
+            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
+            var symbolInfo = semanticModel.GetDeclaredSymbol(node);
+
+            // Try to grab the type from the symbol
+            ITypeSymbol resolvedType = null;
+
+            switch (symbolInfo.Kind)
             {
-                // Attempt to resolve build-realm type for the declaration.
-                // Write it as the generic parameter for the call to __VariableDeclaratorExpression
-                var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-                var symbolInfo = semanticModel.GetDeclaredSymbol(node);
+                case SymbolKind.Field:
+                    resolvedType = ((IFieldSymbol)symbolInfo).Type;
+                    break;
+                case SymbolKind.Local:
+                    resolvedType = ((ILocalSymbol)symbolInfo).Type;
+                    break;
+            }
 
-                // Try to grab the type from the symbol
-                ITypeSymbol resolvedType = null;
+            // If we found it (and correctly resolved it),
+            // parse & rewrite the type, then write it as
+            // the type assignment for invocation.
+            if (resolvedType != null && resolvedType.ToString() != "?")
+            {
+                var type = resolvedType.ToTypeSyntax();
+                var rewrittenType = (TypeSyntax)Visit(type);
 
-                switch (symbolInfo.Kind)
-                {
-                    case SymbolKind.Field:
-                        resolvedType = ((IFieldSymbol)symbolInfo).Type;
-                        break;
-                    case SymbolKind.Local:
-                        resolvedType = ((ILocalSymbol)symbolInfo).Type;
-                        break;
-                }
-
-                // If we found it (and correctly resolved it),
-                // parse & rewrite the type, then write it as
-                // the type assignment for invocation.
-                if (resolvedType != null && resolvedType.ToString() != "?")
-                {
-                    var type = resolvedType.ToTypeSyntax();
-                    var rewrittenType = (TypeSyntax)Visit(type);
-
-                    invocationName = GenericName("__VariableDeclaratorExpression").
-                        WithTypeArgumentList(
-                            TypeArgumentList(
-                                SingletonSeparatedList<TypeSyntax>(
-                                    rewrittenType
-                                )
+                invocationName = GenericName("__VariableDeclaratorExpression").
+                    WithTypeArgumentList(
+                        TypeArgumentList(
+                            SingletonSeparatedList<TypeSyntax>(
+                                rewrittenType
                             )
-                        );
-                }
+                        )
+                    );
             }
 
             return node.WithInitializer(
