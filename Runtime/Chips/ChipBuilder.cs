@@ -499,13 +499,19 @@ namespace RRCGBuild
 
         public static BoolPort Equals(params object[] ports)
         {
-            ChipBuilderGen.Equals((AnyPort)ports[0]);
+            // casting magic needed to override the C# Equals method
+
+            AnyPort firstPort;
+            if (ports[0] is AnyPort) firstPort = (AnyPort)ports[0];
+            else firstPort = new AnyPort() { Data = ports[0] };
+
+            ChipBuilderGen.Equals(firstPort);
+
             var node = Context.lastSpawnedNode;
             node.InputCount = ports.Length;
 
             for (int i = 1; i < ports.Length; i++)
             {
-                // casting magic needed to override the C# Equals method
                 AnyPort port;
                 if (ports[i] is AnyPort) port = (AnyPort)ports[i];
                 else port = new AnyPort() { Data = ports[i] };
