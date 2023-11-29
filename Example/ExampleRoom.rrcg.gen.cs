@@ -7,7 +7,7 @@ namespace RRCGBuild
 {
     public class ExampleRoom : CircuitBuilder
     {
-        EventDefinition<IntPort> testEvent = __VariableDeclaratorExpression<EventDefinition<IntPort>>("testEvent", () => new EventDefinition<IntPort>("intValue"));
+        EventDefinition<IntPort> testEvent = __VariableDeclaratorExpression<RRCGBuild.EventDefinition<IntPort>>("testEvent", () => new EventDefinition<IntPort>("intValue"));
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
@@ -63,7 +63,7 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
             var intValue = __VariableDeclaratorExpression<IntPort>("intValue", () => testEvent.Receiver());
-            var counter = __VariableDeclaratorExpression<Variable<IntPort>>("counter", () => new Variable<IntPort>());
+            var counter = __VariableDeclaratorExpression<RRCGBuild.Variable<IntPort>>("counter", () => new Variable<IntPort>());
             __While(ChipBuilder.LessThan(counter.Value, intValue), delegate
             {
                 __BeginAccessibilityScope(true);
