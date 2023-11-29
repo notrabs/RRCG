@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace RRCGSource
 {
     public abstract class AnyObject { }
@@ -38,17 +37,6 @@ namespace RRCGSource
     }
     public class Combatant : AnyObject { }
     public class PatrolPoint : AnyObject { }
-    public class Audio : AnyObject
-    {
-        public static Audio SFX_Click { get; }
-        public static Audio SFX_Firework { get; }
-        public static Audio SFX_UIXP02 { get; }
-        public static Audio SFX_CrowdCheer { get; }
-        public static Audio SFX_CrowdAww { get; }
-        public static Audio SFX_TriggerMisfire { get; }
-        public static Audio SFX_UIScore01 { get; }
-        public static Audio SFX_UIScore04 { get; }
-    }
     public class AudioPlayer : AnyObject { }
     public class Consumable : AnyObject { }
     public class RoomKey : AnyObject { }

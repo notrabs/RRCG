@@ -1,5 +1,4 @@
-﻿
-using RRCG;
+﻿using RRCG;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -648,24 +647,6 @@ namespace RRCGBuild
     }
     public class CombatantPort : AnyPort { }
     public class PatrolPointPort : AnyPort { }
-    public class AudioPort : AnyPort
-    {
-        public SFXConstantData SFXData;
-
-        public static AudioPort AudioSFXConstant(string clipName)
-        {
-            return ChipBuilder.SFXConstant(new SFXConstantData(clipName));
-        }
-
-        public static AudioPort SFX_Click { get => CircuitBuilder.Singleton("SFX_Click", () => AudioSFXConstant("Click")); }
-        public static AudioPort SFX_Firework { get => CircuitBuilder.Singleton("SFX_Firework", () => AudioSFXConstant("Firework")); }
-        public static AudioPort SFX_UIXP02 { get => CircuitBuilder.Singleton("SFX_UIXP02", () => AudioSFXConstant("UIXP02")); }
-        public static AudioPort SFX_CrowdAww { get => CircuitBuilder.Singleton("SFX_CrowdAww", () => AudioSFXConstant("CrowdAww")); }
-        public static AudioPort SFX_CrowdCheer { get => CircuitBuilder.Singleton("SFX_CrowdCheer", () => AudioSFXConstant("CrowdCheer")); }
-        public static AudioPort SFX_TriggerMisfire { get => CircuitBuilder.Singleton("SFX_TriggerMisfire", () => AudioSFXConstant("TriggerMisfire")); }
-        public static AudioPort SFX_UIScore01 { get => CircuitBuilder.Singleton("SFX_UIScore01", () => AudioSFXConstant("UIScore01")); }
-        public static AudioPort SFX_UIScore04 { get => CircuitBuilder.Singleton("SFX_UIScore04", () => AudioSFXConstant("UIScore04")); }
-    }
     public class AudioPlayerPort : AnyPort
     {
         public static implicit operator AudioPlayerPort(RecRoomObjectPort data) => new AudioPlayerPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
