@@ -6,6 +6,8 @@ namespace RRCGBuild
 {
 #pragma warning disable CS0162 // Unreachable code detected
 
+#pragma warning disable CS0164 // This label has not been referenced
+
     public class Goto : CircuitBuilder
     {
         public override void CircuitGraph()
@@ -279,5 +281,7 @@ namespace RRCGBuild
         }
     }
 }
+#pragma warning restore CS0164 // This label has not been referenced
+
 #pragma warning restore CS0162 // Unreachable code detected
 
