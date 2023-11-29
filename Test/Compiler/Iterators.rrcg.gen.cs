@@ -59,7 +59,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
-            var entry = __VariableDeclaratorExpression<EventDefinition>("entry", () => new EventDefinition("WhileReturnTest"));
+            var entry = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("entry", () => new EventDefinition("WhileReturnTest"));
             entry.Receiver();
             // Test returns from while block within an "inline" graph (functions are transparent)
             ChipLib.Log(Concat("Repeated string (inline graph): ", StringRepeat("Hello", 5)));
@@ -94,7 +94,7 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
             __BeginAccessibilityScope(false);
-            var strStaging = __VariableDeclaratorExpression<Variable<StringPort>>("strStaging", () => new Variable<StringPort>());
+            var strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>());
             __While(true, delegate
             {
                 __BeginAccessibilityScope(true);
@@ -127,7 +127,7 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
             new EventDefinition("UnreachableNodesTest").Receiver();
-            var index = __VariableDeclaratorExpression<Variable<IntPort>>("index", () => new Variable<IntPort>());
+            var index = __VariableDeclaratorExpression<RRCGBuild.Variable<IntPort>>("index", () => new Variable<IntPort>());
             index.Value = 0;
             __While(ChipBuilder.LessThan(index.Value, 100), delegate
             {
@@ -291,7 +291,7 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
             __BeginAccessibilityScope(false);
-            var strStaging = __VariableDeclaratorExpression<Variable<StringPort>>("strStaging", () => new Variable<StringPort>());
+            var strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>());
             __DoWhile(true, delegate
             {
                 __BeginAccessibilityScope(true);

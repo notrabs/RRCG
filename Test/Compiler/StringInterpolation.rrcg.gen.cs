@@ -36,7 +36,7 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
             new EventDefinition("InterpolateDataWithPort").Receiver();
-            var variable = __VariableDeclaratorExpression<Variable<StringPort>>("variable", () => new Variable<StringPort>());
+            var variable = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("variable", () => new Variable<StringPort>());
             StringPort port1 = __VariableDeclaratorExpression<StringPort>("port1", () => "data");
             variable.Value = "port";
             ChipLib.Log(__StringInterpolation("String interpolation works with both ", port1, " and ", variable.Value, "s!"));

@@ -19,7 +19,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
-            var delay = __VariableDeclaratorExpression<Delay>("delay", () => new Delay(5));
+            var delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new Delay(5));
             ChipLib.Log("Delay Test 1");
             delay.Cancel().Run();
             ChipLib.Log("Delay is scheduled");
@@ -44,7 +44,7 @@ namespace RRCGBuild
             {
                 ExecFlow rrcg_return_flow = new ExecFlow();
                 __BeginAccessibilityScope(false);
-                var delay = __VariableDeclaratorExpression<Delay>("delay", () => new Delay(1));
+                var delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new Delay(1));
                 delay.Await();
                 delay.Await();
                 __EndAccessibilityScope();

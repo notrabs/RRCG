@@ -158,7 +158,7 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
             new EventDefinition("TestKnownSingletonChipsOptimizer").Receiver();
-            var floatVar = __VariableDeclaratorExpression<Variable<FloatPort>>("floatVar", () => new Variable<FloatPort>());
+            var floatVar = __VariableDeclaratorExpression<RRCGBuild.Variable<FloatPort>>("floatVar", () => new Variable<FloatPort>());
             // All these Time Get Precise Seconds nodes
             // will be collapsed into a single node.
             floatVar.Value = TimeGetPreciseSeconds();
@@ -177,10 +177,10 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
             new EventDefinition("TestVariableCollapseOptimiser").Receiver();
-            var var0 = __VariableDeclaratorExpression<Variable<FloatPort>>("var0", () => new Variable<FloatPort>());
-            var var1 = __VariableDeclaratorExpression<Variable<FloatPort>>("var1", () => new Variable<FloatPort>());
-            var var2 = __VariableDeclaratorExpression<Variable<FloatPort>>("var2", () => new Variable<FloatPort>());
-            var var3 = __VariableDeclaratorExpression<Variable<FloatPort>>("var3", () => new Variable<FloatPort>());
+            var var0 = __VariableDeclaratorExpression<RRCGBuild.Variable<FloatPort>>("var0", () => new Variable<FloatPort>());
+            var var1 = __VariableDeclaratorExpression<RRCGBuild.Variable<FloatPort>>("var1", () => new Variable<FloatPort>());
+            var var2 = __VariableDeclaratorExpression<RRCGBuild.Variable<FloatPort>>("var2", () => new Variable<FloatPort>());
+            var var3 = __VariableDeclaratorExpression<RRCGBuild.Variable<FloatPort>>("var3", () => new Variable<FloatPort>());
             // All read-only instances of each
             // variable will be collapsed into
             // the "writing" instance.
@@ -203,7 +203,7 @@ namespace RRCGBuild
             __BeginAccessibilityScope(false);
             new EventDefinition("TestAssociativeOperationCollapseOptimizer").Receiver();
             // Addition
-            var variable = __VariableDeclaratorExpression<Variable<FloatPort>>("variable", () => new Variable<FloatPort>());
+            var variable = __VariableDeclaratorExpression<RRCGBuild.Variable<FloatPort>>("variable", () => new Variable<FloatPort>());
             variable.Value = variable.Value + 2f + 3f + 4f + 5f + 6f * 7f * 8f * 9f * 10f;
             FloatPort undeletableAdd = __VariableDeclaratorExpression<FloatPort>("undeletableAdd", () => variable.Value + 5f);
             FloatPort collapsible = __VariableDeclaratorExpression<FloatPort>("collapsible", () => undeletableAdd + 1f + 2f + 3f + 4f);
