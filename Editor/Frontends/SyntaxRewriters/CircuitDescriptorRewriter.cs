@@ -389,6 +389,27 @@ namespace RRCG
             return base.VisitGenericName(node);
         }
 
+        public override SyntaxNode VisitQualifiedName(QualifiedNameSyntax node)
+        {
+            // Makes sure the mapped Unity Types get mapped into their corresponding port types, even if they are fully qualified
+            var names = node.ChildNodes().ToArray();
+
+            if (names.Length == 2 && names[0].ToString() == "UnityEngine")
+            {
+                var unityType = names[1].ToString();
+
+                switch (unityType)
+                {
+                    case "Vector3":
+                    case "Quaternion":
+                    case "Color":
+                        return IdentifierName(unityType + "Port");
+                }
+            }
+
+            return base.VisitQualifiedName(node);
+        }
+
         public override SyntaxNode VisitIdentifierName(IdentifierNameSyntax node)
         {
             // We only want to rewrite types, which requires checking the semantic model.
@@ -472,6 +493,8 @@ namespace RRCG
                 case "Touchpad":
                 case "AnimationController":
                     return IdentifierName(node.Identifier.ValueText + "Port");
+                case "RRCGSource":
+                    return IdentifierName("RRCGBuild");
             }
 
             return base.VisitIdentifierName(node);
@@ -608,7 +631,8 @@ namespace RRCG
             // the type assignment for invocation.
             if (resolvedType != null && resolvedType.ToString() != "?")
             {
-                var type = resolvedType.ToTypeSyntax();
+                // Not sure if this is the best way to get the syntax node for a type. Some types get over-qualified, but at least they work.
+                var type = ParseTypeName(resolvedType.ToString());
                 var rewrittenType = (TypeSyntax)Visit(type);
 
                 invocationName = GenericName("__VariableDeclaratorExpression").
