@@ -1,0 +1,25 @@
+{
+  "Id": "0",
+  "Nodes": [
+    {
+      "Id": "int_Variable_0",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "DefaultValues": [],
+      "VariableName": "RRCG_variableAssignment",
+      "VariableKind": 0,
+      "VariableType": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Create_0",
+      "Type": "VjItVFENM0yiofvES34fBw==",
+      "Name": "List Create",
+      "DefaultValues": [[[0,0],"System.Int32",1]],
+      "VariableKind": 0,
+      "InputCount": 1
+    }
+  ],
+  "Connections": [],
+  "SubContexts": []
+}

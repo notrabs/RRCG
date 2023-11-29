@@ -406,6 +406,11 @@ namespace RRCG
                         return IdentifierName(unityType + "Port");
                 }
             }
+            else if (node.ToString().StartsWith("System.Collections.Generic.List"))
+            {
+                var listGeneric = (GenericNameSyntax)names[1];
+                return VisitGenericName(listGeneric);
+            }
 
             return base.VisitQualifiedName(node);
         }
