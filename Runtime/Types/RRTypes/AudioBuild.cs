@@ -1,9 +1,9 @@
 ﻿using RRCG;
-using RRCGBuild;
+using RRCGGenerated;
 
 namespace RRCGBuild
 {
-    public class AudioPort : AnyPort
+    public class AudioPort : AudioPortGen
     {
         public SFXConstantData SFXData;
 

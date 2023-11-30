@@ -1,4 +1,5 @@
 ﻿using RRCG;
+using RRCGGenerated;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -180,7 +181,6 @@ namespace RRCGBuild
 
         public static implicit operator ColorPort(Color data) => new ColorPort { Data = PortConversionUtils.EncodeColor(data) };
     }
-    public class LightPort : AnyPort { }
     public class StringPort : AnyPort
     {
         public StringPort() { }
@@ -614,26 +614,26 @@ namespace RRCGBuild
     }
 
     public class ObjectPort : AnyPort { }
-    public class AIPort : AnyPort { }
-    public class WelcomeMatPort : AnyPort
+    public class AIPort : AIPortGen { }
+    public class WelcomeMatPort : WelcomeMatPortGen
     {
         public static implicit operator WelcomeMatPort(RecRoomObjectPort data) => new WelcomeMatPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class TriggerHandlePort : AnyPort
+    public class TriggerHandlePort : TriggerHandlePortGen
     {
         public static implicit operator TriggerHandlePort(RecRoomObjectPort data) => new TriggerHandlePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class StudioObjectPort : AnyPort
+    public class StudioObjectPort : StudioObjectPortGen
     {
         public static implicit operator StudioObjectPort(RecRoomObjectPort data) => new StudioObjectPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class AnalyticsPayloadPort : AnyPort { }
-    public class PlayerPort : AnyPort
+    public class AnalyticsPayloadPort : AnalyticsPayloadPortGen { }
+    public class PlayerPort : PlayerPortGen
     {
         public static PlayerPort Local = new PlayerPort() { Port = null, Data = 1 };
         public static PlayerPort Invalid = new PlayerPort() { Port = null, Data = 0 };
     }
-    public class RecRoomObjectPort : AnyPort
+    public class RecRoomObjectPort : RecRoomObjectPortGen
     {
         public static implicit operator RecRoomObjectPort(TriggerHandlePort data) => new RecRoomObjectPort() { Port = data.Port };
         public static implicit operator RecRoomObjectPort(StudioObjectPort data) => new RecRoomObjectPort() { Port = data.Port };
@@ -645,28 +645,28 @@ namespace RRCGBuild
             get => CircuitBuilder.Singleton("RRCG_Invalid_RRO", () => new NamedVariable<RecRoomObjectPort>("RRCG_Invalid_RRO").Value);
         }
     }
-    public class CombatantPort : AnyPort { }
-    public class PatrolPointPort : AnyPort { }
-    public class AudioPlayerPort : AnyPort
+    public class CombatantPort : CombatantPortGen { }
+    public class PatrolPointPort : PatrolPointPortGen { }
+    public class AudioPlayerPort : AudioPlayerPortGen
     {
         public static implicit operator AudioPlayerPort(RecRoomObjectPort data) => new AudioPlayerPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class ConsumablePort : AnyPort { }
-    public class RoomKeyPort : AnyPort { }
-    public class BackgroundObjectsPort : AnyPort { }
-    public class BeaconPort : AnyPort
+    public class ConsumablePort : ConsumablePortGen { }
+    public class RoomKeyPort : RoomKeyPortGen { }
+    public class BackgroundObjectsPort : BackgroundObjectsPortGen { }
+    public class BeaconPort : BeaconPortGen
     {
         public static implicit operator BeaconPort(RecRoomObjectPort data) => new BeaconPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class ButtonPort : AnyPort
+    public class ButtonPort : ButtonPortGen
     {
         public static implicit operator ButtonPort(RecRoomObjectPort data) => new ButtonPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class TextScreenPort : AnyPort
+    public class TextScreenPort : TextScreenPortGen
     {
         public static implicit operator TextScreenPort(RecRoomObjectPort data) => new TextScreenPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class CollisionDataPort : AnyPort
+    public class CollisionDataPort : CollisionDataPortGen
     {
         public FloatPort Distance => CircuitBuilder.Singleton("Collision_Data_Get_Distance_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetDistance(this));
         public Vector3Port Normal => CircuitBuilder.Singleton("Collision_Data_Get_Normal_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetNormal(this));
@@ -674,149 +674,150 @@ namespace RRCGBuild
         public PlayerPort Player => CircuitBuilder.Singleton("Collision_Data_Get_Player_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetPlayer(this));
         public Vector3Port Position => CircuitBuilder.Singleton("Collision_Data_Get_Position_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetPosition(this));
     }
-    public class CostumePort : AnyPort
+    public class CostumePort : CostumePortGen
     {
         public static implicit operator CostumePort(RecRoomObjectPort data) => new CostumePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class DestinationRoomPort : AnyPort { }
-    public class DiePort : AnyPort
+    public class DestinationRoomPort : DestinationRoomPortGen { }
+    public class DiePort : DiePortGen
     {
         public static implicit operator DiePort(RecRoomObjectPort data) => new DiePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class PlayerWorldUIPort : AnyPort { }
-    public class RoomDoorPort : AnyPort
+    public class PlayerWorldUIPort : PlayerWorldUIPortGen { }
+    public class RoomDoorPort : RoomDoorPortGen
     {
         public static implicit operator RoomDoorPort(RecRoomObjectPort data) => new RoomDoorPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class EmitterPort : AnyPort
+    public class EmitterPort : EmitterPortGen
     {
         public static implicit operator EmitterPort(RecRoomObjectPort data) => new EmitterPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class ExplosionEmitterPort : AnyPort
+    public class ExplosionEmitterPort : ExplosionEmitterPortGen
     {
         public static implicit operator ExplosionEmitterPort(RecRoomObjectPort data) => new ExplosionEmitterPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class FogPort : AnyPort { }
-    public class HUDElementPort : AnyPort { }
-    public class RewardPort : AnyPort { }
-    public class GroundVehiclePort : AnyPort
+    public class FogPort : FogPortGen { }
+    public class HUDElementPort : HUDElementPortGen { }
+    public class RewardPort : RewardPortGen { }
+    public class GroundVehiclePort : GroundVehiclePortGen
     {
         public static implicit operator GroundVehiclePort(RecRoomObjectPort data) => new GroundVehiclePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class GunHandlePort : AnyPort
+    public class GunHandlePort : GunHandlePortGen
     {
         public static implicit operator GunHandlePort(RecRoomObjectPort data) => new GunHandlePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class HolotarProjectorPort : AnyPort
+    public class HolotarProjectorPort : HolotarProjectorPortGen
     {
         public static implicit operator HolotarProjectorPort(RecRoomObjectPort data) => new HolotarProjectorPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class InteractionVolumePort : AnyPort
+    public class InteractionVolumePort : InteractionVolumePortGen
     {
         public static implicit operator InteractionVolumePort(RecRoomObjectPort data) => new InteractionVolumePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class InvisibleCollisionPort : AnyPort
+    public class InvisibleCollisionPort : InvisibleCollisionPortGen
     {
         public static implicit operator InvisibleCollisionPort(RecRoomObjectPort data) => new InvisibleCollisionPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class LaserPointerPort : AnyPort
+    public class LaserPointerPort : LaserPointerPortGen
     {
         public static implicit operator LaserPointerPort(RecRoomObjectPort data) => new LaserPointerPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class PistonPort : AnyPort
+    public class LightPort : LightPortGen { }
+    public class PistonPort : PistonPortGen
     {
         public static implicit operator PistonPort(RecRoomObjectPort data) => new PistonPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class PlayerOutfitSlotPort : AnyPort { }
-    public class ProjectileLauncherPort : AnyPort
+    public class PlayerOutfitSlotPort : PlayerOutfitSlotPortGen { }
+    public class ProjectileLauncherPort : ProjectileLauncherPortGen
     {
         public static implicit operator ProjectileLauncherPort(RecRoomObjectPort data) => new ProjectileLauncherPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class RemoteVideoPlayerPort : AnyPort
+    public class RemoteVideoPlayerPort : RemoteVideoPlayerPortGen
     {
         public static implicit operator RemoteVideoPlayerPort(RecRoomObjectPort data) => new RemoteVideoPlayerPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class PlayerSpawnPointV2Port : AnyPort
+    public class PlayerSpawnPointV2Port : PlayerSpawnPointV2PortGen
     {
         public static implicit operator PlayerSpawnPointV2Port(RecRoomObjectPort data) => new PlayerSpawnPointV2Port() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class SkydomePort : AnyPort { }
-    public class SunPort : AnyPort { }
-    public class SunDirectionPort : AnyPort { }
-    public class RotatorPort : AnyPort
+    public class SkydomePort : SkydomePortGen { }
+    public class SunPort : SunPortGen { }
+    public class SunDirectionPort : SunDirectionPortGen { }
+    public class RotatorPort : RotatorPortGen
     {
         public static implicit operator RotatorPort(RecRoomObjectPort data) => new RotatorPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class SeatPort : AnyPort
+    public class SeatPort : SeatPortGen
     {
         public static implicit operator SeatPort(RecRoomObjectPort data) => new SeatPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class SFXPort : AnyPort
+    public class SFXPort : SFXPortGen
     {
         public static implicit operator SFXPort(RecRoomObjectPort data) => new SFXPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class TextPort : AnyPort
+    public class TextPort : TextPortGen
     {
         public static implicit operator TextPort(RecRoomObjectPort data) => new TextPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class ToggleButtonPort : AnyPort
+    public class ToggleButtonPort : ToggleButtonPortGen
     {
         public static implicit operator ToggleButtonPort(RecRoomObjectPort data) => new ToggleButtonPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class MotionTrailPort : AnyPort
+    public class MotionTrailPort : MotionTrailPortGen
     {
         public static implicit operator MotionTrailPort(RecRoomObjectPort data) => new MotionTrailPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class TriggerVolumePort : AnyPort
+    public class TriggerVolumePort : TriggerVolumePortGen
     {
         public static implicit operator TriggerVolumePort(RecRoomObjectPort data) => new TriggerVolumePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class VectorComponentPort : AnyPort
+    public class VectorComponentPort : VectorComponentPortGen
     {
         public static implicit operator VectorComponentPort(RecRoomObjectPort data) => new VectorComponentPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class RoomCurrencyPort : AnyPort { }
-    public class HUDConstantPort : AnyPort
+    public class RoomCurrencyPort : RoomCurrencyPortGen { }
+    public class HUDConstantPort : HUDConstantPortGen
     {
         public static implicit operator HUDConstantPort(RecRoomObjectPort data) => new HUDConstantPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class SteeringEnginePort : AnyPort
+    public class SteeringEnginePort : SteeringEnginePortGen
     {
         public static implicit operator SteeringEnginePort(RecRoomObjectPort data) => new SteeringEnginePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class GiftDropShopItemPort : AnyPort
+    public class GiftDropShopItemPort : GiftDropShopItemPortGen
     {
         public static implicit operator GiftDropShopItemPort(RecRoomObjectPort data) => new GiftDropShopItemPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class ObjectiveMarkerPort : AnyPort
+    public class ObjectiveMarkerPort : ObjectiveMarkerPortGen
     {
         public static implicit operator ObjectiveMarkerPort(RecRoomObjectPort data) => new ObjectiveMarkerPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class MeleeZonePort : AnyPort
+    public class MeleeZonePort : MeleeZonePortGen
     {
         public static implicit operator MeleeZonePort(RecRoomObjectPort data) => new MeleeZonePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class SwingHandlePort : AnyPort
+    public class SwingHandlePort : SwingHandlePortGen
     {
         public static implicit operator SwingHandlePort(RecRoomObjectPort data) => new SwingHandlePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class RoomLevelHUDPort : AnyPort
+    public class RoomLevelHUDPort : RoomLevelHUDPortGen
     {
         public static implicit operator RoomLevelHUDPort(RecRoomObjectPort data) => new RoomLevelHUDPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class TouchpadPort : AnyPort
+    public class TouchpadPort : TouchpadPortGen
     {
         public static implicit operator TouchpadPort(RecRoomObjectPort data) => new TouchpadPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class AnimationControllerPort : AnyPort
+    public class AnimationControllerPort : AnimationControllerPortGen
     {
         public static implicit operator AnimationControllerPort(RecRoomObjectPort data) => new AnimationControllerPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class InventoryItemPort : AnyPort { }
-    public class StatePort : AnyPort { }
-    public class GrabberPort : AnyPort { }
-    public class EquipmentSlotPort : AnyPort { }
-    public class DialogueUIPort : AnyPort { }
-    public class CollisionDetectionVolumePort : AnyPort { }
-    public class RoomOfferPort : AnyPort { }
+    public class InventoryItemPort : InventoryItemPortGen { }
+    public class StatePort : StatePortGen { }
+    public class GrabberPort : GrabberPortGen { }
+    public class EquipmentSlotPort : EquipmentSlotPortGen { }
+    public class DialogueUIPort : DialogueUIPortGen { }
+    public class CollisionDetectionVolumePort : CollisionDetectionVolumePortGen { }
+    public class RoomOfferPort : RoomOfferPortGen { }
 }
