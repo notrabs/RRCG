@@ -1,4 +1,5 @@
 ﻿using RRCG;
+using RRCGSource;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -666,7 +667,14 @@ namespace RRCGBuild
     {
         public static implicit operator TextScreenPort(RecRoomObjectPort data) => new TextScreenPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class CollisionDataPort : AnyPort { }
+    public class CollisionDataPort : AnyPort
+    {
+        public FloatPort Distance => CircuitBuilder.Singleton("Collision_Data_Get_Distance_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetDistance(this));
+        public Vector3Port Normal => CircuitBuilder.Singleton("Collision_Data_Get_Normal_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetNormal(this));
+        public RecRoomObjectPort Object => CircuitBuilder.Singleton("Collision_Data_Get_Object_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetObject(this));
+        public PlayerPort Player => CircuitBuilder.Singleton("Collision_Data_Get_Player_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetPlayer(this));
+        public Vector3Port Position => CircuitBuilder.Singleton("Collision_Data_Get_Position_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetPosition(this));
+    }
     public class CostumePort : AnyPort
     {
         public static implicit operator CostumePort(RecRoomObjectPort data) => new CostumePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };

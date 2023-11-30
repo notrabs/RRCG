@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace RRCGSource
 {
@@ -44,7 +45,14 @@ namespace RRCGSource
     public class Beacon : AnyObject { }
     public class Button : AnyObject { }
     public class TextScreen : AnyObject { }
-    public class CollisionData : AnyObject { }
+    public class CollisionData : AnyObject
+    {
+        public float Distance => default;
+        public Vector3 Normal => default;
+        public RecRoomObject Object => default;
+        public Player Player => default;
+        public Vector3 Position => default;
+    }
     public class Costume : AnyObject { }
     public class DestinationRoom : AnyObject { }
     public class Die : AnyObject { }
