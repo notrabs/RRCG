@@ -635,6 +635,7 @@ namespace RRCGGenerated
         public const string RoomKeyConstant = "b9b000ca-eb3d-4b9f-9f45-0fd64045f63d";
         public const string RoomLevelHUD = "0681e9de-2f79-4f6a-9d8a-06140507760c";
         public const string RoomLevels = "a63f19b0-206f-4079-a5b0-4622619200a1";
+        public const string RoomOfferConstant = "1d129345-7897-4a9c-b364-6aaf35333164";
         public const string RoomSetMatchmakingState = "be4decd2-56a0-46af-8e96-091261946fd9";
         public const string RoomSkydomeModify = "511e85c5-a359-49f1-a83c-a0550e98fe8e";
         public const string RoomSkydomeReset = "b17f7045-6fa5-4fc5-84d5-def4f78d4f45";
@@ -694,6 +695,7 @@ namespace RRCGGenerated
         public const string SFXStop = "3ad57fda-1fab-4b00-81b3-71d61af37c65";
         public const string ShowNotification = "61bc2310-69f5-4dfa-b43c-12ae98dd05ab";
         public const string ShowPurchasePrompt = "7a8d9550-41fa-42a3-8d52-0fc7e6ac3213";
+        public const string ShowPurchasePromptV2 = "53a17ff2-a6fe-4b69-adb0-1b1fdf5a7de0";
         public const string ShowRewardNotification = "3d713e71-2729-4819-819c-bcbe6fb8d400";
         public const string Sin = "ea824326-5061-411d-980c-30031511c821";
         public const string SkydomeConstant = "bff88a1e-4888-4e03-a1f4-804864a2f177";

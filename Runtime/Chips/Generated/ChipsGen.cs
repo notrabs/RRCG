@@ -6508,6 +6508,14 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
+        public static object RoomOfferConstant()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static bool RoomSetMatchmakingState(bool MatchmakingPermitted, AlternativeExec<bool> OnMatchmakingStateSet)
         {
             return default;
@@ -7053,6 +7061,14 @@ namespace RRCGGenerated
         /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
         /// </summary>
         public static void ShowPurchasePrompt(RoomCurrency InRoomPurchasable, Player Player)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void ShowPurchasePromptV2(T InRoomPurchasable, Player Player)
         {
             return;
         }

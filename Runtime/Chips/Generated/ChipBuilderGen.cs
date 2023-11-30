@@ -8923,6 +8923,15 @@ namespace RRCGGenerated
             return;
         }
 
+        public static AnyPort RoomOfferConstant()
+        {
+            Node node = new Node()
+            {Name = "Room Offer Constant", Type = "1d129345-7897-4a9c-b364-6aaf35333164", InputCount = 0};
+            Context.current.Nodes.Add(node);
+            var output_ports = new AnyPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static BoolPort RoomSetMatchmakingState(BoolPort MatchmakingPermitted, AlternativeExec<BoolPort> OnMatchmakingStateSet)
         {
             Node node = new Node()
@@ -9715,6 +9724,17 @@ namespace RRCGGenerated
         {
             Node node = new Node()
             {Name = "Show Purchase Prompt", Type = "7a8d9550-41fa-42a3-8d52-0fc7e6ac3213", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, InRoomPurchasable, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void ShowPurchasePromptV2(T InRoomPurchasable, PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Show Purchase Prompt", Type = "53a17ff2-a6fe-4b69-adb0-1b1fdf5a7de0", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, InRoomPurchasable, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});

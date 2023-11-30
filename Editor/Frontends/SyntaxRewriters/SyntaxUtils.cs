@@ -61,6 +61,12 @@ namespace RRCG
 
             return SyntaxFactory.ParameterList(SyntaxFactory.SeparatedList<ParameterSyntax>(withCommas));
         }
+        public static SyntaxList<UsingDirectiveSyntax> Usings(params string[] usings)
+        {
+            return SyntaxFactory.List(
+                usings.Select(u => SyntaxFactory.UsingDirective(SyntaxFactory.IdentifierName(u))).ToArray()
+            );
+        }
 
         public static bool IsBlockVoid(BlockSyntax block)
         {
