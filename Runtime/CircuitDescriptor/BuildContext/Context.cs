@@ -85,6 +85,12 @@ namespace RRCGBuild
 
             return prefix + "_" + idCounters[prefix]++;
         }
+
+        public void RemoveNode(Node node)
+        {
+            Nodes.Remove(node);
+            Connections.RemoveAll(c => c.From.Node == node || c.To.Node == node);
+        }
     }
 
     public class CBFunction

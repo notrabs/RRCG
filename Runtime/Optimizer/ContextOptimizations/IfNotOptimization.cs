@@ -56,7 +56,7 @@ namespace RRCG.Optimizer.ContextOptimizations
             }
 
             if (!hasMoreConnections)
-                GraphOptimizer.RemoveNodeFromContext(context, notNode);
+                context.RemoveNode(notNode);
             
             return true;
         }
@@ -103,7 +103,7 @@ namespace RRCG.Optimizer.ContextOptimizations
                 node.DefaultValues[(0, 1)] = whenFalse;
 
             if (!hasMoreConnections)
-                GraphOptimizer.RemoveNodeFromContext(context, notNode);
+                context.RemoveNode(notNode);
 
             return true;
         }

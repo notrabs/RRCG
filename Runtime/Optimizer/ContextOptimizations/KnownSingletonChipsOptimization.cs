@@ -55,7 +55,7 @@ namespace RRCG.Optimizer.ContextOptimizations
                 // Remove all but the first node from the context
                 for (int i=1; i < nodes.Count; i++)
                 {
-                    GraphOptimizer.RemoveNodeFromContext(context, nodes[i]);
+                    context.RemoveNode(nodes[i]);
                     removedNodes++;
                 }
             }

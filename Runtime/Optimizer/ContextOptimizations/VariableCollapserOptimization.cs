@@ -73,7 +73,7 @@ namespace RRCG.Optimizer.ContextOptimizations
             foreach (var c in context.Connections.Where(c => c.From.Node == from))
                 c.From.Node = into;
 
-            GraphOptimizer.RemoveNodeFromContext(context, from);
+            context.RemoveNode(from);
         }
     }
 }

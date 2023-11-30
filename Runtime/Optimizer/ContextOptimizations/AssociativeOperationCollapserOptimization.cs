@@ -84,7 +84,7 @@ namespace RRCG.Optimizer.ContextOptimizations
 
             // Remove collapsed nodes
             foreach (var node in nodesToRemove)
-                GraphOptimizer.RemoveNodeFromContext(context, node);
+                context.RemoveNode(node);
 
             // Apply new connection information
             foreach (var node in context.Nodes)

@@ -36,11 +36,5 @@ namespace RRCG.Optimizer
             context.SubContexts = context.SubContexts.Select(OptimizeContext).ToList();
             return optimizedContext;
         }
-
-        public static void RemoveNodeFromContext(Context context, Node node)
-        {
-            context.Nodes.Remove(node);
-            context.Connections.RemoveAll(c => c.From.Node == node || c.To.Node == node);
-        }
     }
 }
