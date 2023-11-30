@@ -721,6 +721,11 @@ namespace RRCGBuild
                 stringPorts.Add(port.ToString());
             }
 
+            if (stringPorts.Count == 0)
+                return new StringPort { Data = "" };
+            if (stringPorts.Count == 1)
+                return stringPorts[0];
+
             return Concat(stringPorts.ToArray());
         }
 
