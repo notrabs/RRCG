@@ -327,9 +327,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         internal static AI AIVariable(AI Port0)
         {
             return default;
@@ -359,17 +356,11 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void AngularVelocityAddDeprecated(RecRoomObject Target, Vector3 Rotation, float VelocityMultiplier, float MaxAngularVelocityApplied)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void AngularVelocityAddDeprecated(RecRoomObject Target, Quaternion Rotation, float VelocityMultiplier, float MaxAngularVelocityApplied)
         {
             return;
@@ -383,17 +374,11 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void AngularVelocitySetDeprecated(RecRoomObject Target, Vector3 Rotation, float VelocityMultiplier)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void AngularVelocitySetDeprecated(RecRoomObject Target, Quaternion Rotation, float VelocityMultiplier)
         {
             return;
@@ -559,17 +544,11 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void AudioPlayerPause(AudioPlayer Target)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void AudioPlayerPlay(AudioPlayer Target, Audio Audio)
         {
             return;
@@ -607,9 +586,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void AudioPlayerStop(AudioPlayer Target)
         {
             return;
@@ -806,9 +782,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static (T0 Item1, T1 Item2) BreakTuple<T0, T1>(RRTuple<T0, T1> Tuple)
         {
             return default;
@@ -894,9 +867,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ClearScreen(TextScreen Target)
         {
             return;
@@ -942,25 +912,16 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool CollisionDetectionVolumeGetEnabled(CollisionDetectionVolume Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void CollisionDetectionVolumeSetEnabled(CollisionDetectionVolume Target, bool Enabled)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static Color ColorConstant()
         {
             return default;
@@ -974,9 +935,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static int ColorToInt(Color Color)
         {
             return default;
@@ -1222,9 +1180,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         internal static Combatant CombatantVariable(Combatant Port0)
         {
             return default;
@@ -1246,9 +1201,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static Consumable ConsumableConstant()
         {
             return default;
@@ -1262,9 +1214,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         internal static string ControlPanel()
         {
             return default;
@@ -1902,33 +1851,21 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static DestinationRoom DoorGetDestination(RoomDoor Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool DoorGetLocked(RoomDoor Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void DoorSetDestination(RoomDoor Target, DestinationRoom Room)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void DoorSetLocked(RoomDoor Target, bool Locked)
         {
             return;
@@ -2046,25 +1983,16 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool EquipObjectToDominantHand(Player Player, RecRoomObject ObjectToEquip, bool ForceEquip, bool Steal)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool EquipObjectToOffHand(Player Player, RecRoomObject ObjectToEquip, bool ForceEquip, bool Steal)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         internal static void EventDefinition(EventDefinitionData config)
         {
             return;
@@ -2102,33 +2030,21 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ExplosionEmitterExplode(ExplosionEmitter Target)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static int ExplosionEmitterGetDamage(ExplosionEmitter Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static Color ExplosionEmitterGetExplosionColor(ExplosionEmitter Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static float ExplosionEmitterGetExplosionRadius(ExplosionEmitter Target)
         {
             return default;
@@ -2142,25 +2058,16 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ExplosionEmitterSetDamage(ExplosionEmitter Target, int Damage)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ExplosionEmitterSetExplosionColor(ExplosionEmitter Target, Color Color)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ExplosionEmitterSetExplosionRadius(ExplosionEmitter Target, float Radius)
         {
             return;
@@ -2230,9 +2137,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static HUDElement GameHUDElementConstant()
         {
             return default;
@@ -2526,33 +2430,21 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static Color GetGameHUDElementColor(HUDConstant Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static string GetGameHUDElementLabel(HUDConstant Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static int GetGameHUDElementMaxValue(HUDConstant Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static int GetGameHUDElementValue(HUDConstant Target)
         {
             return default;
@@ -2646,9 +2538,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static string GetPlayerSeasonLeagueName(Player Player)
         {
             return default;
@@ -3062,81 +2951,51 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GroundVehicleAddBoostFuel(GroundVehicle Target, int Boostamount)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GroundVehicleApplyBoost(GroundVehicle Target, AlternativeExec Failure)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static int GroundVehicleGetBoostFuel(GroundVehicle Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool GroundVehicleGetDrivingEnabled(GroundVehicle Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static float GroundVehicleGetEngineTorqueMultiplier(GroundVehicle Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static Player GroundVehicleGetSeatedPlayer(GroundVehicle Target, int Seatindex)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static float GroundVehicleGetWheelFrictionMultiplier(GroundVehicle Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GroundVehicleSetDrivingEnabled(GroundVehicle Target, bool Enabled)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GroundVehicleSetEngineTorqueMultiplier(GroundVehicle Target, float Torquemultiplier)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GroundVehicleSetSeatedPlayer(GroundVehicle Target, int Seatindex, Player Player, AlternativeExec Failure)
         {
             return;
@@ -3150,153 +3009,96 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GroundVehicleUnseatPlayer(GroundVehicle Target, Player Player, AlternativeExec Failure)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GroundVehicleUnseatPlayerFromSeat(GroundVehicle Target, int Seatindex, AlternativeExec Failure)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GunHandleAddAutoAimRole(GunHandle Target, string Role)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GunHandleApplyRecoil(GunHandle Target, float AngleX, float AngleY, float Duration, float ReturnDuration)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static int GunHandleGetCurrentAmmo(GunHandle Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static Vector3 GunHandleGetFiringDirection(GunHandle Target, RecRoomObject Source)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool GunHandleGetIsReloading(GunHandle Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static int GunHandleGetMaxAmmo(GunHandle Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static float GunHandleGetRateOfFire(GunHandle Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static float GunHandleGetReloadDuration(GunHandle Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool GunHandleGetSupportsReload(GunHandle Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GunHandleRemoveAutoAimRole(GunHandle Target, string Role)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GunHandleSetADSEnabled(GunHandle Target, bool Enabled)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GunHandleSetAutoAimRoles(GunHandle Target, List<string> Roles)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GunHandleSetCurrentAmmo(GunHandle Target, int Ammo)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GunHandleSetMaxAmmo(GunHandle Target, int MaxAmmo)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GunHandleSetRateOfFire(GunHandle Target, float RateOfFire)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GunHandleSetReloadDuration(GunHandle Target, float ReloadDuration)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void GunHandleSetSupportsReload(GunHandle Target, bool CanReload)
         {
             return;
@@ -3318,9 +3120,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool HolsterObject(Player Player, RecRoomObject ObjectToHolster, bool ForceHolster, bool Steal)
         {
             return default;
@@ -3422,17 +3221,11 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void In()
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool InstanceGetIsEvent()
         {
             return default;
@@ -3542,9 +3335,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static InventoryItem InventoryItemConstant()
         {
             return default;
@@ -3670,49 +3460,31 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static Color LaserPointerGetColor(LaserPointer Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool LaserPointerGetEnabled(LaserPointer Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static float LaserPointerGetLength(LaserPointer Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void LaserPointerSetColor(LaserPointer Target, Color Color)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void LaserPointerSetEnabled(LaserPointer Target, bool Enabled)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void LaserPointerSetLength(LaserPointer Target, float Length)
         {
             return;
@@ -3982,17 +3754,11 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void LightSetSoftness(Light Target, float Softness)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void LightSetSpecularContribution(Light Target, float SpecularContribution)
         {
             return;
@@ -4270,9 +4036,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         internal static List<RecRoomObject> ListRecRoomObjectVariable(List<RecRoomObject> Port0)
         {
             return default;
@@ -4518,9 +4281,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static RRTuple<T0, T1> MakeTuple<T0, T1>(T0 Item1, T1 Item2)
         {
             return default;
@@ -4814,9 +4574,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void Out()
         {
             return;
@@ -4950,9 +4707,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void PlayAudioAtPosition(Audio Audio, Vector3 Position, float Volume, float PlaybackSpeed, bool Is2D, PlayAudioAtPositionData config)
         {
             return;
@@ -5133,9 +4887,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static (bool IsJumpingOrFalling, RecRoomObject ContactSurface) PlayerGetIsJumpingOrFalling(Player Player)
         {
             return default;
@@ -5229,9 +4980,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static Seat PlayerGetSeat(Player Player)
         {
             return default;
@@ -5380,9 +5128,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool PlayerIsInParty(Player Target)
         {
             return default;
@@ -5452,9 +5197,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool PlayerOwnsRoomKey(Player Player, RoomKey RoomKey, AlternativeExec<bool> OnPlayerOwnsRoomKeyComplete)
         {
             return default;
@@ -5468,9 +5210,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void PlayerReferenceBoard()
         {
             return;
@@ -5593,9 +5332,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void PlayerSetNameColor(Player Player, Color Color)
         {
             return;
@@ -5761,17 +5497,11 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void PrintTextToScreen(TextScreen Target, string Text, Color Color)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ProjectileLauncherFireProjectile(ProjectileLauncher Target, Vector3 Direction)
         {
             return;
@@ -5785,57 +5515,36 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static int ProjectileLauncherGetHandDamage(ProjectileLauncher Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static int ProjectileLauncherGetHeadDamage(ProjectileLauncher Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static Color ProjectileLauncherGetProjectileColor(ProjectileLauncher Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static int ProjectileLauncherGetProjectileCount(ProjectileLauncher Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static float ProjectileLauncherGetProjectileLifetime(ProjectileLauncher Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static float ProjectileLauncherGetProjectileSpeed(ProjectileLauncher Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static float ProjectileLauncherGetProjectileSpread(ProjectileLauncher Target)
         {
             return default;
@@ -5849,9 +5558,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static int ProjectileLauncherGetTorsoDamage(ProjectileLauncher Target)
         {
             return default;
@@ -5865,57 +5571,36 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ProjectileLauncherSetHandDamage(ProjectileLauncher Target, int Damage)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ProjectileLauncherSetHeadDamage(ProjectileLauncher Target, int Damage)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ProjectileLauncherSetProjectileColor(ProjectileLauncher Target, Color Color)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ProjectileLauncherSetProjectileCount(ProjectileLauncher Target, int Count)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ProjectileLauncherSetProjectileLifetime(ProjectileLauncher Target, float Lifetime)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ProjectileLauncherSetProjectileSpeed(ProjectileLauncher Target, float Speed)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ProjectileLauncherSetProjectileSpread(ProjectileLauncher Target, float Spread)
         {
             return;
@@ -5929,9 +5614,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ProjectileLauncherSetTorsoDamage(ProjectileLauncher Target, int Damage)
         {
             return;
@@ -6057,9 +5739,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static T RandomFromList<T>(List<T> List)
         {
             return default;
@@ -6161,9 +5840,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         internal static RecRoomObject RecRoomObjectVariable(RecRoomObject Port0)
         {
             return default;
@@ -6313,97 +5989,61 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool RespawnPointAddAvoidRole(PlayerSpawnPointV2 SpawnPoint, string Role)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RespawnPointAddAvoidTag(PlayerSpawnPointV2 SpawnPoint, string Tag)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool RespawnPointAddSpawnRole(PlayerSpawnPointV2 SpawnPoint, string Role)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RespawnPointAddSpawnTag(PlayerSpawnPointV2 SpawnPoint, string Tag)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool RespawnPointGetActive(PlayerSpawnPointV2 Target)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RespawnPointRemoveAvoidRole(PlayerSpawnPointV2 SpawnPoint, string Role)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RespawnPointRemoveAvoidTag(PlayerSpawnPointV2 SpawnPoint, string Tag)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RespawnPointRemoveSpawnRole(PlayerSpawnPointV2 SpawnPoint, string Role)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RespawnPointRemoveSpawnTag(PlayerSpawnPointV2 SpawnPoint, string Tag)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RespawnPointRespawnPlayer(Player Player, bool ClearVelocity, bool UseRezEffects)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RespawnPointRespawnPlayerAtRespawnPoint(PlayerSpawnPointV2 SpawnPoint, Player Player, bool ClearVelocity, bool UseRezEffects)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RespawnPointSetActive(PlayerSpawnPointV2 Target, bool Active)
         {
             return;
@@ -6425,49 +6065,31 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool RoomBackgroundObjectsModify(BackgroundObjects BackgroundObjectsConstant, AlternativeExec<bool> BlendFinished)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RoomBackgroundObjectsReset(AlternativeExec BlendFinished)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static RoomCurrency RoomCurrencyConstant(RoomCurrencyData config)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool RoomFogModify(Fog FogConstant, AlternativeExec<bool> BlendFinished)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RoomFogReset(AlternativeExec BlendFinished)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool RoomGetMatchmakingState()
         {
             return default;
@@ -6481,9 +6103,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static RoomKey RoomKeyConstant(RoomKeyData config)
         {
             return default;
@@ -6505,49 +6124,31 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static RoomOffer RoomOfferConstant()
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool RoomSetMatchmakingState(bool MatchmakingPermitted, AlternativeExec<bool> OnMatchmakingStateSet)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool RoomSkydomeModify(Skydome SkydomeConstant, AlternativeExec<bool> BlendFinished)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RoomSkydomeReset(AlternativeExec BlendFinished)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool RoomSunModify(Sun SunConstant, SunDirection SunDirection, AlternativeExec<bool> BlendFinished)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void RoomSunReset(AlternativeExec BlendFinished)
         {
             return;
@@ -6737,57 +6338,36 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void SetGameHUDElementColor(HUDConstant Target, Color Color)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void SetGameHUDElementLabel(HUDConstant Target, string Label)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void SetGameHUDElementLabelEnabled(HUDConstant Target, bool Enabled)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void SetGameHUDElementMaxValue(HUDConstant Target, int Value)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void SetGameHUDElementValue(HUDConstant Target, int Value)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void SetGameHUDElementValueTextEnabled(HUDConstant Target, bool Enabled)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void SetHUDElementEnabled(HUDConstant Target, bool Enabled)
         {
             return;
@@ -6993,9 +6573,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool SFXGetIsPlaying(SFX Target)
         {
             return default;
@@ -7065,9 +6642,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void ShowPurchasePromptV2(RoomOffer InRoomPurchasable, Player Player)
         {
             return;
@@ -7137,17 +6711,11 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void SpawnerInternalStartSpawning(RecRoomObject Spawner, int Amountofobjectstospawn, float Timebetweenspawns, Vector3 SpawnPosition)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void SpawnerReset(RecRoomObject Port0)
         {
             return;
@@ -7305,121 +6873,76 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static Audio StudioAudioConstant()
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void StudioEventSender(StudioObject StudioObject, string Event)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void StudioEventSenderBool(StudioObject StudioObject, string Event, bool Value)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void StudioEventSenderFloat(StudioObject StudioObject, string Event, float Value)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void StudioEventSenderInt(StudioObject StudioObject, string Event, int Value)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void StudioEventSenderString(StudioObject StudioObject, string Event, string Value)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void StudioEventSenderStringBool(StudioObject StudioObject, string Event, string Value0, bool Value1)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void StudioEventSenderStringFloat(StudioObject StudioObject, string Event, string Value0, float Value1)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void StudioEventSenderStringInt(StudioObject StudioObject, string Event, string Value0, int Value1)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void StudioEventSenderStringString(StudioObject StudioObject, string Event, string Value0, string Value1)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         internal static void StudioFunction(StudioFunctionData config)
         {
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool StudioObjectGetPropertyBool(StudioObject StudioObject, string Property)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static float StudioObjectGetPropertyFloat(StudioObject StudioObject, string Property)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static int StudioObjectGetPropertyInt(StudioObject StudioObject, string Property)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static string StudioObjectGetPropertyString(StudioObject StudioObject, string Property)
         {
             return default;
@@ -7457,9 +6980,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool SwingHandleGetIsSwinging(SwingHandle Target)
         {
             return default;
@@ -7721,9 +7241,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static string TriggerHandleGetControlPrompt(TriggerHandle Target)
         {
             return default;
@@ -7737,9 +7254,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static void TriggerHandleSetControlPrompt(TriggerHandle Target, string ControlPrompt)
         {
             return;
@@ -7809,25 +7323,16 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool UnequipFromPlayer(Player Player, RecRoomObject Object)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static List<RecRoomObject> UnequipFromSlots(Player Player, bool DominantHand, bool OffHand, bool LeftHipHolster, bool RightHipHolster, bool ShoulderHolster)
         {
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool UnequipObject(RecRoomObject Object)
         {
             return default;
@@ -7896,9 +7401,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static Vector3 Vector3InverseTransform(Vector3 WorldPoint, Vector3 WorldOrigin, Quaternion WorldOrientation)
         {
             return default;
@@ -7960,9 +7462,6 @@ namespace RRCGGenerated
             return default;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static Vector3 Vector3Transform(Vector3 LocalPoint, Vector3 WorldOrigin, Quaternion WorldOrientation)
         {
             return default;
@@ -8088,9 +7587,6 @@ namespace RRCGGenerated
             return;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool Xor(bool Input)
         {
             return default;

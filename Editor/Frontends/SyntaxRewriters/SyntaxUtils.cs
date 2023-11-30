@@ -61,6 +61,13 @@ namespace RRCG
 
             return SyntaxFactory.ParameterList(SyntaxFactory.SeparatedList<ParameterSyntax>(withCommas));
         }
+        public static BaseListSyntax BaseList(params BaseTypeSyntax[] baseTypes)
+        {
+            var withCommas = CommaSeparated(baseTypes.Select(arg => (SyntaxNodeOrToken)arg));
+
+            return SyntaxFactory.BaseList(SyntaxFactory.SeparatedList<BaseTypeSyntax>(withCommas));
+        }
+
         public static SyntaxList<UsingDirectiveSyntax> Usings(params string[] usings)
         {
             return SyntaxFactory.List(

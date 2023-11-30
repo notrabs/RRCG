@@ -45,10 +45,6 @@ namespace RRCGGenerated
     {
     }
 
-    public class ColorPortGen
-    {
-    }
-
     public class CombatantPortGen
     {
     }
@@ -177,10 +173,6 @@ namespace RRCGGenerated
     {
     }
 
-    public class QuaternionPortGen
-    {
-    }
-
     public class RecRoomObjectPortGen
     {
     }
@@ -274,10 +266,6 @@ namespace RRCGGenerated
     }
 
     public class TriggerVolumePortGen
-    {
-    }
-
-    public class Vector3PortGen
     {
     }
 
