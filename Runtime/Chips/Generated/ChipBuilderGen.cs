@@ -8923,12 +8923,12 @@ namespace RRCGGenerated
             return;
         }
 
-        public static AnyPort RoomOfferConstant()
+        public static RoomOfferPort RoomOfferConstant()
         {
             Node node = new Node()
             {Name = "Room Offer Constant", Type = "1d129345-7897-4a9c-b364-6aaf35333164", InputCount = 0};
             Context.current.Nodes.Add(node);
-            var output_ports = new AnyPort{Port = new Port{Node = node, Index = 0}};
+            var output_ports = new RoomOfferPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -9731,7 +9731,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void ShowPurchasePromptV2(T InRoomPurchasable, PlayerPort Player)
+        public static void ShowPurchasePromptV2(RoomOfferPort InRoomPurchasable, PlayerPort Player)
         {
             Node node = new Node()
             {Name = "Show Purchase Prompt", Type = "53a17ff2-a6fe-4b69-adb0-1b1fdf5a7de0", InputCount = 3};

@@ -209,6 +209,10 @@ namespace RRCGGenerated
     {
     }
 
+    public class RoomOfferGen
+    {
+    }
+
     public class RotatorGen
     {
     }

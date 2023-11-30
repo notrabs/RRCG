@@ -107,4 +107,5 @@ namespace RRCGSource
     public class EquipmentSlot : AnyObject { }
     public class DialogueUI : AnyObject { }
     public class CollisionDetectionVolume : AnyObject { }
+    public class RoomOffer : AnyObject { }
 }

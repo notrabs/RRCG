@@ -6508,7 +6508,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static object RoomOfferConstant()
+        public static RoomOffer RoomOfferConstant()
         {
             return default;
         }
@@ -7068,7 +7068,7 @@ namespace RRCGGenerated
         /// <summary>
         /// 
         /// </summary>
-        public static void ShowPurchasePromptV2(T InRoomPurchasable, Player Player)
+        public static void ShowPurchasePromptV2(RoomOffer InRoomPurchasable, Player Player)
         {
             return;
         }

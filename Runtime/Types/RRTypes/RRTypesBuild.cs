@@ -818,4 +818,5 @@ namespace RRCGBuild
     public class EquipmentSlotPort : AnyPort { }
     public class DialogueUIPort : AnyPort { }
     public class CollisionDetectionVolumePort : AnyPort { }
+    public class RoomOfferPort : AnyPort { }
 }

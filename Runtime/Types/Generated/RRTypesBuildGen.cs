@@ -209,6 +209,10 @@ namespace RRCGGenerated
     {
     }
 
+    public class RoomOfferPortGen
+    {
+    }
+
     public class RotatorPortGen
     {
     }
