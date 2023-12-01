@@ -15,14 +15,6 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public (int Health, int Shield, int MaxHealth) CombatantGetHealth
-        {
-            /// <summary>
-            /// Outputs the Health property of the input combatant.
-            /// </summary>
-            get => default;
-        }
-
         public bool CombatantGetIsAlive
         {
             /// <summary>
@@ -37,16 +29,6 @@ namespace RRCGGenerated
             /// Outputs the input combatant's current velocity and speed.
             /// </summary>
             get => default;
-        }
-
-        public int CombatantSetHealth
-        {
-            /// <summary>
-            /// Sets the Health property of an input combatant.
-            /// </summary>
-            set
-            {
-            }
         }
 
         public int CombatantSetMaxHealth
@@ -331,6 +313,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Outputs the Health property of the input combatant.
+        /// </summary>
+        public static (int Health, int Shield, int MaxHealth) CombatantGetHealth()
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
         public static void CombatantReceiveDamage(int Damage, bool IgnoreShield, AI DamageSource)
@@ -350,6 +340,14 @@ namespace RRCGGenerated
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
         public static void CombatantReceiveDamage(int Damage, bool IgnoreShield, Player DamageSource)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the Health property of an input combatant.
+        /// </summary>
+        public static void CombatantSetHealth(int Health)
         {
             return;
         }
@@ -624,11 +622,9 @@ namespace RRCGGenerated
 
     public class BackgroundObjectsGen : AnyObject
     {
-        public AlternativeExec<bool> RoomBackgroundObjectsModify
+        public static bool RoomBackgroundObjectsModify(AlternativeExec<bool> BlendFinished)
         {
-            set
-            {
-            }
+            return default;
         }
     }
 
@@ -766,20 +762,6 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public (int Health, int Shield, int MaxHealth) Health
-        {
-            /// <summary>
-            /// Outputs the Health property of the input combatant.
-            /// </summary>
-            get => default;
-            /// <summary>
-            /// Sets the Health property of an input combatant.
-            /// </summary>
-            set
-            {
-            }
-        }
-
         public bool IsAlive
         {
             /// <summary>
@@ -831,6 +813,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Outputs the Health property of the input combatant.
+        /// </summary>
+        public static (int Health, int Shield, int MaxHealth) GetHealth()
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
         public static void ReceiveDamage(int Damage, bool IgnoreShield, AI DamageSource)
@@ -850,6 +840,14 @@ namespace RRCGGenerated
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
         public static void ReceiveDamage(int Damage, bool IgnoreShield, Player DamageSource)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the Health property of an input combatant.
+        /// </summary>
+        public static void SetHealth(int Health)
         {
             return;
         }
@@ -942,16 +940,6 @@ namespace RRCGGenerated
 
     public class ConsumableGen : AnyObject
     {
-        public Player ShowPurchasePrompt
-        {
-            /// <summary>
-            /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
-            /// </summary>
-            set
-            {
-            }
-        }
-
         /// <summary>
         /// Award a room consumable to a player. Multiple award room consumable requests from the same client are sent in bulk with a ten-second cooldown. The Success port will be TRUE if the consumable was entirely, or in part, awarded to the player. If the consumable could not be awarded, the Success port will be FALSE. Use the Log Output toggle in the configuration settings to see more information about why a failure occurred. Logging output may impact room performance and should be toggled off when not in use.
         /// </summary>
@@ -975,26 +963,32 @@ namespace RRCGGenerated
         {
             return;
         }
+
+        /// <summary>
+        /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
+        /// </summary>
+        public static void ShowPurchasePrompt(Player Player)
+        {
+            return;
+        }
     }
 
     public class CostumeGen : AnyObject
     {
-        public Player Equip
-        {
-            /// <summary>
-            /// Equip a Player with a costume.
-            /// </summary>
-            set
-            {
-            }
-        }
-
         public Player Wearer
         {
             /// <summary>
             /// Get Player wearing a costume.
             /// </summary>
             get => default;
+        }
+
+        /// <summary>
+        /// Equip a Player with a costume.
+        /// </summary>
+        public static void Equip(Player Player)
+        {
+            return;
         }
 
         /// <summary>
@@ -1088,7 +1082,7 @@ namespace RRCGGenerated
 
     public class DieGen : AnyObject
     {
-        public Player DiceGetPlayerRolled
+        public Player PlayerRolled
         {
             /// <summary>
             /// Returns the player who rolled the dice.
@@ -1096,7 +1090,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public int DiceGetResult
+        public int Result
         {
             /// <summary>
             /// Returns the result of the dice.
@@ -1104,7 +1098,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public bool DiceGetRollFinished
+        public bool RollFinished
         {
             /// <summary>
             /// Outputs an exec when the dice finished rolling.
@@ -1254,11 +1248,9 @@ namespace RRCGGenerated
 
     public class FogGen : AnyObject
     {
-        public AlternativeExec<bool> RoomFogModify
+        public static bool RoomFogModify(AlternativeExec<bool> BlendFinished)
         {
-            set
-            {
-            }
+            return default;
         }
     }
 
@@ -1305,20 +1297,6 @@ namespace RRCGGenerated
 
     public class GroundVehicleGen : AnyObject
     {
-        public int AddBoostFuel
-        {
-            set
-            {
-            }
-        }
-
-        public AlternativeExec ApplyBoost
-        {
-            set
-            {
-            }
-        }
-
         public int BoostFuel
         {
             get => default;
@@ -1351,6 +1329,16 @@ namespace RRCGGenerated
             }
         }
 
+        public static void AddBoostFuel(int Boostamount)
+        {
+            return;
+        }
+
+        public static void ApplyBoost(AlternativeExec Failure)
+        {
+            return;
+        }
+
         public static Player GetSeatedPlayer(int Seatindex)
         {
             return default;
@@ -1374,13 +1362,6 @@ namespace RRCGGenerated
 
     public class GunHandleGen : AnyObject
     {
-        public string AddAutoAimRole
-        {
-            set
-            {
-            }
-        }
-
         public bool ADSEnabled
         {
             set
@@ -1447,6 +1428,11 @@ namespace RRCGGenerated
             }
         }
 
+        public static void AddAutoAimRole(string Role)
+        {
+            return;
+        }
+
         public static void ApplyRecoil(float AngleX, float AngleY, float Duration, float ReturnDuration)
         {
             return;
@@ -1472,7 +1458,7 @@ namespace RRCGGenerated
 
     public class HUDConstantGen : AnyObject
     {
-        public Color GameHUDElementColor
+        public Color Color
         {
             get => default;
             set
@@ -1480,7 +1466,14 @@ namespace RRCGGenerated
             }
         }
 
-        public string GameHUDElementLabel
+        public bool Enabled
+        {
+            set
+            {
+            }
+        }
+
+        public string Label
         {
             get => default;
             set
@@ -1488,22 +1481,14 @@ namespace RRCGGenerated
             }
         }
 
-        public bool GameHUDElementLabelEnabled
+        public bool LabelEnabled
         {
             set
             {
             }
         }
 
-        public int GameHUDElementMaxValue
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int GameHUDElementValue
+        public int MaxValue
         {
             get => default;
             set
@@ -1511,14 +1496,15 @@ namespace RRCGGenerated
             }
         }
 
-        public bool GameHUDElementValueTextEnabled
+        public int Value
         {
+            get => default;
             set
             {
             }
         }
 
-        public bool HUDElementEnabled
+        public bool ValueTextEnabled
         {
             set
             {
@@ -1573,10 +1559,6 @@ namespace RRCGGenerated
             /// Returns False if the Interaction Volume is enabled, and True if it is locked.
             /// </summary>
             get => default;
-        }
-
-        public bool Locked
-        {
             /// <summary>
             /// Disables or enables an Interaction Volume (but reversed).
             /// </summary>
@@ -1852,40 +1834,12 @@ namespace RRCGGenerated
 
     public class MotionTrailGen : AnyObject
     {
-        public Color TrailGetColor
+        public Color Color
         {
             /// <summary>
             /// Returns the color of the target Motion Trail object.
             /// </summary>
             get => default;
-        }
-
-        public bool TrailGetEnabled
-        {
-            /// <summary>
-            /// Outputs True if the target Motion Trail object is enabled.
-            /// </summary>
-            get => default;
-        }
-
-        public float TrailGetLifetime
-        {
-            /// <summary>
-            /// Returns the lifetime of the target Motion Trail object.
-            /// </summary>
-            get => default;
-        }
-
-        public float TrailGetOpacity
-        {
-            /// <summary>
-            /// Returns the max opacity of the target Motion Trail object.
-            /// </summary>
-            get => default;
-        }
-
-        public Color TrailSetColor
-        {
             /// <summary>
             /// Sets the color of the target Motion Trail object.
             /// </summary>
@@ -1894,8 +1848,12 @@ namespace RRCGGenerated
             }
         }
 
-        public bool TrailSetEnabled
+        public bool Enabled
         {
+            /// <summary>
+            /// Outputs True if the target Motion Trail object is enabled.
+            /// </summary>
+            get => default;
             /// <summary>
             /// Sets the enabled state of the target Motion Trail object.
             /// </summary>
@@ -1904,8 +1862,12 @@ namespace RRCGGenerated
             }
         }
 
-        public float TrailSetLifetime
+        public float Lifetime
         {
+            /// <summary>
+            /// Returns the lifetime of the target Motion Trail object.
+            /// </summary>
+            get => default;
             /// <summary>
             /// Sets the lifetime of the target Motion Trail object.
             /// </summary>
@@ -1914,8 +1876,12 @@ namespace RRCGGenerated
             }
         }
 
-        public float TrailSetOpacity
+        public float Opacity
         {
+            /// <summary>
+            /// Returns the max opacity of the target Motion Trail object.
+            /// </summary>
+            get => default;
             /// <summary>
             /// Sets the max opacity of the target Motion Trail object.
             /// </summary>
@@ -2153,36 +2119,6 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public string AddRole
-        {
-            /// <summary>
-            /// Adds a Role to a Player.
-            /// </summary>
-            set
-            {
-            }
-        }
-
-        public string AddTag
-        {
-            /// <summary>
-            /// Adds a tag to the input object or player.
-            /// </summary>
-            set
-            {
-            }
-        }
-
-        public List<string> AddTags
-        {
-            /// <summary>
-            /// Adds tags to the input object or player.
-            /// </summary>
-            set
-            {
-            }
-        }
-
         public Quaternion BodyOrientation
         {
             /// <summary>
@@ -2219,14 +2155,6 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public (int Health, int Shield, int MaxHealth) CombatantGetHealth
-        {
-            /// <summary>
-            /// Outputs the Health property of the input combatant.
-            /// </summary>
-            get => default;
-        }
-
         public bool CombatantGetIsAlive
         {
             /// <summary>
@@ -2241,16 +2169,6 @@ namespace RRCGGenerated
             /// Outputs the input combatant's current velocity and speed.
             /// </summary>
             get => default;
-        }
-
-        public int CombatantSetHealth
-        {
-            /// <summary>
-            /// Sets the Health property of an input combatant.
-            /// </summary>
-            set
-            {
-            }
         }
 
         public int CombatantSetMaxHealth
@@ -2433,36 +2351,6 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public AlternativeExec IfLocalPlayerShouldRun
-        {
-            /// <summary>
-            /// The "Should Run" port will exec a) if the input player is local or b) if input player is invalid and the local player has authority of the current context.
-            /// </summary>
-            set
-            {
-            }
-        }
-
-        public AlternativeExec IfPlayerIsLocal
-        {
-            /// <summary>
-            /// Outputs if a player is the local player or not.
-            /// </summary>
-            set
-            {
-            }
-        }
-
-        public AlternativeExec IfPlayerIsValid
-        {
-            /// <summary>
-            /// Runs Is Valid if the input player is not null, otherwise runs Is Not Valid. Players can be not valid if a variable is never set or if a player has left the room.
-            /// </summary>
-            set
-            {
-            }
-        }
-
         public bool IsClambering
         {
             /// <summary>
@@ -2628,16 +2516,6 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public bool LocalPlayerSetPlayerNametagVisibility
-        {
-            /// <summary>
-            /// Control whether the player sees the nametag of the target player.It takes priority over role settings.Reset the room to remove the effect of this chip.
-            /// </summary>
-            set
-            {
-            }
-        }
-
         public Color NameColor
         {
             set
@@ -2701,26 +2579,6 @@ namespace RRCGGenerated
         {
             /// <summary>
             /// Removes the input role from a target player.
-            /// </summary>
-            set
-            {
-            }
-        }
-
-        public string RemoveTag
-        {
-            /// <summary>
-            /// Removes a tag from the input object or player.
-            /// </summary>
-            set
-            {
-            }
-        }
-
-        public List<string> RemoveTags
-        {
-            /// <summary>
-            /// Removes the input list of tags from the input object or player.
             /// </summary>
             set
             {
@@ -3157,6 +3015,22 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Adds a tag to the input object or player.
+        /// </summary>
+        public static void AddTag(string Tag)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Adds tags to the input object or player.
+        /// </summary>
+        public static void AddTags(List<string> Tags)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Award some amount to the Player's balance of one room currency. Configure this chip to set the affected currency.
         /// </summary>
         public static (bool Success, int TotalBalance) AwardCurrency(int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
@@ -3181,6 +3055,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Outputs the Health property of the input combatant.
+        /// </summary>
+        public static (int Health, int Shield, int MaxHealth) CombatantGetHealth()
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
         public static void CombatantReceiveDamage(int Damage, bool IgnoreShield, AI DamageSource)
@@ -3200,6 +3082,14 @@ namespace RRCGGenerated
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
         public static void CombatantReceiveDamage(int Damage, bool IgnoreShield, Player DamageSource)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the Health property of an input combatant.
+        /// </summary>
+        public static void CombatantSetHealth(int Health)
         {
             return;
         }
@@ -3372,9 +3262,33 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// The "Should Run" port will exec a) if the input player is local or b) if input player is invalid and the local player has authority of the current context.
+        /// </summary>
+        public static void IfLocalPlayerShouldRun(AlternativeExec ShouldNotRun)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Runs Has Role if the input player has the input role, otherwise runs Does Not Have Role.
         /// </summary>
         public static void IfPlayerHasRole(string Role, AlternativeExec DoesNotHaveRole)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Outputs if a player is the local player or not.
+        /// </summary>
+        public static void IfPlayerIsLocal(AlternativeExec IsNotLocal)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Runs Is Valid if the input player is not null, otherwise runs Is Not Valid. Players can be not valid if a variable is never set or if a player has left the room.
+        /// </summary>
+        public static void IfPlayerIsValid(AlternativeExec IsNotValid)
         {
             return;
         }
@@ -3407,6 +3321,22 @@ namespace RRCGGenerated
         /// Enables the local player to interact with the provided player. To respond to interactions, configure a "Event Receiver" chip for the "Local Player... Interaction" events within a Player board. Hold duration is the number of seconds the player needs to hold the interact button to complete an interaction. If Hold duration is 0, the interaction will be a button press or tap on mobile platforms. Prompt is the string that will be displayed when a player interacts with the provided player.  Players will be interactive only for the players that ran this chip with them as the target player. Individual players may have different sets of players they can interact with. A player's interaction state is reset when the room is reset or reloaded. Enabling interactions with a player will make it so gestures do not work with them generally (e.g.: fistbumping, high-fiving, handshaking).
         /// </summary>
         public static void LocalPlayerEnableInteractionWithTargetPlayer(float RequiredHoldDuration, string Prompt)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Control whether the player sees the nametag of the target player.It takes priority over role settings.Reset the room to remove the effect of this chip.
+        /// </summary>
+        public static void LocalPlayerSetPlayerNametagVisibility(bool Enabled)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Adds a Role to a Player.
+        /// </summary>
+        public static void AddRole(string Value)
         {
             return;
         }
@@ -3540,6 +3470,22 @@ namespace RRCGGenerated
         /// Remove a player from the radio channel they are in
         /// </summary>
         public static void RemovePlayerFromRadioChannel()
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Removes a tag from the input object or player.
+        /// </summary>
+        public static void RemoveTag(string Tag)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Removes the input list of tags from the input object or player.
+        /// </summary>
+        public static void RemoveTags(List<string> Tags)
         {
             return;
         }
@@ -3737,75 +3683,55 @@ namespace RRCGGenerated
 
     public class PlayerSpawnPointV2Gen : AnyObject
     {
-        public string RespawnPointAddAvoidRole
-        {
-            set
-            {
-            }
-        }
-
-        public string RespawnPointAddAvoidTag
-        {
-            set
-            {
-            }
-        }
-
-        public string RespawnPointAddSpawnRole
-        {
-            set
-            {
-            }
-        }
-
-        public string RespawnPointAddSpawnTag
-        {
-            set
-            {
-            }
-        }
-
-        public bool RespawnPointGetActive
+        public bool Active
         {
             get => default;
-        }
-
-        public string RespawnPointRemoveAvoidRole
-        {
             set
             {
             }
         }
 
-        public string RespawnPointRemoveAvoidTag
+        public static bool AddAvoidRole(string Role)
         {
-            set
-            {
-            }
+            return default;
         }
 
-        public string RespawnPointRemoveSpawnRole
+        public static void AddAvoidTag(string Tag)
         {
-            set
-            {
-            }
+            return;
         }
 
-        public string RespawnPointRemoveSpawnTag
+        public static bool AddSpawnRole(string Role)
         {
-            set
-            {
-            }
+            return default;
         }
 
-        public bool RespawnPointSetActive
+        public static void AddSpawnTag(string Tag)
         {
-            set
-            {
-            }
+            return;
         }
 
-        public static void RespawnPointRespawnPlayerAtRespawnPoint(Player Player, bool ClearVelocity, bool UseRezEffects)
+        public static void RemoveAvoidRole(string Role)
+        {
+            return;
+        }
+
+        public static void RemoveAvoidTag(string Tag)
+        {
+            return;
+        }
+
+        public static void RemoveSpawnRole(string Role)
+        {
+            return;
+        }
+
+        public static void RemoveSpawnTag(string Tag)
+        {
+            return;
+        }
+
+        public static void RespawnPlayerAtRespawnPoint(Player Player, bool ClearVelocity, bool UseRezEffects)
         {
             return;
         }
@@ -3813,26 +3739,17 @@ namespace RRCGGenerated
 
     public class PlayerWorldUIGen : AnyObject
     {
-        public Player DisplayPlayerWorldUI
+        /// <summary>
+        /// Displays a target UI configuration above a given player.
+        /// </summary>
+        public static void DisplayPlayerWorldUI(Player Player)
         {
-            /// <summary>
-            /// Displays a target UI configuration above a given player.
-            /// </summary>
-            set
-            {
-            }
+            return;
         }
     }
 
     public class ProjectileLauncherGen : AnyObject
     {
-        public Vector3 FireProjectile
-        {
-            set
-            {
-            }
-        }
-
         public Player FiringPlayer
         {
             /// <summary>
@@ -3924,30 +3841,15 @@ namespace RRCGGenerated
             {
             }
         }
+
+        public static void FireProjectile(Vector3 Direction)
+        {
+            return;
+        }
     }
 
     public class RecRoomObjectGen : AnyObject
     {
-        public string AddTag
-        {
-            /// <summary>
-            /// Adds a tag to the input object or player.
-            /// </summary>
-            set
-            {
-            }
-        }
-
-        public List<string> AddTags
-        {
-            /// <summary>
-            /// Adds tags to the input object or player.
-            /// </summary>
-            set
-            {
-            }
-        }
-
         public Vector3 AngularVelocity
         {
             /// <summary>
@@ -4040,26 +3942,6 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public string RemoveTag
-        {
-            /// <summary>
-            /// Removes a tag from the input object or player.
-            /// </summary>
-            set
-            {
-            }
-        }
-
-        public List<string> RemoveTags
-        {
-            /// <summary>
-            /// Removes the input list of tags from the input object or player.
-            /// </summary>
-            set
-            {
-            }
-        }
-
         public Quaternion Rotation
         {
             /// <summary>
@@ -4114,6 +3996,22 @@ namespace RRCGGenerated
             /// Returns the velocity of a Player or a Rec Room Object.
             /// </summary>
             get => default;
+        }
+
+        /// <summary>
+        /// Adds a tag to the input object or player.
+        /// </summary>
+        public static void AddTag(string Tag)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Adds tags to the input object or player.
+        /// </summary>
+        public static void AddTags(List<string> Tags)
+        {
+            return;
         }
 
         /// <summary>
@@ -4318,6 +4216,22 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Removes a tag from the input object or player.
+        /// </summary>
+        public static void RemoveTag(string Tag)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Removes the input list of tags from the input object or player.
+        /// </summary>
+        public static void RemoveTags(List<string> Tags)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Sets the velocity of the input target, similar to Velocity Set, but reapplies every physics tick until either the input duration has elapsed, the authority of the input target has changed, or another impulsing CV2 chip has been executed against the same input target.
         /// </summary>
         public static void RequestVelocitySetOverDuration(float Multiplier, Vector3 Velocity, float Duration)
@@ -4463,16 +4377,6 @@ namespace RRCGGenerated
 
     public class RoomCurrencyGen : AnyObject
     {
-        public Player ShowPurchasePrompt
-        {
-            /// <summary>
-            /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
-            /// </summary>
-            set
-            {
-            }
-        }
-
         /// <summary>
         /// Award some amount to the Player's balance of the given room currency.
         /// </summary>
@@ -4487,6 +4391,14 @@ namespace RRCGGenerated
         public static (bool Success, int TotalBalance) GetCurrencyBalanceNew(Player Player, AlternativeExec<(bool Success, int TotalBalance)> OnGetBalanceComplete)
         {
             return default;
+        }
+
+        /// <summary>
+        /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
+        /// </summary>
+        public static void ShowPurchasePrompt(Player Player)
+        {
+            return;
         }
     }
 
@@ -4511,21 +4423,19 @@ namespace RRCGGenerated
 
     public class RoomKeyGen : AnyObject
     {
-        public Player ShowPurchasePrompt
-        {
-            /// <summary>
-            /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
-            /// </summary>
-            set
-            {
-            }
-        }
-
         /// <summary>
         /// Unlocks a room key for the target player. Multiple award room key requests from the same client are sent in bulk with a one-second cooldown.
         public static bool AwardRoomKey(Player Player, AlternativeExec<bool> OnAwardRoomKeyComplete)
         {
             return default;
+        }
+
+        /// <summary>
+        /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
+        /// </summary>
+        public static void ShowPurchasePrompt(Player Player)
+        {
+            return;
         }
     }
 
@@ -4691,11 +4601,9 @@ namespace RRCGGenerated
 
     public class SkydomeGen : AnyObject
     {
-        public AlternativeExec<bool> RoomSkydomeModify
+        public static bool RoomSkydomeModify(AlternativeExec<bool> BlendFinished)
         {
-            set
-            {
-            }
+            return default;
         }
     }
 
@@ -4716,11 +4624,9 @@ namespace RRCGGenerated
 
     public class StudioObjectGen : AnyObject
     {
-        public string StudioEventSender
+        public static void StudioEventSender(string Event)
         {
-            set
-            {
-            }
+            return;
         }
 
         public static void StudioEventSenderBool(string Event, bool Value)
@@ -4895,7 +4801,7 @@ namespace RRCGGenerated
 
     public class TouchpadGen : AnyObject
     {
-        public (bool IsTouchActive, Vector3 TouchPosition, Vector3 WorldPosition) ComponentGetActiveTouch
+        public (bool IsTouchActive, Vector3 TouchPosition, Vector3 WorldPosition) ActiveTouch
         {
             /// <summary>
             /// Get the active touch position from the local player's interaction
@@ -4903,24 +4809,12 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public string ComponentGetInteractionLabel
+        public string InteractionLabel
         {
             /// <summary>
             /// Sets the interaction label (used by Screen players)
             /// </summary>
             get => default;
-        }
-
-        public bool ComponentGetIsEnabled
-        {
-            /// <summary>
-            /// Sets if the Touchpad can be interacted with or output touch events
-            /// </summary>
-            get => default;
-        }
-
-        public string ComponentSetInteractionLabel
-        {
             /// <summary>
             /// Gets the interaction label (used by Screen players)
             /// </summary>
@@ -4929,8 +4823,12 @@ namespace RRCGGenerated
             }
         }
 
-        public bool ComponentSetIsEnabled
+        public bool IsEnabled
         {
+            /// <summary>
+            /// Sets if the Touchpad can be interacted with or output touch events
+            /// </summary>
+            get => default;
             /// <summary>
             /// Gets if the Touchpad can be interacted with or output touch events
             /// </summary>
