@@ -96,6 +96,24 @@ public class ExampleRoom : CircuitDescriptor
 }
 ```
 
+<details>
+<summary> Circuit Libraries </summary>
+
+If you want to create reusable logic without an entry point, extend the `CircuitLibrary` class instead. 
+This will also hide the class in the Circuit Selection menu. Place it inside a `.rrcg.cs` file anywhere in your project.
+
+```c#
+using RRCGSource;
+
+public class ExampleLibrary : CircuitLibrary
+{
+    // Your circuits go here.
+    // You can use it as a normal class or with static methods.
+}
+```
+
+</details>
+
 ### Placing Chips
 
 Chips are available as static functions in the `Chips` class. For convenience you can access them through the extended `CircuitDescriptor` class.
@@ -291,7 +309,7 @@ public void ExampleCircuit()
     // Log() automatically converts any value ToString
     ChipLib.Log(cachedSum);
 
-    // AwaitDelay() continues on th delayed line of a Delay chip. Useful if you don't need immediate logic.
+    // AwaitDelay() continues on the delayed line of a Delay chip. Useful if you don't need immediate logic.
     ChipLib.AwaitDelay();
     ChipLib.AwaitDelay(1);
 }
