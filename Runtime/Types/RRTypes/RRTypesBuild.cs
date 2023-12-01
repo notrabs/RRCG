@@ -63,6 +63,15 @@ namespace RRCGBuild
         /// </summary>
         public T AsSourcePort<T>() => this as dynamic;
 
+        public BoolPort IsValid
+        {
+            get
+            {
+                if (IsDataPort) return false;
+                else return CircuitBuilder.Singleton("IsValid_" + Port.PortKey(), () => ChipBuilder.IsValid(this));
+            }
+        }
+
         public new StringPort ToString()
         {
             if (IsDataPort)

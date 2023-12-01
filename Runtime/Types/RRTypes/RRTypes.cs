@@ -9,7 +9,10 @@ using UnityEngine;
 
 namespace RRCGSource
 {
-    public abstract class AnyObject { }
+    public abstract class AnyObject
+    {
+        public bool IsValid { get; }
+    }
     public class RRTuple<T0, T1> : AnyObject { }
 
     public class AI : AIGen { }
