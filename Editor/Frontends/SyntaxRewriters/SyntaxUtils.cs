@@ -67,12 +67,22 @@ namespace RRCG
 
             return SyntaxFactory.BaseList(SyntaxFactory.SeparatedList<BaseTypeSyntax>(withCommas));
         }
+        public static AccessorListSyntax AccessorList(params AccessorDeclarationSyntax[] accessors)
+        {
+            return SyntaxFactory.AccessorList(SyntaxFactory.List(accessors));
+        }
 
         public static SyntaxList<UsingDirectiveSyntax> Usings(params string[] usings)
         {
             return SyntaxFactory.List(
                 usings.Select(u => SyntaxFactory.UsingDirective(SyntaxFactory.IdentifierName(u))).ToArray()
             );
+        }
+
+        public static PropertyDeclarationSyntax AddAccesor(PropertyDeclarationSyntax property, AccessorDeclarationSyntax accessor)
+        {
+            var newAccesorArr = new[] { accessor };
+            return property.WithAccessorList(AccessorList(property.AccessorList != null ? property.AccessorList.Accessors.Concat(newAccesorArr).ToArray() : newAccesorArr));
         }
 
         public static bool IsBlockVoid(BlockSyntax block)

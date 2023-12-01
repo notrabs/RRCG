@@ -2522,7 +2522,7 @@ namespace RRCGGenerated
         public void ShowNotification<T>(StringPort Value)
             where T : AnyPort, new()
         {
-            ChipBuilder.ShowNotification((PlayerPort)this, Value);
+            ChipBuilder.ShowNotification<T>((PlayerPort)this, Value);
         }
 
         public void ShowRewardNotification(RewardPort Reward, FloatPort Duration)
@@ -2854,7 +2854,7 @@ namespace RRCGGenerated
         public T FromRecRoomObject<T>()
             where T : AnyPort, new()
         {
-            return CircuitBuilder.Singleton("RRCG_RecRoomObject_FromRecRoomObject_" + Port.PortKey(), () => ChipBuilder.FromRecRoomObject((RecRoomObjectPort)this));
+            return CircuitBuilder.Singleton("RRCG_RecRoomObject_FromRecRoomObject_" + Port.PortKey(), () => ChipBuilder.FromRecRoomObject<T>((RecRoomObjectPort)this));
         }
 
         public Vector3Port GetAngularVelocity()
