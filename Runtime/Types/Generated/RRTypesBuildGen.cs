@@ -279,52 +279,52 @@ namespace RRCGGenerated
 
     public class AnimationControllerPortGen : AnyPort
     {
-        public IntPort AnimationGetFrame()
+        public IntPort GetFrame()
         {
-            return CircuitBuilder.Singleton("RRCG_AnimationController_AnimationGetFrame_" + Port.PortKey(), () => ChipBuilder.AnimationGetFrame((AnimationControllerPort)this));
+            return CircuitBuilder.Singleton("RRCG_AnimationController_GetFrame_" + Port.PortKey(), () => ChipBuilder.AnimationGetFrame((AnimationControllerPort)this));
         }
 
-        public BoolPort AnimationGetIsPlaying()
+        public BoolPort GetIsPlaying()
         {
-            return CircuitBuilder.Singleton("RRCG_AnimationController_AnimationGetIsPlaying_" + Port.PortKey(), () => ChipBuilder.AnimationGetIsPlaying((AnimationControllerPort)this));
+            return CircuitBuilder.Singleton("RRCG_AnimationController_GetIsPlaying_" + Port.PortKey(), () => ChipBuilder.AnimationGetIsPlaying((AnimationControllerPort)this));
         }
 
-        public FloatPort AnimationGetSpeed()
+        public FloatPort GetSpeed()
         {
-            return CircuitBuilder.Singleton("RRCG_AnimationController_AnimationGetSpeed_" + Port.PortKey(), () => ChipBuilder.AnimationGetSpeed((AnimationControllerPort)this));
+            return CircuitBuilder.Singleton("RRCG_AnimationController_GetSpeed_" + Port.PortKey(), () => ChipBuilder.AnimationGetSpeed((AnimationControllerPort)this));
         }
 
-        public FloatPort AnimationGetTimeStamp()
+        public FloatPort GetTimeStamp()
         {
-            return CircuitBuilder.Singleton("RRCG_AnimationController_AnimationGetTimeStamp_" + Port.PortKey(), () => ChipBuilder.AnimationGetTimeStamp((AnimationControllerPort)this));
+            return CircuitBuilder.Singleton("RRCG_AnimationController_GetTimeStamp_" + Port.PortKey(), () => ChipBuilder.AnimationGetTimeStamp((AnimationControllerPort)this));
         }
 
-        public void AnimationPause()
+        public void Pause()
         {
             ChipBuilder.AnimationPause((AnimationControllerPort)this);
         }
 
-        public void AnimationPlay()
+        public void Play()
         {
             ChipBuilder.AnimationPlay((AnimationControllerPort)this);
         }
 
-        public void AnimationSetFrame(IntPort FrameNumber)
+        public void SetFrame(IntPort FrameNumber)
         {
             ChipBuilder.AnimationSetFrame((AnimationControllerPort)this, FrameNumber);
         }
 
-        public void AnimationSetSpeed(FloatPort Speed)
+        public void SetSpeed(FloatPort Speed)
         {
             ChipBuilder.AnimationSetSpeed((AnimationControllerPort)this, Speed);
         }
 
-        public void AnimationSetTimeStamp(FloatPort TimeStamp)
+        public void SetTimeStamp(FloatPort TimeStamp)
         {
             ChipBuilder.AnimationSetTimeStamp((AnimationControllerPort)this, TimeStamp);
         }
 
-        public void AnimationStop()
+        public void Stop()
         {
             ChipBuilder.AnimationStop((AnimationControllerPort)this);
         }
