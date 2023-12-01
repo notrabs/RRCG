@@ -109,6 +109,17 @@ public void ExampleCircuit()
 }
 ```
 
+In addition to placing chips explicitly, you can also use the shorthands provided in the classes of RR types.
+
+```c#
+public void ExampleCircuit()
+{
+    SetPosition(GetLocalPlayer(), new Vector3(1,2,3));
+    // or
+    GetLocalPlayer().Position = new Vector3(1,2,3);
+}
+```
+
 ### Data flow
 
 Ports are data. Data is Ports. Don't worry what the type system might say. Write code as you usually would. RRCG will create and connect chips when necessary to execute operations.
