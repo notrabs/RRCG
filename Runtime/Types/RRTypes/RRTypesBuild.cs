@@ -187,16 +187,7 @@ namespace RRCGBuild
     public class ConsumablePort : ConsumablePortGen { }
     public class RoomKeyPort : RoomKeyPortGen { }
     public class BackgroundObjectsPort : BackgroundObjectsPortGen { }
-
-    public class CollisionDataPort : CollisionDataPortGen
-    {
-        public FloatPort Distance => CircuitBuilder.Singleton("Collision_Data_Get_Distance_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetDistance(this));
-        public Vector3Port Normal => CircuitBuilder.Singleton("Collision_Data_Get_Normal_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetNormal(this));
-        public RecRoomObjectPort Object => CircuitBuilder.Singleton("Collision_Data_Get_Object_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetObject(this));
-        public PlayerPort Player => CircuitBuilder.Singleton("Collision_Data_Get_Player_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetPlayer(this));
-        public Vector3Port Position => CircuitBuilder.Singleton("Collision_Data_Get_Position_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetPosition(this));
-    }
-
+    public class CollisionDataPort : CollisionDataPortGen { }
     public class DestinationRoomPort : DestinationRoomPortGen { }
     public class PlayerWorldUIPort : PlayerWorldUIPortGen { }
     public class FogPort : FogPortGen { }
