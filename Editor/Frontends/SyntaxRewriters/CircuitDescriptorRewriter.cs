@@ -52,7 +52,7 @@ namespace RRCG
         {
             if (node.Identifier.Text.Equals("BuildCircuitGraph")) return node;
 
-            if (node.Modifiers.Where(t => t.Kind() == SyntaxKind.UnsafeKeyword).Count() > 0)
+            if (node.Modifiers.Any(t => t.Kind() == SyntaxKind.UnsafeKeyword))
                 return node.WithModifiers(new SyntaxTokenList(node.Modifiers.Where(t => t.Kind() != SyntaxKind.UnsafeKeyword)));
 
             var method = (MethodDeclarationSyntax)base.VisitMethodDeclaration(node);
@@ -256,9 +256,18 @@ namespace RRCG
                         WrapStatementsInAccessibilityScope(newStatements, canAccessParent)
                     );
         }
+
         public override SyntaxNode VisitUnsafeStatement(UnsafeStatementSyntax node)
         {
             return node.Block;
+        }
+
+        public override SyntaxNode VisitFieldDeclaration(FieldDeclarationSyntax node)
+        {
+            if (node.Modifiers.Any(t => t.Kind() == SyntaxKind.UnsafeKeyword))
+                return node.WithModifiers(new SyntaxTokenList(node.Modifiers.Where(t => t.Kind() != SyntaxKind.UnsafeKeyword)));
+
+            return base.VisitFieldDeclaration(node);
         }
 
         public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax node)
