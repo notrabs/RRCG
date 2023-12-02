@@ -6,6 +6,7 @@ using UnityEngine;
 using RRCGBuild;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace RRCG
 {
@@ -56,6 +57,13 @@ namespace RRCG
             var instance = (CircuitBuilder)Activator.CreateInstance(type);
             instance.CircuitGraph();
 
+            var additionalCircuitGraphs = instance.GetType().GetMethods().Where(m => m.GetCustomAttribute<CircuitGraph>() != null);
+            foreach (var method in additionalCircuitGraphs)
+            {
+                ExecFlow.current = new ExecFlow();
+                method.Invoke(instance, new object[0]);
+            }
+
             ExecFlow.current = null;
             Context.current = null;
 
@@ -68,7 +76,7 @@ namespace RRCG
         {
             var type = Utils.GetTypeInAssembly(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
 
-            var instance = (StudioObjectBuilder)Activator.CreateInstance(type, new object[] {new StudioObjectPort() { Data = rrcgMeta.gameObject } });
+            var instance = (StudioObjectBuilder)Activator.CreateInstance(type, new object[] { new StudioObjectPort() { Data = rrcgMeta.gameObject } });
             instance.__UpdateStudioEvents();
         }
     }

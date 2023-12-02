@@ -9,6 +9,7 @@ namespace RRCGBuild
 {
     public class EventFunction : Attribute { }
     public class SharedProperty : Attribute { }
+    public class CircuitGraph : Attribute { }
 
     /// <summary>
     /// A compiled RRCG building class containing parts of a circuit.

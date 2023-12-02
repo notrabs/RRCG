@@ -17,6 +17,11 @@ namespace RRCGSource
     public class SharedProperty : Attribute { }
 
     /// <summary>
+    /// A CircuitGraph method is an additional entry point to your graph. It will be built after the main graph and must be a parameterless function.
+    /// </summary>
+    public class CircuitGraph : Attribute { }
+
+    /// <summary>
     /// A compiled RRCG class containing parts of a circuit.
     /// </summary>
     public abstract class CircuitLibrary: CircuitDescriptor {
