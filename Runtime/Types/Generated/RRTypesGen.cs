@@ -5,7 +5,7 @@ using RRCG;
 
 namespace RRCGGenerated
 {
-    public class AIGen : AnyObject
+    public abstract class AIGen : AnyObject
     {
         public Vector3 CombatantGetGroundPosition
         {
@@ -433,11 +433,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class AnalyticsPayloadGen : AnyObject
+    public abstract class AnalyticsPayloadGen : AnyObject
     {
     }
 
-    public class AnimationControllerGen : AnyObject
+    public abstract class AnimationControllerGen : AnyObject
     {
         public int Frame
         {
@@ -514,7 +514,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class AudioGen : AnyObject
+    public abstract class AudioGen : AnyObject
     {
         public float Length
         {
@@ -530,7 +530,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class AudioPlayerGen : AnyObject
+    public abstract class AudioPlayerGen : AnyObject
     {
         public Audio Audio
         {
@@ -620,7 +620,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class BackgroundObjectsGen : AnyObject
+    public abstract class BackgroundObjectsGen : AnyObject
     {
         public bool RoomBackgroundObjectsModify(AlternativeExec<bool> BlendFinished)
         {
@@ -628,7 +628,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class BeaconGen : AnyObject
+    public abstract class BeaconGen : AnyObject
     {
         public Color Color
         {
@@ -673,7 +673,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class ButtonGen : AnyObject
+    public abstract class ButtonGen : AnyObject
     {
         public bool IsPressed
         {
@@ -698,7 +698,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class CollisionDataGen : AnyObject
+    public abstract class CollisionDataGen : AnyObject
     {
         public float Distance
         {
@@ -741,7 +741,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class CollisionDetectionVolumeGen : AnyObject
+    public abstract class CollisionDetectionVolumeGen : AnyObject
     {
         public bool Enabled
         {
@@ -752,7 +752,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class CombatantGen : AnyObject
+    public abstract class CombatantGen : AnyObject
     {
         public Vector3 GroundPosition
         {
@@ -938,7 +938,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class ConsumableGen : AnyObject
+    public abstract class ConsumableGen : AnyObject
     {
         /// <summary>
         /// Award a room consumable to a player. Multiple award room consumable requests from the same client are sent in bulk with a ten-second cooldown. The Success port will be TRUE if the consumable was entirely, or in part, awarded to the player. If the consumable could not be awarded, the Success port will be FALSE. Use the Log Output toggle in the configuration settings to see more information about why a failure occurred. Logging output may impact room performance and should be toggled off when not in use.
@@ -973,7 +973,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class CostumeGen : AnyObject
+    public abstract class CostumeGen : AnyObject
     {
         public Player Wearer
         {
@@ -1000,7 +1000,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class DestinationRoomGen : AnyObject
+    public abstract class DestinationRoomGen : AnyObject
     {
         /// <summary>
         /// Stores a destination room. Destination cannot be configured from variable - for that, use a Constant.
@@ -1011,7 +1011,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class DialogueUIGen : AnyObject
+    public abstract class DialogueUIGen : AnyObject
     {
         public (string BodyText, bool IsInteractive) DialogueText
         {
@@ -1080,7 +1080,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class DieGen : AnyObject
+    public abstract class DieGen : AnyObject
     {
         public Player PlayerRolled
         {
@@ -1107,7 +1107,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class EmitterGen : AnyObject
+    public abstract class EmitterGen : AnyObject
     {
         public Color Color
         {
@@ -1196,11 +1196,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class EquipmentSlotGen : AnyObject
+    public abstract class EquipmentSlotGen : AnyObject
     {
     }
 
-    public class ExplosionEmitterGen : AnyObject
+    public abstract class ExplosionEmitterGen : AnyObject
     {
         public int Damage
         {
@@ -1246,7 +1246,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class FogGen : AnyObject
+    public abstract class FogGen : AnyObject
     {
         public bool RoomFogModify(AlternativeExec<bool> BlendFinished)
         {
@@ -1254,11 +1254,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class GiftDropShopItemGen : AnyObject
+    public abstract class GiftDropShopItemGen : AnyObject
     {
     }
 
-    public class GrabberGen : AnyObject
+    public abstract class GrabberGen : AnyObject
     {
         public (bool HasHeldObject, RecRoomObject HeldObject) HeldObject
         {
@@ -1295,7 +1295,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class GroundVehicleGen : AnyObject
+    public abstract class GroundVehicleGen : AnyObject
     {
         public int BoostFuel
         {
@@ -1360,7 +1360,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class GunHandleGen : AnyObject
+    public abstract class GunHandleGen : AnyObject
     {
         public bool ADSEnabled
         {
@@ -1452,11 +1452,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class HolotarProjectorGen : AnyObject
+    public abstract class HolotarProjectorGen : AnyObject
     {
     }
 
-    public class HUDConstantGen : AnyObject
+    public abstract class HUDConstantGen : AnyObject
     {
         public Color Color
         {
@@ -1512,7 +1512,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class HUDElementGen : AnyObject
+    public abstract class HUDElementGen : AnyObject
     {
         /// <summary>
         /// Override all Game HUD Element properties using default values from Game HUD Element Constant input
@@ -1523,7 +1523,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class InteractionVolumeGen : AnyObject
+    public abstract class InteractionVolumeGen : AnyObject
     {
         public float HoldTime
         {
@@ -1582,7 +1582,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class InventoryItemGen : AnyObject
+    public abstract class InventoryItemGen : AnyObject
     {
         public (string Name, string Description, bool SupportsUseAction) Definition
         {
@@ -1625,7 +1625,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class InvisibleCollisionGen : AnyObject
+    public abstract class InvisibleCollisionGen : AnyObject
     {
         public bool BlocksPlayers
         {
@@ -1656,7 +1656,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class LaserPointerGen : AnyObject
+    public abstract class LaserPointerGen : AnyObject
     {
         public Color Color
         {
@@ -1683,7 +1683,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class LightGen : AnyObject
+    public abstract class LightGen : AnyObject
     {
         public float Angle
         {
@@ -1828,11 +1828,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class MeleeZoneGen : AnyObject
+    public abstract class MeleeZoneGen : AnyObject
     {
     }
 
-    public class MotionTrailGen : AnyObject
+    public abstract class MotionTrailGen : AnyObject
     {
         public Color Color
         {
@@ -1891,7 +1891,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class ObjectiveMarkerGen : AnyObject
+    public abstract class ObjectiveMarkerGen : AnyObject
     {
         public Color Color
         {
@@ -2032,11 +2032,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class PatrolPointGen : AnyObject
+    public abstract class PatrolPointGen : AnyObject
     {
     }
 
-    public class PistonGen : AnyObject
+    public abstract class PistonGen : AnyObject
     {
         public float Acceleration
         {
@@ -2109,7 +2109,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class PlayerGen : AnyObject
+    public abstract class PlayerGen : AnyObject
     {
         public string AccountName
         {
@@ -3677,11 +3677,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class PlayerOutfitSlotGen : AnyObject
+    public abstract class PlayerOutfitSlotGen : AnyObject
     {
     }
 
-    public class PlayerSpawnPointV2Gen : AnyObject
+    public abstract class PlayerSpawnPointV2Gen : AnyObject
     {
         public bool Active
         {
@@ -3737,7 +3737,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class PlayerWorldUIGen : AnyObject
+    public abstract class PlayerWorldUIGen : AnyObject
     {
         /// <summary>
         /// Displays a target UI configuration above a given player.
@@ -3748,7 +3748,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class ProjectileLauncherGen : AnyObject
+    public abstract class ProjectileLauncherGen : AnyObject
     {
         public Player FiringPlayer
         {
@@ -3848,7 +3848,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class RecRoomObjectGen : AnyObject
+    public abstract class RecRoomObjectGen : AnyObject
     {
         public Vector3 AngularVelocity
         {
@@ -4367,15 +4367,15 @@ namespace RRCGGenerated
         }
     }
 
-    public class RemoteVideoPlayerGen : AnyObject
+    public abstract class RemoteVideoPlayerGen : AnyObject
     {
     }
 
-    public class RewardGen : AnyObject
+    public abstract class RewardGen : AnyObject
     {
     }
 
-    public class RoomCurrencyGen : AnyObject
+    public abstract class RoomCurrencyGen : AnyObject
     {
         /// <summary>
         /// Award some amount to the Player's balance of the given room currency.
@@ -4402,7 +4402,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class RoomDoorGen : AnyObject
+    public abstract class RoomDoorGen : AnyObject
     {
         public DestinationRoom Destination
         {
@@ -4421,7 +4421,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class RoomKeyGen : AnyObject
+    public abstract class RoomKeyGen : AnyObject
     {
         /// <summary>
         /// Unlocks a room key for the target player. Multiple award room key requests from the same client are sent in bulk with a one-second cooldown.
@@ -4439,15 +4439,15 @@ namespace RRCGGenerated
         }
     }
 
-    public class RoomLevelHUDGen : AnyObject
+    public abstract class RoomLevelHUDGen : AnyObject
     {
     }
 
-    public class RoomOfferGen : AnyObject
+    public abstract class RoomOfferGen : AnyObject
     {
     }
 
-    public class RotatorGen : AnyObject
+    public abstract class RotatorGen : AnyObject
     {
         public float Rotation
         {
@@ -4506,7 +4506,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class SeatGen : AnyObject
+    public abstract class SeatGen : AnyObject
     {
         public bool LockPlayersIn
         {
@@ -4561,7 +4561,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class SFXGen : AnyObject
+    public abstract class SFXGen : AnyObject
     {
         public bool IsPlaying
         {
@@ -4599,7 +4599,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class SkydomeGen : AnyObject
+    public abstract class SkydomeGen : AnyObject
     {
         public bool RoomSkydomeModify(AlternativeExec<bool> BlendFinished)
         {
@@ -4607,7 +4607,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class StateGen : AnyObject
+    public abstract class StateGen : AnyObject
     {
         /// <summary>
         /// Transitions to the given state in the current state machine.
@@ -4618,11 +4618,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class SteeringEngineGen : AnyObject
+    public abstract class SteeringEngineGen : AnyObject
     {
     }
 
-    public class StudioObjectGen : AnyObject
+    public abstract class StudioObjectGen : AnyObject
     {
         public void StudioEventSender(string Event)
         {
@@ -4690,7 +4690,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class SunGen : AnyObject
+    public abstract class SunGen : AnyObject
     {
         public bool RoomSunModify(SunDirection SunDirection, AlternativeExec<bool> BlendFinished)
         {
@@ -4698,11 +4698,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class SunDirectionGen : AnyObject
+    public abstract class SunDirectionGen : AnyObject
     {
     }
 
-    public class SwingHandleGen : AnyObject
+    public abstract class SwingHandleGen : AnyObject
     {
         public bool IsSwinging
         {
@@ -4718,7 +4718,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class TextGen : AnyObject
+    public abstract class TextGen : AnyObject
     {
         public Color Color
         {
@@ -4769,7 +4769,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class TextScreenGen : AnyObject
+    public abstract class TextScreenGen : AnyObject
     {
         public void ClearScreen()
         {
@@ -4782,7 +4782,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class ToggleButtonGen : AnyObject
+    public abstract class ToggleButtonGen : AnyObject
     {
         public bool IsPressed
         {
@@ -4799,7 +4799,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class TouchpadGen : AnyObject
+    public abstract class TouchpadGen : AnyObject
     {
         public (bool IsTouchActive, Vector3 TouchPosition, Vector3 WorldPosition) ActiveTouch
         {
@@ -4838,7 +4838,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class TriggerHandleGen : AnyObject
+    public abstract class TriggerHandleGen : AnyObject
     {
         public string ControlPrompt
         {
@@ -4865,7 +4865,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class TriggerVolumeGen : AnyObject
+    public abstract class TriggerVolumeGen : AnyObject
     {
         public string FilterRole
         {
@@ -4928,7 +4928,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class VectorComponentGen : AnyObject
+    public abstract class VectorComponentGen : AnyObject
     {
         /// <summary>
         /// Gets the direction and magnitude of the Vector Component.
@@ -4939,7 +4939,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class WelcomeMatGen : AnyObject
+    public abstract class WelcomeMatGen : AnyObject
     {
         public bool Enabled
         {

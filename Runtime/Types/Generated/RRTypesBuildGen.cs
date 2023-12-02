@@ -5,7 +5,7 @@ using RRCG;
 
 namespace RRCGGenerated
 {
-    public class AIPortGen : AnyPort
+    public abstract class AIPortGen : AnyPort
     {
         public Vector3Port CombatantGetGroundPosition
         {
@@ -269,11 +269,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class AnalyticsPayloadPortGen : AnyPort
+    public abstract class AnalyticsPayloadPortGen : AnyPort
     {
     }
 
-    public class AnimationControllerPortGen : AnyPort
+    public abstract class AnimationControllerPortGen : AnyPort
     {
         public IntPort Frame
         {
@@ -314,7 +314,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class AudioPortGen : AnyPort
+    public abstract class AudioPortGen : AnyPort
     {
         public FloatPort Length
         {
@@ -327,7 +327,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class AudioPlayerPortGen : AnyPort
+    public abstract class AudioPlayerPortGen : AnyPort
     {
         public AudioPort Audio
         {
@@ -379,7 +379,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class BackgroundObjectsPortGen : AnyPort
+    public abstract class BackgroundObjectsPortGen : AnyPort
     {
         public BoolPort RoomBackgroundObjectsModify(AlternativeExec<BoolPort> BlendFinished)
         {
@@ -387,7 +387,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class BeaconPortGen : AnyPort
+    public abstract class BeaconPortGen : AnyPort
     {
         public ColorPort Color
         {
@@ -408,7 +408,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class ButtonPortGen : AnyPort
+    public abstract class ButtonPortGen : AnyPort
     {
         public BoolPort IsPressed
         {
@@ -422,7 +422,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class CollisionDataPortGen : AnyPort
+    public abstract class CollisionDataPortGen : AnyPort
     {
         public FloatPort Distance
         {
@@ -450,7 +450,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class CollisionDetectionVolumePortGen : AnyPort
+    public abstract class CollisionDetectionVolumePortGen : AnyPort
     {
         public BoolPort Enabled
         {
@@ -459,7 +459,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class CombatantPortGen : AnyPort
+    public abstract class CombatantPortGen : AnyPort
     {
         public Vector3Port GroundPosition
         {
@@ -577,7 +577,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class ConsumablePortGen : AnyPort
+    public abstract class ConsumablePortGen : AnyPort
     {
         public BoolPort AwardConsumable(PlayerPort Player, IntPort Quantity, AlternativeExec<BoolPort> OnAwardConsumableComplete)
         {
@@ -600,7 +600,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class CostumePortGen : AnyPort
+    public abstract class CostumePortGen : AnyPort
     {
         public PlayerPort Wearer
         {
@@ -618,7 +618,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class DestinationRoomPortGen : AnyPort
+    public abstract class DestinationRoomPortGen : AnyPort
     {
         public DestinationRoomPort Variable()
         {
@@ -626,7 +626,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class DialogueUIPortGen : AnyPort
+    public abstract class DialogueUIPortGen : AnyPort
     {
         public (StringPort BodyText, BoolPort IsInteractive) DialogueText
         {
@@ -662,7 +662,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class DiePortGen : AnyPort
+    public abstract class DiePortGen : AnyPort
     {
         public PlayerPort PlayerRolled
         {
@@ -680,7 +680,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class EmitterPortGen : AnyPort
+    public abstract class EmitterPortGen : AnyPort
     {
         public ColorPort Color
         {
@@ -726,11 +726,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class EquipmentSlotPortGen : AnyPort
+    public abstract class EquipmentSlotPortGen : AnyPort
     {
     }
 
-    public class ExplosionEmitterPortGen : AnyPort
+    public abstract class ExplosionEmitterPortGen : AnyPort
     {
         public IntPort Damage
         {
@@ -762,7 +762,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class FogPortGen : AnyPort
+    public abstract class FogPortGen : AnyPort
     {
         public BoolPort RoomFogModify(AlternativeExec<BoolPort> BlendFinished)
         {
@@ -770,11 +770,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class GiftDropShopItemPortGen : AnyPort
+    public abstract class GiftDropShopItemPortGen : AnyPort
     {
     }
 
-    public class GrabberPortGen : AnyPort
+    public abstract class GrabberPortGen : AnyPort
     {
         public (BoolPort HasHeldObject, RecRoomObjectPort HeldObject) HeldObject
         {
@@ -797,7 +797,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class GroundVehiclePortGen : AnyPort
+    public abstract class GroundVehiclePortGen : AnyPort
     {
         public IntPort BoostFuel
         {
@@ -853,7 +853,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class GunHandlePortGen : AnyPort
+    public abstract class GunHandlePortGen : AnyPort
     {
         public BoolPort ADSEnabled
         {
@@ -926,11 +926,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class HolotarProjectorPortGen : AnyPort
+    public abstract class HolotarProjectorPortGen : AnyPort
     {
     }
 
-    public class HUDConstantPortGen : AnyPort
+    public abstract class HUDConstantPortGen : AnyPort
     {
         public ColorPort Color
         {
@@ -972,7 +972,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class HUDElementPortGen : AnyPort
+    public abstract class HUDElementPortGen : AnyPort
     {
         public void GameHUDElementSetAllValues()
         {
@@ -980,7 +980,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class InteractionVolumePortGen : AnyPort
+    public abstract class InteractionVolumePortGen : AnyPort
     {
         public FloatPort HoldTime
         {
@@ -1007,7 +1007,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class InventoryItemPortGen : AnyPort
+    public abstract class InventoryItemPortGen : AnyPort
     {
         public (StringPort Name, StringPort Description, BoolPort SupportsUseAction) Definition
         {
@@ -1035,7 +1035,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class InvisibleCollisionPortGen : AnyPort
+    public abstract class InvisibleCollisionPortGen : AnyPort
     {
         public BoolPort BlocksPlayers
         {
@@ -1050,7 +1050,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class LaserPointerPortGen : AnyPort
+    public abstract class LaserPointerPortGen : AnyPort
     {
         public ColorPort Color
         {
@@ -1071,7 +1071,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class LightPortGen : AnyPort
+    public abstract class LightPortGen : AnyPort
     {
         public FloatPort Angle
         {
@@ -1145,11 +1145,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class MeleeZonePortGen : AnyPort
+    public abstract class MeleeZonePortGen : AnyPort
     {
     }
 
-    public class MotionTrailPortGen : AnyPort
+    public abstract class MotionTrailPortGen : AnyPort
     {
         public ColorPort Color
         {
@@ -1176,7 +1176,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class ObjectiveMarkerPortGen : AnyPort
+    public abstract class ObjectiveMarkerPortGen : AnyPort
     {
         public ColorPort Color
         {
@@ -1246,11 +1246,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class PatrolPointPortGen : AnyPort
+    public abstract class PatrolPointPortGen : AnyPort
     {
     }
 
-    public class PistonPortGen : AnyPort
+    public abstract class PistonPortGen : AnyPort
     {
         public FloatPort Acceleration
         {
@@ -1283,7 +1283,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class PlayerPortGen : AnyPort
+    public abstract class PlayerPortGen : AnyPort
     {
         public StringPort AccountName
         {
@@ -2209,11 +2209,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class PlayerOutfitSlotPortGen : AnyPort
+    public abstract class PlayerOutfitSlotPortGen : AnyPort
     {
     }
 
-    public class PlayerSpawnPointV2PortGen : AnyPort
+    public abstract class PlayerSpawnPointV2PortGen : AnyPort
     {
         public BoolPort Active
         {
@@ -2267,7 +2267,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class PlayerWorldUIPortGen : AnyPort
+    public abstract class PlayerWorldUIPortGen : AnyPort
     {
         public void DisplayPlayerWorldUI(PlayerPort Player)
         {
@@ -2275,7 +2275,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class ProjectileLauncherPortGen : AnyPort
+    public abstract class ProjectileLauncherPortGen : AnyPort
     {
         public PlayerPort FiringPlayer
         {
@@ -2343,7 +2343,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class RecRoomObjectPortGen : AnyPort
+    public abstract class RecRoomObjectPortGen : AnyPort
     {
         public Vector3Port AngularVelocity
         {
@@ -2679,15 +2679,15 @@ namespace RRCGGenerated
         }
     }
 
-    public class RemoteVideoPlayerPortGen : AnyPort
+    public abstract class RemoteVideoPlayerPortGen : AnyPort
     {
     }
 
-    public class RewardPortGen : AnyPort
+    public abstract class RewardPortGen : AnyPort
     {
     }
 
-    public class RoomCurrencyPortGen : AnyPort
+    public abstract class RoomCurrencyPortGen : AnyPort
     {
         public (BoolPort Success, IntPort TotalBalance) AwardCurrencyNew(PlayerPort Player, IntPort Amount, AlternativeExec<(BoolPort Success, IntPort TotalBalance)> OnAwardCurrencyComplete)
         {
@@ -2705,7 +2705,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class RoomDoorPortGen : AnyPort
+    public abstract class RoomDoorPortGen : AnyPort
     {
         public DestinationRoomPort Destination
         {
@@ -2720,7 +2720,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class RoomKeyPortGen : AnyPort
+    public abstract class RoomKeyPortGen : AnyPort
     {
         public BoolPort AwardRoomKey(PlayerPort Player, AlternativeExec<BoolPort> OnAwardRoomKeyComplete)
         {
@@ -2733,15 +2733,15 @@ namespace RRCGGenerated
         }
     }
 
-    public class RoomLevelHUDPortGen : AnyPort
+    public abstract class RoomLevelHUDPortGen : AnyPort
     {
     }
 
-    public class RoomOfferPortGen : AnyPort
+    public abstract class RoomOfferPortGen : AnyPort
     {
     }
 
-    public class RotatorPortGen : AnyPort
+    public abstract class RotatorPortGen : AnyPort
     {
         public FloatPort Rotation
         {
@@ -2768,7 +2768,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class SeatPortGen : AnyPort
+    public abstract class SeatPortGen : AnyPort
     {
         public BoolPort LockPlayersIn
         {
@@ -2798,7 +2798,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class SFXPortGen : AnyPort
+    public abstract class SFXPortGen : AnyPort
     {
         public BoolPort IsPlaying
         {
@@ -2822,7 +2822,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class SkydomePortGen : AnyPort
+    public abstract class SkydomePortGen : AnyPort
     {
         public BoolPort RoomSkydomeModify(AlternativeExec<BoolPort> BlendFinished)
         {
@@ -2830,7 +2830,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class StatePortGen : AnyPort
+    public abstract class StatePortGen : AnyPort
     {
         public void GoToState()
         {
@@ -2838,11 +2838,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class SteeringEnginePortGen : AnyPort
+    public abstract class SteeringEnginePortGen : AnyPort
     {
     }
 
-    public class StudioObjectPortGen : AnyPort
+    public abstract class StudioObjectPortGen : AnyPort
     {
         public void StudioEventSender(StringPort Event)
         {
@@ -2910,7 +2910,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class SunPortGen : AnyPort
+    public abstract class SunPortGen : AnyPort
     {
         public BoolPort RoomSunModify(SunDirectionPort SunDirection, AlternativeExec<BoolPort> BlendFinished)
         {
@@ -2918,11 +2918,11 @@ namespace RRCGGenerated
         }
     }
 
-    public class SunDirectionPortGen : AnyPort
+    public abstract class SunDirectionPortGen : AnyPort
     {
     }
 
-    public class SwingHandlePortGen : AnyPort
+    public abstract class SwingHandlePortGen : AnyPort
     {
         public BoolPort IsSwinging
         {
@@ -2935,7 +2935,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class TextPortGen : AnyPort
+    public abstract class TextPortGen : AnyPort
     {
         public ColorPort Color
         {
@@ -2960,7 +2960,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class TextScreenPortGen : AnyPort
+    public abstract class TextScreenPortGen : AnyPort
     {
         public void ClearScreen()
         {
@@ -2973,7 +2973,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class ToggleButtonPortGen : AnyPort
+    public abstract class ToggleButtonPortGen : AnyPort
     {
         public BoolPort IsPressed
         {
@@ -2982,7 +2982,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class TouchpadPortGen : AnyPort
+    public abstract class TouchpadPortGen : AnyPort
     {
         public (BoolPort IsTouchActive, Vector3Port TouchPosition, Vector3Port WorldPosition) ActiveTouch
         {
@@ -3002,7 +3002,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class TriggerHandlePortGen : AnyPort
+    public abstract class TriggerHandlePortGen : AnyPort
     {
         public StringPort ControlPrompt
         {
@@ -3021,7 +3021,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class TriggerVolumePortGen : AnyPort
+    public abstract class TriggerVolumePortGen : AnyPort
     {
         public StringPort FilterRole
         {
@@ -3056,7 +3056,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class VectorComponentPortGen : AnyPort
+    public abstract class VectorComponentPortGen : AnyPort
     {
         public Vector3Port GetVector(FloatPort Magnitude)
         {
@@ -3064,7 +3064,7 @@ namespace RRCGGenerated
         }
     }
 
-    public class WelcomeMatPortGen : AnyPort
+    public abstract class WelcomeMatPortGen : AnyPort
     {
         public BoolPort Enabled
         {
