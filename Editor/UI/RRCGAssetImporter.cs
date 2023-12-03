@@ -9,9 +9,13 @@ using UnityEngine;
 
 namespace RRCG
 {
-    class RRCGScriptPreprocessor : AssetPostprocessor
+    public class RRCGScriptPreprocessor : AssetPostprocessor
     {
-        public static bool AutoCompile = true;
+        public static bool AutoCompile
+        {
+            get => EditorPrefs.GetBool("RRCG_USE_SCRIPT_POSTPROCESSOR", true);
+            set => EditorPrefs.SetBool("RRCG_USE_SCRIPT_POSTPROCESSOR", value);
+        }
 
         protected void OnPreprocessAsset()
         {
