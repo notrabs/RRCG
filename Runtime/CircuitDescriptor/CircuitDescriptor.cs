@@ -9,16 +9,19 @@ namespace RRCGSource
     /// <summary>
     /// An Event Function will be called through an event, with all logic only present once in the graph
     /// </summary>
+    [AttributeUsage(AttributeTargets.Method)]
     public class EventFunction : Attribute { }
 
     /// <summary>
     /// A Shared Properties chips will only placed once in the world.
     /// </summary>
+    [AttributeUsage(AttributeTargets.Method)]
     public class SharedProperty : Attribute { }
 
     /// <summary>
     /// A CircuitGraph method is an additional entry point to your graph. It will be built after the main graph and must be a parameterless function.
     /// </summary>
+    [AttributeUsage(AttributeTargets.Method)]
     public class CircuitGraph : Attribute { }
 
     /// <summary>
