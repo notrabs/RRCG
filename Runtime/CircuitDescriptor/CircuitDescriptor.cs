@@ -121,5 +121,20 @@ namespace RRCGSource
         /// With two Event parameter.
         /// </summary>
         public static EventDefinition<T0, T1> ExistingEvent<T0, T1>(string eventName) { return default; }
+
+        /// <summary>
+        /// Helper method to ensure the provided function only runs once per context.
+        /// The key parameter should be unique. Calls to Singleton with a key that was already used in the context
+        /// will not invoke the creator method.
+        /// </summary>
+        public static void Singleton(string key, Action creator) { }
+
+        /// <summary>
+        /// Helper method to ensure the provided function only runs once per context.
+        /// The key parameter should be unique. Calls to Singleton with a key that was already used in the context
+        /// will not invoke the creator method -- instead, the value returned from the original invocation will
+        /// be passed back to the caller.
+        /// </summary>
+        public static T Singleton<T>(string key, Func<T> creator) { return default; }
     }
 }
