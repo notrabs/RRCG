@@ -109,6 +109,11 @@ namespace RRCGBuild
             if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data - b.Data };
             return ChipBuilder.Subtract(a, b);
         }
+        public static Vector3Port operator -(Vector3Port v)
+        {
+            if (v.IsDataPort) return new Vector3Port { Data = -v.Data };
+            return ChipBuilder.Vector3Inverse(v);
+        }
         public static Vector3Port operator *(Vector3Port a, FloatPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data * b.Data };
