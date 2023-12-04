@@ -10,6 +10,7 @@ namespace RRCGBuild
     public class RecRoomObjectPort : RecRoomObjectPortGen
     {
         public static implicit operator RecRoomObjectPort(TriggerHandlePort data) => new RecRoomObjectPort() { Port = data.Port };
+        public static implicit operator RecRoomObjectPort(TriggerVolumePort data) => new RecRoomObjectPort() { Port = data.Port };
         public static implicit operator RecRoomObjectPort(StudioObjectPort data) => new RecRoomObjectPort() { Port = data.Port };
         public static implicit operator RecRoomObjectPort(SeatPort data) => new RecRoomObjectPort() { Port = data.Port };
         public static implicit operator RecRoomObjectPort(TextPort data) => new RecRoomObjectPort() { Port = data.Port };

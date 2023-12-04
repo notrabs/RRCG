@@ -5,6 +5,7 @@ namespace RRCGSource
     public class RecRoomObject : RecRoomObjectGen
     {
         public static implicit operator RecRoomObject(TriggerHandle data) => default;
+        public static implicit operator RecRoomObject(TriggerVolume data) => default;
         public static implicit operator RecRoomObject(StudioObject data) => default;
         public static implicit operator RecRoomObject(Seat data) => default;
         public static implicit operator RecRoomObject(Text data) => default;
