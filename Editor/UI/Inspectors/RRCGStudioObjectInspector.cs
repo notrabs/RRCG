@@ -12,7 +12,11 @@ namespace RRCG
     [CustomEditor(typeof(RRCGStudioObject))]
     public class RRCGStudioObjectInpsector : Editor
     {
-        DescriptorSelector descriptorSelector = new DescriptorSelector("Studio Object Descriptor", Utils.GetAllAvailableStudioObjectDescriptors);
+        DescriptorSelector descriptorSelector = new DescriptorSelector(
+            "Studio Object Descriptor", 
+            Utils.GetAllAvailableStudioObjectDescriptors,
+            Utils.GetAllAvailableStudioObjectDescriptorsInProject
+        );
 
         public override void OnInspectorGUI()
         {

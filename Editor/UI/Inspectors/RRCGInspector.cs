@@ -13,7 +13,11 @@ namespace RRCG
     {
         public static bool EnableOptimizer = true;
 
-        DescriptorSelector descriptorSelector = new DescriptorSelector("Circuit Descriptor", Utils.GetAllAvailableCircuitDescriptors);
+        DescriptorSelector descriptorSelector = new DescriptorSelector(
+            "Circuit Descriptor", 
+            Utils.GetAllAvailableCircuitDescriptors,
+            Utils.GetAllAvailableCircuitDescriptorsInProject
+        );
 
         public override void OnInspectorGUI()
         {
@@ -24,14 +28,6 @@ namespace RRCG
             if (descriptorSelector.Draw(rrcgMeta)) return;
 
             GUILayout.Label("Compiler");
-
-            //GUILayout.BeginHorizontal();
-            //if (GUILayout.Button("Compile Room Circuit"))
-            //{
-            //    AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(rrcgMeta.RoomCircuit));
-            //}
-            //RRCGScriptPreprocessor.AutoCompile = GUILayout.Toggle(RRCGScriptPreprocessor.AutoCompile, "Watch", GUILayout.Width(70));
-            //GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Build Circuits"))

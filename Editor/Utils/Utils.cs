@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEditor;
 
@@ -54,6 +55,15 @@ class Utils
         }
 
         return descriptors;
+    }
+
+    public static List<string> GetAllAvailableCircuitDescriptorsInProject(string projectName)
+    {
+        return new List<string>();
+    }
+    public static List<string> GetAllAvailableStudioObjectDescriptorsInProject(string projectName)
+    {
+        return new List<string>();
     }
 
     public static Type GetTypeInAssembly(string assemblyName, string typeName)

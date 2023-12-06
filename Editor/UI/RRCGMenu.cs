@@ -1,4 +1,5 @@
 ﻿using RRCG;
+using RRCG.Projects;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.PackageManager.UI;
@@ -54,6 +55,16 @@ public class RRCGMenu
         {
             AssetDatabase.DeleteAsset(asset);
         }
+    }
+
+    [MenuItem("RRCG/Regenerate RRCG Projects Solution", priority = 40)]
+    static void RegenerateProjectsSolution()
+    {
+        StandaloneProjectManager.RegenerateSolution();
+
+        // Is there a way to link to it?
+        //Debug.Log("Solution regenerated! (<a href=\"RRCG\">Click here</a> to open)");
+        Debug.Log("Solution regenerated!");
     }
 
 }
