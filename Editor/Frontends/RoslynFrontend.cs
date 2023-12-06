@@ -7,6 +7,7 @@ using RRCGBuild;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace RRCG
 {
@@ -15,25 +16,32 @@ namespace RRCG
         public static void Compile(string sourcePath, string compiledPath)
         {
             string code = File.ReadAllText(sourcePath);
-
             SyntaxTree sourceTree = CSharpSyntaxTree.ParseText(code);
 
             // Create compilation with references to all loaded assemblies
-            var references = AppDomain.CurrentDomain.GetAssemblies().Select(
-                a =>
-                {
-                    try { return MetadataReference.CreateFromFile(a.Location); }
-                    catch (NotSupportedException) { return null; } // dynamic assemblies
-                }
-            ).Where(a => a != null);
-
             var compilation = CSharpCompilation.Create("RRCG.SemanticModel")
-                .WithReferences(references);
+                .WithReferences(GetLoadedReferences());
 
-            var rewriter = new RRCGSyntaxRewriter(compilation);
-            var generatedTree = rewriter.Visit(sourceTree.GetRoot());
+            var generatedTree = RewriteRRCGSource(sourceTree, compilation);
 
             FileUtils.WriteGeneratedCode(generatedTree, compiledPath);
+        }
+
+        public static IEnumerable<PortableExecutableReference> GetLoadedReferences()
+        {
+            return AppDomain.CurrentDomain.GetAssemblies().Select(
+                 a =>
+                 {
+                     try { return MetadataReference.CreateFromFile(a.Location); }
+                     catch (NotSupportedException) { return null; } // dynamic assemblies
+                 }
+             ).Where(a => a != null);
+        }
+
+        public static SyntaxNode RewriteRRCGSource(SyntaxTree sourceTree, CSharpCompilation compilation)
+        {
+            var rewriter = new RRCGSyntaxRewriter(compilation);
+            return rewriter.Visit(sourceTree.GetRoot());
         }
 
         public static Context GetBuilt(RRCGCircuit rrcgMeta)
