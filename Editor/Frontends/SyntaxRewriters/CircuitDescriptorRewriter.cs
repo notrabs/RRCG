@@ -1032,31 +1032,6 @@ namespace RRCG
         // Helpers 
         //
 
-        private int CalculateScopeLevelDifference(SyntaxNode assignmentNode, ISymbol symbol)
-        {
-            // Walk up the syntax tree to find the declaration of the variable.
-            //var currentScope = assignmentNode.Parent;
-            //int scopeLevelDifference = 0;
-
-            //while (currentScope != null)
-            //{
-            //    if (currentScope is BlockSyntax)
-            //    {
-            //        // Check if the current scope contains the declaration of the variable.
-            //        if (symbol.ContainingSymbol.Equals(SemanticModel.GetEnclosingSymbol(currentScope)))
-            //        {
-            //            return scopeLevelDifference;
-            //        }
-
-            //        scopeLevelDifference++;
-            //    }
-
-            //    currentScope = currentScope.Parent;
-            //}
-
-            throw new Exception("Could not determine level scope difference. Is the variable defined?");
-        }
-
         public AnonymousMethodExpressionSyntax ExecDelegate()
         {
             return SyntaxFactory.AnonymousMethodExpression();
