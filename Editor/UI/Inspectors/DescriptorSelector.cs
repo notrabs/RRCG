@@ -150,7 +150,6 @@ namespace RRCG
         {
             ProjectName = projectName;
             ProjectDescriptorOptions.Clear();
-            EditorUtility.DisplayProgressBar("Loading", "Compiling RRCG Project...", 0);
             isLoading = true;
             Task.Run(() => fetchOptionsInProject(projectName)).ContinueWith(result =>
             {
