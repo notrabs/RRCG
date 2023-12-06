@@ -998,40 +998,33 @@ namespace RRCG
             ExpressionSyntax whenTrue = (ExpressionSyntax)Visit(node.WhenTrue);
             ExpressionSyntax whenFalse = (ExpressionSyntax)Visit(node.WhenFalse);
 
+            SimpleNameSyntax ifValueName = IdentifierName(Identifier("IfValue"));
+
             // Query the semantic model for the result type of the expression.
             // We'll use the converted type (result type after implicit conversions).
             var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
             var typeInfo = semanticModel.GetTypeInfo(node);
 
-            // If we're unable to resolve the type, inform the user & fail
-            if (typeInfo.ConvertedType is IErrorTypeSymbol)
-                throw new Exception($"Unable to determine result type of ternary expression: {node}");
+            // If we're unable to resolve the type, inform the user but try to let the actual compiler infer the type
+            if (typeInfo.ConvertedType is not IErrorTypeSymbol)
+            {
+                var convertedType = typeInfo.ConvertedType.ToTypeSyntax();
+                var typeAssignment = (TypeSyntax)Visit(convertedType);
 
-            var convertedType = typeInfo.ConvertedType.ToTypeSyntax();
-            var typeAssignment = (TypeSyntax)Visit(convertedType);
+                ifValueName = GenericName(Identifier("IfValue")).WithTypeArgumentList(SyntaxUtils.TypeArgumentList(typeAssignment));
+            }
+            else
+            {
+                Debug.LogWarning($"Unable to determine result type of ternary expression: {node}");
+            }
 
-            return SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.MemberAccessExpression(
+            return InvocationExpression(MemberAccessExpression(
                         SyntaxKind.SimpleMemberAccessExpression,
-                        SyntaxFactory.IdentifierName("ChipBuilder"),
-                        SyntaxFactory.GenericName(
-                            SyntaxFactory.Identifier("IfValue"))
-                        .WithTypeArgumentList(
-                            SyntaxFactory.TypeArgumentList(
-                                SyntaxFactory.SingletonSeparatedList<TypeSyntax>(
-                                    typeAssignment)))))
+                        IdentifierName("ChipBuilder"),
+                        ifValueName
+                ))
                 .WithArgumentList(
-                    SyntaxFactory.ArgumentList(
-                        SyntaxFactory.SeparatedList<ArgumentSyntax>(
-                            new SyntaxNodeOrToken[]{
-                                SyntaxFactory.Argument(test),
-                                SyntaxFactory.Token(SyntaxKind.CommaToken),
-                                SyntaxFactory.Argument(whenTrue),
-                                SyntaxFactory.Token(SyntaxKind.CommaToken),
-                                SyntaxFactory.Argument(whenFalse)
-                            }
-                        )
-                    )
+                    SyntaxUtils.ArgumentList(test, whenTrue, whenFalse)
                 );
         }
 
