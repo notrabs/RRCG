@@ -34,6 +34,9 @@ class Utils
 
         foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
         {
+            // RRCG.Hot assemblies should be used through the projects interface, not directly as they are only temporary assemblies.
+            if (a.FullName.StartsWith("RRCG.Hot")) continue;
+
             List<string> classes = new List<string>();
 
             foreach (var t in a.GetTypes())
