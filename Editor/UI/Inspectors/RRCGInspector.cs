@@ -19,7 +19,7 @@ namespace RRCG
             Utils.GetAllAvailableCircuitDescriptorsInProject
         );
 
-        public override void OnInspectorGUI()
+        public override async void OnInspectorGUI()
         {
             DrawDefaultInspector();
 
@@ -47,7 +47,7 @@ namespace RRCG
 
             if (GUILayout.Button("Copy DOT Graph"))
             {
-                var context = RoslynFrontend.GetBuilt(rrcgMeta);
+                var context = await RoslynFrontend.GetBuilt(rrcgMeta);
                 if (EnableOptimizer) context = GraphOptimizer.Optimize(context);
                 DotGraphBackend.Build(context);
             }

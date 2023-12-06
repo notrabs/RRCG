@@ -8,12 +8,15 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
+using RRCG.Projects;
+using Packages.RRCG.Editor.Projects;
+using System.Threading.Tasks;
 
 namespace RRCG
 {
     public class RoslynFrontend
     {
-        public static void Compile(string sourcePath, string compiledPath)
+        public static void CompileFile(string sourcePath, string compiledPath)
         {
             string code = File.ReadAllText(sourcePath);
             SyntaxTree sourceTree = CSharpSyntaxTree.ParseText(code);
@@ -46,9 +49,13 @@ namespace RRCG
             return rewriter.Visit(sourceTree.GetRoot());
         }
 
-        public static Context GetBuilt(RRCGCircuit rrcgMeta)
+        public static async Task<Context> GetBuilt(RRCGCircuit rrcgMeta)
         {
-            return GetBuilt(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
+            if (rrcgMeta.Assembly != null) return GetBuilt(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
+
+            var assemblyName = await RoslynProjectCompiler.CompileAndLoadProject(rrcgMeta.Project);
+
+            return GetBuilt(assemblyName, rrcgMeta.DescriptorClass);
         }
 
         public static Context GetBuilt(string assembly, string descriptorClass)

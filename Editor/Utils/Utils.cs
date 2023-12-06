@@ -1,10 +1,14 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Packages.RRCG.Editor.Projects;
+using RRCG;
+using RRCG.Projects;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using UnityEditor;
 
@@ -38,32 +42,40 @@ class Utils
             // RRCG.Hot assemblies should be used through the projects interface, not directly as they are only temporary assemblies.
             if (a.FullName.StartsWith("RRCG.Hot")) continue;
 
-            List<string> classes = new List<string>();
+            List<string> classes = GetAllAvailableDescriptors(a, name);
 
-            foreach (var t in a.GetTypes())
-            {
-                if (t.BaseType?.Name == name)
-                {
-                    classes.Add(t.FullName);
-                }
-            }
-
-            if (classes.Count > 0)
-            {
-                descriptors.Add(a.GetName().Name, classes);
-            }
+            if (classes.Count > 0) descriptors.Add(a.GetName().Name, classes);
         }
 
         return descriptors;
     }
 
-    public static List<string> GetAllAvailableCircuitDescriptorsInProject(string projectName)
+
+    public static List<string> GetAllAvailableDescriptors(Assembly assembly, string name)
     {
-        return new List<string>();
+        List<string> classes = new List<string>();
+
+        foreach (var t in assembly.GetTypes())
+        {
+            if (t.BaseType?.Name == name) classes.Add(t.FullName);
+        }
+
+        return classes;
     }
-    public static List<string> GetAllAvailableStudioObjectDescriptorsInProject(string projectName)
+
+    public static async Task<List<string>> GetAllAvailableCircuitDescriptorsInProject(string projectName)
     {
-        return new List<string>();
+        var assemblyName = await RoslynProjectCompiler.CompileAndLoadProject(projectName);
+        var assembly = AppDomain.CurrentDomain.GetAssemblies().First(a => a.FullName.StartsWith(assemblyName));
+
+        return GetAllAvailableDescriptors(assembly, "CircuitBuilder");
+    }
+    public static async Task<List<string>> GetAllAvailableStudioObjectDescriptorsInProject(string projectName)
+    {
+        var assemblyName = await RoslynProjectCompiler.CompileAndLoadProject(projectName);
+        var assembly = AppDomain.CurrentDomain.GetAssemblies().First(a => a.FullName.StartsWith(assemblyName));
+
+        return GetAllAvailableDescriptors(assembly, "StudioObjectBuilder");
     }
 
     public static Type GetTypeInAssembly(string assemblyName, string typeName)

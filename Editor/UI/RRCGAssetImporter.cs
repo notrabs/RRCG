@@ -27,7 +27,7 @@ namespace RRCG
 
                 var targetFile = assetPath.Replace(".rrcg.cs", ".rrcg.gen.cs");
 
-                RoslynFrontend.Compile(assetPath, targetFile);
+                RoslynFrontend.CompileFile(assetPath, targetFile);
             }
         }
     }

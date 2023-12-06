@@ -27,9 +27,9 @@ namespace RRCG
         private string DisplayName;
 
         private Func<Dictionary<string, List<string>>> fetchOptions;
-        private Func<string, List<string>> fetchOptionsInProject;
+        private Func<string, Task<List<string>>> fetchOptionsInProject;
 
-        internal DescriptorSelector(string displayName, Func<Dictionary<string, List<string>>> fetchOptions, Func<string, List<string>> fetchOptionsInProject)
+        internal DescriptorSelector(string displayName, Func<Dictionary<string, List<string>>> fetchOptions, Func<string, Task<List<string>>> fetchOptionsInProject)
         {
             this.DisplayName = displayName;
             this.fetchOptions = fetchOptions;
@@ -38,8 +38,16 @@ namespace RRCG
 
         string ProjectName;
 
+        bool isLoading = false;
+
         internal bool Draw(RRCG rrcgMeta)
         {
+            if (isLoading)
+            {
+                GUILayout.Label("Compiling Project...");
+                return true;
+            }
+
             switch (Page)
             {
                 case DescriptorSelectorPage.SELECT:
@@ -80,7 +88,7 @@ namespace RRCG
                     ProjectName = GUILayout.TextField(ProjectName);
                     if (GUILayout.Button("Create", GUILayout.Width(100)))
                     {
-                        if (StandaloneProjectManager.CreateNewProject(ProjectName))  GoToProjectDescriptorPage(ProjectName);
+                        if (StandaloneProjectManager.CreateNewProject(ProjectName)) GoToProjectDescriptorPage(ProjectName);
                     }
                     GUILayout.EndHorizontal();
 
@@ -100,7 +108,7 @@ namespace RRCG
                     {
                         if (GUILayout.Button(descriptor))
                         {
-                            rrcgMeta.Project = null;
+                            rrcgMeta.Project = ProjectName;
                             rrcgMeta.Assembly = null;
                             rrcgMeta.DescriptorClass = descriptor;
                             Undo.RecordObject(rrcgMeta, "Configure RRCG " + DisplayName);
@@ -119,7 +127,7 @@ namespace RRCG
             GUILayout.BeginHorizontal();
             if (rrcgMeta.DescriptorClass != null)
             {
-                GUILayout.Label(rrcgMeta.DescriptorClass);
+                GUILayout.Label(rrcgMeta.Project + rrcgMeta.Assembly + " " + rrcgMeta.DescriptorClass);
             }
             if (GUILayout.Button("Select..."))
             {
@@ -141,7 +149,15 @@ namespace RRCG
         void GoToProjectDescriptorPage(string projectName)
         {
             ProjectName = projectName;
-            ProjectDescriptorOptions = fetchOptionsInProject(projectName);
+            ProjectDescriptorOptions.Clear();
+            EditorUtility.DisplayProgressBar("Loading", "Compiling RRCG Project...", 0);
+            isLoading = true;
+            Task.Run(() => fetchOptionsInProject(projectName)).ContinueWith(result =>
+            {
+                isLoading = false;
+                if (result.Exception == null) ProjectDescriptorOptions = result.Result;
+                else Debug.LogException(result.Exception);
+            });
             Page = DescriptorSelectorPage.SELECT_PROJECT_DESCRIPTOR;
         }
 
