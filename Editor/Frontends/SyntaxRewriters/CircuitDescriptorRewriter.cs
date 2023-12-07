@@ -606,10 +606,20 @@ namespace RRCG
                 InvocationExpression(
                     IdentifierName("__Return"))
                 .WithArgumentList(
-                    SyntaxUtils.ArgumentList(
-                        IdentifierName("rrcg_return_flow"),
-                        IdentifierName("out rrcg_return_data"),
-                        expression
+                    ArgumentList(
+                        SeparatedList<ArgumentSyntax>(
+                            new SyntaxNodeOrToken[]{
+                                Argument(
+                                    IdentifierName("rrcg_return_flow")),
+                                Token(SyntaxKind.CommaToken),
+                                Argument(
+                                    IdentifierName("rrcg_return_data"))
+                                .WithRefOrOutKeyword(
+                                    Token(SyntaxKind.OutKeyword)),
+                                Token(SyntaxKind.CommaToken),
+                                Argument(expression)
+                            }
+                        )
                     )
                 )
             );
