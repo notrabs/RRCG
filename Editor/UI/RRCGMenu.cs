@@ -39,11 +39,17 @@ public class RRCGMenu
     [MenuItem("RRCG/Recompile All", priority = 20)]
     static void RecompileAll()
     {
+        // Auto compile needs to be enabled for the asset importer to work
+        var prevAutoCompile = RRCGScriptPreprocessor.AutoCompile;
+        RRCGScriptPreprocessor.AutoCompile = true;
+
         var assets = AssetDatabase.FindAssets("rrcg").Select(AssetDatabase.GUIDToAssetPath).Where(path => path.EndsWith(".rrcg.cs"));
         foreach (var asset in assets)
         {
             AssetDatabase.ImportAsset(asset);
         }
+
+        RRCGScriptPreprocessor.AutoCompile = prevAutoCompile;
     }
 
     [MenuItem("RRCG/Clean All", priority = 20)]
@@ -54,6 +60,10 @@ public class RRCGMenu
         {
             AssetDatabase.DeleteAsset(asset);
         }
+
+        StandaloneProjectManager.Clean();
+
+        Debug.Log("Cleaned all!");
     }
 
     [MenuItem("RRCG/Regenerate RRCG Projects Solution", priority = 40)]
@@ -65,6 +75,14 @@ public class RRCGMenu
         //Debug.Log("Solution regenerated! (<a href=\"RRCG\">Click here</a> to open)");
         Debug.Log("Solution regenerated!");
     }
+
+    [MenuItem("RRCG/Clean RRCG Projects", priority = 40)]
+    static void CleanProjectsSolution()
+    {
+        StandaloneProjectManager.Clean();
+        Debug.Log("Projects cleaned!");
+    }
+
 
 }
 

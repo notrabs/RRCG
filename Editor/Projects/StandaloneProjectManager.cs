@@ -68,6 +68,13 @@ namespace RRCG.Projects
             File.WriteAllText(Path.Combine(ProjectsPath, "RRCG_Projects.sln"), SolutionFile());
         }
 
+        public static void Clean()
+        {
+            if (!Directory.Exists(ProjectsPath)) return;
+            var genFiles = Directory.GetFiles(ProjectsPath, "*.rrcg.gen.cs", SearchOption.AllDirectories);
+            foreach (var genFile in genFiles) File.Delete(genFile);
+        }
+
         //
         // Solution File Generation
         //
@@ -131,9 +138,10 @@ EndGlobal
 <Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
