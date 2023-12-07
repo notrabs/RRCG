@@ -10,7 +10,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -21,7 +20,6 @@
         "EventName": "RRCG_GotoTest"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -29,7 +27,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Label 1!"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -37,7 +34,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -45,7 +41,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Did not go to label1"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -53,7 +48,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -61,7 +55,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Did not go to label2"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -69,7 +62,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Label 2"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -77,7 +69,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Label 3, 4, 5"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -90,7 +81,6 @@
         "2",
         "3"
       ],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -98,7 +88,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Going to label3"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -106,7 +95,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Going to label4"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -114,7 +102,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Going to label5"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -123,7 +110,6 @@
       "Name": "RRCG_<CircuitGraph>b__0_4",
       "DefaultValues": [],
       "CircuitBoardId": "0_0",
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -131,7 +117,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -139,7 +124,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Block label"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -151,7 +135,6 @@
         "1",
         "2"
       ],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -159,7 +142,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Case 1"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -167,7 +149,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -175,7 +156,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Going to case 2"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -183,7 +163,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Case 2"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -195,7 +174,6 @@
         "World",
         "World2"
       ],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -203,7 +181,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Hello World"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -211,7 +188,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Goto case world"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -223,7 +199,6 @@
         "0",
         "1"
       ],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -231,7 +206,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","TestLabel"]],
-      "VariableKind": 0,
       "InputCount": 2
     }
   ],
@@ -714,7 +688,6 @@
           "Type": "iCvgE/VGAkaXNYhWrrPrew==",
           "Name": "In",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         },
         {
@@ -722,7 +695,6 @@
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "DefaultValues": [[[0,1],"System.String","Inner label 1"]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -730,7 +702,6 @@
           "Type": "sWrceqv8RkeuxgBjUuKc3A==",
           "Name": "If",
           "DefaultValues": [[[0,1],"System.Boolean",true]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -738,7 +709,6 @@
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "DefaultValues": [[[0,1],"System.String","Did not go to innerLabel1"]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -746,7 +716,6 @@
           "Type": "sWrceqv8RkeuxgBjUuKc3A==",
           "Name": "If",
           "DefaultValues": [[[0,1],"System.Boolean",true]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -754,7 +723,6 @@
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "DefaultValues": [[[0,1],"System.String","Did not go to innerLabel2"]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -762,7 +730,6 @@
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "DefaultValues": [[[0,1],"System.String","Inner label 2"]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -770,7 +737,6 @@
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "DefaultValues": [[[0,1],"System.String","Inner label 3, 4, 5"]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -783,7 +749,6 @@
             "2",
             "3"
           ],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -791,7 +756,6 @@
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "DefaultValues": [[[0,1],"System.String","Going to innerLabel3"]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -799,7 +763,6 @@
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "DefaultValues": [[[0,1],"System.String","Going to innerLabel4"]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -807,7 +770,6 @@
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "DefaultValues": [[[0,1],"System.String","Going to innerLabel5"]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -815,7 +777,6 @@
           "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
           "Name": "Out",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         }
       ],

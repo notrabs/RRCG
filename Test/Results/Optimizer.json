@@ -10,7 +10,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -21,7 +20,6 @@
         "EventName": "RRCG_TestNotIfOptimizer"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -29,7 +27,6 @@
       "Type": "vF7AkmcZpEmUtS0B/h5rhQ==",
       "Name": "Parse Bool",
       "DefaultValues": [[[0,0],"System.String","true"]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -37,7 +34,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -45,7 +41,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","true"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -53,7 +48,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","false"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -61,7 +55,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",false]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -69,7 +62,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","true"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -77,7 +69,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","false"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -85,7 +76,6 @@
       "Type": "QxJV/7S+DkerSJ1haBjV5A==",
       "Name": "Not",
       "DefaultValues": [[[0,0],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -93,7 +83,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -101,7 +90,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","true"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -109,7 +97,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","false"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -117,7 +104,6 @@
       "Type": "vF7AkmcZpEmUtS0B/h5rhQ==",
       "Name": "Parse Bool",
       "DefaultValues": [[[0,0],"System.String","true"]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -125,7 +111,6 @@
       "Type": "QxJV/7S+DkerSJ1haBjV5A==",
       "Name": "Not",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -133,7 +118,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -141,7 +125,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","true"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -149,7 +132,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","false"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -157,7 +139,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -165,7 +146,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -173,7 +153,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -181,7 +160,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","true"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -189,7 +167,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","false"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -197,7 +174,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -205,7 +181,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","true"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -213,7 +188,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","false"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -221,7 +195,6 @@
       "Type": "lZm0ACKjo0ejK1Uw8rp/7Q==",
       "Name": "Parse Int",
       "DefaultValues": [[[0,0],"System.String","1"]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -229,7 +202,6 @@
       "Type": "Xrbx4YKNr0eGN64tCvpDHw==",
       "Name": "Equals",
       "DefaultValues": [[[0,1],"System.Int32",1]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -237,7 +209,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -245,7 +216,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","true"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -253,7 +223,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","false"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -261,7 +230,6 @@
       "Type": "lZm0ACKjo0ejK1Uw8rp/7Q==",
       "Name": "Parse Int",
       "DefaultValues": [[[0,0],"System.String","1"]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -269,7 +237,6 @@
       "Type": "Xrbx4YKNr0eGN64tCvpDHw==",
       "Name": "Equals",
       "DefaultValues": [[[0,1],"System.Int32",1]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -277,7 +244,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -285,7 +251,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","true"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -293,7 +258,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","false"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -305,7 +269,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -316,7 +279,6 @@
         "EventName": "RRCG_TestKnownSingletonChipsOptimizer"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -324,67 +286,78 @@
       "Type": "X0Qih1LlSk287Yr6Y7v3Cw==",
       "Name": "Time Get Precise Seconds",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
       "Id": "float_Variable_0",
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_floatVar",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_floatVar",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
       "Id": "float_Variable_1",
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_floatVar",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_floatVar",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
       "Id": "float_Variable_2",
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_floatVar",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_floatVar",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
       "Id": "float_Variable_3",
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_floatVar",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_floatVar",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
       "Id": "float_Variable_4",
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_floatVar",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_floatVar",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
       "Id": "float_Variable_5",
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_floatVar",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_floatVar",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -396,7 +369,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -407,7 +379,6 @@
         "EventName": "RRCG_TestVariableCollapseOptimiser"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -415,17 +386,18 @@
       "Type": "R/LLThSrnk+AlOQKRdKD5g==",
       "Name": "Random Float",
       "DefaultValues": [[[0,1],"System.Single",0.0],[[0,2],"System.Single",100.0]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
       "Id": "float_Variable_6",
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_var0",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_var0",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -433,7 +405,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -441,7 +412,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -449,17 +419,18 @@
       "Type": "R/LLThSrnk+AlOQKRdKD5g==",
       "Name": "Random Float",
       "DefaultValues": [[[0,1],"System.Single",0.0],[[0,2],"System.Single",100.0]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
       "Id": "float_Variable_7",
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_var1",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_var1",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -467,7 +438,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -475,7 +445,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -483,17 +452,18 @@
       "Type": "R/LLThSrnk+AlOQKRdKD5g==",
       "Name": "Random Float",
       "DefaultValues": [[[0,1],"System.Single",0.0],[[0,2],"System.Single",100.0]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
       "Id": "float_Variable_8",
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_var2",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_var2",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -501,7 +471,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -509,7 +478,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -517,17 +485,18 @@
       "Type": "R/LLThSrnk+AlOQKRdKD5g==",
       "Name": "Random Float",
       "DefaultValues": [[[0,1],"System.Single",0.0],[[0,2],"System.Single",100.0]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
       "Id": "float_Variable_9",
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_var3",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_var3",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -535,7 +504,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -543,7 +511,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -555,7 +522,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -566,7 +532,6 @@
         "EventName": "RRCG_TestAssociativeOperationCollapseOptimizer"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -574,17 +539,18 @@
       "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
       "Name": "Add",
       "DefaultValues": [[[0,1],"System.Single",2.0],[[0,2],"System.Single",3.0],[[0,3],"System.Single",4.0],[[0,4],"System.Single",5.0],[[0,5],"System.Single",30240.0]],
-      "VariableKind": 0,
       "InputCount": 6
     },
     {
       "Id": "float_Variable_10",
       "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
       "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_variable",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_variable",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -592,7 +558,6 @@
       "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
       "Name": "Add",
       "DefaultValues": [[[0,1],"System.Single",5.0]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -600,7 +565,6 @@
       "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
       "Name": "Add",
       "DefaultValues": [[[0,1],"System.Single",5.0],[[0,2],"System.Single",1.0],[[0,3],"System.Single",2.0],[[0,4],"System.Single",3.0],[[0,5],"System.Single",4.0]],
-      "VariableKind": 0,
       "InputCount": 6
     },
     {
@@ -608,7 +572,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -616,7 +579,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -624,7 +586,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -632,7 +593,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -640,7 +600,6 @@
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.String"," "]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -648,7 +607,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Hello"],[[0,3],"System.String","World"]],
-      "VariableKind": 0,
       "InputCount": 4
     },
     {
@@ -656,7 +614,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -664,7 +621,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Undeletable"],[[0,3],"System.String","concat"]],
-      "VariableKind": 0,
       "InputCount": 4
     },
     {
@@ -672,7 +628,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -680,7 +635,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Here's the undeletable concat: "],[[0,2],"System.String","Undeletable"],[[0,4],"System.String","concat"]],
-      "VariableKind": 0,
       "InputCount": 5
     },
     {
@@ -688,7 +642,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -696,7 +649,6 @@
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.Single",50.0]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -704,7 +656,6 @@
       "Type": "muTPxvtPFEeVZI3doDAGdg==",
       "Name": "Round",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -712,7 +663,6 @@
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.Single",10.0]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -720,7 +670,6 @@
       "Type": "muTPxvtPFEeVZI3doDAGdg==",
       "Name": "Round",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -728,7 +677,6 @@
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.Single",5.0]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -736,7 +684,6 @@
       "Type": "muTPxvtPFEeVZI3doDAGdg==",
       "Name": "Round",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -744,7 +691,6 @@
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.Single",3.0]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -752,7 +698,6 @@
       "Type": "muTPxvtPFEeVZI3doDAGdg==",
       "Name": "Round",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -760,7 +705,6 @@
       "Type": "TDa7H/Aau0SoK5BcrraBmg==",
       "Name": "Subtract",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -768,7 +712,6 @@
       "Type": "TDa7H/Aau0SoK5BcrraBmg==",
       "Name": "Subtract",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -776,7 +719,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -784,7 +726,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -792,7 +733,6 @@
       "Type": "TDa7H/Aau0SoK5BcrraBmg==",
       "Name": "Subtract",
       "DefaultValues": [[[0,3],"System.Single",5.0]],
-      "VariableKind": 0,
       "InputCount": 4
     },
     {
@@ -800,7 +740,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -808,7 +747,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -816,7 +754,6 @@
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.Single",50.0]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -824,7 +761,6 @@
       "Type": "muTPxvtPFEeVZI3doDAGdg==",
       "Name": "Round",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -832,7 +768,6 @@
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.Single",0.2]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -840,7 +775,6 @@
       "Type": "muTPxvtPFEeVZI3doDAGdg==",
       "Name": "Round",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -848,7 +782,6 @@
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.Single",0.4]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -856,7 +789,6 @@
       "Type": "muTPxvtPFEeVZI3doDAGdg==",
       "Name": "Round",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -864,7 +796,6 @@
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.Single",0.8]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -872,7 +803,6 @@
       "Type": "muTPxvtPFEeVZI3doDAGdg==",
       "Name": "Round",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -880,7 +810,6 @@
       "Type": "eP3q8iNfyUSicY/y8HYucQ==",
       "Name": "Divide",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -888,7 +817,6 @@
       "Type": "eP3q8iNfyUSicY/y8HYucQ==",
       "Name": "Divide",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -896,7 +824,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -904,7 +831,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -912,7 +838,6 @@
       "Type": "eP3q8iNfyUSicY/y8HYucQ==",
       "Name": "Divide",
       "DefaultValues": [[[0,3],"System.Single",5.0]],
-      "VariableKind": 0,
       "InputCount": 4
     },
     {
@@ -920,7 +845,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -928,7 +852,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     }
   ],

@@ -6,7 +6,6 @@
       "Type": "8EUm+0JA8U65iK8vgOZR7A==",
       "Name": "Random Int",
       "DefaultValues": [[[0,1],"System.Int32",1],[[0,2],"System.Int32",10]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -15,7 +14,6 @@
       "Name": "RRCG_ContentsExec",
       "DefaultValues": [],
       "CircuitBoardId": "0_0",
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -24,7 +22,6 @@
       "Name": "RRCG_ContentsMixed",
       "DefaultValues": [],
       "CircuitBoardId": "0_1",
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -32,7 +29,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -40,7 +36,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -49,7 +44,6 @@
       "Name": "RRCG_ContentsData",
       "DefaultValues": [],
       "CircuitBoardId": "0_2",
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -57,7 +51,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -65,7 +58,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -73,7 +65,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -81,7 +72,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -90,7 +80,6 @@
       "Name": "RRCG_ExecOut",
       "DefaultValues": [],
       "CircuitBoardId": "0_3",
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -99,7 +88,6 @@
       "Name": "RRCG_ExecIn",
       "DefaultValues": [],
       "CircuitBoardId": "0_4",
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -108,7 +96,6 @@
       "Name": "RRCG_<CircuitGraph>b__0_2",
       "DefaultValues": [],
       "CircuitBoardId": "0_5",
-      "VariableKind": 0,
       "InputCount": 0
     }
   ],
@@ -331,7 +318,6 @@
           "Type": "iCvgE/VGAkaXNYhWrrPrew==",
           "Name": "In",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         },
         {
@@ -339,7 +325,6 @@
           "Type": "8EUm+0JA8U65iK8vgOZR7A==",
           "Name": "Random Int",
           "DefaultValues": [[[0,1],"System.Int32",1],[[0,2],"System.Int32",10]],
-          "VariableKind": 0,
           "InputCount": 3
         },
         {
@@ -347,7 +332,6 @@
           "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
           "Name": "Out",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         }
       ],
@@ -416,7 +400,6 @@
           "Type": "iCvgE/VGAkaXNYhWrrPrew==",
           "Name": "In",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         },
         {
@@ -424,7 +407,6 @@
           "Type": "8EUm+0JA8U65iK8vgOZR7A==",
           "Name": "Random Int",
           "DefaultValues": [[[0,2],"System.Int32",10]],
-          "VariableKind": 0,
           "InputCount": 3
         },
         {
@@ -432,7 +414,6 @@
           "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
           "Name": "Out",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         }
       ],
@@ -537,7 +518,6 @@
           "Type": "iCvgE/VGAkaXNYhWrrPrew==",
           "Name": "In",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         },
         {
@@ -545,7 +525,6 @@
           "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
           "Name": "Out",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         }
       ],
@@ -622,7 +601,6 @@
           "Type": "iCvgE/VGAkaXNYhWrrPrew==",
           "Name": "In",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         },
         {
@@ -633,7 +611,6 @@
             "EventName": "Update 30Hz"
           },
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         },
         {
@@ -641,7 +618,6 @@
           "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
           "Name": "Out",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         }
       ],
@@ -692,7 +668,6 @@
           "Type": "iCvgE/VGAkaXNYhWrrPrew==",
           "Name": "In",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         },
         {
@@ -700,7 +675,6 @@
           "Type": "8EUm+0JA8U65iK8vgOZR7A==",
           "Name": "Random Int",
           "DefaultValues": [[[0,1],"System.Int32",1],[[0,2],"System.Int32",10]],
-          "VariableKind": 0,
           "InputCount": 3
         },
         {
@@ -708,7 +682,6 @@
           "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
           "Name": "Out",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         }
       ],
@@ -759,7 +732,6 @@
           "Type": "iCvgE/VGAkaXNYhWrrPrew==",
           "Name": "In",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         },
         {
@@ -767,7 +739,6 @@
           "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
           "Name": "Log String",
           "DefaultValues": [[[0,1],"System.String","Anonymous Parameter"]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -775,7 +746,6 @@
           "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
           "Name": "Out",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         }
       ],

@@ -6,7 +6,6 @@
       "Type": "peL+zqjU/02MTrrWhMqNNA==",
       "Name": "Delay",
       "DefaultValues": [[[0,1],"System.Single",5.0]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -14,7 +13,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Delay Test 1"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -22,7 +20,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Delay is scheduled"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -30,7 +27,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","After delay"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -38,7 +34,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Delay Test 2"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -46,7 +41,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Delay Test 3"]],
-      "VariableKind": 0,
       "InputCount": 2
     }
   ],

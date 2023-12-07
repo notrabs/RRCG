@@ -13,7 +13,6 @@
         "case4",
         "case5"
       ],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -21,7 +20,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","default"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -29,7 +27,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","block case"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -37,7 +34,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","fallthrough"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -52,7 +48,6 @@
         "4",
         "5"
       ],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -60,7 +55,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","default"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -68,7 +62,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","block case"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -76,7 +69,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","fallthrough"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -84,7 +76,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Return from SwitchTypes()"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -97,7 +88,6 @@
         "switch",
         "while"
       ],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -105,7 +95,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -116,7 +105,6 @@
       "SwitchCases": [
         "0"
       ],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -124,7 +112,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -132,7 +119,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","After Switch 2"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -140,7 +126,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -152,7 +137,6 @@
         "0",
         "return"
       ],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -160,7 +144,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","While Switch Case 0"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -168,7 +151,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","After Switch While Switch Case 0"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -176,7 +158,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -184,7 +165,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Break out of while"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -192,7 +172,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -200,7 +179,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Return"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -208,7 +186,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Continue in while"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -216,7 +193,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","After Switch While"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -224,7 +200,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","After Switch 1"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -232,7 +207,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Return from ConditionalReturn()"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -240,7 +214,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -251,7 +224,6 @@
       "SwitchCases": [
         "5"
       ],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -259,7 +231,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","After switch"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -267,7 +238,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","After while"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -275,7 +245,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Return from SwitchInWhileLoop()"]],
-      "VariableKind": 0,
       "InputCount": 2
     }
   ],

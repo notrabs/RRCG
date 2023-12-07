@@ -10,7 +10,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -21,7 +20,6 @@
         "EventName": "RRCG_WhileTest"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -29,7 +27,6 @@
       "Type": "VjItVFENM0yiofvES34fBw==",
       "Name": "List Create",
       "DefaultValues": [[[0,0],"System.String","Item 1"],[[0,1],"System.String","Item 2"],[[0,2],"System.String","Item 3"],[[0,3],"System.String","Item 4"],[[0,4],"System.String","Item 5"],[[0,5],"System.String","Item 6"],[[0,6],"System.String","Item 7"],[[0,7],"System.String","Item 8"],[[0,8],"System.String","Item 9"],[[0,9],"System.String","Item 10"]],
-      "VariableKind": 0,
       "InputCount": 10
     },
     {
@@ -46,7 +43,6 @@
         ]
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -57,7 +53,6 @@
         "EventName": "RRCG_EventCache"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -69,7 +64,6 @@
         "EventTarget": 0
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -77,7 +71,6 @@
       "Type": "TSCTBBWYqUmMh03t9cz36A==",
       "Name": "List Get Count",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -85,7 +78,6 @@
       "Type": "cCWqZbiYO0GpqS6un1YocQ==",
       "Name": "Greater Than",
       "DefaultValues": [[[0,1],"System.Int32",0]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -93,7 +85,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -101,7 +92,6 @@
       "Type": "LwjF6HUKJUCWeSk7yNcpiQ==",
       "Name": "List Get Element",
       "DefaultValues": [[[0,1],"System.Int32",0]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -109,7 +99,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Removing \""],[[0,3],"System.String","\" from list"]],
-      "VariableKind": 0,
       "InputCount": 4
     },
     {
@@ -117,7 +106,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -125,7 +113,6 @@
       "Type": "h0R3AhrUWUuaqSrrCq2eNw==",
       "Name": "List Remove At",
       "DefaultValues": [[[0,2],"System.Int32",0]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -133,7 +120,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -141,7 +127,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","List now has "],[[0,3],"System.String"," items."]],
-      "VariableKind": 0,
       "InputCount": 4
     },
     {
@@ -149,7 +134,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -157,7 +141,6 @@
       "Type": "peL+zqjU/02MTrrWhMqNNA==",
       "Name": "Delay",
       "DefaultValues": [[[0,1],"System.Single",0.0]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -165,7 +148,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","While loop done!"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -177,7 +159,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -188,7 +169,6 @@
         "EventName": "RRCG_WhileReturnTest"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -196,7 +176,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -204,17 +183,18 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,2],"System.String","Hello"]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
       "Id": "string_Variable_0",
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_strStaging",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_strStaging",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -222,7 +202,6 @@
       "Type": "RZPe3PIA+0GaLVqTjzm/tQ==",
       "Name": "String Length",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -230,7 +209,6 @@
       "Type": "2NDO8245EUOoB4/9mxRwYA==",
       "Name": "Greater or Equal",
       "DefaultValues": [[[0,1],"System.Int32",25]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -238,7 +216,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -246,7 +223,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Repeated string (inline graph): "]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -254,7 +230,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -263,7 +238,6 @@
       "Name": "RRCG_StringRepeat",
       "DefaultValues": [[[2,0],"System.String","Hey"],[[2,1],"System.Int32",7]],
       "CircuitBoardId": "0_0",
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -271,7 +245,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Repeated string (circuit board): "]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -279,7 +252,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -300,7 +272,6 @@
         ]
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -311,7 +282,6 @@
         "EventName": "RRCG_EventFunction_StringRepeatEventFunction"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -319,7 +289,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -327,17 +296,18 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
       "Id": "string_Variable_1",
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_strStaging_2",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_strStaging_2",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -345,7 +315,6 @@
       "Type": "RZPe3PIA+0GaLVqTjzm/tQ==",
       "Name": "String Length",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -353,7 +322,6 @@
       "Type": "RZPe3PIA+0GaLVqTjzm/tQ==",
       "Name": "String Length",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -361,7 +329,6 @@
       "Type": "ltY4R1rQ7kKhgnZBxCmuBg==",
       "Name": "Multiply",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -369,7 +336,6 @@
       "Type": "2NDO8245EUOoB4/9mxRwYA==",
       "Name": "Greater or Equal",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -377,7 +343,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -389,7 +354,6 @@
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.String","Hi"],[[0,2],"System.Int32",10]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -397,7 +361,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Repeated string (event function): "]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -405,7 +368,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -417,7 +379,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -428,17 +389,18 @@
         "EventName": "RRCG_UnreachableNodesTest"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
       "Id": "int_Variable_0",
       "Type": "B0kiM/9oAkGALnw+7UgdNw==",
       "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_index",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [[[0,1],"System.Int32",0]],
-      "VariableName": "RRCG_index",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -446,7 +408,6 @@
       "Type": "3tBcoJpgkk2TrWW2NTBiMw==",
       "Name": "Less Than",
       "DefaultValues": [[[0,1],"System.Int32",100]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -454,7 +415,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -462,17 +422,18 @@
       "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
       "Name": "Add",
       "DefaultValues": [[[0,1],"System.Int32",1]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
       "Id": "int_Variable_1",
       "Type": "B0kiM/9oAkGALnw+7UgdNw==",
       "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_index",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_index",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -480,7 +441,6 @@
       "Type": "Xrbx4YKNr0eGN64tCvpDHw==",
       "Name": "Equals",
       "DefaultValues": [[[0,1],"System.Int32",50]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -488,7 +448,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -496,7 +455,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","index.Value == 50, break!"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -504,7 +462,6 @@
       "Type": "h+aqq0PpNEW7eCyNfhfEJQ==",
       "Name": "Player Show Subtitle",
       "DefaultValues": [[[0,1],"System.Int32",1],[[0,2],"System.String","This node is unreachable and should not be placed."],[[0,3],"System.Single",0.0],[[0,4],"System.Int32",0]],
-      "VariableKind": 0,
       "InputCount": 5
     },
     {
@@ -512,7 +469,6 @@
       "Type": "eS5G/p+eNEK1lHtsCmkymw==",
       "Name": "Modulo",
       "DefaultValues": [[[0,1],"System.Int32",5]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -520,7 +476,6 @@
       "Type": "Xrbx4YKNr0eGN64tCvpDHw==",
       "Name": "Equals",
       "DefaultValues": [[[0,1],"System.Int32",0]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -528,7 +483,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -536,7 +490,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","index.Value % 5 == 0, continue!"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -544,7 +497,6 @@
       "Type": "h+aqq0PpNEW7eCyNfhfEJQ==",
       "Name": "Player Show Subtitle",
       "DefaultValues": [[[0,1],"System.Int32",1],[[0,2],"System.String","This node is unreachable and should not be placed."],[[0,3],"System.Single",0.0],[[0,4],"System.Int32",0]],
-      "VariableKind": 0,
       "InputCount": 5
     },
     {
@@ -552,7 +504,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Unreachable nodes test done!"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -564,7 +515,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -575,7 +525,6 @@
         "EventName": "RRCG_NestedWhileTest"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -583,7 +532,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Start"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -591,7 +539,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -599,7 +546,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -607,7 +553,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","0"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -615,7 +560,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","1"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -623,7 +567,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","2"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -635,7 +578,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -646,7 +588,6 @@
         "EventName": "RRCG_DoWhileTest"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -654,7 +595,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -662,7 +602,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Do while loop"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -670,7 +609,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -678,7 +616,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Break"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -686,7 +623,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -694,7 +630,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Continue"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -702,7 +637,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Check condition"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -710,7 +644,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Do while loop done"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -722,7 +655,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -733,7 +665,6 @@
         "EventName": "RRCG_DoWhileReturnTest"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -741,7 +672,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -749,17 +679,18 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,2],"System.String","Hello"]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
       "Id": "string_Variable_2",
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_strStaging_3",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_strStaging_3",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -767,7 +698,6 @@
       "Type": "RZPe3PIA+0GaLVqTjzm/tQ==",
       "Name": "String Length",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -775,7 +705,6 @@
       "Type": "2NDO8245EUOoB4/9mxRwYA==",
       "Name": "Greater or Equal",
       "DefaultValues": [[[0,1],"System.Int32",25]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -783,7 +712,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -791,7 +719,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Repeated string (do while, inline graph): "]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -799,7 +726,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -808,7 +734,6 @@
       "Name": "RRCG_StringRepeatDoWhile",
       "DefaultValues": [[[2,0],"System.String","Hey"],[[2,1],"System.Int32",7]],
       "CircuitBoardId": "0_1",
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -816,7 +741,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Repeated string (do while, circuit board): "]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -824,7 +748,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -845,7 +768,6 @@
         ]
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -856,7 +778,6 @@
         "EventName": "RRCG_EventFunction_StringRepeatDoWhileEventFunction"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -864,7 +785,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -872,17 +792,18 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
       "Id": "string_Variable_3",
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_strStaging_5",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [],
-      "VariableName": "RRCG_strStaging_5",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -890,7 +811,6 @@
       "Type": "RZPe3PIA+0GaLVqTjzm/tQ==",
       "Name": "String Length",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -898,7 +818,6 @@
       "Type": "RZPe3PIA+0GaLVqTjzm/tQ==",
       "Name": "String Length",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -906,7 +825,6 @@
       "Type": "ltY4R1rQ7kKhgnZBxCmuBg==",
       "Name": "Multiply",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -914,7 +832,6 @@
       "Type": "2NDO8245EUOoB4/9mxRwYA==",
       "Name": "Greater or Equal",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -922,7 +839,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -934,7 +850,6 @@
         "EventTarget": 0
       },
       "DefaultValues": [[[0,1],"System.String","Hi"],[[0,2],"System.Int32",10]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -942,7 +857,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Repeated string (do while, event function): "]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -950,7 +864,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -962,7 +875,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -973,7 +885,6 @@
         "EventName": "RRCG_NestedDoWhileTest"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -981,7 +892,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -989,7 +899,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Do while loop 1"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -997,7 +906,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1005,7 +913,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Loop 1 break"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1013,7 +920,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1021,7 +927,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Loop 1 continue"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1029,7 +934,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1037,7 +941,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Do while loop 2"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1045,7 +948,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1053,7 +955,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Loop 2 break"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1061,7 +962,6 @@
       "Type": "sWrceqv8RkeuxgBjUuKc3A==",
       "Name": "If",
       "DefaultValues": [[[0,1],"System.Boolean",true]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1069,7 +969,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Loop 2 continue"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1077,7 +976,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Loop 2 check condition"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1085,7 +983,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Loop 2 done"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1093,7 +990,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Loop 1 check condition"]],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -1101,7 +997,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Loop 1 done"]],
-      "VariableKind": 0,
       "InputCount": 2
     }
   ],
@@ -3092,7 +2987,6 @@
           "Type": "iCvgE/VGAkaXNYhWrrPrew==",
           "Name": "In",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         },
         {
@@ -3100,7 +2994,6 @@
           "Type": "sWrceqv8RkeuxgBjUuKc3A==",
           "Name": "If",
           "DefaultValues": [[[0,1],"System.Boolean",true]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -3108,17 +3001,18 @@
           "Type": "on7tc63OWkCznB/sS/1CNg==",
           "Name": "String Concat",
           "DefaultValues": [[[0,0],"System.String",""]],
-          "VariableKind": 0,
           "InputCount": 3
         },
         {
           "Id": "string_Variable_4",
           "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
           "Name": "string Variable",
+          "VariableData": {
+            "Name": "RRCG_strStaging_1",
+            "Kind": 0,
+            "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          },
           "DefaultValues": [],
-          "VariableName": "RRCG_strStaging_1",
-          "VariableKind": 0,
-          "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
         },
         {
@@ -3126,7 +3020,6 @@
           "Type": "RZPe3PIA+0GaLVqTjzm/tQ==",
           "Name": "String Length",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 1
         },
         {
@@ -3134,7 +3027,6 @@
           "Type": "RZPe3PIA+0GaLVqTjzm/tQ==",
           "Name": "String Length",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 1
         },
         {
@@ -3142,7 +3034,6 @@
           "Type": "ltY4R1rQ7kKhgnZBxCmuBg==",
           "Name": "Multiply",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -3150,7 +3041,6 @@
           "Type": "2NDO8245EUOoB4/9mxRwYA==",
           "Name": "Greater or Equal",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -3158,7 +3048,6 @@
           "Type": "sWrceqv8RkeuxgBjUuKc3A==",
           "Name": "If",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -3166,7 +3055,6 @@
           "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
           "Name": "Out",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         }
       ],
@@ -3444,7 +3332,6 @@
           "Type": "iCvgE/VGAkaXNYhWrrPrew==",
           "Name": "In",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         },
         {
@@ -3452,7 +3339,6 @@
           "Type": "sWrceqv8RkeuxgBjUuKc3A==",
           "Name": "If",
           "DefaultValues": [[[0,1],"System.Boolean",true]],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -3460,17 +3346,18 @@
           "Type": "on7tc63OWkCznB/sS/1CNg==",
           "Name": "String Concat",
           "DefaultValues": [[[0,0],"System.String",""]],
-          "VariableKind": 0,
           "InputCount": 3
         },
         {
           "Id": "string_Variable_5",
           "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
           "Name": "string Variable",
+          "VariableData": {
+            "Name": "RRCG_strStaging_4",
+            "Kind": 0,
+            "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          },
           "DefaultValues": [],
-          "VariableName": "RRCG_strStaging_4",
-          "VariableKind": 0,
-          "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
           "InputCount": 2
         },
         {
@@ -3478,7 +3365,6 @@
           "Type": "RZPe3PIA+0GaLVqTjzm/tQ==",
           "Name": "String Length",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 1
         },
         {
@@ -3486,7 +3372,6 @@
           "Type": "RZPe3PIA+0GaLVqTjzm/tQ==",
           "Name": "String Length",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 1
         },
         {
@@ -3494,7 +3379,6 @@
           "Type": "ltY4R1rQ7kKhgnZBxCmuBg==",
           "Name": "Multiply",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -3502,7 +3386,6 @@
           "Type": "2NDO8245EUOoB4/9mxRwYA==",
           "Name": "Greater or Equal",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -3510,7 +3393,6 @@
           "Type": "sWrceqv8RkeuxgBjUuKc3A==",
           "Name": "If",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 2
         },
         {
@@ -3518,7 +3400,6 @@
           "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
           "Name": "Out",
           "DefaultValues": [],
-          "VariableKind": 0,
           "InputCount": 0
         }
       ],

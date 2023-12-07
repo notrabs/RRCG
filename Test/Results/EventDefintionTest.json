@@ -10,7 +10,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -21,7 +20,6 @@
         "EventName": "RRCG_params0"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -33,7 +31,6 @@
         "EventTarget": 0
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -50,7 +47,6 @@
         ]
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -61,7 +57,6 @@
         "EventName": "RRCG_params1"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -73,7 +68,6 @@
         "EventTarget": 0
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -94,7 +88,6 @@
         ]
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -105,7 +98,6 @@
         "EventName": "RRCG_params2"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -117,7 +109,6 @@
         "EventTarget": 0
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -129,7 +120,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -140,7 +130,6 @@
         "EventName": "RRCG_params0_1"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -152,7 +141,6 @@
         "EventTarget": 0
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -164,7 +152,6 @@
         "EventTarget": 1
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -176,7 +163,6 @@
         "EventTarget": 4
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -188,7 +174,6 @@
         "EventTarget": 3
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -200,7 +185,6 @@
         "EventTarget": 2
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -212,7 +196,6 @@
         "EventTarget": 5
       },
       "DefaultValues": [[[0,1],"System.Int32",1]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -220,7 +203,6 @@
       "Type": "qDP3/da9AEix1JWwaz1vAg==",
       "Name": "Get Local Player",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -232,7 +214,6 @@
         "EventTarget": 5
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -243,7 +224,6 @@
         "EventName": "Existing0"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -255,7 +235,6 @@
         "EventTarget": 0
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -266,7 +245,6 @@
         "EventName": "Existing1"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -278,7 +256,6 @@
         "EventTarget": 0
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -289,7 +266,6 @@
         "EventName": "Existing2"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -301,7 +277,6 @@
         "EventTarget": 0
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     }
   ],

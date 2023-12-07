@@ -10,7 +10,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -21,7 +20,6 @@
         "EventName": "RRCG_InterpolatePureData"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -29,7 +27,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Hello"],[[0,2],"System.String",", "],[[0,3],"System.String","World"],[[0,4],"System.String","!"]],
-      "VariableKind": 0,
       "InputCount": 5
     },
     {
@@ -37,7 +34,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -49,7 +45,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -60,17 +55,18 @@
         "EventName": "RRCG_InterpolateDataWithPort"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
       "Id": "string_Variable_0",
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_variable",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
       "DefaultValues": [[[0,1],"System.String","port"]],
-      "VariableName": "RRCG_variable",
-      "VariableKind": 0,
-      "VariableType": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "InputCount": 2
     },
     {
@@ -78,7 +74,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","String interpolation works with both "],[[0,2],"System.String","data"],[[0,3],"System.String"," and "],[[0,5],"System.String","s!"]],
-      "VariableKind": 0,
       "InputCount": 6
     },
     {
@@ -86,7 +81,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -98,7 +92,6 @@
         "EventDefinition": []
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -109,7 +102,6 @@
         "EventName": "RRCG_InterpolateNonStrings"
       },
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 0
     },
     {
@@ -117,7 +109,6 @@
       "Type": "lZm0ACKjo0ejK1Uw8rp/7Q==",
       "Name": "Parse Int",
       "DefaultValues": [[[0,0],"System.String","10"]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -125,7 +116,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -133,7 +123,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Interpolating with ints. Data: "],[[0,2],"System.String","5"],[[0,3],"System.String",", Port: "]],
-      "VariableKind": 0,
       "InputCount": 5
     },
     {
@@ -141,7 +130,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -149,7 +137,6 @@
       "Type": "lZm0ACKjo0ejK1Uw8rp/7Q==",
       "Name": "Parse Int",
       "DefaultValues": [[[0,0],"System.String","19.87"]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -157,7 +144,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -165,7 +151,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Interpolating with floats. Data: "],[[0,2],"System.String","5.25"],[[0,3],"System.String",", Port: "]],
-      "VariableKind": 0,
       "InputCount": 5
     },
     {
@@ -173,7 +158,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -181,7 +165,6 @@
       "Type": "vF7AkmcZpEmUtS0B/h5rhQ==",
       "Name": "Parse Bool",
       "DefaultValues": [[[0,0],"System.String","True"]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -189,7 +172,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -197,7 +179,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Interpolating with bools. Data: "],[[0,2],"System.String","False"],[[0,3],"System.String",", Port: "]],
-      "VariableKind": 0,
       "InputCount": 5
     },
     {
@@ -205,7 +186,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -213,7 +193,6 @@
       "Type": "t8Q2eon73E2jsr/4WX97Fw==",
       "Name": "Parse Color",
       "DefaultValues": [[[0,0],"System.String","#00FF00"]],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -221,7 +200,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -229,7 +207,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Interpolating with colors. Data: "],[[0,2],"System.String","#FF0000"],[[0,3],"System.String",", Port: "]],
-      "VariableKind": 0,
       "InputCount": 5
     },
     {
@@ -237,7 +214,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -245,7 +221,6 @@
       "Type": "N5NOgUJ1UUidoMc4hasLTw==",
       "Name": "Vector3 Create",
       "DefaultValues": [[[0,0],"System.Single",4.0],[[0,1],"System.Single",5.0],[[0,2],"System.Single",6.0]],
-      "VariableKind": 0,
       "InputCount": 3
     },
     {
@@ -253,7 +228,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -261,7 +235,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Interpolating with Vector3s. Data: "],[[0,2],"System.String","(1.00, 2.00, 3.00)"],[[0,3],"System.String",", Port: "]],
-      "VariableKind": 0,
       "InputCount": 5
     },
     {
@@ -269,7 +242,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     },
     {
@@ -277,7 +249,6 @@
       "Type": "Kn3xzzND2kGBrCgl8lv4GQ==",
       "Name": "Quaternion Create",
       "DefaultValues": [[[0,0],"System.Single",5.0],[[0,1],"System.Single",6.0],[[0,2],"System.Single",7.0],[[0,3],"System.Single",8.0]],
-      "VariableKind": 0,
       "InputCount": 4
     },
     {
@@ -285,7 +256,6 @@
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 1
     },
     {
@@ -293,7 +263,6 @@
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Interpolating with Quaternions. Data: "],[[0,2],"System.String","(1.00000, 2.00000, 3.00000, 4.00000)"],[[0,3],"System.String",", Port: "]],
-      "VariableKind": 0,
       "InputCount": 5
     },
     {
@@ -301,7 +270,6 @@
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
-      "VariableKind": 0,
       "InputCount": 2
     }
   ],
