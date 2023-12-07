@@ -321,21 +321,21 @@ namespace RRCG
 
     class BodyRewriter : CSharpSyntaxRewriter
     {
-        public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax node)
+        public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax invocationExpression)
         {
-            var invocationName = node.Expression.ToString();
+            var invocationName = invocationExpression.Expression.ToString();
 
             if (
                 invocationName.StartsWith("AddListener") ||
                 invocationName.StartsWith("AddDynamicListener")
             )
             {
-                var firstArg = node.ArgumentList.Arguments[0].Expression;
-                var otherArgs = node.ArgumentList.Arguments.Skip(1).Select(arg => arg.Expression);
+                var firstArg = invocationExpression.ArgumentList.Arguments[0].Expression;
+                var otherArgs = invocationExpression.ArgumentList.Arguments.Skip(1).Select(arg => arg.Expression);
 
                 if (firstArg is MemberAccessExpressionSyntax mae)
                 {
-                    return SyntaxFactory.InvocationExpression(IdentifierName(invocationName))
+                    return invocationExpression
                     .WithArgumentList(SyntaxUtils.ArgumentList(
                         new ExpressionSyntax[]
                         {
@@ -347,7 +347,7 @@ namespace RRCG
                 else throw new Exception("first argument of AddListener() must be a member access expression (e.g. gameObject.name including the dot!)");
             }
 
-            return base.VisitInvocationExpression(node);
+            return base.VisitInvocationExpression(invocationExpression);
         }
     }
 }
