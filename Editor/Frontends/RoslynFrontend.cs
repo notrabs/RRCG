@@ -21,8 +21,12 @@ namespace RRCG
             SyntaxTree sourceTree = CSharpSyntaxTree.ParseText(code);
 
             // Create compilation with references to all loaded assemblies
-            var compilation = CSharpCompilation.Create("RRCG.SemanticModel")
-                .WithReferences(GetLoadedReferences());
+            var compilation = CSharpCompilation.Create(
+                "RRCG.SemanticModel",
+                // We don't know which other files to reference, so the compilation will only know one file at the time.
+                new[] { sourceTree },
+                GetLoadedReferences()
+            );
 
             var generatedTree = RewriteRRCGSource(sourceTree, compilation);
 
