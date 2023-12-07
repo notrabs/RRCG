@@ -24,7 +24,9 @@ namespace RRCG
         {
             // Update compilation with new tree if necessary
             if (!Compilation.ContainsSyntaxTree(tree))
-                Compilation = Compilation.AddSyntaxTrees(tree);
+            {
+                throw new Exception("Semantic model does not contain tree");
+            }
 
             return Compilation.GetSemanticModel(tree);
         }
