@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using RRCG.Projects;
@@ -60,7 +59,8 @@ namespace Packages.RRCG.Editor.Projects
 
             var readFiles = await Task.WhenAll(projectFiles.Select(file => File.ReadAllTextAsync(file)).ToArray());
 
-            var sourceSyntaxTrees = readFiles.Select(text => CSharpSyntaxTree.ParseText(text));
+            var options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp9);
+            var sourceSyntaxTrees = readFiles.Select(text => CSharpSyntaxTree.ParseText(text, options));
 
             var sourceCompilation = CSharpCompilation.Create("RRCG.SemanticModel", sourceSyntaxTrees, RoslynFrontend.GetLoadedReferences());
 
