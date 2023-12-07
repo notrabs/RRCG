@@ -18,7 +18,7 @@ namespace RRCG
         public static void CompileFile(string sourcePath, string compiledPath)
         {
             string code = File.ReadAllText(sourcePath);
-            SyntaxTree sourceTree = CSharpSyntaxTree.ParseText(code);
+            SyntaxTree sourceTree = ParseText(code);
 
             // Create compilation with references to all loaded assemblies
             var compilation = CSharpCompilation.Create(
@@ -31,6 +31,14 @@ namespace RRCG
             var generatedTree = RewriteRRCGSource(sourceTree, compilation);
 
             FileUtils.WriteGeneratedCode(generatedTree, compiledPath);
+        }
+
+        public static SyntaxTree ParseText(string text) => ParseText(text, null); // Single Parameter overload to use in Linq
+        public static SyntaxTree ParseText(string text, string path)
+        {
+            // The language version used by RRCG (and Unity)
+            var options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp9);
+            return CSharpSyntaxTree.ParseText(text, options, path);
         }
 
         public static IEnumerable<PortableExecutableReference> GetLoadedReferences()
