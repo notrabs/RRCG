@@ -4,31 +4,22 @@ using Microsoft.CodeAnalysis;
 using System.Linq;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using System;
+using UnityEngine;
 
 namespace RRCG
 {
     public class RRCGSyntaxRewriter : CSharpSyntaxRewriter
     {
+        public SemanticModel SemanticModel;
+
         private CircuitDescriptorRewriter circuitDescriptorRewriter;
         private StudioObjectDescriptorRewriter studioObjectDescriptorRewriter;
-        private CSharpCompilation Compilation;
 
-        public RRCGSyntaxRewriter(CSharpCompilation initialCompilation)
+        public RRCGSyntaxRewriter(SemanticModel semanticModel)
         {
-            Compilation = initialCompilation;
+            SemanticModel = semanticModel;
             circuitDescriptorRewriter = new CircuitDescriptorRewriter(this);
             studioObjectDescriptorRewriter = new StudioObjectDescriptorRewriter(this);
-        }
-
-        public SemanticModel GetUpdatedSemanticModel(SyntaxTree tree)
-        {
-            // Update compilation with new tree if necessary
-            if (!Compilation.ContainsSyntaxTree(tree))
-            {
-                throw new Exception("Semantic model does not contain tree");
-            }
-
-            return Compilation.GetSemanticModel(tree);
         }
 
         //

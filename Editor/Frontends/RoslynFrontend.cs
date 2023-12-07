@@ -56,7 +56,7 @@ namespace RRCG
 
         public static SyntaxNode RewriteRRCGSource(SyntaxTree sourceTree, CSharpCompilation compilation)
         {
-            var rewriter = new RRCGSyntaxRewriter(compilation);
+            var rewriter = new RRCGSyntaxRewriter(compilation.GetSemanticModel(sourceTree));
             return rewriter.Visit(sourceTree.GetRoot());
         }
 

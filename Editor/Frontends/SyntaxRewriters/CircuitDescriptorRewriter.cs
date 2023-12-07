@@ -21,6 +21,8 @@ namespace RRCG
             this.rrcgRewriter = rrcgRewriter;
         }
 
+        SemanticModel SemanticModel => rrcgRewriter.SemanticModel;
+
         //
         // Class translation
         //
@@ -183,8 +185,7 @@ namespace RRCG
             {
                 // .ExpressionBody and .Block are mutually exclusive -- this function is without a block.
                 // We need one for accessibility scopes, so let's create one.
-                var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(method.SyntaxTree);
-                var needsReturn = !(semanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnsVoid;
+                var needsReturn = !(SemanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnsVoid;
 
                 statements = SyntaxFactory.SingletonList<StatementSyntax>(
                                 needsReturn ? SyntaxFactory.ReturnStatement(visitedMethod.ExpressionBody)
@@ -286,8 +287,7 @@ namespace RRCG
             }
 
             // Attempt to fixup ommitted type parameters
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree); // original node!
-            var symbolInfo = semanticModel.GetSymbolInfo(node);
+            var symbolInfo = SemanticModel.GetSymbolInfo(node);
             var methodSymbol = (IMethodSymbol)symbolInfo.Symbol;
 
             // Bail out if we failed to resolve the method symbol.
@@ -437,8 +437,7 @@ namespace RRCG
             var root = node.SyntaxTree.GetRoot();
             if (root is not TypeSyntax)
             {
-                var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-                var symbolInfo = semanticModel.GetSymbolInfo(node);
+                var symbolInfo = SemanticModel.GetSymbolInfo(node);
 
                 // Only rewrite if the symbol is referring to a type
                 if (symbolInfo.Symbol is not INamedTypeSymbol) return base.VisitIdentifierName(node);
@@ -638,8 +637,7 @@ namespace RRCG
 
             // Attempt to resolve build-realm type for the declaration.
             // Write it as the generic parameter for the call to __VariableDeclaratorExpression
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-            var symbolInfo = semanticModel.GetDeclaredSymbol(node);
+            var symbolInfo = SemanticModel.GetDeclaredSymbol(node);
 
             // Try to grab the type from the symbol
             ITypeSymbol resolvedType = null;
@@ -1019,8 +1017,7 @@ namespace RRCG
 
             // Query the semantic model for the result type of the expression.
             // We'll use the converted type (result type after implicit conversions).
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-            var typeInfo = semanticModel.GetTypeInfo(node);
+            var typeInfo = SemanticModel.GetTypeInfo(node);
 
             // If we're unable to resolve the type, inform the user but try to let the actual compiler infer the type
             if (typeInfo.ConvertedType is not IErrorTypeSymbol)
