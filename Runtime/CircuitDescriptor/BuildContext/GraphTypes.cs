@@ -16,10 +16,6 @@ namespace RRCGBuild
         public string Type;
 
         public string Name;
-        public string VariableName { get; internal set; }
-        public VariableKind VariableKind { get; internal set; }
-        public Type VariableType { get; internal set; }
-        public object VariableHomeValue { get; internal set; }
 
         // Flag indicating whether the Node should appear in Context.lastSpawnedNode
         // This can be set to false by the compiler to insert nodes that shouldn't be visible to logic after a spawning function.
@@ -40,6 +36,7 @@ namespace RRCGBuild
         public EventSenderData EventSenderData = null;
         public EventReceiverData EventReceiverData = null;
         public RaycastData RaycastData = null;
+        public VariableData VariableData = null;
 
         [JsonConverter(typeof(DefaultValuesConverter))]
         public Dictionary<(int Group, int Port), object> DefaultValues = new Dictionary<(int Group, int Port), object>();

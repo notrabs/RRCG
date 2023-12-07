@@ -1,6 +1,5 @@
 ﻿using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis;
-using RRCG;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,9 +7,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using UnityEngine;
-using RRCG.Projects;
 
-namespace Packages.RRCG.Editor.Projects
+namespace RRCG.Projects
 {
     public class RoslynProjectCompiler
     {

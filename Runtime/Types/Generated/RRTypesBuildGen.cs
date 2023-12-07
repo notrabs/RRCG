@@ -188,9 +188,9 @@ namespace RRCGGenerated
             ChipBuilder.AIStopLooking((AIPort)this);
         }
 
-        public AIPort Variable()
+        public AIPort Variable(VariableData config)
         {
-            return ChipBuilder.AIVariable((AIPort)this);
+            return ChipBuilder.AIVariable((AIPort)this, config);
         }
 
         public (IntPort Health, IntPort Shield, IntPort MaxHealth) CombatantGetHealth()
@@ -521,9 +521,9 @@ namespace RRCGGenerated
             ChipBuilder.CombatantSetHealth((CombatantPort)this, Health);
         }
 
-        public CombatantPort Variable()
+        public CombatantPort Variable(VariableData config)
         {
-            return ChipBuilder.CombatantVariable((CombatantPort)this);
+            return ChipBuilder.CombatantVariable((CombatantPort)this, config);
         }
 
         public FloatPort Distance(AIPort B)
@@ -620,9 +620,9 @@ namespace RRCGGenerated
 
     public abstract class DestinationRoomPortGen : AnyPort
     {
-        public DestinationRoomPort Variable()
+        public DestinationRoomPort Variable(VariableData config)
         {
-            return ChipBuilder.DestinationRoomVariable((DestinationRoomPort)this);
+            return ChipBuilder.DestinationRoomVariable((DestinationRoomPort)this, config);
         }
     }
 
@@ -2062,14 +2062,14 @@ namespace RRCGGenerated
             return ChipBuilder.PlayerUnequipInventoryItem((PlayerPort)this, InventoryItem, OnUnequipComplete);
         }
 
-        public PlayerPort Variable()
+        public PlayerPort Variable(VariableData config)
         {
-            return ChipBuilder.PlayerVariable((PlayerPort)this);
+            return ChipBuilder.PlayerVariable((PlayerPort)this, config);
         }
 
-        public PlayerPort VariableDeprecated()
+        public PlayerPort VariableDeprecated(VariableData config)
         {
-            return ChipBuilder.PlayerVariableDeprecated((PlayerPort)this);
+            return ChipBuilder.PlayerVariableDeprecated((PlayerPort)this, config);
         }
 
         public void RemovePlayerFromRadioChannel()
@@ -2573,9 +2573,9 @@ namespace RRCGGenerated
             ChipBuilder.RecRoomObjectReset((RecRoomObjectPort)this);
         }
 
-        public RecRoomObjectPort Variable()
+        public RecRoomObjectPort Variable(VariableData config)
         {
-            return ChipBuilder.RecRoomObjectVariable((RecRoomObjectPort)this);
+            return ChipBuilder.RecRoomObjectVariable((RecRoomObjectPort)this, config);
         }
 
         public void RemoveTag(StringPort Tag)

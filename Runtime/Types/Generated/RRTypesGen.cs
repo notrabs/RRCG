@@ -307,7 +307,7 @@ namespace RRCGGenerated
             return;
         }
 
-        internal AI Variable()
+        internal AI Variable(VariableData config)
         {
             return default;
         }
@@ -852,7 +852,7 @@ namespace RRCGGenerated
             return;
         }
 
-        internal Combatant Variable()
+        internal Combatant Variable(VariableData config)
         {
             return default;
         }
@@ -1005,7 +1005,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Stores a destination room. Destination cannot be configured from variable - for that, use a Constant.
         /// </summary>
-        internal DestinationRoom Variable()
+        internal DestinationRoom Variable(VariableData config)
         {
             return default;
         }
@@ -3453,7 +3453,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        internal Player Variable()
+        internal Player Variable(VariableData config)
         {
             return default;
         }
@@ -3461,7 +3461,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Reads or writes a variable in the current scope based on the name.
         /// </summary>
-        internal Player VariableDeprecated()
+        internal Player VariableDeprecated(VariableData config)
         {
             return default;
         }
@@ -4210,7 +4210,7 @@ namespace RRCGGenerated
             return;
         }
 
-        internal RecRoomObject Variable()
+        internal RecRoomObject Variable(VariableData config)
         {
             return default;
         }

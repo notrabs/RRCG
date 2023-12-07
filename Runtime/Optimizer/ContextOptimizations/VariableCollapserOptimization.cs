@@ -21,10 +21,10 @@ namespace RRCG.Optimizer.ContextOptimizations
                 if (!ChipTypeUtils.VariableTypes.Contains(node.Type))
                     continue;
 
-                if (!varUsageMap.ContainsKey(node.VariableName))
-                    varUsageMap[node.VariableName] = (new List<Node>(), new List<Node>());
+                if (!varUsageMap.ContainsKey(node.VariableData.Name))
+                    varUsageMap[node.VariableData.Name] = (new List<Node>(), new List<Node>());
 
-                (var readOnlyInstances, var writeInstances) = varUsageMap[node.VariableName];
+                (var readOnlyInstances, var writeInstances) = varUsageMap[node.VariableData.Name];
                 var isReadOnly = context.Connections.Where(c => c.To.Node == node && c.To.Index == 0).Count() <= 0;
 
                 if (isReadOnly)

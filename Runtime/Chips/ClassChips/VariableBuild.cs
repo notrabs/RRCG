@@ -46,41 +46,38 @@ namespace RRCGBuild
 
         private T CreateVariableNode(T value)
         {
+            var variableConfig = new VariableData(name, kind, typeof(T), homeValue?.Data);
+
             T data = value switch
             {
-                IntPort typed => ChipBuilder.IntVariable(typed) as T,
-                BoolPort typed => ChipBuilder.BoolVariable(typed) as T,
-                FloatPort typed => ChipBuilder.FloatVariable(typed) as T,
-                StringPort typed => ChipBuilder.StringVariable(typed) as T,
-                PlayerPort typed => ChipBuilder.PlayerVariable(typed) as T,
-                RecRoomObjectPort typed => ChipBuilder.RecRoomObjectVariable(typed) as T,
-                Vector3Port typed => ChipBuilder.Vector3Variable(typed) as T,
-                QuaternionPort typed => ChipBuilder.QuaternionVariable(typed) as T,
-                ColorPort typed => ChipBuilder.ColorVariable(typed) as T,
-                AIPort typed => ChipBuilder.AIVariable(typed) as T,
-                CombatantPort typed => ChipBuilder.CombatantVariable(typed) as T,
-                DestinationRoomPort typed => ChipBuilder.DestinationRoomVariable(typed) as T,
+                IntPort typed => ChipBuilder.IntVariable(typed, variableConfig) as T,
+                BoolPort typed => ChipBuilder.BoolVariable(typed, variableConfig) as T,
+                FloatPort typed => ChipBuilder.FloatVariable(typed, variableConfig) as T,
+                StringPort typed => ChipBuilder.StringVariable(typed, variableConfig) as T,
+                PlayerPort typed => ChipBuilder.PlayerVariable(typed, variableConfig) as T,
+                RecRoomObjectPort typed => ChipBuilder.RecRoomObjectVariable(typed, variableConfig) as T,
+                Vector3Port typed => ChipBuilder.Vector3Variable(typed, variableConfig) as T,
+                QuaternionPort typed => ChipBuilder.QuaternionVariable(typed, variableConfig) as T,
+                ColorPort typed => ChipBuilder.ColorVariable(typed, variableConfig) as T,
+                AIPort typed => ChipBuilder.AIVariable(typed, variableConfig) as T,
+                CombatantPort typed => ChipBuilder.CombatantVariable(typed, variableConfig) as T,
+                DestinationRoomPort typed => ChipBuilder.DestinationRoomVariable(typed, variableConfig) as T,
 
-                ListPort<IntPort> typed => ChipBuilder.ListIntVariable(typed) as T,
-                ListPort<BoolPort> typed => ChipBuilder.ListBoolVariable(typed) as T,
-                ListPort<FloatPort> typed => ChipBuilder.ListFloatVariable(typed) as T,
-                ListPort<StringPort> typed => ChipBuilder.ListStringVariable(typed) as T,
-                ListPort<PlayerPort> typed => ChipBuilder.ListPlayerVariable(typed) as T,
-                ListPort<RecRoomObjectPort> typed => ChipBuilder.ListRecRoomObjectVariable(typed) as T,
-                ListPort<Vector3Port> typed => ChipBuilder.ListVector3Variable(typed) as T,
-                ListPort<QuaternionPort> typed => ChipBuilder.ListQuaternionVariable(typed) as T,
-                ListPort<ColorPort> typed => ChipBuilder.ListColorVariable(typed) as T,
-                ListPort<DestinationRoomPort> typed => ChipBuilder.ListDestinationRoomVariable(typed) as T,
-                ListPort<ObjectiveMarkerPort> typed => ChipBuilder.ListObjectiveMarkerVariable(typed) as T,
-                ListPort<RewardPort> typed => ChipBuilder.ListRewardVariable(typed) as T,
+                ListPort<IntPort> typed => ChipBuilder.ListIntVariable(typed, variableConfig) as T,
+                ListPort<BoolPort> typed => ChipBuilder.ListBoolVariable(typed, variableConfig) as T,
+                ListPort<FloatPort> typed => ChipBuilder.ListFloatVariable(typed, variableConfig) as T,
+                ListPort<StringPort> typed => ChipBuilder.ListStringVariable(typed, variableConfig) as T,
+                ListPort<PlayerPort> typed => ChipBuilder.ListPlayerVariable(typed, variableConfig) as T,
+                ListPort<RecRoomObjectPort> typed => ChipBuilder.ListRecRoomObjectVariable(typed, variableConfig) as T,
+                ListPort<Vector3Port> typed => ChipBuilder.ListVector3Variable(typed, variableConfig) as T,
+                ListPort<QuaternionPort> typed => ChipBuilder.ListQuaternionVariable(typed, variableConfig) as T,
+                ListPort<ColorPort> typed => ChipBuilder.ListColorVariable(typed, variableConfig) as T,
+                ListPort<DestinationRoomPort> typed => ChipBuilder.ListDestinationRoomVariable(typed, variableConfig) as T,
+                ListPort<ObjectiveMarkerPort> typed => ChipBuilder.ListObjectiveMarkerVariable(typed, variableConfig) as T,
+                ListPort<RewardPort> typed => ChipBuilder.ListRewardVariable(typed, variableConfig) as T,
 
                 _ => throw new Exception("Variable type not supported yet: " + value.GetType().ToString())
             };
-
-            Context.lastSpawnedNode.VariableName = name;
-            Context.lastSpawnedNode.VariableKind = kind;
-            Context.lastSpawnedNode.VariableType = typeof(T);
-            Context.lastSpawnedNode.VariableHomeValue = homeValue?.Data;
 
             return data;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RRCGBuild;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace RRCG
 {
     public static class RRCGConfigurationMap
     {
-        public static Dictionary<string, string> ConfigurableChips = new Dictionary<string, string>() {
+        private static Dictionary<string, string> ConfigurableChips = new Dictionary<string, string>() {
             { "SFXConstant", "SFXConstantData" },
             { "PlayAudioAtPosition", "PlayAudioAtPositionData" },
             { "PlayerWorldUI", "PlayerWorldUIData" },
@@ -21,6 +22,13 @@ namespace RRCG
             { "OverlapBox", "RaycastData" },
             { "OverlapSphere", "RaycastData" },
         };
+
+        public static string GetConfigType(string chipName)
+        {
+            if (chipName.Contains("Variable")) return "VariableData";
+            if (ConfigurableChips.ContainsKey(chipName)) return ConfigurableChips[chipName];
+            return null;
+        }
     }
 
     public record Vector3Data(float X, float Y, float Z);
@@ -94,6 +102,13 @@ namespace RRCG
     public record RaycastData(
         bool IgnorePlayers = false,
         bool IgnoreObjects = false
+    );
+
+    public record VariableData(
+        string Name,
+        VariableKind Kind,
+        Type Type,
+        object HomeValue
     );
 }
 

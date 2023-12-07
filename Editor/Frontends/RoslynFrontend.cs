@@ -9,7 +9,6 @@ using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
 using RRCG.Projects;
-using Packages.RRCG.Editor.Projects;
 using System.Threading.Tasks;
 
 namespace RRCG

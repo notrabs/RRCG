@@ -446,7 +446,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static AIPort AIVariable(AIPort Port0)
+        public static AIPort AIVariable(AIPort Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "AI Variable", Type = "0e92a7fb-fb38-418c-af39-9afec92112ee", InputCount = 2};
@@ -454,6 +454,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new AIPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -1102,7 +1103,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort BoolVariable(BoolPort Port0)
+        public static BoolPort BoolVariable(BoolPort Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "bool Variable", Type = "80955588-7f7a-4f7c-b46f-6d1e9057fba0", InputCount = 2};
@@ -1110,6 +1111,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -1348,7 +1350,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static ColorPort ColorVariable(ColorPort Port0)
+        public static ColorPort ColorVariable(ColorPort Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "Color Variable", Type = "3d2fd0b5-eeac-45cc-a622-1701710f0792", InputCount = 2};
@@ -1356,6 +1358,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ColorPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -1672,7 +1675,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static CombatantPort CombatantVariable(CombatantPort Port0)
+        public static CombatantPort CombatantVariable(CombatantPort Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "Combatant Variable", Type = "cfd8e246-8682-4707-a0ae-da55bacfbf72", InputCount = 2};
@@ -1680,6 +1683,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new CombatantPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -1852,7 +1856,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static DestinationRoomPort DestinationRoomVariable(DestinationRoomPort Port0)
+        public static DestinationRoomPort DestinationRoomVariable(DestinationRoomPort Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "Destination Room Variable", Type = "31eab00d-a6f7-4505-9f84-02d3e1eedd86", InputCount = 2};
@@ -1860,6 +1864,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new DestinationRoomPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -2947,7 +2952,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static FloatPort FloatVariable(FloatPort Port0)
+        public static FloatPort FloatVariable(FloatPort Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "float Variable", Type = "04a31ca5-91d2-4a69-bf3d-484d18411cc0", InputCount = 2};
@@ -2955,6 +2960,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new FloatPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -4800,7 +4806,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static IntPort IntVariable(IntPort Port0)
+        public static IntPort IntVariable(IntPort Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "int Variable", Type = "33224907-68ff-4102-802e-7c3eed481d37", InputCount = 2};
@@ -4808,6 +4814,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new IntPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -5525,7 +5532,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static ListPort<BoolPort> ListBoolVariable(ListPort<BoolPort> Port0)
+        public static ListPort<BoolPort> ListBoolVariable(ListPort<BoolPort> Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "List<bool> Variable", Type = "e0ef8c83-e5a6-4272-a102-07bfc0a40fd5", InputCount = 2};
@@ -5533,6 +5540,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ListPort<BoolPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -5547,7 +5555,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static ListPort<ColorPort> ListColorVariable(ListPort<ColorPort> Port0)
+        public static ListPort<ColorPort> ListColorVariable(ListPort<ColorPort> Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "List<Color> Variable", Type = "9216dded-da74-49a7-a327-5750f4809787", InputCount = 2};
@@ -5555,6 +5563,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ListPort<ColorPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -5604,7 +5613,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static ListPort<DestinationRoomPort> ListDestinationRoomVariable(ListPort<DestinationRoomPort> Port0)
+        public static ListPort<DestinationRoomPort> ListDestinationRoomVariable(ListPort<DestinationRoomPort> Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "List<Destination Room> Variable", Type = "fff164aa-d775-4d67-a6b0-d1396cb74161", InputCount = 2};
@@ -5612,6 +5621,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ListPort<DestinationRoomPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -5645,7 +5655,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static ListPort<FloatPort> ListFloatVariable(ListPort<FloatPort> Port0)
+        public static ListPort<FloatPort> ListFloatVariable(ListPort<FloatPort> Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "List<float> Variable", Type = "9bcd36e6-c293-432a-8d90-f6391fe06c62", InputCount = 2};
@@ -5653,6 +5663,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ListPort<FloatPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -5716,7 +5727,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static ListPort<IntPort> ListIntVariable(ListPort<IntPort> Port0)
+        public static ListPort<IntPort> ListIntVariable(ListPort<IntPort> Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "List<int> Variable", Type = "fe2f9c12-d213-4234-a387-9d2ec1ad7fc1", InputCount = 2};
@@ -5724,6 +5735,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ListPort<IntPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -5807,7 +5819,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static ListPort<ObjectiveMarkerPort> ListObjectiveMarkerVariable(ListPort<ObjectiveMarkerPort> Port0)
+        public static ListPort<ObjectiveMarkerPort> ListObjectiveMarkerVariable(ListPort<ObjectiveMarkerPort> Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "List<Objective Marker> Variable", Type = "2aa2fe68-18bf-4f63-9ed9-2fc237b60df9", InputCount = 2};
@@ -5815,10 +5827,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ListPort<ObjectiveMarkerPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
-        public static ListPort<PlayerPort> ListPlayerVariable(ListPort<PlayerPort> Port0)
+        public static ListPort<PlayerPort> ListPlayerVariable(ListPort<PlayerPort> Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "List<Player> Variable", Type = "32837e14-12de-465f-89dc-ceddb64cdd6c", InputCount = 2};
@@ -5826,10 +5839,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ListPort<PlayerPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
-        public static ListPort<QuaternionPort> ListQuaternionVariable(ListPort<QuaternionPort> Port0)
+        public static ListPort<QuaternionPort> ListQuaternionVariable(ListPort<QuaternionPort> Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "List<Quaternion> Variable", Type = "e8cfde19-33a4-4826-a032-4b9bd50aa171", InputCount = 2};
@@ -5837,10 +5851,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ListPort<QuaternionPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
-        public static ListPort<RecRoomObjectPort> ListRecRoomObjectVariable(ListPort<RecRoomObjectPort> Port0)
+        public static ListPort<RecRoomObjectPort> ListRecRoomObjectVariable(ListPort<RecRoomObjectPort> Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "List<Rec Room Object> Variable", Type = "536e376c-087d-4909-9412-3fcee5d6f52b", InputCount = 2};
@@ -5848,6 +5863,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -5899,7 +5915,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static ListPort<RewardPort> ListRewardVariable(ListPort<RewardPort> Port0)
+        public static ListPort<RewardPort> ListRewardVariable(ListPort<RewardPort> Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "List<Reward> Variable", Type = "40a49ce8-a734-4e3e-bb59-00a4698a942e", InputCount = 2};
@@ -5907,6 +5923,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ListPort<RewardPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -5967,7 +5984,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static ListPort<StringPort> ListStringVariable(ListPort<StringPort> Port0)
+        public static ListPort<StringPort> ListStringVariable(ListPort<StringPort> Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "List<string> Variable", Type = "94fb596f-6b3f-4981-bc2d-1bb693c45ae6", InputCount = 2};
@@ -5975,6 +5992,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ListPort<StringPort>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -6038,7 +6056,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static ListPort<Vector3Port> ListVector3Variable(ListPort<Vector3Port> Port0)
+        public static ListPort<Vector3Port> ListVector3Variable(ListPort<Vector3Port> Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "List<Vector3> Variable", Type = "35f84cfc-b10e-451e-832e-c6ad8d99685d", InputCount = 2};
@@ -6046,6 +6064,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new ListPort<Vector3Port>{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -7751,7 +7770,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static PlayerPort PlayerVariable(PlayerPort Port0)
+        public static PlayerPort PlayerVariable(PlayerPort Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "Player Variable", Type = "ea61960b-3a53-426e-b87c-f0e94dd2c3da", InputCount = 2};
@@ -7759,10 +7778,11 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
-        public static PlayerPort PlayerVariableDeprecated(PlayerPort Port0)
+        public static PlayerPort PlayerVariableDeprecated(PlayerPort Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "Player Variable", Type = "1094590a-ca33-4ca0-8e6b-66d784f4b5d7", InputCount = 2};
@@ -7770,6 +7790,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -8221,7 +8242,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static QuaternionPort QuaternionVariable(QuaternionPort Port0)
+        public static QuaternionPort QuaternionVariable(QuaternionPort Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "Quaternion Variable", Type = "18a980ff-9a46-472c-b658-96bf42eb61c2", InputCount = 2};
@@ -8229,6 +8250,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -8384,7 +8406,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static RecRoomObjectPort RecRoomObjectVariable(RecRoomObjectPort Port0)
+        public static RecRoomObjectPort RecRoomObjectVariable(RecRoomObjectPort Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "Rec Room Object Variable", Type = "7077d139-9876-495e-9756-58150fef9f3b", InputCount = 2};
@@ -8392,6 +8414,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new RecRoomObjectPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -10053,7 +10076,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static StringPort StringVariable(StringPort Port0)
+        public static StringPort StringVariable(StringPort Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "string Variable", Type = "66b6ea20-9a00-4f80-9636-2cfb676b3965", InputCount = 2};
@@ -10061,6 +10084,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new StringPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
@@ -10959,7 +10983,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static Vector3Port Vector3Variable(Vector3Port Port0)
+        public static Vector3Port Vector3Variable(Vector3Port Port0, VariableData config)
         {
             Node node = new Node()
             {Name = "Vector3 Variable", Type = "fba2accf-44e2-412d-a204-ae3bd04f7dfa", InputCount = 2};
@@ -10967,6 +10991,7 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 1});
             var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            node.VariableData = config;
             return output_ports;
         }
 
