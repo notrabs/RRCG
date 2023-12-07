@@ -62,7 +62,8 @@ namespace Packages.RRCG.Editor.Projects
             var options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp9);
             var sourceSyntaxTrees = readFiles.Select(text => CSharpSyntaxTree.ParseText(text, options));
 
-            var sourceCompilation = CSharpCompilation.Create("RRCG.SemanticModel", sourceSyntaxTrees, RoslynFrontend.GetLoadedReferences());
+            var sourceCompilation = CSharpCompilation.Create("RRCG.SemanticModel")
+                .WithReferences(RoslynFrontend.GetLoadedReferences());
 
             var buildSyntaxNodes = sourceSyntaxTrees.Select((sourceTree) => RoslynFrontend.RewriteRRCGSource(sourceTree, sourceCompilation));
 
