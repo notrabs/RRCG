@@ -50,7 +50,7 @@ namespace RRCG
 
         public static async Task<Context> GetBuilt(RRCGCircuit rrcgMeta)
         {
-            if (rrcgMeta.Assembly != null) return GetBuilt(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
+            if (!string.IsNullOrEmpty(rrcgMeta.Assembly)) return GetBuilt(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
 
             var assemblyName = await RoslynProjectCompiler.CompileAndLoadProject(rrcgMeta.Project);
 
