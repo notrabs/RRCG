@@ -20,6 +20,8 @@ What if you never had to move a wire by hand? RRCG brings text-based scripting s
 
 ## Install
 
+RRCG comes as a Unity package to be installed in your [Rec Room Studio](https://docs.alexagirl.studio/docs) project.
+
 [Using the Package Manager](https://docs.unity3d.com/Manual/upm-ui-giturl.html) install a package from this Git URL: 
 `https://github.com/notrabs/RRCG.git`
 
