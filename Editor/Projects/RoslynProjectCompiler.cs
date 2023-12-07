@@ -53,28 +53,51 @@ namespace RRCG.Projects
             var stepTimer = new ProfilingTimer();
 
             var projectDirectory = StandaloneProjectManager.GetProjectPath(projectName);
-            var projectFiles = Directory.GetFiles(projectDirectory).Where(file => file.EndsWith(".rrcg.cs")).ToArray();
+            var projectFiles = Directory.GetFiles(projectDirectory, "*.rrcg.cs", SearchOption.AllDirectories);
 
-            var readFiles = await Task.WhenAll(projectFiles.Select(file => File.ReadAllTextAsync(file)).ToArray());
-
-            var options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp9);
-            var sourceSyntaxTrees = readFiles.Select(text => CSharpSyntaxTree.ParseText(text, options));
-
-            var sourceCompilation = CSharpCompilation.Create("RRCG.SemanticModel")
-                .WithReferences(RoslynFrontend.GetLoadedReferences());
-
-            var buildSyntaxNodes = sourceSyntaxTrees.Select((sourceTree) => RoslynFrontend.RewriteRRCGSource(sourceTree, sourceCompilation));
-
-            foreach (var (i, buildSyntaxNode) in buildSyntaxNodes.Select((value, i) => (i, value)))
+            // Assume that if a .gen file is newer, that it is cached properly.
+            // Would be nicer with some kind of hashing, but this allows you to tinker with .gen files too.
+            var cachedSourceFiles = projectFiles.Where(sourceFile =>
             {
-                string generatedCode = buildSyntaxNode.NormalizeWhitespace().ToString();
-                var debugOutputPath = projectFiles[i].Replace(".rrcg.cs", ".rrcg.gen.cs");
-                _ = File.WriteAllTextAsync(debugOutputPath, generatedCode);
-            }
+                var generatedFile = sourceFile.Replace(".rrcg.cs", ".rrcg.gen.cs");
+                return File.Exists(generatedFile) && File.GetLastWriteTime(generatedFile) > File.GetLastWriteTime(sourceFile);
+            });
+            var filesToCompile = projectFiles.Except(cachedSourceFiles).ToArray();
 
-            Debug.Log($"Compiled Source Files in {stepTimer.StartNew()}");
+            // Read all text data
+            var cachedFilesText = await Task.WhenAll(cachedSourceFiles.Select(file => File.ReadAllTextAsync(file.Replace(".rrcg.cs", ".rrcg.gen.cs"))).ToArray());
+            var filesToCompileText = await Task.WhenAll(filesToCompile.Select(file => File.ReadAllTextAsync(file)).ToArray());
 
-            return buildSyntaxNodes.Select((node, i) => node.SyntaxTree.WithFilePath(Path.GetFileName(projectFiles[i].Replace(".rrcg.cs", ".rrcg.gen.cs"))));
+            // Parse the scripts
+            var options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp9);
+            var cachedSyntaxTrees = cachedFilesText.Select(text => CSharpSyntaxTree.ParseText(text, options)).ToArray();
+            var sourceSyntaxTrees = filesToCompileText.Select(text => CSharpSyntaxTree.ParseText(text, options)).ToArray();
+
+            // Prepare the semantic model
+            var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary);
+            var sourceCompilation = CSharpCompilation.Create(
+                "RRCG.SemanticModel",
+                // Add at least an empty syntax tree, so the Compilation gets the CSharp9 version. 
+                // This seems to be the only way to configure it
+                new SyntaxTree[] { CSharpSyntaxTree.ParseText("", options) },
+                RoslynFrontend.GetLoadedReferences(),
+                compilationOptions
+            );
+
+            // Rewrite the Syntax Nodes
+            var buildSyntaxNodes = sourceSyntaxTrees.Select((sourceTree) => RoslynFrontend.RewriteRRCGSource(sourceTree, sourceCompilation).NormalizeWhitespace()).ToArray();
+            var buildCodeTexts = buildSyntaxNodes.Select((node) => node.ToString()).ToArray();
+            var buildCodePaths = buildSyntaxNodes.Select((node, index) => filesToCompile[index].Replace(".rrcg.cs", ".rrcg.gen.cs")).ToArray();
+
+            // The cache files can be written async, since they are not read again
+            foreach (var (i, buildCodeText) in buildCodeTexts.Select((value, i) => (i, value))) _ = File.WriteAllTextAsync(buildCodePaths[i], buildCodeText);
+
+            // Reparse All Scripts, because rewriting does not preserve the language version
+            var buildSyntaxTrees = buildCodeTexts.Select((text, i) => CSharpSyntaxTree.ParseText(text, options, path: buildCodePaths[i])).ToArray();
+
+            Debug.Log($"Compiled Source Files in {stepTimer.StartNew()} ({cachedSyntaxTrees.Count()}/{cachedSyntaxTrees.Count() + sourceSyntaxTrees.Count()} cached)");
+
+            return cachedSyntaxTrees.Concat(buildSyntaxTrees);
         }
 
         static int assemblyCounter = 0;
