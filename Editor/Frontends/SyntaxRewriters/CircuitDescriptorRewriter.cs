@@ -324,7 +324,11 @@ namespace RRCG
             foreach (var resolvedType in resolvedTypeArgs)
             {
                 // Ensure the type resolved correctly
-                if (resolvedType.ToString() == "?") return visitedNode;
+                if (resolvedType.ToString() == "?")
+                {
+                    Debug.LogWarning($"Failed to resolve type assignments for generic invocation expression: {node}");
+                    return visitedNode;
+                }
 
                 // Rewrite & store the type
                 var typeSyntax = resolvedType.ToTypeSyntax();
@@ -657,6 +661,9 @@ namespace RRCG
                             )
                         )
                     );
+            } else
+            {
+                Debug.LogWarning($"Failed to determine result type for variable declarator expression: {node}");
             }
 
             return node.WithInitializer(
