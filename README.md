@@ -64,6 +64,26 @@ You can get started with this [example file](https://github.com/notrabs/RRCG/blo
 </details>
 
 <details>
+<summary> Standalone Projects </summary>
+
+RRCG offers an advanced standalone compiler to speed up your iteration cycles. It bypasses Unity's dreadingly slow Assembly Reload, without sacrificing any major benefits that come from being integrated into Unity. The main difference in development is where the script files are located. Instead of in the `Assets` folder, your circuit scripts are placed inside an `RRCG` folder in the project root. The Syntax and your access to Unity data stays the same.
+
+Technically this is achieved by dynamically compiling and loading each iteration of your code. This works for RRCG (and not regular Unity Editor code), because RRCG code contains no side-effects beyond the compilation process.
+
+The main limitation for now is that there is no mechanism yet for dependencies between standalone projects, but you can still reference any assembly compiled within your regular Assets. So the compromise is for now is that shared RRCG code needs to stay in the slow Unity compiler.
+
+To get started using standalone project:
+1. Open the Inspector for you `RRCG` prefab
+2. Select the "Standalone Project" option
+3. Create a new project (or select an existing one)
+4. Wait for the initial compilation
+5. Select a Descriptor from the project (the project generates with a standard one)
+
+After that, you can build circuits like with the integrated workflow, just without waiting. Subsequent builds within a session should also see additional speed ups thanks to caching mechanisms.
+
+</details>
+
+<details>
 <summary> Watch Mode </summary>
 
 With watch mode on all `.rrcg.cs` files in your project are compiled automatically when Unity imports them. This also happens every time you make a change to a script file. There's no downside to leaving it watch mode on, but the option to disable it is there if you want to disable automatic compilation during development.
