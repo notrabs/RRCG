@@ -137,6 +137,63 @@ public class ExampleLibrary : CircuitLibrary
 
 </details>
 
+<details>
+<summary> Additional Entry Points </summary>
+
+A room is usually made up of multiple graphs. 
+You can create separate graphs within a function by using exec chips with no exec inputs, or the `StartNewGraph()` method. 
+But for code organization it is often nicer to have them as separate methods. 
+Use the `[CircuitGraph]` attribute to mark functions in your CircuitDescriptor as additional entry points. 
+Note that they must be parameterless functions to work.
+
+```c#
+public class ExampleRoom : CircuitDescriptor
+{
+    public override void CircuitGraph()
+    {
+        // Your 1st graph goes here
+
+        EventReceiver(); // implicitly creates a new graph, because receivers have no exec input.
+
+        // Your 2nd graph goes here
+
+        StartNewGraph(); // explicitly creates a new graph.
+
+        // Your 3rd graph goes here
+    }
+
+    [CircuitGraph]
+    void Foo()
+    {
+        // Your 4th graph goes here
+    }
+}
+```
+
+Sometimes you need an exec chip, without connecting it to your exisiting execution flow. 
+You could place it in a separate graph and reference to it with variables, but that quickly gets very verbose.
+Instead use the `InlineGraph()` helper to create new graphs without destryoing your current context.
+
+```c#
+public class ExampleRoom : CircuitDescriptor
+{
+    EventDefinition<string> onInput = new EventDefinition<string>();
+
+    public override void CircuitGraph()
+    {
+        ChipLib.Log("Start");
+
+        // Placing a receiver would normally create a new graph. This only extracts its data.
+        var input = InlineGraph(() => onInput.Receiver());
+
+        // This log chip will be connected to the previous log chip, but get the data from the event receiver.
+        ChipLib.Log(input);
+    }
+}
+```
+
+</details>
+
 ### Placing Chips
 
 Chips are available as static functions in the `Chips` class. For convenience you can access them through the extended `CircuitDescriptor` class.
