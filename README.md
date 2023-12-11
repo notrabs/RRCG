@@ -650,8 +650,8 @@ The CV2 type can be obtained by appending "Port" to the original type name:
 * `Player` => `PlayerPort`
 * ...
 
-These Port classes are still fairly clever and will remain as "data" ports as long as possible.
-For example doing arithmetic on `FloatPorts` only containing static data can be added together without creating an Add chip.
+These Port classes are still fairly clever as they implement a lot of the logic that you already know from the source-realm.
+For example doing arithmetic on `FloatPorts` will still only create math chips as needed.
 Only once the Port is an actual port that belongs to a chip a connection will be made when it is used.
 
 ```c#
