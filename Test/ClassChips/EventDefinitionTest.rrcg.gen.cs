@@ -20,14 +20,14 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
-            var params0 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("params0", () => new EventDefinition());
+            RRCGBuild.EventDefinition params0 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("params0", () => new EventDefinition(), (rrcg_setter_value) => params0 = rrcg_setter_value);
             params0.Receiver();
             params0.SendLocal();
-            var params1 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition<IntPort>>("params1", () => new EventDefinition<IntPort>("param0"));
-            var params1Value = __VariableDeclaratorExpression<IntPort>("params1Value", () => params1.Receiver());
+            RRCGBuild.EventDefinition<IntPort> params1 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition<IntPort>>("params1", () => new EventDefinition<IntPort>("param0"), (rrcg_setter_value) => params1 = rrcg_setter_value);
+            IntPort params1Value = __VariableDeclaratorExpression<IntPort>("params1Value", () => params1.Receiver(), (rrcg_setter_value) => params1Value = rrcg_setter_value);
             params1.SendLocal(params1Value);
-            var params2 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition<StringPort, BoolPort>>("params2", () => new EventDefinition<StringPort, BoolPort>("param0", "param1"));
-            var params2Value = __VariableDeclaratorExpression<(StringPort, BoolPort)>("params2Value", () => params2.Receiver());
+            RRCGBuild.EventDefinition<StringPort, BoolPort> params2 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition<StringPort, BoolPort>>("params2", () => new EventDefinition<StringPort, BoolPort>("param0", "param1"), (rrcg_setter_value) => params2 = rrcg_setter_value);
+            (StringPort, BoolPort) params2Value = __VariableDeclaratorExpression<(StringPort, BoolPort)>("params2Value", () => params2.Receiver(), (rrcg_setter_value) => params2Value = rrcg_setter_value);
             params2.SendLocal(params2Value.Item1, params2Value.Item2);
             __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
@@ -37,7 +37,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
-            var params0 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("params0", () => new EventDefinition());
+            RRCGBuild.EventDefinition params0 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("params0", () => new EventDefinition(), (rrcg_setter_value) => params0 = rrcg_setter_value);
             params0.Receiver();
             params0.SendLocal();
             params0.SendOthers();
@@ -54,14 +54,14 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
-            var params0 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("params0", () => ExistingEvent("Existing0"));
+            RRCGBuild.EventDefinition params0 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("params0", () => ExistingEvent("Existing0"), (rrcg_setter_value) => params0 = rrcg_setter_value);
             params0.Receiver();
             params0.SendLocal();
-            var params1 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition<IntPort>>("params1", () => ExistingEvent<IntPort>("Existing1"));
-            var params1Value = __VariableDeclaratorExpression<IntPort>("params1Value", () => params1.Receiver());
+            RRCGBuild.EventDefinition<IntPort> params1 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition<IntPort>>("params1", () => ExistingEvent<IntPort>("Existing1"), (rrcg_setter_value) => params1 = rrcg_setter_value);
+            IntPort params1Value = __VariableDeclaratorExpression<IntPort>("params1Value", () => params1.Receiver(), (rrcg_setter_value) => params1Value = rrcg_setter_value);
             params1.SendLocal(params1Value);
-            var params2 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition<IntPort, StringPort>>("params2", () => ExistingEvent<IntPort, StringPort>("Existing2"));
-            var params2Value = __VariableDeclaratorExpression<(IntPort, StringPort)>("params2Value", () => params2.Receiver());
+            RRCGBuild.EventDefinition<IntPort, StringPort> params2 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition<IntPort, StringPort>>("params2", () => ExistingEvent<IntPort, StringPort>("Existing2"), (rrcg_setter_value) => params2 = rrcg_setter_value);
+            (IntPort, StringPort) params2Value = __VariableDeclaratorExpression<(IntPort, StringPort)>("params2Value", () => params2.Receiver(), (rrcg_setter_value) => params2Value = rrcg_setter_value);
             params2.SendLocal(params2Value.Item1, params2Value.Item2);
             __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);

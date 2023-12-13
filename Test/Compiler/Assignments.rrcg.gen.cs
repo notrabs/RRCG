@@ -21,14 +21,13 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
-            // Test var assignments
-            var methodValueAssignment = __VariableDeclaratorExpression<IntPort>("methodValueAssignment", () => 3);
-            var mehtodTypeAssignment = __VariableDeclaratorExpression<TypeTest>("mehtodTypeAssignment", () => new TypeTest());
-            var mehtodNestedTypeAssignment = __VariableDeclaratorExpression<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignment", () => new TypeTest.NestedTypeTest());
-            var outOfScopeType = __VariableDeclaratorExpression<FloatPort>("outOfScopeType", () => Mathf.Sqrt(4));
-            Vector3Port vec3 = __VariableDeclaratorExpression<Vector3Port>("vec3", () => new Vector3Port());
-            Vector3Port fullyQualifiedVec3 = __VariableDeclaratorExpression<Vector3Port>("fullyQualifiedVec3", () => new Vector3Port());
-            ListPort<IntPort> test = __VariableDeclaratorExpression<ListPort<IntPort>>("test", () => ListCreate<IntPort>(1));
+            IntPort methodValueAssignment = __VariableDeclaratorExpression<IntPort>("methodValueAssignment", () => 3, (rrcg_setter_value) => methodValueAssignment = rrcg_setter_value);
+            TypeTest mehtodTypeAssignment = __VariableDeclaratorExpression<TypeTest>("mehtodTypeAssignment", () => new TypeTest(), (rrcg_setter_value) => mehtodTypeAssignment = rrcg_setter_value);
+            TypeTest.NestedTypeTest mehtodNestedTypeAssignment = __VariableDeclaratorExpression<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignment", () => new TypeTest.NestedTypeTest(), (rrcg_setter_value) => mehtodNestedTypeAssignment = rrcg_setter_value);
+            FloatPort outOfScopeType = __VariableDeclaratorExpression<FloatPort>("outOfScopeType", () => Mathf.Sqrt(4), (rrcg_setter_value) => outOfScopeType = rrcg_setter_value);
+            Vector3Port vec3 = __VariableDeclaratorExpression<Vector3Port>("vec3", () => new Vector3Port(), (rrcg_setter_value) => vec3 = rrcg_setter_value);
+            Vector3Port fullyQualifiedVec3 = __VariableDeclaratorExpression<Vector3Port>("fullyQualifiedVec3", () => new Vector3Port(), (rrcg_setter_value) => fullyQualifiedVec3 = rrcg_setter_value);
+            ListPort<IntPort> test = __VariableDeclaratorExpression<ListPort<IntPort>>("test", () => ListCreate<IntPort>(1), (rrcg_setter_value) => test = rrcg_setter_value);
             __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }

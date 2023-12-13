@@ -159,5 +159,26 @@ namespace RRCG
         {
             return node.WithoutLeadingTrivia().WithoutTrailingTrivia();
         }
+
+        public static ITypeSymbol GetResolvedType(this ISymbol symbolInfo)
+        {
+            ITypeSymbol resolvedType = null;
+
+            switch (symbolInfo.Kind)
+            {
+                case SymbolKind.Field:
+                    resolvedType = ((IFieldSymbol)symbolInfo).Type;
+                    break;
+                case SymbolKind.Local:
+                    resolvedType = ((ILocalSymbol)symbolInfo).Type;
+                    break;
+            }
+
+            // Using null check for short-circuit
+            if (resolvedType == null || resolvedType.ToString() == "?")
+                return null;
+
+            return resolvedType;
+        }
     }
 }

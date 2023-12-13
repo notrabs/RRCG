@@ -523,9 +523,7 @@ namespace RRCGBuild
             
             // Note to self: maybe this can be solved by creating setter methods when we call __VariableDeclaratorExpression.
             // Then we can store them in the AccessibilityScope, and it allows us to do the trickery described above in a more elegant
-            // and obvious way. The problem is we can't just add a parameter to __VariableDeclaratorExpression, because it will use an
-            // undeclared variable. This means we'll probably have to rework variable declarations for this, doing the C# declaration first,
-            // immediately followed by "our" declaration.
+            // and obvious way.
 
             var assignedValue = value();
 
@@ -741,8 +739,10 @@ namespace RRCGBuild
             return Concat(stringPorts.ToArray());
         }
 
-        public static T __VariableDeclaratorExpression<T>(string identifer, Func<T> valueFn)
+        public static T __VariableDeclaratorExpression<T>(string identifer, Func<T> valueFn, Action<T> setter=null)
         {
+            // TODO: Store the setter along with the identifier in the current AccessibilityScope if necessary
+            //       Also, once we make move field initialization into constructors, we should make setter non-optional.
             SemanticStack.current.Push(new SemanticStack.NamedAssignmentScope { Identifier = identifer });
             var value = valueFn();
             SemanticStack.current.Pop();

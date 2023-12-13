@@ -10,9 +10,9 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
-            var a = __VariableDeclaratorExpression<IntPort>("a", () => RandomInt(1, 10));
+            IntPort a = __VariableDeclaratorExpression<IntPort>("a", () => RandomInt(1, 10), (rrcg_setter_value) => a = rrcg_setter_value);
             CircuitBoard(ContentsExec);
-            var b = __VariableDeclaratorExpression<IntPort>("b", () => CircuitBoard<IntPort, IntPort>(ContentsMixed, a));
+            IntPort b = __VariableDeclaratorExpression<IntPort>("b", () => CircuitBoard<IntPort, IntPort>(ContentsMixed, a), (rrcg_setter_value) => b = rrcg_setter_value);
             ChipLib.Log(b);
             var(c, d) = CircuitBoard<IntPort, IntPort, (IntPort namedValue, IntPort)>(ContentsData, b, b);
             ChipLib.Log(c);

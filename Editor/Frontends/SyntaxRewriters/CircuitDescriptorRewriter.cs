@@ -629,6 +629,31 @@ namespace RRCG
         // Assignments
         // 
 
+        public override SyntaxNode VisitVariableDeclaration(VariableDeclarationSyntax node)
+        {
+            var visited = (VariableDeclarationSyntax)base.VisitVariableDeclaration(node);
+
+            // Rewrite "var" into correct type (if possible)
+            if (!node.Type.IsVar)
+                return visited;
+
+            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
+            var symbolInfo = semanticModel.GetDeclaredSymbol(node.Variables[0]); // TODO: Assuming at least one variable. Is this safe?
+            var resolvedType = symbolInfo.GetResolvedType();
+
+            if (resolvedType == null)
+            {
+                Debug.LogWarning($"Failed to resolve type for var-typed variable declaration: {node}");
+                return visited;
+            }
+
+            var type = ParseTypeName(resolvedType.ToString());
+            var rewrittenType = (TypeSyntax)Visit(type);
+            var result = visited.WithType(rewrittenType);
+            return result;
+
+        }
+
         public override SyntaxNode VisitVariableDeclarator(VariableDeclaratorSyntax node)
         {
             if (node.Initializer is not EqualsValueClauseSyntax equalsValueClause)
@@ -642,22 +667,12 @@ namespace RRCG
             var symbolInfo = semanticModel.GetDeclaredSymbol(node);
 
             // Try to grab the type from the symbol
-            ITypeSymbol resolvedType = null;
-
-            switch (symbolInfo.Kind)
-            {
-                case SymbolKind.Field:
-                    resolvedType = ((IFieldSymbol)symbolInfo).Type;
-                    break;
-                case SymbolKind.Local:
-                    resolvedType = ((ILocalSymbol)symbolInfo).Type;
-                    break;
-            }
+            var resolvedType = symbolInfo.GetResolvedType();
 
             // If we found it (and correctly resolved it),
             // parse & rewrite the type, then write it as
             // the type assignment for invocation.
-            if (resolvedType != null && resolvedType.ToString() != "?")
+            if (resolvedType != null)
             {
                 // Not sure if this is the best way to get the syntax node for a type. Some types get over-qualified, but at least they work.
                 var type = ParseTypeName(resolvedType.ToString());
@@ -676,13 +691,35 @@ namespace RRCG
                 Debug.LogWarning($"Failed to determine result type for variable declarator expression: {node}");
             }
 
+            // TODO: We need to move field initializers into their static/instance constructors,
+            //       because the setter can't reference the field from within the initializer unless it's static.
+            //       We can probably do this as a final pass in VisitClassDeclarationRoot.
+            //       Once we do this, we can make the setter argument always exist.
+
+            var argumentList = SyntaxUtils.ArgumentList(
+                                   SyntaxUtils.StringLiteral(node.Identifier.ToString()),
+                                   ParenthesizedLambdaExpression((ExpressionSyntax)base.Visit(equalsValueClause.Value))
+                               );
+
+            if (node.FirstAncestorOrSelf<FieldDeclarationSyntax>((_) => true) == null)
+                argumentList = argumentList.AddArguments(
+                    Argument(
+                        ParenthesizedLambdaExpression()
+                            .WithParameterList(
+                                ParameterList(
+                                    SingletonSeparatedList<ParameterSyntax>(
+                                        Parameter(
+                                            Identifier("rrcg_setter_value")))))
+                            .WithExpressionBody(
+                                AssignmentExpression(
+                                    SyntaxKind.SimpleAssignmentExpression,
+                                    IdentifierName(node.Identifier.ToString()),
+                                    IdentifierName("rrcg_setter_value")))));
+
             return node.WithInitializer(
                 equalsValueClause.WithValue(
                     InvocationExpression(invocationName)
-                    .WithArgumentList(SyntaxUtils.ArgumentList(
-                        SyntaxUtils.StringLiteral(node.Identifier.ToString()),
-                        ParenthesizedLambdaExpression((ExpressionSyntax)base.Visit(equalsValueClause.Value))
-                    ))
+                    .WithArgumentList(argumentList)
                 )
             );
         }
