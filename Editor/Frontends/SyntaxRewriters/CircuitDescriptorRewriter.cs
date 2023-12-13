@@ -689,26 +689,52 @@ namespace RRCG
 
         public override SyntaxNode VisitAssignmentExpression(AssignmentExpressionSyntax node)
         {
-            //var info = SemanticModel.GetSymbolInfo(node);
-            //Debug.Log(info);
+            var visited = (AssignmentExpressionSyntax)base.VisitAssignmentExpression(node);
 
-            //// Check if the left-hand side of the assignment is an identifier (variable).
-            //if (node.Left is IdentifierNameSyntax identifier)
-            //{
+            // Check if the left-hand side of the assignment is an identifier (variable).
+            if (visited.Left is not IdentifierNameSyntax identifier)
+                return visited;
 
+            // Remove comments from the identifier
+            identifier = identifier.StripTrivia();
 
-            //    //// Find the declaration of the identifier in the syntax tree.
-            //    //var symbol = SemanticModel.GetSymbolInfo(identifier).Symbol as ILocalSymbol;
+            // Expand +=, -=, etc
+            ExpressionSyntax valueExpression = visited.Right.StripTrivia();
+            if (SyntaxUtils.AssignmentExpressionToBinaryExpression.TryGetValue(visited.Kind(), out var binaryKind))
+                valueExpression = BinaryExpression(binaryKind, identifier, valueExpression);
 
-            //    //if (symbol != null)
-            //    //{
-            //    //    // Calculate the scope level difference.
-            //    //    int scopeLevelDifference = CalculateScopeLevelDifference(node, symbol);
-            //    //    Console.WriteLine($"Scope level difference for variable '{symbol.Name}': {scopeLevelDifference}");
-            //    //}
-            //}
+            return InvocationExpression(
+                    IdentifierName("__Assign"))
+                .WithArgumentList(
+                    ArgumentList(
+                        SeparatedList<ArgumentSyntax>(
+                            new SyntaxNodeOrToken[]{
+                                Argument(SyntaxUtils.StringLiteral(identifier.ToString())),
+                                Token(SyntaxKind.CommaToken),
+                                Argument(identifier)
+                                .WithRefOrOutKeyword(
+                                    Token(SyntaxKind.OutKeyword)),
+                                Token(SyntaxKind.CommaToken),
+                                Argument(
+                                    ParenthesizedLambdaExpression()
+                                    .WithExpressionBody(
+                                        valueExpression))})))
+                .WithLeadingTrivia(visited.GetLeadingTrivia())
+                .WithTrailingTrivia(visited.GetTrailingTrivia())
+                .NormalizeWhitespace();
+        }
 
-            return base.VisitAssignmentExpression(node);
+        public override SyntaxNode VisitPostfixUnaryExpression(PostfixUnaryExpressionSyntax node)
+        {
+            // Maybe a __PreIncrement / __PostIncrement pair of methods that take a sign bool?
+            // i++ -> __PostIncrement(out i, true)
+            // --i -> __PreIncrement(out i, false);
+            return base.VisitPostfixUnaryExpression(node);
+        }
+
+        public override SyntaxNode VisitPrefixUnaryExpression(PrefixUnaryExpressionSyntax node)
+        {
+            return base.VisitPrefixUnaryExpression(node);
         }
 
         // 

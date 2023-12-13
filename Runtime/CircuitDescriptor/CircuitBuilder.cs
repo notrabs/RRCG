@@ -514,9 +514,14 @@ namespace RRCGBuild
             returnData = expression;
         }
 
-        public T __Assign<T>(out T variable, T value)
+        public T __Assign<T>(string identifierName, out T variable, Func<T> value)
         {
-            var assignedValue = value;
+            // By taking a Func<T> instead of the value directly, we can change the value of the variable before evaluating the expression.
+            // This could be handy in some circumstances. I thought of some clever tricks we could do for If statements, only writing to the
+            // variable node at the end of the branch, but realized this falls apart if the value is read in a branch before it's assigned.
+            // Still, there could be potential for useful trickery here?
+
+            var assignedValue = value();
 
             // TODO: If a variable is assigned out of a conditional context, it should either be replaced by a ifvalue/switch or be promoted to a proper Variable
 

@@ -13,6 +13,22 @@ namespace RRCG
 {
     public static class SyntaxUtils
     {
+        // Used for rewriting assignments into __Assign calls,
+        // helps turn add/subtract/etc assignments (+=, -=, /=) into standard binary expressions.
+        public static Dictionary<SyntaxKind, SyntaxKind> AssignmentExpressionToBinaryExpression = new()
+        {
+            { SyntaxKind.AddAssignmentExpression, SyntaxKind.AddExpression },
+            { SyntaxKind.AndAssignmentExpression, SyntaxKind.BitwiseAndExpression }, // why do we have logical/bitwise "and" kinds if the assignment uses the same for both anyway?
+            { SyntaxKind.CoalesceAssignmentExpression, SyntaxKind.CoalesceExpression },
+            { SyntaxKind.DivideAssignmentExpression,  SyntaxKind.DivideExpression },
+            { SyntaxKind.ExclusiveOrAssignmentExpression, SyntaxKind.ExclusiveOrExpression },
+            { SyntaxKind.LeftShiftAssignmentExpression, SyntaxKind.LeftShiftExpression },
+            { SyntaxKind.ModuloAssignmentExpression, SyntaxKind.ModuloExpression },
+            { SyntaxKind.MultiplyAssignmentExpression, SyntaxKind.MultiplyExpression },
+            { SyntaxKind.OrAssignmentExpression, SyntaxKind.BitwiseOrExpression }, // Same as above, funny enough I haven't been able to get Roslyn Quoter to generate code w/ logical variants.
+            { SyntaxKind.RightShiftAssignmentExpression, SyntaxKind.RightShiftExpression },
+            { SyntaxKind.SubtractAssignmentExpression, SyntaxKind.SubtractExpression }
+        };
 
         public static ExpressionSyntax StringLiteral(string value)
         {
@@ -137,6 +153,11 @@ namespace RRCG
                 throw new Exception("Type symbol did not resolve correctly!");
 
             return SyntaxFactory.ParseTypeName(str);
+        }
+
+        public static T StripTrivia<T>(this T node) where T : SyntaxNode
+        {
+            return node.WithoutLeadingTrivia().WithoutTrailingTrivia();
         }
     }
 }
