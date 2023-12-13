@@ -520,6 +520,12 @@ namespace RRCGBuild
             // This could be handy in some circumstances. I thought of some clever tricks we could do for If statements, only writing to the
             // variable node at the end of the branch, but realized this falls apart if the value is read in a branch before it's assigned.
             // Still, there could be potential for useful trickery here?
+            
+            // Note to self: maybe this can be solved by creating setter methods when we call __VariableDeclaratorExpression.
+            // Then we can store them in the AccessibilityScope, and it allows us to do the trickery described above in a more elegant
+            // and obvious way. The problem is we can't just add a parameter to __VariableDeclaratorExpression, because it will use an
+            // undeclared variable. This means we'll probably have to rework variable declarations for this, doing the C# declaration first,
+            // immediately followed by "our" declaration.
 
             var assignedValue = value();
 
