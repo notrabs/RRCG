@@ -520,7 +520,7 @@ namespace RRCGBuild
             // This could be handy in some circumstances. I thought of some clever tricks we could do for If statements, only writing to the
             // variable node at the end of the branch, but realized this falls apart if the value is read in a branch before it's assigned.
             // Still, there could be potential for useful trickery here?
-            
+
             // Note to self: maybe this can be solved by creating setter methods when we call __VariableDeclaratorExpression.
             // Then we can store them in the AccessibilityScope, and it allows us to do the trickery described above in a more elegant
             // and obvious way.
@@ -739,13 +739,20 @@ namespace RRCGBuild
             return Concat(stringPorts.ToArray());
         }
 
-        public static T __VariableDeclaratorExpression<T>(string identifer, Func<T> valueFn, Action<T> setter=null)
+        public static T __VariableDeclaratorExpression<T>(string identifier, Func<T>? initializer, Action<T>? setter)
         {
-            // TODO: Store the setter along with the identifier in the current AccessibilityScope if necessary
-            //       Also, once we make move field initialization into constructors, we should make setter non-optional.
-            SemanticStack.current.Push(new SemanticStack.NamedAssignmentScope { Identifier = identifer });
-            var value = valueFn();
-            SemanticStack.current.Pop();
+            // TODO: Store the setter along with the identifier in the current AccessibilityScope if necessary.
+            //       If the need arises to set the value of readonly variables, we can probably enforce it
+            //       in __Assign, take note of it here, and rewrite the variables to be mutable.
+            //       (maybe even enforcement might not be necessary if it's a compile-time error anyway)
+            T value = default;
+
+            if (initializer != null)
+            {
+                SemanticStack.current.Push(new SemanticStack.NamedAssignmentScope { Identifier = identifier });
+                value = initializer();
+                SemanticStack.current.Pop();
+            }
 
             return value;
         }

@@ -9,27 +9,38 @@ namespace RRCGBuild
 
     public class AssignmentsTest : CircuitBuilder
     {
-        IntPort methodValueAssignment = __VariableDeclaratorExpression<IntPort>("methodValueAssignment", () => 3);
-        TypeTest mehtodTypeAssignment = __VariableDeclaratorExpression<TypeTest>("mehtodTypeAssignment", () => new TypeTest());
-        TypeTest mehtodTypeAssignmentAnonymous = __VariableDeclaratorExpression<TypeTest>("mehtodTypeAssignmentAnonymous", () => new());
-        TypeTest.NestedTypeTest mehtodNestedTypeAssignment = __VariableDeclaratorExpression<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignment", () => new TypeTest.NestedTypeTest());
-        TypeTest.NestedTypeTest mehtodNestedTypeAssignmentAnonymous = __VariableDeclaratorExpression<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignmentAnonymous", () => new());
-        FloatPort outOfScopeType = __VariableDeclaratorExpression<FloatPort>("outOfScopeType", () => Mathf.Sqrt(4));
+        IntPort methodValueAssignment;
+        TypeTest mehtodTypeAssignment;
+        TypeTest mehtodTypeAssignmentAnonymous;
+        TypeTest.NestedTypeTest mehtodNestedTypeAssignment;
+        TypeTest.NestedTypeTest mehtodNestedTypeAssignmentAnonymous;
+        FloatPort outOfScopeType;
         // Test interface assignments
-        IVariable<IntPort> variableAssignment = __VariableDeclaratorExpression<RRCGBuild.IVariable<IntPort>>("variableAssignment", () => new Variable<IntPort>());
+        IVariable<IntPort> variableAssignment;
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
-            IntPort methodValueAssignment = __VariableDeclaratorExpression<IntPort>("methodValueAssignment", () => 3, (rrcg_setter_value) => methodValueAssignment = rrcg_setter_value);
-            TypeTest mehtodTypeAssignment = __VariableDeclaratorExpression<TypeTest>("mehtodTypeAssignment", () => new TypeTest(), (rrcg_setter_value) => mehtodTypeAssignment = rrcg_setter_value);
-            TypeTest.NestedTypeTest mehtodNestedTypeAssignment = __VariableDeclaratorExpression<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignment", () => new TypeTest.NestedTypeTest(), (rrcg_setter_value) => mehtodNestedTypeAssignment = rrcg_setter_value);
-            FloatPort outOfScopeType = __VariableDeclaratorExpression<FloatPort>("outOfScopeType", () => Mathf.Sqrt(4), (rrcg_setter_value) => outOfScopeType = rrcg_setter_value);
-            Vector3Port vec3 = __VariableDeclaratorExpression<Vector3Port>("vec3", () => new Vector3Port(), (rrcg_setter_value) => vec3 = rrcg_setter_value);
-            Vector3Port fullyQualifiedVec3 = __VariableDeclaratorExpression<Vector3Port>("fullyQualifiedVec3", () => new Vector3Port(), (rrcg_setter_value) => fullyQualifiedVec3 = rrcg_setter_value);
-            ListPort<IntPort> test = __VariableDeclaratorExpression<ListPort<IntPort>>("test", () => ListCreate<IntPort>(1), (rrcg_setter_value) => test = rrcg_setter_value);
+            IntPort methodValueAssignment = __VariableDeclaratorExpression<IntPort>("methodValueAssignment", () => 3, (_RRCG_SETTER_VALUE) => methodValueAssignment = _RRCG_SETTER_VALUE);
+            TypeTest mehtodTypeAssignment = __VariableDeclaratorExpression<TypeTest>("mehtodTypeAssignment", () => new TypeTest(), (_RRCG_SETTER_VALUE) => mehtodTypeAssignment = _RRCG_SETTER_VALUE);
+            TypeTest.NestedTypeTest mehtodNestedTypeAssignment = __VariableDeclaratorExpression<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignment", () => new TypeTest.NestedTypeTest(), (_RRCG_SETTER_VALUE) => mehtodNestedTypeAssignment = _RRCG_SETTER_VALUE);
+            FloatPort outOfScopeType = __VariableDeclaratorExpression<FloatPort>("outOfScopeType", () => Mathf.Sqrt(4), (_RRCG_SETTER_VALUE) => outOfScopeType = _RRCG_SETTER_VALUE);
+            Vector3Port vec3 = __VariableDeclaratorExpression<Vector3Port>("vec3", () => new Vector3Port(), (_RRCG_SETTER_VALUE) => vec3 = _RRCG_SETTER_VALUE);
+            Vector3Port fullyQualifiedVec3 = __VariableDeclaratorExpression<Vector3Port>("fullyQualifiedVec3", () => new Vector3Port(), (_RRCG_SETTER_VALUE) => fullyQualifiedVec3 = _RRCG_SETTER_VALUE);
+            ListPort<IntPort> test = __VariableDeclaratorExpression<ListPort<IntPort>>("test", () => ListCreate<IntPort>(1), (_RRCG_SETTER_VALUE) => test = _RRCG_SETTER_VALUE);
             __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        public AssignmentsTest()
+        {
+            methodValueAssignment = __VariableDeclaratorExpression<IntPort>("methodValueAssignment", () => 3, (_RRCG_SETTER_VALUE) => methodValueAssignment = _RRCG_SETTER_VALUE);
+            mehtodTypeAssignment = __VariableDeclaratorExpression<TypeTest>("mehtodTypeAssignment", () => new TypeTest(), (_RRCG_SETTER_VALUE) => mehtodTypeAssignment = _RRCG_SETTER_VALUE);
+            mehtodTypeAssignmentAnonymous = __VariableDeclaratorExpression<TypeTest>("mehtodTypeAssignmentAnonymous", () => new(), (_RRCG_SETTER_VALUE) => mehtodTypeAssignmentAnonymous = _RRCG_SETTER_VALUE);
+            mehtodNestedTypeAssignment = __VariableDeclaratorExpression<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignment", () => new TypeTest.NestedTypeTest(), (_RRCG_SETTER_VALUE) => mehtodNestedTypeAssignment = _RRCG_SETTER_VALUE);
+            mehtodNestedTypeAssignmentAnonymous = __VariableDeclaratorExpression<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignmentAnonymous", () => new(), (_RRCG_SETTER_VALUE) => mehtodNestedTypeAssignmentAnonymous = _RRCG_SETTER_VALUE);
+            outOfScopeType = __VariableDeclaratorExpression<FloatPort>("outOfScopeType", () => Mathf.Sqrt(4), (_RRCG_SETTER_VALUE) => outOfScopeType = _RRCG_SETTER_VALUE);
+            variableAssignment = __VariableDeclaratorExpression<IVariable<IntPort>>("variableAssignment", () => new Variable<IntPort>(), (_RRCG_SETTER_VALUE) => variableAssignment = _RRCG_SETTER_VALUE);
         }
     }
 

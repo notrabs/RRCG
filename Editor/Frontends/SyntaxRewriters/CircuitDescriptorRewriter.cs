@@ -1,12 +1,9 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.CSharp;
-using RRCG;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using UnityEngine;
 
@@ -27,7 +24,140 @@ namespace RRCG
 
         public SyntaxNode VisitClassDeclarationRoot(ClassDeclarationSyntax node)
         {
-            return base.VisitClassDeclaration(node);
+            var visited = (ClassDeclarationSyntax)base.VisitClassDeclaration(node);
+            var fieldDeclarations = visited.Members.Where(node => node.Kind() == SyntaxKind.FieldDeclaration).Cast<FieldDeclarationSyntax>().ToArray();
+
+            if (fieldDeclarations.Length <= 0)
+                return visited;
+
+            // Remove field initializers from declarations
+            visited = visited.ReplaceNodes(fieldDeclarations, (fieldDecl, _) =>
+            {
+                var variables = new SeparatedSyntaxList<VariableDeclaratorSyntax>();
+                foreach (var varDecl in fieldDecl.Declaration.Variables)
+                    variables = variables.Add(varDecl.WithInitializer(null));
+
+                return fieldDecl.WithDeclaration(fieldDecl.Declaration.WithVariables(variables)).NormalizeWhitespace();
+            });
+
+            // Create methods to initialize static/instance fields.
+            var staticFields = CreateFieldInitializers(fieldDeclarations.Where(d => d.Modifiers.Any(SyntaxKind.StaticKeyword)));
+            var instanceFields = CreateFieldInitializers(fieldDeclarations.Where(d => !d.Modifiers.Any(SyntaxKind.StaticKeyword)));
+
+            if (staticFields.Count > 0)
+            {
+                // Insert field initializers into static constructor
+                // Find existing static constructor
+                var staticConstructor = visited.Members.Where(node => node.Kind() == SyntaxKind.ConstructorDeclaration)
+                    .Cast<ConstructorDeclarationSyntax>()
+                    .Where(node => node.Modifiers.Any(SyntaxKind.StaticKeyword))
+                    .FirstOrDefault();
+
+                // If we found an existing static constructor,
+                // insert field initializers at the start
+                if (staticConstructor != default)
+                {
+                    var statements = staticConstructor.Body?.Statements ?? new SyntaxList<StatementSyntax>();
+                    statements = statements.InsertRange(0, staticFields);
+                    visited = visited.ReplaceNode(staticConstructor, staticConstructor.WithBody(Block(statements)).NormalizeWhitespace());
+                } else
+                {
+                    // Otherwise we create a new one
+                    visited = visited.AddMembers(ConstructorDeclaration(visited.Identifier)
+                        .WithModifiers(TokenList(Token(SyntaxKind.StaticKeyword)))
+                        .WithBody(Block(staticFields))
+                        .NormalizeWhitespace());
+                }
+            }
+
+            if (instanceFields.Count > 0)
+            {
+                // Insert initializers into instance constructor(s)
+                // Find existing instance constructors
+                var instanceConstructors = visited.Members.Where(node => node.Kind() == SyntaxKind.ConstructorDeclaration)
+                    .Cast<ConstructorDeclarationSyntax>()
+                    .Where(node => !node.Modifiers.Any(SyntaxKind.StaticKeyword))
+                    .ToArray();
+
+                // If we found existing instance constructors,
+                // insert the initializers at the beginning of each.
+                if (instanceConstructors.Length > 0)
+                {
+                    visited = visited.ReplaceNodes(instanceConstructors, (constructor, _) =>
+                    {
+                        var statements = constructor.Body?.Statements ?? new SyntaxList<StatementSyntax>();
+                        statements = statements.InsertRange(0, instanceFields);
+                        return constructor.WithBody(Block(statements)).NormalizeWhitespace();
+                    });
+                }
+                else
+                {
+                    // If we didn't find any constructors, insert a parameterless public constructor
+                    // (C# would normally do this anyway)
+                    visited = visited.AddMembers(ConstructorDeclaration(visited.Identifier)
+                        .WithModifiers(TokenList(Token(SyntaxKind.PublicKeyword)))
+                        .WithBody(Block(instanceFields))
+                        .NormalizeWhitespace());
+                }
+            }
+
+            return visited;
+        }
+
+        SyntaxList<StatementSyntax> CreateFieldInitializers(IEnumerable<FieldDeclarationSyntax> fieldDeclarations)
+        {
+            var statements = new SyntaxList<StatementSyntax>();
+            
+            // Create statements to "rrcg-declare" & initialize the fields
+            // by writing call to __VariableDeclaratorExpression
+            // TODO: Maybe we can extract the duplicate code into another method.
+            //       Like CreateVariableDeclaratorExpression(identifierName, resolvedType) maybe?
+            foreach (var fieldDecl in fieldDeclarations)
+            {
+                foreach (var varDecl in fieldDecl.Declaration.Variables)
+                {
+                    var name = varDecl.Identifier.ToString();
+                    bool cantHaveSetter = fieldDecl.Modifiers.Any(m => m.Kind() == SyntaxKind.ReadOnlyKeyword ||
+                                                                       m.Kind() == SyntaxKind.ConstKeyword);
+
+                    ExpressionSyntax setter = cantHaveSetter ? LiteralExpression(SyntaxKind.NullLiteralExpression)
+                                                             : ParenthesizedLambdaExpression()
+                                                               .WithParameterList(
+                                                                   ParameterList(
+                                                                       SingletonSeparatedList<ParameterSyntax>(
+                                                                           Parameter(
+                                                                               Identifier("_RRCG_SETTER_VALUE")))))
+                                                               .WithExpressionBody(
+                                                                   AssignmentExpression(
+                                                                       SyntaxKind.SimpleAssignmentExpression,
+                                                                       IdentifierName(name),
+                                                                       IdentifierName("_RRCG_SETTER_VALUE")));
+
+                    ExpressionSyntax initializer = varDecl.Initializer != null ? ParenthesizedLambdaExpression(varDecl.Initializer.Value)
+                                                                               : LiteralExpression(SyntaxKind.NullLiteralExpression);
+
+                    statements = statements.Add(
+                        ExpressionStatement(
+                            AssignmentExpression(
+                                SyntaxKind.SimpleAssignmentExpression,
+                                IdentifierName(name),
+                                InvocationExpression(
+                                    GenericName(Identifier("__VariableDeclaratorExpression"))
+                                    .WithTypeArgumentList(
+                                        TypeArgumentList(SingletonSeparatedList(fieldDecl.Declaration.Type.StripTrivia()))))
+                                .WithArgumentList(
+                                    ArgumentList(
+                                        SeparatedList<ArgumentSyntax>(
+                                            new SyntaxNodeOrToken[]{
+                                                Argument(SyntaxUtils.StringLiteral(name)),
+                                                Token(SyntaxKind.CommaToken),
+                                                Argument(initializer),
+                                                Token(SyntaxKind.CommaToken),
+                                                Argument(setter)}))))));
+                }
+            }
+
+            return statements;
         }
 
         public override SyntaxNode VisitClassDeclaration(ClassDeclarationSyntax node)
@@ -656,72 +786,66 @@ namespace RRCG
 
         public override SyntaxNode VisitVariableDeclarator(VariableDeclaratorSyntax node)
         {
-            if (node.Initializer is not EqualsValueClauseSyntax equalsValueClause)
+            // Ensure declaration is not within a field declaration
+            // (we process these seperately in VisitClassDeclarationRoot)
+            if (node.FirstAncestorOrSelf<FieldDeclarationSyntax>((_) => true) != null)
                 return base.VisitVariableDeclarator(node);
 
             SimpleNameSyntax invocationName = IdentifierName("__VariableDeclaratorExpression");
 
             // Attempt to resolve build-realm type for the declaration.
             // Write it as the generic parameter for the call to __VariableDeclaratorExpression
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-            var symbolInfo = semanticModel.GetDeclaredSymbol(node);
-
-            // Try to grab the type from the symbol
-            var resolvedType = symbolInfo.GetResolvedType();
-
-            // If we found it (and correctly resolved it),
-            // parse & rewrite the type, then write it as
-            // the type assignment for invocation.
-            if (resolvedType != null)
+            if (node.Initializer is EqualsValueClauseSyntax initializer)
             {
-                // Not sure if this is the best way to get the syntax node for a type. Some types get over-qualified, but at least they work.
-                var type = ParseTypeName(resolvedType.ToString());
-                var rewrittenType = (TypeSyntax)Visit(type);
+                var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
+                var symbolInfo = semanticModel.GetDeclaredSymbol(node);
 
-                invocationName = GenericName("__VariableDeclaratorExpression").
-                    WithTypeArgumentList(
-                        TypeArgumentList(
-                            SingletonSeparatedList<TypeSyntax>(
-                                rewrittenType
+                // Try to grab the type from the symbol
+                var resolvedType = symbolInfo.GetResolvedType();
+
+                // If we found it (and correctly resolved it),
+                // parse & rewrite the type, then write it as
+                // the type assignment for invocation.
+                if (resolvedType != null)
+                {
+                    // Not sure if this is the best way to get the syntax node for a type. Some types get over-qualified, but at least they work.
+                    var type = ParseTypeName(resolvedType.ToString());
+                    var rewrittenType = (TypeSyntax)Visit(type);
+
+                    invocationName = GenericName("__VariableDeclaratorExpression")
+                        .WithTypeArgumentList(
+                            TypeArgumentList(
+                                SingletonSeparatedList<TypeSyntax>(
+                                    rewrittenType
+                                )
                             )
-                        )
-                    );
-            } else
-            {
-                Debug.LogWarning($"Failed to determine result type for variable declarator expression: {node}");
+                        );
+                }
+                else
+                {
+                    Debug.LogWarning($"Failed to determine result type for variable declarator expression: {node}");
+                }
             }
 
-            // TODO: We need to move field initializers into their static/instance constructors,
-            //       because the setter can't reference the field from within the initializer unless it's static.
-            //       We can probably do this as a final pass in VisitClassDeclarationRoot.
-            //       Once we do this, we can make the setter argument always exist.
-
-            var argumentList = SyntaxUtils.ArgumentList(
-                                   SyntaxUtils.StringLiteral(node.Identifier.ToString()),
-                                   ParenthesizedLambdaExpression((ExpressionSyntax)base.Visit(equalsValueClause.Value))
-                               );
-
-            if (node.FirstAncestorOrSelf<FieldDeclarationSyntax>((_) => true) == null)
-                argumentList = argumentList.AddArguments(
-                    Argument(
-                        ParenthesizedLambdaExpression()
-                            .WithParameterList(
-                                ParameterList(
-                                    SingletonSeparatedList<ParameterSyntax>(
-                                        Parameter(
-                                            Identifier("rrcg_setter_value")))))
-                            .WithExpressionBody(
-                                AssignmentExpression(
-                                    SyntaxKind.SimpleAssignmentExpression,
-                                    IdentifierName(node.Identifier.ToString()),
-                                    IdentifierName("rrcg_setter_value")))));
-
+            var name = node.Identifier.ToString();
             return node.WithInitializer(
-                equalsValueClause.WithValue(
+                EqualsValueClause(
                     InvocationExpression(invocationName)
-                    .WithArgumentList(argumentList)
-                )
-            );
+                    .WithArgumentList(SyntaxUtils.ArgumentList(
+                                   SyntaxUtils.StringLiteral(name),
+                                   node.Initializer != null ? ParenthesizedLambdaExpression((ExpressionSyntax)base.Visit(node.Initializer.Value))
+                                                            : LiteralExpression(SyntaxKind.NullLiteralExpression),
+                                    ParenthesizedLambdaExpression()
+                                        .WithParameterList(
+                                            ParameterList(
+                                                SingletonSeparatedList<ParameterSyntax>(
+                                                    Parameter(
+                                                        Identifier("_RRCG_SETTER_VALUE")))))
+                                        .WithExpressionBody(
+                                            AssignmentExpression(
+                                                SyntaxKind.SimpleAssignmentExpression,
+                                                IdentifierName(name),
+                                                IdentifierName("_RRCG_SETTER_VALUE")))))));
         }
 
         public override SyntaxNode VisitAssignmentExpression(AssignmentExpressionSyntax node)
