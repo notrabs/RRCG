@@ -249,7 +249,9 @@ namespace RRCGBuild
                     if (declaredVariable == null) throw new Exception($"Could not find declared variable with identifier \"{identifier}\"");
                     if (promotedVariable == null) throw new Exception($"Could not find promoted variable with identifier \"{identifier}\"");
 
-                    // TODO: Don't set the RR variable value if we don't need to. But how best to detect this?
+                    // Do we need to set the value here?
+                    if (kvp.Value.ContainsKey(identifier) && ((AnyPort)kvp.Value[identifier]).EquivalentTo(promotedVariable.RRVariableValue))
+                        continue;
 
                     dynamic value = kvp.Value.ContainsKey(identifier) ? kvp.Value[identifier] : promotedVariable.ValueBeforePromotion;
                     promotedVariable.RRVariableValue = value;
@@ -261,6 +263,11 @@ namespace RRCGBuild
 
             if (!SemanticStack.current.Pop().Equals(context))
                 throw new Exception("Expected ConditionalContext at the top of the SemanticStack!");
+
+            // If we have a parenting conditional context, merge promotions into it
+            var parentConditional = SemanticStack.current.GetNextScopeWithType<SemanticStack.ConditionalContext>();
+            if (parentConditional != null)
+                parentConditional.Value!.MergePromotionsFrom(context);
         }
     }
 }
