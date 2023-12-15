@@ -36,8 +36,10 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
             new EventDefinition("WhileTest").Receiver();
-            ListPort<StringPort> list = __VariableDeclaratorExpression<ListPort<StringPort>>("list", () => ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"), (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
-            ListPort<StringPort> listCache = __VariableDeclaratorExpression<ListPort<StringPort>>("listCache", () => ChipLib.EventCache<ListPort<StringPort>>(list), (_RRCG_SETTER_VALUE) => listCache = _RRCG_SETTER_VALUE);
+                ListPort<StringPort> list = default !;
+                list = __VariableDeclaratorExpression<ListPort<StringPort>>("list", () => ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"), () => list, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
+                ListPort<StringPort> listCache = default !;
+                listCache = __VariableDeclaratorExpression<ListPort<StringPort>>("listCache", () => ChipLib.EventCache<ListPort<StringPort>>(list), () => listCache, (_RRCG_SETTER_VALUE) => listCache = _RRCG_SETTER_VALUE);
             __While(ChipBuilder.GreaterThan(listCache.Count, 0), delegate
             {
                 __BeginAccessibilityScope(true);
@@ -59,7 +61,8 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
-            RRCGBuild.EventDefinition entry = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("entry", () => new EventDefinition("WhileReturnTest"), (_RRCG_SETTER_VALUE) => entry = _RRCG_SETTER_VALUE);
+                RRCGBuild.EventDefinition entry = default !;
+                entry = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("entry", () => new EventDefinition("WhileReturnTest"), () => entry, (_RRCG_SETTER_VALUE) => entry = _RRCG_SETTER_VALUE);
             entry.Receiver();
             // Test returns from while block within an "inline" graph (functions are transparent)
             ChipLib.Log(Concat("Repeated string (inline graph): ", StringRepeat("Hello", 5)));
@@ -94,7 +97,8 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
             __BeginAccessibilityScope(false);
-            RRCGBuild.Variable<StringPort> strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
+                RRCGBuild.Variable<StringPort> strStaging = default !;
+                strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
             __While(true, delegate
             {
                 __BeginAccessibilityScope(true);
@@ -127,7 +131,8 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
             new EventDefinition("UnreachableNodesTest").Receiver();
-            RRCGBuild.Variable<IntPort> index = __VariableDeclaratorExpression<RRCGBuild.Variable<IntPort>>("index", () => new Variable<IntPort>(), (_RRCG_SETTER_VALUE) => index = _RRCG_SETTER_VALUE);
+                RRCGBuild.Variable<IntPort> index = default !;
+                index = __VariableDeclaratorExpression<RRCGBuild.Variable<IntPort>>("index", () => new Variable<IntPort>(), () => index, (_RRCG_SETTER_VALUE) => index = _RRCG_SETTER_VALUE);
             index.Value = 0;
             __While(ChipBuilder.LessThan(index.Value, 100), delegate
             {
@@ -291,7 +296,8 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
             __BeginAccessibilityScope(false);
-            RRCGBuild.Variable<StringPort> strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
+                RRCGBuild.Variable<StringPort> strStaging = default !;
+                strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
             __DoWhile(true, delegate
             {
                 __BeginAccessibilityScope(true);

@@ -110,50 +110,21 @@ namespace RRCG
             
             // Create statements to "rrcg-declare" & initialize the fields
             // by writing call to __VariableDeclaratorExpression
-            // TODO: Maybe we can extract the duplicate code into another method.
-            //       Like CreateVariableDeclaratorExpression(identifierName, resolvedType) maybe?
             foreach (var fieldDecl in fieldDeclarations)
             {
                 foreach (var varDecl in fieldDecl.Declaration.Variables)
                 {
                     var name = varDecl.Identifier.ToString();
+                    var initializer = varDecl.Initializer != null ? varDecl.Initializer.Value : null;
                     bool cantHaveSetter = fieldDecl.Modifiers.Any(m => m.Kind() == SyntaxKind.ReadOnlyKeyword ||
                                                                        m.Kind() == SyntaxKind.ConstKeyword);
 
-                    ExpressionSyntax setter = cantHaveSetter ? LiteralExpression(SyntaxKind.NullLiteralExpression)
-                                                             : ParenthesizedLambdaExpression()
-                                                               .WithParameterList(
-                                                                   ParameterList(
-                                                                       SingletonSeparatedList<ParameterSyntax>(
-                                                                           Parameter(
-                                                                               Identifier("_RRCG_SETTER_VALUE")))))
-                                                               .WithExpressionBody(
-                                                                   AssignmentExpression(
-                                                                       SyntaxKind.SimpleAssignmentExpression,
-                                                                       IdentifierName(name),
-                                                                       IdentifierName("_RRCG_SETTER_VALUE")));
-
-                    ExpressionSyntax initializer = varDecl.Initializer != null ? ParenthesizedLambdaExpression(varDecl.Initializer.Value)
-                                                                               : LiteralExpression(SyntaxKind.NullLiteralExpression);
-
                     statements = statements.Add(
-                        ExpressionStatement(
-                            AssignmentExpression(
-                                SyntaxKind.SimpleAssignmentExpression,
-                                IdentifierName(name),
-                                InvocationExpression(
-                                    GenericName(Identifier("__VariableDeclaratorExpression"))
-                                    .WithTypeArgumentList(
-                                        TypeArgumentList(SingletonSeparatedList(fieldDecl.Declaration.Type.StripTrivia()))))
-                                .WithArgumentList(
-                                    ArgumentList(
-                                        SeparatedList<ArgumentSyntax>(
-                                            new SyntaxNodeOrToken[]{
-                                                Argument(SyntaxUtils.StringLiteral(name)),
-                                                Token(SyntaxKind.CommaToken),
-                                                Argument(initializer),
-                                                Token(SyntaxKind.CommaToken),
-                                                Argument(setter)}))))));
+                         ExpressionStatement(
+                             AssignmentExpression(
+                                 SyntaxKind.SimpleAssignmentExpression,
+                                 IdentifierName(name),
+                                 VariableDeclaratorExpressionInvocation(name, initializer, fieldDecl.Declaration.Type.StripTrivia(), !cantHaveSetter))));
                 }
             }
 
@@ -758,7 +729,6 @@ namespace RRCG
         // 
         // Assignments
         // 
-
         public override SyntaxNode VisitVariableDeclaration(VariableDeclarationSyntax node)
         {
             var visited = (VariableDeclarationSyntax)base.VisitVariableDeclaration(node);
@@ -784,6 +754,53 @@ namespace RRCG
 
         }
 
+        public override SyntaxNode VisitLocalDeclarationStatement(LocalDeclarationStatementSyntax node)
+        {
+            var visited = (LocalDeclarationStatementSyntax)base.VisitLocalDeclarationStatement(node);
+
+            // Split declaration from initialization
+            // so the getter method in __VariableDeclarationExpression works
+            if (visited.Declaration.Variables.All(v => v.Initializer == null))
+                return visited;
+
+            var statements = new SyntaxList<StatementSyntax>();
+            visited = visited.ReplaceNodes(visited.Declaration.Variables.Where(v => v.Initializer != null), (node, _) =>
+            {
+                // Create initialization statement
+                // (the __VariableDeclaratorExpression call would be written
+                //  further down, by VisitVariableDeclarator itself)
+                var identifier = node.Identifier.ToString();
+                statements = statements.Add(
+                    ExpressionStatement(
+                        AssignmentExpression(
+                            SyntaxKind.SimpleAssignmentExpression,
+                            IdentifierName(identifier),
+                            node.Initializer.Value)));
+
+                // And assign "default!" to the variable as its initializer so
+                // the compiler is happy with the getter method.
+                // (the correct value will be initialized pretty much immediately, of course)
+                return node.WithInitializer(EqualsValueClause(
+                                                PostfixUnaryExpression(
+                                                    SyntaxKind.SuppressNullableWarningExpression,
+                                                    LiteralExpression(
+                                                        SyntaxKind.DefaultLiteralExpression,
+                                                        Token(SyntaxKind.DefaultKeyword))))).NormalizeWhitespace();
+            });
+
+            // Insert new declaration into the start of statements
+            statements = statements.Insert(0, visited);
+
+            // We need to rewrite one statement into multiple, so we'll do the block w/ missing braces trick.
+            // This is safe because the syntax tree is re-parsed. If that changes this will break!
+            // (note: the same trick is done with label declarations)
+
+            return Block(statements)
+                   .WithOpenBraceToken(MissingToken(SyntaxKind.OpenBraceToken))
+                   .WithCloseBraceToken(MissingToken(SyntaxKind.CloseBraceToken))
+                   .NormalizeWhitespace();
+        }
+
         public override SyntaxNode VisitVariableDeclarator(VariableDeclaratorSyntax node)
         {
             // Ensure declaration is not within a field declaration
@@ -791,10 +808,9 @@ namespace RRCG
             if (node.FirstAncestorOrSelf<FieldDeclarationSyntax>((_) => true) != null)
                 return base.VisitVariableDeclarator(node);
 
-            SimpleNameSyntax invocationName = IdentifierName("__VariableDeclaratorExpression");
-
             // Attempt to resolve build-realm type for the declaration.
             // Write it as the generic parameter for the call to __VariableDeclaratorExpression
+            TypeSyntax? finalType = null;
             if (node.Initializer is EqualsValueClauseSyntax initializer)
             {
                 var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
@@ -810,16 +826,7 @@ namespace RRCG
                 {
                     // Not sure if this is the best way to get the syntax node for a type. Some types get over-qualified, but at least they work.
                     var type = ParseTypeName(resolvedType.ToString());
-                    var rewrittenType = (TypeSyntax)Visit(type);
-
-                    invocationName = GenericName("__VariableDeclaratorExpression")
-                        .WithTypeArgumentList(
-                            TypeArgumentList(
-                                SingletonSeparatedList<TypeSyntax>(
-                                    rewrittenType
-                                )
-                            )
-                        );
+                    finalType = (TypeSyntax)Visit(type);
                 }
                 else
                 {
@@ -828,24 +835,8 @@ namespace RRCG
             }
 
             var name = node.Identifier.ToString();
-            return node.WithInitializer(
-                EqualsValueClause(
-                    InvocationExpression(invocationName)
-                    .WithArgumentList(SyntaxUtils.ArgumentList(
-                                   SyntaxUtils.StringLiteral(name),
-                                   node.Initializer != null ? ParenthesizedLambdaExpression((ExpressionSyntax)base.Visit(node.Initializer.Value))
-                                                            : LiteralExpression(SyntaxKind.NullLiteralExpression),
-                                    ParenthesizedLambdaExpression()
-                                        .WithParameterList(
-                                            ParameterList(
-                                                SingletonSeparatedList<ParameterSyntax>(
-                                                    Parameter(
-                                                        Identifier("_RRCG_SETTER_VALUE")))))
-                                        .WithExpressionBody(
-                                            AssignmentExpression(
-                                                SyntaxKind.SimpleAssignmentExpression,
-                                                IdentifierName(name),
-                                                IdentifierName("_RRCG_SETTER_VALUE")))))));
+            var initializerArg = node.Initializer != null ? (ExpressionSyntax)base.Visit(node.Initializer.Value) : null;
+            return node.WithInitializer(EqualsValueClause(VariableDeclaratorExpressionInvocation(name, initializerArg, finalType, true)));
         }
 
         public override SyntaxNode VisitAssignmentExpression(AssignmentExpressionSyntax node)
@@ -1239,6 +1230,45 @@ namespace RRCG
         public AnonymousMethodExpressionSyntax ExecDelegate()
         {
             return SyntaxFactory.AnonymousMethodExpression();
+        }
+
+        public InvocationExpressionSyntax VariableDeclaratorExpressionInvocation(string identifierName, ExpressionSyntax? initializer, TypeSyntax? resolvedType, bool hasSetter)
+        {
+
+            ExpressionSyntax initializerArg = initializer != null ? ParenthesizedLambdaExpression(initializer) : LiteralExpression(SyntaxKind.NullLiteralExpression);
+            SimpleNameSyntax invocationName = resolvedType == null ? IdentifierName(identifierName)
+                                                                   : GenericName(Identifier("__VariableDeclaratorExpression"))
+                                                                         .WithTypeArgumentList(
+                                                                             TypeArgumentList(SingletonSeparatedList(resolvedType)));
+            ExpressionSyntax setterArg = !hasSetter ? LiteralExpression(SyntaxKind.NullLiteralExpression)
+                                                    : ParenthesizedLambdaExpression()
+                                                    .WithParameterList(
+                                                        ParameterList(
+                                                            SingletonSeparatedList<ParameterSyntax>(
+                                                                Parameter(
+                                                                    Identifier("_RRCG_SETTER_VALUE")))))
+                                                    .WithExpressionBody(
+                                                        AssignmentExpression(
+                                                            SyntaxKind.SimpleAssignmentExpression,
+                                                            IdentifierName(identifierName),
+                                                            IdentifierName("_RRCG_SETTER_VALUE")));
+
+            return InvocationExpression(invocationName)
+                   .WithArgumentList(
+                       ArgumentList(
+                           SeparatedList<ArgumentSyntax>(
+                               new SyntaxNodeOrToken[]{
+                                   Argument(SyntaxUtils.StringLiteral(identifierName)),
+                                   Token(SyntaxKind.CommaToken),
+                                   Argument(initializerArg),
+                                   Token(SyntaxKind.CommaToken),
+                                   Argument(
+                                       ParenthesizedLambdaExpression()
+                                           .WithExpressionBody(
+                                               IdentifierName(identifierName))),
+                                   Token(SyntaxKind.CommaToken),
+                                   Argument(setterArg)})))
+                   .NormalizeWhitespace();
         }
     }
 }

@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -739,7 +740,7 @@ namespace RRCGBuild
             return Concat(stringPorts.ToArray());
         }
 
-        public static T __VariableDeclaratorExpression<T>(string identifier, Func<T>? initializer, Action<T>? setter)
+        public static T __VariableDeclaratorExpression<T>(string identifier, Func<T>? initializer, Func<T>? getter, Action<T>? setter)
         {
             // TODO: Store the setter along with the identifier in the current AccessibilityScope if necessary.
             //       If the need arises to set the value of readonly variables, we can probably enforce it
@@ -861,3 +862,4 @@ namespace RRCGBuild
         }
     }
 }
+#nullable disable
