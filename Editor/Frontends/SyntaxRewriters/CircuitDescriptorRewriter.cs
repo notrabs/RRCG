@@ -909,11 +909,7 @@ namespace RRCG
                 falseBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(falseStatement), true);
 
             return SyntaxFactory.ExpressionStatement(
-                SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.MemberAccessExpression(
-                        SyntaxKind.SimpleMemberAccessExpression,
-                        SyntaxFactory.IdentifierName("ChipBuilder"),
-                        SyntaxFactory.IdentifierName("If")))
+                SyntaxFactory.InvocationExpression(IdentifierName("__If"))
                 .WithArgumentList(
                     SyntaxUtils.ArgumentList(
                         test,

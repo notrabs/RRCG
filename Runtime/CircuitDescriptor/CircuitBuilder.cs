@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using IPromotedVariable = RRCGBuild.SemanticStack.ConditionalContext.IPromotedVariable;
 
 namespace RRCGBuild
 {
@@ -515,22 +516,57 @@ namespace RRCGBuild
             returnData = expression;
         }
 
-        public T __Assign<T>(string identifierName, out T variable, Func<T> value)
+        public T __Assign<T>(string identifier, out T variable, Func<T> value)
         {
-            // By taking a Func<T> instead of the value directly, we can change the value of the variable before evaluating the expression.
-            // This could be handy in some circumstances. I thought of some clever tricks we could do for If statements, only writing to the
-            // variable node at the end of the branch, but realized this falls apart if the value is read in a branch before it's assigned.
-            // Still, there could be potential for useful trickery here?
+            // First, Is the variable able to be promoted to a Rec Room variable?
+            // (is T derived from AnyPort?)
+            if (!typeof(AnyPort).IsAssignableFrom(typeof(T))) goto assignment;
 
-            // Note to self: maybe this can be solved by creating setter methods when we call __VariableDeclaratorExpression.
-            // Then we can store them in the AccessibilityScope, and it allows us to do the trickery described above in a more elegant
-            // and obvious way.
+            // Okay, are we within an accessibility scope?
+            var accessScope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
+            if (accessScope == null) goto assignment;
 
+            // And we're in a conditional context?
+            var conditionalContext = SemanticStack.current.GetNextScopeWithType<SemanticStack.ConditionalContext>();
+            if (conditionalContext == null) goto assignment;
+
+            // Is there an accessible declared variable with the identifier?
+            var declaredVariable = SemanticStackUtils.GetDeclaredVariable(identifier, out var declScope);
+            if (declaredVariable == null) goto assignment;
+
+            // What's the difference in scope level from the current accessScope to declScope?
+            // Is the variable declared in a parent accessibility scope?
+            int scopeLevelDifference = SemanticStackUtils.ScopeLevelDifference(accessScope, declScope);
+            if (scopeLevelDifference >= 0) goto assignment;
+
+            // Is the variable marked as promoted within the current conditional context?
+            var promotedVariables = conditionalContext.Value.PromotedVariables;
+            if (promotedVariables.ContainsKey(identifier)) goto assignment;
+
+            // Is it promoted in a parenting conditional context?
+            var promotedVariable = SemanticStackUtils.GetPromotedVariable(identifier);
+            if (promotedVariable != null)
+            {
+                // Create a new one that shares the same RR variable.
+                promotedVariable = promotedVariable.NewWithSameRRVariable(declaredVariable.Value.Getter());
+            } else
+            {
+                // We'll need to create one then. Reflection magic!
+                var type = typeof(SemanticStack.ConditionalContext.PromotedVariable<>).MakeGenericType(typeof(T));
+                promotedVariable = (IPromotedVariable)Activator.CreateInstance(type, new object[] { declaredVariable.Value.Getter(), null });
+            }
+
+            // Should the initial assignment reference the RR variable value pin?
+            if (conditionalContext.Value.InitialAssignmentsReferenceRRVariable && declaredVariable.Value.Setter != null)
+                declaredVariable.Value.Setter(promotedVariable.RRVariableValue);
+
+            // Finally, add to the conditional context.
+            conditionalContext.Value.PromotedVariables[identifier] = promotedVariable;
+
+        assignment: // i mean, it's probably better than nesting all those
             var assignedValue = value();
-
-            // TODO: If a variable is assigned out of a conditional context, it should either be replaced by a ifvalue/switch or be promoted to a proper Variable
-
             variable = assignedValue;
+
             return assignedValue;
         }
 
@@ -747,7 +783,7 @@ namespace RRCGBuild
             if (scope is SemanticStack.AccessibilityScope accessScope)
             {
                 // Is there already a variable with the identifier?
-                if (SemanticStackUtils.GetDeclaredVariable(identifier) != null)
+                if (SemanticStackUtils.GetDeclaredVariable(identifier, out _) != null)
                     throw new Exception($"Attempt to declare variable with identifier \"{identifier}\", but there " +
                         "was another variable with the same identifier in the current or a parent accessibility scope.");
 
@@ -870,6 +906,60 @@ namespace RRCGBuild
 
             currAccessScope.PendingGotos[labelName].Merge(ExecFlow.current);
             ExecFlow.current.Clear();
+        }
+
+        private static (Dictionary<string, IPromotedVariable>, ExecFlow) __IfBranch(SemanticStack.ConditionalContext enclosingContext, Port fromPort, AlternativeExec branch)
+        {
+            var branchFlow = new ExecFlow();
+            branchFlow.Ports.Add(fromPort);
+
+            var conditional = new SemanticStack.ConditionalContext() { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = false };
+            SemanticStack.current.Push(conditional);
+
+            var prevFlow = ExecFlow.current;
+            ExecFlow.current = branchFlow;
+            branch();
+            ExecFlow.current = prevFlow;
+
+            if (!SemanticStack.current.Pop().Equals(conditional))
+                throw new Exception("Expected ConditionalContext at the top of the SemanticStack!");
+
+            enclosingContext.MergePromotionsFrom(conditional);
+            return (conditional.PromotedVariables, branchFlow);
+        }
+
+        public static void __If(BoolPort condition, AlternativeExec ifBranch, AlternativeExec elseBranch)
+        {
+            // Create If node
+            var prevFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            If(condition, () => { });
+            var ifNode = Context.lastSpawnedNode;
+
+            // Create enclosing conditional context
+            var conditional = new SemanticStack.ConditionalContext() { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = false };
+            SemanticStack.current.Push(conditional);
+
+            // Run each branch and get the final value of promoted variables
+            (var ifPromoted, var ifFlow) = __IfBranch(conditional, ifNode.Port(0, 0), ifBranch);
+            var finalValuesIfBranch = SemanticStackUtils.GetDeclaredVariableValues(ifPromoted.Keys);
+            SemanticStackUtils.ResetPromotedVariables(ifPromoted);
+
+            (var elsePromoted, var elseFlow) = __IfBranch(conditional, ifNode.Port(0, 1), elseBranch);
+            var finalValuesElseBranch = SemanticStackUtils.GetDeclaredVariableValues(elsePromoted.Keys);
+            SemanticStackUtils.ResetPromotedVariables(elsePromoted);
+
+            // End the context, writing the variables at the end of each branch.
+            SemanticStackUtils.EndConditionalContext(conditional, new() {
+                { ifFlow, finalValuesIfBranch },
+                { elseFlow, finalValuesElseBranch }
+            });
+
+            // Tidy up execution flow & we're done
+            ExecFlow.current = prevFlow;
+            ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
+            ExecFlow.current.Merge(ifFlow);
+            ExecFlow.current.Merge(elseFlow);
         }
     }
 }

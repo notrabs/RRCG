@@ -92,6 +92,23 @@ namespace RRCGBuild
             if (this is StringPort sp) return sp;
             return CircuitBuilder.Singleton("ToString_" + Port.PortKey(), () => ChipBuilder.ToString(this));
         }
+
+        public bool EquivalentTo(AnyPort b)
+        {
+            // Actual port status must match
+            if (IsActualPort != b.IsActualPort) return false;
+
+            if (IsActualPort)
+            {
+                // Port source must match
+                return Port.Group == b.Port.Group &&
+                       Port.Index == b.Port.Index &&
+                       Port.Node == b.Port.Node;
+            }
+
+            // Data must match
+            return Data == b.Data;
+        }
     }
 
     public class ListPort<T> : AnyPort where T : AnyPort, new()
