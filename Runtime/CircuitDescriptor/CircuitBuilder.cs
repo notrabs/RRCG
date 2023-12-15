@@ -553,7 +553,7 @@ namespace RRCGBuild
             {
                 // We'll need to create one then. Reflection magic!
                 var type = typeof(SemanticStack.ConditionalContext.PromotedVariable<>).MakeGenericType(typeof(T));
-                promotedVariable = (IPromotedVariable)Activator.CreateInstance(type, new object[] { declaredVariable.Value.Getter(), null });
+                promotedVariable = (IPromotedVariable)Activator.CreateInstance(type, new object[] { identifier, declaredVariable.Value.Getter(), null });
             }
 
             // Should the initial assignment reference the RR variable value pin?

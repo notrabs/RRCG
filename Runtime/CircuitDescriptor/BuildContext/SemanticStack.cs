@@ -79,15 +79,18 @@ namespace RRCGBuild
             public class PromotedVariable<T> : IPromotedVariable where T : AnyPort, new()
             {
                 private Variable<T> RRVariable;
-                public PromotedVariable(dynamic valueBeforePromotion, Variable<T>? rrVariable)
+                public PromotedVariable(string identifier, dynamic valueBeforePromotion, Variable<T>? rrVariable)
                 {
                     ValueBeforePromotion = valueBeforePromotion;
+
+                    current.Push(new NamedAssignmentScope { Identifier = $"Conditional_{identifier}" });
                     RRVariable = rrVariable ?? new();
+                    current.Pop();
                 }
 
                 public dynamic RRVariableValue { get => RRVariable.Value; set => RRVariable.Value = value; }
                 public dynamic ValueBeforePromotion { get; private set; }
-                public IPromotedVariable NewWithSameRRVariable(dynamic valueBeforePromotion) => new PromotedVariable<T>(valueBeforePromotion, RRVariable);
+                public IPromotedVariable NewWithSameRRVariable(dynamic valueBeforePromotion) => new PromotedVariable<T>("", valueBeforePromotion, RRVariable);
             }
 
             // Variable promotion state
