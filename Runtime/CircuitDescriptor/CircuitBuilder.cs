@@ -740,12 +740,22 @@ namespace RRCGBuild
             return Concat(stringPorts.ToArray());
         }
 
-        public static T __VariableDeclaratorExpression<T>(string identifier, Func<T>? initializer, Func<T>? getter, Action<T>? setter)
+        public static T __VariableDeclaratorExpression<T>(string identifier, Func<T>? initializer, Func<dynamic> getter, Action<dynamic>? setter)
         {
-            // TODO: Store the setter along with the identifier in the current AccessibilityScope if necessary.
-            //       If the need arises to set the value of readonly variables, we can probably enforce it
-            //       in __Assign, take note of it here, and rewrite the variables to be mutable.
-            //       (maybe even enforcement might not be necessary if it's a compile-time error anyway)
+            // Store in accessibility scope?
+            var scope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
+            if (scope is SemanticStack.AccessibilityScope accessScope)
+            {
+                // Is there already a variable with the identifier?
+                if (SemanticStackUtils.GetDeclaredVariable(identifier) != null)
+                    throw new Exception($"Attempt to declare variable with identifier \"{identifier}\", but there " +
+                        "was another variable with the same identifier in the current or a parent accessibility scope.");
+
+                // Add to current scope
+                accessScope.DeclaredVariables[identifier] = (getter, setter);
+            }
+
+            // Initialize the variable?
             T value = default;
 
             if (initializer != null)
@@ -762,9 +772,10 @@ namespace RRCGBuild
         {
             SemanticStack.current.Push(new SemanticStack.AccessibilityScope
             {
-                PendingGotos = new Dictionary<string, ExecFlow>(),
-                PendingLabels = new List<string>(),
-                DeclaredLabels = new Dictionary<string, Port>(),
+                PendingGotos = new(),
+                PendingLabels = new(),
+                DeclaredLabels = new(),
+                DeclaredVariables = new(),
                 CanAccessParent = canAccessParent
             });
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -55,6 +56,10 @@ namespace RRCGBuild
             // Fully resolved labels, ready to jump to
             public Dictionary<string, Port> DeclaredLabels;
 
+            // Variables declared within this scope.
+            // Maps identifier name -> getter/setter methods
+            public Dictionary<string, (Func<dynamic> Getter, Action<dynamic>? Setter)> DeclaredVariables;
+
             // Can "access operations" running under this scope
             // search up into enclosing accessibility scopes?
             public bool CanAccessParent;
@@ -79,5 +84,22 @@ namespace RRCGBuild
         {
             return SemanticStack.current.GetNextScopeWithType<SemanticStack.NamedAssignmentScope>()?.Identifier ?? defaultName;
         }
+
+        public static (Func<dynamic> Getter, Action<dynamic>? Setter)? GetDeclaredVariable(string identifier)
+        {
+            for (int i=0; i < SemanticStack.current.Count; i++)
+            {
+                var item = SemanticStack.current.ElementAt(i);
+                if (item is not SemanticStack.AccessibilityScope accessScope) continue;
+
+                if (accessScope.DeclaredVariables.TryGetValue(identifier, out var declVar))
+                    return declVar;
+
+                if (!accessScope.CanAccessParent) break;
+            }
+
+            return null;
+        }
     }
 }
+#nullable disable
