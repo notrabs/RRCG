@@ -27,7 +27,7 @@ namespace RRCGBuild
             new EventDefinition("TestNotIfOptimizer").Receiver();
                 BoolPort optimizableBool = default !;
                 optimizableBool = __VariableDeclaratorExpression<BoolPort>("optimizableBool", () => ParseBool("true").Result, () => optimizableBool, (_RRCG_SETTER_VALUE) => optimizableBool = _RRCG_SETTER_VALUE);
-            ChipBuilder.If(true, delegate
+            __If(true, delegate
             {
                 __BeginAccessibilityScope(true);
                 LogString("true");
@@ -42,7 +42,7 @@ namespace RRCGBuild
             }
 
             );
-            ChipBuilder.If(!true, delegate
+            __If(!true, delegate
             {
                 __BeginAccessibilityScope(true);
                 LogString("true");
@@ -57,7 +57,7 @@ namespace RRCGBuild
             }
 
             );
-            ChipBuilder.If(Not(true), delegate
+            __If(Not(true), delegate
             {
                 __BeginAccessibilityScope(true);
                 LogString("true");
@@ -74,7 +74,7 @@ namespace RRCGBuild
             );
                 BoolPort optimizableButNotDeletable = default !;
                 optimizableButNotDeletable = __VariableDeclaratorExpression<BoolPort>("optimizableButNotDeletable", () => !ParseBool("true").Result, () => optimizableButNotDeletable, (_RRCG_SETTER_VALUE) => optimizableButNotDeletable = _RRCG_SETTER_VALUE);
-            ChipBuilder.If(optimizableButNotDeletable, delegate
+            __If(optimizableButNotDeletable, delegate
             {
                 __BeginAccessibilityScope(true);
                 LogString("true");
@@ -90,7 +90,7 @@ namespace RRCGBuild
 
             );
             ChipLib.Log(optimizableButNotDeletable);
-            ChipBuilder.If(optimizableBool, delegate
+            __If(optimizableBool, delegate
             {
                 __BeginAccessibilityScope(true);
                 LogString("true");
@@ -105,7 +105,7 @@ namespace RRCGBuild
             }
 
             );
-            ChipBuilder.If(!optimizableBool, delegate
+            __If(!optimizableBool, delegate
             {
                 __BeginAccessibilityScope(true);
                 LogString("true");
@@ -120,7 +120,7 @@ namespace RRCGBuild
             }
 
             );
-            ChipBuilder.If(ChipBuilder.Equals(ParseInt("1").Result, 1), delegate
+            __If(ChipBuilder.Equals(ParseInt("1").Result, 1), delegate
             {
                 __BeginAccessibilityScope(true);
                 LogString("true");
@@ -135,7 +135,7 @@ namespace RRCGBuild
             }
 
             );
-            ChipBuilder.If(ChipBuilder.Not(ChipBuilder.Equals(ParseInt("1").Result, 1)), delegate
+            __If(ChipBuilder.Not(ChipBuilder.Equals(ParseInt("1").Result, 1)), delegate
             {
                 __BeginAccessibilityScope(true);
                 LogString("true");

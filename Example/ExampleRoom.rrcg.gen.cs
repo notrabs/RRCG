@@ -28,7 +28,7 @@ namespace RRCGBuild
                 rand1 = __VariableDeclaratorExpression<IntPort>("rand1", () => RandomInt(0, 10), () => rand1, (_RRCG_SETTER_VALUE) => rand1 = _RRCG_SETTER_VALUE);
                 IntPort rand2 = default !;
                 rand2 = __VariableDeclaratorExpression<IntPort>("rand2", () => RandomInt(0, 10), () => rand2, (_RRCG_SETTER_VALUE) => rand2 = _RRCG_SETTER_VALUE);
-            ChipBuilder.If(ChipBuilder.GreaterThan(rand1 + rand2, 10), delegate
+            __If(ChipBuilder.GreaterThan(rand1 + rand2, 10), delegate
             {
                 __BeginAccessibilityScope(true);
                 LogString("Today's your lucky day");
@@ -71,7 +71,7 @@ namespace RRCGBuild
                 intValue = __VariableDeclaratorExpression<IntPort>("intValue", () => testEvent.Receiver(), () => intValue, (_RRCG_SETTER_VALUE) => intValue = _RRCG_SETTER_VALUE);
                 RRCGBuild.Variable<IntPort> counter = default !;
                 counter = __VariableDeclaratorExpression<RRCGBuild.Variable<IntPort>>("counter", () => new Variable<IntPort>(), () => counter, (_RRCG_SETTER_VALUE) => counter = _RRCG_SETTER_VALUE);
-            __While(ChipBuilder.LessThan(counter.Value, intValue), delegate
+            __While(() => ChipBuilder.LessThan(counter.Value, intValue), delegate
             {
                 __BeginAccessibilityScope(true);
                 ChipLib.Log(counter.Value);

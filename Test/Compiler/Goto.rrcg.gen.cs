@@ -17,7 +17,7 @@ namespace RRCGBuild
             new EventDefinition("GotoTest").Receiver();
                 __LabelDecl("label1");
                 LogString("Label 1!");
-            ChipBuilder.If(true, delegate
+            __If(true, delegate
             {
                 __BeginAccessibilityScope(true);
                 __Goto("label1");
@@ -32,7 +32,7 @@ namespace RRCGBuild
 
             );
             LogString("Did not go to label1");
-            ChipBuilder.If(true, delegate
+            __If(true, delegate
             {
                 __BeginAccessibilityScope(true);
                 __Goto("label2");
@@ -94,7 +94,7 @@ namespace RRCGBuild
                 __BeginAccessibilityScope(false);
                     __LabelDecl("innerLabel1");
                     LogString("Inner label 1");
-                ChipBuilder.If(true, delegate
+                __If(true, delegate
                 {
                     __BeginAccessibilityScope(true);
                     __Goto("innerLabel1");
@@ -109,7 +109,7 @@ namespace RRCGBuild
 
                 );
                 LogString("Did not go to innerLabel1");
-                ChipBuilder.If(true, delegate
+                __If(true, delegate
                 {
                     __BeginAccessibilityScope(true);
                     __Goto("innerLabel2");
@@ -169,7 +169,7 @@ namespace RRCGBuild
             }
 
             );
-            ChipBuilder.If(true, delegate
+            __If(true, delegate
             {
                 __BeginAccessibilityScope(true);
                     __LabelDecl("blockLabel");
@@ -190,7 +190,7 @@ namespace RRCGBuild
                 {
                     __LabelDecl("rrcg_switch_case_label_1");
                     LogString("Case 1");
-                    ChipBuilder.If(true, delegate
+                    __If(true, delegate
                     {
                         __BeginAccessibilityScope(true);
                         LogString("Going to case 2");

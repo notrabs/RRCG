@@ -136,7 +136,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"0\"");
-                    ChipBuilder.If(condition, delegate
+                    __If(condition, delegate
                     {
                         __BeginAccessibilityScope(true);
                         __Break();
@@ -162,7 +162,7 @@ namespace RRCGBuild
                         AlternativeExec rrcg_switch_section_0 = delegate
                         {
                             __LabelDecl("rrcg_switch_case_label_\"0\"");
-                            ChipBuilder.If(condition, delegate
+                            __If(condition, delegate
                             {
                                 __BeginAccessibilityScope(true);
                                 __Break();
@@ -196,7 +196,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_2 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"while\"");
-                    __While(condition, delegate
+                    __While(() => condition, delegate
                     {
                         __BeginAccessibilityScope(true);
                         {
@@ -225,7 +225,7 @@ namespace RRCGBuild
                         }
 
                         LogString("After Switch While Switch Case 0");
-                        ChipBuilder.If(condition, delegate
+                        __If(condition, delegate
                         {
                             __BeginAccessibilityScope(true);
                             LogString("Break out of while");
@@ -236,7 +236,7 @@ namespace RRCGBuild
                         , delegate
                         {
                             __BeginAccessibilityScope(true);
-                            ChipBuilder.If(condition, delegate
+                            __If(condition, delegate
                             {
                                 __BeginAccessibilityScope(true);
                                 LogString("Return");
@@ -282,7 +282,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(false);
-            __While(true, delegate
+            __While(() => true, delegate
             {
                 __BeginAccessibilityScope(true);
                 {

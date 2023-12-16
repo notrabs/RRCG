@@ -40,7 +40,7 @@ namespace RRCGBuild
                 list = __VariableDeclaratorExpression<ListPort<StringPort>>("list", () => ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"), () => list, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
                 ListPort<StringPort> listCache = default !;
                 listCache = __VariableDeclaratorExpression<ListPort<StringPort>>("listCache", () => ChipLib.EventCache<ListPort<StringPort>>(list), () => listCache, (_RRCG_SETTER_VALUE) => listCache = _RRCG_SETTER_VALUE);
-            __While(ChipBuilder.GreaterThan(listCache.Count, 0), delegate
+            __While(() => ChipBuilder.GreaterThan(listCache.Count, 0), delegate
             {
                 __BeginAccessibilityScope(true);
                 ChipLib.Log(Concat("Removing \"", listCache[0], "\" from list"));
@@ -99,11 +99,11 @@ namespace RRCGBuild
             __BeginAccessibilityScope(false);
                 RRCGBuild.Variable<StringPort> strStaging = default !;
                 strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
-            __While(true, delegate
+            __While(() => true, delegate
             {
                 __BeginAccessibilityScope(true);
                 strStaging.Value = Concat(strStaging.Value, str);
-                ChipBuilder.If(ChipBuilder.GreaterOrEqual(strStaging.Value.Length, str.Length * count), delegate
+                __If(ChipBuilder.GreaterOrEqual(strStaging.Value.Length, str.Length * count), delegate
                 {
                     __BeginAccessibilityScope(true);
                     __Return(rrcg_return_flow, out rrcg_return_data, strStaging.Value);
@@ -134,11 +134,11 @@ namespace RRCGBuild
                 RRCGBuild.Variable<IntPort> index = default !;
                 index = __VariableDeclaratorExpression<RRCGBuild.Variable<IntPort>>("index", () => new Variable<IntPort>(), () => index, (_RRCG_SETTER_VALUE) => index = _RRCG_SETTER_VALUE);
             index.Value = 0;
-            __While(ChipBuilder.LessThan(index.Value, 100), delegate
+            __While(() => ChipBuilder.LessThan(index.Value, 100), delegate
             {
                 __BeginAccessibilityScope(true);
                 index.Value += 1;
-                ChipBuilder.If(ChipBuilder.Equals(index.Value, 50), delegate
+                __If(ChipBuilder.Equals(index.Value, 50), delegate
                 {
                     __BeginAccessibilityScope(true);
                     ChipLib.Log("index.Value == 50, break!");
@@ -150,7 +150,7 @@ namespace RRCGBuild
                 , delegate
                 {
                     __BeginAccessibilityScope(true);
-                    ChipBuilder.If(ChipBuilder.Equals(index.Value % 5, 0), delegate
+                    __If(ChipBuilder.Equals(index.Value % 5, 0), delegate
                     {
                         __BeginAccessibilityScope(true);
                         ChipLib.Log("index.Value % 5 == 0, continue!");
@@ -186,10 +186,10 @@ namespace RRCGBuild
             __BeginAccessibilityScope(false);
             new EventDefinition("NestedWhileTest").Receiver();
             LogString("Start");
-            __While(true, delegate
+            __While(() => true, delegate
             {
                 __BeginAccessibilityScope(true);
-                __While(true, delegate
+                __While(() => true, delegate
                 {
                     __BeginAccessibilityScope(true);
                     LogString("0");
@@ -218,7 +218,7 @@ namespace RRCGBuild
             {
                 __BeginAccessibilityScope(true);
                 LogString("Do while loop");
-                ChipBuilder.If(true, delegate
+                __If(true, delegate
                 {
                     __BeginAccessibilityScope(true);
                     LogString("Break");
@@ -229,7 +229,7 @@ namespace RRCGBuild
                 , delegate
                 {
                     __BeginAccessibilityScope(true);
-                    ChipBuilder.If(true, delegate
+                    __If(true, delegate
                     {
                         __BeginAccessibilityScope(true);
                         LogString("Continue");
@@ -302,7 +302,7 @@ namespace RRCGBuild
             {
                 __BeginAccessibilityScope(true);
                 strStaging.Value = Concat(strStaging.Value, str);
-                ChipBuilder.If(ChipBuilder.GreaterOrEqual(strStaging.Value.Length, str.Length * count), delegate
+                __If(ChipBuilder.GreaterOrEqual(strStaging.Value.Length, str.Length * count), delegate
                 {
                     __BeginAccessibilityScope(true);
                     __Return(rrcg_return_flow, out rrcg_return_data, strStaging.Value);
@@ -334,7 +334,7 @@ namespace RRCGBuild
             {
                 __BeginAccessibilityScope(true);
                 LogString("Do while loop 1");
-                ChipBuilder.If(true, delegate
+                __If(true, delegate
                 {
                     __BeginAccessibilityScope(true);
                     LogString("Loop 1 break");
@@ -345,7 +345,7 @@ namespace RRCGBuild
                 , delegate
                 {
                     __BeginAccessibilityScope(true);
-                    ChipBuilder.If(true, delegate
+                    __If(true, delegate
                     {
                         __BeginAccessibilityScope(true);
                         LogString("Loop 1 continue");
@@ -368,7 +368,7 @@ namespace RRCGBuild
                 {
                     __BeginAccessibilityScope(true);
                     LogString("Do while loop 2");
-                    ChipBuilder.If(true, delegate
+                    __If(true, delegate
                     {
                         __BeginAccessibilityScope(true);
                         LogString("Loop 2 break");
@@ -379,7 +379,7 @@ namespace RRCGBuild
                     , delegate
                     {
                         __BeginAccessibilityScope(true);
-                        ChipBuilder.If(true, delegate
+                        __If(true, delegate
                         {
                             __BeginAccessibilityScope(true);
                             LogString("Loop 2 continue");
