@@ -570,6 +570,14 @@ namespace RRCGBuild
             return assignedValue;
         }
 
+        // TODO: Variable promotion works fine for while loops if you assign to a value before reading it.
+        //       If you read from a variable before assigning to it, the pre-promotion value will be used.
+        //       My thoughts to fix this are to introduce a "__Read" helper. (like: __Read("identifier", () => identifier);
+        //       This gives us a nice place to swap in the variable value, but it will need some work on the rewriting side.
+        //       We'll have to check the declared symbol when visiting identifiers and check if it's suitable for __Read
+        //       (i.e IFieldSymbol, ILocalSymbol, maybe IPropertySymbol?.. accessibility scopes will be a nightmare)
+        //       These are just my current thoughts. I'd like to flesh them out more before actioning on them --
+        //       so for the meantime, this note serves to document the issue.
         public void __While(Func<BoolPort> condition, AlternativeExec block)
         {
             // Build the entry If chip on a new exec flow
