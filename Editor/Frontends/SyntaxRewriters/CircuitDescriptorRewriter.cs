@@ -1042,7 +1042,9 @@ namespace RRCG
                     SyntaxFactory.ArgumentList(
                         SyntaxFactory.SeparatedList<ArgumentSyntax>(
                             new SyntaxNodeOrToken[]{
-                                SyntaxFactory.Argument(test),
+                                SyntaxFactory.Argument(
+                                    ParenthesizedLambdaExpression()
+                                        .WithExpressionBody(test)),
                                 SyntaxFactory.Token(SyntaxKind.CommaToken),
                                 SyntaxFactory.Argument(whileDelegate)})))).NormalizeWhitespace();
         }

@@ -94,7 +94,6 @@ namespace RRCGBuild
             }
 
             // Variable promotion state
-            // Maps identifier -> rr variable, value before promotion
             public Dictionary<string, IPromotedVariable> PromotedVariables;
 
             // Should the initial assignment reference the RR variable value pin?
@@ -238,6 +237,8 @@ namespace RRCGBuild
         /// <param name="branchMap">Map ExecFlow -> identifier -> final value on the branch)</param>
         public static void EndConditionalContext(SemanticStack.ConditionalContext context, Dictionary<ExecFlow, Dictionary<string, dynamic>> branchMap)
         {
+            var prevFlow = ExecFlow.current;
+
             // Build union of all identifiers
             var identifiers = branchMap.SelectMany(v => v.Value.Keys).Distinct().ToList();
 
@@ -271,6 +272,8 @@ namespace RRCGBuild
             var parentConditional = SemanticStack.current.GetNextScopeWithType<SemanticStack.ConditionalContext>();
             if (parentConditional != null)
                 parentConditional.Value!.MergePromotionsFrom(context);
+
+            ExecFlow.current = prevFlow;
         }
     }
 }

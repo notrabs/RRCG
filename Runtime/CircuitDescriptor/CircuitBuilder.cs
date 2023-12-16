@@ -570,13 +570,16 @@ namespace RRCGBuild
             return assignedValue;
         }
 
-        public void __While(BoolPort condition, AlternativeExec block)
+        public void __While(Func<BoolPort> condition, AlternativeExec block)
         {
-            // First, spawn the entry "If" node
-            RRCGGenerated.ChipBuilderGen.If(condition, () => { });
+            // Build the entry If chip on a new exec flow
+            var prevFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            RRCGGenerated.ChipBuilderGen.If(false, () => { });
             var entryIfNode = Context.lastSpawnedNode;
 
-            // Now we create our "while" scope
+            // Now we create our SemanticStack scopes
+            var conditionalContext = new SemanticStack.ConditionalContext { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = true };
             var whileScope = new SemanticStack.WhileScope
             {
                 BlockFlow = new ExecFlow(),
@@ -588,21 +591,43 @@ namespace RRCGBuild
             whileScope.DoneFlow.hasAdvanced = true;
 
             // Add Then/Else ports to Block/Done flows respectively
-            whileScope.BlockFlow.Ports.Add(new Port { Node = entryIfNode });
-            whileScope.DoneFlow.Ports.Add(new Port { Node = entryIfNode, Index = 1 });
+            whileScope.BlockFlow.Ports.Add(entryIfNode.Port(0, 0));
+            whileScope.DoneFlow.Ports.Add(entryIfNode.Port(0, 1));
 
-            // Push scope to the stack, move to the block flow,
+            // Push scopes to the stack, move to the block flow,
             // and build the block contents
             SemanticStack.current.Push(whileScope);
+            SemanticStack.current.Push(conditionalContext);
 
             ExecFlow.current = whileScope.BlockFlow;
             block();
 
-            SemanticStack.current.Pop();
+            // Get promoted variables & end conditional context
+            // Set variable values before entering the loop, and before looping back around.
+            var promotedVariablesState = SemanticStackUtils.GetDeclaredVariableValues(conditionalContext.PromotedVariables.Keys);
+            SemanticStackUtils.ResetPromotedVariables(conditionalContext.PromotedVariables);
+            var prePromotionVariablesState = SemanticStackUtils.GetDeclaredVariableValues(conditionalContext.PromotedVariables.Keys);
 
-            // Advance the current execution flow back to the entry If node,
-            // and continue spawning nodes on the Done execution flow.
-            ExecFlow.current.Advance(Context.current, new Port { Node = whileScope.EntryIfNode }, null);
+            SemanticStackUtils.EndConditionalContext(conditionalContext, new()
+            {
+                { ExecFlow.current, promotedVariablesState },
+                { prevFlow, prePromotionVariablesState }
+            });
+
+            // End while scope
+            if (!SemanticStack.current.Pop().Equals(whileScope))
+                throw new Exception("Removed element was not WhileScope!");
+
+            // Evaluate & connect condition, so that if it uses a promoted
+            // variable, it reads from the variable pin
+            entryIfNode.DefaultValues.Remove((0, 1));
+            entryIfNode.ConnectInputPort(Context.current, condition(), entryIfNode.Port(0, 1));
+
+            // Advance the block flow & previous flow to the entry If node
+            whileScope.BlockFlow.Advance(Context.current, entryIfNode.Port(0, 0), null);
+            prevFlow.Advance(Context.current, entryIfNode.Port(0, 0), null);
+
+            // Continue building from the Done flow
             ExecFlow.current = whileScope.DoneFlow;
         }
 
@@ -916,16 +941,14 @@ namespace RRCGBuild
             var conditional = new SemanticStack.ConditionalContext() { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = false };
             SemanticStack.current.Push(conditional);
 
-            var prevFlow = ExecFlow.current;
             ExecFlow.current = branchFlow;
             branch();
-            ExecFlow.current = prevFlow;
 
             if (!SemanticStack.current.Pop().Equals(conditional))
                 throw new Exception("Expected ConditionalContext at the top of the SemanticStack!");
 
             enclosingContext.MergePromotionsFrom(conditional);
-            return (conditional.PromotedVariables, branchFlow);
+            return (conditional.PromotedVariables, ExecFlow.current);
         }
 
         public static void __If(BoolPort condition, AlternativeExec ifBranch, AlternativeExec elseBranch)
