@@ -20,10 +20,10 @@ namespace RRCGBuild
         {
             try
             {
-                return (T?)this.First(scope => scope.GetType() == typeof(T));
+                return (T?)this.First(scope => typeof(T).IsAssignableFrom(scope.GetType()));
             }
             catch (Exception) { }
-            return null;
+            return default;
         }
     }
 

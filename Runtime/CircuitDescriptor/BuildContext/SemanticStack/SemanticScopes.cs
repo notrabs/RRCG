@@ -4,27 +4,88 @@ using System;
 
 namespace RRCGBuild.SemanticScopes
 {
-    // Base class for semantic scopes.
-    // Only serves to give them a common type.
-    public class SemanticScope { }
-
-    public class SwitchScope : SemanticScope
+    // Base type for semantic scopes.
+    public interface SemanticScope
     {
-        public ExecFlow BreakFlow;
+        // Define interfaces for implementing keywords
+        // (SemanticScope.IBreak might be more descriptive than just IBreak)
+        public interface IBreak : SemanticScope
+        {
+            public void Break();
+        }
+
+        public interface IContinue : SemanticScope
+        {
+            public void Continue();
+        }
     }
 
-    public class WhileScope : SemanticScope
+
+    // Actual scope definitions
+    public class SwitchScope : SemanticScope.IBreak
+    {
+        public ExecFlow BreakFlow;
+
+        public void Break()
+        {
+            // Merge the current exec flow into the break flow,
+            // then clear the current exec flow.
+            BreakFlow.Merge(ExecFlow.current);
+            ExecFlow.current.Clear();
+        }
+    }
+
+    public class WhileScope : SemanticScope.IBreak, SemanticScope.IContinue
     {
         public ExecFlow BlockFlow; // Exec flow of the while loop body. Will cycle back to entry "If" node.
         public ExecFlow DoneFlow; // Exec flow for when the loop is finished/break is invoked.
         public Node EntryIfNode;
+
+        public void Break()
+        {
+            // Merge the current execution flow into the done flow,
+            // then clear the current execution flow.
+            // Nodes spawned after this will start a new flow.
+            DoneFlow.Merge(ExecFlow.current);
+            ExecFlow.current.Clear();
+        }
+
+        public void Continue()
+        {
+            // Advance the current execution flow back to the entry If node.
+            // Nodes spawned after this will start a new flow.
+            ExecFlow.current.Advance(Context.current, EntryIfNode.Port(0, 0), null);
+        }
     }
 
-    public class DoWhileScope : SemanticScope
+    public class DoWhileScope : SemanticScope.IBreak, SemanticScope.IContinue
     {
+        // TODO: This can probably be replaced with WhileScope?
+        //       The trouble is that with WhileScope we have the loopback If node
+        //       before the body, but here we have the body before the If node,
+        //       so we need to implement Continue differently.
+
         public ExecFlow ContinueFlow; // Will jump to the input exec of the loopback "If" node
         public ExecFlow DoneFlow; // Exec flow for when the loop is finished/break is invoked.
         public Node LoopbackIfNode;
+
+        public void Break()
+        {
+            // Merge the current exec flow into
+            // the done flow, then clear the current flow.
+            // Nodes spawned after this will create a new flow.
+            DoneFlow.Merge(ExecFlow.current);
+            ExecFlow.current.Clear();
+        }
+
+        public void Continue()
+        {
+            // Merge the current exec flow into
+            // the continue flow, then clear the current flow.
+            // Nodes spawned after this will create a new flow.
+            ContinueFlow.Merge(ExecFlow.current);
+            ExecFlow.current.Clear();
+        }
     }
 
     // Scope valid in the expression of an assignment to an identifier. (currently only implemented for declaration intiailizers)

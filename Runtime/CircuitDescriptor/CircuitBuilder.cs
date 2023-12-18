@@ -639,26 +639,6 @@ namespace RRCGBuild
             ExecFlow.current = whileScope.DoneFlow;
         }
 
-        private void __ContinueImpl_While(object scope)
-        {
-            var whileScope = (WhileScope)scope;
-
-            // Advance the current execution flow back to the entry If node.
-            // Nodes spawned after this will start a new flow.
-            ExecFlow.current.Advance(Context.current, new Port { Node = whileScope.EntryIfNode }, null);
-        }
-
-        private void __BreakImpl_While(object scope)
-        {
-            var whileScope = (WhileScope)scope;
-
-            // Merge the current execution flow into the done flow,
-            // then clear the current execution flow.
-            // Nodes spawned after this will start a new flow.
-            whileScope.DoneFlow.Merge(ExecFlow.current);
-            ExecFlow.current.Clear();
-        }
-
         public void __DoWhile(BoolPort condition, AlternativeExec block)
         {
             // Build the loopback If chip on a new
@@ -698,28 +678,6 @@ namespace RRCGBuild
             ExecFlow.current.Ports.Add(new Port { Node = loopbackIfNode, Index = 1 });
         }
 
-        private void __ContinueImpl_DoWhile(object scope)
-        {
-            var doWhileScope = (DoWhileScope)scope;
-
-            // Merge the current exec flow into
-            // the continue flow, then clear the current flow.
-            // Nodes spawned after this will create a new flow.
-            doWhileScope.ContinueFlow.Merge(ExecFlow.current);
-            ExecFlow.current.Clear();
-        }
-
-        private void __BreakImpl_DoWhile(object scope)
-        {
-            var doWhileScope = (DoWhileScope)scope;
-
-            // Merge the current exec flow into
-            // the done flow, then clear the current flow.
-            // Nodes spawned after this will create a new flow.
-            doWhileScope.DoneFlow.Merge(ExecFlow.current);
-            ExecFlow.current.Clear();
-        }
-
         public void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
         {
             // Create & push our switch scope
@@ -739,52 +697,18 @@ namespace RRCGBuild
             SemanticStack.current.Pop();
         }
 
-        private void __BreakImpl_Switch(object scope)
-        {
-            // Merge the current exec flow into the break flow,
-            // then clear the current exec flow.
-            var switchScope = (SwitchScope)scope;
-
-            switchScope.BreakFlow.Merge(ExecFlow.current);
-            ExecFlow.current.Clear();
-        }
-
-        private void RunSharedKeywordImpl(Dictionary<Type, SemanticStack.ScopedImpl> typeToMethod)
-        {
-            // Some keywords do not have implementations for some scopes,
-            // and as such they actually affect some parent scope.
-            // (e.g continue in a switch statement)
-
-            // Iterate over the stack to find a scope we have an implementation for.
-            for (int i = 0; i < SemanticStack.current.Count; i++)
-            {
-                var scope = SemanticStack.current.ElementAt(i);
-                var type = scope.GetType();
-                if (!typeToMethod.ContainsKey(type))
-                    continue;
-
-                typeToMethod[type](scope);
-                return;
-            }
-        }
-
         public void __Break()
         {
-            RunSharedKeywordImpl(new Dictionary<Type, SemanticStack.ScopedImpl>
-            {
-                { typeof(WhileScope), __BreakImpl_While },
-                { typeof(SwitchScope), __BreakImpl_Switch },
-                { typeof(DoWhileScope), __BreakImpl_DoWhile }
-            });
+            var breakable = SemanticStack.current.GetNextScopeWithType<SemanticScope.IBreak>();
+            if (breakable != null)
+                breakable.Break();
         }
 
         public void __Continue()
         {
-            RunSharedKeywordImpl(new Dictionary<Type, SemanticStack.ScopedImpl>
-            {
-                { typeof(WhileScope), __ContinueImpl_While },
-                { typeof(DoWhileScope), __ContinueImpl_DoWhile }
-            });
+            var continuable = SemanticStack.current.GetNextScopeWithType<SemanticScope.IContinue>();
+            if (continuable != null)
+                continuable.Continue();
         }
 
         public static StringPort __StringInterpolation(params AnyPort[] ports)
