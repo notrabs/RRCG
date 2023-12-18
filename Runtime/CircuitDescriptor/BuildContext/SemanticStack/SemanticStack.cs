@@ -54,6 +54,25 @@ namespace RRCGBuild
             return null;
         }
 
+        public static bool CanDeclareVariableWithIdentifier(string identifier)
+        {
+            // Search up to and including a method root accessibility scope,
+            // and if a variable exists with the identifier, return false.
+
+            for (int i = 0; i < SemanticStack.current.Count; i++)
+            {
+                var item = SemanticStack.current.ElementAt(i);
+                if (item is not AccessibilityScope scope) continue;
+
+                if (scope.DeclaredVariables.TryGetValue(identifier, out var declVar))
+                    return false;
+
+                if (scope.ScopeKind == AccessibilityScope.Kind.MethodRoot) break;
+            }
+
+            return true;
+        }
+
         public static ConditionalContext.IPromotedVariable? GetPromotedVariable(string identifier)
         {
             for (int i = 0; i < SemanticStack.current.Count; i++)

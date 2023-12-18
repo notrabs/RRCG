@@ -739,16 +739,16 @@ namespace RRCGBuild
             if (scope is AccessibilityScope accessScope)
             {
                 // Is there already a variable with the identifier?
-                if (SemanticStackUtils.GetDeclaredVariable(identifier, out _) != null)
-                    throw new Exception($"Attempt to declare variable with identifier \"{identifier}\", but there " +
-                        "was another variable with the same identifier in the current or a parent accessibility scope.");
+                if (!SemanticStackUtils.CanDeclareVariableWithIdentifier(identifier))
+                    throw new Exception($"Attempt to declare variable with identifier \"{identifier}\", but there was " +
+                                         "already a variable with the same identifier in an enclosing accessibility scope!");
 
                 // Add to current scope
                 accessScope.DeclaredVariables[identifier] = (getter, setter);
             }
 
             // Initialize the variable?
-            T value = default;
+            T value = default!;
 
             if (initializer != null)
             {
@@ -772,7 +772,6 @@ namespace RRCGBuild
             });
         }
 
-        public static void __BeginAccessibilityScope(bool a) { }
         public static void __EndAccessibilityScope()
         {
             var scope = SemanticStack.current.Pop();
