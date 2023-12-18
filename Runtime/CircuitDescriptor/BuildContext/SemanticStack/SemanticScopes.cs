@@ -106,6 +106,13 @@ namespace RRCGBuild
             MethodRoot // root accessibility scope of a method
         }
 
+        public class DeclaredVariable
+        {
+            public Func<dynamic> Getter;
+            public Action<dynamic>? Setter;
+            public Type Type;
+        }
+
         // Gotos that jump to labels not yet defined
         // (exec flow contains ports waiting to be advanced
         //  once the label is declared)
@@ -120,7 +127,7 @@ namespace RRCGBuild
 
         // Variables declared within this scope.
         // Maps identifier name -> getter/setter methods
-        public Dictionary<string, (Func<dynamic> Getter, Action<dynamic>? Setter)> DeclaredVariables;
+        public Dictionary<string, DeclaredVariable> DeclaredVariables;
 
         // Scope kind. May have implications on whether "access operations"
         // running under this scope can search up into enclosing accessibility scopes.

@@ -686,7 +686,7 @@ namespace RRCGBuild
                                          "already a variable with the same identifier in an enclosing accessibility scope!");
 
                 // Add to current scope
-                accessScope.DeclaredVariables[identifier] = (getter, setter);
+                accessScope.DeclaredVariables[identifier] = new() { Getter = getter, Setter = setter, Type = typeof(T) };
             }
 
             // Initialize the variable?
@@ -862,8 +862,8 @@ namespace RRCGBuild
                 if (declaredVariable == null) continue;
 
                 // Is it a port type?
-                var value = declaredVariable.Value.Getter();
-                var variableType = ((object)value).GetType();
+                var variableValue = declaredVariable.Getter();
+                var variableType = declaredVariable.Type;
                 if (!typeof(AnyPort).IsAssignableFrom(variableType)) continue;
 
                 // Is the variable marked as promoted within the current conditional context?
@@ -875,18 +875,18 @@ namespace RRCGBuild
                 if (promotedVariable != null)
                 {
                     // Create a new one that shares the same RR variable.
-                    promotedVariable = promotedVariable.NewWithSameRRVariable(value);
+                    promotedVariable = promotedVariable.NewWithSameRRVariable(variableValue);
                 }
                 else
                 {
                     // We'll need to create one then. Reflection magic!
                     var type = typeof(ConditionalContext.PromotedVariable<>).MakeGenericType(variableType);
-                    promotedVariable = (ConditionalContext.IPromotedVariable)Activator.CreateInstance(type, new object[] { identifier, value, null });
+                    promotedVariable = (ConditionalContext.IPromotedVariable)Activator.CreateInstance(type, new object[] { identifier, variableValue, null });
                 }
 
                 // Should the value be set to the RR variable output?
-                if (initialReadsFromVariables && declaredVariable.Value.Setter != null)
-                    declaredVariable.Value.Setter(promotedVariable.RRVariableValue);
+                if (initialReadsFromVariables && declaredVariable.Setter != null)
+                    declaredVariable.Setter(promotedVariable.RRVariableValue);
 
                 // Finally, add to the conditional context.
                 conditionalContext.PromotedVariables[identifier] = promotedVariable;

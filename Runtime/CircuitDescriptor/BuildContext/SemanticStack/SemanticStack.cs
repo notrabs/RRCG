@@ -33,7 +33,7 @@ namespace RRCGBuild
             return SemanticStack.current.GetNextScopeWithType<NamedAssignmentScope>()?.Identifier ?? defaultName;
         }
 
-        public static (Func<dynamic> Getter, Action<dynamic>? Setter)? GetDeclaredVariable(string identifier, out AccessibilityScope? accessScope)
+        public static AccessibilityScope.DeclaredVariable GetDeclaredVariable(string identifier, out AccessibilityScope? accessScope)
         {
             for (int i = 0; i < SemanticStack.current.Count; i++)
             {
@@ -148,8 +148,8 @@ namespace RRCGBuild
                 if (declaredVariable == null)
                     throw new Exception($"Could not find declared variable with identifier \"{identifier}\"");
 
-                if (declaredVariable.Value.Setter != null)
-                    declaredVariable.Value.Setter(promotedVariable.ValueBeforePromotion);
+                if (declaredVariable.Setter != null)
+                    declaredVariable.Setter(promotedVariable.ValueBeforePromotion);
             }
         }
 
@@ -163,13 +163,10 @@ namespace RRCGBuild
         {
             var prevFlow = ExecFlow.current;
 
-            // Build union of all identifiers
-            var identifiers = branchMap.SelectMany(v => v.Value.Keys).Distinct().ToList();
-
             foreach (var kvp in branchMap)
             {
                 ExecFlow.current = kvp.Key;
-                foreach (var identifier in identifiers)
+                foreach (var identifier in kvp.Value.Keys) // Promotion is calculated when rewriting, keys should be identical
                 {
                     var declaredVariable = SemanticStackUtils.GetDeclaredVariable(identifier, out _);
                     var promotedVariable = SemanticStackUtils.GetPromotedVariable(identifier);
@@ -178,14 +175,14 @@ namespace RRCGBuild
                     if (promotedVariable == null) throw new Exception($"Could not find promoted variable with identifier \"{identifier}\"");
 
                     // Do we need to set the value here?
-                    if (kvp.Value.ContainsKey(identifier) && ((AnyPort)kvp.Value[identifier]).EquivalentTo(promotedVariable.RRVariableValue))
+                    if (kvp.Value[identifier] is AnyPort finalValue && finalValue.EquivalentTo(promotedVariable.RRVariableValue))
                         continue;
 
                     dynamic value = kvp.Value.ContainsKey(identifier) ? kvp.Value[identifier] : promotedVariable.ValueBeforePromotion;
                     promotedVariable.RRVariableValue = value;
 
-                    if (declaredVariable.Value.Setter != null)
-                        declaredVariable.Value.Setter(promotedVariable.RRVariableValue);
+                    if (declaredVariable.Setter != null)
+                        declaredVariable.Setter(promotedVariable.RRVariableValue);
                 }
             }
 
