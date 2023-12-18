@@ -192,11 +192,6 @@ namespace RRCGBuild
             if (!SemanticStack.current.Pop().Equals(context))
                 throw new Exception("Expected ConditionalContext at the top of the SemanticStack!");
 
-            // If we have a parenting conditional context, merge promotions into it
-            var parentConditional = SemanticStack.current.GetNextScopeWithType<ConditionalContext>();
-            if (parentConditional != null)
-                parentConditional.MergePromotionsFrom(context);
-
             ExecFlow.current = prevFlow;
         }
     }

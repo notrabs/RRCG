@@ -30,6 +30,21 @@ namespace RRCG
             { SyntaxKind.SubtractAssignmentExpression, SyntaxKind.SubtractExpression }
         };
 
+        // List of AssignmentExpressionSyntax assignment kinds.
+        public static SyntaxKind[] AssignmentExpressionKinds = AssignmentExpressionToBinaryExpression.Keys.Append(SyntaxKind.SimpleAssignmentExpression).ToArray();
+
+        // List of PrefixUnaryExpressionSyntax assignment kinds
+        public static SyntaxKind[] PrefixUnaryAssignmentKinds = new[] { SyntaxKind.PreIncrementExpression, SyntaxKind.PreDecrementExpression };
+
+        // List of PostfixUnaryExpressionSyntax assignment kinds
+        public static SyntaxKind[] PostfixUnaryAssignmentKinds = new[] { SyntaxKind.PostIncrementExpression, SyntaxKind.PostDecrementExpression };
+
+        // List of all assignment kinds.
+        public static SyntaxKind[] AllAssignmentKinds = AssignmentExpressionKinds
+            .Concat(PrefixUnaryAssignmentKinds)
+            .Concat(PostfixUnaryAssignmentKinds)
+            .ToArray();
+
         public static ExpressionSyntax StringLiteral(string value)
         {
             return SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(value));
@@ -179,6 +194,23 @@ namespace RRCG
                 return null;
 
             return resolvedType;
+        }
+
+        public static IEnumerable<ILocalSymbol> GetAccessibleLocals(this SemanticModel semanticModel, int position)
+        {
+            return semanticModel.LookupSymbols(position)
+                .Where(s => s.Kind == SymbolKind.Local)
+                .Cast<ILocalSymbol>()
+                .Where(local =>
+                {
+                    if (local.IsImplicitlyDeclared) return true;
+
+                    // TODO: do we need to handle multiple declarations?
+                    var declaration = local.DeclaringSyntaxReferences.Select(s => s.GetSyntax()).FirstOrDefault();
+                    if (declaration == null) return false;
+
+                    return position > declaration.SpanStart;
+                }).ToArray();
         }
     }
 }

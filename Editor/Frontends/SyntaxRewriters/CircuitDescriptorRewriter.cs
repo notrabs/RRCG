@@ -906,6 +906,11 @@ namespace RRCG
 
         public override SyntaxNode VisitIfStatement(IfStatementSyntax node)
         {
+            // Build conditional context creation invocation
+            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
+            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(semanticModel, false, locals, node.Statement, node.Else?.Statement);
+
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
             StatementSyntax trueStatement = (StatementSyntax)Visit(node.Statement);
             StatementSyntax falseStatement = node.Else != null ? (StatementSyntax)Visit(node.Else.Statement) : null;
@@ -923,7 +928,9 @@ namespace RRCG
                 SyntaxFactory.InvocationExpression(IdentifierName("__If"))
                 .WithArgumentList(
                     SyntaxUtils.ArgumentList(
-                        test,
+                        createConditional,
+                        ParenthesizedLambdaExpression()
+                            .WithExpressionBody(test),
                         ExecDelegate().WithBlock(trueBlock),
                         ExecDelegate().WithBlock(falseBlock)
                  )))
@@ -1038,6 +1045,11 @@ namespace RRCG
 
         public override SyntaxNode VisitWhileStatement(WhileStatementSyntax node)
         {
+            // Build conditional context creation invocation
+            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
+            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(semanticModel, true, locals, node.Statement);
+
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
             StatementSyntax whileStatement = (StatementSyntax)Visit(node.Statement);
 
@@ -1049,18 +1061,15 @@ namespace RRCG
 
             var whileDelegate = ExecDelegate().WithBlock(whileBlock);
 
-            return SyntaxFactory.ExpressionStatement(
-                SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.IdentifierName("__While"))
+            return ExpressionStatement(
+                InvocationExpression(
+                    IdentifierName("__While"))
                 .WithArgumentList(
-                    SyntaxFactory.ArgumentList(
-                        SyntaxFactory.SeparatedList<ArgumentSyntax>(
-                            new SyntaxNodeOrToken[]{
-                                SyntaxFactory.Argument(
-                                    ParenthesizedLambdaExpression()
-                                        .WithExpressionBody(test)),
-                                SyntaxFactory.Token(SyntaxKind.CommaToken),
-                                SyntaxFactory.Argument(whileDelegate)})))).NormalizeWhitespace();
+                    SyntaxUtils.ArgumentList(
+                        createConditional,
+                        ParenthesizedLambdaExpression()
+                            .WithExpressionBody(test),
+                        whileDelegate))).NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitDoStatement(DoStatementSyntax node)
@@ -1281,6 +1290,66 @@ namespace RRCG
                                    Token(SyntaxKind.CommaToken),
                                    Argument(setterArg)})))
                    .NormalizeWhitespace();
+        }
+
+        public InvocationExpressionSyntax CreateConditionalContext(SemanticModel semanticModel, bool initialReadsFromVariables, IEnumerable<ILocalSymbol> accessibleLocals, params SyntaxNode?[] nodesToSearch)
+        {
+            // 1. Create arguments list consisting of the first argument, initialReadsFromVariables
+            var arguments = new List<ExpressionSyntax>()
+            {
+                LiteralExpression(initialReadsFromVariables ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression),
+            };
+
+            foreach (var nodeToSearch in nodesToSearch)
+            {
+                if (nodeToSearch == null) continue;
+
+                // 2. Find all assignments each node to search.
+                var assignments = nodeToSearch.DescendantNodesAndSelf()
+                    .Where(n => SyntaxUtils.AllAssignmentKinds.Contains(n.Kind()))
+                    .ToArray();
+
+                // 3. For each assignment, determine if the symbol being assigned to
+                //    is in the list of accessible locals.
+                var promotedSymbols = new List<ILocalSymbol>();
+                foreach (var assignment in assignments)
+                {
+                    var assignmentKind = assignment.Kind();
+                    ExpressionSyntax assignedLocalExpression = default;
+
+                    // Different syntax nodes store the assigned symbol differently.
+                    // We need to do per-kind reading, unfortunately.
+                    if (SyntaxUtils.AssignmentExpressionKinds.Contains(assignmentKind))
+                        assignedLocalExpression = ((AssignmentExpressionSyntax)assignment).Left;
+                    else if (SyntaxUtils.PrefixUnaryAssignmentKinds.Contains(assignmentKind))
+                        assignedLocalExpression = ((PrefixUnaryExpressionSyntax)assignment).Operand;
+                    else if (SyntaxUtils.PostfixUnaryAssignmentKinds.Contains(assignmentKind))
+                        assignedLocalExpression = ((PostfixUnaryExpressionSyntax)assignment).Operand;
+
+                    if (assignedLocalExpression == null) continue;
+
+                    // Ensure the target of the assignment is a local variable.
+                    var symbolInfo = semanticModel.GetSymbolInfo(assignedLocalExpression);
+                    if (symbolInfo.Symbol == null) continue;
+                    if (symbolInfo.Symbol is not ILocalSymbol localSymbol) continue;
+
+                    // If the local symbol is contained within the accessible locals,
+                    // then the variable should be promoted (if we haven't promoted it already)
+                    if (!accessibleLocals.Any(s => s.Equals(localSymbol))) continue;
+                    if (promotedSymbols.Any(s => s.Equals(localSymbol))) continue;
+
+                    promotedSymbols.Add(localSymbol);
+                    arguments.Add(LiteralExpression(
+                                      SyntaxKind.StringLiteralExpression,
+                                      Literal(localSymbol.Name)));
+                }
+            }
+
+            // 4. Construct call to __ConditionalContext
+            return InvocationExpression(
+                       IdentifierName("__ConditionalContext"))
+                   .WithArgumentList(
+                       SyntaxUtils.ArgumentList(arguments.ToArray()));
         }
     }
 }

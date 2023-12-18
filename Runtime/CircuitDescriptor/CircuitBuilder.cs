@@ -517,76 +517,23 @@ namespace RRCGBuild
 
         public T __Assign<T>(string identifier, out T variable, Func<T> value)
         {
-            // First, Is the variable able to be promoted to a Rec Room variable?
-            // (is T derived from AnyPort?)
-            if (!typeof(AnyPort).IsAssignableFrom(typeof(T))) goto assignment;
-
-            // Okay, are we within an accessibility scope?
-            var accessScope = SemanticStack.current.GetNextScopeWithType<AccessibilityScope>();
-            if (accessScope == null) goto assignment;
-
-            // And we're in a conditional context?
-            var conditionalContext = SemanticStack.current.GetNextScopeWithType<ConditionalContext>();
-            if (conditionalContext == null) goto assignment;
-
-            // Is there an accessible declared variable with the identifier?
-            var declaredVariable = SemanticStackUtils.GetDeclaredVariable(identifier, out var declScope);
-            if (declaredVariable == null) goto assignment;
-
-            // What's the difference in scope level from the current accessScope to declScope?
-            // Is the variable declared in a parent accessibility scope?
-            int scopeLevelDifference = SemanticStackUtils.ScopeLevelDifference(accessScope, declScope);
-            if (scopeLevelDifference >= 0) goto assignment;
-
-            // Is the variable marked as promoted within the current conditional context?
-            var promotedVariables = conditionalContext.PromotedVariables;
-            if (promotedVariables.ContainsKey(identifier)) goto assignment;
-
-            // Is it promoted in a parenting conditional context?
-            var promotedVariable = SemanticStackUtils.GetPromotedVariable(identifier);
-            if (promotedVariable != null)
-            {
-                // Create a new one that shares the same RR variable.
-                promotedVariable = promotedVariable.NewWithSameRRVariable(declaredVariable.Value.Getter());
-            } else
-            {
-                // We'll need to create one then. Reflection magic!
-                var type = typeof(ConditionalContext.PromotedVariable<>).MakeGenericType(typeof(T));
-                promotedVariable = (ConditionalContext.IPromotedVariable)Activator.CreateInstance(type, new object[] { identifier, declaredVariable.Value.Getter(), null });
-            }
-
-            // Should the initial assignment reference the RR variable value pin?
-            if (conditionalContext.InitialAssignmentsReferenceRRVariable && declaredVariable.Value.Setter != null)
-                declaredVariable.Value.Setter(promotedVariable.RRVariableValue);
-
-            // Finally, add to the conditional context.
-            conditionalContext.PromotedVariables[identifier] = promotedVariable;
-
-        assignment: // i mean, it's probably better than nesting all those
+            // TODO: Now that variable promotions are computed at rewriting time,
+            //       maybe this isn't necessary anymore.
             var assignedValue = value();
             variable = assignedValue;
 
             return assignedValue;
         }
 
-        // TODO: Variable promotion works fine for while loops if you assign to a value before reading it.
-        //       If you read from a variable before assigning to it, the pre-promotion value will be used.
-        //       My thoughts to fix this are to introduce a "__Read" helper. (like: __Read("identifier", () => identifier);
-        //       This gives us a nice place to swap in the variable value, but it will need some work on the rewriting side.
-        //       We'll have to check the declared symbol when visiting identifiers and check if it's suitable for __Read
-        //       (i.e IFieldSymbol, ILocalSymbol, maybe IPropertySymbol?.. accessibility scopes will be a nightmare)
-        //       These are just my current thoughts. I'd like to flesh them out more before actioning on them --
-        //       so for the meantime, this note serves to document the issue.
-        public void __While(Func<BoolPort> condition, AlternativeExec block)
+        public void __While(ConditionalContext conditional, Func<BoolPort> condition, AlternativeExec block)
         {
             // Build the entry If chip on a new exec flow
             var prevFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
-            RRCGGenerated.ChipBuilderGen.If(false, () => { });
+            RRCGGenerated.ChipBuilderGen.If(condition(), () => { });
             var entryIfNode = Context.lastSpawnedNode;
 
             // Now we create our SemanticStack scopes
-            var conditionalContext = new ConditionalContext { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = true };
             var whileScope = new WhileScope
             {
                 BlockFlow = new ExecFlow(),
@@ -604,18 +551,18 @@ namespace RRCGBuild
             // Push scopes to the stack, move to the block flow,
             // and build the block contents
             SemanticStack.current.Push(whileScope);
-            SemanticStack.current.Push(conditionalContext);
+            SemanticStack.current.Push(conditional);
 
             ExecFlow.current = whileScope.BlockFlow;
             block();
 
             // Get promoted variables & end conditional context
             // Set variable values before entering the loop, and before looping back around.
-            var promotedVariablesState = SemanticStackUtils.GetDeclaredVariableValues(conditionalContext.PromotedVariables.Keys);
-            SemanticStackUtils.ResetPromotedVariables(conditionalContext.PromotedVariables);
-            var prePromotionVariablesState = SemanticStackUtils.GetDeclaredVariableValues(conditionalContext.PromotedVariables.Keys);
+            var promotedVariablesState = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
+            SemanticStackUtils.ResetPromotedVariables(conditional.PromotedVariables);
+            var prePromotionVariablesState = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
 
-            SemanticStackUtils.EndConditionalContext(conditionalContext, new()
+            SemanticStackUtils.EndConditionalContext(conditional, new()
             {
                 { ExecFlow.current, promotedVariablesState },
                 { prevFlow, prePromotionVariablesState }
@@ -624,11 +571,6 @@ namespace RRCGBuild
             // End while scope
             if (!SemanticStack.current.Pop().Equals(whileScope))
                 throw new Exception("Removed element was not WhileScope!");
-
-            // Evaluate & connect condition, so that if it uses a promoted
-            // variable, it reads from the variable pin
-            entryIfNode.DefaultValues.Remove((0, 1));
-            entryIfNode.ConnectInputPort(Context.current, condition(), entryIfNode.Port(0, 1));
 
             // Advance the block flow & previous flow to the entry If node
             whileScope.BlockFlow.Advance(Context.current, entryIfNode.Port(0, 0), null);
@@ -864,44 +806,36 @@ namespace RRCGBuild
             ExecFlow.current.Clear();
         }
 
-        private static (Dictionary<string, ConditionalContext.IPromotedVariable>, ExecFlow) __IfBranch(ConditionalContext enclosingContext, Port fromPort, AlternativeExec branch)
+        private static ExecFlow __IfBranch(Port fromPort, AlternativeExec branch)
         {
             var branchFlow = new ExecFlow();
             branchFlow.Ports.Add(fromPort);
 
-            var conditional = new ConditionalContext { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = false };
-            SemanticStack.current.Push(conditional);
-
             ExecFlow.current = branchFlow;
             branch();
 
-            if (!SemanticStack.current.Pop().Equals(conditional))
-                throw new Exception("Expected ConditionalContext at the top of the SemanticStack!");
-
-            enclosingContext.MergePromotionsFrom(conditional);
-            return (conditional.PromotedVariables, ExecFlow.current);
+            return ExecFlow.current;
         }
 
-        public static void __If(BoolPort condition, AlternativeExec ifBranch, AlternativeExec elseBranch)
+        public static void __If(ConditionalContext conditional, Func<BoolPort> condition, AlternativeExec ifBranch, AlternativeExec elseBranch)
         {
             // Create If node
             var prevFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
-            If(condition, () => { });
+            If(condition(), () => { });
             var ifNode = Context.lastSpawnedNode;
 
-            // Create enclosing conditional context
-            var conditional = new ConditionalContext { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = false };
+            // Push conditional context
             SemanticStack.current.Push(conditional);
 
             // Run each branch and get the final value of promoted variables
-            (var ifPromoted, var ifFlow) = __IfBranch(conditional, ifNode.Port(0, 0), ifBranch);
-            var finalValuesIfBranch = SemanticStackUtils.GetDeclaredVariableValues(ifPromoted.Keys);
-            SemanticStackUtils.ResetPromotedVariables(ifPromoted);
+            var ifFlow = __IfBranch(ifNode.Port(0, 0), ifBranch);
+            var finalValuesIfBranch = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
+            SemanticStackUtils.ResetPromotedVariables(conditional.PromotedVariables);
 
-            (var elsePromoted, var elseFlow) = __IfBranch(conditional, ifNode.Port(0, 1), elseBranch);
-            var finalValuesElseBranch = SemanticStackUtils.GetDeclaredVariableValues(elsePromoted.Keys);
-            SemanticStackUtils.ResetPromotedVariables(elsePromoted);
+            var elseFlow = __IfBranch(ifNode.Port(0, 1), elseBranch);
+            var finalValuesElseBranch = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
+            SemanticStackUtils.ResetPromotedVariables(conditional.PromotedVariables);
 
             // End the context, writing the variables at the end of each branch.
             SemanticStackUtils.EndConditionalContext(conditional, new() {
@@ -914,6 +848,51 @@ namespace RRCGBuild
             ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
             ExecFlow.current.Merge(ifFlow);
             ExecFlow.current.Merge(elseFlow);
+        }
+
+        public ConditionalContext __ConditionalContext(bool initialReadsFromVariables, params string[] promotedIdentifiers)
+        {
+            var conditionalContext = new ConditionalContext() { PromotedVariables = new(), InitialReadsFromVariables = initialReadsFromVariables };
+
+            // Create promoted variables
+            foreach (var identifier in promotedIdentifiers)
+            {
+                // Is the variable declared & accessible?
+                var declaredVariable = SemanticStackUtils.GetDeclaredVariable(identifier, out _);
+                if (declaredVariable == null) continue;
+
+                // Is it a port type?
+                var value = declaredVariable.Value.Getter();
+                var variableType = ((object)value).GetType();
+                if (!typeof(AnyPort).IsAssignableFrom(variableType)) continue;
+
+                // Is the variable marked as promoted within the current conditional context?
+                var promotedVariables = conditionalContext.PromotedVariables;
+                if (promotedVariables.ContainsKey(identifier)) continue;
+
+                // Is it promoted in a parenting conditional context?
+                var promotedVariable = SemanticStackUtils.GetPromotedVariable(identifier);
+                if (promotedVariable != null)
+                {
+                    // Create a new one that shares the same RR variable.
+                    promotedVariable = promotedVariable.NewWithSameRRVariable(value);
+                }
+                else
+                {
+                    // We'll need to create one then. Reflection magic!
+                    var type = typeof(ConditionalContext.PromotedVariable<>).MakeGenericType(variableType);
+                    promotedVariable = (ConditionalContext.IPromotedVariable)Activator.CreateInstance(type, new object[] { identifier, value, null });
+                }
+
+                // Should the value be set to the RR variable output?
+                if (initialReadsFromVariables && declaredVariable.Value.Setter != null)
+                    declaredVariable.Value.Setter(promotedVariable.RRVariableValue);
+
+                // Finally, add to the conditional context.
+                conditionalContext.PromotedVariables[identifier] = promotedVariable;
+            }
+
+            return conditionalContext;
         }
     }
 }

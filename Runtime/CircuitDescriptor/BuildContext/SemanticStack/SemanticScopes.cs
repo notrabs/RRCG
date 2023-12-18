@@ -157,16 +157,7 @@ namespace RRCGBuild
         // Variable promotion state
         public Dictionary<string, IPromotedVariable> PromotedVariables;
 
-        // Should the initial assignment reference the RR variable value pin?
-        public bool InitialAssignmentsReferenceRRVariable;
-
-        public void MergePromotionsFrom(ConditionalContext b)
-        {
-            foreach (var identifier in b.PromotedVariables.Keys)
-            {
-                if (PromotedVariables.ContainsKey(identifier)) continue;
-                PromotedVariables[identifier] = b.PromotedVariables[identifier];
-            }
-        }
+        // Should the initial read refer to the RR variable value output?
+        public bool InitialReadsFromVariables;
     }
 }
