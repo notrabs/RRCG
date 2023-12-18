@@ -1,12 +1,12 @@
 ﻿#nullable enable
+using RRCGBuild.SemanticScopes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using IPromotedVariable = RRCGBuild.SemanticStack.ConditionalContext.IPromotedVariable;
 
 namespace RRCGBuild
 {
-    public class SemanticStack : Stack<object>
+    public class SemanticStack : Stack<SemanticScope>
     {
         // In this stack we store all semantic information that leads down to
         // the current runtime environment.
@@ -14,104 +14,9 @@ namespace RRCGBuild
         // depending on enclosing scopes or variables to know their assigned names in the source.
         public static SemanticStack current;
 
-        public struct SwitchScope
-        {
-            public ExecFlow BreakFlow;
-        }
+        public delegate void ScopedImpl(SemanticScope scope);
 
-        public struct WhileScope
-        {
-            public ExecFlow BlockFlow; // Exec flow of the while loop body. Will cycle back to entry "If" node.
-            public ExecFlow DoneFlow; // Exec flow for when the loop is finished/break is invoked.
-            public Node EntryIfNode;
-        }
-
-        public struct DoWhileScope
-        {
-            public ExecFlow ContinueFlow; // Will jump to the input exec of the loopback "If" node
-            public ExecFlow DoneFlow; // Exec flow for when the loop is finished/break is invoked.
-            public Node LoopbackIfNode;
-        }
-
-        // Scope valid in the expression of an assignment to an identifier. (currently only implemented for declaration intiailizers)
-        public struct NamedAssignmentScope
-        {
-            // The Left-Hand side Identifier of the assignment
-            public string Identifier;
-        }
-
-        // The accessibility scope is used to determine what can be accessed where.
-        // This currently only manages declared/pending gotos and labels, but in
-        // the future we can store variable declarations to address the assignment problem.
-        public struct AccessibilityScope
-        {
-            // Gotos that jump to labels not yet defined
-            // (exec flow contains ports waiting to be advanced
-            //  once the label is declared)
-            public Dictionary<string, ExecFlow> PendingGotos;
-
-            // Labels that have been defined, but are awaiting
-            // a suitable Port to resolve to
-            public List<string> PendingLabels;
-
-            // Fully resolved labels, ready to jump to
-            public Dictionary<string, Port> DeclaredLabels;
-
-            // Variables declared within this scope.
-            // Maps identifier name -> getter/setter methods
-            public Dictionary<string, (Func<dynamic> Getter, Action<dynamic>? Setter)> DeclaredVariables;
-
-            // Can "access operations" running under this scope
-            // search up into enclosing accessibility scopes?
-            public bool CanAccessParent;
-        }
-
-        // Manages promotion of variables in conditional branches
-        public struct ConditionalContext
-        {
-            public interface IPromotedVariable
-            {
-                public dynamic RRVariableValue { get; set; }
-                public dynamic ValueBeforePromotion { get; }
-                public IPromotedVariable NewWithSameRRVariable(dynamic valueBeforePromotion);
-            }
-
-            public class PromotedVariable<T> : IPromotedVariable where T : AnyPort, new()
-            {
-                private Variable<T> RRVariable;
-                public PromotedVariable(string identifier, dynamic valueBeforePromotion, Variable<T>? rrVariable)
-                {
-                    ValueBeforePromotion = valueBeforePromotion;
-
-                    current.Push(new NamedAssignmentScope { Identifier = $"Conditional_{identifier}" });
-                    RRVariable = rrVariable ?? new();
-                    current.Pop();
-                }
-
-                public dynamic RRVariableValue { get => RRVariable.Value; set => RRVariable.Value = value; }
-                public dynamic ValueBeforePromotion { get; private set; }
-                public IPromotedVariable NewWithSameRRVariable(dynamic valueBeforePromotion) => new PromotedVariable<T>("", valueBeforePromotion, RRVariable);
-            }
-
-            // Variable promotion state
-            public Dictionary<string, IPromotedVariable> PromotedVariables;
-
-            // Should the initial assignment reference the RR variable value pin?
-            public bool InitialAssignmentsReferenceRRVariable;
-
-            public void MergePromotionsFrom(ConditionalContext b)
-            {
-                foreach (var identifier in b.PromotedVariables.Keys)
-                {
-                    if (PromotedVariables.ContainsKey(identifier)) continue;
-                    PromotedVariables[identifier] = b.PromotedVariables[identifier];
-                }
-            }
-        }
-
-        public delegate void ScopedImpl(object scope);
-
-        public T? GetNextScopeWithType<T>() where T : struct
+        public T? GetNextScopeWithType<T>() where T : SemanticScope
         {
             try
             {
@@ -126,15 +31,15 @@ namespace RRCGBuild
     {
         public static string GetNamedAssignmentName(string defaultName)
         {
-            return SemanticStack.current.GetNextScopeWithType<SemanticStack.NamedAssignmentScope>()?.Identifier ?? defaultName;
+            return SemanticStack.current.GetNextScopeWithType<NamedAssignmentScope>()?.Identifier ?? defaultName;
         }
 
-        public static (Func<dynamic> Getter, Action<dynamic>? Setter)? GetDeclaredVariable(string identifier, out SemanticStack.AccessibilityScope accessScope)
+        public static (Func<dynamic> Getter, Action<dynamic>? Setter)? GetDeclaredVariable(string identifier, out AccessibilityScope? accessScope)
         {
             for (int i = 0; i < SemanticStack.current.Count; i++)
             {
                 var item = SemanticStack.current.ElementAt(i);
-                if (item is not SemanticStack.AccessibilityScope scope) continue;
+                if (item is not AccessibilityScope scope) continue;
 
                 if (scope.DeclaredVariables.TryGetValue(identifier, out var declVar))
                 {
@@ -149,12 +54,12 @@ namespace RRCGBuild
             return null;
         }
 
-        public static IPromotedVariable? GetPromotedVariable(string identifier)
+        public static ConditionalContext.IPromotedVariable? GetPromotedVariable(string identifier)
         {
             for (int i = 0; i < SemanticStack.current.Count; i++)
             {
                 var item = SemanticStack.current.ElementAt(i);
-                if (item is not SemanticStack.ConditionalContext scope) continue;
+                if (item is not ConditionalContext scope) continue;
 
                 if (scope.PromotedVariables.TryGetValue(identifier, out var promotedVar))
                 {
@@ -191,7 +96,7 @@ namespace RRCGBuild
             for (int i = 0; i < SemanticStack.current.Count; i++)
             {
                 var item = SemanticStack.current.ElementAt(i);
-                if (item is not SemanticStack.AccessibilityScope scope) continue;
+                if (item is not AccessibilityScope scope) continue;
 
                 foreach (var identifier in identifiersList.ToList()) // shallow copy
                 {
@@ -215,7 +120,7 @@ namespace RRCGBuild
         /// Given a mapping of identifier to promoted variable,
         /// attempt to reset each C# variable to the pre-promotion value.
         /// </summary>
-        public static void ResetPromotedVariables(Dictionary<string, IPromotedVariable> variables)
+        public static void ResetPromotedVariables(Dictionary<string, ConditionalContext.IPromotedVariable> variables)
         {
             foreach (var identifier in variables.Keys)
             {
@@ -235,7 +140,7 @@ namespace RRCGBuild
         /// </summary>
         /// <param name="context">The conditional context to end.</param>
         /// <param name="branchMap">Map ExecFlow -> identifier -> final value on the branch)</param>
-        public static void EndConditionalContext(SemanticStack.ConditionalContext context, Dictionary<ExecFlow, Dictionary<string, dynamic>> branchMap)
+        public static void EndConditionalContext(ConditionalContext context, Dictionary<ExecFlow, Dictionary<string, dynamic>> branchMap)
         {
             var prevFlow = ExecFlow.current;
 
@@ -269,7 +174,7 @@ namespace RRCGBuild
                 throw new Exception("Expected ConditionalContext at the top of the SemanticStack!");
 
             // If we have a parenting conditional context, merge promotions into it
-            var parentConditional = SemanticStack.current.GetNextScopeWithType<SemanticStack.ConditionalContext>();
+            var parentConditional = SemanticStack.current.GetNextScopeWithType<ConditionalContext>();
             if (parentConditional != null)
                 parentConditional.Value!.MergePromotionsFrom(context);
 
