@@ -1,11 +1,11 @@
 #nullable enable
+using RRCGBuild.SemanticScopes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using IPromotedVariable = RRCGBuild.SemanticStack.ConditionalContext.IPromotedVariable;
 
 namespace RRCGBuild
 {
@@ -523,11 +523,11 @@ namespace RRCGBuild
             if (!typeof(AnyPort).IsAssignableFrom(typeof(T))) goto assignment;
 
             // Okay, are we within an accessibility scope?
-            var accessScope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
+            var accessScope = SemanticStack.current.GetNextScopeWithType<AccessibilityScope>();
             if (accessScope == null) goto assignment;
 
             // And we're in a conditional context?
-            var conditionalContext = SemanticStack.current.GetNextScopeWithType<SemanticStack.ConditionalContext>();
+            var conditionalContext = SemanticStack.current.GetNextScopeWithType<ConditionalContext>();
             if (conditionalContext == null) goto assignment;
 
             // Is there an accessible declared variable with the identifier?
@@ -540,7 +540,7 @@ namespace RRCGBuild
             if (scopeLevelDifference >= 0) goto assignment;
 
             // Is the variable marked as promoted within the current conditional context?
-            var promotedVariables = conditionalContext.Value.PromotedVariables;
+            var promotedVariables = conditionalContext.PromotedVariables;
             if (promotedVariables.ContainsKey(identifier)) goto assignment;
 
             // Is it promoted in a parenting conditional context?
@@ -552,16 +552,16 @@ namespace RRCGBuild
             } else
             {
                 // We'll need to create one then. Reflection magic!
-                var type = typeof(SemanticStack.ConditionalContext.PromotedVariable<>).MakeGenericType(typeof(T));
-                promotedVariable = (IPromotedVariable)Activator.CreateInstance(type, new object[] { identifier, declaredVariable.Value.Getter(), null });
+                var type = typeof(ConditionalContext.PromotedVariable<>).MakeGenericType(typeof(T));
+                promotedVariable = (ConditionalContext.IPromotedVariable)Activator.CreateInstance(type, new object[] { identifier, declaredVariable.Value.Getter(), null });
             }
 
             // Should the initial assignment reference the RR variable value pin?
-            if (conditionalContext.Value.InitialAssignmentsReferenceRRVariable && declaredVariable.Value.Setter != null)
+            if (conditionalContext.InitialAssignmentsReferenceRRVariable && declaredVariable.Value.Setter != null)
                 declaredVariable.Value.Setter(promotedVariable.RRVariableValue);
 
             // Finally, add to the conditional context.
-            conditionalContext.Value.PromotedVariables[identifier] = promotedVariable;
+            conditionalContext.PromotedVariables[identifier] = promotedVariable;
 
         assignment: // i mean, it's probably better than nesting all those
             var assignedValue = value();
@@ -587,8 +587,8 @@ namespace RRCGBuild
             var entryIfNode = Context.lastSpawnedNode;
 
             // Now we create our SemanticStack scopes
-            var conditionalContext = new SemanticStack.ConditionalContext { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = true };
-            var whileScope = new SemanticStack.WhileScope
+            var conditionalContext = new ConditionalContext { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = true };
+            var whileScope = new WhileScope
             {
                 BlockFlow = new ExecFlow(),
                 DoneFlow = new ExecFlow(),
@@ -641,7 +641,7 @@ namespace RRCGBuild
 
         private void __ContinueImpl_While(object scope)
         {
-            var whileScope = (SemanticStack.WhileScope)scope;
+            var whileScope = (WhileScope)scope;
 
             // Advance the current execution flow back to the entry If node.
             // Nodes spawned after this will start a new flow.
@@ -650,7 +650,7 @@ namespace RRCGBuild
 
         private void __BreakImpl_While(object scope)
         {
-            var whileScope = (SemanticStack.WhileScope)scope;
+            var whileScope = (WhileScope)scope;
 
             // Merge the current execution flow into the done flow,
             // then clear the current execution flow.
@@ -671,7 +671,7 @@ namespace RRCGBuild
             ExecFlow.current = prevFlow;
 
             // Create our DoWhile scope & exec flows
-            var doWhileScope = new SemanticStack.DoWhileScope()
+            var doWhileScope = new DoWhileScope
             {
                 ContinueFlow = new ExecFlow(),
                 DoneFlow = new ExecFlow(),
@@ -700,7 +700,7 @@ namespace RRCGBuild
 
         private void __ContinueImpl_DoWhile(object scope)
         {
-            var doWhileScope = (SemanticStack.DoWhileScope)scope;
+            var doWhileScope = (DoWhileScope)scope;
 
             // Merge the current exec flow into
             // the continue flow, then clear the current flow.
@@ -711,7 +711,7 @@ namespace RRCGBuild
 
         private void __BreakImpl_DoWhile(object scope)
         {
-            var doWhileScope = (SemanticStack.DoWhileScope)scope;
+            var doWhileScope = (DoWhileScope)scope;
 
             // Merge the current exec flow into
             // the done flow, then clear the current flow.
@@ -723,7 +723,7 @@ namespace RRCGBuild
         public void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
         {
             // Create & push our switch scope
-            var switchScope = new SemanticStack.SwitchScope()
+            var switchScope = new SwitchScope
             {
                 BreakFlow = new ExecFlow()
             };
@@ -743,7 +743,7 @@ namespace RRCGBuild
         {
             // Merge the current exec flow into the break flow,
             // then clear the current exec flow.
-            var switchScope = (SemanticStack.SwitchScope)scope;
+            var switchScope = (SwitchScope)scope;
 
             switchScope.BreakFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();
@@ -772,9 +772,9 @@ namespace RRCGBuild
         {
             RunSharedKeywordImpl(new Dictionary<Type, SemanticStack.ScopedImpl>
             {
-                { typeof(SemanticStack.WhileScope), __BreakImpl_While },
-                { typeof(SemanticStack.SwitchScope), __BreakImpl_Switch },
-                { typeof(SemanticStack.DoWhileScope), __BreakImpl_DoWhile }
+                { typeof(WhileScope), __BreakImpl_While },
+                { typeof(SwitchScope), __BreakImpl_Switch },
+                { typeof(DoWhileScope), __BreakImpl_DoWhile }
             });
         }
 
@@ -782,8 +782,8 @@ namespace RRCGBuild
         {
             RunSharedKeywordImpl(new Dictionary<Type, SemanticStack.ScopedImpl>
             {
-                { typeof(SemanticStack.WhileScope), __ContinueImpl_While },
-                { typeof(SemanticStack.DoWhileScope), __ContinueImpl_DoWhile }
+                { typeof(WhileScope), __ContinueImpl_While },
+                { typeof(DoWhileScope), __ContinueImpl_DoWhile }
             });
         }
 
@@ -812,8 +812,8 @@ namespace RRCGBuild
         public static T __VariableDeclaratorExpression<T>(string identifier, Func<T>? initializer, Func<dynamic> getter, Action<dynamic>? setter)
         {
             // Store in accessibility scope?
-            var scope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
-            if (scope is SemanticStack.AccessibilityScope accessScope)
+            var scope = SemanticStack.current.GetNextScopeWithType<AccessibilityScope>();
+            if (scope is AccessibilityScope accessScope)
             {
                 // Is there already a variable with the identifier?
                 if (SemanticStackUtils.GetDeclaredVariable(identifier, out _) != null)
@@ -829,7 +829,7 @@ namespace RRCGBuild
 
             if (initializer != null)
             {
-                SemanticStack.current.Push(new SemanticStack.NamedAssignmentScope { Identifier = identifier });
+                SemanticStack.current.Push(new NamedAssignmentScope { Identifier = identifier });
                 value = initializer();
                 SemanticStack.current.Pop();
             }
@@ -839,7 +839,7 @@ namespace RRCGBuild
 
         public static void __BeginAccessibilityScope(bool canAccessParent)
         {
-            SemanticStack.current.Push(new SemanticStack.AccessibilityScope
+            SemanticStack.current.Push(new AccessibilityScope
             {
                 PendingGotos = new(),
                 PendingLabels = new(),
@@ -853,10 +853,10 @@ namespace RRCGBuild
         {
             var scope = SemanticStack.current.Pop();
 
-            if (scope is not SemanticStack.AccessibilityScope accessScope)
+            if (scope is not AccessibilityScope accessScope)
                 throw new Exception("Attempt to end accessibility scope, but topmost element of current SemanticStack was not AccessibilityScope!");
 
-            var parentScope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
+            var parentScope = SemanticStack.current.GetNextScopeWithType<AccessibilityScope>();
             bool canCarry = parentScope != null && accessScope.CanAccessParent;
 
             // Attempt to carry pending items into the parent scope, if allowed
@@ -865,7 +865,7 @@ namespace RRCGBuild
                 if (!canCarry)
                     Debug.LogWarning("Accessibility scope had pending labels waiting on execution to advance.");
 
-                parentScope.Value.PendingLabels.AddRange(accessScope.PendingLabels);
+                parentScope!.PendingLabels.AddRange(accessScope.PendingLabels);
             }
 
             if (accessScope.PendingGotos.Count > 0)
@@ -876,10 +876,10 @@ namespace RRCGBuild
 
                 foreach (var kvp in accessScope.PendingGotos)
                 {
-                    if (!parentScope.Value.PendingGotos.ContainsKey(kvp.Key))
-                        parentScope.Value.PendingGotos[kvp.Key] = new ExecFlow();
+                    if (!parentScope!.PendingGotos.ContainsKey(kvp.Key))
+                        parentScope!.PendingGotos[kvp.Key] = new ExecFlow();
 
-                    parentScope.Value.PendingGotos[kvp.Key].Merge(kvp.Value);
+                    parentScope!.PendingGotos[kvp.Key].Merge(kvp.Value);
                 }
             }
 
@@ -888,8 +888,8 @@ namespace RRCGBuild
         public static void __LabelDecl(string labelName)
         {
             // Ensure we're enclosed by a LabelAccessibilityScope
-            var scope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
-            if (scope is not SemanticStack.AccessibilityScope accessScope)
+            var scope = SemanticStack.current.GetNextScopeWithType<AccessibilityScope>();
+            if (scope is not AccessibilityScope accessScope)
                 throw new Exception("Attempt to declare label outside of an AccessibilityScope!");
 
             // Ensure name isn't already declared
@@ -906,7 +906,7 @@ namespace RRCGBuild
             for (int i = 0; i < SemanticStack.current.Count; i++)
             {
                 var item = SemanticStack.current.ElementAt(i);
-                if (item is not SemanticStack.AccessibilityScope accessScope) continue;
+                if (item is not AccessibilityScope accessScope) continue;
 
                 // Any pending gotos for this label?
                 if (accessScope.PendingGotos.TryGetValue(labelName, out var flow))
@@ -930,8 +930,8 @@ namespace RRCGBuild
             }
 
             // Otherwise, we'll add a pending goto in the current accessibility scope
-            var scope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
-            if (scope is not SemanticStack.AccessibilityScope currAccessScope)
+            var scope = SemanticStack.current.GetNextScopeWithType<AccessibilityScope>();
+            if (scope is not AccessibilityScope currAccessScope)
                 throw new Exception("Attempt to goto label outside of an AccessibilityScope!");
 
             if (!currAccessScope.PendingGotos.ContainsKey(labelName))
@@ -941,12 +941,12 @@ namespace RRCGBuild
             ExecFlow.current.Clear();
         }
 
-        private static (Dictionary<string, IPromotedVariable>, ExecFlow) __IfBranch(SemanticStack.ConditionalContext enclosingContext, Port fromPort, AlternativeExec branch)
+        private static (Dictionary<string, ConditionalContext.IPromotedVariable>, ExecFlow) __IfBranch(ConditionalContext enclosingContext, Port fromPort, AlternativeExec branch)
         {
             var branchFlow = new ExecFlow();
             branchFlow.Ports.Add(fromPort);
 
-            var conditional = new SemanticStack.ConditionalContext() { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = false };
+            var conditional = new ConditionalContext { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = false };
             SemanticStack.current.Push(conditional);
 
             ExecFlow.current = branchFlow;
@@ -968,7 +968,7 @@ namespace RRCGBuild
             var ifNode = Context.lastSpawnedNode;
 
             // Create enclosing conditional context
-            var conditional = new SemanticStack.ConditionalContext() { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = false };
+            var conditional = new ConditionalContext { PromotedVariables = new(), InitialAssignmentsReferenceRRVariable = false };
             SemanticStack.current.Push(conditional);
 
             // Run each branch and get the final value of promoted variables

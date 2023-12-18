@@ -176,7 +176,7 @@ namespace RRCGBuild
             // If we have a parenting conditional context, merge promotions into it
             var parentConditional = SemanticStack.current.GetNextScopeWithType<ConditionalContext>();
             if (parentConditional != null)
-                parentConditional.Value!.MergePromotionsFrom(context);
+                parentConditional.MergePromotionsFrom(context);
 
             ExecFlow.current = prevFlow;
         }
