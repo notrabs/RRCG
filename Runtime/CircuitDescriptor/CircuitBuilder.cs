@@ -1,5 +1,4 @@
 #nullable enable
-using RRCGBuild.SemanticScopes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -761,7 +760,7 @@ namespace RRCGBuild
             return value;
         }
 
-        public static void __BeginAccessibilityScope(bool canAccessParent)
+        public static void __BeginAccessibilityScope(AccessibilityScope.Kind scopeKind)
         {
             SemanticStack.current.Push(new AccessibilityScope
             {
@@ -769,10 +768,11 @@ namespace RRCGBuild
                 PendingLabels = new(),
                 DeclaredLabels = new(),
                 DeclaredVariables = new(),
-                CanAccessParent = canAccessParent
+                ScopeKind = scopeKind
             });
         }
 
+        public static void __BeginAccessibilityScope(bool a) { }
         public static void __EndAccessibilityScope()
         {
             var scope = SemanticStack.current.Pop();
@@ -781,7 +781,7 @@ namespace RRCGBuild
                 throw new Exception("Attempt to end accessibility scope, but topmost element of current SemanticStack was not AccessibilityScope!");
 
             var parentScope = SemanticStack.current.GetNextScopeWithType<AccessibilityScope>();
-            bool canCarry = parentScope != null && accessScope.CanAccessParent;
+            bool canCarry = parentScope != null && accessScope.ScopeKind != AccessibilityScope.Kind.MethodRoot;
 
             // Attempt to carry pending items into the parent scope, if allowed
             if (accessScope.PendingLabels.Count > 0)
@@ -850,7 +850,7 @@ namespace RRCGBuild
                 }
 
                 // And are we allowed to climb any higher?
-                if (!accessScope.CanAccessParent) break;
+                if (accessScope.ScopeKind == AccessibilityScope.Kind.MethodRoot) break;
             }
 
             // Otherwise, we'll add a pending goto in the current accessibility scope

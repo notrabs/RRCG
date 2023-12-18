@@ -20,7 +20,7 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 IntPort methodValueAssignment = default !;
                 methodValueAssignment = __VariableDeclaratorExpression<IntPort>("methodValueAssignment", () => 3, () => methodValueAssignment, (_RRCG_SETTER_VALUE) => methodValueAssignment = _RRCG_SETTER_VALUE);
                 TypeTest mehtodTypeAssignment = default !;

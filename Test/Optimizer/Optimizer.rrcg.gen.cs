@@ -11,7 +11,7 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             TestNotIfOptimizer();
             TestKnownSingletonChipsOptimizer();
             TestVariableCollapseOptimizer();
@@ -23,20 +23,20 @@ namespace RRCGBuild
         void TestNotIfOptimizer()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestNotIfOptimizer").Receiver();
                 BoolPort optimizableBool = default !;
                 optimizableBool = __VariableDeclaratorExpression<BoolPort>("optimizableBool", () => ParseBool("true").Result, () => optimizableBool, (_RRCG_SETTER_VALUE) => optimizableBool = _RRCG_SETTER_VALUE);
             __If(true, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
                 __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("false");
                 __EndAccessibilityScope();
             }
@@ -44,14 +44,14 @@ namespace RRCGBuild
             );
             __If(!true, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
                 __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("false");
                 __EndAccessibilityScope();
             }
@@ -59,14 +59,14 @@ namespace RRCGBuild
             );
             __If(Not(true), delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
                 __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("false");
                 __EndAccessibilityScope();
             }
@@ -76,14 +76,14 @@ namespace RRCGBuild
                 optimizableButNotDeletable = __VariableDeclaratorExpression<BoolPort>("optimizableButNotDeletable", () => !ParseBool("true").Result, () => optimizableButNotDeletable, (_RRCG_SETTER_VALUE) => optimizableButNotDeletable = _RRCG_SETTER_VALUE);
             __If(optimizableButNotDeletable, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
                 __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("false");
                 __EndAccessibilityScope();
             }
@@ -92,14 +92,14 @@ namespace RRCGBuild
             ChipLib.Log(optimizableButNotDeletable);
             __If(optimizableBool, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
                 __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("false");
                 __EndAccessibilityScope();
             }
@@ -107,14 +107,14 @@ namespace RRCGBuild
             );
             __If(!optimizableBool, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
                 __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("false");
                 __EndAccessibilityScope();
             }
@@ -122,14 +122,14 @@ namespace RRCGBuild
             );
             __If(ChipBuilder.Equals(ParseInt("1").Result, 1), delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
                 __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("false");
                 __EndAccessibilityScope();
             }
@@ -137,14 +137,14 @@ namespace RRCGBuild
             );
             __If(ChipBuilder.Not(ChipBuilder.Equals(ParseInt("1").Result, 1)), delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
                 __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("false");
                 __EndAccessibilityScope();
             }
@@ -158,7 +158,7 @@ namespace RRCGBuild
         void TestKnownSingletonChipsOptimizer()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestKnownSingletonChipsOptimizer").Receiver();
                 RRCGBuild.Variable<FloatPort> floatVar = default !;
                 floatVar = __VariableDeclaratorExpression<RRCGBuild.Variable<FloatPort>>("floatVar", () => new Variable<FloatPort>(), () => floatVar, (_RRCG_SETTER_VALUE) => floatVar = _RRCG_SETTER_VALUE);
@@ -178,7 +178,7 @@ namespace RRCGBuild
         void TestVariableCollapseOptimizer()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestVariableCollapseOptimiser").Receiver();
                 RRCGBuild.Variable<FloatPort> var0 = default !;
                 var0 = __VariableDeclaratorExpression<RRCGBuild.Variable<FloatPort>>("var0", () => new Variable<FloatPort>(), () => var0, (_RRCG_SETTER_VALUE) => var0 = _RRCG_SETTER_VALUE);
@@ -207,7 +207,7 @@ namespace RRCGBuild
         void TestAssociativeOperationCollapseOptimizer()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestAssociativeOperationCollapseOptimizer").Receiver();
                 RRCGBuild.Variable<FloatPort> variable = default !;
                 variable = __VariableDeclaratorExpression<RRCGBuild.Variable<FloatPort>>("variable", () => new Variable<FloatPort>(), () => variable, (_RRCG_SETTER_VALUE) => variable = _RRCG_SETTER_VALUE);

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using UnityEngine;
+using AccessibilityScope = RRCGBuild.AccessibilityScope;
 
 namespace RRCG
 {
@@ -292,7 +293,7 @@ namespace RRCG
                                             : SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
                                 );
 
-                statements = WrapStatementsInAccessibilityScope(statements, false);
+                statements = WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.MethodRoot);
             }
 
             return (T)visitedMethod.WithBody(
@@ -311,13 +312,13 @@ namespace RRCG
             return statements;
         }
 
-        public BlockSyntax WrapBlockInAccessibilityScope(BlockSyntax block, bool canAccessParent)
+        public BlockSyntax WrapBlockInAccessibilityScope(BlockSyntax block, AccessibilityScope.Kind scopeKind)
         {
             var statements = block.Statements;
-            return SyntaxFactory.Block(WrapStatementsInAccessibilityScope(statements, canAccessParent));
+            return SyntaxFactory.Block(WrapStatementsInAccessibilityScope(statements, scopeKind));
         }
 
-        public SyntaxList<StatementSyntax> WrapStatementsInAccessibilityScope(SyntaxList<StatementSyntax> statements, bool canAccessParent)
+        public SyntaxList<StatementSyntax> WrapStatementsInAccessibilityScope(SyntaxList<StatementSyntax> statements, AccessibilityScope.Kind scopeKind)
         {
             statements = statements.Insert(0, SyntaxFactory.ExpressionStatement(
                     SyntaxFactory.InvocationExpression(
@@ -326,9 +327,14 @@ namespace RRCG
                         SyntaxFactory.ArgumentList(
                             SyntaxFactory.SingletonSeparatedList<ArgumentSyntax>(
                                 SyntaxFactory.Argument(
-                                    SyntaxFactory.LiteralExpression(
-                                        canAccessParent ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression
-                                    )))))));
+                                    MemberAccessExpression(
+                                        SyntaxKind.SimpleMemberAccessExpression,
+                                        MemberAccessExpression(
+                                            SyntaxKind.SimpleMemberAccessExpression,
+                                            IdentifierName("AccessibilityScope"),
+                                            IdentifierName("Kind")),
+                                        IdentifierName(scopeKind.ToString("G")))
+                                    ))))));
 
             // Insert end before return
             int insertIndex = statements.Count;
@@ -345,16 +351,21 @@ namespace RRCG
 
         public override SyntaxNode VisitBlock(BlockSyntax node)
         {
-            bool canAccessParent = false;
+            var kind = AccessibilityScope.Kind.General;
+
             if (node.Parent != null)
-                canAccessParent = node.Parent.Kind() != SyntaxKind.MethodDeclaration &&
-                                  node.Parent.Kind() != SyntaxKind.AnonymousMethodExpression &&
-                                  node.Parent.Kind() != SyntaxKind.ParenthesizedLambdaExpression &&
-                                  node.Parent.Kind() != SyntaxKind.SimpleLambdaExpression;
+                kind = node.Parent.Kind() switch
+                {
+                    SyntaxKind.MethodDeclaration => AccessibilityScope.Kind.MethodRoot,
+                    SyntaxKind.AnonymousMethodExpression => AccessibilityScope.Kind.MethodRoot,
+                    SyntaxKind.ParenthesizedLambdaExpression => AccessibilityScope.Kind.MethodRoot,
+                    SyntaxKind.SimpleAssignmentExpression => AccessibilityScope.Kind.MethodRoot,
+                    _ => AccessibilityScope.Kind.General
+                };
 
             var newStatements = new SyntaxList<StatementSyntax>(node.Statements.Select(s => (StatementSyntax)Visit(s)));
             return SyntaxFactory.Block(
-                        WrapStatementsInAccessibilityScope(newStatements, canAccessParent)
+                        WrapStatementsInAccessibilityScope(newStatements, kind)
                     );
         }
 
@@ -904,9 +915,9 @@ namespace RRCG
             // Otherwise we'll do this ourselves
 
             if (trueStatement is not BlockSyntax trueBlock)
-                trueBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(trueStatement), true);
+                trueBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(trueStatement), AccessibilityScope.Kind.General);
             if (falseStatement is not BlockSyntax falseBlock)
-                falseBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(falseStatement), true);
+                falseBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(falseStatement), AccessibilityScope.Kind.General);
 
             return SyntaxFactory.ExpressionStatement(
                 SyntaxFactory.InvocationExpression(IdentifierName("__If"))
@@ -1017,8 +1028,11 @@ namespace RRCG
                     );
 
             // Wrap our statements in an accessibility scope & return
+            // TODO: Why was this necessary? I think AccessibilityScopes should reflect source scoping,
+            //       in this case I wrapped it in a block for the section declarations.. so the AccessibilityScope
+            //       feels unnecessary today. Retaining it for now though
             return SyntaxFactory.Block(
-                    WrapStatementsInAccessibilityScope(statements, true)
+                    WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.General)
                 ).NormalizeWhitespace();
         }
 
@@ -1031,7 +1045,7 @@ namespace RRCG
             // we'll have already wrapped it in an accessibility scope.
             // Otherwise we need to do this here.
             if (whileStatement is not BlockSyntax whileBlock)
-                whileBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(whileStatement), true);
+                whileBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(whileStatement), AccessibilityScope.Kind.General);
 
             var whileDelegate = ExecDelegate().WithBlock(whileBlock);
 
@@ -1058,7 +1072,7 @@ namespace RRCG
             // we'll have already wrapped it in an accessibility scope.
             // Otherwise we need to do this here.
             if (doWhileStatement is not BlockSyntax doBlock)
-                doBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(doWhileStatement), true);
+                doBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(doWhileStatement), AccessibilityScope.Kind.General);
 
             var doDelegate = ExecDelegate().WithBlock(doBlock);
 

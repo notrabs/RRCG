@@ -1,5 +1,4 @@
 ﻿#nullable enable
-using RRCGBuild.SemanticScopes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +46,8 @@ namespace RRCGBuild
                     return declVar;
                 }
 
-                if (!scope.CanAccessParent) break;
+                // Method declarations within methods are able to access variables in the parenting scope
+                // so we don't need to check if we can climb higher.
             }
 
             accessScope = default;
@@ -107,7 +107,7 @@ namespace RRCGBuild
                     }
                 }
 
-                if (identifiersList.Count <= 0 || !scope.CanAccessParent) break;
+                if (identifiersList.Count <= 0) break;
             }
 
             if (identifiersList.Count > 0)

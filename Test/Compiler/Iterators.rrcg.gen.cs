@@ -11,7 +11,7 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             // Test using while loops
             WhileTest();
             // Test returning from within a while loop
@@ -34,7 +34,7 @@ namespace RRCGBuild
         void WhileTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("WhileTest").Receiver();
                 ListPort<StringPort> list = default !;
                 list = __VariableDeclaratorExpression<ListPort<StringPort>>("list", () => ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"), () => list, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
@@ -42,7 +42,7 @@ namespace RRCGBuild
                 listCache = __VariableDeclaratorExpression<ListPort<StringPort>>("listCache", () => ChipLib.EventCache<ListPort<StringPort>>(list), () => listCache, (_RRCG_SETTER_VALUE) => listCache = _RRCG_SETTER_VALUE);
             __While(() => ChipBuilder.GreaterThan(listCache.Count, 0), delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 ChipLib.Log(Concat("Removing \"", listCache[0], "\" from list"));
                 ListRemoveAt<StringPort>(listCache, 0);
                 ChipLib.Log(Concat("List now has ", ToString<IntPort>(listCache.Count), " items."));
@@ -60,7 +60,7 @@ namespace RRCGBuild
         void WhileReturnTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.EventDefinition entry = default !;
                 entry = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("entry", () => new EventDefinition("WhileReturnTest"), () => entry, (_RRCG_SETTER_VALUE) => entry = _RRCG_SETTER_VALUE);
             entry.Receiver();
@@ -82,7 +82,7 @@ namespace RRCGBuild
             {
                 ExecFlow rrcg_return_flow = new ExecFlow();
                 dynamic rrcg_return_data = default;
-                __BeginAccessibilityScope(false);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 __Return(rrcg_return_flow, out rrcg_return_data, StringRepeat(str, count));
                 __EndAccessibilityScope();
                 ExecFlow.current.Merge(rrcg_return_flow);
@@ -96,23 +96,23 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.Variable<StringPort> strStaging = default !;
                 strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
             __While(() => true, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 strStaging.Value = Concat(strStaging.Value, str);
                 __If(ChipBuilder.GreaterOrEqual(strStaging.Value.Length, str.Length * count), delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __Return(rrcg_return_flow, out rrcg_return_data, strStaging.Value);
                     __EndAccessibilityScope();
                 }
 
                 , delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __EndAccessibilityScope();
                 }
 
@@ -129,18 +129,18 @@ namespace RRCGBuild
         void UnreachableNodesTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("UnreachableNodesTest").Receiver();
                 RRCGBuild.Variable<IntPort> index = default !;
                 index = __VariableDeclaratorExpression<RRCGBuild.Variable<IntPort>>("index", () => new Variable<IntPort>(), () => index, (_RRCG_SETTER_VALUE) => index = _RRCG_SETTER_VALUE);
             index.Value = 0;
             __While(() => ChipBuilder.LessThan(index.Value, 100), delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 index.Value += 1;
                 __If(ChipBuilder.Equals(index.Value, 50), delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     ChipLib.Log("index.Value == 50, break!");
                     __Break();
                     PlayerShowSubtitle(PlayerPort.Local, "This node is unreachable and should not be placed.", 0, 0);
@@ -149,10 +149,10 @@ namespace RRCGBuild
 
                 , delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __If(ChipBuilder.Equals(index.Value % 5, 0), delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         ChipLib.Log("index.Value % 5 == 0, continue!");
                         __Continue();
                         PlayerShowSubtitle(PlayerPort.Local, "This node is unreachable and should not be placed.", 0, 0);
@@ -161,7 +161,7 @@ namespace RRCGBuild
 
                     , delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         __EndAccessibilityScope();
                     }
 
@@ -183,15 +183,15 @@ namespace RRCGBuild
         void NestedWhileTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NestedWhileTest").Receiver();
             LogString("Start");
             __While(() => true, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 __While(() => true, delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString("0");
                     __Break();
                     __EndAccessibilityScope();
@@ -212,15 +212,15 @@ namespace RRCGBuild
         void DoWhileTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("DoWhileTest").Receiver();
             __DoWhile(true, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("Do while loop");
                 __If(true, delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString("Break");
                     __Break();
                     __EndAccessibilityScope();
@@ -228,10 +228,10 @@ namespace RRCGBuild
 
                 , delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __If(true, delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         LogString("Continue");
                         __Continue();
                         __EndAccessibilityScope();
@@ -239,7 +239,7 @@ namespace RRCGBuild
 
                     , delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         __EndAccessibilityScope();
                     }
 
@@ -261,7 +261,7 @@ namespace RRCGBuild
         void DoWhileReturnTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("DoWhileReturnTest").Receiver();
             // Test returns from do while block within an "inline" graph (functions are transparent)
             ChipLib.Log(Concat("Repeated string (do while, inline graph): ", StringRepeatDoWhile("Hello", 5)));
@@ -281,7 +281,7 @@ namespace RRCGBuild
             {
                 ExecFlow rrcg_return_flow = new ExecFlow();
                 dynamic rrcg_return_data = default;
-                __BeginAccessibilityScope(false);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 __Return(rrcg_return_flow, out rrcg_return_data, StringRepeatDoWhile(str, count));
                 __EndAccessibilityScope();
                 ExecFlow.current.Merge(rrcg_return_flow);
@@ -295,23 +295,23 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             dynamic rrcg_return_data = default;
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.Variable<StringPort> strStaging = default !;
                 strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
             __DoWhile(true, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 strStaging.Value = Concat(strStaging.Value, str);
                 __If(ChipBuilder.GreaterOrEqual(strStaging.Value.Length, str.Length * count), delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __Return(rrcg_return_flow, out rrcg_return_data, strStaging.Value);
                     __EndAccessibilityScope();
                 }
 
                 , delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __EndAccessibilityScope();
                 }
 
@@ -328,15 +328,15 @@ namespace RRCGBuild
         void NestedDoWhileTest()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NestedDoWhileTest").Receiver();
             __DoWhile(true, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("Do while loop 1");
                 __If(true, delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString("Loop 1 break");
                     __Break();
                     __EndAccessibilityScope();
@@ -344,10 +344,10 @@ namespace RRCGBuild
 
                 , delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __If(true, delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         LogString("Loop 1 continue");
                         __Continue();
                         __EndAccessibilityScope();
@@ -355,7 +355,7 @@ namespace RRCGBuild
 
                     , delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         __EndAccessibilityScope();
                     }
 
@@ -366,11 +366,11 @@ namespace RRCGBuild
                 );
                 __DoWhile(true, delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString("Do while loop 2");
                     __If(true, delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         LogString("Loop 2 break");
                         __Break();
                         __EndAccessibilityScope();
@@ -378,10 +378,10 @@ namespace RRCGBuild
 
                     , delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         __If(true, delegate
                         {
-                            __BeginAccessibilityScope(true);
+                            __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                             LogString("Loop 2 continue");
                             __Continue();
                             __EndAccessibilityScope();
@@ -389,7 +389,7 @@ namespace RRCGBuild
 
                         , delegate
                         {
-                            __BeginAccessibilityScope(true);
+                            __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                             __EndAccessibilityScope();
                         }
 

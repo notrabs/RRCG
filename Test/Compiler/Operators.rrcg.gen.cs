@@ -9,7 +9,7 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             NativeIntOperators();
             NativeFloatOperators();
             PortIntOperators();
@@ -25,7 +25,7 @@ namespace RRCGBuild
         public void NativeIntOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NativeIntOperators").Receiver();
                 IntPort nativeA = default !;
                 nativeA = __VariableDeclaratorExpression<IntPort>("nativeA", () => 1, () => nativeA, (_RRCG_SETTER_VALUE) => nativeA = _RRCG_SETTER_VALUE);
@@ -60,7 +60,7 @@ namespace RRCGBuild
         public void NativeFloatOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NativeFloatOperators").Receiver();
                 FloatPort nativeA = default !;
                 nativeA = __VariableDeclaratorExpression<FloatPort>("nativeA", () => 1, () => nativeA, (_RRCG_SETTER_VALUE) => nativeA = _RRCG_SETTER_VALUE);
@@ -95,7 +95,7 @@ namespace RRCGBuild
         public void PortIntOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("PortIntOperators").Receiver();
                 IntPort portA = default !;
                 portA = __VariableDeclaratorExpression<IntPort>("portA", () => RandomInt(0, 0), () => portA, (_RRCG_SETTER_VALUE) => portA = _RRCG_SETTER_VALUE);
@@ -130,7 +130,7 @@ namespace RRCGBuild
         public void PortFloatOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("PortFloatOperators").Receiver();
                 FloatPort portA = default !;
                 portA = __VariableDeclaratorExpression<FloatPort>("portA", () => RandomFloat(1, 1), () => portA, (_RRCG_SETTER_VALUE) => portA = _RRCG_SETTER_VALUE);
@@ -165,7 +165,7 @@ namespace RRCGBuild
         public void VectorOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("VectorOperators").Receiver();
                 Vector3Port vectorA = default !;
                 vectorA = __VariableDeclaratorExpression<Vector3Port>("vectorA", () => Vector3Create(1, 2, 3), () => vectorA, (_RRCG_SETTER_VALUE) => vectorA = _RRCG_SETTER_VALUE);
@@ -197,7 +197,7 @@ namespace RRCGBuild
         public void MixedOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("MixedOperators").Receiver();
                 FloatPort portA = default !;
                 portA = __VariableDeclaratorExpression<FloatPort>("portA", () => RandomFloat(1, 1), () => portA, (_RRCG_SETTER_VALUE) => portA = _RRCG_SETTER_VALUE);
@@ -218,7 +218,7 @@ namespace RRCGBuild
         public void TernaryOperator()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TernaryOperator").Receiver();
                 FloatPort dataA = default !;
                 dataA = __VariableDeclaratorExpression<FloatPort>("dataA", () => 0, () => dataA, (_RRCG_SETTER_VALUE) => dataA = _RRCG_SETTER_VALUE);
@@ -248,7 +248,7 @@ namespace RRCGBuild
         public void BitwiseOperators()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("BitwiseOperators").Receiver();
                 IntPort dataA = default !;
                 dataA = __VariableDeclaratorExpression<IntPort>("dataA", () => BinaryLiteral(0b00000000000011111111111111111111), () => dataA, (_RRCG_SETTER_VALUE) => dataA = _RRCG_SETTER_VALUE);

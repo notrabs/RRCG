@@ -13,20 +13,20 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("GotoTest").Receiver();
                 __LabelDecl("label1");
                 LogString("Label 1!");
             __If(true, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 __Goto("label1");
                 __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 __EndAccessibilityScope();
             }
 
@@ -34,14 +34,14 @@ namespace RRCGBuild
             LogString("Did not go to label1");
             __If(true, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 __Goto("label2");
                 __EndAccessibilityScope();
             }
 
             , delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 __EndAccessibilityScope();
             }
 
@@ -54,7 +54,7 @@ namespace RRCGBuild
                         __LabelDecl("label5");
                         LogString("Label 3, 4, 5");
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_1");
@@ -91,19 +91,19 @@ namespace RRCGBuild
             CircuitBoard(() =>
             {
                 ExecFlow rrcg_return_flow = new ExecFlow();
-                __BeginAccessibilityScope(false);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                     __LabelDecl("innerLabel1");
                     LogString("Inner label 1");
                 __If(true, delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __Goto("innerLabel1");
                     __EndAccessibilityScope();
                 }
 
                 , delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __EndAccessibilityScope();
                 }
 
@@ -111,14 +111,14 @@ namespace RRCGBuild
                 LogString("Did not go to innerLabel1");
                 __If(true, delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __Goto("innerLabel2");
                     __EndAccessibilityScope();
                 }
 
                 , delegate
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __EndAccessibilityScope();
                 }
 
@@ -131,7 +131,7 @@ namespace RRCGBuild
                             __LabelDecl("innerLabel5");
                             LogString("Inner label 3, 4, 5");
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     AlternativeExec rrcg_switch_section_0 = delegate
                     {
                         __LabelDecl("rrcg_switch_case_label_1");
@@ -171,7 +171,7 @@ namespace RRCGBuild
             );
             __If(true, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __LabelDecl("blockLabel");
                     LogString("Block label");
                 __EndAccessibilityScope();
@@ -179,20 +179,20 @@ namespace RRCGBuild
 
             , delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 __EndAccessibilityScope();
             }
 
             );
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_1");
                     LogString("Case 1");
                     __If(true, delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         LogString("Going to case 2");
                         __Goto("rrcg_switch_case_label_2");
                         __EndAccessibilityScope();
@@ -200,7 +200,7 @@ namespace RRCGBuild
 
                     , delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         __EndAccessibilityScope();
                     }
 
@@ -225,7 +225,7 @@ namespace RRCGBuild
             }
 
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"World\"");
@@ -251,7 +251,7 @@ namespace RRCGBuild
             }
 
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_0");

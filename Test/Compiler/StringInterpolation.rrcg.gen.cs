@@ -10,7 +10,7 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             InterpolatePureData();
             InterpolateDataWithPort();
             InterpolateNonStrings();
@@ -21,7 +21,7 @@ namespace RRCGBuild
         void InterpolatePureData()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("InterpolatePureData").Receiver();
                 StringPort port1 = default !;
                 port1 = __VariableDeclaratorExpression<StringPort>("port1", () => "Hello", () => port1, (_RRCG_SETTER_VALUE) => port1 = _RRCG_SETTER_VALUE);
@@ -36,7 +36,7 @@ namespace RRCGBuild
         void InterpolateDataWithPort()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("InterpolateDataWithPort").Receiver();
                 RRCGBuild.Variable<StringPort> variable = default !;
                 variable = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("variable", () => new Variable<StringPort>(), () => variable, (_RRCG_SETTER_VALUE) => variable = _RRCG_SETTER_VALUE);
@@ -52,7 +52,7 @@ namespace RRCGBuild
         void InterpolateNonStrings()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("InterpolateNonStrings").Receiver();
                 IntPort intData = default !;
                 intData = __VariableDeclaratorExpression<IntPort>("intData", () => 5, () => intData, (_RRCG_SETTER_VALUE) => intData = _RRCG_SETTER_VALUE);

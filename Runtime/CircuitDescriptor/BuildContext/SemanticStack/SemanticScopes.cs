@@ -2,7 +2,7 @@ using RRCGBuild;
 using System.Collections.Generic;
 using System;
 
-namespace RRCGBuild.SemanticScopes
+namespace RRCGBuild
 {
     // Base type for semantic scopes.
     public interface SemanticScope
@@ -100,6 +100,12 @@ namespace RRCGBuild.SemanticScopes
     // the future we can store variable declarations to address the assignment problem.
     public class AccessibilityScope : SemanticScope
     {
+        public enum Kind
+        {
+            General,
+            MethodRoot // root accessibility scope of a method
+        }
+
         // Gotos that jump to labels not yet defined
         // (exec flow contains ports waiting to be advanced
         //  once the label is declared)
@@ -116,9 +122,9 @@ namespace RRCGBuild.SemanticScopes
         // Maps identifier name -> getter/setter methods
         public Dictionary<string, (Func<dynamic> Getter, Action<dynamic>? Setter)> DeclaredVariables;
 
-        // Can "access operations" running under this scope
-        // search up into enclosing accessibility scopes?
-        public bool CanAccessParent;
+        // Scope kind. May have implications on whether "access operations"
+        // running under this scope can search up into enclosing accessibility scopes.
+        public Kind ScopeKind;
     }
 
     // Manages promotion of variables in conditional branches

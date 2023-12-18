@@ -9,7 +9,7 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 StudioFunctionsObject studioObject = default !;
                 studioObject = __VariableDeclaratorExpression<StudioFunctionsObject>("studioObject", () => new StudioFunctionsObject(RecRoomObjectPort.Invalid), () => studioObject, (_RRCG_SETTER_VALUE) => studioObject = _RRCG_SETTER_VALUE);
             studioObject.VoidFunction();
