@@ -27,7 +27,7 @@ namespace RRCGBuild
             new EventDefinition("TestNotIfOptimizer").Receiver();
                 BoolPort optimizableBool = default !;
                 optimizableBool = __VariableDeclaratorExpression<BoolPort>("optimizableBool", () => ParseBool("true").Result, () => optimizableBool, (_RRCG_SETTER_VALUE) => optimizableBool = _RRCG_SETTER_VALUE);
-            __If(true, delegate
+            __If(__ConditionalContext(false), () => true, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -42,7 +42,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(!true, delegate
+            __If(__ConditionalContext(false), () => !true, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -57,7 +57,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(Not(true), delegate
+            __If(__ConditionalContext(false), () => Not(true), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -74,7 +74,7 @@ namespace RRCGBuild
             );
                 BoolPort optimizableButNotDeletable = default !;
                 optimizableButNotDeletable = __VariableDeclaratorExpression<BoolPort>("optimizableButNotDeletable", () => !ParseBool("true").Result, () => optimizableButNotDeletable, (_RRCG_SETTER_VALUE) => optimizableButNotDeletable = _RRCG_SETTER_VALUE);
-            __If(optimizableButNotDeletable, delegate
+            __If(__ConditionalContext(false), () => optimizableButNotDeletable, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -90,7 +90,7 @@ namespace RRCGBuild
 
             );
             ChipLib.Log(optimizableButNotDeletable);
-            __If(optimizableBool, delegate
+            __If(__ConditionalContext(false), () => optimizableBool, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -105,7 +105,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(!optimizableBool, delegate
+            __If(__ConditionalContext(false), () => !optimizableBool, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -120,7 +120,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(ChipBuilder.Equals(ParseInt("1").Result, 1), delegate
+            __If(__ConditionalContext(false), () => ChipBuilder.Equals(ParseInt("1").Result, 1), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -135,7 +135,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(ChipBuilder.Not(ChipBuilder.Equals(ParseInt("1").Result, 1)), delegate
+            __If(__ConditionalContext(false), () => ChipBuilder.Not(ChipBuilder.Equals(ParseInt("1").Result, 1)), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");

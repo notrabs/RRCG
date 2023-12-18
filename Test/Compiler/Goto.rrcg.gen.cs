@@ -17,7 +17,7 @@ namespace RRCGBuild
             new EventDefinition("GotoTest").Receiver();
                 __LabelDecl("label1");
                 LogString("Label 1!");
-            __If(true, delegate
+            __If(__ConditionalContext(false), () => true, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 __Goto("label1");
@@ -32,7 +32,7 @@ namespace RRCGBuild
 
             );
             LogString("Did not go to label1");
-            __If(true, delegate
+            __If(__ConditionalContext(false), () => true, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 __Goto("label2");
@@ -94,7 +94,7 @@ namespace RRCGBuild
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                     __LabelDecl("innerLabel1");
                     LogString("Inner label 1");
-                __If(true, delegate
+                __If(__ConditionalContext(false), () => true, delegate
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __Goto("innerLabel1");
@@ -109,7 +109,7 @@ namespace RRCGBuild
 
                 );
                 LogString("Did not go to innerLabel1");
-                __If(true, delegate
+                __If(__ConditionalContext(false), () => true, delegate
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __Goto("innerLabel2");
@@ -169,7 +169,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(true, delegate
+            __If(__ConditionalContext(false), () => true, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     __LabelDecl("blockLabel");
@@ -190,7 +190,7 @@ namespace RRCGBuild
                 {
                     __LabelDecl("rrcg_switch_case_label_1");
                     LogString("Case 1");
-                    __If(true, delegate
+                    __If(__ConditionalContext(false), () => true, delegate
                     {
                         __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         LogString("Going to case 2");
