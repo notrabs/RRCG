@@ -73,7 +73,7 @@ namespace RRCGBuild
             return true;
         }
 
-        public static ConditionalContext.IPromotedVariable? GetPromotedVariable(string identifier)
+        public static ConditionalContext.PromotedVariable? GetPromotedVariable(string identifier)
         {
             for (int i = 0; i < SemanticStack.current.Count; i++)
             {
@@ -139,14 +139,12 @@ namespace RRCGBuild
         /// Given a mapping of identifier to promoted variable,
         /// attempt to reset each C# variable to the pre-promotion value.
         /// </summary>
-        public static void ResetPromotedVariables(Dictionary<string, ConditionalContext.IPromotedVariable> variables)
+        public static void ResetPromotedVariables(Dictionary<string, ConditionalContext.PromotedVariable> variables)
         {
             foreach (var identifier in variables.Keys)
             {
                 var promotedVariable = variables[identifier];
-                var declaredVariable = GetDeclaredVariable(identifier, out _);
-                if (declaredVariable == null)
-                    throw new Exception($"Could not find declared variable with identifier \"{identifier}\"");
+                var declaredVariable = promotedVariable.DeclaredVariable;
 
                 if (declaredVariable.Setter != null)
                     declaredVariable.Setter(promotedVariable.ValueBeforePromotion);
@@ -168,10 +166,8 @@ namespace RRCGBuild
                 ExecFlow.current = kvp.Key;
                 foreach (var identifier in kvp.Value.Keys) // Promotion is calculated when rewriting, keys should be identical
                 {
-                    var declaredVariable = SemanticStackUtils.GetDeclaredVariable(identifier, out _);
                     var promotedVariable = SemanticStackUtils.GetPromotedVariable(identifier);
 
-                    if (declaredVariable == null) throw new Exception($"Could not find declared variable with identifier \"{identifier}\"");
                     if (promotedVariable == null) throw new Exception($"Could not find promoted variable with identifier \"{identifier}\"");
 
                     // Do we need to set the value here?
@@ -181,6 +177,7 @@ namespace RRCGBuild
                     dynamic value = kvp.Value.ContainsKey(identifier) ? kvp.Value[identifier] : promotedVariable.ValueBeforePromotion;
                     promotedVariable.RRVariableValue = value;
 
+                    var declaredVariable = promotedVariable.DeclaredVariable;
                     if (declaredVariable.Setter != null)
                         declaredVariable.Setter(promotedVariable.RRVariableValue);
                 }

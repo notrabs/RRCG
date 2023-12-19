@@ -5,6 +5,8 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using DeclaredVariable = RRCGBuild.AccessibilityScope.DeclaredVariable;
+using PromotedVariable = RRCGBuild.ConditionalContext.PromotedVariable;
 
 namespace RRCGBuild
 {
@@ -870,19 +872,22 @@ namespace RRCGBuild
                 var promotedVariables = conditionalContext.PromotedVariables;
                 if (promotedVariables.ContainsKey(identifier)) continue;
 
-                // Is it promoted in a parenting conditional context?
-                var promotedVariable = SemanticStackUtils.GetPromotedVariable(identifier);
-                if (promotedVariable != null)
+                // Does it have a variable for promotion we can re-use?
+                dynamic? variableForPromotion = declaredVariable.RRVariableForPromotion;
+                if (variableForPromotion == null)
                 {
-                    // Create a new one that shares the same RR variable.
-                    promotedVariable = promotedVariable.NewWithSameRRVariable(variableValue);
+                    // Create a new one. Reflection magic!
+                    var type = typeof(Variable<>).MakeGenericType(variableType);
+
+                    SemanticStack.current.Push(new NamedAssignmentScope { Identifier = $"Conditional_{identifier}" });
+                    variableForPromotion = Activator.CreateInstance(type, new object[] { null });
+                    SemanticStack.current.Pop();
+
+                    declaredVariable.RRVariableForPromotion = variableForPromotion;
                 }
-                else
-                {
-                    // We'll need to create one then. Reflection magic!
-                    var type = typeof(ConditionalContext.PromotedVariable<>).MakeGenericType(variableType);
-                    promotedVariable = (ConditionalContext.IPromotedVariable)Activator.CreateInstance(type, new object[] { identifier, variableValue, null });
-                }
+
+                // Create promoted variable
+                var promotedVariable = new PromotedVariable() { DeclaredVariable = declaredVariable, ValueBeforePromotion = variableValue };
 
                 // Should the value be set to the RR variable output?
                 if (initialReadsFromVariables && declaredVariable.Setter != null)

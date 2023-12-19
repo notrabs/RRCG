@@ -1,6 +1,8 @@
-using RRCGBuild;
+#nullable enable
 using System.Collections.Generic;
 using System;
+using DeclaredVariable = RRCGBuild.AccessibilityScope.DeclaredVariable;
+using PromotedVariable = RRCGBuild.ConditionalContext.PromotedVariable;
 
 namespace RRCGBuild
 {
@@ -111,6 +113,11 @@ namespace RRCGBuild
             public Func<dynamic> Getter;
             public Action<dynamic>? Setter;
             public Type Type;
+
+            // Only set when creating promoted variables in a conditional context.
+            // This allows us to make use of the "double-set" prevention when we have
+            // two seperate conditional contexts that immediately precede/follow eachother.
+            public dynamic? RRVariableForPromotion;
         }
 
         // Gotos that jump to labels not yet defined
@@ -137,34 +144,33 @@ namespace RRCGBuild
     // Manages promotion of variables in conditional branches
     public class ConditionalContext : SemanticScope
     {
-        public interface IPromotedVariable
+        // TODO: For declared/promoted variables, we end up using dynamic a lot.
+        //       It might not be necessary, but is there anything we can do to improve type safety?
+        public class PromotedVariable
         {
-            public dynamic RRVariableValue { get; set; }
-            public dynamic ValueBeforePromotion { get; }
-            public IPromotedVariable NewWithSameRRVariable(dynamic valueBeforePromotion);
-        }
-
-        public class PromotedVariable<T> : IPromotedVariable where T : AnyPort, new()
-        {
-            private Variable<T> RRVariable;
-            public PromotedVariable(string identifier, dynamic valueBeforePromotion, Variable<T>? rrVariable)
+            public DeclaredVariable DeclaredVariable;
+            public dynamic ValueBeforePromotion;
+            public dynamic RRVariableValue
             {
-                ValueBeforePromotion = valueBeforePromotion;
+                // When creating PromotedVariables in __ConditionalContext,
+                // we always ensure the declared variable has an RRVariableForPromotion.
+                get => DeclaredVariable.RRVariableForPromotion!.Value;
 
-                SemanticStack.current.Push(new NamedAssignmentScope { Identifier = $"Conditional_{identifier}" });
-                RRVariable = rrVariable ?? new();
-                SemanticStack.current.Pop();
+                set {
+                    // Avoid double-setting the variable value by checking if the value
+                    // is the variable getter port.
+
+                    if (((AnyPort)value).EquivalentTo(RRVariableValue)) return;
+                    DeclaredVariable.RRVariableForPromotion!.Value = value;
+                }
             }
-
-            public dynamic RRVariableValue { get => RRVariable.Value; set => RRVariable.Value = value; }
-            public dynamic ValueBeforePromotion { get; private set; }
-            public IPromotedVariable NewWithSameRRVariable(dynamic valueBeforePromotion) => new PromotedVariable<T>("", valueBeforePromotion, RRVariable);
         }
 
         // Variable promotion state
-        public Dictionary<string, IPromotedVariable> PromotedVariables;
+        public Dictionary<string, PromotedVariable> PromotedVariables;
 
         // Should the initial read refer to the RR variable value output?
         public bool InitialReadsFromVariables;
     }
 }
+#nullable disable
