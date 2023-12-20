@@ -196,7 +196,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_2 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"while\"");
-                    __While(__ConditionalContext(true), () => condition, delegate
+                    __While(__ConditionalContext(true), () => condition, false, delegate
                     {
                         __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         {
@@ -282,7 +282,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            __While(__ConditionalContext(true), () => true, delegate
+            __While(__ConditionalContext(true), () => true, false, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 {

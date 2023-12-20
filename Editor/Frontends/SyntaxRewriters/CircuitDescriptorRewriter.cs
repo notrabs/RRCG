@@ -1045,13 +1045,23 @@ namespace RRCG
 
         public override SyntaxNode VisitWhileStatement(WhileStatementSyntax node)
         {
-            // Build conditional context creation invocation
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(semanticModel, true, locals, node.Statement);
+            return VisitWhileIterator(node, node.Condition, node.Statement, false);
+        }
 
-            ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
-            StatementSyntax whileStatement = (StatementSyntax)Visit(node.Statement);
+        public override SyntaxNode VisitDoStatement(DoStatementSyntax node)
+        {
+            return VisitWhileIterator(node, node.Condition, node.Statement, true);
+        }
+
+        public SyntaxNode VisitWhileIterator(SyntaxNode node, ExpressionSyntax condition, StatementSyntax bodyStatement, bool buildIfAfterBlock)
+        {
+            // Build conditional context creation invocation
+            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(condition.SyntaxTree);
+            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(semanticModel, true, locals, bodyStatement);
+
+            ExpressionSyntax test = (ExpressionSyntax)Visit(condition);
+            StatementSyntax whileStatement = (StatementSyntax)Visit(bodyStatement);
 
             // Like with If translation -- if the statement is a block,
             // we'll have already wrapped it in an accessibility scope.
@@ -1069,32 +1079,11 @@ namespace RRCG
                         createConditional,
                         ParenthesizedLambdaExpression()
                             .WithExpressionBody(test),
-                        whileDelegate))).NormalizeWhitespace();
-        }
-
-        public override SyntaxNode VisitDoStatement(DoStatementSyntax node)
-        {
-            ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
-            StatementSyntax doWhileStatement = (StatementSyntax)Visit(node.Statement);
-
-            // Like with If translation -- if the statement is a block,
-            // we'll have already wrapped it in an accessibility scope.
-            // Otherwise we need to do this here.
-            if (doWhileStatement is not BlockSyntax doBlock)
-                doBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(doWhileStatement), AccessibilityScope.Kind.General);
-
-            var doDelegate = ExecDelegate().WithBlock(doBlock);
-
-            return SyntaxFactory.ExpressionStatement(
-                SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.IdentifierName("__DoWhile"))
-                .WithArgumentList(
-                    SyntaxFactory.ArgumentList(
-                        SyntaxFactory.SeparatedList<ArgumentSyntax>(
-                            new SyntaxNodeOrToken[]{
-                                SyntaxFactory.Argument(test),
-                                SyntaxFactory.Token(SyntaxKind.CommaToken),
-                                SyntaxFactory.Argument(doDelegate)})))).NormalizeWhitespace();
+                        LiteralExpression(
+                            buildIfAfterBlock ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression
+                        ),
+                        whileDelegate
+                    ))).NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitBinaryExpression(BinaryExpressionSyntax node)

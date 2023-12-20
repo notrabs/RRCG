@@ -40,7 +40,7 @@ namespace RRCGBuild
                 list = __VariableDeclaratorExpression<ListPort<StringPort>>("list", () => ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"), () => list, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
                 ListPort<StringPort> listCache = default !;
                 listCache = __VariableDeclaratorExpression<ListPort<StringPort>>("listCache", () => ChipLib.EventCache<ListPort<StringPort>>(list), () => listCache, (_RRCG_SETTER_VALUE) => listCache = _RRCG_SETTER_VALUE);
-            __While(__ConditionalContext(true), () => ChipBuilder.GreaterThan(listCache.Count, 0), delegate
+            __While(__ConditionalContext(true), () => ChipBuilder.GreaterThan(listCache.Count, 0), false, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 ChipLib.Log(Concat("Removing \"", listCache[0], "\" from list"));
@@ -99,7 +99,7 @@ namespace RRCGBuild
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.Variable<StringPort> strStaging = default !;
                 strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
-            __While(__ConditionalContext(true), () => true, delegate
+            __While(__ConditionalContext(true), () => true, false, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 strStaging.Value = Concat(strStaging.Value, str);
@@ -134,7 +134,7 @@ namespace RRCGBuild
                 RRCGBuild.Variable<IntPort> index = default !;
                 index = __VariableDeclaratorExpression<RRCGBuild.Variable<IntPort>>("index", () => new Variable<IntPort>(), () => index, (_RRCG_SETTER_VALUE) => index = _RRCG_SETTER_VALUE);
             index.Value = 0;
-            __While(__ConditionalContext(true), () => ChipBuilder.LessThan(index.Value, 100), delegate
+            __While(__ConditionalContext(true), () => ChipBuilder.LessThan(index.Value, 100), false, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 index.Value += 1;
@@ -186,10 +186,10 @@ namespace RRCGBuild
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NestedWhileTest").Receiver();
             LogString("Start");
-            __While(__ConditionalContext(true), () => true, delegate
+            __While(__ConditionalContext(true), () => true, false, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __While(__ConditionalContext(true), () => true, delegate
+                __While(__ConditionalContext(true), () => true, false, delegate
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString("0");
@@ -214,7 +214,7 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("DoWhileTest").Receiver();
-            __DoWhile(true, delegate
+            __While(__ConditionalContext(true), () => true, true, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("Do while loop");
@@ -298,7 +298,7 @@ namespace RRCGBuild
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.Variable<StringPort> strStaging = default !;
                 strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
-            __DoWhile(true, delegate
+            __While(__ConditionalContext(true), () => true, true, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 strStaging.Value = Concat(strStaging.Value, str);
@@ -330,7 +330,7 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NestedDoWhileTest").Receiver();
-            __DoWhile(true, delegate
+            __While(__ConditionalContext(true), () => true, true, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("Do while loop 1");
@@ -364,7 +364,7 @@ namespace RRCGBuild
                 }
 
                 );
-                __DoWhile(true, delegate
+                __While(__ConditionalContext(true), () => true, true, delegate
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString("Do while loop 2");

@@ -527,98 +527,57 @@ namespace RRCGBuild
             return assignedValue;
         }
 
-        public void __While(ConditionalContext conditional, Func<BoolPort> condition, AlternativeExec block)
+        public void __While(ConditionalContext conditional, Func<BoolPort> condition, AlternativeExec block) { }
+
+        public void __While(ConditionalContext conditional, Func<BoolPort> condition, bool buildIfAfterBlock, AlternativeExec block)
         {
-            // Build the entry If chip on a new exec flow
+            // Build the If chip on a new exec flow
             var prevFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
-            RRCGGenerated.ChipBuilderGen.If(condition(), () => { });
-            var entryIfNode = Context.lastSpawnedNode;
+            If(condition(), () => { });
+            var ifNode = Context.lastSpawnedNode;
 
-            // Now we create our SemanticStack scopes
-            var whileScope = new WhileScope
+            // Create While scope
+            var whileScope = new WhileScope()
             {
-                BlockFlow = new ExecFlow(),
-                DoneFlow = new ExecFlow(),
-                EntryIfNode = entryIfNode
+                BreakFlow = new() { hasAdvanced = true },
+                ContinueFlow = new(),
             };
 
-            // Mark Done flow as having advanced
-            whileScope.DoneFlow.hasAdvanced = true;
-
-            // Add Then/Else ports to Block/Done flows respectively
-            whileScope.BlockFlow.Ports.Add(entryIfNode.Port(0, 0));
-            whileScope.DoneFlow.Ports.Add(entryIfNode.Port(0, 1));
-
-            // Push scopes to the stack, move to the block flow,
-            // and build the block contents
-            SemanticStack.current.Push(whileScope);
-            SemanticStack.current.Push(conditional);
-
-            ExecFlow.current = whileScope.BlockFlow;
-            block();
-
-            // Get promoted variables & end conditional context
-            // Set variable values before entering the loop, and before looping back around.
-            var promotedVariablesState = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
-            SemanticStackUtils.ResetPromotedVariables(conditional.PromotedVariables);
-            var prePromotionVariablesState = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
-
-            SemanticStackUtils.EndConditionalContext(conditional, new()
-            {
-                { ExecFlow.current, promotedVariablesState },
-                { prevFlow, prePromotionVariablesState }
-            });
-
-            // End while scope
-            if (!SemanticStack.current.Pop().Equals(whileScope))
-                throw new Exception("Removed element was not WhileScope!");
-
-            // Advance the block flow & previous flow to the entry If node
-            whileScope.BlockFlow.Advance(Context.current, entryIfNode.Port(0, 0), null);
-            prevFlow.Advance(Context.current, entryIfNode.Port(0, 0), null);
-
-            // Continue building from the Done flow
-            ExecFlow.current = whileScope.DoneFlow;
-        }
-
-        public void __DoWhile(BoolPort condition, AlternativeExec block)
-        {
-            // Build the loopback If chip on a new
-            // ExecFlow to preserve the current one.
-            ExecFlow prevFlow = ExecFlow.current;
-
-            ExecFlow.current = new ExecFlow();
-            RRCGGenerated.ChipBuilderGen.If(condition, () => { });
-            var loopbackIfNode = Context.lastSpawnedNode;
+            // Write promoted variable values before entering the block
             ExecFlow.current = prevFlow;
+            foreach (var variable in conditional.PromotedVariables.Values)
+                variable.RRVariableValue = variable.ValueBeforePromotion;
 
-            // Create our DoWhile scope & exec flows
-            var doWhileScope = new DoWhileScope
-            {
-                ContinueFlow = new ExecFlow(),
-                DoneFlow = new ExecFlow(),
-                LoopbackIfNode = loopbackIfNode
-            };
+            // If we're building the if before the block, advance execution flow now & add the Then port.
+            // Otherwise, just add the Then port to the current execution flow.
+            if (!buildIfAfterBlock) ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), ifNode.Port(0, 0));
+            else ExecFlow.current.Ports.Add(ifNode.Port(0, 0));
 
-            // Mark done flow as advanced, add Then port to the current ExecFlow
-            doWhileScope.DoneFlow.hasAdvanced = true;
-            ExecFlow.current.Ports.Add(new Port { Node = loopbackIfNode });
-
-            // Push scope to the stack and build the block contents
-            SemanticStack.current.Push(doWhileScope);
+            // Now we can push our items onto the SemanticStack
+            // and build the loop block.
+            SemanticStack.current.Push(conditional);
+            SemanticStack.current.Push(whileScope);
             block();
-            SemanticStack.current.Pop();
 
-            // Merge the continue flow into the current flow,
-            // then advance execution to the loopback If node.
-            ExecFlow.current.Merge(doWhileScope.ContinueFlow);
-            ExecFlow.current.Advance(Context.current, new Port { Node = loopbackIfNode }, null);
+            // End the while scope
+            if (!SemanticStack.current.Pop().Equals(whileScope))
+                throw new Exception("Expected WhileScope at the top of the semantic stack but this wasn't the case!");
 
-            // Move to the "done" flow, add the Else port
-            // of the loopback If node, and continue building from there.
-            ExecFlow.current = doWhileScope.DoneFlow;
-            ExecFlow.current.Ports.Add(new Port { Node = loopbackIfNode, Index = 1 });
+            // Grab the final values of the promoted variables
+            // and end the conditional context.
+            var finalValues = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
+            SemanticStackUtils.EndConditionalContext(conditional, new() { { ExecFlow.current, finalValues } });
+
+            // Merge the continue flow into the current execution flow,
+            // and loop back to the if node.
+            ExecFlow.current.Merge(whileScope.ContinueFlow);
+            ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
+
+            // Finally, add the Else port to the break flow,
+            // and continue building nodes from there.
+            ExecFlow.current = whileScope.BreakFlow;
+            ExecFlow.current.Ports.Add(ifNode.Port(0, 1));
         }
 
         public void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
