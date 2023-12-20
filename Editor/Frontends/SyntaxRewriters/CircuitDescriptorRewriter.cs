@@ -286,14 +286,14 @@ namespace RRCG
                 // .ExpressionBody and .Block are mutually exclusive -- this function is without a block.
                 // We need one for accessibility scopes, so let's create one.
                 var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(method.SyntaxTree);
-                var needsReturn = !(semanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnsVoid;
+                var returnsVoid = (semanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnsVoid;
 
                 statements = SyntaxFactory.SingletonList<StatementSyntax>(
-                                needsReturn ? SyntaxFactory.ReturnStatement(visitedMethod.ExpressionBody)
-                                            : SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
+                                returnsVoid ? SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
+                                            : ValueReturnStatement(visitedMethod.ExpressionBody)
                                 );
 
-                statements = WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.MethodRoot);
+                statements = WrapStatementsInAccessibilityScope(WrapFunctionStatements(statements, returnsVoid), AccessibilityScope.Kind.MethodRoot);
             }
 
             return (T)visitedMethod.WithBody(
