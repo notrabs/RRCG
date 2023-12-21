@@ -1288,7 +1288,8 @@ namespace RRCG
             {
                 LiteralExpression(initialReadsFromVariables ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression),
             };
-
+            
+            var promotedSymbols = new List<ILocalSymbol>();
             foreach (var nodeToSearch in nodesToSearch)
             {
                 if (nodeToSearch == null) continue;
@@ -1300,7 +1301,6 @@ namespace RRCG
 
                 // 3. For each assignment, determine if the symbol being assigned to
                 //    is in the list of accessible locals.
-                var promotedSymbols = new List<ILocalSymbol>();
                 foreach (var assignment in assignments)
                 {
                     var assignmentKind = assignment.Kind();
