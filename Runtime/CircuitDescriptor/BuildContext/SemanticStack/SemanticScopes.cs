@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System;
 using DeclaredVariable = RRCGBuild.AccessibilityScope.DeclaredVariable;
 using PromotedVariable = RRCGBuild.ConditionalContext.PromotedVariable;
+using RRCGGenerated;
+using System.Linq;
+
+// TODO: Should we start initializing members within the class declarations?
+//       We currently do this at each construction site, which gets quite verbose.
 
 namespace RRCGBuild
 {
@@ -20,8 +25,75 @@ namespace RRCGBuild
         {
             public void Continue();
         }
-    }
 
+        public abstract class BaseIterator : IBreak, IContinue
+        {
+            // Going with a base class here, because for most
+            // iterators the logic will basically be this.
+
+            public ExecFlow BreakFlow; // Break out of loop
+            public ExecFlow ContinueFlow; // Jump back to the start of the loop
+
+            // If this is true, the iterator will need to be built
+            // with a manual implementation, and cannot be built with
+            // the existing For/For Each nodes.
+            public bool NeedsManualImplementation;
+
+            public void Break()
+            {
+                BreakFlow.Merge(ExecFlow.current);
+                ExecFlow.current.Clear();
+                NeedsManualImplementation = true;
+            }
+
+            public void Continue()
+            {
+                // Note: For CV2-native iterators (For, For Each),
+                // continue can just be implemented as clearing the current exec flow.
+                // But we still store this flow so we can use it in the manual case.
+                ContinueFlow.Merge(ExecFlow.current);
+                ExecFlow.current.Clear();
+            }
+
+            /// <summary>
+            /// Ensures the provided ExecFlow connects back to the sourceExec.
+            /// Also flags all open iterators on the SemanticStack as requiring a manual implementation if an After Delay port is present.
+            /// </summary>
+            public void EnsureContinuityAndCheckDelays(ExecFlow execFlow, Port sourceExec)
+            {
+                var portsToCheck = new Stack<Port>(execFlow.Ports);
+                var checkedPorts = new List<Port>();
+                bool foundSource = false;
+
+                while (portsToCheck.Count > 0)
+                {
+                    var currPort = portsToCheck.Pop();
+                    var node = currPort.Node;
+                    checkedPorts.Add(currPort);
+
+                    if (currPort.EquivalentTo(sourceExec))
+                    {
+                        foundSource = true;
+                        continue; // Don't search behind this node
+                    }
+
+                    if (node.Type == ChipType.Delay && currPort.EquivalentTo(node.Port(0, 1)))
+                        SemanticStackUtils.AllIteratorsNeedManual();
+
+                    var connectedExecPorts = Context.current.Connections
+                        .Where(c => c.isExec && c.To.Node == currPort.Node)
+                        .Select(c => c.From);
+
+                    foreach (var port in connectedExecPorts)
+                        if (!checkedPorts.Contains(port))
+                            portsToCheck.Push(port);
+                }
+
+                if (!foundSource) throw new Exception("Iterator discontinuity detected -- provided ExecFlow did not connect back to sourceExec!");
+
+            }
+        }
+    }
 
     // Actual scope definitions
     public class SwitchScope : SemanticScope.IBreak
@@ -37,23 +109,13 @@ namespace RRCGBuild
         }
     }
 
-    public class WhileScope : SemanticScope.IBreak, SemanticScope.IContinue
+    public class WhileScope : SemanticScope.BaseIterator
     {
-        public ExecFlow BreakFlow; // Break out of the loop
-        public ExecFlow ContinueFlow; // Loop back to the If node to check the condition
-
-        public void Break()
-        {
-            BreakFlow.Merge(ExecFlow.current);
-            ExecFlow.current.Clear();
-        }
-
-        public void Continue()
-        {
-            ContinueFlow.Merge(ExecFlow.current);
-            ExecFlow.current.Clear();
-        }
+        // NOTE: For While loops, a manual implementation will always be built
+        // because there is no CV2 equivalent.
     }
+
+    public class ForEachScope : SemanticScope.BaseIterator { }
 
     // Scope valid in the expression of an assignment to an identifier. (currently only implemented for declaration intiailizers)
     public class NamedAssignmentScope : SemanticScope
@@ -62,9 +124,8 @@ namespace RRCGBuild
         public string Identifier;
     }
 
-    // The accessibility scope is used to determine what can be accessed where.
-    // This currently only manages declared/pending gotos and labels, but in
-    // the future we can store variable declarations to address the assignment problem.
+    // The accessibility scope is used to determine what
+    // variables/labels/etc are currently accessible.
     public class AccessibilityScope : SemanticScope
     {
         public enum Kind

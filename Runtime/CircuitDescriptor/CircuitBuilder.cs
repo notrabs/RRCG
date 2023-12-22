@@ -505,12 +505,16 @@ namespace RRCGBuild
 
         public static void __Return(ExecFlow returnFlow)
         {
+            SemanticStackUtils.AllIteratorsNeedManual();
+
             returnFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();
         }
 
         public static void __Return<T>(ExecFlow returnFlow, out T returnData, T expression)
         {
+            SemanticStackUtils.AllIteratorsNeedManual();
+
             returnFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();
 
@@ -857,6 +861,108 @@ namespace RRCGBuild
             }
 
             return conditionalContext;
+        }
+
+        public void __ForEach<T>(ConditionalContext conditional, ListPort<T> list, Action<T> body) where T : AnyPort, new()
+        {
+            // First, create ForEach scope & push onto the semantic stack.
+            var scope = new ForEachScope
+            {
+                BreakFlow = new() { hasAdvanced = true },
+                ContinueFlow = new()
+            };
+
+            SemanticStack.current.Push(scope);
+            SemanticStack.current.Push(conditional);
+
+            // Write promoted variable values before entering the block
+            foreach (var variable in conditional.PromotedVariables.Values)
+                variable.RRVariableValue = variable.ValueBeforePromotion;
+
+            // Build loop body under the assumption we can use the For Each node.
+            // We'll swap this out later if we learn this isn't the case (we don't know beforehand)
+            InlineGraph(() => ForEach(list, _ => { }));
+            var forEachNode = Context.lastSpawnedNode;
+
+            ExecFlow.current.Advance(Context.current, forEachNode.Port(0, 0), forEachNode.Port(0, 0));
+            body(new T { Port = forEachNode.Port(0, 1) });
+
+            // End the conditional context
+            var finalValues = conditional.PromotedVariables.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.DeclaredVariable.Getter());
+            SemanticStackUtils.EndConditionalContext(conditional, new() { { ExecFlow.current, finalValues } });
+
+            // Now validate execflow continuity from the current back to the "Loop" port
+            scope.EnsureContinuityAndCheckDelays(ExecFlow.current, forEachNode.Port(0, 0));
+
+            // Now we can pop the ForEach scope from the stack
+            if (SemanticStack.current.Pop() != scope)
+                throw new Exception("Topmost element of SemanticStack.current was not ForEachScope");
+
+            // If we don't need to build a manual implementation, we can continue building nodes from the Done pin
+            if (!scope.NeedsManualImplementation)
+            {
+                ExecFlow.current.Advance(Context.current, null, forEachNode.Port(0, 2));
+                return;
+            }
+
+            // Otherwise we need to do a little surgery on the graph,
+            // and upgrade (downgrade?) to a manual implementation.
+            var prevFlow = ExecFlow.current;
+            ExecFlow.current = new();
+
+            // Build index variable
+            SemanticStack.current.Push(new NamedAssignmentScope { Identifier = "ForEach_index" });
+            var indexVariable = new Variable<IntPort>();
+            SemanticStack.current.Pop();
+
+            // Rewire all item connections to a List Get Element chip
+            var itemConnections = Context.current.Connections.Where(c => c.From.EquivalentTo(forEachNode.Port(0, 1))).ToList();
+            if (itemConnections.Count > 0)
+            {
+                var port = ListGetElement(list, indexVariable.Value).Port;
+                foreach (var conn in itemConnections)
+                    conn.From = port;
+            }
+
+            // Determine exec input source
+            var execInputFrom = Context.current.Connections
+                .Where(c => c.To.EquivalentTo(forEachNode.Port(0, 0)))
+                .Select(c => c.From)
+                .FirstOrDefault();
+
+            // Determine exec output destination
+            var execOutputTo = Context.current.Connections
+                .Where(c => c.From.EquivalentTo(forEachNode.Port(0, 0)))
+                .Select(c => c.To)
+                .FirstOrDefault();
+
+            // Remove old For Each node & setup ExecFlow
+            Context.current.RemoveNode(forEachNode);
+            ExecFlow.current.Advance(Context.current, null, execInputFrom);
+
+            // Reset index
+            indexVariable.Value = 0;
+
+            // Check condition
+            var condition = LessThan(indexVariable.Value, list.Count);
+            If(condition, () => { });
+            var ifNode = Context.lastSpawnedNode;
+
+            // Wire "Then" to exec output destination
+            ExecFlow.current.Advance(Context.current, execOutputTo, null);
+
+            // Jump back onto the loop body exec flow, increment index
+            ExecFlow.current = prevFlow;
+            indexVariable.Value += 1;
+
+            // Merge continue flow into the current flow, advance back to If node
+            ExecFlow.current.Merge(scope.ContinueFlow);
+            ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
+
+            // Continue building nodes from the break flow
+            // (with the Else port added in)
+            ExecFlow.current = scope.BreakFlow;
+            ExecFlow.current.Ports.Add(ifNode.Port(0, 1));
         }
     }
 }

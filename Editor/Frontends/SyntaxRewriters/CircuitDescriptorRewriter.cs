@@ -1086,6 +1086,33 @@ namespace RRCG
                     ))).NormalizeWhitespace();
         }
 
+        public override SyntaxNode VisitForEachStatement(ForEachStatementSyntax node)
+        {
+            // Build conditional context creation invocation
+            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
+            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(semanticModel, true, locals, node.Statement);
+
+            // Visit statement & ensure block w/ accessibility scope
+            var visitedStatement = (StatementSyntax)Visit(node.Statement);
+            if (visitedStatement is not BlockSyntax bodyBlock)
+                bodyBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(visitedStatement), AccessibilityScope.Kind.General);
+
+            return ExpressionStatement(
+                        InvocationExpression(
+                            IdentifierName("__ForEach"))
+                        .WithArgumentList(
+                            SyntaxUtils.ArgumentList(
+                                createConditional,
+                                node.Expression,
+                                ParenthesizedLambdaExpression()
+                                .WithParameterList(
+                                    ParameterList(
+                                        SingletonSeparatedList(
+                                            Parameter(node.Identifier))))
+                                .WithBlock(bodyBlock))));
+        }
+
         public override SyntaxNode VisitBinaryExpression(BinaryExpressionSyntax node)
         {
             string chip = null;

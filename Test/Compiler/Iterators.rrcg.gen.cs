@@ -1,6 +1,6 @@
 using RRCG;
-using RRCGBuild;
 using System.Collections.Generic;
+using RRCGBuild;
 
 namespace RRCGBuild
 {
@@ -27,6 +27,35 @@ namespace RRCGBuild
             DoWhileReturnTest();
             // Test nested do while loops
             NestedDoWhileTest();
+                ListPort<IntPort> list = default !;
+                list = __VariableDeclaratorExpression<ListPort<IntPort>>("list", () => InlineGraph<ListPort<IntPort>>(() =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                    ExecFlow rrcg_return_flow = new ExecFlow();
+                    dynamic rrcg_return_data = default;
+                    __Return(rrcg_return_flow, out rrcg_return_data, ChipLib.EventCache<ListPort<IntPort>>(ListCreate<IntPort>(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)));
+                    ExecFlow.current.Merge(rrcg_return_flow);
+                    __EndAccessibilityScope();
+                    return rrcg_return_data;
+                }
+
+                ), () => list, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
+            // Standard For Each form
+            ForEachTest(list);
+            // Manual For Each form
+            ManualForEachTest(list);
+            // Nested standard For Each
+            NestedForEach(list);
+            // Nested For Each variations
+            ManualWithinStandardForEach(list);
+            StandardWithinManualForEach(list);
+            // Test delays mark all open iterators
+            // as needing manual implementation
+            TestDelaysForEach(list);
+            // Test returns from for each
+            ForEachReturnTest(list);
+            // Test promoted variables
+            ForEachPromotedTest(list);
             __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
@@ -410,6 +439,308 @@ namespace RRCGBuild
 
             );
             LogString("Loop 1 done");
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void ForEachTest(ListPort<IntPort> list)
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("ForEachTest").Receiver();
+            __ForEach(__ConditionalContext(true), list, (item) =>
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString(__StringInterpolation("Item: ", item));
+                __EndAccessibilityScope();
+            }
+
+            );
+            LogString("For each done");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void ManualForEachTest(ListPort<IntPort> list)
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("ManualForEachTest").Receiver();
+            __ForEach(__ConditionalContext(true), list, (item) =>
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString(__StringInterpolation("Item: ", item));
+                __If(__ConditionalContext(false), () => ChipBuilder.Equals(item, 5), delegate
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    __Break();
+                    __EndAccessibilityScope();
+                }
+
+                , delegate
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    __EndAccessibilityScope();
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            );
+            LogString("Manual for each done");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void NestedForEach(ListPort<IntPort> list)
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("NestedForEach").Receiver();
+            __ForEach(__ConditionalContext(true), list, (item) =>
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString(__StringInterpolation("Item outer: ", item));
+                __ForEach(__ConditionalContext(true), list, (item2) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("Item inner: ", item2));
+                    __EndAccessibilityScope();
+                }
+
+                );
+                LogString("Inner done");
+                __EndAccessibilityScope();
+            }
+
+            );
+            LogString("Nested for each done");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void ManualWithinStandardForEach(ListPort<IntPort> list)
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("ManualWithinStandardForEach").Receiver();
+            __ForEach(__ConditionalContext(true), list, (item) =>
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString(__StringInterpolation("Item outer: ", item));
+                __ForEach(__ConditionalContext(true), list, (item2) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("Item inner: ", item2));
+                    __If(__ConditionalContext(false), () => ChipBuilder.Equals(item2, 5), delegate
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        __Break();
+                        __EndAccessibilityScope();
+                    }
+
+                    , delegate
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        __EndAccessibilityScope();
+                    }
+
+                    );
+                    __EndAccessibilityScope();
+                }
+
+                );
+                LogString("Inner done");
+                __EndAccessibilityScope();
+            }
+
+            );
+            LogString("Nested for each (manual within standard) done");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void StandardWithinManualForEach(ListPort<IntPort> list)
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("StandardWithinManualForEach").Receiver();
+            __ForEach(__ConditionalContext(true), list, (item) =>
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString(__StringInterpolation("Item outer: ", item));
+                __If(__ConditionalContext(false), () => ChipBuilder.Equals(item, 5), delegate
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    __Break();
+                    __EndAccessibilityScope();
+                }
+
+                , delegate
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    __EndAccessibilityScope();
+                }
+
+                );
+                __ForEach(__ConditionalContext(true), list, (item2) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("Item inner: ", item2));
+                    __EndAccessibilityScope();
+                }
+
+                );
+                LogString("Inner done");
+                __EndAccessibilityScope();
+            }
+
+            );
+            LogString("Nested for each (standard within manual) done");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void TestDelaysForEach(ListPort<IntPort> list)
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("TestDelaysForEach").Receiver();
+            __ForEach(__ConditionalContext(true), list, (item) =>
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString(__StringInterpolation("Item outer: ", item));
+                __ForEach(__ConditionalContext(true), list, (item2) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("Item inner: ", item2));
+                    ChipLib.AwaitDelay();
+                    __EndAccessibilityScope();
+                }
+
+                );
+                LogString("Inner done");
+                __EndAccessibilityScope();
+            }
+
+            );
+            LogString("Between loops");
+            __ForEach(__ConditionalContext(true), list, (item) =>
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString(__StringInterpolation("Item outer: ", item));
+                __ForEach(__ConditionalContext(true), list, (item2) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("Item inner: ", item2));
+                    ChipLib.AwaitDelay();
+                    LogString("After delay, final exec flow contains this node's output port");
+                    __EndAccessibilityScope();
+                }
+
+                );
+                LogString("Inner done");
+                __EndAccessibilityScope();
+            }
+
+            );
+            LogString("All done");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        [EventFunction]
+        public IntPort ForEachReturnEventFunction(ListPort<IntPort> list)
+        {
+            return __DispatchEventFunction<IntPort, ListPort<IntPort>>("ForEachReturnEventFunction", delegate (ListPort<IntPort> list)
+            {
+                ExecFlow rrcg_return_flow = new ExecFlow();
+                dynamic rrcg_return_data = default;
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __Return(rrcg_return_flow, out rrcg_return_data, ForEachReturnImpl(list));
+                __EndAccessibilityScope();
+                ExecFlow.current.Merge(rrcg_return_flow);
+                return rrcg_return_data;
+            }
+
+            , list);
+        }
+
+        public IntPort ForEachReturnImpl(ListPort<IntPort> list)
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            dynamic rrcg_return_data = default;
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            __ForEach(__ConditionalContext(true), list, (item) =>
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString(__StringInterpolation("Item: ", item));
+                __If(__ConditionalContext(false), () => ChipBuilder.Equals(item, 5), delegate
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    __Return(rrcg_return_flow, out rrcg_return_data, Reroute<IntPort>(item));
+                    __EndAccessibilityScope();
+                }
+
+                , delegate
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    __EndAccessibilityScope();
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            );
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+            return rrcg_return_data;
+        }
+
+        void ForEachReturnTest(ListPort<IntPort> list)
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                RRCGBuild.EventDefinition entry = default !;
+                entry = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("entry", () => new EventDefinition("ForEachReturnTest"), () => entry, (_RRCG_SETTER_VALUE) => entry = _RRCG_SETTER_VALUE);
+            entry.Receiver();
+            // Test returns from while block within an "inline" graph (functions are transparent)
+            ChipLib.Log(__StringInterpolation("Result (inline graph): ", ForEachReturnImpl(list)));
+                IntPort result = default !;
+                result = __VariableDeclaratorExpression<IntPort>("result", () => CircuitBoard<ListPort<IntPort>, IntPort>(ForEachReturnImpl, list), () => result, (_RRCG_SETTER_VALUE) => result = _RRCG_SETTER_VALUE);
+            ChipLib.Log(__StringInterpolation("Result (circuit board): ", result));
+            // Test returns from while block within event functions
+            ChipLib.Log(__StringInterpolation("Result (event function): ", ForEachReturnEventFunction(list)));
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void ForEachPromotedTest(ListPort<IntPort> list)
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("ForEachPromotedTest").Receiver();
+                IntPort i = default !;
+                i = __VariableDeclaratorExpression<IntPort>("i", () => 0, () => i, (_RRCG_SETTER_VALUE) => i = _RRCG_SETTER_VALUE);
+            __ForEach(__ConditionalContext(true, "i"), list, (item) =>
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString(__StringInterpolation("Item: ", item, ", index: ", i));
+                __Assign("i", out i, () => i + 1);
+                __EndAccessibilityScope();
+            }
+
+            );
             __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }

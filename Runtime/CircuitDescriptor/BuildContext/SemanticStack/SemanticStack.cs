@@ -19,7 +19,7 @@ namespace RRCGBuild
         {
             try
             {
-                return (T?)this.First(scope => typeof(T).IsAssignableFrom(scope.GetType()));
+                return (T?)this.First(scope => scope is T);
             }
             catch (Exception) { }
             return default;
@@ -187,6 +187,19 @@ namespace RRCGBuild
                 throw new Exception("Expected ConditionalContext at the top of the SemanticStack!");
 
             ExecFlow.current = prevFlow;
+        }
+
+        /// <summary>
+        /// Marks all iterators on the SemanticStack as requiring a manual implementation.
+        /// </summary>
+        public static void AllIteratorsNeedManual()
+        {
+            var query = SemanticStack.current
+                .Where(s => s is SemanticScope.BaseIterator)
+                .Cast<SemanticScope.BaseIterator>();
+
+            foreach (var iterator in query)
+                iterator.NeedsManualImplementation = true;
         }
     }
 }

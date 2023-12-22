@@ -1,5 +1,6 @@
 ﻿using RRCG;
 using RRCGSource;
+using System.Collections.Generic;
 
 #pragma warning disable CS0162 // Unreachable code detected
 public class Iterators : CircuitDescriptor
@@ -27,6 +28,32 @@ public class Iterators : CircuitDescriptor
 
         // Test nested do while loops
         NestedDoWhileTest();
+
+        // For Each loops
+        var list = InlineGraph(() => ChipLib.EventCache(ListCreate(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)));
+
+        // Standard For Each form
+        ForEachTest(list);
+
+        // Manual For Each form
+        ManualForEachTest(list);
+
+        // Nested standard For Each
+        NestedForEach(list);
+
+        // Nested For Each variations
+        ManualWithinStandardForEach(list);
+        StandardWithinManualForEach(list);
+
+        // Test delays mark all open iterators
+        // as needing manual implementation
+        TestDelaysForEach(list);
+
+        // Test returns from for each
+        ForEachReturnTest(list);
+
+        // Test promoted variables
+        ForEachPromotedTest(list);
     }
 
     void WhileTest()
@@ -245,6 +272,179 @@ public class Iterators : CircuitDescriptor
         } while (true);
 
         LogString("Loop 1 done");
+    }
+
+    void ForEachTest(List<int> list)
+    {
+        new EventDefinition("ForEachTest").Receiver();
+
+        foreach (var item in list)
+            LogString($"Item: {item}");
+
+        LogString("For each done");
+        throw null;
+    }
+
+    void ManualForEachTest(List<int> list)
+    {
+        new EventDefinition("ManualForEachTest").Receiver();
+
+        foreach (var item in list)
+        {
+            LogString($"Item: {item}");
+            if (item == 5) break; // Manual iterator is required for break
+        }
+
+        LogString("Manual for each done");
+        throw null;
+    }
+
+    void NestedForEach(List<int> list)
+    {
+        new EventDefinition("NestedForEach").Receiver();
+
+        foreach (var item in list)
+        {
+            LogString($"Item outer: {item}");
+            foreach (var item2 in list)
+            {
+                LogString($"Item inner: {item2}");
+            }
+            LogString("Inner done");
+        }
+
+        LogString("Nested for each done");
+        throw null;
+    }
+
+    void ManualWithinStandardForEach(List<int> list)
+    {
+        new EventDefinition("ManualWithinStandardForEach").Receiver();
+
+        foreach (var item in list)
+        {
+            LogString($"Item outer: {item}");
+            foreach (var item2 in list)
+            {
+                LogString($"Item inner: {item2}");
+                if (item2 == 5) break;
+            }
+            LogString("Inner done");
+        }
+
+        LogString("Nested for each (manual within standard) done");
+        throw null;
+    }
+
+    void StandardWithinManualForEach(List<int> list)
+    {
+        new EventDefinition("StandardWithinManualForEach").Receiver();
+
+        foreach (var item in list)
+        {
+            LogString($"Item outer: {item}");
+            if (item == 5) break;
+
+            foreach (var item2 in list)
+            {
+                LogString($"Item inner: {item2}");
+            }
+            LogString("Inner done");
+        }
+
+        LogString("Nested for each (standard within manual) done");
+        throw null;
+    }
+
+    void TestDelaysForEach(List<int> list)
+    {
+        new EventDefinition("TestDelaysForEach").Receiver();
+
+        // After Delay port on the final exec flow
+        foreach (var item in list)
+        {
+            LogString($"Item outer: {item}");
+
+            foreach (var item2 in list)
+            {
+                LogString($"Item inner: {item2}");
+                ChipLib.AwaitDelay();
+            }
+            LogString("Inner done");
+        }
+
+        LogString("Between loops");
+
+        // After Delay port further back in the exec flow
+        foreach (var item in list)
+        {
+            LogString($"Item outer: {item}");
+
+            foreach (var item2 in list)
+            {
+                LogString($"Item inner: {item2}");
+                ChipLib.AwaitDelay();
+                LogString("After delay, final exec flow contains this node's output port");
+            }
+            LogString("Inner done");
+        }
+
+        LogString("All done");
+        throw null;
+    }
+
+    [EventFunction]
+    public int ForEachReturnEventFunction(List<int> list)
+    {
+        return ForEachReturnImpl(list);
+    }
+
+    public int ForEachReturnImpl(List<int> list)
+    {
+        foreach (var item in list)
+        {
+            LogString($"Item: {item}");
+
+            // We have to return the item in a reroute
+            // for now because returning Item directly would
+            // return the port on the For Each node, which will be removed.
+            // The invalid reference would hang out in rrcg_return_data where we
+            // can't correct it. Maybe conditional returns would fix this,
+            // if we use an event cache to store returned values (and get conditionals for free)?
+            if (item == 5) return Reroute(item);
+        }
+
+        throw null;
+    }
+
+    void ForEachReturnTest(List<int> list)
+    {
+        var entry = new EventDefinition("ForEachReturnTest");
+        entry.Receiver();
+
+        // Test returns from while block within an "inline" graph (functions are transparent)
+        ChipLib.Log($"Result (inline graph): {ForEachReturnImpl(list)}");
+
+        // Test returns from while block within a circuit board
+        var result = CircuitBoard(ForEachReturnImpl, list);
+        ChipLib.Log($"Result (circuit board): {result}");
+
+        // Test returns from while block within event functions
+        ChipLib.Log($"Result (event function): {ForEachReturnEventFunction(list)}");
+
+        throw null;
+    }
+
+    void ForEachPromotedTest(List<int> list)
+    {
+        new EventDefinition("ForEachPromotedTest").Receiver();
+
+        int i = 0;
+        foreach (var item in list)
+        {
+            LogString($"Item: {item}, index: {i}");
+            i += 1;
+        }
     }
 }
 #pragma warning restore CS0162 // Unreachable code detected

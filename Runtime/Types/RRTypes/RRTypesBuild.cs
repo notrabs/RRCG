@@ -98,13 +98,9 @@ namespace RRCGBuild
             // Actual port status must match
             if (IsActualPort != b.IsActualPort) return false;
 
+            // Port source must match
             if (IsActualPort)
-            {
-                // Port source must match
-                return Port.Group == b.Port.Group &&
-                       Port.Index == b.Port.Index &&
-                       Port.Node == b.Port.Node;
-            }
+                return Port.EquivalentTo(b.Port);
 
             // Data must match
             return Data == b.Data;
