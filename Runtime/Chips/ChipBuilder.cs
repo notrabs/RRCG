@@ -555,7 +555,7 @@ namespace RRCGBuild
 
         public static ListPort<T> ListCreate<T>(params T[] ports) where T : AnyPort, new()
         {
-            ChipBuilderGen.ListCreate<T>(ports[0]);
+            ChipBuilderGen.ListCreate<T>(ports.Length > 0 ? ports[0] : null);
             var node = Context.lastSpawnedNode;
 
             ConnectDynamicPins(0, ports);
