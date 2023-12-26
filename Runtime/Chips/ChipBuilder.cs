@@ -891,6 +891,9 @@ namespace RRCGBuild
 
         public static FloatPort Power(FloatPort value, FloatPort power)
         {
+            if (value.IsDataPort && power.IsDataPort)
+                return new FloatPort { Data = Mathf.Pow(value.Data, power.Data) };
+
             var port = ChipBuilderGen.Power(value);
             Context.lastSpawnedNode.InputCount = 2;
             Context.lastSpawnedNode.ConnectInputPort(power, 1);
@@ -899,6 +902,9 @@ namespace RRCGBuild
 
         public static IntPort Power(IntPort value, IntPort power)
         {
+            if (value.IsDataPort && power.IsDataPort)
+                return new IntPort { Data = (int)Mathf.Pow(value.Data, power.Data) };
+
             var port = ChipBuilderGen.Power(value);
             Context.lastSpawnedNode.InputCount = 2;
             Context.lastSpawnedNode.ConnectInputPort(power, 1);
