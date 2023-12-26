@@ -64,7 +64,7 @@ namespace RRCG.Optimizer.ContextOptimizations
 
                         // We've collapsed the inputs of the other node
                         // into the current node.
-                        nodeInputsDirty[node] = true;
+                        SetNodeInputConnections(context, node, nodeToInputConnections[node]);
 
                         // But can we delete the other node?
                         // We can only delete it if it was only connected to the current node.
@@ -85,11 +85,6 @@ namespace RRCG.Optimizer.ContextOptimizations
             // Remove collapsed nodes
             foreach (var node in nodesToRemove)
                 context.RemoveNode(node);
-
-            // Apply new connection information
-            foreach (var node in context.Nodes)
-                if (nodeInputsDirty[node])
-                    SetNodeInputConnections(context, node, nodeToInputConnections[node]);
 
             return nodesToRemove.Count;
         }
