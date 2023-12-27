@@ -531,13 +531,15 @@ namespace RRCGBuild
             return assignedValue;
         }
 
-        public void __While(ConditionalContext conditional, Func<BoolPort> condition, AlternativeExec block) { }
-
         public void __While(ConditionalContext conditional, Func<BoolPort> condition, bool buildIfAfterBlock, AlternativeExec block)
         {
-            // Build the If chip on a new exec flow
+            // Write promoted variables before building the If node
+            foreach (var variable in conditional.PromotedVariables.Values)
+                variable.RRVariableValue = variable.ValueBeforePromotion;
+
+            // Build the If node on a new execution flow
             var prevFlow = ExecFlow.current;
-            ExecFlow.current = new ExecFlow();
+            ExecFlow.current = new();
             If(condition(), () => { });
             var ifNode = Context.lastSpawnedNode;
 
@@ -548,13 +550,10 @@ namespace RRCGBuild
                 ContinueFlow = new(),
             };
 
-            // Write promoted variable values before entering the block
-            ExecFlow.current = prevFlow;
-            foreach (var variable in conditional.PromotedVariables.Values)
-                variable.RRVariableValue = variable.ValueBeforePromotion;
-
             // If we're building the if before the block, advance execution flow now & add the Then port.
             // Otherwise, just add the Then port to the current execution flow.
+            ExecFlow.current = prevFlow;
+
             if (!buildIfAfterBlock) ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), ifNode.Port(0, 0));
             else ExecFlow.current.Ports.Add(ifNode.Port(0, 0));
 
