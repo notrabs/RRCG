@@ -537,10 +537,13 @@ namespace RRCGBuild
             foreach (var variable in conditional.PromotedVariables.Values)
                 variable.RRVariableValue = variable.ValueBeforePromotion;
 
+            // Evaluate condition now that values have been promoted
+            var conditionResult = condition();
+
             // Build the If node on a new execution flow
             var prevFlow = ExecFlow.current;
             ExecFlow.current = new();
-            If(condition(), () => { });
+            If(conditionResult, () => { });
             var ifNode = Context.lastSpawnedNode;
 
             // Create While scope
