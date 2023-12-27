@@ -747,8 +747,7 @@ namespace RRCG
             if (!node.Type.IsVar)
                 return visited;
 
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-            var symbolInfo = semanticModel.GetDeclaredSymbol(node.Variables[0]); // TODO: Assuming at least one variable. Is this safe?
+            var symbolInfo = SemanticModel.GetDeclaredSymbol(node.Variables[0]); // TODO: Assuming at least one variable. Is this safe?
             var resolvedType = symbolInfo.GetResolvedType();
 
             if (resolvedType == null)
@@ -905,9 +904,8 @@ namespace RRCG
         public override SyntaxNode VisitIfStatement(IfStatementSyntax node)
         {
             // Build conditional context creation invocation
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(semanticModel, false, locals, node.Statement, node.Else?.Statement);
+            var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(SemanticModel, false, locals, node.Statement, node.Else?.Statement);
 
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
             StatementSyntax trueStatement = (StatementSyntax)Visit(node.Statement);
@@ -1054,9 +1052,8 @@ namespace RRCG
         public SyntaxNode VisitWhileIterator(SyntaxNode node, ExpressionSyntax condition, StatementSyntax bodyStatement, bool buildIfAfterBlock)
         {
             // Build conditional context creation invocation
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(condition.SyntaxTree);
-            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(semanticModel, true, locals, bodyStatement);
+            var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(SemanticModel, true, locals, bodyStatement);
 
             ExpressionSyntax test = (ExpressionSyntax)Visit(condition);
             StatementSyntax whileStatement = (StatementSyntax)Visit(bodyStatement);
@@ -1087,9 +1084,8 @@ namespace RRCG
         public override SyntaxNode VisitForEachStatement(ForEachStatementSyntax node)
         {
             // Build conditional context creation invocation
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(semanticModel, true, locals, node.Statement);
+            var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(SemanticModel, true, locals, node.Statement);
 
             // Visit statement & ensure block w/ accessibility scope
             var visitedStatement = (StatementSyntax)Visit(node.Statement);
