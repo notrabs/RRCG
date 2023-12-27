@@ -46,7 +46,6 @@ Clone the repository into the "Packages" folder of your Studio project.
 e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Packages/RRCG`
 </details>
 
----
 
 ## Using the Compiler
 
@@ -132,6 +131,63 @@ public class ExampleLibrary : CircuitLibrary
 {
     // Your circuits go here.
     // You can use it as a normal class or with static methods.
+}
+```
+
+</details>
+
+<details>
+<summary> Additional Entry Points </summary>
+
+A room is usually made up of multiple graphs. 
+You can create separate graphs within a function by using exec chips with no exec inputs, or the `StartNewGraph()` method. 
+But for code organization it is often nicer to have them as separate methods. 
+Use the `[CircuitGraph]` attribute to mark functions in your CircuitDescriptor as additional entry points. 
+Note that they must be parameterless functions to work.
+
+```c#
+public class ExampleRoom : CircuitDescriptor
+{
+    public override void CircuitGraph()
+    {
+        // Your 1st graph goes here
+
+        EventReceiver(); // implicitly creates a new graph, because receivers have no exec input.
+
+        // Your 2nd graph goes here
+
+        StartNewGraph(); // explicitly creates a new graph.
+
+        // Your 3rd graph goes here
+    }
+
+    [CircuitGraph]
+    void Foo()
+    {
+        // Your 4th graph goes here
+    }
+}
+```
+
+Sometimes you need an exec chip, without connecting it to your exisiting execution flow. 
+You could place it in a separate graph and reference to it with variables, but that quickly gets very verbose.
+Instead use the `InlineGraph()` helper to create new graphs without destryoing your current context.
+
+```c#
+public class ExampleRoom : CircuitDescriptor
+{
+    EventDefinition<string> onInput = new EventDefinition<string>();
+
+    public override void CircuitGraph()
+    {
+        ChipLib.Log("Start");
+
+        // Placing a receiver would normally create a new graph. This only extracts its data.
+        var input = InlineGraph(() => onInput.Receiver());
+
+        // This log chip will be connected to the previous log chip, but get the data from the event receiver.
+        ChipLib.Log(input);
+    }
 }
 ```
 
@@ -511,40 +567,106 @@ public void ExampleCircuit()
 }
 ```
 
----
 
 ## Custom Building Code (.rrcg.gen.cs files)
 
-The conversion of control structures (if,for,...) might not be desireable in some use-cases. Especially when you want to create a dynamic number of chips.
+For more advanced use-cases, the C# source code translation might not be expressive enough for your needs. 
+Expecially the conversion of control structures is limiting, if you want to create dynamic circuits.
 
-To implement dynamic structures you have to bypass the syntax transformation and write code directly in the build realm (= `generated` files). The syntax there is a bit more verbose, but you have the advantage of being able to use c# features to build code, instead of just describing it.
+One simple example for dynamic chip generation is the `ChipLib.Log(object)` helper. 
+It needs to insert a ToString chip, if and only if the inputted data is not already a string.
 
-![image](./Docs/Images/flow_chart.png)
+If you look at the ChipLib implementation you'll notice that the source-realm (=`RRCGSource` namespace) function is empty:
+```c#
+namespace RRCGSource {
+    /// <summary>
+    /// Logs a value to the console with automatic ToString conversion
+    /// </summary>
+    public static void Log(object obj) { }
+}
+```
 
-For example to generate n chips in a chain it is not possible to use a for loop:
+Unlike normally compiled code, the ChipLib has been manually translated into the build-realm (=`RRCGBuild` namespace) to take advantage of customized building code.
 
 ```c#
-// This will transform into a single for chip and a single random chip
-public void RRCGSourceRealm() {
-    for (int i=0;i<n;i++) {
-        Chips.RandomInt(0,i);
-    }
-}
+namespace RRCGBuild {
+    public static void Log(AnyPort obj)
+    {
+        StringPort stringPort;
+        if (obj is StringPort sp) stringPort = sp;
+        else stringPort = obj.ToString();
 
-// In the build realm the for loop stays in the c# code. So you will generate n random chips
-public void RRCGBuildRealm() {
-    for (int i=0;i<n;i++) {
-        ChipBuilder.RandomInt(0,i);
+        LogString(stringPort);
     }
 }
 ```
 
-(Note: for loops are not implemented yet, but this example illustrates the idea)
+For normal RRCG scripts this conversion happens automatically with the compiler.
 
-To use the build realm simply write your code in a non-compiled file.
-More documnentation to come, but looking at the ChipLib source would be a good place to start. Note how there's two version of it so it can be used in the `RRCGSource` and `RRCGBuild` namespace with different types.
+#### Compilation Pipeline
 
----
+To understand how the build realm fits into the compilation process, it helps to have a rough idea on how RRCG is implemented. 
+
+![image](./Docs/Images/flow_chart.png)
+
+The conversion of RRCG scripts into CV2 circuits does not happen in a single step.
+The source-realm code you write isn't executable. 
+The actual circuit graph building happens when the build realm code (=`rrcg.gen.cs` files) is executed.
+Most of the magic of RRCG happens in the first syntax transformation that converts your code into executable build-realm automatically.
+
+
+It is during the execution of the build-realm code that we can also execute custom building code to create chips with standard C# logic. Since we are not limited by the syntax of a small C# subset, we can have more control at the price of a bit more verbose syntax.
+
+#### Writing Build Realm code
+
+Build-realm code is roughly structured like normal RRCG scripts. 
+You can look at the generated files to get an idea, but the main concept to understand is that calling a circuit function will spawn that node into the current graph.
+The functions get access to the current graph via the static `Context.current` property, so the timepoint of execution dicatates where chips are placed in the execution flow.
+At the same time also only executed functions have their chips placed. 
+
+For example, this means that unlike in the source-realm, this function will only spawn one chip. 
+```c#
+namespace RRCGBuild {
+    void BuildFunction(){
+        // This if is an actual if in the build-realm. Executing it will evaluate 
+        // the bool as "true", and go into the if branch.
+        if (true) {
+            LogString("Chip A");
+        } else {
+            // This chip will not spawn, because the code is not reachable
+            LogString("Chip B");
+        }
+    }
+}
+```
+
+Having full c# capabilities back in turn means, that there is also no magical interchangeability between C# data and CV2 data anymore. 
+You need to be explicit about what is CV2 data and what is a regular C# type.
+RRCG uses the `[...}Port` classes to distinguish one from the other.
+The CV2 type can be obtained by appending "Port" to the original type name:
+
+* `bool` => `BoolPort`
+* `string` => `StringPort`
+* `Player` => `PlayerPort`
+* ...
+
+These Port classes are still fairly clever as they implement a lot of the logic that you already know from the source-realm.
+For example doing arithmetic on `FloatPorts` will still only create math chips as needed.
+Only once the Port is an actual port that belongs to a chip a connection will be made when it is used.
+
+```c#
+void BuildFunction(){
+    FloatPort valA = 1;
+    FloatPort valB = 5;
+    FloatPort abs = AbsoluteValue(valA - valB);
+}
+```
+
+#### Get started
+
+To use the build realm simply write your code in a non-compiled file and provide an interface to it in both, the `RRCGSource` and `RRCGBuild` namespaces.
+More documnentation to come, but looking at the ChipLib source would be a good place to start looking for inspiration. 
+
 
 ## Roadmap
 
@@ -552,32 +674,13 @@ Things to do that are in scope of the RRCG project. Although contributions are w
 
 - [ ] Circuit Building Backend (with an official API)
 - [ ] Support more CV2 features
-  - [ ] Circuit Boards
-  - [ ] Variable Kinds
-  - [ ] Event Kinds
-  - [ ] ... (basically anything that can be configured)
 - [ ] Support more C# language features
-  - [ ] returns (for execs and values)
-  - [ ] value switches
-  - [ ] conditional values
-  - [ ] (automatic) type casts
 - [ ] Compiler improvements
-  - [ ] Can the workflow be made faster? ([Source Generators](https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview) would be nice)
-  - [ ] Support more than one file for compilation (automatic dependencies?)
-  - [ ] Attribute to disable syntax transformation of c# code
 - [ ] Circuit Formatter improvements
-  - [ ] Improve chip size estimation
-  - [ ] Allow formatting a selection of circuits (with an official API)
 - [ ] Decompilation (Circuits to Code)
-  - [ ] This wouldn't be perfect, but could be nice to build a library
-- [ ] Optimization ideas
-  - [ ] Collapse math operations (e.g. multipler adds into a single chip)
-  - [ ] Automatically replace multiple "Equal-Ifs" with switches (also in combination with returns)
-- [ ] Online playground
-  - [ ] https://github.com/ashmind/SharpLab looks promising
-  - [ ] Would be great for documentation
+- [ ] Circuit Graph Optimization
+- [ ] Online playground ([SharpLab](https://github.com/ashmind/SharpLab) looks prmomising)
 
----
 
 ## Useful Resources
 

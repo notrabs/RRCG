@@ -149,19 +149,24 @@ namespace RRCGBuild
             if (modulusPort.IsActualPort) throw new Exception("RandomStoreCounter requires actual data in the modulusPort");
             var modulus = modulusPort.Data;
 
-            if (modulus > 64) throw new Exception("RandomStoreCounter only supports modulus below 64");
-
-            var cases = new Dictionary<IntPort, IntPort>();
-
-            for (var i = 0; i < modulus - 1; i++)
+            IntPort inputValue;
+            if (modulus <= 64)
             {
-                cases.Add(i, i + 1);
+                var cases = new Dictionary<IntPort, IntPort>();
+
+                for (var i = 0; i < modulus - 1; i++)
+                {
+                    cases.Add(i, i + 1);
+                }
+
+                inputValue = ValueIntegerSwitch(randomPort, 0, cases);
+            } else
+            {
+                inputValue = (randomPort + 1) % modulus;
             }
 
-            var switchValue = ValueIntegerSwitch(randomPort, 0, cases);
-
-            randomNode.ConnectInputPort(Context.current, switchValue, new Port { Node = randomNode, Index = 1 });
-            randomNode.ConnectInputPort(Context.current, switchValue, new Port { Node = randomNode, Index = 2 });
+            randomNode.ConnectInputPort(Context.current, inputValue, new Port { Node = randomNode, Index = 1 });
+            randomNode.ConnectInputPort(Context.current, inputValue, new Port { Node = randomNode, Index = 2 });
 
             return randomPort;
         }

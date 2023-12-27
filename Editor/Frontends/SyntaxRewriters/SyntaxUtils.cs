@@ -13,6 +13,37 @@ namespace RRCG
 {
     public static class SyntaxUtils
     {
+        // Used for rewriting assignments into __Assign calls,
+        // helps turn add/subtract/etc assignments (+=, -=, /=) into standard binary expressions.
+        public static Dictionary<SyntaxKind, SyntaxKind> AssignmentExpressionToBinaryExpression = new()
+        {
+            { SyntaxKind.AddAssignmentExpression, SyntaxKind.AddExpression },
+            { SyntaxKind.AndAssignmentExpression, SyntaxKind.BitwiseAndExpression }, // why do we have logical/bitwise "and" kinds if the assignment uses the same for both anyway?
+            { SyntaxKind.CoalesceAssignmentExpression, SyntaxKind.CoalesceExpression },
+            { SyntaxKind.DivideAssignmentExpression,  SyntaxKind.DivideExpression },
+            { SyntaxKind.ExclusiveOrAssignmentExpression, SyntaxKind.ExclusiveOrExpression },
+            { SyntaxKind.LeftShiftAssignmentExpression, SyntaxKind.LeftShiftExpression },
+            { SyntaxKind.ModuloAssignmentExpression, SyntaxKind.ModuloExpression },
+            { SyntaxKind.MultiplyAssignmentExpression, SyntaxKind.MultiplyExpression },
+            { SyntaxKind.OrAssignmentExpression, SyntaxKind.BitwiseOrExpression }, // Same as above, funny enough I haven't been able to get Roslyn Quoter to generate code w/ logical variants.
+            { SyntaxKind.RightShiftAssignmentExpression, SyntaxKind.RightShiftExpression },
+            { SyntaxKind.SubtractAssignmentExpression, SyntaxKind.SubtractExpression }
+        };
+
+        // List of AssignmentExpressionSyntax assignment kinds.
+        public static SyntaxKind[] AssignmentExpressionKinds = AssignmentExpressionToBinaryExpression.Keys.Append(SyntaxKind.SimpleAssignmentExpression).ToArray();
+
+        // List of PrefixUnaryExpressionSyntax assignment kinds
+        public static SyntaxKind[] PrefixUnaryAssignmentKinds = new[] { SyntaxKind.PreIncrementExpression, SyntaxKind.PreDecrementExpression };
+
+        // List of PostfixUnaryExpressionSyntax assignment kinds
+        public static SyntaxKind[] PostfixUnaryAssignmentKinds = new[] { SyntaxKind.PostIncrementExpression, SyntaxKind.PostDecrementExpression };
+
+        // List of all assignment kinds.
+        public static SyntaxKind[] AllAssignmentKinds = AssignmentExpressionKinds
+            .Concat(PrefixUnaryAssignmentKinds)
+            .Concat(PostfixUnaryAssignmentKinds)
+            .ToArray();
 
         public static ExpressionSyntax StringLiteral(string value)
         {
@@ -137,6 +168,49 @@ namespace RRCG
                 throw new Exception("Type symbol did not resolve correctly!");
 
             return SyntaxFactory.ParseTypeName(str);
+        }
+
+        public static T StripTrivia<T>(this T node) where T : SyntaxNode
+        {
+            return node.WithoutLeadingTrivia().WithoutTrailingTrivia();
+        }
+
+        public static ITypeSymbol GetResolvedType(this ISymbol symbolInfo)
+        {
+            ITypeSymbol resolvedType = null;
+
+            switch (symbolInfo.Kind)
+            {
+                case SymbolKind.Field:
+                    resolvedType = ((IFieldSymbol)symbolInfo).Type;
+                    break;
+                case SymbolKind.Local:
+                    resolvedType = ((ILocalSymbol)symbolInfo).Type;
+                    break;
+            }
+
+            // Using null check for short-circuit
+            if (resolvedType == null || resolvedType.ToString() == "?")
+                return null;
+
+            return resolvedType;
+        }
+
+        public static IEnumerable<ILocalSymbol> GetAccessibleLocals(this SemanticModel semanticModel, int position)
+        {
+            return semanticModel.LookupSymbols(position)
+                .Where(s => s.Kind == SymbolKind.Local)
+                .Cast<ILocalSymbol>()
+                .Where(local =>
+                {
+                    if (local.IsImplicitlyDeclared) return true;
+
+                    // TODO: do we need to handle multiple declarations?
+                    var declaration = local.DeclaringSyntaxReferences.Select(s => s.GetSyntax()).FirstOrDefault();
+                    if (declaration == null) return false;
+
+                    return position > declaration.SpanStart;
+                }).ToArray();
         }
     }
 }

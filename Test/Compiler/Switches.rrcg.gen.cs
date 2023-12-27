@@ -10,7 +10,7 @@ namespace RRCGBuild
         public override void CircuitGraph()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             SwitchTypes("test", 22);
             LogString("Return from SwitchTypes()");
             ConditionalReturn("test", true);
@@ -24,14 +24,14 @@ namespace RRCGBuild
         public void SwitchTypes(StringPort switchString, IntPort switchInt)
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"test\"");
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         LogString("block case");
                         __Break();
                         __EndAccessibilityScope();
@@ -75,12 +75,12 @@ namespace RRCGBuild
             }
 
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_1");
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         LogString("block case");
                         __Break();
                         __EndAccessibilityScope();
@@ -130,22 +130,22 @@ namespace RRCGBuild
         public void ConditionalReturn(StringPort switchString, BoolPort condition)
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"0\"");
-                    ChipBuilder.If(condition, delegate
+                    __If(__ConditionalContext(false), () => condition, delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         __Break();
                         __EndAccessibilityScope();
                     }
 
                     , delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         __EndAccessibilityScope();
                     }
 
@@ -158,20 +158,20 @@ namespace RRCGBuild
                 {
                     __LabelDecl("rrcg_switch_case_label_\"switch\"");
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         AlternativeExec rrcg_switch_section_0 = delegate
                         {
                             __LabelDecl("rrcg_switch_case_label_\"0\"");
-                            ChipBuilder.If(condition, delegate
+                            __If(__ConditionalContext(false), () => condition, delegate
                             {
-                                __BeginAccessibilityScope(true);
+                                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                                 __Break();
                                 __EndAccessibilityScope();
                             }
 
                             , delegate
                             {
-                                __BeginAccessibilityScope(true);
+                                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                                 __EndAccessibilityScope();
                             }
 
@@ -196,11 +196,11 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_2 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"while\"");
-                    __While(condition, delegate
+                    __While(__ConditionalContext(true), () => condition, false, delegate
                     {
-                        __BeginAccessibilityScope(true);
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         {
-                            __BeginAccessibilityScope(true);
+                            __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                             AlternativeExec rrcg_switch_section_0 = delegate
                             {
                                 __LabelDecl("rrcg_switch_case_label_\"0\"");
@@ -225,9 +225,9 @@ namespace RRCGBuild
                         }
 
                         LogString("After Switch While Switch Case 0");
-                        ChipBuilder.If(condition, delegate
+                        __If(__ConditionalContext(false), () => condition, delegate
                         {
-                            __BeginAccessibilityScope(true);
+                            __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                             LogString("Break out of while");
                             __Break();
                             __EndAccessibilityScope();
@@ -235,10 +235,10 @@ namespace RRCGBuild
 
                         , delegate
                         {
-                            __BeginAccessibilityScope(true);
-                            ChipBuilder.If(condition, delegate
+                            __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                            __If(__ConditionalContext(false), () => condition, delegate
                             {
-                                __BeginAccessibilityScope(true);
+                                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                                 LogString("Return");
                                 __Return(rrcg_return_flow);
                                 __EndAccessibilityScope();
@@ -246,7 +246,7 @@ namespace RRCGBuild
 
                             , delegate
                             {
-                                __BeginAccessibilityScope(true);
+                                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                                 __EndAccessibilityScope();
                             }
 
@@ -281,12 +281,12 @@ namespace RRCGBuild
         void SwitchInWhileLoop()
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
-            __BeginAccessibilityScope(false);
-            __While(true, delegate
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            __While(__ConditionalContext(true), () => true, false, delegate
             {
-                __BeginAccessibilityScope(true);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 {
-                    __BeginAccessibilityScope(true);
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     AlternativeExec rrcg_switch_section_0 = delegate
                     {
                         __LabelDecl("rrcg_switch_case_label_5");

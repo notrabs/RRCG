@@ -105,9 +105,9 @@
       "InputCount": 2
     },
     {
-      "Id": "RRCG_<CircuitGraph>b__0_4_0",
+      "Id": "RRCG_<CircuitGraph>b__0_6_0",
       "Type": "et7rFMB230ew3QGx2qUIIQ==",
-      "Name": "RRCG_<CircuitGraph>b__0_4",
+      "Name": "RRCG_<CircuitGraph>b__0_6",
       "DefaultValues": [],
       "CircuitBoardId": "0_0",
       "InputCount": 0
@@ -425,7 +425,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "RRCG_<CircuitGraph>b__0_4_0",
+        "Node": "RRCG_<CircuitGraph>b__0_6_0",
         "Group": 1,
         "Index": 0
       },
@@ -446,7 +446,7 @@
     },
     {
       "From": {
-        "Node": "RRCG_<CircuitGraph>b__0_4_0",
+        "Node": "RRCG_<CircuitGraph>b__0_6_0",
         "Group": 1,
         "Index": 0
       },

@@ -555,7 +555,7 @@ namespace RRCGBuild
 
         public static ListPort<T> ListCreate<T>(params T[] ports) where T : AnyPort, new()
         {
-            ChipBuilderGen.ListCreate<T>(ports[0]);
+            ChipBuilderGen.ListCreate<T>(ports.Length > 0 ? ports[0] : null);
             var node = Context.lastSpawnedNode;
 
             ConnectDynamicPins(0, ports);
@@ -852,10 +852,69 @@ namespace RRCGBuild
 
         #endregion
 
+        //
+        // Math Nodes
+        //
+        #region MathNodes
+
+        public static FloatPort Power(FloatPort value, FloatPort power)
+        {
+            if (value.IsDataPort && power.IsDataPort)
+                return new FloatPort { Data = Mathf.Pow(value.Data, power.Data) };
+
+            var port = ChipBuilderGen.Power(value);
+            Context.lastSpawnedNode.InputCount = 2;
+            Context.lastSpawnedNode.ConnectInputPort(power, 1);
+            return port;
+        }
+
+        public static IntPort Power(IntPort value, IntPort power)
+        {
+            if (value.IsDataPort && power.IsDataPort)
+                return new IntPort { Data = (int)Mathf.Pow(value.Data, power.Data) };
+
+            var port = ChipBuilderGen.Power(value);
+            Context.lastSpawnedNode.InputCount = 2;
+            Context.lastSpawnedNode.ConnectInputPort(power, 1);
+            return port;
+        }
+
+        public static new FloatPort Round(FloatPort value)
+        {
+            if (value.IsDataPort) return new FloatPort { Data = Mathf.Round(value.Data) };
+            return ChipBuilderGen.Round(value);
+        }
+
+        public static new FloatPort Ceil(FloatPort value)
+        {
+            if (value.IsDataPort) return new FloatPort { Data = Mathf.Ceil(value.Data) };
+            return ChipBuilderGen.Ceil(value);
+        }
+
+        public static new IntPort CeilToInt(FloatPort value)
+        {
+            if (value.IsDataPort) return new IntPort { Data = Mathf.CeilToInt(value.Data) };
+            return ChipBuilderGen.CeilToInt(value);
+        }
+
+        public static new FloatPort Floor(FloatPort value)
+        {
+            if (value.IsDataPort) return new FloatPort { Data = Mathf.Floor(value.Data) };
+            return ChipBuilderGen.Floor(value);
+        }
+
+        public static new IntPort FloorToInt(FloatPort value)
+        {
+            if (value.IsDataPort) return new IntPort { Data = Mathf.FloorToInt(value.Data) };
+            return ChipBuilderGen.FloorToInt(value);
+        }
+
+        #endregion MathNodes
 
         // 
         // Misc
         // 
+        #region Misc
 
         public static BoolPort Equals(params object[] ports)
         {
@@ -889,21 +948,7 @@ namespace RRCGBuild
             return new T() { Port = self.Port };
         }
 
-        public static FloatPort Power(FloatPort value, FloatPort power)
-        {
-            var port = ChipBuilderGen.Power(value);
-            Context.lastSpawnedNode.InputCount = 2;
-            Context.lastSpawnedNode.ConnectInputPort(power, 1);
-            return port;
-        }
-
-        public static IntPort Power(IntPort value, IntPort power)
-        {
-            var port = ChipBuilderGen.Power(value);
-            Context.lastSpawnedNode.InputCount = 2;
-            Context.lastSpawnedNode.ConnectInputPort(power, 1);
-            return port;
-        }
+        #endregion Misc
     }
 }
 

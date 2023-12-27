@@ -1,14 +1,12 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.CSharp;
-using RRCG;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using UnityEngine;
+using AccessibilityScope = RRCGBuild.AccessibilityScope;
 
 namespace RRCG
 {
@@ -29,7 +27,111 @@ namespace RRCG
 
         public SyntaxNode VisitClassDeclarationRoot(ClassDeclarationSyntax node)
         {
-            return base.VisitClassDeclaration(node);
+            var visited = (ClassDeclarationSyntax)base.VisitClassDeclaration(node);
+            var fieldDeclarations = visited.Members.Where(node => node.Kind() == SyntaxKind.FieldDeclaration).Cast<FieldDeclarationSyntax>().ToArray();
+
+            if (fieldDeclarations.Length <= 0)
+                return visited;
+
+            // Remove field initializers from declarations
+            visited = visited.ReplaceNodes(fieldDeclarations, (fieldDecl, _) =>
+            {
+                var variables = new SeparatedSyntaxList<VariableDeclaratorSyntax>();
+                foreach (var varDecl in fieldDecl.Declaration.Variables)
+                    variables = variables.Add(varDecl.WithInitializer(null));
+
+                return fieldDecl.WithDeclaration(fieldDecl.Declaration.WithVariables(variables)).NormalizeWhitespace();
+            });
+
+            // Create methods to initialize static/instance fields.
+            var staticFields = CreateFieldInitializers(fieldDeclarations.Where(d => d.Modifiers.Any(SyntaxKind.StaticKeyword)));
+            var instanceFields = CreateFieldInitializers(fieldDeclarations.Where(d => !d.Modifiers.Any(SyntaxKind.StaticKeyword)));
+
+            if (staticFields.Count > 0)
+            {
+                // Insert field initializers into static constructor
+                // Find existing static constructor
+                var staticConstructor = visited.Members.Where(node => node.Kind() == SyntaxKind.ConstructorDeclaration)
+                    .Cast<ConstructorDeclarationSyntax>()
+                    .Where(node => node.Modifiers.Any(SyntaxKind.StaticKeyword))
+                    .FirstOrDefault();
+
+                // If we found an existing static constructor,
+                // insert field initializers at the start
+                if (staticConstructor != default)
+                {
+                    var statements = staticConstructor.Body?.Statements ?? new SyntaxList<StatementSyntax>();
+                    statements = statements.InsertRange(0, staticFields);
+                    visited = visited.ReplaceNode(staticConstructor, staticConstructor.WithBody(Block(statements)).NormalizeWhitespace());
+                } else
+                {
+                    // Otherwise we create a new one
+                    visited = visited.AddMembers(ConstructorDeclaration(visited.Identifier)
+                        .WithModifiers(TokenList(Token(SyntaxKind.StaticKeyword)))
+                        .WithBody(Block(staticFields))
+                        .NormalizeWhitespace());
+                }
+            }
+
+            if (instanceFields.Count > 0)
+            {
+                // Insert initializers into instance constructor(s)
+                // Find existing instance constructors
+                var instanceConstructors = visited.Members.Where(node => node.Kind() == SyntaxKind.ConstructorDeclaration)
+                    .Cast<ConstructorDeclarationSyntax>()
+                    .Where(node => !node.Modifiers.Any(SyntaxKind.StaticKeyword))
+                    .ToArray();
+
+                // If we found existing instance constructors,
+                // insert the initializers at the beginning of each.
+                if (instanceConstructors.Length > 0)
+                {
+                    visited = visited.ReplaceNodes(instanceConstructors, (constructor, _) =>
+                    {
+                        var statements = constructor.Body?.Statements ?? new SyntaxList<StatementSyntax>();
+                        statements = statements.InsertRange(0, instanceFields);
+                        return constructor.WithBody(Block(statements)).NormalizeWhitespace();
+                    });
+                }
+                else
+                {
+                    // If we didn't find any constructors, insert a parameterless public constructor
+                    // (C# would normally do this anyway)
+                    visited = visited.AddMembers(ConstructorDeclaration(visited.Identifier)
+                        .WithModifiers(TokenList(Token(SyntaxKind.PublicKeyword)))
+                        .WithBody(Block(instanceFields))
+                        .NormalizeWhitespace());
+                }
+            }
+
+            return visited;
+        }
+
+        SyntaxList<StatementSyntax> CreateFieldInitializers(IEnumerable<FieldDeclarationSyntax> fieldDeclarations)
+        {
+            var statements = new SyntaxList<StatementSyntax>();
+            
+            // Create statements to "rrcg-declare" & initialize the fields
+            // by writing call to __VariableDeclaratorExpression
+            foreach (var fieldDecl in fieldDeclarations)
+            {
+                foreach (var varDecl in fieldDecl.Declaration.Variables)
+                {
+                    var name = varDecl.Identifier.ToString();
+                    var initializer = varDecl.Initializer != null ? varDecl.Initializer.Value : null;
+                    bool cantHaveSetter = fieldDecl.Modifiers.Any(m => m.Kind() == SyntaxKind.ReadOnlyKeyword ||
+                                                                       m.Kind() == SyntaxKind.ConstKeyword);
+
+                    statements = statements.Add(
+                         ExpressionStatement(
+                             AssignmentExpression(
+                                 SyntaxKind.SimpleAssignmentExpression,
+                                 IdentifierName(name),
+                                 VariableDeclaratorExpressionInvocation(name, initializer, fieldDecl.Declaration.Type.StripTrivia(), !cantHaveSetter))));
+                }
+            }
+
+            return statements;
         }
 
         public override SyntaxNode VisitClassDeclaration(ClassDeclarationSyntax node)
@@ -185,14 +287,14 @@ namespace RRCG
             {
                 // .ExpressionBody and .Block are mutually exclusive -- this function is without a block.
                 // We need one for accessibility scopes, so let's create one.
-                var needsReturn = !(SemanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnsVoid;
+                var returnsVoid = (SemanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnsVoid;
 
                 statements = SyntaxFactory.SingletonList<StatementSyntax>(
-                                needsReturn ? SyntaxFactory.ReturnStatement(visitedMethod.ExpressionBody)
-                                            : SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
+                                returnsVoid ? SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
+                                            : ValueReturnStatement(visitedMethod.ExpressionBody)
                                 );
 
-                statements = WrapStatementsInAccessibilityScope(statements, false);
+                statements = WrapStatementsInAccessibilityScope(WrapFunctionStatements(statements, returnsVoid), AccessibilityScope.Kind.MethodRoot);
             }
 
             return (T)visitedMethod.WithBody(
@@ -211,13 +313,13 @@ namespace RRCG
             return statements;
         }
 
-        public BlockSyntax WrapBlockInAccessibilityScope(BlockSyntax block, bool canAccessParent)
+        public BlockSyntax WrapBlockInAccessibilityScope(BlockSyntax block, AccessibilityScope.Kind scopeKind)
         {
             var statements = block.Statements;
-            return SyntaxFactory.Block(WrapStatementsInAccessibilityScope(statements, canAccessParent));
+            return SyntaxFactory.Block(WrapStatementsInAccessibilityScope(statements, scopeKind));
         }
 
-        public SyntaxList<StatementSyntax> WrapStatementsInAccessibilityScope(SyntaxList<StatementSyntax> statements, bool canAccessParent)
+        public SyntaxList<StatementSyntax> WrapStatementsInAccessibilityScope(SyntaxList<StatementSyntax> statements, AccessibilityScope.Kind scopeKind)
         {
             statements = statements.Insert(0, SyntaxFactory.ExpressionStatement(
                     SyntaxFactory.InvocationExpression(
@@ -226,9 +328,14 @@ namespace RRCG
                         SyntaxFactory.ArgumentList(
                             SyntaxFactory.SingletonSeparatedList<ArgumentSyntax>(
                                 SyntaxFactory.Argument(
-                                    SyntaxFactory.LiteralExpression(
-                                        canAccessParent ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression
-                                    )))))));
+                                    MemberAccessExpression(
+                                        SyntaxKind.SimpleMemberAccessExpression,
+                                        MemberAccessExpression(
+                                            SyntaxKind.SimpleMemberAccessExpression,
+                                            IdentifierName("AccessibilityScope"),
+                                            IdentifierName("Kind")),
+                                        IdentifierName(scopeKind.ToString("G")))
+                                    ))))));
 
             // Insert end before return
             int insertIndex = statements.Count;
@@ -245,16 +352,21 @@ namespace RRCG
 
         public override SyntaxNode VisitBlock(BlockSyntax node)
         {
-            bool canAccessParent = false;
+            var kind = AccessibilityScope.Kind.General;
+
             if (node.Parent != null)
-                canAccessParent = node.Parent.Kind() != SyntaxKind.MethodDeclaration &&
-                                  node.Parent.Kind() != SyntaxKind.AnonymousMethodExpression &&
-                                  node.Parent.Kind() != SyntaxKind.ParenthesizedLambdaExpression &&
-                                  node.Parent.Kind() != SyntaxKind.SimpleLambdaExpression;
+                kind = node.Parent.Kind() switch
+                {
+                    SyntaxKind.MethodDeclaration => AccessibilityScope.Kind.MethodRoot,
+                    SyntaxKind.AnonymousMethodExpression => AccessibilityScope.Kind.MethodRoot,
+                    SyntaxKind.ParenthesizedLambdaExpression => AccessibilityScope.Kind.MethodRoot,
+                    SyntaxKind.SimpleAssignmentExpression => AccessibilityScope.Kind.MethodRoot,
+                    _ => AccessibilityScope.Kind.General
+                };
 
             var newStatements = new SyntaxList<StatementSyntax>(node.Statements.Select(s => (StatementSyntax)Visit(s)));
             return SyntaxFactory.Block(
-                        WrapStatementsInAccessibilityScope(newStatements, canAccessParent)
+                        WrapStatementsInAccessibilityScope(newStatements, kind)
                     );
         }
 
@@ -627,86 +739,163 @@ namespace RRCG
         // 
         // Assignments
         // 
+        public override SyntaxNode VisitVariableDeclaration(VariableDeclarationSyntax node)
+        {
+            var visited = (VariableDeclarationSyntax)base.VisitVariableDeclaration(node);
+
+            // Rewrite "var" into correct type (if possible)
+            if (!node.Type.IsVar)
+                return visited;
+
+            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
+            var symbolInfo = semanticModel.GetDeclaredSymbol(node.Variables[0]); // TODO: Assuming at least one variable. Is this safe?
+            var resolvedType = symbolInfo.GetResolvedType();
+
+            if (resolvedType == null)
+            {
+                Debug.LogWarning($"Failed to resolve type for var-typed variable declaration: {node}");
+                return visited;
+            }
+
+            var type = ParseTypeName(resolvedType.ToString());
+            var rewrittenType = (TypeSyntax)Visit(type);
+            var result = visited.WithType(rewrittenType);
+            return result;
+
+        }
+
+        public override SyntaxNode VisitLocalDeclarationStatement(LocalDeclarationStatementSyntax node)
+        {
+            var visited = (LocalDeclarationStatementSyntax)base.VisitLocalDeclarationStatement(node);
+
+            // Split declaration from initialization
+            // so the getter method in __VariableDeclarationExpression works
+            if (visited.Declaration.Variables.All(v => v.Initializer == null))
+                return visited;
+
+            var statements = new SyntaxList<StatementSyntax>();
+            visited = visited.ReplaceNodes(visited.Declaration.Variables.Where(v => v.Initializer != null), (node, _) =>
+            {
+                // Create initialization statement
+                // (the __VariableDeclaratorExpression call would be written
+                //  further down, by VisitVariableDeclarator itself)
+                var identifier = node.Identifier.ToString();
+                statements = statements.Add(
+                    ExpressionStatement(
+                        AssignmentExpression(
+                            SyntaxKind.SimpleAssignmentExpression,
+                            IdentifierName(identifier),
+                            node.Initializer.Value)));
+
+                // And assign "default!" to the variable as its initializer so
+                // the compiler is happy with the getter method.
+                // (the correct value will be initialized pretty much immediately, of course)
+                return node.WithInitializer(EqualsValueClause(
+                                                PostfixUnaryExpression(
+                                                    SyntaxKind.SuppressNullableWarningExpression,
+                                                    LiteralExpression(
+                                                        SyntaxKind.DefaultLiteralExpression,
+                                                        Token(SyntaxKind.DefaultKeyword))))).NormalizeWhitespace();
+            });
+
+            // Insert new declaration into the start of statements
+            statements = statements.Insert(0, visited);
+
+            // We need to rewrite one statement into multiple, so we'll do the block w/ missing braces trick.
+            // This is safe because the syntax tree is re-parsed. If that changes this will break!
+            // (note: the same trick is done with label declarations)
+
+            return Block(statements)
+                   .WithOpenBraceToken(MissingToken(SyntaxKind.OpenBraceToken))
+                   .WithCloseBraceToken(MissingToken(SyntaxKind.CloseBraceToken))
+                   .NormalizeWhitespace();
+        }
 
         public override SyntaxNode VisitVariableDeclarator(VariableDeclaratorSyntax node)
         {
-            if (node.Initializer is not EqualsValueClauseSyntax equalsValueClause)
+            // Ensure declaration is not within a field declaration
+            // (we process these seperately in VisitClassDeclarationRoot)
+            if (node.FirstAncestorOrSelf<FieldDeclarationSyntax>((_) => true) != null)
                 return base.VisitVariableDeclarator(node);
-
-            SimpleNameSyntax invocationName = IdentifierName("__VariableDeclaratorExpression");
 
             // Attempt to resolve build-realm type for the declaration.
             // Write it as the generic parameter for the call to __VariableDeclaratorExpression
-            var symbolInfo = SemanticModel.GetDeclaredSymbol(node);
-
-            // Try to grab the type from the symbol
-            ITypeSymbol resolvedType = null;
-
-            switch (symbolInfo.Kind)
+            TypeSyntax? finalType = null;
+            if (node.Initializer is EqualsValueClauseSyntax initializer)
             {
-                case SymbolKind.Field:
-                    resolvedType = ((IFieldSymbol)symbolInfo).Type;
-                    break;
-                case SymbolKind.Local:
-                    resolvedType = ((ILocalSymbol)symbolInfo).Type;
-                    break;
+                    var symbolInfo = SemanticModel.GetDeclaredSymbol(node);
+
+                // Try to grab the type from the symbol
+                var resolvedType = symbolInfo.GetResolvedType();
+
+                // If we found it (and correctly resolved it),
+                // parse & rewrite the type, then write it as
+                // the type assignment for invocation.
+                if (resolvedType != null)
+                {
+                    // Not sure if this is the best way to get the syntax node for a type. Some types get over-qualified, but at least they work.
+                    var type = ParseTypeName(resolvedType.ToString());
+                    finalType = (TypeSyntax)Visit(type);
+                }
+                else
+                {
+                    Debug.LogWarning($"Failed to determine result type for variable declarator expression: {node}");
+                }
             }
 
-            // If we found it (and correctly resolved it),
-            // parse & rewrite the type, then write it as
-            // the type assignment for invocation.
-            if (resolvedType != null && resolvedType.ToString() != "?")
-            {
-                // Not sure if this is the best way to get the syntax node for a type. Some types get over-qualified, but at least they work.
-                var type = ParseTypeName(resolvedType.ToString());
-                var rewrittenType = (TypeSyntax)Visit(type);
-
-                invocationName = GenericName("__VariableDeclaratorExpression").
-                    WithTypeArgumentList(
-                        TypeArgumentList(
-                            SingletonSeparatedList<TypeSyntax>(
-                                rewrittenType
-                            )
-                        )
-                    );
-            } else
-            {
-                Debug.LogWarning($"Failed to determine result type for variable declarator expression: {node}");
-            }
-
-            return node.WithInitializer(
-                equalsValueClause.WithValue(
-                    InvocationExpression(invocationName)
-                    .WithArgumentList(SyntaxUtils.ArgumentList(
-                        SyntaxUtils.StringLiteral(node.Identifier.ToString()),
-                        ParenthesizedLambdaExpression((ExpressionSyntax)base.Visit(equalsValueClause.Value))
-                    ))
-                )
-            );
+            var name = node.Identifier.ToString();
+            var initializerArg = node.Initializer != null ? (ExpressionSyntax)base.Visit(node.Initializer.Value) : null;
+            return node.WithInitializer(EqualsValueClause(VariableDeclaratorExpressionInvocation(name, initializerArg, finalType, true)));
         }
 
         public override SyntaxNode VisitAssignmentExpression(AssignmentExpressionSyntax node)
         {
-            //var info = SemanticModel.GetSymbolInfo(node);
-            //Debug.Log(info);
+            var visited = (AssignmentExpressionSyntax)base.VisitAssignmentExpression(node);
 
-            //// Check if the left-hand side of the assignment is an identifier (variable).
-            //if (node.Left is IdentifierNameSyntax identifier)
-            //{
+            // Check if the left-hand side of the assignment is an identifier (variable).
+            if (visited.Left is not IdentifierNameSyntax identifier)
+                return visited;
 
+            // Remove comments from the identifier
+            identifier = identifier.StripTrivia();
 
-            //    //// Find the declaration of the identifier in the syntax tree.
-            //    //var symbol = SemanticModel.GetSymbolInfo(identifier).Symbol as ILocalSymbol;
+            // Expand +=, -=, etc
+            ExpressionSyntax valueExpression = visited.Right.StripTrivia();
+            if (SyntaxUtils.AssignmentExpressionToBinaryExpression.TryGetValue(visited.Kind(), out var binaryKind))
+                valueExpression = BinaryExpression(binaryKind, identifier, valueExpression);
 
-            //    //if (symbol != null)
-            //    //{
-            //    //    // Calculate the scope level difference.
-            //    //    int scopeLevelDifference = CalculateScopeLevelDifference(node, symbol);
-            //    //    Console.WriteLine($"Scope level difference for variable '{symbol.Name}': {scopeLevelDifference}");
-            //    //}
-            //}
+            return InvocationExpression(
+                    IdentifierName("__Assign"))
+                .WithArgumentList(
+                    ArgumentList(
+                        SeparatedList<ArgumentSyntax>(
+                            new SyntaxNodeOrToken[]{
+                                Argument(SyntaxUtils.StringLiteral(identifier.ToString())),
+                                Token(SyntaxKind.CommaToken),
+                                Argument(identifier)
+                                .WithRefOrOutKeyword(
+                                    Token(SyntaxKind.OutKeyword)),
+                                Token(SyntaxKind.CommaToken),
+                                Argument(
+                                    ParenthesizedLambdaExpression()
+                                    .WithExpressionBody(
+                                        valueExpression))})))
+                .WithLeadingTrivia(visited.GetLeadingTrivia())
+                .WithTrailingTrivia(visited.GetTrailingTrivia())
+                .NormalizeWhitespace();
+        }
 
-            return base.VisitAssignmentExpression(node);
+        public override SyntaxNode VisitPostfixUnaryExpression(PostfixUnaryExpressionSyntax node)
+        {
+            // Maybe a __PreIncrement / __PostIncrement pair of methods that take a sign bool?
+            // i++ -> __PostIncrement(out i, true)
+            // --i -> __PreIncrement(out i, false);
+            return base.VisitPostfixUnaryExpression(node);
+        }
+
+        public override SyntaxNode VisitPrefixUnaryExpression(PrefixUnaryExpressionSyntax node)
+        {
+            return base.VisitPrefixUnaryExpression(node);
         }
 
         // 
@@ -715,6 +904,11 @@ namespace RRCG
 
         public override SyntaxNode VisitIfStatement(IfStatementSyntax node)
         {
+            // Build conditional context creation invocation
+            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
+            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(semanticModel, false, locals, node.Statement, node.Else?.Statement);
+
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
             StatementSyntax trueStatement = (StatementSyntax)Visit(node.Statement);
             StatementSyntax falseStatement = node.Else != null ? (StatementSyntax)Visit(node.Else.Statement) : null;
@@ -724,19 +918,17 @@ namespace RRCG
             // Otherwise we'll do this ourselves
 
             if (trueStatement is not BlockSyntax trueBlock)
-                trueBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(trueStatement), true);
+                trueBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(trueStatement), AccessibilityScope.Kind.General);
             if (falseStatement is not BlockSyntax falseBlock)
-                falseBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(falseStatement), true);
+                falseBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(falseStatement), AccessibilityScope.Kind.General);
 
             return SyntaxFactory.ExpressionStatement(
-                SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.MemberAccessExpression(
-                        SyntaxKind.SimpleMemberAccessExpression,
-                        SyntaxFactory.IdentifierName("ChipBuilder"),
-                        SyntaxFactory.IdentifierName("If")))
+                SyntaxFactory.InvocationExpression(IdentifierName("__If"))
                 .WithArgumentList(
                     SyntaxUtils.ArgumentList(
-                        test,
+                        createConditional,
+                        ParenthesizedLambdaExpression()
+                            .WithExpressionBody(test),
                         ExecDelegate().WithBlock(trueBlock),
                         ExecDelegate().WithBlock(falseBlock)
                  )))
@@ -841,59 +1033,82 @@ namespace RRCG
                     );
 
             // Wrap our statements in an accessibility scope & return
+            // TODO: Why was this necessary? I think AccessibilityScopes should reflect source scoping,
+            //       in this case I wrapped it in a block for the section declarations.. so the AccessibilityScope
+            //       feels unnecessary today. Retaining it for now though
             return SyntaxFactory.Block(
-                    WrapStatementsInAccessibilityScope(statements, true)
+                    WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.General)
                 ).NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitWhileStatement(WhileStatementSyntax node)
         {
-            ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
-            StatementSyntax whileStatement = (StatementSyntax)Visit(node.Statement);
+            return VisitWhileIterator(node, node.Condition, node.Statement, false);
+        }
+
+        public override SyntaxNode VisitDoStatement(DoStatementSyntax node)
+        {
+            return VisitWhileIterator(node, node.Condition, node.Statement, true);
+        }
+
+        public SyntaxNode VisitWhileIterator(SyntaxNode node, ExpressionSyntax condition, StatementSyntax bodyStatement, bool buildIfAfterBlock)
+        {
+            // Build conditional context creation invocation
+            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(condition.SyntaxTree);
+            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(semanticModel, true, locals, bodyStatement);
+
+            ExpressionSyntax test = (ExpressionSyntax)Visit(condition);
+            StatementSyntax whileStatement = (StatementSyntax)Visit(bodyStatement);
 
             // Like with If translation -- if the statement is a block,
             // we'll have already wrapped it in an accessibility scope.
             // Otherwise we need to do this here.
             if (whileStatement is not BlockSyntax whileBlock)
-                whileBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(whileStatement), true);
+                whileBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(whileStatement), AccessibilityScope.Kind.General);
 
             var whileDelegate = ExecDelegate().WithBlock(whileBlock);
 
-            return SyntaxFactory.ExpressionStatement(
-                SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.IdentifierName("__While"))
+            return ExpressionStatement(
+                InvocationExpression(
+                    IdentifierName("__While"))
                 .WithArgumentList(
-                    SyntaxFactory.ArgumentList(
-                        SyntaxFactory.SeparatedList<ArgumentSyntax>(
-                            new SyntaxNodeOrToken[]{
-                                SyntaxFactory.Argument(test),
-                                SyntaxFactory.Token(SyntaxKind.CommaToken),
-                                SyntaxFactory.Argument(whileDelegate)})))).NormalizeWhitespace();
+                    SyntaxUtils.ArgumentList(
+                        createConditional,
+                        ParenthesizedLambdaExpression()
+                            .WithExpressionBody(test),
+                        LiteralExpression(
+                            buildIfAfterBlock ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression
+                        ),
+                        whileDelegate
+                    ))).NormalizeWhitespace();
         }
 
-        public override SyntaxNode VisitDoStatement(DoStatementSyntax node)
+        public override SyntaxNode VisitForEachStatement(ForEachStatementSyntax node)
         {
-            ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
-            StatementSyntax doWhileStatement = (StatementSyntax)Visit(node.Statement);
+            // Build conditional context creation invocation
+            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
+            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(semanticModel, true, locals, node.Statement);
 
-            // Like with If translation -- if the statement is a block,
-            // we'll have already wrapped it in an accessibility scope.
-            // Otherwise we need to do this here.
-            if (doWhileStatement is not BlockSyntax doBlock)
-                doBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(doWhileStatement), true);
+            // Visit statement & ensure block w/ accessibility scope
+            var visitedStatement = (StatementSyntax)Visit(node.Statement);
+            if (visitedStatement is not BlockSyntax bodyBlock)
+                bodyBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(visitedStatement), AccessibilityScope.Kind.General);
 
-            var doDelegate = ExecDelegate().WithBlock(doBlock);
-
-            return SyntaxFactory.ExpressionStatement(
-                SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.IdentifierName("__DoWhile"))
-                .WithArgumentList(
-                    SyntaxFactory.ArgumentList(
-                        SyntaxFactory.SeparatedList<ArgumentSyntax>(
-                            new SyntaxNodeOrToken[]{
-                                SyntaxFactory.Argument(test),
-                                SyntaxFactory.Token(SyntaxKind.CommaToken),
-                                SyntaxFactory.Argument(doDelegate)})))).NormalizeWhitespace();
+            return ExpressionStatement(
+                        InvocationExpression(
+                            IdentifierName("__ForEach"))
+                        .WithArgumentList(
+                            SyntaxUtils.ArgumentList(
+                                createConditional,
+                                node.Expression,
+                                ParenthesizedLambdaExpression()
+                                .WithParameterList(
+                                    ParameterList(
+                                        SingletonSeparatedList(
+                                            Parameter(node.Identifier))))
+                                .WithBlock(bodyBlock))));
         }
 
         public override SyntaxNode VisitBinaryExpression(BinaryExpressionSyntax node)
@@ -1049,6 +1264,105 @@ namespace RRCG
         public AnonymousMethodExpressionSyntax ExecDelegate()
         {
             return SyntaxFactory.AnonymousMethodExpression();
+        }
+
+        public InvocationExpressionSyntax VariableDeclaratorExpressionInvocation(string identifierName, ExpressionSyntax? initializer, TypeSyntax? resolvedType, bool hasSetter)
+        {
+
+            ExpressionSyntax initializerArg = initializer != null ? ParenthesizedLambdaExpression(initializer) : LiteralExpression(SyntaxKind.NullLiteralExpression);
+            SimpleNameSyntax invocationName = resolvedType == null ? IdentifierName(identifierName)
+                                                                   : GenericName(Identifier("__VariableDeclaratorExpression"))
+                                                                         .WithTypeArgumentList(
+                                                                             TypeArgumentList(SingletonSeparatedList(resolvedType)));
+            ExpressionSyntax setterArg = !hasSetter ? LiteralExpression(SyntaxKind.NullLiteralExpression)
+                                                    : ParenthesizedLambdaExpression()
+                                                    .WithParameterList(
+                                                        ParameterList(
+                                                            SingletonSeparatedList<ParameterSyntax>(
+                                                                Parameter(
+                                                                    Identifier("_RRCG_SETTER_VALUE")))))
+                                                    .WithExpressionBody(
+                                                        AssignmentExpression(
+                                                            SyntaxKind.SimpleAssignmentExpression,
+                                                            IdentifierName(identifierName),
+                                                            IdentifierName("_RRCG_SETTER_VALUE")));
+
+            return InvocationExpression(invocationName)
+                   .WithArgumentList(
+                       ArgumentList(
+                           SeparatedList<ArgumentSyntax>(
+                               new SyntaxNodeOrToken[]{
+                                   Argument(SyntaxUtils.StringLiteral(identifierName)),
+                                   Token(SyntaxKind.CommaToken),
+                                   Argument(initializerArg),
+                                   Token(SyntaxKind.CommaToken),
+                                   Argument(
+                                       ParenthesizedLambdaExpression()
+                                           .WithExpressionBody(
+                                               IdentifierName(identifierName))),
+                                   Token(SyntaxKind.CommaToken),
+                                   Argument(setterArg)})))
+                   .NormalizeWhitespace();
+        }
+
+        public InvocationExpressionSyntax CreateConditionalContext(SemanticModel semanticModel, bool initialReadsFromVariables, IEnumerable<ILocalSymbol> accessibleLocals, params SyntaxNode?[] nodesToSearch)
+        {
+            // 1. Create arguments list consisting of the first argument, initialReadsFromVariables
+            var arguments = new List<ExpressionSyntax>()
+            {
+                LiteralExpression(initialReadsFromVariables ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression),
+            };
+            
+            var promotedSymbols = new List<ILocalSymbol>();
+            foreach (var nodeToSearch in nodesToSearch)
+            {
+                if (nodeToSearch == null) continue;
+
+                // 2. Find all assignments each node to search.
+                var assignments = nodeToSearch.DescendantNodesAndSelf()
+                    .Where(n => SyntaxUtils.AllAssignmentKinds.Contains(n.Kind()))
+                    .ToArray();
+
+                // 3. For each assignment, determine if the symbol being assigned to
+                //    is in the list of accessible locals.
+                foreach (var assignment in assignments)
+                {
+                    var assignmentKind = assignment.Kind();
+                    ExpressionSyntax assignedLocalExpression = default;
+
+                    // Different syntax nodes store the assigned symbol differently.
+                    // We need to do per-kind reading, unfortunately.
+                    if (SyntaxUtils.AssignmentExpressionKinds.Contains(assignmentKind))
+                        assignedLocalExpression = ((AssignmentExpressionSyntax)assignment).Left;
+                    else if (SyntaxUtils.PrefixUnaryAssignmentKinds.Contains(assignmentKind))
+                        assignedLocalExpression = ((PrefixUnaryExpressionSyntax)assignment).Operand;
+                    else if (SyntaxUtils.PostfixUnaryAssignmentKinds.Contains(assignmentKind))
+                        assignedLocalExpression = ((PostfixUnaryExpressionSyntax)assignment).Operand;
+
+                    if (assignedLocalExpression == null) continue;
+
+                    // Ensure the target of the assignment is a local variable.
+                    var symbolInfo = semanticModel.GetSymbolInfo(assignedLocalExpression);
+                    if (symbolInfo.Symbol == null) continue;
+                    if (symbolInfo.Symbol is not ILocalSymbol localSymbol) continue;
+
+                    // If the local symbol is contained within the accessible locals,
+                    // then the variable should be promoted (if we haven't promoted it already)
+                    if (!accessibleLocals.Any(s => s.Equals(localSymbol))) continue;
+                    if (promotedSymbols.Any(s => s.Equals(localSymbol))) continue;
+
+                    promotedSymbols.Add(localSymbol);
+                    arguments.Add(LiteralExpression(
+                                      SyntaxKind.StringLiteralExpression,
+                                      Literal(localSymbol.Name)));
+                }
+            }
+
+            // 4. Construct call to __ConditionalContext
+            return InvocationExpression(
+                       IdentifierName("__ConditionalContext"))
+                   .WithArgumentList(
+                       SyntaxUtils.ArgumentList(arguments.ToArray()));
         }
     }
 }

@@ -1,9 +1,12 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using DeclaredVariable = RRCGBuild.AccessibilityScope.DeclaredVariable;
+using PromotedVariable = RRCGBuild.ConditionalContext.PromotedVariable;
 
 namespace RRCGBuild
 {
@@ -502,149 +505,89 @@ namespace RRCGBuild
 
         public static void __Return(ExecFlow returnFlow)
         {
+            SemanticStackUtils.AllIteratorsNeedManual();
+
             returnFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();
         }
 
         public static void __Return<T>(ExecFlow returnFlow, out T returnData, T expression)
         {
+            SemanticStackUtils.AllIteratorsNeedManual();
+
             returnFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();
 
             returnData = expression;
         }
 
-        public T __Assign<T>(out T variable, T value)
+        public T __Assign<T>(string identifier, out T variable, Func<T> value)
         {
-            var assignedValue = value;
-
-            // TODO: If a variable is assigned out of a conditional context, it should either be replaced by a ifvalue/switch or be promoted to a proper Variable
-
+            // TODO: Now that variable promotions are computed at rewriting time,
+            //       maybe this isn't necessary anymore.
+            var assignedValue = value();
             variable = assignedValue;
+
             return assignedValue;
         }
 
-        public void __While(BoolPort condition, AlternativeExec block)
+        public void __While(ConditionalContext conditional, Func<BoolPort> condition, AlternativeExec block) { }
+
+        public void __While(ConditionalContext conditional, Func<BoolPort> condition, bool buildIfAfterBlock, AlternativeExec block)
         {
-            // First, spawn the entry "If" node
-            RRCGGenerated.ChipBuilderGen.If(condition, () => { });
-            var entryIfNode = Context.lastSpawnedNode;
-
-            // Now we create our "while" scope
-            var whileScope = new SemanticStack.WhileScope
-            {
-                BlockFlow = new ExecFlow(),
-                DoneFlow = new ExecFlow(),
-                EntryIfNode = entryIfNode
-            };
-
-            // Mark Done flow as having advanced
-            whileScope.DoneFlow.hasAdvanced = true;
-
-            // Add Then/Else ports to Block/Done flows respectively
-            whileScope.BlockFlow.Ports.Add(new Port { Node = entryIfNode });
-            whileScope.DoneFlow.Ports.Add(new Port { Node = entryIfNode, Index = 1 });
-
-            // Push scope to the stack, move to the block flow,
-            // and build the block contents
-            SemanticStack.current.Push(whileScope);
-
-            ExecFlow.current = whileScope.BlockFlow;
-            block();
-
-            SemanticStack.current.Pop();
-
-            // Advance the current execution flow back to the entry If node,
-            // and continue spawning nodes on the Done execution flow.
-            ExecFlow.current.Advance(Context.current, new Port { Node = whileScope.EntryIfNode }, null);
-            ExecFlow.current = whileScope.DoneFlow;
-        }
-
-        private void __ContinueImpl_While(object scope)
-        {
-            var whileScope = (SemanticStack.WhileScope)scope;
-
-            // Advance the current execution flow back to the entry If node.
-            // Nodes spawned after this will start a new flow.
-            ExecFlow.current.Advance(Context.current, new Port { Node = whileScope.EntryIfNode }, null);
-        }
-
-        private void __BreakImpl_While(object scope)
-        {
-            var whileScope = (SemanticStack.WhileScope)scope;
-
-            // Merge the current execution flow into the done flow,
-            // then clear the current execution flow.
-            // Nodes spawned after this will start a new flow.
-            whileScope.DoneFlow.Merge(ExecFlow.current);
-            ExecFlow.current.Clear();
-        }
-
-        public void __DoWhile(BoolPort condition, AlternativeExec block)
-        {
-            // Build the loopback If chip on a new
-            // ExecFlow to preserve the current one.
-            ExecFlow prevFlow = ExecFlow.current;
-
+            // Build the If chip on a new exec flow
+            var prevFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
-            RRCGGenerated.ChipBuilderGen.If(condition, () => { });
-            var loopbackIfNode = Context.lastSpawnedNode;
-            ExecFlow.current = prevFlow;
+            If(condition(), () => { });
+            var ifNode = Context.lastSpawnedNode;
 
-            // Create our DoWhile scope & exec flows
-            var doWhileScope = new SemanticStack.DoWhileScope()
+            // Create While scope
+            var whileScope = new WhileScope()
             {
-                ContinueFlow = new ExecFlow(),
-                DoneFlow = new ExecFlow(),
-                LoopbackIfNode = loopbackIfNode
+                BreakFlow = new() { hasAdvanced = true },
+                ContinueFlow = new(),
             };
 
-            // Mark done flow as advanced, add Then port to the current ExecFlow
-            doWhileScope.DoneFlow.hasAdvanced = true;
-            ExecFlow.current.Ports.Add(new Port { Node = loopbackIfNode });
+            // Write promoted variable values before entering the block
+            ExecFlow.current = prevFlow;
+            foreach (var variable in conditional.PromotedVariables.Values)
+                variable.RRVariableValue = variable.ValueBeforePromotion;
 
-            // Push scope to the stack and build the block contents
-            SemanticStack.current.Push(doWhileScope);
+            // If we're building the if before the block, advance execution flow now & add the Then port.
+            // Otherwise, just add the Then port to the current execution flow.
+            if (!buildIfAfterBlock) ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), ifNode.Port(0, 0));
+            else ExecFlow.current.Ports.Add(ifNode.Port(0, 0));
+
+            // Now we can push our items onto the SemanticStack
+            // and build the loop block.
+            SemanticStack.current.Push(conditional);
+            SemanticStack.current.Push(whileScope);
             block();
-            SemanticStack.current.Pop();
 
-            // Merge the continue flow into the current flow,
-            // then advance execution to the loopback If node.
-            ExecFlow.current.Merge(doWhileScope.ContinueFlow);
-            ExecFlow.current.Advance(Context.current, new Port { Node = loopbackIfNode }, null);
+            // End the while scope
+            if (!SemanticStack.current.Pop().Equals(whileScope))
+                throw new Exception("Expected WhileScope at the top of the semantic stack but this wasn't the case!");
 
-            // Move to the "done" flow, add the Else port
-            // of the loopback If node, and continue building from there.
-            ExecFlow.current = doWhileScope.DoneFlow;
-            ExecFlow.current.Ports.Add(new Port { Node = loopbackIfNode, Index = 1 });
-        }
+            // Grab the final values of the promoted variables
+            // and end the conditional context.
+            var finalValues = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
+            SemanticStackUtils.EndConditionalContext(conditional, new() { { ExecFlow.current, finalValues } });
 
-        private void __ContinueImpl_DoWhile(object scope)
-        {
-            var doWhileScope = (SemanticStack.DoWhileScope)scope;
+            // Merge the continue flow into the current execution flow,
+            // and loop back to the if node.
+            ExecFlow.current.Merge(whileScope.ContinueFlow);
+            ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
 
-            // Merge the current exec flow into
-            // the continue flow, then clear the current flow.
-            // Nodes spawned after this will create a new flow.
-            doWhileScope.ContinueFlow.Merge(ExecFlow.current);
-            ExecFlow.current.Clear();
-        }
-
-        private void __BreakImpl_DoWhile(object scope)
-        {
-            var doWhileScope = (SemanticStack.DoWhileScope)scope;
-
-            // Merge the current exec flow into
-            // the done flow, then clear the current flow.
-            // Nodes spawned after this will create a new flow.
-            doWhileScope.DoneFlow.Merge(ExecFlow.current);
-            ExecFlow.current.Clear();
+            // Finally, add the Else port to the break flow,
+            // and continue building nodes from there.
+            ExecFlow.current = whileScope.BreakFlow;
+            ExecFlow.current.Ports.Add(ifNode.Port(0, 1));
         }
 
         public void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
         {
             // Create & push our switch scope
-            var switchScope = new SemanticStack.SwitchScope()
+            var switchScope = new SwitchScope
             {
                 BreakFlow = new ExecFlow()
             };
@@ -660,52 +603,18 @@ namespace RRCGBuild
             SemanticStack.current.Pop();
         }
 
-        private void __BreakImpl_Switch(object scope)
-        {
-            // Merge the current exec flow into the break flow,
-            // then clear the current exec flow.
-            var switchScope = (SemanticStack.SwitchScope)scope;
-
-            switchScope.BreakFlow.Merge(ExecFlow.current);
-            ExecFlow.current.Clear();
-        }
-
-        private void RunSharedKeywordImpl(Dictionary<Type, SemanticStack.ScopedImpl> typeToMethod)
-        {
-            // Some keywords do not have implementations for some scopes,
-            // and as such they actually affect some parent scope.
-            // (e.g continue in a switch statement)
-
-            // Iterate over the stack to find a scope we have an implementation for.
-            for (int i = 0; i < SemanticStack.current.Count; i++)
-            {
-                var scope = SemanticStack.current.ElementAt(i);
-                var type = scope.GetType();
-                if (!typeToMethod.ContainsKey(type))
-                    continue;
-
-                typeToMethod[type](scope);
-                return;
-            }
-        }
-
         public void __Break()
         {
-            RunSharedKeywordImpl(new Dictionary<Type, SemanticStack.ScopedImpl>
-            {
-                { typeof(SemanticStack.WhileScope), __BreakImpl_While },
-                { typeof(SemanticStack.SwitchScope), __BreakImpl_Switch },
-                { typeof(SemanticStack.DoWhileScope), __BreakImpl_DoWhile }
-            });
+            var breakable = SemanticStack.current.GetNextScopeWithType<SemanticScope.IBreak>();
+            if (breakable != null)
+                breakable.Break();
         }
 
         public void __Continue()
         {
-            RunSharedKeywordImpl(new Dictionary<Type, SemanticStack.ScopedImpl>
-            {
-                { typeof(SemanticStack.WhileScope), __ContinueImpl_While },
-                { typeof(SemanticStack.DoWhileScope), __ContinueImpl_DoWhile }
-            });
+            var continuable = SemanticStack.current.GetNextScopeWithType<SemanticScope.IContinue>();
+            if (continuable != null)
+                continuable.Continue();
         }
 
         public static StringPort __StringInterpolation(params AnyPort[] ports)
@@ -730,23 +639,43 @@ namespace RRCGBuild
             return Concat(stringPorts.ToArray());
         }
 
-        public static T __VariableDeclaratorExpression<T>(string identifer, Func<T> valueFn)
+        public static T __VariableDeclaratorExpression<T>(string identifier, Func<T>? initializer, Func<dynamic> getter, Action<dynamic>? setter)
         {
-            SemanticStack.current.Push(new SemanticStack.NamedAssignmentScope { Identifier = identifer });
-            var value = valueFn();
-            SemanticStack.current.Pop();
+            // Store in accessibility scope?
+            var scope = SemanticStack.current.GetNextScopeWithType<AccessibilityScope>();
+            if (scope is AccessibilityScope accessScope)
+            {
+                // Is there already a variable with the identifier?
+                if (!SemanticStackUtils.CanDeclareVariableWithIdentifier(identifier))
+                    throw new Exception($"Attempt to declare variable with identifier \"{identifier}\", but there was " +
+                                         "already a variable with the same identifier in an enclosing accessibility scope!");
+
+                // Add to current scope
+                accessScope.DeclaredVariables[identifier] = new() { Getter = getter, Setter = setter, Type = typeof(T) };
+            }
+
+            // Initialize the variable?
+            T value = default!;
+
+            if (initializer != null)
+            {
+                SemanticStack.current.Push(new NamedAssignmentScope { Identifier = identifier });
+                value = initializer();
+                SemanticStack.current.Pop();
+            }
 
             return value;
         }
 
-        public static void __BeginAccessibilityScope(bool canAccessParent)
+        public static void __BeginAccessibilityScope(AccessibilityScope.Kind scopeKind)
         {
-            SemanticStack.current.Push(new SemanticStack.AccessibilityScope
+            SemanticStack.current.Push(new AccessibilityScope
             {
-                PendingGotos = new Dictionary<string, ExecFlow>(),
-                PendingLabels = new List<string>(),
-                DeclaredLabels = new Dictionary<string, Port>(),
-                CanAccessParent = canAccessParent
+                PendingGotos = new(),
+                PendingLabels = new(),
+                DeclaredLabels = new(),
+                DeclaredVariables = new(),
+                ScopeKind = scopeKind
             });
         }
 
@@ -754,11 +683,11 @@ namespace RRCGBuild
         {
             var scope = SemanticStack.current.Pop();
 
-            if (scope is not SemanticStack.AccessibilityScope accessScope)
+            if (scope is not AccessibilityScope accessScope)
                 throw new Exception("Attempt to end accessibility scope, but topmost element of current SemanticStack was not AccessibilityScope!");
 
-            var parentScope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
-            bool canCarry = parentScope != null && accessScope.CanAccessParent;
+            var parentScope = SemanticStack.current.GetNextScopeWithType<AccessibilityScope>();
+            bool canCarry = parentScope != null && accessScope.ScopeKind != AccessibilityScope.Kind.MethodRoot;
 
             // Attempt to carry pending items into the parent scope, if allowed
             if (accessScope.PendingLabels.Count > 0)
@@ -766,7 +695,7 @@ namespace RRCGBuild
                 if (!canCarry)
                     Debug.LogWarning("Accessibility scope had pending labels waiting on execution to advance.");
 
-                parentScope.Value.PendingLabels.AddRange(accessScope.PendingLabels);
+                parentScope!.PendingLabels.AddRange(accessScope.PendingLabels);
             }
 
             if (accessScope.PendingGotos.Count > 0)
@@ -777,10 +706,10 @@ namespace RRCGBuild
 
                 foreach (var kvp in accessScope.PendingGotos)
                 {
-                    if (!parentScope.Value.PendingGotos.ContainsKey(kvp.Key))
-                        parentScope.Value.PendingGotos[kvp.Key] = new ExecFlow();
+                    if (!parentScope!.PendingGotos.ContainsKey(kvp.Key))
+                        parentScope!.PendingGotos[kvp.Key] = new ExecFlow();
 
-                    parentScope.Value.PendingGotos[kvp.Key].Merge(kvp.Value);
+                    parentScope!.PendingGotos[kvp.Key].Merge(kvp.Value);
                 }
             }
 
@@ -789,8 +718,8 @@ namespace RRCGBuild
         public static void __LabelDecl(string labelName)
         {
             // Ensure we're enclosed by a LabelAccessibilityScope
-            var scope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
-            if (scope is not SemanticStack.AccessibilityScope accessScope)
+            var scope = SemanticStack.current.GetNextScopeWithType<AccessibilityScope>();
+            if (scope is not AccessibilityScope accessScope)
                 throw new Exception("Attempt to declare label outside of an AccessibilityScope!");
 
             // Ensure name isn't already declared
@@ -807,7 +736,7 @@ namespace RRCGBuild
             for (int i = 0; i < SemanticStack.current.Count; i++)
             {
                 var item = SemanticStack.current.ElementAt(i);
-                if (item is not SemanticStack.AccessibilityScope accessScope) continue;
+                if (item is not AccessibilityScope accessScope) continue;
 
                 // Any pending gotos for this label?
                 if (accessScope.PendingGotos.TryGetValue(labelName, out var flow))
@@ -827,12 +756,12 @@ namespace RRCGBuild
                 }
 
                 // And are we allowed to climb any higher?
-                if (!accessScope.CanAccessParent) break;
+                if (accessScope.ScopeKind == AccessibilityScope.Kind.MethodRoot) break;
             }
 
             // Otherwise, we'll add a pending goto in the current accessibility scope
-            var scope = SemanticStack.current.GetNextScopeWithType<SemanticStack.AccessibilityScope>();
-            if (scope is not SemanticStack.AccessibilityScope currAccessScope)
+            var scope = SemanticStack.current.GetNextScopeWithType<AccessibilityScope>();
+            if (scope is not AccessibilityScope currAccessScope)
                 throw new Exception("Attempt to goto label outside of an AccessibilityScope!");
 
             if (!currAccessScope.PendingGotos.ContainsKey(labelName))
@@ -841,5 +770,200 @@ namespace RRCGBuild
             currAccessScope.PendingGotos[labelName].Merge(ExecFlow.current);
             ExecFlow.current.Clear();
         }
+
+        private static ExecFlow __IfBranch(Port fromPort, AlternativeExec branch)
+        {
+            var branchFlow = new ExecFlow();
+            branchFlow.Ports.Add(fromPort);
+
+            ExecFlow.current = branchFlow;
+            branch();
+
+            return ExecFlow.current;
+        }
+
+        public static void __If(ConditionalContext conditional, Func<BoolPort> condition, AlternativeExec ifBranch, AlternativeExec elseBranch)
+        {
+            // Create If node
+            var prevFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            If(condition(), () => { });
+            var ifNode = Context.lastSpawnedNode;
+
+            // Push conditional context
+            SemanticStack.current.Push(conditional);
+
+            // Run each branch and get the final value of promoted variables
+            var ifFlow = __IfBranch(ifNode.Port(0, 0), ifBranch);
+            var finalValuesIfBranch = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
+            SemanticStackUtils.ResetPromotedVariables(conditional.PromotedVariables);
+
+            var elseFlow = __IfBranch(ifNode.Port(0, 1), elseBranch);
+            var finalValuesElseBranch = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
+            SemanticStackUtils.ResetPromotedVariables(conditional.PromotedVariables);
+
+            // End the context, writing the variables at the end of each branch.
+            SemanticStackUtils.EndConditionalContext(conditional, new() {
+                { ifFlow, finalValuesIfBranch },
+                { elseFlow, finalValuesElseBranch }
+            });
+
+            // Tidy up execution flow & we're done
+            ExecFlow.current = prevFlow;
+            ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
+            ExecFlow.current.Merge(ifFlow);
+            ExecFlow.current.Merge(elseFlow);
+        }
+
+        public ConditionalContext __ConditionalContext(bool initialReadsFromVariables, params string[] promotedIdentifiers)
+        {
+            var conditionalContext = new ConditionalContext() { PromotedVariables = new(), InitialReadsFromVariables = initialReadsFromVariables };
+
+            // Create promoted variables
+            foreach (var identifier in promotedIdentifiers)
+            {
+                // Is the variable declared & accessible?
+                var declaredVariable = SemanticStackUtils.GetDeclaredVariable(identifier, out _);
+                if (declaredVariable == null) continue;
+
+                // Is it a port type?
+                var variableValue = declaredVariable.Getter();
+                var variableType = declaredVariable.Type;
+                if (!typeof(AnyPort).IsAssignableFrom(variableType)) continue;
+
+                // Is the variable marked as promoted within the current conditional context?
+                var promotedVariables = conditionalContext.PromotedVariables;
+                if (promotedVariables.ContainsKey(identifier)) continue;
+
+                // Does it have a variable for promotion we can re-use?
+                dynamic? variableForPromotion = declaredVariable.RRVariableForPromotion;
+                if (variableForPromotion == null)
+                {
+                    // Create a new one. Reflection magic!
+                    var type = typeof(Variable<>).MakeGenericType(variableType);
+
+                    SemanticStack.current.Push(new NamedAssignmentScope { Identifier = $"Conditional_{identifier}" });
+                    variableForPromotion = Activator.CreateInstance(type, new object[] { null });
+                    SemanticStack.current.Pop();
+
+                    declaredVariable.RRVariableForPromotion = variableForPromotion;
+                }
+
+                // Create promoted variable
+                var promotedVariable = new PromotedVariable() { DeclaredVariable = declaredVariable, ValueBeforePromotion = variableValue };
+
+                // Should the value be set to the RR variable output?
+                if (initialReadsFromVariables && declaredVariable.Setter != null)
+                    declaredVariable.Setter(promotedVariable.RRVariableValue);
+
+                // Finally, add to the conditional context.
+                conditionalContext.PromotedVariables[identifier] = promotedVariable;
+            }
+
+            return conditionalContext;
+        }
+
+        public void __ForEach<T>(ConditionalContext conditional, ListPort<T> list, Action<T> body) where T : AnyPort, new()
+        {
+            // First, create ForEach scope & push onto the semantic stack.
+            var scope = new ForEachScope
+            {
+                BreakFlow = new() { hasAdvanced = true },
+                ContinueFlow = new()
+            };
+
+            SemanticStack.current.Push(scope);
+            SemanticStack.current.Push(conditional);
+
+            // Write promoted variable values before entering the block
+            foreach (var variable in conditional.PromotedVariables.Values)
+                variable.RRVariableValue = variable.ValueBeforePromotion;
+
+            // Build loop body under the assumption we can use the For Each node.
+            // We'll swap this out later if we learn this isn't the case (we don't know beforehand)
+            InlineGraph(() => ForEach(list, _ => { }));
+            var forEachNode = Context.lastSpawnedNode;
+
+            ExecFlow.current.Advance(Context.current, forEachNode.Port(0, 0), forEachNode.Port(0, 0));
+            body(new T { Port = forEachNode.Port(0, 1) });
+
+            // End the conditional context
+            var finalValues = conditional.PromotedVariables.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.DeclaredVariable.Getter());
+            SemanticStackUtils.EndConditionalContext(conditional, new() { { ExecFlow.current, finalValues } });
+
+            // Now validate execflow continuity from the current back to the "Loop" port
+            scope.EnsureContinuityAndCheckDelays(ExecFlow.current, forEachNode.Port(0, 0));
+
+            // Now we can pop the ForEach scope from the stack
+            if (SemanticStack.current.Pop() != scope)
+                throw new Exception("Topmost element of SemanticStack.current was not ForEachScope");
+
+            // If we don't need to build a manual implementation, we can continue building nodes from the Done pin
+            if (!scope.NeedsManualImplementation)
+            {
+                ExecFlow.current.Advance(Context.current, null, forEachNode.Port(0, 2));
+                return;
+            }
+
+            // Otherwise we need to do a little surgery on the graph,
+            // and upgrade (downgrade?) to a manual implementation.
+            var prevFlow = ExecFlow.current;
+            ExecFlow.current = new();
+
+            // Build index variable
+            SemanticStack.current.Push(new NamedAssignmentScope { Identifier = "ForEach_index" });
+            var indexVariable = new Variable<IntPort>();
+            SemanticStack.current.Pop();
+
+            // Rewire all item connections to a List Get Element chip
+            var itemConnections = Context.current.Connections.Where(c => c.From.EquivalentTo(forEachNode.Port(0, 1))).ToList();
+            if (itemConnections.Count > 0)
+            {
+                var port = ListGetElement(list, indexVariable.Value).Port;
+                foreach (var conn in itemConnections)
+                    conn.From = port;
+            }
+
+            // Determine exec input source
+            var execInputFrom = Context.current.Connections
+                .Where(c => c.To.EquivalentTo(forEachNode.Port(0, 0)))
+                .Select(c => c.From)
+                .FirstOrDefault();
+
+            // Determine exec output destination
+            var execOutputTo = Context.current.Connections
+                .Where(c => c.From.EquivalentTo(forEachNode.Port(0, 0)))
+                .Select(c => c.To)
+                .FirstOrDefault();
+
+            // Remove old For Each node & setup ExecFlow
+            Context.current.RemoveNode(forEachNode);
+            ExecFlow.current.Advance(Context.current, null, execInputFrom);
+
+            // Reset index
+            indexVariable.Value = 0;
+
+            // Check condition
+            var condition = LessThan(indexVariable.Value, list.Count);
+            If(condition, () => { });
+            var ifNode = Context.lastSpawnedNode;
+
+            // Wire "Then" to exec output destination
+            ExecFlow.current.Advance(Context.current, execOutputTo, null);
+
+            // Jump back onto the loop body exec flow, increment index
+            ExecFlow.current = prevFlow;
+            indexVariable.Value += 1;
+
+            // Merge continue flow into the current flow, advance back to If node
+            ExecFlow.current.Merge(scope.ContinueFlow);
+            ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
+
+            // Continue building nodes from the break flow
+            // (with the Else port added in)
+            ExecFlow.current = scope.BreakFlow;
+            ExecFlow.current.Ports.Add(ifNode.Port(0, 1));
+        }
     }
 }
+#nullable disable

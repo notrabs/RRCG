@@ -89,6 +89,13 @@ namespace RRCGBuild
         {
             return Node.Id + "_" + Group + "_" + Index;
         }
+
+        public bool EquivalentTo(Port b)
+        {
+            return Group == b.Group &&
+                   Index == b.Index &&
+                   Node == b.Node;
+        }
     }
 
     public class Connection
