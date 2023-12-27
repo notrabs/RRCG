@@ -785,8 +785,6 @@ namespace RRCGBuild
         public static void __If(ConditionalContext conditional, Func<BoolPort> condition, AlternativeExec ifBranch, AlternativeExec elseBranch)
         {
             // Create If node
-            var prevFlow = ExecFlow.current;
-            ExecFlow.current = new ExecFlow();
             If(condition(), () => { });
             var ifNode = Context.lastSpawnedNode;
 
@@ -808,10 +806,8 @@ namespace RRCGBuild
                 { elseFlow, finalValuesElseBranch }
             });
 
-            // Tidy up execution flow & we're done
-            ExecFlow.current = prevFlow;
-            ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
-            ExecFlow.current.Merge(ifFlow);
+            // Merge branch execution flows & we're done
+            ExecFlow.current = ifFlow;
             ExecFlow.current.Merge(elseFlow);
         }
 
