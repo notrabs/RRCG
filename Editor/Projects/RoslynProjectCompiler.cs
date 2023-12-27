@@ -65,21 +65,20 @@ namespace RRCG.Projects
             var filesToCompile = projectFiles.Except(cachedSourceFiles).ToArray();
 
             // Read all text data
-            var cachedFilesText = await Task.WhenAll(cachedSourceFiles.Select(file => File.ReadAllTextAsync(file.Replace(".rrcg.cs", ".rrcg.gen.cs"))).ToArray());
+            var cachedBuildFilesText = await Task.WhenAll(cachedSourceFiles.Select(file => File.ReadAllTextAsync(file.Replace(".rrcg.cs", ".rrcg.gen.cs"))).ToArray());
+            var cachedSourceFilesText = await Task.WhenAll(cachedSourceFiles.Select(file => File.ReadAllTextAsync(file)).ToArray());
             var filesToCompileText = await Task.WhenAll(filesToCompile.Select(file => File.ReadAllTextAsync(file)).ToArray());
 
             // Parse the scripts
-            var options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp9);
-            var cachedSyntaxTrees = cachedFilesText.Select(text => CSharpSyntaxTree.ParseText(text, options)).ToArray();
-            var sourceSyntaxTrees = filesToCompileText.Select(text => CSharpSyntaxTree.ParseText(text, options)).ToArray();
+            var cachedBuildSyntaxTrees = cachedBuildFilesText.Select(RoslynFrontend.ParseText).ToArray();
+            var cachedSourceSyntaxTrees = cachedSourceFilesText.Select(RoslynFrontend.ParseText).ToArray();
+            var sourceSyntaxTrees = filesToCompileText.Select(RoslynFrontend.ParseText).ToArray();
 
             // Prepare the semantic model
             var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary);
             var sourceCompilation = CSharpCompilation.Create(
                 "RRCG.SemanticModel",
-                // Add at least an empty syntax tree, so the Compilation gets the CSharp9 version. 
-                // This seems to be the only way to configure it
-                new SyntaxTree[] { CSharpSyntaxTree.ParseText("", options) },
+                cachedSourceSyntaxTrees.Concat(sourceSyntaxTrees),
                 RoslynFrontend.GetLoadedReferences(),
                 compilationOptions
             );
@@ -93,11 +92,11 @@ namespace RRCG.Projects
             foreach (var (i, buildCodeText) in buildCodeTexts.Select((value, i) => (i, value))) _ = File.WriteAllTextAsync(buildCodePaths[i], buildCodeText);
 
             // Reparse All Scripts, because rewriting does not preserve the language version
-            var buildSyntaxTrees = buildCodeTexts.Select((text, i) => CSharpSyntaxTree.ParseText(text, options, path: buildCodePaths[i])).ToArray();
+            var buildSyntaxTrees = buildCodeTexts.Select((text, i) => RoslynFrontend.ParseText(text, buildCodePaths[i])).ToArray();
 
-            Debug.Log($"Compiled Source Files in {stepTimer.StartNew()} ({cachedSyntaxTrees.Count()}/{cachedSyntaxTrees.Count() + sourceSyntaxTrees.Count()} cached)");
+            Debug.Log($"Compiled Source Files in {stepTimer.StartNew()} ({cachedBuildSyntaxTrees.Count()}/{cachedBuildSyntaxTrees.Count() + sourceSyntaxTrees.Count()} cached)");
 
-            return cachedSyntaxTrees.Concat(buildSyntaxTrees);
+            return cachedBuildSyntaxTrees.Concat(buildSyntaxTrees);
         }
 
         static int assemblyCounter = 0;

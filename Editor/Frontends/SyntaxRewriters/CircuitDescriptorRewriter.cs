@@ -19,6 +19,8 @@ namespace RRCG
             this.rrcgRewriter = rrcgRewriter;
         }
 
+        SemanticModel SemanticModel => rrcgRewriter.SemanticModel;
+
         //
         // Class translation
         //
@@ -285,8 +287,7 @@ namespace RRCG
             {
                 // .ExpressionBody and .Block are mutually exclusive -- this function is without a block.
                 // We need one for accessibility scopes, so let's create one.
-                var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(method.SyntaxTree);
-                var returnsVoid = (semanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnsVoid;
+                var returnsVoid = (SemanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnsVoid;
 
                 statements = SyntaxFactory.SingletonList<StatementSyntax>(
                                 returnsVoid ? SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
@@ -398,8 +399,7 @@ namespace RRCG
             }
 
             // Attempt to fixup ommitted type parameters
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree); // original node!
-            var symbolInfo = semanticModel.GetSymbolInfo(node);
+            var symbolInfo = SemanticModel.GetSymbolInfo(node);
             var methodSymbol = (IMethodSymbol)symbolInfo.Symbol;
 
             // Bail out if we failed to resolve the method symbol.
@@ -549,8 +549,7 @@ namespace RRCG
             var root = node.SyntaxTree.GetRoot();
             if (root is not TypeSyntax)
             {
-                var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-                var symbolInfo = semanticModel.GetSymbolInfo(node);
+                var symbolInfo = SemanticModel.GetSymbolInfo(node);
 
                 // Only rewrite if the symbol is referring to a type
                 if (symbolInfo.Symbol is not INamedTypeSymbol) return base.VisitIdentifierName(node);
@@ -748,8 +747,7 @@ namespace RRCG
             if (!node.Type.IsVar)
                 return visited;
 
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-            var symbolInfo = semanticModel.GetDeclaredSymbol(node.Variables[0]); // TODO: Assuming at least one variable. Is this safe?
+            var symbolInfo = SemanticModel.GetDeclaredSymbol(node.Variables[0]); // TODO: Assuming at least one variable. Is this safe?
             var resolvedType = symbolInfo.GetResolvedType();
 
             if (resolvedType == null)
@@ -824,8 +822,7 @@ namespace RRCG
             TypeSyntax? finalType = null;
             if (node.Initializer is EqualsValueClauseSyntax initializer)
             {
-                var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-                var symbolInfo = semanticModel.GetDeclaredSymbol(node);
+                    var symbolInfo = SemanticModel.GetDeclaredSymbol(node);
 
                 // Try to grab the type from the symbol
                 var resolvedType = symbolInfo.GetResolvedType();
@@ -907,9 +904,8 @@ namespace RRCG
         public override SyntaxNode VisitIfStatement(IfStatementSyntax node)
         {
             // Build conditional context creation invocation
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(semanticModel, false, locals, node.Statement, node.Else?.Statement);
+            var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(SemanticModel, false, locals, node.Statement, node.Else?.Statement);
 
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
             StatementSyntax trueStatement = (StatementSyntax)Visit(node.Statement);
@@ -1056,9 +1052,8 @@ namespace RRCG
         public SyntaxNode VisitWhileIterator(SyntaxNode node, ExpressionSyntax condition, StatementSyntax bodyStatement, bool buildIfAfterBlock)
         {
             // Build conditional context creation invocation
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(condition.SyntaxTree);
-            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(semanticModel, true, locals, bodyStatement);
+            var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(SemanticModel, true, locals, bodyStatement);
 
             ExpressionSyntax test = (ExpressionSyntax)Visit(condition);
             StatementSyntax whileStatement = (StatementSyntax)Visit(bodyStatement);
@@ -1089,9 +1084,8 @@ namespace RRCG
         public override SyntaxNode VisitForEachStatement(ForEachStatementSyntax node)
         {
             // Build conditional context creation invocation
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-            var locals = semanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(semanticModel, true, locals, node.Statement);
+            var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(SemanticModel, true, locals, node.Statement);
 
             // Visit statement & ensure block w/ accessibility scope
             var visitedStatement = (StatementSyntax)Visit(node.Statement);
@@ -1234,8 +1228,7 @@ namespace RRCG
 
             // Query the semantic model for the result type of the expression.
             // We'll use the converted type (result type after implicit conversions).
-            var semanticModel = rrcgRewriter.GetUpdatedSemanticModel(node.SyntaxTree);
-            var typeInfo = semanticModel.GetTypeInfo(node);
+            var typeInfo = SemanticModel.GetTypeInfo(node);
 
             // If we're unable to resolve the type, inform the user but try to let the actual compiler infer the type
             if (typeInfo.ConvertedType is not IErrorTypeSymbol)

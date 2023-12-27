@@ -18,15 +18,27 @@ namespace RRCG
         public static void CompileFile(string sourcePath, string compiledPath)
         {
             string code = File.ReadAllText(sourcePath);
-            SyntaxTree sourceTree = CSharpSyntaxTree.ParseText(code);
+            SyntaxTree sourceTree = ParseText(code);
 
             // Create compilation with references to all loaded assemblies
-            var compilation = CSharpCompilation.Create("RRCG.SemanticModel")
-                .WithReferences(GetLoadedReferences());
+            var compilation = CSharpCompilation.Create(
+                "RRCG.SemanticModel",
+                // We don't know which other files to reference, so the compilation will only know one file at the time.
+                new[] { sourceTree },
+                GetLoadedReferences()
+            );
 
             var generatedTree = RewriteRRCGSource(sourceTree, compilation);
 
             FileUtils.WriteGeneratedCode(generatedTree, compiledPath);
+        }
+
+        public static SyntaxTree ParseText(string text) => ParseText(text, null); // Single Parameter overload to use in Linq
+        public static SyntaxTree ParseText(string text, string path)
+        {
+            // The language version used by RRCG (and Unity)
+            var options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp9);
+            return CSharpSyntaxTree.ParseText(text, options, path);
         }
 
         public static IEnumerable<PortableExecutableReference> GetLoadedReferences()
@@ -44,7 +56,7 @@ namespace RRCG
 
         public static SyntaxNode RewriteRRCGSource(SyntaxTree sourceTree, CSharpCompilation compilation)
         {
-            var rewriter = new RRCGSyntaxRewriter(compilation);
+            var rewriter = new RRCGSyntaxRewriter(compilation.GetSemanticModel(sourceTree));
             return rewriter.Visit(sourceTree.GetRoot());
         }
 
