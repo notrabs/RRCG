@@ -909,6 +909,32 @@ namespace RRCGBuild
             return ChipBuilderGen.FloorToInt(value);
         }
 
+        // Circuits V2 (a)sin/cos chips work in degrees,
+        // so we replicate the behaviour in the constant calculations.
+        public static new FloatPort Sin(FloatPort value)
+        {
+            if (value.IsDataPort) return new FloatPort { Data = Mathf.Sin(value.Data * Mathf.Deg2Rad) };
+            return ChipBuilderGen.Sin(value);
+        }
+
+        public static new FloatPort Cos(FloatPort value)
+        {
+            if (value.IsDataPort) return new FloatPort { Data = Mathf.Cos(value.Data * Mathf.Deg2Rad) };
+            return ChipBuilderGen.Cos(value);
+        }
+
+        public static new FloatPort Asin(FloatPort value)
+        {
+            if (value.IsDataPort) return new FloatPort { Data = Mathf.Asin(value.Data) * Mathf.Rad2Deg };
+            return ChipBuilderGen.Asin(value);
+        }
+
+        public static new FloatPort Acos(FloatPort value)
+        {
+            if (value.IsDataPort) return new FloatPort { Data = Mathf.Acos(value.Data) * Mathf.Rad2Deg };
+            return ChipBuilderGen.Acos(value);
+        }
+
         #endregion MathNodes
 
         // 
