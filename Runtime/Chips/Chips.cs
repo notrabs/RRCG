@@ -32,6 +32,20 @@ namespace RRCGSource
         public static float Power(float Value, float Power) { return default; }
         public static int Power(int Value, int Power) { return default; }
 
+        // 
+        // Shorthands
+        //
+
+        /// <summary>
+        /// If used in an if statement, this will optimize to an IfIsLocalPlayerAuthority chip. Otherwise the equivalent chips are spawned.
+        /// </summary>
+        public static bool LocalPlayerIsAuthority => default;
+
+        /// <summary>
+        /// If used in an if statement, this will optimize to an IsLocalPlayerRoomAuthority chip. Otherwise the equivalent chips are spawned.
+        /// </summary>
+        public static bool LocalPlayerIsRoomAuthority => default;
+
         //
         // Deprecations
         //

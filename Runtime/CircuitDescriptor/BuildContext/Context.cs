@@ -91,6 +91,11 @@ namespace RRCGBuild
             Nodes.Remove(node);
             Connections.RemoveAll(c => c.From.Node == node || c.To.Node == node);
         }
+
+        public void RemoveConnection(Connection connection)
+        {
+            Connections.Remove(connection);
+        }
     }
 
     public class CBFunction

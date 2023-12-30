@@ -38,7 +38,7 @@ namespace RRCGBuild
         {
             get
             {
-                if (IsActualPort) return CircuitBuilder.Singleton("Vector3_split_" + Port.PortKey(), () => ChipBuilder.Vector3Split(this));
+                if (IsActualPort) return CircuitBuilder.Singleton("Vector3_split_" + PortKey(), () => ChipBuilder.Vector3Split(this));
 
                 var v = (Vector3)Data;
                 return (v.x, v.y, v.z);
@@ -49,7 +49,7 @@ namespace RRCGBuild
         {
             get
             {
-                if (IsActualPort) return CircuitBuilder.Singleton("Vector3_normalized_" + Port.PortKey(), () => ChipBuilder.Vector3Normalize(this));
+                if (IsActualPort) return CircuitBuilder.Singleton("Vector3_normalized_" + PortKey(), () => ChipBuilder.Vector3Normalize(this));
 
                 var v = (Vector3)Data;
                 return new Vector3Port() { Data = v.normalized };
@@ -59,7 +59,7 @@ namespace RRCGBuild
         {
             get
             {
-                if (IsActualPort) return CircuitBuilder.Singleton("Vector3_magnitude_" + Port.PortKey(), () => ChipBuilder.VectorGetMagnitude(this));
+                if (IsActualPort) return CircuitBuilder.Singleton("Vector3_magnitude_" + PortKey(), () => ChipBuilder.VectorGetMagnitude(this));
 
                 var v = (Vector3)Data;
                 return new FloatPort() { Data = v.magnitude };
@@ -70,7 +70,7 @@ namespace RRCGBuild
             get
             {
                 // The RR philosophy: Calculate the efficient value by calculating the expensive value first...
-                if (IsActualPort) return CircuitBuilder.Singleton("Vector3_sqrMagnitude_" + Port.PortKey(), () => this.magnitude * this.magnitude);
+                if (IsActualPort) return CircuitBuilder.Singleton("Vector3_sqrMagnitude_" + PortKey(), () => this.magnitude * this.magnitude);
 
                 var v = (Vector3)Data;
                 return new FloatPort() { Data = v.sqrMagnitude };
@@ -119,7 +119,7 @@ namespace RRCGBuild
             if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data * b.Data };
 
             if (b.IsDataPort && (float)b.Data == -1f) // -1 is exactly representable
-                return CircuitBuilder.Singleton("Vector3_Inverse_" + a.Port.PortKey(), () => ChipBuilder.Vector3Inverse(a));
+                return CircuitBuilder.Singleton("Vector3_Inverse_" + a.PortKey(), () => ChipBuilder.Vector3Inverse(a));
 
             // This will fix the simple case for missing default value types. Leave it up to the user to force more complex types for now.
             if (b.IsDataPort) b = ChipLib.FloatConst(b);
@@ -134,7 +134,7 @@ namespace RRCGBuild
             if (a.IsDataPort && b.IsDataPort) return new Vector3Port { Data = a.Data * b.Data };
 
             if (b.IsDataPort && (int)b.Data == -1)
-                return CircuitBuilder.Singleton("Vector3_Inverse_" + a.Port.PortKey(), () => ChipBuilder.Vector3Inverse(a));
+                return CircuitBuilder.Singleton("Vector3_Inverse_" + a.PortKey(), () => ChipBuilder.Vector3Inverse(a));
 
             // This will fix the simple case for missing default value types. Leave it up to the user to force more complex types for now.
             if (b.IsDataPort) b = ChipLib.IntConst(b);
@@ -188,7 +188,7 @@ namespace RRCGBuild
         {
             get
             {
-                if (IsActualPort) return CircuitBuilder.Singleton("Quaternion_eulerAngles_" + Port.PortKey(), () => ChipBuilder.QuaternionEulerAngles(this));
+                if (IsActualPort) return CircuitBuilder.Singleton("Quaternion_eulerAngles_" + PortKey(), () => ChipBuilder.QuaternionEulerAngles(this));
 
                 var q = (Quaternion)Data;
                 return new Vector3Port() { Data = q.eulerAngles };
@@ -199,7 +199,7 @@ namespace RRCGBuild
         {
             get
             {
-                if (IsActualPort) return CircuitBuilder.Singleton("Quaternion_normalized_" + Port.PortKey(), () => ChipBuilder.QuaternionNormalize(this));
+                if (IsActualPort) return CircuitBuilder.Singleton("Quaternion_normalized_" + PortKey(), () => ChipBuilder.QuaternionNormalize(this));
 
                 var q = (Quaternion)Data;
                 return new QuaternionPort() { Data = q.normalized };
@@ -210,7 +210,7 @@ namespace RRCGBuild
         {
             get
             {
-                if (IsActualPort) return CircuitBuilder.Singleton("Quaternion_split_" + Port.PortKey(), () => ChipBuilder.QuaternionSplit(this));
+                if (IsActualPort) return CircuitBuilder.Singleton("Quaternion_split_" + PortKey(), () => ChipBuilder.QuaternionSplit(this));
 
                 var q = (Quaternion)Data;
                 return (q.x, q.y, q.z, q.w);

@@ -13,6 +13,12 @@ namespace RRCGBuild
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             TestNotIfOptimizer();
+            TestIfLocalPlayerIsAuthorityOptimizer();
+            TestIfLocalPlayerIsRoomAuthorityOptimizer();
+            TestIfLocalPlayerShouldRunOptimizer();
+            TestIfPlayerHasRoleOptimizer();
+            TestIfPlayerIsLocalOptimizer();
+            TestIfPlayerIsValidOptimizer();
             TestKnownSingletonChipsOptimizer();
             TestVariableCollapseOptimizer();
             TestAssociativeOperationCollapseOptimizer();
@@ -150,7 +156,858 @@ namespace RRCGBuild
             }
 
             );
+            __If(__ConditionalContext(false), () => true, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => !true, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => !!true, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => !!!true, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => !!!!true, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => Not(Not(true)), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => Not(Not(Not(true))), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => Not(Not(Not(Not(true)))), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
             ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void TestIfLocalPlayerIsAuthorityOptimizer()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("TestIfLocalPlayerIsAuthorityOptimizer").Receiver();
+            __If(__ConditionalContext(false), () => ChipBuilder.Equals(GetAuthority(), PlayerPort.Local), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Equals(PlayerPort.Local, GetAuthority()), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Equals(GetAuthority(), GetLocalPlayer()), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Equals(GetLocalPlayer(), GetAuthority()), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Not(ChipBuilder.Equals(GetAuthority(), PlayerPort.Local)), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Not(ChipBuilder.Equals(PlayerPort.Local, GetAuthority())), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Not(ChipBuilder.Equals(GetAuthority(), GetLocalPlayer())), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Not(ChipBuilder.Equals(GetLocalPlayer(), GetAuthority())), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Equals(GetAuthority(), PlayerPort.Local), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Not(ChipBuilder.Equals(GetAuthority(), PlayerPort.Local)), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+                BoolPort condition = default !;
+                condition = __VariableDeclaratorExpression<BoolPort>("condition", () => ChipBuilder.Equals(PlayerPort.Local, GetAuthority()), () => condition, (_RRCG_SETTER_VALUE) => condition = _RRCG_SETTER_VALUE);
+            __If(__ConditionalContext(false), () => condition, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                ChipLib.Log(condition);
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => LocalPlayerIsAuthority, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void TestIfLocalPlayerIsRoomAuthorityOptimizer()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("TestIfLocalPlayerIsRoomAuthorityOptimizer").Receiver();
+            __If(__ConditionalContext(false), () => ChipBuilder.Equals(GetRoomAuthority(), PlayerPort.Local), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Equals(PlayerPort.Local, GetRoomAuthority()), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Equals(GetRoomAuthority(), GetLocalPlayer()), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Equals(GetLocalPlayer(), GetRoomAuthority()), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Not(ChipBuilder.Equals(GetRoomAuthority(), PlayerPort.Local)), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Not(ChipBuilder.Equals(PlayerPort.Local, GetRoomAuthority())), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Not(ChipBuilder.Equals(GetRoomAuthority(), GetLocalPlayer())), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Not(ChipBuilder.Equals(GetLocalPlayer(), GetRoomAuthority())), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Equals(GetRoomAuthority(), PlayerPort.Local), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.Not(ChipBuilder.Equals(GetRoomAuthority(), PlayerPort.Local)), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+                BoolPort condition = default !;
+                condition = __VariableDeclaratorExpression<BoolPort>("condition", () => ChipBuilder.Equals(PlayerPort.Local, GetRoomAuthority()), () => condition, (_RRCG_SETTER_VALUE) => condition = _RRCG_SETTER_VALUE);
+            __If(__ConditionalContext(false), () => condition, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                ChipLib.Log(condition);
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => LocalPlayerIsRoomAuthority, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void TestIfLocalPlayerShouldRunOptimizer()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("TestIfLocalPlayerShouldRunOptimizer").Receiver();
+                RRCGBuild.PlayerPort player = default !;
+                player = __VariableDeclaratorExpression<RRCGBuild.PlayerPort>("player", () => GetLocalPlayer(), () => player, (_RRCG_SETTER_VALUE) => player = _RRCG_SETTER_VALUE);
+            __If(__ConditionalContext(false), () => ChipBuilder.IfValue<BoolPort>(player.IsValid, player.IsLocal, ChipBuilder.Equals(GetAuthority(), player)), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+                RRCGBuild.PlayerPort nonLocalPlayer = default !;
+                nonLocalPlayer = __VariableDeclaratorExpression<RRCGBuild.PlayerPort>("nonLocalPlayer", () => PlayerGetFirstWithTag("tag"), () => nonLocalPlayer, (_RRCG_SETTER_VALUE) => nonLocalPlayer = _RRCG_SETTER_VALUE);
+            __If(__ConditionalContext(false), () => ChipBuilder.IfValue<BoolPort>(nonLocalPlayer.IsValid, nonLocalPlayer.IsLocal, ChipBuilder.Equals(GetAuthority(), nonLocalPlayer)), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.IfValue<BoolPort>(nonLocalPlayer.IsValid, nonLocalPlayer.IsLocal, ChipBuilder.Equals(GetAuthority(), nonLocalPlayer)), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.IfValue<BoolPort>(GetLocalPlayer().IsValid, nonLocalPlayer.IsLocal, ChipBuilder.Equals(GetAuthority(), nonLocalPlayer)), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.IfValue<BoolPort>(nonLocalPlayer.IsValid, GetLocalPlayer().IsLocal, ChipBuilder.Equals(GetAuthority(), nonLocalPlayer)), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => ChipBuilder.IfValue<BoolPort>(nonLocalPlayer.IsValid, nonLocalPlayer.IsLocal, ChipBuilder.Equals(GetAuthority(), GetLocalPlayer())), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void TestIfPlayerHasRoleOptimizer()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("TestIfPlayerHasRoleOptimizer").Receiver();
+            __If(__ConditionalContext(false), () => PlayerPort.Local.HasRole("testrole"), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => GetLocalPlayer().HasRole("testrole"), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => PlayerGetFirstWithTag("tag").HasRole("testrole"), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => !PlayerPort.Local.HasRole("testrole"), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => PlayerPort.Local.HasRole("testrole"), delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+                BoolPort condition = default !;
+                condition = __VariableDeclaratorExpression<BoolPort>("condition", () => PlayerGetFirstWithTag("tag").HasRole("testrole"), () => condition, (_RRCG_SETTER_VALUE) => condition = _RRCG_SETTER_VALUE);
+            __If(__ConditionalContext(false), () => condition, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                ChipLib.Log(condition);
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void TestIfPlayerIsLocalOptimizer()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("TestIfPlayerIsLocalOptimizer").Receiver();
+            __If(__ConditionalContext(false), () => PlayerPort.Local.IsLocal, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => GetLocalPlayer().IsLocal, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => PlayerGetFirstWithTag("tag").IsLocal, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => !PlayerPort.Local.IsLocal, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => PlayerPort.Local.IsLocal, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+                BoolPort condition = default !;
+                condition = __VariableDeclaratorExpression<BoolPort>("condition", () => PlayerGetFirstWithTag("tag").IsLocal, () => condition, (_RRCG_SETTER_VALUE) => condition = _RRCG_SETTER_VALUE);
+            __If(__ConditionalContext(false), () => condition, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                ChipLib.Log(condition);
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __EndAccessibilityScope();
+            ExecFlow.current.Merge(rrcg_return_flow);
+        }
+
+        void TestIfPlayerIsValidOptimizer()
+        {
+            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("TestIfPlayerIsValidOptimizer").Receiver();
+            __If(__ConditionalContext(false), () => PlayerPort.Local.IsValid, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => GetLocalPlayer().IsLocal, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => PlayerGetFirstWithTag("tag").IsLocal, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("false");
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => PlayerPort.Local.IsLocal, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
             __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }

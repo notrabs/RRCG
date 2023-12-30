@@ -116,7 +116,7 @@ namespace RRCGBuild
         public static IntPort operator ~(IntPort a)
         {
             if (a.IsDataPort) return new IntPort { Data = ~a.Data };
-            return CircuitBuilder.Singleton("Bit_Not_" + a.Port.PortKey(), () => ChipBuilder.BitNot(a));
+            return CircuitBuilder.Singleton("Bit_Not_" + a.PortKey(), () => ChipBuilder.BitNot(a));
         }
 
         public static IntPort MaxValue => new IntPort { Data = int.MaxValue };
@@ -192,7 +192,7 @@ namespace RRCGBuild
         {
             get
             {
-                if (IsActualPort) return CircuitBuilder.Singleton("String_Length_" + Port.PortKey(), () => ChipBuilder.StringLength(this));
+                if (IsActualPort) return CircuitBuilder.Singleton("String_Length_" + PortKey(), () => ChipBuilder.StringLength(this));
 
                 string str = (string)Data;
                 return new IntPort { Data = str.Length };
@@ -201,7 +201,7 @@ namespace RRCGBuild
 
         public StringPort ToUpper()
         {
-            if (IsActualPort) return CircuitBuilder.Singleton("String_To_Upper_" + Port.PortKey(), () => ChipBuilder.StringToUpper(this));
+            if (IsActualPort) return CircuitBuilder.Singleton("String_To_Upper_" + PortKey(), () => ChipBuilder.StringToUpper(this));
 
             string str = (string)Data;
             return new StringPort { Data = str.ToUpper() };
@@ -209,7 +209,7 @@ namespace RRCGBuild
 
         public StringPort ToLower()
         {
-            if (IsActualPort) return CircuitBuilder.Singleton("String_To_Lower_" + Port.PortKey(), () => ChipBuilder.StringToLower(this));
+            if (IsActualPort) return CircuitBuilder.Singleton("String_To_Lower_" + PortKey(), () => ChipBuilder.StringToLower(this));
 
             string str = (string)Data;
             return new StringPort { Data = str.ToLower() };

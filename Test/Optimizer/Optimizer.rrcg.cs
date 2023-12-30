@@ -8,6 +8,13 @@ public class Optimizer : CircuitDescriptor
     {
         TestNotIfOptimizer();
 
+        TestIfLocalPlayerIsAuthorityOptimizer();
+        TestIfLocalPlayerIsRoomAuthorityOptimizer();
+        TestIfLocalPlayerShouldRunOptimizer();
+        TestIfPlayerHasRoleOptimizer();
+        TestIfPlayerIsLocalOptimizer();
+        TestIfPlayerIsValidOptimizer();
+
         TestKnownSingletonChipsOptimizer();
 
         TestVariableCollapseOptimizer();
@@ -49,7 +56,193 @@ public class Optimizer : CircuitDescriptor
         if (ParseInt("1").Result != 1) LogString("true");
         else LogString("false");
 
+        // Test single branches
+        if (true) LogString("true");
+        if (!true) LogString("true");
+
+        // Test chains of nots
+        if (!!true) LogString("true");
+        if (!!!true) LogString("true");
+        if (!!!!true) LogString("true");
+
+        if (Not(Not(true))) LogString("true");
+        if (Not(Not(Not(true)))) LogString("true");
+        if (Not(Not(Not(Not(true))))) LogString("true");
+
         throw null;
+    }
+
+    void TestIfLocalPlayerIsAuthorityOptimizer()
+    {
+        new EventDefinition("TestIfLocalPlayerIsAuthorityOptimizer").Receiver();
+
+        if (GetAuthority() == Player.Local) LogString("true");
+        else LogString("false");
+
+        if (Player.Local == GetAuthority()) LogString("true");
+        else LogString("false");
+
+        if (GetAuthority() == GetLocalPlayer()) LogString("true");
+        else LogString("false");
+
+        if (GetLocalPlayer() == GetAuthority()) LogString("true");
+        else LogString("false");
+
+        // Test negation
+        if (GetAuthority() != Player.Local) LogString("true");
+        else LogString("false");
+
+        if (Player.Local != GetAuthority()) LogString("true");
+        else LogString("false");
+
+        if (GetAuthority() != GetLocalPlayer()) LogString("true");
+        else LogString("false");
+
+        if (GetLocalPlayer() != GetAuthority()) LogString("true");
+        else LogString("false");
+
+        // Test only one branch
+        if (GetAuthority() == Player.Local) LogString("true");
+        if (GetAuthority() != Player.Local) LogString("true");
+
+        // Test non-dangling condition
+        var condition = Player.Local == GetAuthority();
+        if (condition) ChipLib.Log(condition);
+
+        // Test shorthand
+        if (LocalPlayerIsAuthority) LogString("true");
+    }
+
+    void TestIfLocalPlayerIsRoomAuthorityOptimizer()
+    {
+        new EventDefinition("TestIfLocalPlayerIsRoomAuthorityOptimizer").Receiver();
+
+        if (GetRoomAuthority() == Player.Local) LogString("true");
+        else LogString("false");
+
+        if (Player.Local == GetRoomAuthority()) LogString("true");
+        else LogString("false");
+
+        if (GetRoomAuthority() == GetLocalPlayer()) LogString("true");
+        else LogString("false");
+
+        if (GetLocalPlayer() == GetRoomAuthority()) LogString("true");
+        else LogString("false");
+
+        // Test negation
+        if (GetRoomAuthority() != Player.Local) LogString("true");
+        else LogString("false");
+
+        if (Player.Local != GetRoomAuthority()) LogString("true");
+        else LogString("false");
+
+        if (GetRoomAuthority() != GetLocalPlayer()) LogString("true");
+        else LogString("false");
+
+        if (GetLocalPlayer() != GetRoomAuthority()) LogString("true");
+        else LogString("false");
+
+        // Test only one branch
+        if (GetRoomAuthority() == Player.Local) LogString("true");
+        if (GetRoomAuthority() != Player.Local) LogString("true");
+
+        // Test non-dangling condition
+        var condition = Player.Local == GetRoomAuthority();
+        if (condition) ChipLib.Log(condition);
+
+        // Test shorthand
+        if (LocalPlayerIsRoomAuthority) LogString("true");
+    }
+
+    void TestIfLocalPlayerShouldRunOptimizer()
+    {
+        new EventDefinition("TestIfLocalPlayerShouldRunOptimizer").Receiver();
+
+        var player = GetLocalPlayer();
+
+        if (player.IsValid ? player.IsLocal : GetAuthority() == player) LogString("true");
+        else LogString("false");
+
+        var nonLocalPlayer = PlayerGetFirstWithTag("tag");
+
+        if (nonLocalPlayer.IsValid ? nonLocalPlayer.IsLocal : GetAuthority() == nonLocalPlayer) LogString("true");
+        else LogString("false");
+
+        // Test only one branch
+        if (nonLocalPlayer.IsValid ? nonLocalPlayer.IsLocal : GetAuthority() == nonLocalPlayer) LogString("true");
+
+        // Test with a wrong player in comparison
+        if (GetLocalPlayer().IsValid ? nonLocalPlayer.IsLocal : GetAuthority() == nonLocalPlayer) LogString("true");
+        if (nonLocalPlayer.IsValid ? GetLocalPlayer().IsLocal : GetAuthority() == nonLocalPlayer) LogString("true");
+        if (nonLocalPlayer.IsValid ? nonLocalPlayer.IsLocal : GetAuthority() == GetLocalPlayer()) LogString("true");
+    }
+
+    void TestIfPlayerHasRoleOptimizer()
+    {
+        new EventDefinition("TestIfPlayerHasRoleOptimizer").Receiver();
+
+        if (Player.Local.HasRole("testrole")) LogString("true");
+        else LogString("false");
+
+        if (GetLocalPlayer().HasRole("testrole")) LogString("true");
+        else LogString("false");
+
+        if (PlayerGetFirstWithTag("tag").HasRole("testrole")) LogString("true");
+        else LogString("false");
+
+        // Test negation
+        if (!Player.Local.HasRole("testrole")) LogString("true");
+        else LogString("false");
+
+        // Test only one branch
+        if (Player.Local.HasRole("testrole")) LogString("true");
+
+        // non-dangling condition
+        var condition = PlayerGetFirstWithTag("tag").HasRole("testrole");
+        if (condition) ChipLib.Log(condition);
+    }
+
+    void TestIfPlayerIsLocalOptimizer()
+    {
+        new EventDefinition("TestIfPlayerIsLocalOptimizer").Receiver();
+
+        if (Player.Local.IsLocal) LogString("true");
+        else LogString("false");
+
+        if (GetLocalPlayer().IsLocal) LogString("true");
+        else LogString("false");
+
+        if (PlayerGetFirstWithTag("tag").IsLocal) LogString("true");
+        else LogString("false");
+
+        // Test negation
+        if (!Player.Local.IsLocal) LogString("true");
+        else LogString("false");
+
+        // Test only one branch
+        if (Player.Local.IsLocal) LogString("true");
+
+        // non-dangling condition
+        var condition = PlayerGetFirstWithTag("tag").IsLocal;
+        if (condition) ChipLib.Log(condition);
+    }
+
+    void TestIfPlayerIsValidOptimizer()
+    {
+        new EventDefinition("TestIfPlayerIsValidOptimizer").Receiver();
+
+        // This would technically not work in game, but there is no reason to not optimize it
+        if (Player.Local.IsValid) LogString("true");
+        else LogString("false");
+
+        if (GetLocalPlayer().IsLocal) LogString("true");
+        else LogString("false");
+
+        if (PlayerGetFirstWithTag("tag").IsLocal) LogString("true");
+        else LogString("false");
+
+        // Test only one branch
+        if (Player.Local.IsLocal) LogString("true");
     }
 
     void TestKnownSingletonChipsOptimizer()
