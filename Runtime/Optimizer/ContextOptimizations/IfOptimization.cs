@@ -51,7 +51,8 @@ namespace RRCG.Optimizer.ContextOptimizations
                 // TODO: IfLocalPlayerShouldRun
                 case ChipType.PlayerGetIsLocal:
                     return OptimizePlayerGetIsLocalIf(context, node, prevNode);
-                // TODO: IfPlayerHasRole
+                case ChipType.PlayerHasRole:
+                    return OptimizePlayerHasRoleIf(context, node, prevNode);
                 // TODO: IfLocalPlayerIsValid
                 // TODO: IfLocalPlayerIsValidAndLocal (warning, this chip has three outputs!)
             }
@@ -65,6 +66,18 @@ namespace RRCG.Optimizer.ContextOptimizations
             OptimizerUtils.CopyDataInputPort(context, isLocalNode.Port(0,0), node.Port(0,1));
 
             OptimizerUtils.RemoveDanglingDataNode(context, isLocalNode);
+
+            return true;
+        }
+
+        static bool OptimizePlayerHasRoleIf(Context context, Node node, Node hasRoleNode)
+        {
+            node.Type = ChipType.IfPlayerHasRole;
+            node.InputCount += 1;
+            OptimizerUtils.CopyDataInputPort(context, hasRoleNode.Port(0, 0), node.Port(0, 1));
+            OptimizerUtils.CopyDataInputPort(context, hasRoleNode.Port(0, 1), node.Port(0, 2));
+
+            OptimizerUtils.RemoveDanglingDataNode(context, hasRoleNode);
 
             return true;
         }

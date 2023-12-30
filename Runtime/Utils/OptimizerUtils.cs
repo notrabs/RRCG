@@ -28,7 +28,7 @@ namespace RRCG.Optimizer
             var toNode = toPort.Node;
 
             var fromKey = (fromPort.Group, fromPort.Index);
-            var toKey = (fromPort.Group, fromPort.Index);
+            var toKey = (toPort.Group, toPort.Index);
 
             // copy the default value state
             if (fromNode.DefaultValues.ContainsKey(fromKey))

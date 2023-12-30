@@ -1262,18 +1262,11 @@
       "InputCount": 0
     },
     {
-      "Id": "Player_Has_Role_0",
-      "Type": "R+05m6XpBE+0zYD1u6/y9w==",
-      "Name": "Player Has Role",
-      "DefaultValues": [[[0,0],"System.Int32",1],[[0,1],"System.String","testrole"]],
-      "InputCount": 2
-    },
-    {
       "Id": "If_42",
-      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Type": "9QktUM6F/EW2oTo+7M6FYg==",
       "Name": "If",
-      "DefaultValues": [],
-      "InputCount": 2
+      "DefaultValues": [[[0,1],"System.Int32",1],[[0,2],"System.String","testrole"]],
+      "InputCount": 3
     },
     {
       "Id": "Log_String_69",
@@ -1290,18 +1283,11 @@
       "InputCount": 2
     },
     {
-      "Id": "Player_Has_Role_1",
-      "Type": "R+05m6XpBE+0zYD1u6/y9w==",
-      "Name": "Player Has Role",
-      "DefaultValues": [[[0,1],"System.String","testrole"]],
-      "InputCount": 2
-    },
-    {
       "Id": "If_43",
-      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Type": "9QktUM6F/EW2oTo+7M6FYg==",
       "Name": "If",
-      "DefaultValues": [],
-      "InputCount": 2
+      "DefaultValues": [[[0,2],"System.String","testrole"]],
+      "InputCount": 3
     },
     {
       "Id": "Log_String_71",
@@ -1325,18 +1311,11 @@
       "InputCount": 1
     },
     {
-      "Id": "Player_Has_Role_2",
-      "Type": "R+05m6XpBE+0zYD1u6/y9w==",
-      "Name": "Player Has Role",
-      "DefaultValues": [[[0,1],"System.String","testrole"]],
-      "InputCount": 2
-    },
-    {
       "Id": "If_44",
-      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Type": "9QktUM6F/EW2oTo+7M6FYg==",
       "Name": "If",
-      "DefaultValues": [],
-      "InputCount": 2
+      "DefaultValues": [[[0,2],"System.String","testrole"]],
+      "InputCount": 3
     },
     {
       "Id": "Log_String_73",
@@ -1353,18 +1332,11 @@
       "InputCount": 2
     },
     {
-      "Id": "Player_Has_Role_3",
-      "Type": "R+05m6XpBE+0zYD1u6/y9w==",
-      "Name": "Player Has Role",
-      "DefaultValues": [[[0,0],"System.Int32",1],[[0,1],"System.String","testrole"]],
-      "InputCount": 2
-    },
-    {
       "Id": "If_45",
-      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Type": "9QktUM6F/EW2oTo+7M6FYg==",
       "Name": "If",
-      "DefaultValues": [],
-      "InputCount": 2
+      "DefaultValues": [[[0,1],"System.Int32",1],[[0,2],"System.String","testrole"]],
+      "InputCount": 3
     },
     {
       "Id": "Log_String_75",
@@ -1381,18 +1353,11 @@
       "InputCount": 2
     },
     {
-      "Id": "Player_Has_Role_4",
-      "Type": "R+05m6XpBE+0zYD1u6/y9w==",
-      "Name": "Player Has Role",
-      "DefaultValues": [[[0,0],"System.Int32",1],[[0,1],"System.String","testrole"]],
-      "InputCount": 2
-    },
-    {
       "Id": "If_46",
-      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Type": "9QktUM6F/EW2oTo+7M6FYg==",
       "Name": "If",
-      "DefaultValues": [],
-      "InputCount": 2
+      "DefaultValues": [[[0,1],"System.Int32",1],[[0,2],"System.String","testrole"]],
+      "InputCount": 3
     },
     {
       "Id": "Log_String_77",
@@ -1409,7 +1374,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Player_Has_Role_5",
+      "Id": "Player_Has_Role_0",
       "Type": "R+05m6XpBE+0zYD1u6/y9w==",
       "Name": "Player Has Role",
       "DefaultValues": [[[0,1],"System.String","testrole"]],
@@ -1417,10 +1382,10 @@
     },
     {
       "Id": "If_47",
-      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Type": "9QktUM6F/EW2oTo+7M6FYg==",
       "Name": "If",
-      "DefaultValues": [],
-      "InputCount": 2
+      "DefaultValues": [[[0,2],"System.String","testrole"]],
+      "InputCount": 3
     },
     {
       "Id": "To_String_1",
@@ -1461,7 +1426,7 @@
       "Id": "If_48",
       "Type": "ETBkxyDzVUGJuNaTcwwZNQ==",
       "Name": "If",
-      "DefaultValues": [[[0,0],"System.Int32",1]],
+      "DefaultValues": [[[0,1],"System.Int32",1]],
       "InputCount": 2
     },
     {
@@ -1531,7 +1496,7 @@
       "Id": "If_51",
       "Type": "ETBkxyDzVUGJuNaTcwwZNQ==",
       "Name": "If",
-      "DefaultValues": [[[0,0],"System.Int32",1]],
+      "DefaultValues": [[[0,1],"System.Int32",1]],
       "InputCount": 2
     },
     {
@@ -1552,7 +1517,7 @@
       "Id": "If_52",
       "Type": "ETBkxyDzVUGJuNaTcwwZNQ==",
       "Name": "If",
-      "DefaultValues": [[[0,0],"System.Int32",1]],
+      "DefaultValues": [[[0,1],"System.Int32",1]],
       "InputCount": 2
     },
     {
@@ -1692,7 +1657,7 @@
       "Id": "If_57",
       "Type": "ETBkxyDzVUGJuNaTcwwZNQ==",
       "Name": "If",
-      "DefaultValues": [[[0,0],"System.Int32",1]],
+      "DefaultValues": [[[0,1],"System.Int32",1]],
       "InputCount": 2
     },
     {
@@ -5589,19 +5554,6 @@
     },
     {
       "From": {
-        "Node": "Player_Has_Role_0",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_42",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
         "Node": "Event_Receiver_4",
         "Group": 0,
         "Index": 0
@@ -5642,19 +5594,6 @@
     {
       "From": {
         "Node": "Get_Local_Player_0",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Player_Has_Role_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Player_Has_Role_1",
         "Group": 0,
         "Index": 0
       },
@@ -5724,19 +5663,6 @@
         "Index": 0
       },
       "To": {
-        "Node": "Player_Has_Role_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Player_Has_Role_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
         "Node": "If_44",
         "Group": 0,
         "Index": 1
@@ -5797,19 +5723,6 @@
     },
     {
       "From": {
-        "Node": "Player_Has_Role_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_45",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
         "Node": "Log_String_73",
         "Group": 0,
         "Index": 0
@@ -5862,19 +5775,6 @@
     },
     {
       "From": {
-        "Node": "Player_Has_Role_4",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_46",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
         "Node": "Log_String_75",
         "Group": 0,
         "Index": 0
@@ -5919,7 +5819,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "Player_Has_Role_5",
+        "Node": "Player_Has_Role_0",
         "Group": 0,
         "Index": 0
       },
@@ -5927,7 +5827,7 @@
     },
     {
       "From": {
-        "Node": "Player_Has_Role_5",
+        "Node": "Player_Get_First_with_Tag_2",
         "Group": 0,
         "Index": 0
       },
@@ -5966,7 +5866,7 @@
     },
     {
       "From": {
-        "Node": "Player_Has_Role_5",
+        "Node": "Player_Has_Role_0",
         "Group": 0,
         "Index": 0
       },
