@@ -35,9 +35,9 @@ namespace RRCG.Optimizer.ContextOptimizations
             return optimized;
         }
 
-        static bool OptimizeIfNode(Context context, Node node)
+        static bool OptimizeIfNode(Context context, Node ifNode)
         {
-            var connectionToIf = context.Connections.Find(c => c.To.Node == node && c.To.Index == 1);
+            var connectionToIf = context.Connections.Find(c => c.To.Node == ifNode && c.To.Index == 1);
             if (connectionToIf == null) return false;
 
             var prevNode = connectionToIf.From.Node;
@@ -45,44 +45,111 @@ namespace RRCG.Optimizer.ContextOptimizations
             switch (prevNode.Type)
             {
                 case ChipType.Not:
-                    return OptimizeNotIf(context, node, connectionToIf, prevNode);
-                // TODO: IfLocalPlayerIsAuthority
-                // TODO: IfLocalPlayerIsRoomAuthority
+                    return OptimizeNotIf(context, ifNode, connectionToIf, prevNode);
+                case ChipType.Equals:
+                    return OptimizeEqualsIf(context, ifNode, connectionToIf, prevNode);
                 // TODO: IfLocalPlayerShouldRun
                 case ChipType.PlayerGetIsLocal:
-                    return OptimizePlayerGetIsLocalIf(context, node, prevNode);
+                    return OptimizePlayerGetIsLocalIf(context, ifNode, prevNode);
                 case ChipType.PlayerHasRole:
-                    return OptimizePlayerHasRoleIf(context, node, prevNode);
-                // TODO: IfLocalPlayerIsValid
-                // TODO: IfLocalPlayerIsValidAndLocal (warning, this chip has three outputs!)
+                    return OptimizePlayerHasRoleIf(context, ifNode, prevNode);
+                    // TODO: IfLocalPlayerIsValid (this needs the type knowledge of the actual isValid input. maybe we can attach this to the node during compilation?)
+                    // TODO: IfLocalPlayerIsValidAndLocal (warning, this chip has three outputs! and it required type knowledge)
             }
 
             return false;
         }
 
-        static bool OptimizePlayerGetIsLocalIf(Context context, Node node, Node isLocalNode)
+        /// <summary>
+        /// Checks if an Equals+If can be replaced with either IfLocalPlayerIsAuthority or IfLocalPlayerIsRoomAuthority
+        /// </summary>
+        static bool OptimizeEqualsIf(Context context, Node ifNode, Connection connectionToIf, Node equalsNode)
         {
-            node.Type = ChipType.IfPlayerIsLocal;
-            OptimizerUtils.CopyDataInputPort(context, isLocalNode.Port(0,0), node.Port(0,1));
+            if (equalsNode.InputCount != 2) return false;
+
+            var inputConnections = context.Connections.Where(c => c.To.Node == equalsNode).OrderBy(c => c.To, new PortComparer()).ToArray();
+            var inputNodes = inputConnections.Select(c => c.From.Node).ToArray();
+
+            string replaceType = null;
+
+            if (inputNodes.Length == 0) return false;
+            if (inputNodes.Length == 1)
+            {
+                var unconnectedIndex = inputConnections[0].To.Index == 0 ? 1 : 0;
+
+                switch (inputNodes[0].Type)
+                {
+                    case ChipType.GetAuthority:
+                        replaceType = ChipType.IfLocalPlayerIsAuthority;
+                        break;
+                    case ChipType.GetRoomAuthority:
+                        replaceType = ChipType.IfLocalPlayerIsRoomAuthority;
+                        break;
+                    default:
+                        return false;
+                }
+
+                var unconnectedPortKey = (0, unconnectedIndex);
+
+                // Check if the unconnected port is the "Local Player" default value
+                if (!equalsNode.DefaultValues.ContainsKey(unconnectedPortKey) ||
+                    equalsNode.DefaultValues[(0, unconnectedIndex)] is not int ||
+                    (int)equalsNode.DefaultValues[(0, unconnectedIndex)] != 1) return false;
+            }
+            else
+            {
+                Node checkNode;
+
+                if (inputNodes[0].Type == ChipType.GetLocalPlayer) checkNode = inputNodes[1];
+                else if (inputNodes[1].Type == ChipType.GetLocalPlayer) checkNode = inputNodes[0];
+                else return false;
+
+                switch (checkNode.Type)
+                {
+                    case ChipType.GetAuthority:
+                        replaceType = ChipType.IfLocalPlayerIsAuthority;
+                        break;
+                    case ChipType.GetRoomAuthority:
+                        replaceType = ChipType.IfLocalPlayerIsRoomAuthority;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+
+            ifNode.Type = replaceType;
+            ifNode.InputCount = 1;
+            context.RemoveConnection(connectionToIf);
+
+            OptimizerUtils.RemoveDanglingDataNode(context, equalsNode);
+            foreach (var nodeToRemove in inputNodes) OptimizerUtils.RemoveDanglingDataNode(context, nodeToRemove);
+
+            return true;
+        }
+
+        static bool OptimizePlayerGetIsLocalIf(Context context, Node ifNode, Node isLocalNode)
+        {
+            ifNode.Type = ChipType.IfPlayerIsLocal;
+            OptimizerUtils.CopyDataInputPort(context, isLocalNode.Port(0, 0), ifNode.Port(0, 1));
 
             OptimizerUtils.RemoveDanglingDataNode(context, isLocalNode);
 
             return true;
         }
 
-        static bool OptimizePlayerHasRoleIf(Context context, Node node, Node hasRoleNode)
+        static bool OptimizePlayerHasRoleIf(Context context, Node ifNode, Node hasRoleNode)
         {
-            node.Type = ChipType.IfPlayerHasRole;
-            node.InputCount += 1;
-            OptimizerUtils.CopyDataInputPort(context, hasRoleNode.Port(0, 0), node.Port(0, 1));
-            OptimizerUtils.CopyDataInputPort(context, hasRoleNode.Port(0, 1), node.Port(0, 2));
+            ifNode.Type = ChipType.IfPlayerHasRole;
+            ifNode.InputCount += 1;
+            OptimizerUtils.CopyDataInputPort(context, hasRoleNode.Port(0, 0), ifNode.Port(0, 1));
+            OptimizerUtils.CopyDataInputPort(context, hasRoleNode.Port(0, 1), ifNode.Port(0, 2));
 
             OptimizerUtils.RemoveDanglingDataNode(context, hasRoleNode);
 
             return true;
         }
 
-        static bool OptimizeNotIf(Context context, Node node, Connection connectionToIf, Node notNode)
+        static bool OptimizeNotIf(Context context, Node ifNode, Connection connectionToIf, Node notNode)
         {
             var connectionToNot = context.Connections.Find(c => c.To.Node == notNode);
             if (connectionToNot == null) return false;
@@ -92,7 +159,7 @@ namespace RRCG.Optimizer.ContextOptimizations
             bool hasMoreConnections = false;
             foreach (var c in context.Connections)
             {
-                if (c.From.Node == node)
+                if (c.From.Node == ifNode)
                 {
                     if (c.From.Index == 0) c.From.Index = 1;
                     else if (c.From.Index == 1) c.From.Index = 0;
@@ -108,9 +175,9 @@ namespace RRCG.Optimizer.ContextOptimizations
             return true;
         }
 
-        static bool OptimizeIfValueNode(Context context, Node node)
+        static bool OptimizeIfValueNode(Context context, Node ifNode)
         {
-            var connectionToIf = context.Connections.Find(c => c.To.Node == node && c.To.Index == 0 && c.From.Node.Type == ChipType.Not);
+            var connectionToIf = context.Connections.Find(c => c.To.Node == ifNode && c.To.Index == 0 && c.From.Node.Type == ChipType.Not);
             if (connectionToIf == null) return false;
 
             var notNode = connectionToIf.From.Node;
@@ -123,7 +190,7 @@ namespace RRCG.Optimizer.ContextOptimizations
             bool hasMoreConnections = false;
             foreach (var c in context.Connections)
             {
-                if (c.To.Node == node)
+                if (c.To.Node == ifNode)
                 {
                     if (c.To.Index == 1) c.To.Index = 2;
                     else if (c.To.Index == 2) c.To.Index = 1;
@@ -134,20 +201,20 @@ namespace RRCG.Optimizer.ContextOptimizations
             }
 
             // Swap default values
-            var prevDefaultValues = new Dictionary<(int, int), object>(node.DefaultValues);
-            node.DefaultValues = new();
+            var prevDefaultValues = new Dictionary<(int, int), object>(ifNode.DefaultValues);
+            ifNode.DefaultValues = new();
 
             // Restore bool input
             if (prevDefaultValues.TryGetValue((0, 0), out var test))
-                node.DefaultValues[(0, 0)] = test;
+                ifNode.DefaultValues[(0, 0)] = test;
 
             // Swap "Then" > "Else"
             if (prevDefaultValues.TryGetValue((0, 1), out var whenTrue))
-                node.DefaultValues[(0, 2)] = whenTrue;
+                ifNode.DefaultValues[(0, 2)] = whenTrue;
 
             // Swap "Else" > "Then"
             if (prevDefaultValues.TryGetValue((0, 2), out var whenFalse))
-                node.DefaultValues[(0, 1)] = whenFalse;
+                ifNode.DefaultValues[(0, 1)] = whenFalse;
 
             if (!hasMoreConnections)
                 context.RemoveNode(notNode);

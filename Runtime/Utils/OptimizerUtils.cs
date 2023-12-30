@@ -19,7 +19,7 @@ namespace RRCG.Optimizer
         }
 
         /// <summary>
-        /// Copies a data port from one node to another, by either copying the default value or another data connection.
+        /// Copies a data port from one node to another, by either copying the default value or an existing data connection.
         /// Removes/Overwrites existing connections.
         /// </summary>
         public static void CopyDataInputPort(Context context, Port fromPort, Port toPort)
@@ -41,7 +41,7 @@ namespace RRCG.Optimizer
 
             if (existingConnectionFromPort != null)
             {
-                // Rewrite the existing connection or create a new connection to copy the connection to fromPort
+                // If the target port is already connected, rewrite the connection instead of creating a new one.
                 if (existingConnectionToPort != null) existingConnectionToPort.From = existingConnectionFromPort.From;
                 else
                 {

@@ -426,6 +426,22 @@ namespace RRCGBuild
             }
 
             );
+                BoolPort condition = default !;
+                condition = __VariableDeclaratorExpression<BoolPort>("condition", () => ChipBuilder.Equals(PlayerPort.Local, GetAuthority()), () => condition, (_RRCG_SETTER_VALUE) => condition = _RRCG_SETTER_VALUE);
+            __If(__ConditionalContext(false), () => condition, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                ChipLib.Log(condition);
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
             __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
@@ -573,6 +589,22 @@ namespace RRCGBuild
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+                BoolPort condition = default !;
+                condition = __VariableDeclaratorExpression<BoolPort>("condition", () => ChipBuilder.Equals(PlayerPort.Local, GetRoomAuthority()), () => condition, (_RRCG_SETTER_VALUE) => condition = _RRCG_SETTER_VALUE);
+            __If(__ConditionalContext(false), () => condition, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                ChipLib.Log(condition);
                 __EndAccessibilityScope();
             }
 
