@@ -46,9 +46,28 @@ namespace RRCG.Optimizer.ContextOptimizations
             {
                 case ChipType.Not:
                     return OptimizeNotIf(context, node, connectionToIf, prevNode);
+                case ChipType.PlayerGetIsLocal:
+                    return OptimizePlayerGetIsLocalIf(context, node, connectionToIf, prevNode);
             }
 
             return false;
+        }
+
+        static bool OptimizePlayerGetIsLocalIf(Context context, Node node, Connection connectionToIf, Node isLocalNode)
+        {
+            node.Type = ChipType.IfPlayerIsLocal;
+            if (isLocalNode.DefaultValues.ContainsKey((0,0))) node.DefaultValues[(0, 1)] = isLocalNode.DefaultValues[(0, 0)];
+
+            var isLocalPlayerPort = isLocalNode.Port(0, 0);
+            var connectionToIsLocalNode = context.Connections.Find(c => c.To.EquivalentTo(isLocalPlayerPort));
+
+            // Rewire the player port to the new if chip, if it is not data
+            if (connectionToIsLocalNode == null) context.RemoveConnection(connectionToIf);
+            else connectionToIf.From = connectionToIsLocalNode.From;
+
+            OptimizerUtils.RemoveDanglingDataNode(context, isLocalNode);
+
+            return true;
         }
 
         static bool OptimizeNotIf(Context context, Node node, Connection connectionToIf, Node notNode)
@@ -76,7 +95,6 @@ namespace RRCG.Optimizer.ContextOptimizations
 
             return true;
         }
-
 
         static bool OptimizeIfValueNode(Context context, Node node)
         {

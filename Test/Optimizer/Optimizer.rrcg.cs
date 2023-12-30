@@ -182,6 +182,10 @@ public class Optimizer : CircuitDescriptor
 
         // Test only one branch
         if (Player.Local.HasRole("testrole")) LogString("true");
+
+        // non-dangling condition
+        var condition = PlayerGetFirstWithTag("tag").HasRole("testrole");
+        if (condition) ChipLib.Log(condition);
     }
 
     void TestIfPlayerIsLocalOptimizer()
@@ -203,6 +207,10 @@ public class Optimizer : CircuitDescriptor
 
         // Test only one branch
         if (Player.Local.IsLocal) LogString("true");
+
+        // non-dangling condition
+        var condition = PlayerGetFirstWithTag("tag").IsLocal;
+        if (condition) ChipLib.Log(condition);
     }
 
     void TestIfPlayerIsValidOptimizer()

@@ -226,7 +226,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(__ConditionalContext(false), () => Not(Not(optimizableButNotDeletable)), delegate
+            __If(__ConditionalContext(false), () => Not(Not(true)), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -240,7 +240,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(__ConditionalContext(false), () => Not(Not(Not(optimizableButNotDeletable))), delegate
+            __If(__ConditionalContext(false), () => Not(Not(Not(true))), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -254,7 +254,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(__ConditionalContext(false), () => Not(Not(Not(Not(optimizableButNotDeletable)))), delegate
+            __If(__ConditionalContext(false), () => Not(Not(Not(Not(true)))), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -765,6 +765,22 @@ namespace RRCGBuild
             }
 
             );
+                BoolPort condition = default !;
+                condition = __VariableDeclaratorExpression<BoolPort>("condition", () => PlayerGetFirstWithTag("tag").HasRole("testrole"), () => condition, (_RRCG_SETTER_VALUE) => condition = _RRCG_SETTER_VALUE);
+            __If(__ConditionalContext(false), () => condition, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                ChipLib.Log(condition);
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
             __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
@@ -838,6 +854,22 @@ namespace RRCGBuild
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+                BoolPort condition = default !;
+                condition = __VariableDeclaratorExpression<BoolPort>("condition", () => PlayerGetFirstWithTag("tag").IsLocal, () => condition, (_RRCG_SETTER_VALUE) => condition = _RRCG_SETTER_VALUE);
+            __If(__ConditionalContext(false), () => condition, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                ChipLib.Log(condition);
                 __EndAccessibilityScope();
             }
 
