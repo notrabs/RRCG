@@ -46,24 +46,23 @@ namespace RRCG.Optimizer.ContextOptimizations
             {
                 case ChipType.Not:
                     return OptimizeNotIf(context, node, connectionToIf, prevNode);
+                // TODO: IfLocalPlayerIsAuthority
+                // TODO: IfLocalPlayerIsRoomAuthority
+                // TODO: IfLocalPlayerShouldRun
                 case ChipType.PlayerGetIsLocal:
-                    return OptimizePlayerGetIsLocalIf(context, node, connectionToIf, prevNode);
+                    return OptimizePlayerGetIsLocalIf(context, node, prevNode);
+                // TODO: IfPlayerHasRole
+                // TODO: IfLocalPlayerIsValid
+                // TODO: IfLocalPlayerIsValidAndLocal (warning, this chip has three outputs!)
             }
 
             return false;
         }
 
-        static bool OptimizePlayerGetIsLocalIf(Context context, Node node, Connection connectionToIf, Node isLocalNode)
+        static bool OptimizePlayerGetIsLocalIf(Context context, Node node, Node isLocalNode)
         {
             node.Type = ChipType.IfPlayerIsLocal;
-            if (isLocalNode.DefaultValues.ContainsKey((0,0))) node.DefaultValues[(0, 1)] = isLocalNode.DefaultValues[(0, 0)];
-
-            var isLocalPlayerPort = isLocalNode.Port(0, 0);
-            var connectionToIsLocalNode = context.Connections.Find(c => c.To.EquivalentTo(isLocalPlayerPort));
-
-            // Rewire the player port to the new if chip, if it is not data
-            if (connectionToIsLocalNode == null) context.RemoveConnection(connectionToIf);
-            else connectionToIf.From = connectionToIsLocalNode.From;
+            OptimizerUtils.CopyDataInputPort(context, isLocalNode.Port(0,0), node.Port(0,1));
 
             OptimizerUtils.RemoveDanglingDataNode(context, isLocalNode);
 
