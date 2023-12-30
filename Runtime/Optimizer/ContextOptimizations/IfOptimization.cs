@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace RRCG.Optimizer.ContextOptimizations
 {
-    class IfNotOptimization : IContextOptimization
+    class IfOptimization : IContextOptimization
     {
         delegate bool IfNotOptimizationImpl(Context context, Node node);
 
@@ -22,9 +22,14 @@ namespace RRCG.Optimizer.ContextOptimizations
 
             foreach (var node in context.Nodes.ToList())
             {
-                if (!Implementations.ContainsKey(node.Type)) continue;
-                if (!Implementations[node.Type](context, node)) continue;
-                optimized++;
+                var hasBeenOptimized = false;
+
+                // Optimize in a loop, to optimize notIfs that are followed by more optimizable conditions
+                do
+                {
+                    hasBeenOptimized = Implementations.ContainsKey(node.Type) && Implementations[node.Type](context, node);
+                    if (hasBeenOptimized) optimized++;
+                } while (hasBeenOptimized);
             }
 
             return optimized;
@@ -32,11 +37,22 @@ namespace RRCG.Optimizer.ContextOptimizations
 
         static bool OptimizeIfNode(Context context, Node node)
         {
-            var connectionToIf = context.Connections.Find(c => c.To.Node == node && c.To.Index == 1 && c.From.Node.Type == ChipType.Not);
+            var connectionToIf = context.Connections.Find(c => c.To.Node == node && c.To.Index == 1);
             if (connectionToIf == null) return false;
 
-            var notNode = connectionToIf.From.Node;
+            var prevNode = connectionToIf.From.Node;
 
+            switch (prevNode.Type)
+            {
+                case ChipType.Not:
+                    return OptimizeNotIf(context, node, connectionToIf, prevNode);
+            }
+
+            return false;
+        }
+
+        static bool OptimizeNotIf(Context context, Node node, Connection connectionToIf, Node notNode)
+        {
             var connectionToNot = context.Connections.Find(c => c.To.Node == notNode);
             if (connectionToNot == null) return false;
 
@@ -57,9 +73,10 @@ namespace RRCG.Optimizer.ContextOptimizations
 
             if (!hasMoreConnections)
                 context.RemoveNode(notNode);
-            
+
             return true;
         }
+
 
         static bool OptimizeIfValueNode(Context context, Node node)
         {
