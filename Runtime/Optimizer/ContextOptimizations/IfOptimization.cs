@@ -48,13 +48,13 @@ namespace RRCG.Optimizer.ContextOptimizations
                     return OptimizeNotIf(context, ifNode, connectionToIf, prevNode);
                 case ChipType.Equals:
                     return OptimizeEqualsIf(context, ifNode, connectionToIf, prevNode);
-                // TODO: IfLocalPlayerShouldRun
                 case ChipType.PlayerGetIsLocal:
                     return OptimizePlayerGetIsLocalIf(context, ifNode, prevNode);
                 case ChipType.PlayerHasRole:
                     return OptimizePlayerHasRoleIf(context, ifNode, prevNode);
-                    // TODO: IfLocalPlayerIsValid (this needs the type knowledge of the actual isValid input. maybe we can attach this to the node during compilation?)
-                    // TODO: IfLocalPlayerIsValidAndLocal (warning, this chip has three outputs! and it required type knowledge)
+                // TODO: IfLocalPlayerShouldRun (does anyone even use this chip voluntarily?)
+                // TODO: IfPlayerIsValid (this needs the type knowledge of the actual isValid input. maybe we can attach this to the node during compilation?)
+                // TODO: IfPlayerIsValidAndLocal (warning, this chip has three outputs! and it requires type knowledge of the isValid chip)
             }
 
             return false;
