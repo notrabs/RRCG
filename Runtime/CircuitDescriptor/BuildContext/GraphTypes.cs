@@ -84,12 +84,6 @@ namespace RRCGBuild
         public int Group = 0;
         public int Index = 0;
 
-
-        public string PortKey()
-        {
-            return Node.Id + "_" + Group + "_" + Index;
-        }
-
         public bool EquivalentTo(Port b)
         {
             return Group == b.Group &&

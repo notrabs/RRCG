@@ -9,17 +9,17 @@ namespace RRCGGenerated
     {
         public Vector3Port CombatantGetGroundPosition
         {
-            get => CircuitBuilder.Singleton("RRCG_AI_CombatantGetGroundPosition_" + Port.PortKey(), () => ChipBuilder.CombatantGetGroundPosition((AIPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AI_CombatantGetGroundPosition_" + PortKey(), () => ChipBuilder.CombatantGetGroundPosition((AIPort)this));
         }
 
         public BoolPort CombatantGetIsAlive
         {
-            get => CircuitBuilder.Singleton("RRCG_AI_CombatantGetIsAlive_" + Port.PortKey(), () => ChipBuilder.CombatantGetIsAlive((AIPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AI_CombatantGetIsAlive_" + PortKey(), () => ChipBuilder.CombatantGetIsAlive((AIPort)this));
         }
 
         public (Vector3Port Velocity, FloatPort Speed) CombatantGetVelocity
         {
-            get => CircuitBuilder.Singleton("RRCG_AI_CombatantGetVelocity_" + Port.PortKey(), () => ChipBuilder.CombatantGetVelocity((AIPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AI_CombatantGetVelocity_" + PortKey(), () => ChipBuilder.CombatantGetVelocity((AIPort)this));
         }
 
         public IntPort CombatantSetMaxHealth
@@ -29,7 +29,7 @@ namespace RRCGGenerated
 
         public (StringPort VisionType, FloatPort VisionRange, FloatPort VisionConeAngle, FloatPort HearingRange) LineOfSightParameters
         {
-            get => CircuitBuilder.Singleton("RRCG_AI_GetLineOfSightParameters_" + Port.PortKey(), () => ChipBuilder.AIGetLineOfSightParameters((AIPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AI_GetLineOfSightParameters_" + PortKey(), () => ChipBuilder.AIGetLineOfSightParameters((AIPort)this));
         }
 
         public FloatPort PathingSpeed
@@ -44,23 +44,23 @@ namespace RRCGGenerated
 
         public Vector3Port Position
         {
-            get => CircuitBuilder.Singleton("RRCG_AI_GetPosition_" + Port.PortKey(), () => ChipBuilder.GetPosition((AIPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AI_GetPosition_" + PortKey(), () => ChipBuilder.GetPosition((AIPort)this));
         }
 
         public Vector3Port PositionDeprecated
         {
-            get => CircuitBuilder.Singleton("RRCG_AI_GetPositionDeprecated_" + Port.PortKey(), () => ChipBuilder.GetPositionDeprecated((AIPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AI_GetPositionDeprecated_" + PortKey(), () => ChipBuilder.GetPositionDeprecated((AIPort)this));
         }
 
         public CombatantPort Target
         {
-            get => CircuitBuilder.Singleton("RRCG_AI_GetTarget_" + Port.PortKey(), () => ChipBuilder.AIGetTarget((AIPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AI_GetTarget_" + PortKey(), () => ChipBuilder.AIGetTarget((AIPort)this));
             set => ChipBuilder.AISetTarget((AIPort)this, value);
         }
 
         public CombatantPort ToCombatant
         {
-            get => CircuitBuilder.Singleton("RRCG_AI_ToCombatant_" + Port.PortKey(), () => ChipBuilder.ToCombatant((AIPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AI_ToCombatant_" + PortKey(), () => ChipBuilder.ToCombatant((AIPort)this));
         }
 
         public BoolPort HasLineOfSightToTarget(AIPort Target)
@@ -195,7 +195,7 @@ namespace RRCGGenerated
 
         public (IntPort Health, IntPort Shield, IntPort MaxHealth) CombatantGetHealth()
         {
-            return CircuitBuilder.Singleton("RRCG_AI_CombatantGetHealth_" + Port.PortKey(), () => ChipBuilder.CombatantGetHealth((AIPort)this));
+            return CircuitBuilder.Singleton("RRCG_AI_CombatantGetHealth_" + PortKey(), () => ChipBuilder.CombatantGetHealth((AIPort)this));
         }
 
         public void CombatantReceiveDamage(IntPort Damage, BoolPort IgnoreShield, AIPort DamageSource)
@@ -277,24 +277,24 @@ namespace RRCGGenerated
     {
         public IntPort Frame
         {
-            get => CircuitBuilder.Singleton("RRCG_AnimationController_GetFrame_" + Port.PortKey(), () => ChipBuilder.AnimationGetFrame((AnimationControllerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AnimationController_GetFrame_" + PortKey(), () => ChipBuilder.AnimationGetFrame((AnimationControllerPort)this));
             set => ChipBuilder.AnimationSetFrame((AnimationControllerPort)this, value);
         }
 
         public BoolPort IsPlaying
         {
-            get => CircuitBuilder.Singleton("RRCG_AnimationController_GetIsPlaying_" + Port.PortKey(), () => ChipBuilder.AnimationGetIsPlaying((AnimationControllerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AnimationController_GetIsPlaying_" + PortKey(), () => ChipBuilder.AnimationGetIsPlaying((AnimationControllerPort)this));
         }
 
         public FloatPort Speed
         {
-            get => CircuitBuilder.Singleton("RRCG_AnimationController_GetSpeed_" + Port.PortKey(), () => ChipBuilder.AnimationGetSpeed((AnimationControllerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AnimationController_GetSpeed_" + PortKey(), () => ChipBuilder.AnimationGetSpeed((AnimationControllerPort)this));
             set => ChipBuilder.AnimationSetSpeed((AnimationControllerPort)this, value);
         }
 
         public FloatPort TimeStamp
         {
-            get => CircuitBuilder.Singleton("RRCG_AnimationController_GetTimeStamp_" + Port.PortKey(), () => ChipBuilder.AnimationGetTimeStamp((AnimationControllerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AnimationController_GetTimeStamp_" + PortKey(), () => ChipBuilder.AnimationGetTimeStamp((AnimationControllerPort)this));
             set => ChipBuilder.AnimationSetTimeStamp((AnimationControllerPort)this, value);
         }
 
@@ -318,7 +318,7 @@ namespace RRCGGenerated
     {
         public FloatPort Length
         {
-            get => CircuitBuilder.Singleton("RRCG_Audio_GetLength_" + Port.PortKey(), () => ChipBuilder.AudioGetLength((AudioPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Audio_GetLength_" + PortKey(), () => ChipBuilder.AudioGetLength((AudioPort)this));
         }
 
         public void PlayAudioAtPosition(Vector3Port Position, FloatPort Volume, FloatPort PlaybackSpeed, BoolPort Is2D, PlayAudioAtPositionData config)
@@ -331,35 +331,35 @@ namespace RRCGGenerated
     {
         public AudioPort Audio
         {
-            get => CircuitBuilder.Singleton("RRCG_AudioPlayer_GetAudio_" + Port.PortKey(), () => ChipBuilder.AudioPlayerGetAudio((AudioPlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AudioPlayer_GetAudio_" + PortKey(), () => ChipBuilder.AudioPlayerGetAudio((AudioPlayerPort)this));
         }
 
         public FloatPort MaxRolloffDistance
         {
-            get => CircuitBuilder.Singleton("RRCG_AudioPlayer_GetMaxRolloffDistance_" + Port.PortKey(), () => ChipBuilder.AudioPlayerGetMaxRolloffDistance((AudioPlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AudioPlayer_GetMaxRolloffDistance_" + PortKey(), () => ChipBuilder.AudioPlayerGetMaxRolloffDistance((AudioPlayerPort)this));
             set => ChipBuilder.AudioPlayerSetMaxRolloffDistance((AudioPlayerPort)this, value);
         }
 
         public BoolPort Playing
         {
-            get => CircuitBuilder.Singleton("RRCG_AudioPlayer_GetPlaying_" + Port.PortKey(), () => ChipBuilder.AudioPlayerGetPlaying((AudioPlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AudioPlayer_GetPlaying_" + PortKey(), () => ChipBuilder.AudioPlayerGetPlaying((AudioPlayerPort)this));
         }
 
         public FloatPort Speed
         {
-            get => CircuitBuilder.Singleton("RRCG_AudioPlayer_GetSpeed_" + Port.PortKey(), () => ChipBuilder.AudioPlayerGetSpeed((AudioPlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AudioPlayer_GetSpeed_" + PortKey(), () => ChipBuilder.AudioPlayerGetSpeed((AudioPlayerPort)this));
             set => ChipBuilder.AudioPlayerSetSpeed((AudioPlayerPort)this, value);
         }
 
         public FloatPort TimeStamp
         {
-            get => CircuitBuilder.Singleton("RRCG_AudioPlayer_GetTimeStamp_" + Port.PortKey(), () => ChipBuilder.AudioPlayerGetTimeStamp((AudioPlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AudioPlayer_GetTimeStamp_" + PortKey(), () => ChipBuilder.AudioPlayerGetTimeStamp((AudioPlayerPort)this));
             set => ChipBuilder.AudioPlayerSetTimeStamp((AudioPlayerPort)this, value);
         }
 
         public FloatPort Volume
         {
-            get => CircuitBuilder.Singleton("RRCG_AudioPlayer_GetVolume_" + Port.PortKey(), () => ChipBuilder.AudioPlayerGetVolume((AudioPlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_AudioPlayer_GetVolume_" + PortKey(), () => ChipBuilder.AudioPlayerGetVolume((AudioPlayerPort)this));
             set => ChipBuilder.AudioPlayerSetVolume((AudioPlayerPort)this, value);
         }
 
@@ -391,19 +391,19 @@ namespace RRCGGenerated
     {
         public ColorPort Color
         {
-            get => CircuitBuilder.Singleton("RRCG_Beacon_GetColor_" + Port.PortKey(), () => ChipBuilder.BeaconGetColor((BeaconPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Beacon_GetColor_" + PortKey(), () => ChipBuilder.BeaconGetColor((BeaconPort)this));
             set => ChipBuilder.BeaconSetColor((BeaconPort)this, value);
         }
 
         public BoolPort Enabled
         {
-            get => CircuitBuilder.Singleton("RRCG_Beacon_GetEnabled_" + Port.PortKey(), () => ChipBuilder.BeaconGetEnabled((BeaconPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Beacon_GetEnabled_" + PortKey(), () => ChipBuilder.BeaconGetEnabled((BeaconPort)this));
             set => ChipBuilder.BeaconSetEnabled((BeaconPort)this, value);
         }
 
         public FloatPort Height
         {
-            get => CircuitBuilder.Singleton("RRCG_Beacon_GetHeight_" + Port.PortKey(), () => ChipBuilder.BeaconGetHeight((BeaconPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Beacon_GetHeight_" + PortKey(), () => ChipBuilder.BeaconGetHeight((BeaconPort)this));
             set => ChipBuilder.BeaconSetHeight((BeaconPort)this, value);
         }
     }
@@ -412,12 +412,12 @@ namespace RRCGGenerated
     {
         public BoolPort IsPressed
         {
-            get => CircuitBuilder.Singleton("RRCG_Button_GetIsPressed_" + Port.PortKey(), () => ChipBuilder.ButtonGetIsPressed((ButtonPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Button_GetIsPressed_" + PortKey(), () => ChipBuilder.ButtonGetIsPressed((ButtonPort)this));
         }
 
         public StringPort Text
         {
-            get => CircuitBuilder.Singleton("RRCG_Button_GetText_" + Port.PortKey(), () => ChipBuilder.ButtonGetText((ButtonPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Button_GetText_" + PortKey(), () => ChipBuilder.ButtonGetText((ButtonPort)this));
             set => ChipBuilder.ButtonSetText((ButtonPort)this, value);
         }
     }
@@ -426,27 +426,27 @@ namespace RRCGGenerated
     {
         public FloatPort Distance
         {
-            get => CircuitBuilder.Singleton("RRCG_CollisionData_GetDistance_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetDistance((CollisionDataPort)this));
+            get => CircuitBuilder.Singleton("RRCG_CollisionData_GetDistance_" + PortKey(), () => ChipBuilder.CollisionDataGetDistance((CollisionDataPort)this));
         }
 
         public Vector3Port Normal
         {
-            get => CircuitBuilder.Singleton("RRCG_CollisionData_GetNormal_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetNormal((CollisionDataPort)this));
+            get => CircuitBuilder.Singleton("RRCG_CollisionData_GetNormal_" + PortKey(), () => ChipBuilder.CollisionDataGetNormal((CollisionDataPort)this));
         }
 
         public RecRoomObjectPort Object
         {
-            get => CircuitBuilder.Singleton("RRCG_CollisionData_GetObject_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetObject((CollisionDataPort)this));
+            get => CircuitBuilder.Singleton("RRCG_CollisionData_GetObject_" + PortKey(), () => ChipBuilder.CollisionDataGetObject((CollisionDataPort)this));
         }
 
         public PlayerPort Player
         {
-            get => CircuitBuilder.Singleton("RRCG_CollisionData_GetPlayer_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetPlayer((CollisionDataPort)this));
+            get => CircuitBuilder.Singleton("RRCG_CollisionData_GetPlayer_" + PortKey(), () => ChipBuilder.CollisionDataGetPlayer((CollisionDataPort)this));
         }
 
         public Vector3Port Position
         {
-            get => CircuitBuilder.Singleton("RRCG_CollisionData_GetPosition_" + Port.PortKey(), () => ChipBuilder.CollisionDataGetPosition((CollisionDataPort)this));
+            get => CircuitBuilder.Singleton("RRCG_CollisionData_GetPosition_" + PortKey(), () => ChipBuilder.CollisionDataGetPosition((CollisionDataPort)this));
         }
     }
 
@@ -454,7 +454,7 @@ namespace RRCGGenerated
     {
         public BoolPort Enabled
         {
-            get => CircuitBuilder.Singleton("RRCG_CollisionDetectionVolume_GetEnabled_" + Port.PortKey(), () => ChipBuilder.CollisionDetectionVolumeGetEnabled((CollisionDetectionVolumePort)this));
+            get => CircuitBuilder.Singleton("RRCG_CollisionDetectionVolume_GetEnabled_" + PortKey(), () => ChipBuilder.CollisionDetectionVolumeGetEnabled((CollisionDetectionVolumePort)this));
             set => ChipBuilder.CollisionDetectionVolumeSetEnabled((CollisionDetectionVolumePort)this, value);
         }
     }
@@ -463,12 +463,12 @@ namespace RRCGGenerated
     {
         public Vector3Port GroundPosition
         {
-            get => CircuitBuilder.Singleton("RRCG_Combatant_GetGroundPosition_" + Port.PortKey(), () => ChipBuilder.CombatantGetGroundPosition((CombatantPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Combatant_GetGroundPosition_" + PortKey(), () => ChipBuilder.CombatantGetGroundPosition((CombatantPort)this));
         }
 
         public BoolPort IsAlive
         {
-            get => CircuitBuilder.Singleton("RRCG_Combatant_GetIsAlive_" + Port.PortKey(), () => ChipBuilder.CombatantGetIsAlive((CombatantPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Combatant_GetIsAlive_" + PortKey(), () => ChipBuilder.CombatantGetIsAlive((CombatantPort)this));
         }
 
         public IntPort MaxHealth
@@ -478,27 +478,27 @@ namespace RRCGGenerated
 
         public Vector3Port Position
         {
-            get => CircuitBuilder.Singleton("RRCG_Combatant_GetPosition_" + Port.PortKey(), () => ChipBuilder.GetPosition((CombatantPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Combatant_GetPosition_" + PortKey(), () => ChipBuilder.GetPosition((CombatantPort)this));
         }
 
         public Vector3Port PositionDeprecated
         {
-            get => CircuitBuilder.Singleton("RRCG_Combatant_GetPositionDeprecated_" + Port.PortKey(), () => ChipBuilder.GetPositionDeprecated((CombatantPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Combatant_GetPositionDeprecated_" + PortKey(), () => ChipBuilder.GetPositionDeprecated((CombatantPort)this));
         }
 
         public (BoolPort IsPlayer, PlayerPort Player, AIPort AI) Split
         {
-            get => CircuitBuilder.Singleton("RRCG_Combatant_Split_" + Port.PortKey(), () => ChipBuilder.CombatantSplit((CombatantPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Combatant_Split_" + PortKey(), () => ChipBuilder.CombatantSplit((CombatantPort)this));
         }
 
         public (Vector3Port Velocity, FloatPort Speed) Velocity
         {
-            get => CircuitBuilder.Singleton("RRCG_Combatant_GetVelocity_" + Port.PortKey(), () => ChipBuilder.CombatantGetVelocity((CombatantPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Combatant_GetVelocity_" + PortKey(), () => ChipBuilder.CombatantGetVelocity((CombatantPort)this));
         }
 
         public (IntPort Health, IntPort Shield, IntPort MaxHealth) GetHealth()
         {
-            return CircuitBuilder.Singleton("RRCG_Combatant_GetHealth_" + Port.PortKey(), () => ChipBuilder.CombatantGetHealth((CombatantPort)this));
+            return CircuitBuilder.Singleton("RRCG_Combatant_GetHealth_" + PortKey(), () => ChipBuilder.CombatantGetHealth((CombatantPort)this));
         }
 
         public void ReceiveDamage(IntPort Damage, BoolPort IgnoreShield, AIPort DamageSource)
@@ -604,7 +604,7 @@ namespace RRCGGenerated
     {
         public PlayerPort Wearer
         {
-            get => CircuitBuilder.Singleton("RRCG_Costume_GetWearer_" + Port.PortKey(), () => ChipBuilder.CostumeGetWearer((CostumePort)this));
+            get => CircuitBuilder.Singleton("RRCG_Costume_GetWearer_" + PortKey(), () => ChipBuilder.CostumeGetWearer((CostumePort)this));
         }
 
         public void Equip(PlayerPort Player)
@@ -630,24 +630,24 @@ namespace RRCGGenerated
     {
         public (StringPort BodyText, BoolPort IsInteractive) DialogueText
         {
-            get => CircuitBuilder.Singleton("RRCG_DialogueUI_GetDialogueText_" + Port.PortKey(), () => ChipBuilder.DialogueUIGetDialogueText((DialogueUIPort)this));
+            get => CircuitBuilder.Singleton("RRCG_DialogueUI_GetDialogueText_" + PortKey(), () => ChipBuilder.DialogueUIGetDialogueText((DialogueUIPort)this));
         }
 
         public BoolPort IsEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_DialogueUI_GetIsEnabled_" + Port.PortKey(), () => ChipBuilder.DialogueUIGetIsEnabled((DialogueUIPort)this));
+            get => CircuitBuilder.Singleton("RRCG_DialogueUI_GetIsEnabled_" + PortKey(), () => ChipBuilder.DialogueUIGetIsEnabled((DialogueUIPort)this));
             set => ChipBuilder.DialogueUISetIsEnabled((DialogueUIPort)this, value);
         }
 
         public BoolPort TitleIsEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_DialogueUI_GetTitleIsEnabled_" + Port.PortKey(), () => ChipBuilder.DialogueUIGetTitleIsEnabled((DialogueUIPort)this));
+            get => CircuitBuilder.Singleton("RRCG_DialogueUI_GetTitleIsEnabled_" + PortKey(), () => ChipBuilder.DialogueUIGetTitleIsEnabled((DialogueUIPort)this));
             set => ChipBuilder.DialogueUISetTitleIsEnabled((DialogueUIPort)this, value);
         }
 
         public StringPort TitleText
         {
-            get => CircuitBuilder.Singleton("RRCG_DialogueUI_GetTitleText_" + Port.PortKey(), () => ChipBuilder.DialogueUIGetTitleText((DialogueUIPort)this));
+            get => CircuitBuilder.Singleton("RRCG_DialogueUI_GetTitleText_" + PortKey(), () => ChipBuilder.DialogueUIGetTitleText((DialogueUIPort)this));
             set => ChipBuilder.DialogueUISetTitleText((DialogueUIPort)this, value);
         }
 
@@ -666,17 +666,17 @@ namespace RRCGGenerated
     {
         public PlayerPort PlayerRolled
         {
-            get => CircuitBuilder.Singleton("RRCG_Die_GetPlayerRolled_" + Port.PortKey(), () => ChipBuilder.DiceGetPlayerRolled((DiePort)this));
+            get => CircuitBuilder.Singleton("RRCG_Die_GetPlayerRolled_" + PortKey(), () => ChipBuilder.DiceGetPlayerRolled((DiePort)this));
         }
 
         public IntPort Result
         {
-            get => CircuitBuilder.Singleton("RRCG_Die_GetResult_" + Port.PortKey(), () => ChipBuilder.DiceGetResult((DiePort)this));
+            get => CircuitBuilder.Singleton("RRCG_Die_GetResult_" + PortKey(), () => ChipBuilder.DiceGetResult((DiePort)this));
         }
 
         public BoolPort RollFinished
         {
-            get => CircuitBuilder.Singleton("RRCG_Die_GetRollFinished_" + Port.PortKey(), () => ChipBuilder.DiceGetRollFinished((DiePort)this));
+            get => CircuitBuilder.Singleton("RRCG_Die_GetRollFinished_" + PortKey(), () => ChipBuilder.DiceGetRollFinished((DiePort)this));
         }
     }
 
@@ -694,24 +694,24 @@ namespace RRCGGenerated
 
         public BoolPort Looping
         {
-            get => CircuitBuilder.Singleton("RRCG_Emitter_GetLooping_" + Port.PortKey(), () => ChipBuilder.EmitterGetLooping((EmitterPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Emitter_GetLooping_" + PortKey(), () => ChipBuilder.EmitterGetLooping((EmitterPort)this));
             set => ChipBuilder.EmitterSetLooping((EmitterPort)this, value);
         }
 
         public BoolPort Playing
         {
-            get => CircuitBuilder.Singleton("RRCG_Emitter_GetPlaying_" + Port.PortKey(), () => ChipBuilder.EmitterGetPlaying((EmitterPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Emitter_GetPlaying_" + PortKey(), () => ChipBuilder.EmitterGetPlaying((EmitterPort)this));
         }
 
         public FloatPort Size
         {
-            get => CircuitBuilder.Singleton("RRCG_Emitter_GetSize_" + Port.PortKey(), () => ChipBuilder.EmitterGetSize((EmitterPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Emitter_GetSize_" + PortKey(), () => ChipBuilder.EmitterGetSize((EmitterPort)this));
             set => ChipBuilder.EmitterSetSize((EmitterPort)this, value);
         }
 
         public FloatPort Speed
         {
-            get => CircuitBuilder.Singleton("RRCG_Emitter_GetSpeed_" + Port.PortKey(), () => ChipBuilder.EmitterGetSpeed((EmitterPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Emitter_GetSpeed_" + PortKey(), () => ChipBuilder.EmitterGetSpeed((EmitterPort)this));
             set => ChipBuilder.EmitterSetSpeed((EmitterPort)this, value);
         }
 
@@ -734,25 +734,25 @@ namespace RRCGGenerated
     {
         public IntPort Damage
         {
-            get => CircuitBuilder.Singleton("RRCG_ExplosionEmitter_GetDamage_" + Port.PortKey(), () => ChipBuilder.ExplosionEmitterGetDamage((ExplosionEmitterPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ExplosionEmitter_GetDamage_" + PortKey(), () => ChipBuilder.ExplosionEmitterGetDamage((ExplosionEmitterPort)this));
             set => ChipBuilder.ExplosionEmitterSetDamage((ExplosionEmitterPort)this, value);
         }
 
         public ColorPort ExplosionColor
         {
-            get => CircuitBuilder.Singleton("RRCG_ExplosionEmitter_GetExplosionColor_" + Port.PortKey(), () => ChipBuilder.ExplosionEmitterGetExplosionColor((ExplosionEmitterPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ExplosionEmitter_GetExplosionColor_" + PortKey(), () => ChipBuilder.ExplosionEmitterGetExplosionColor((ExplosionEmitterPort)this));
             set => ChipBuilder.ExplosionEmitterSetExplosionColor((ExplosionEmitterPort)this, value);
         }
 
         public FloatPort ExplosionRadius
         {
-            get => CircuitBuilder.Singleton("RRCG_ExplosionEmitter_GetExplosionRadius_" + Port.PortKey(), () => ChipBuilder.ExplosionEmitterGetExplosionRadius((ExplosionEmitterPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ExplosionEmitter_GetExplosionRadius_" + PortKey(), () => ChipBuilder.ExplosionEmitterGetExplosionRadius((ExplosionEmitterPort)this));
             set => ChipBuilder.ExplosionEmitterSetExplosionRadius((ExplosionEmitterPort)this, value);
         }
 
         public PlayerPort FiringPlayer
         {
-            get => CircuitBuilder.Singleton("RRCG_ExplosionEmitter_GetFiringPlayer_" + Port.PortKey(), () => ChipBuilder.ExplosionEmitterGetFiringPlayer((ExplosionEmitterPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ExplosionEmitter_GetFiringPlayer_" + PortKey(), () => ChipBuilder.ExplosionEmitterGetFiringPlayer((ExplosionEmitterPort)this));
             set => ChipBuilder.ExplosionEmitterSetFiringPlayer((ExplosionEmitterPort)this, value);
         }
 
@@ -778,7 +778,7 @@ namespace RRCGGenerated
     {
         public (BoolPort HasHeldObject, RecRoomObjectPort HeldObject) HeldObject
         {
-            get => CircuitBuilder.Singleton("RRCG_Grabber_GetHeldObject_" + Port.PortKey(), () => ChipBuilder.GrabberGetHeldObject((GrabberPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Grabber_GetHeldObject_" + PortKey(), () => ChipBuilder.GrabberGetHeldObject((GrabberPort)this));
         }
 
         public BoolPort PlayerCanStealFromGrabber
@@ -801,24 +801,24 @@ namespace RRCGGenerated
     {
         public IntPort BoostFuel
         {
-            get => CircuitBuilder.Singleton("RRCG_GroundVehicle_GetBoostFuel_" + Port.PortKey(), () => ChipBuilder.GroundVehicleGetBoostFuel((GroundVehiclePort)this));
+            get => CircuitBuilder.Singleton("RRCG_GroundVehicle_GetBoostFuel_" + PortKey(), () => ChipBuilder.GroundVehicleGetBoostFuel((GroundVehiclePort)this));
         }
 
         public BoolPort DrivingEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_GroundVehicle_GetDrivingEnabled_" + Port.PortKey(), () => ChipBuilder.GroundVehicleGetDrivingEnabled((GroundVehiclePort)this));
+            get => CircuitBuilder.Singleton("RRCG_GroundVehicle_GetDrivingEnabled_" + PortKey(), () => ChipBuilder.GroundVehicleGetDrivingEnabled((GroundVehiclePort)this));
             set => ChipBuilder.GroundVehicleSetDrivingEnabled((GroundVehiclePort)this, value);
         }
 
         public FloatPort EngineTorqueMultiplier
         {
-            get => CircuitBuilder.Singleton("RRCG_GroundVehicle_GetEngineTorqueMultiplier_" + Port.PortKey(), () => ChipBuilder.GroundVehicleGetEngineTorqueMultiplier((GroundVehiclePort)this));
+            get => CircuitBuilder.Singleton("RRCG_GroundVehicle_GetEngineTorqueMultiplier_" + PortKey(), () => ChipBuilder.GroundVehicleGetEngineTorqueMultiplier((GroundVehiclePort)this));
             set => ChipBuilder.GroundVehicleSetEngineTorqueMultiplier((GroundVehiclePort)this, value);
         }
 
         public FloatPort WheelFrictionMultiplier
         {
-            get => CircuitBuilder.Singleton("RRCG_GroundVehicle_GetWheelFrictionMultiplier_" + Port.PortKey(), () => ChipBuilder.GroundVehicleGetWheelFrictionMultiplier((GroundVehiclePort)this));
+            get => CircuitBuilder.Singleton("RRCG_GroundVehicle_GetWheelFrictionMultiplier_" + PortKey(), () => ChipBuilder.GroundVehicleGetWheelFrictionMultiplier((GroundVehiclePort)this));
             set => ChipBuilder.GroundVehicleSetWheelFrictionMultiplier((GroundVehiclePort)this, value);
         }
 
@@ -867,30 +867,30 @@ namespace RRCGGenerated
 
         public IntPort CurrentAmmo
         {
-            get => CircuitBuilder.Singleton("RRCG_GunHandle_GetCurrentAmmo_" + Port.PortKey(), () => ChipBuilder.GunHandleGetCurrentAmmo((GunHandlePort)this));
+            get => CircuitBuilder.Singleton("RRCG_GunHandle_GetCurrentAmmo_" + PortKey(), () => ChipBuilder.GunHandleGetCurrentAmmo((GunHandlePort)this));
             set => ChipBuilder.GunHandleSetCurrentAmmo((GunHandlePort)this, value);
         }
 
         public BoolPort IsReloading
         {
-            get => CircuitBuilder.Singleton("RRCG_GunHandle_GetIsReloading_" + Port.PortKey(), () => ChipBuilder.GunHandleGetIsReloading((GunHandlePort)this));
+            get => CircuitBuilder.Singleton("RRCG_GunHandle_GetIsReloading_" + PortKey(), () => ChipBuilder.GunHandleGetIsReloading((GunHandlePort)this));
         }
 
         public IntPort MaxAmmo
         {
-            get => CircuitBuilder.Singleton("RRCG_GunHandle_GetMaxAmmo_" + Port.PortKey(), () => ChipBuilder.GunHandleGetMaxAmmo((GunHandlePort)this));
+            get => CircuitBuilder.Singleton("RRCG_GunHandle_GetMaxAmmo_" + PortKey(), () => ChipBuilder.GunHandleGetMaxAmmo((GunHandlePort)this));
             set => ChipBuilder.GunHandleSetMaxAmmo((GunHandlePort)this, value);
         }
 
         public FloatPort RateOfFire
         {
-            get => CircuitBuilder.Singleton("RRCG_GunHandle_GetRateOfFire_" + Port.PortKey(), () => ChipBuilder.GunHandleGetRateOfFire((GunHandlePort)this));
+            get => CircuitBuilder.Singleton("RRCG_GunHandle_GetRateOfFire_" + PortKey(), () => ChipBuilder.GunHandleGetRateOfFire((GunHandlePort)this));
             set => ChipBuilder.GunHandleSetRateOfFire((GunHandlePort)this, value);
         }
 
         public FloatPort ReloadDuration
         {
-            get => CircuitBuilder.Singleton("RRCG_GunHandle_GetReloadDuration_" + Port.PortKey(), () => ChipBuilder.GunHandleGetReloadDuration((GunHandlePort)this));
+            get => CircuitBuilder.Singleton("RRCG_GunHandle_GetReloadDuration_" + PortKey(), () => ChipBuilder.GunHandleGetReloadDuration((GunHandlePort)this));
             set => ChipBuilder.GunHandleSetReloadDuration((GunHandlePort)this, value);
         }
 
@@ -901,7 +901,7 @@ namespace RRCGGenerated
 
         public BoolPort SupportsReload
         {
-            get => CircuitBuilder.Singleton("RRCG_GunHandle_GetSupportsReload_" + Port.PortKey(), () => ChipBuilder.GunHandleGetSupportsReload((GunHandlePort)this));
+            get => CircuitBuilder.Singleton("RRCG_GunHandle_GetSupportsReload_" + PortKey(), () => ChipBuilder.GunHandleGetSupportsReload((GunHandlePort)this));
             set => ChipBuilder.GunHandleSetSupportsReload((GunHandlePort)this, value);
         }
 
@@ -934,7 +934,7 @@ namespace RRCGGenerated
     {
         public ColorPort Color
         {
-            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetColor_" + Port.PortKey(), () => ChipBuilder.GetGameHUDElementColor((HUDConstantPort)this));
+            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetColor_" + PortKey(), () => ChipBuilder.GetGameHUDElementColor((HUDConstantPort)this));
             set => ChipBuilder.SetGameHUDElementColor((HUDConstantPort)this, value);
         }
 
@@ -945,7 +945,7 @@ namespace RRCGGenerated
 
         public StringPort Label
         {
-            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetLabel_" + Port.PortKey(), () => ChipBuilder.GetGameHUDElementLabel((HUDConstantPort)this));
+            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetLabel_" + PortKey(), () => ChipBuilder.GetGameHUDElementLabel((HUDConstantPort)this));
             set => ChipBuilder.SetGameHUDElementLabel((HUDConstantPort)this, value);
         }
 
@@ -956,13 +956,13 @@ namespace RRCGGenerated
 
         public IntPort MaxValue
         {
-            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetMaxValue_" + Port.PortKey(), () => ChipBuilder.GetGameHUDElementMaxValue((HUDConstantPort)this));
+            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetMaxValue_" + PortKey(), () => ChipBuilder.GetGameHUDElementMaxValue((HUDConstantPort)this));
             set => ChipBuilder.SetGameHUDElementMaxValue((HUDConstantPort)this, value);
         }
 
         public IntPort Value
         {
-            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetValue_" + Port.PortKey(), () => ChipBuilder.GetGameHUDElementValue((HUDConstantPort)this));
+            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetValue_" + PortKey(), () => ChipBuilder.GetGameHUDElementValue((HUDConstantPort)this));
             set => ChipBuilder.SetGameHUDElementValue((HUDConstantPort)this, value);
         }
 
@@ -984,25 +984,25 @@ namespace RRCGGenerated
     {
         public FloatPort HoldTime
         {
-            get => CircuitBuilder.Singleton("RRCG_InteractionVolume_GetHoldTime_" + Port.PortKey(), () => ChipBuilder.InteractionVolumeGetHoldTime((InteractionVolumePort)this));
+            get => CircuitBuilder.Singleton("RRCG_InteractionVolume_GetHoldTime_" + PortKey(), () => ChipBuilder.InteractionVolumeGetHoldTime((InteractionVolumePort)this));
             set => ChipBuilder.InteractionVolumeSetHoldTime((InteractionVolumePort)this, value);
         }
 
         public StringPort InteractionPrompt
         {
-            get => CircuitBuilder.Singleton("RRCG_InteractionVolume_GetInteractionPrompt_" + Port.PortKey(), () => ChipBuilder.InteractionVolumeGetInteractionPrompt((InteractionVolumePort)this));
+            get => CircuitBuilder.Singleton("RRCG_InteractionVolume_GetInteractionPrompt_" + PortKey(), () => ChipBuilder.InteractionVolumeGetInteractionPrompt((InteractionVolumePort)this));
             set => ChipBuilder.InteractionVolumeSetInteractionPrompt((InteractionVolumePort)this, value);
         }
 
         public BoolPort IsLocked
         {
-            get => CircuitBuilder.Singleton("RRCG_InteractionVolume_GetIsLocked_" + Port.PortKey(), () => ChipBuilder.InteractionVolumeGetIsLocked((InteractionVolumePort)this));
+            get => CircuitBuilder.Singleton("RRCG_InteractionVolume_GetIsLocked_" + PortKey(), () => ChipBuilder.InteractionVolumeGetIsLocked((InteractionVolumePort)this));
             set => ChipBuilder.InteractionVolumeSetLocked((InteractionVolumePort)this, value);
         }
 
         public FloatPort NormalizedHoldProgress
         {
-            get => CircuitBuilder.Singleton("RRCG_InteractionVolume_GetNormalizedHoldProgress_" + Port.PortKey(), () => ChipBuilder.InteractionVolumeGetNormalizedHoldProgress((InteractionVolumePort)this));
+            get => CircuitBuilder.Singleton("RRCG_InteractionVolume_GetNormalizedHoldProgress_" + PortKey(), () => ChipBuilder.InteractionVolumeGetNormalizedHoldProgress((InteractionVolumePort)this));
             set => ChipBuilder.InteractionVolumeSetNormalizedHoldProgress((InteractionVolumePort)this, value);
         }
     }
@@ -1011,7 +1011,7 @@ namespace RRCGGenerated
     {
         public (StringPort Name, StringPort Description, BoolPort SupportsUseAction) Definition
         {
-            get => CircuitBuilder.Singleton("RRCG_InventoryItem_GetDefinition_" + Port.PortKey(), () => ChipBuilder.InventoryItemGetDefinition((InventoryItemPort)this));
+            get => CircuitBuilder.Singleton("RRCG_InventoryItem_GetDefinition_" + PortKey(), () => ChipBuilder.InventoryItemGetDefinition((InventoryItemPort)this));
         }
 
         public (BoolPort Success, IntPort TotalCount) Add(PlayerPort Player, IntPort Quantity, AlternativeExec<(BoolPort Success, IntPort TotalCount)> Complete)
@@ -1039,13 +1039,13 @@ namespace RRCGGenerated
     {
         public BoolPort BlocksPlayers
         {
-            get => CircuitBuilder.Singleton("RRCG_InvisibleCollision_GetBlocksPlayers_" + Port.PortKey(), () => ChipBuilder.InvisibleCollisionGetBlocksPlayers((InvisibleCollisionPort)this));
+            get => CircuitBuilder.Singleton("RRCG_InvisibleCollision_GetBlocksPlayers_" + PortKey(), () => ChipBuilder.InvisibleCollisionGetBlocksPlayers((InvisibleCollisionPort)this));
             set => ChipBuilder.InvisibleCollisionSetBlocksPlayers((InvisibleCollisionPort)this, value);
         }
 
         public BoolPort Enabled
         {
-            get => CircuitBuilder.Singleton("RRCG_InvisibleCollision_GetEnabled_" + Port.PortKey(), () => ChipBuilder.InvisibleCollisionGetEnabled((InvisibleCollisionPort)this));
+            get => CircuitBuilder.Singleton("RRCG_InvisibleCollision_GetEnabled_" + PortKey(), () => ChipBuilder.InvisibleCollisionGetEnabled((InvisibleCollisionPort)this));
             set => ChipBuilder.InvisibleCollisionSetEnabled((InvisibleCollisionPort)this, value);
         }
     }
@@ -1054,19 +1054,19 @@ namespace RRCGGenerated
     {
         public ColorPort Color
         {
-            get => CircuitBuilder.Singleton("RRCG_LaserPointer_GetColor_" + Port.PortKey(), () => ChipBuilder.LaserPointerGetColor((LaserPointerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_LaserPointer_GetColor_" + PortKey(), () => ChipBuilder.LaserPointerGetColor((LaserPointerPort)this));
             set => ChipBuilder.LaserPointerSetColor((LaserPointerPort)this, value);
         }
 
         public BoolPort Enabled
         {
-            get => CircuitBuilder.Singleton("RRCG_LaserPointer_GetEnabled_" + Port.PortKey(), () => ChipBuilder.LaserPointerGetEnabled((LaserPointerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_LaserPointer_GetEnabled_" + PortKey(), () => ChipBuilder.LaserPointerGetEnabled((LaserPointerPort)this));
             set => ChipBuilder.LaserPointerSetEnabled((LaserPointerPort)this, value);
         }
 
         public FloatPort Length
         {
-            get => CircuitBuilder.Singleton("RRCG_LaserPointer_GetLength_" + Port.PortKey(), () => ChipBuilder.LaserPointerGetLength((LaserPointerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_LaserPointer_GetLength_" + PortKey(), () => ChipBuilder.LaserPointerGetLength((LaserPointerPort)this));
             set => ChipBuilder.LaserPointerSetLength((LaserPointerPort)this, value);
         }
     }
@@ -1075,7 +1075,7 @@ namespace RRCGGenerated
     {
         public FloatPort Angle
         {
-            get => CircuitBuilder.Singleton("RRCG_Light_GetAngle_" + Port.PortKey(), () => ChipBuilder.LightGetAngle((LightPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Light_GetAngle_" + PortKey(), () => ChipBuilder.LightGetAngle((LightPort)this));
             set => ChipBuilder.LightSetAngle((LightPort)this, value);
         }
 
@@ -1086,7 +1086,7 @@ namespace RRCGGenerated
 
         public ColorPort Color
         {
-            get => CircuitBuilder.Singleton("RRCG_Light_GetColor_" + Port.PortKey(), () => ChipBuilder.LightGetColor((LightPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Light_GetColor_" + PortKey(), () => ChipBuilder.LightGetColor((LightPort)this));
             set => ChipBuilder.LightSetColor((LightPort)this, value);
         }
 
@@ -1097,12 +1097,12 @@ namespace RRCGGenerated
 
         public BoolPort Enabled
         {
-            get => CircuitBuilder.Singleton("RRCG_Light_GetEnabled_" + Port.PortKey(), () => ChipBuilder.LightGetEnabled((LightPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Light_GetEnabled_" + PortKey(), () => ChipBuilder.LightGetEnabled((LightPort)this));
         }
 
         public FloatPort Intensity
         {
-            get => CircuitBuilder.Singleton("RRCG_Light_GetIntensity_" + Port.PortKey(), () => ChipBuilder.LightGetIntensity((LightPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Light_GetIntensity_" + PortKey(), () => ChipBuilder.LightGetIntensity((LightPort)this));
             set => ChipBuilder.LightSetIntensity((LightPort)this, value);
         }
 
@@ -1113,7 +1113,7 @@ namespace RRCGGenerated
 
         public FloatPort Range
         {
-            get => CircuitBuilder.Singleton("RRCG_Light_GetRange_" + Port.PortKey(), () => ChipBuilder.LightGetRange((LightPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Light_GetRange_" + PortKey(), () => ChipBuilder.LightGetRange((LightPort)this));
             set => ChipBuilder.LightSetRange((LightPort)this, value);
         }
 
@@ -1124,13 +1124,13 @@ namespace RRCGGenerated
 
         public FloatPort Softness
         {
-            get => CircuitBuilder.Singleton("RRCG_Light_GetSoftness_" + Port.PortKey(), () => ChipBuilder.LightGetSoftness((LightPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Light_GetSoftness_" + PortKey(), () => ChipBuilder.LightGetSoftness((LightPort)this));
             set => ChipBuilder.LightSetSoftness((LightPort)this, value);
         }
 
         public FloatPort SpecularContribution
         {
-            get => CircuitBuilder.Singleton("RRCG_Light_GetSpecularContribution_" + Port.PortKey(), () => ChipBuilder.LightGetSpecularContribution((LightPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Light_GetSpecularContribution_" + PortKey(), () => ChipBuilder.LightGetSpecularContribution((LightPort)this));
             set => ChipBuilder.LightSetSpecularContribution((LightPort)this, value);
         }
 
@@ -1153,25 +1153,25 @@ namespace RRCGGenerated
     {
         public ColorPort Color
         {
-            get => CircuitBuilder.Singleton("RRCG_MotionTrail_GetColor_" + Port.PortKey(), () => ChipBuilder.TrailGetColor((MotionTrailPort)this));
+            get => CircuitBuilder.Singleton("RRCG_MotionTrail_GetColor_" + PortKey(), () => ChipBuilder.TrailGetColor((MotionTrailPort)this));
             set => ChipBuilder.TrailSetColor((MotionTrailPort)this, value);
         }
 
         public BoolPort Enabled
         {
-            get => CircuitBuilder.Singleton("RRCG_MotionTrail_GetEnabled_" + Port.PortKey(), () => ChipBuilder.TrailGetEnabled((MotionTrailPort)this));
+            get => CircuitBuilder.Singleton("RRCG_MotionTrail_GetEnabled_" + PortKey(), () => ChipBuilder.TrailGetEnabled((MotionTrailPort)this));
             set => ChipBuilder.TrailSetEnabled((MotionTrailPort)this, value);
         }
 
         public FloatPort Lifetime
         {
-            get => CircuitBuilder.Singleton("RRCG_MotionTrail_GetLifetime_" + Port.PortKey(), () => ChipBuilder.TrailGetLifetime((MotionTrailPort)this));
+            get => CircuitBuilder.Singleton("RRCG_MotionTrail_GetLifetime_" + PortKey(), () => ChipBuilder.TrailGetLifetime((MotionTrailPort)this));
             set => ChipBuilder.TrailSetLifetime((MotionTrailPort)this, value);
         }
 
         public FloatPort Opacity
         {
-            get => CircuitBuilder.Singleton("RRCG_MotionTrail_GetOpacity_" + Port.PortKey(), () => ChipBuilder.TrailGetOpacity((MotionTrailPort)this));
+            get => CircuitBuilder.Singleton("RRCG_MotionTrail_GetOpacity_" + PortKey(), () => ChipBuilder.TrailGetOpacity((MotionTrailPort)this));
             set => ChipBuilder.TrailSetOpacity((MotionTrailPort)this, value);
         }
     }
@@ -1180,59 +1180,59 @@ namespace RRCGGenerated
     {
         public ColorPort Color
         {
-            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetColor_" + Port.PortKey(), () => ChipBuilder.ObjectiveMarkerGetColor((ObjectiveMarkerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetColor_" + PortKey(), () => ChipBuilder.ObjectiveMarkerGetColor((ObjectiveMarkerPort)this));
             set => ChipBuilder.ObjectiveMarkerSetColor((ObjectiveMarkerPort)this, value);
         }
 
         public FloatPort CurrentDistance
         {
-            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetCurrentDistance_" + Port.PortKey(), () => ChipBuilder.ObjectiveMarkerGetCurrentDistance((ObjectiveMarkerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetCurrentDistance_" + PortKey(), () => ChipBuilder.ObjectiveMarkerGetCurrentDistance((ObjectiveMarkerPort)this));
         }
 
         public BoolPort DistanceEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetDistanceEnabled_" + Port.PortKey(), () => ChipBuilder.ObjectiveMarkerGetDistanceEnabled((ObjectiveMarkerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetDistanceEnabled_" + PortKey(), () => ChipBuilder.ObjectiveMarkerGetDistanceEnabled((ObjectiveMarkerPort)this));
             set => ChipBuilder.ObjectiveMarkerSetDistanceEnabled((ObjectiveMarkerPort)this, value);
         }
 
         public BoolPort Enabled
         {
-            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetEnabled_" + Port.PortKey(), () => ChipBuilder.ObjectiveMarkerGetEnabled((ObjectiveMarkerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetEnabled_" + PortKey(), () => ChipBuilder.ObjectiveMarkerGetEnabled((ObjectiveMarkerPort)this));
             set => ChipBuilder.ObjectiveMarkerSetEnabled((ObjectiveMarkerPort)this, value);
         }
 
         public FloatPort FadeThreshold
         {
-            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetFadeThreshold_" + Port.PortKey(), () => ChipBuilder.ObjectiveMarkerGetFadeThreshold((ObjectiveMarkerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetFadeThreshold_" + PortKey(), () => ChipBuilder.ObjectiveMarkerGetFadeThreshold((ObjectiveMarkerPort)this));
             set => ChipBuilder.ObjectiveMarkerSetFadeThreshold((ObjectiveMarkerPort)this, value);
         }
 
         public StringPort Label
         {
-            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetLabel_" + Port.PortKey(), () => ChipBuilder.ObjectiveMarkerGetLabel((ObjectiveMarkerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetLabel_" + PortKey(), () => ChipBuilder.ObjectiveMarkerGetLabel((ObjectiveMarkerPort)this));
             set => ChipBuilder.ObjectiveMarkerSetLabel((ObjectiveMarkerPort)this, value);
         }
 
         public BoolPort LabelEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetLabelEnabled_" + Port.PortKey(), () => ChipBuilder.ObjectiveMarkerGetLabelEnabled((ObjectiveMarkerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetLabelEnabled_" + PortKey(), () => ChipBuilder.ObjectiveMarkerGetLabelEnabled((ObjectiveMarkerPort)this));
             set => ChipBuilder.ObjectiveMarkerSetLabelEnabled((ObjectiveMarkerPort)this, value);
         }
 
         public Vector3Port Position
         {
-            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetPosition_" + Port.PortKey(), () => ChipBuilder.ObjectiveMarkerGetPosition((ObjectiveMarkerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetPosition_" + PortKey(), () => ChipBuilder.ObjectiveMarkerGetPosition((ObjectiveMarkerPort)this));
             set => ChipBuilder.ObjectiveMarkerSetPosition((ObjectiveMarkerPort)this, value);
         }
 
         public RecRoomObjectPort TargetObject
         {
-            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetTargetObject_" + Port.PortKey(), () => ChipBuilder.ObjectiveMarkerGetTargetObject((ObjectiveMarkerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetTargetObject_" + PortKey(), () => ChipBuilder.ObjectiveMarkerGetTargetObject((ObjectiveMarkerPort)this));
         }
 
         public PlayerPort TargetPlayer
         {
-            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetTargetPlayer_" + Port.PortKey(), () => ChipBuilder.ObjectiveMarkerGetTargetPlayer((ObjectiveMarkerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ObjectiveMarker_GetTargetPlayer_" + PortKey(), () => ChipBuilder.ObjectiveMarkerGetTargetPlayer((ObjectiveMarkerPort)this));
         }
 
         public void AttachToPlayerOrObject(PlayerPort PlayerOrObject)
@@ -1254,31 +1254,31 @@ namespace RRCGGenerated
     {
         public FloatPort Acceleration
         {
-            get => CircuitBuilder.Singleton("RRCG_Piston_GetAcceleration_" + Port.PortKey(), () => ChipBuilder.PistonGetAcceleration((PistonPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Piston_GetAcceleration_" + PortKey(), () => ChipBuilder.PistonGetAcceleration((PistonPort)this));
             set => ChipBuilder.PistonSetAcceleration((PistonPort)this, value);
         }
 
         public FloatPort Distance
         {
-            get => CircuitBuilder.Singleton("RRCG_Piston_GetDistance_" + Port.PortKey(), () => ChipBuilder.PistonGetDistance((PistonPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Piston_GetDistance_" + PortKey(), () => ChipBuilder.PistonGetDistance((PistonPort)this));
             set => ChipBuilder.PistonSetDistance((PistonPort)this, value);
         }
 
         public FloatPort MaxDistance
         {
-            get => CircuitBuilder.Singleton("RRCG_Piston_GetMaxDistance_" + Port.PortKey(), () => ChipBuilder.PistonGetMaxDistance((PistonPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Piston_GetMaxDistance_" + PortKey(), () => ChipBuilder.PistonGetMaxDistance((PistonPort)this));
             set => ChipBuilder.PistonSetMaxDistance((PistonPort)this, value);
         }
 
         public FloatPort Speed
         {
-            get => CircuitBuilder.Singleton("RRCG_Piston_GetSpeed_" + Port.PortKey(), () => ChipBuilder.PistonGetSpeed((PistonPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Piston_GetSpeed_" + PortKey(), () => ChipBuilder.PistonGetSpeed((PistonPort)this));
             set => ChipBuilder.PistonSetSpeed((PistonPort)this, value);
         }
 
         public FloatPort TargetDistance
         {
-            get => CircuitBuilder.Singleton("RRCG_Piston_GetTargetDistance_" + Port.PortKey(), () => ChipBuilder.PistonGetTargetDistance((PistonPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Piston_GetTargetDistance_" + PortKey(), () => ChipBuilder.PistonGetTargetDistance((PistonPort)this));
             set => ChipBuilder.PistonSetTargetDistance((PistonPort)this, value);
         }
     }
@@ -1287,38 +1287,38 @@ namespace RRCGGenerated
     {
         public StringPort AccountName
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetAccountName_" + Port.PortKey(), () => ChipBuilder.GetPlayerAccountName((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetAccountName_" + PortKey(), () => ChipBuilder.GetPlayerAccountName((PlayerPort)this));
         }
 
         public QuaternionPort BodyOrientation
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_BodyOrientation_" + Port.PortKey(), () => ChipBuilder.PlayerBodyOrientation((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_BodyOrientation_" + PortKey(), () => ChipBuilder.PlayerBodyOrientation((PlayerPort)this));
         }
 
         public Vector3Port BodyPosition
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_BodyPosition_" + Port.PortKey(), () => ChipBuilder.PlayerBodyPosition((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_BodyPosition_" + PortKey(), () => ChipBuilder.PlayerBodyPosition((PlayerPort)this));
         }
 
         public BoolPort CanTeleport
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetCanTeleport_" + Port.PortKey(), () => ChipBuilder.PlayerGetCanTeleport((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetCanTeleport_" + PortKey(), () => ChipBuilder.PlayerGetCanTeleport((PlayerPort)this));
             set => ChipBuilder.PlayerSetCanTeleport((PlayerPort)this, value);
         }
 
         public Vector3Port CombatantGetGroundPosition
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_CombatantGetGroundPosition_" + Port.PortKey(), () => ChipBuilder.CombatantGetGroundPosition((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_CombatantGetGroundPosition_" + PortKey(), () => ChipBuilder.CombatantGetGroundPosition((PlayerPort)this));
         }
 
         public BoolPort CombatantGetIsAlive
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_CombatantGetIsAlive_" + Port.PortKey(), () => ChipBuilder.CombatantGetIsAlive((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_CombatantGetIsAlive_" + PortKey(), () => ChipBuilder.CombatantGetIsAlive((PlayerPort)this));
         }
 
         public (Vector3Port Velocity, FloatPort Speed) CombatantGetVelocity
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_CombatantGetVelocity_" + Port.PortKey(), () => ChipBuilder.CombatantGetVelocity((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_CombatantGetVelocity_" + PortKey(), () => ChipBuilder.CombatantGetVelocity((PlayerPort)this));
         }
 
         public IntPort CombatantSetMaxHealth
@@ -1328,56 +1328,56 @@ namespace RRCGGenerated
 
         public CostumePort Costume
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetCostume_" + Port.PortKey(), () => ChipBuilder.PlayerGetCostume((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetCostume_" + PortKey(), () => ChipBuilder.PlayerGetCostume((PlayerPort)this));
         }
 
         public BoolPort CrouchInputEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetCrouchInputEnabled_" + Port.PortKey(), () => ChipBuilder.PlayerGetCrouchInputEnabled((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetCrouchInputEnabled_" + PortKey(), () => ChipBuilder.PlayerGetCrouchInputEnabled((PlayerPort)this));
             set => ChipBuilder.PlayerSetCrouchInputEnabled((PlayerPort)this, value);
         }
 
         public BoolPort DominantHandIsRight
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetDominantHandIsRight_" + Port.PortKey(), () => ChipBuilder.PlayerGetDominantHandIsRight((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetDominantHandIsRight_" + PortKey(), () => ChipBuilder.PlayerGetDominantHandIsRight((PlayerPort)this));
         }
 
         public (RecRoomObjectPort DominantHandObject, RecRoomObjectPort OffHandObject, RecRoomObjectPort LeftHipHolsterObject, RecRoomObjectPort RightHipHolsterObject, RecRoomObjectPort ShoulderHolsterObject) EquippedObjects
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetEquippedObjects_" + Port.PortKey(), () => ChipBuilder.PlayerGetEquippedObjects((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetEquippedObjects_" + PortKey(), () => ChipBuilder.PlayerGetEquippedObjects((PlayerPort)this));
         }
 
         public StringPort FirstTag
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetFirstTag_" + Port.PortKey(), () => ChipBuilder.GetFirstTag((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetFirstTag_" + PortKey(), () => ChipBuilder.GetFirstTag((PlayerPort)this));
         }
 
         public BoolPort ForceManualSprint
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetForceManualSprint_" + Port.PortKey(), () => ChipBuilder.PlayerGetForceManualSprint((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetForceManualSprint_" + PortKey(), () => ChipBuilder.PlayerGetForceManualSprint((PlayerPort)this));
             set => ChipBuilder.PlayerSetForceManualSprint((PlayerPort)this, value);
         }
 
         public BoolPort ForceVirtualHeightMode
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetForceVirtualHeightMode_" + Port.PortKey(), () => ChipBuilder.PlayerGetForceVirtualHeightMode((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetForceVirtualHeightMode_" + PortKey(), () => ChipBuilder.PlayerGetForceVirtualHeightMode((PlayerPort)this));
             set => ChipBuilder.PlayerSetForceVirtualHeightMode((PlayerPort)this, value);
         }
 
         public BoolPort ForceVRWalk
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetForceVRWalk_" + Port.PortKey(), () => ChipBuilder.PlayerGetForceVRWalk((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetForceVRWalk_" + PortKey(), () => ChipBuilder.PlayerGetForceVRWalk((PlayerPort)this));
             set => ChipBuilder.PlayerSetForceVRWalk((PlayerPort)this, value);
         }
 
         public Vector3Port ForwardVector
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetForwardVector_" + Port.PortKey(), () => ChipBuilder.GetForwardVector((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetForwardVector_" + PortKey(), () => ChipBuilder.GetForwardVector((PlayerPort)this));
         }
 
         public Vector3Port ForwardVectorDeprecated
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetForwardVectorDeprecated_" + Port.PortKey(), () => ChipBuilder.GetForwardVectorDeprecated((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetForwardVectorDeprecated_" + PortKey(), () => ChipBuilder.GetForwardVectorDeprecated((PlayerPort)this));
         }
 
         public AlternativeExec<(BoolPort Success, IntPort TotalBalance)> GetCurrencyBalance
@@ -1392,134 +1392,134 @@ namespace RRCGGenerated
 
         public Vector3Port HeadForwardVector
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_HeadForwardVector_" + Port.PortKey(), () => ChipBuilder.PlayerHeadForwardVector((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_HeadForwardVector_" + PortKey(), () => ChipBuilder.PlayerHeadForwardVector((PlayerPort)this));
         }
 
         public FloatPort HeadHeight
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_HeadHeight_" + Port.PortKey(), () => ChipBuilder.PlayerHeadHeight((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_HeadHeight_" + PortKey(), () => ChipBuilder.PlayerHeadHeight((PlayerPort)this));
         }
 
         public QuaternionPort HeadOrientation
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_HeadOrientation_" + Port.PortKey(), () => ChipBuilder.PlayerHeadOrientation((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_HeadOrientation_" + PortKey(), () => ChipBuilder.PlayerHeadOrientation((PlayerPort)this));
         }
 
         public Vector3Port HeadPosition
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_HeadPosition_" + Port.PortKey(), () => ChipBuilder.PlayerHeadPosition((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_HeadPosition_" + PortKey(), () => ChipBuilder.PlayerHeadPosition((PlayerPort)this));
         }
 
         public Vector3Port HeadUpVector
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_HeadUpVector_" + Port.PortKey(), () => ChipBuilder.PlayerHeadUpVector((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_HeadUpVector_" + PortKey(), () => ChipBuilder.PlayerHeadUpVector((PlayerPort)this));
         }
 
         public Vector3Port HeadVelocity
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_HeadVelocity_" + Port.PortKey(), () => ChipBuilder.PlayerHeadVelocity((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_HeadVelocity_" + PortKey(), () => ChipBuilder.PlayerHeadVelocity((PlayerPort)this));
         }
 
         public BoolPort IsClambering
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetIsClambering_" + Port.PortKey(), () => ChipBuilder.PlayerGetIsClambering((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetIsClambering_" + PortKey(), () => ChipBuilder.PlayerGetIsClambering((PlayerPort)this));
         }
 
         public BoolPort IsCrouching
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetIsCrouching_" + Port.PortKey(), () => ChipBuilder.PlayerGetIsCrouching((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetIsCrouching_" + PortKey(), () => ChipBuilder.PlayerGetIsCrouching((PlayerPort)this));
         }
 
         public (BoolPort IsGrounded, FloatPort TimeSinceLastGrounded, RecRoomObjectPort SurfaceObject, Vector3Port SurfaceNormal) IsGrounded
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetIsGrounded_" + Port.PortKey(), () => ChipBuilder.PlayerGetIsGrounded((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetIsGrounded_" + PortKey(), () => ChipBuilder.PlayerGetIsGrounded((PlayerPort)this));
         }
 
         public BoolPort IsHoldingMakerPen
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_IsHoldingMakerPen_" + Port.PortKey(), () => ChipBuilder.PlayerIsHoldingMakerPen((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_IsHoldingMakerPen_" + PortKey(), () => ChipBuilder.PlayerIsHoldingMakerPen((PlayerPort)this));
         }
 
         public BoolPort IsInParty
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_IsInParty_" + Port.PortKey(), () => ChipBuilder.PlayerIsInParty((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_IsInParty_" + PortKey(), () => ChipBuilder.PlayerIsInParty((PlayerPort)this));
         }
 
         public (BoolPort IsJumpingOrFalling, RecRoomObjectPort ContactSurface) IsJumpingOrFalling
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetIsJumpingOrFalling_" + Port.PortKey(), () => ChipBuilder.PlayerGetIsJumpingOrFalling((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetIsJumpingOrFalling_" + PortKey(), () => ChipBuilder.PlayerGetIsJumpingOrFalling((PlayerPort)this));
         }
 
         public BoolPort IsLocal
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetIsLocal_" + Port.PortKey(), () => ChipBuilder.PlayerGetIsLocal((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetIsLocal_" + PortKey(), () => ChipBuilder.PlayerGetIsLocal((PlayerPort)this));
         }
 
         public BoolPort IsProne
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetIsProne_" + Port.PortKey(), () => ChipBuilder.PlayerGetIsProne((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetIsProne_" + PortKey(), () => ChipBuilder.PlayerGetIsProne((PlayerPort)this));
         }
 
         public BoolPort IsRoomHost
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_IsRoomHost_" + Port.PortKey(), () => ChipBuilder.PlayerIsRoomHost((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_IsRoomHost_" + PortKey(), () => ChipBuilder.PlayerIsRoomHost((PlayerPort)this));
         }
 
         public BoolPort IsRoomMod
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_IsRoomMod_" + Port.PortKey(), () => ChipBuilder.PlayerIsRoomMod((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_IsRoomMod_" + PortKey(), () => ChipBuilder.PlayerIsRoomMod((PlayerPort)this));
         }
 
         public BoolPort IsRoomOwner
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetIsRoomOwner_" + Port.PortKey(), () => ChipBuilder.PlayerGetIsRoomOwner((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetIsRoomOwner_" + PortKey(), () => ChipBuilder.PlayerGetIsRoomOwner((PlayerPort)this));
         }
 
         public BoolPort IsSliding
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetIsSliding_" + Port.PortKey(), () => ChipBuilder.PlayerGetIsSliding((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetIsSliding_" + PortKey(), () => ChipBuilder.PlayerGetIsSliding((PlayerPort)this));
         }
 
         public BoolPort IsSprinting
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetIsSprinting_" + Port.PortKey(), () => ChipBuilder.PlayerGetIsSprinting((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetIsSprinting_" + PortKey(), () => ChipBuilder.PlayerGetIsSprinting((PlayerPort)this));
         }
 
         public FloatPort JumpHeight
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetJumpHeight_" + Port.PortKey(), () => ChipBuilder.PlayerGetJumpHeight((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetJumpHeight_" + PortKey(), () => ChipBuilder.PlayerGetJumpHeight((PlayerPort)this));
             set => ChipBuilder.PlayerSetJumpHeight((PlayerPort)this, value);
         }
 
         public BoolPort JumpInputEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetJumpInputEnabled_" + Port.PortKey(), () => ChipBuilder.PlayerGetJumpInputEnabled((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetJumpInputEnabled_" + PortKey(), () => ChipBuilder.PlayerGetJumpInputEnabled((PlayerPort)this));
             set => ChipBuilder.PlayerSetJumpInputEnabled((PlayerPort)this, value);
         }
 
         public Vector3Port LeftHandFingerDirection
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_LeftHandFingerDirection_" + Port.PortKey(), () => ChipBuilder.PlayerLeftHandFingerDirection((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_LeftHandFingerDirection_" + PortKey(), () => ChipBuilder.PlayerLeftHandFingerDirection((PlayerPort)this));
         }
 
         public Vector3Port LeftHandPosition
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_LeftHandPosition_" + Port.PortKey(), () => ChipBuilder.PlayerLeftHandPosition((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_LeftHandPosition_" + PortKey(), () => ChipBuilder.PlayerLeftHandPosition((PlayerPort)this));
         }
 
         public QuaternionPort LeftHandRotation
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_LeftHandRotation_" + Port.PortKey(), () => ChipBuilder.PlayerLeftHandRotation((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_LeftHandRotation_" + PortKey(), () => ChipBuilder.PlayerLeftHandRotation((PlayerPort)this));
         }
 
         public Vector3Port LeftHandThumbDirection
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_LeftHandThumbDirection_" + Port.PortKey(), () => ChipBuilder.PlayerLeftHandThumbDirection((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_LeftHandThumbDirection_" + PortKey(), () => ChipBuilder.PlayerLeftHandThumbDirection((PlayerPort)this));
         }
 
         public Vector3Port LeftHandVelocity
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_LeftHandVelocity_" + Port.PortKey(), () => ChipBuilder.PlayerLeftHandVelocity((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_LeftHandVelocity_" + PortKey(), () => ChipBuilder.PlayerLeftHandVelocity((PlayerPort)this));
         }
 
         public ColorPort NameColor
@@ -1529,28 +1529,28 @@ namespace RRCGGenerated
 
         public FloatPort NormalizedSteeringSpeed
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetNormalizedSteeringSpeed_" + Port.PortKey(), () => ChipBuilder.PlayerGetNormalizedSteeringSpeed((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetNormalizedSteeringSpeed_" + PortKey(), () => ChipBuilder.PlayerGetNormalizedSteeringSpeed((PlayerPort)this));
         }
 
         public ListPort<PlayerPort> PartyOfPlayer
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetPartyOfPlayer_" + Port.PortKey(), () => ChipBuilder.GetPartyOfPlayer((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetPartyOfPlayer_" + PortKey(), () => ChipBuilder.GetPartyOfPlayer((PlayerPort)this));
         }
 
         public Vector3Port Position
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetPosition_" + Port.PortKey(), () => ChipBuilder.GetPosition((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetPosition_" + PortKey(), () => ChipBuilder.GetPosition((PlayerPort)this));
             set => ChipBuilder.SetPosition((PlayerPort)this, value);
         }
 
         public Vector3Port PositionDeprecated
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetPositionDeprecated_" + Port.PortKey(), () => ChipBuilder.GetPositionDeprecated((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetPositionDeprecated_" + PortKey(), () => ChipBuilder.GetPositionDeprecated((PlayerPort)this));
         }
 
         public IntPort RadioChannel
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetRadioChannel_" + Port.PortKey(), () => ChipBuilder.PlayerGetRadioChannel((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetRadioChannel_" + PortKey(), () => ChipBuilder.PlayerGetRadioChannel((PlayerPort)this));
             set => ChipBuilder.PlayerSetRadioChannel((PlayerPort)this, value);
         }
 
@@ -1561,106 +1561,106 @@ namespace RRCGGenerated
 
         public Vector3Port RightHandFingerDirection
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_RightHandFingerDirection_" + Port.PortKey(), () => ChipBuilder.PlayerRightHandFingerDirection((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_RightHandFingerDirection_" + PortKey(), () => ChipBuilder.PlayerRightHandFingerDirection((PlayerPort)this));
         }
 
         public Vector3Port RightHandPosition
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_RightHandPosition_" + Port.PortKey(), () => ChipBuilder.PlayerRightHandPosition((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_RightHandPosition_" + PortKey(), () => ChipBuilder.PlayerRightHandPosition((PlayerPort)this));
         }
 
         public QuaternionPort RightHandRotation
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_RightHandRotation_" + Port.PortKey(), () => ChipBuilder.PlayerRightHandRotation((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_RightHandRotation_" + PortKey(), () => ChipBuilder.PlayerRightHandRotation((PlayerPort)this));
         }
 
         public Vector3Port RightHandThumbDirection
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_RightHandThumbDirection_" + Port.PortKey(), () => ChipBuilder.PlayerRightHandThumbDirection((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_RightHandThumbDirection_" + PortKey(), () => ChipBuilder.PlayerRightHandThumbDirection((PlayerPort)this));
         }
 
         public Vector3Port RightHandVelocity
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_RightHandVelocity_" + Port.PortKey(), () => ChipBuilder.PlayerRightHandVelocity((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_RightHandVelocity_" + PortKey(), () => ChipBuilder.PlayerRightHandVelocity((PlayerPort)this));
         }
 
         public IntPort RoomIndex
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetRoomIndex_" + Port.PortKey(), () => ChipBuilder.PlayerGetRoomIndex((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetRoomIndex_" + PortKey(), () => ChipBuilder.PlayerGetRoomIndex((PlayerPort)this));
         }
 
         public IntPort RoomLevel
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetRoomLevel_" + Port.PortKey(), () => ChipBuilder.PlayerGetRoomLevel((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetRoomLevel_" + PortKey(), () => ChipBuilder.PlayerGetRoomLevel((PlayerPort)this));
         }
 
         public QuaternionPort Rotation
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetRotation_" + Port.PortKey(), () => ChipBuilder.GetRotation((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetRotation_" + PortKey(), () => ChipBuilder.GetRotation((PlayerPort)this));
         }
 
         public QuaternionPort RotationDeprecated
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetRotationDeprecated_" + Port.PortKey(), () => ChipBuilder.GetRotationDeprecated((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetRotationDeprecated_" + PortKey(), () => ChipBuilder.GetRotationDeprecated((PlayerPort)this));
         }
 
         public StringPort SeasonLeagueName
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetSeasonLeagueName_" + Port.PortKey(), () => ChipBuilder.GetPlayerSeasonLeagueName((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetSeasonLeagueName_" + PortKey(), () => ChipBuilder.GetPlayerSeasonLeagueName((PlayerPort)this));
         }
 
         public SeatPort Seat
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetSeat_" + Port.PortKey(), () => ChipBuilder.PlayerGetSeat((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetSeat_" + PortKey(), () => ChipBuilder.PlayerGetSeat((PlayerPort)this));
         }
 
         public BoolPort SprintInputEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetSprintInputEnabled_" + Port.PortKey(), () => ChipBuilder.PlayerGetSprintInputEnabled((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetSprintInputEnabled_" + PortKey(), () => ChipBuilder.PlayerGetSprintInputEnabled((PlayerPort)this));
             set => ChipBuilder.PlayerSetSprintInputEnabled((PlayerPort)this, value);
         }
 
         public FloatPort SprintSpeed
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetSprintSpeed_" + Port.PortKey(), () => ChipBuilder.PlayerGetSprintSpeed((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetSprintSpeed_" + PortKey(), () => ChipBuilder.PlayerGetSprintSpeed((PlayerPort)this));
             set => ChipBuilder.PlayerSetSprintSpeed((PlayerPort)this, value);
         }
 
         public Vector3Port SteeringDirection
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetSteeringDirection_" + Port.PortKey(), () => ChipBuilder.PlayerGetSteeringDirection((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetSteeringDirection_" + PortKey(), () => ChipBuilder.PlayerGetSteeringDirection((PlayerPort)this));
         }
 
         public (BoolPort Result, IntPort SecondsUntilEnabled) SubscribesToRoomOwner
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_SubscribesToRoomOwner_" + Port.PortKey(), () => ChipBuilder.PlayerSubscribesToRoomOwner((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_SubscribesToRoomOwner_" + PortKey(), () => ChipBuilder.PlayerSubscribesToRoomOwner((PlayerPort)this));
         }
 
         public ListPort<StringPort> Tags
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetTags_" + Port.PortKey(), () => ChipBuilder.GetTags((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetTags_" + PortKey(), () => ChipBuilder.GetTags((PlayerPort)this));
         }
 
         public FloatPort TeleportDelay
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetTeleportDelay_" + Port.PortKey(), () => ChipBuilder.PlayerGetTeleportDelay((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetTeleportDelay_" + PortKey(), () => ChipBuilder.PlayerGetTeleportDelay((PlayerPort)this));
             set => ChipBuilder.PlayerSetTeleportDelay((PlayerPort)this, value);
         }
 
         public FloatPort TeleportDistance
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetTeleportDistance_" + Port.PortKey(), () => ChipBuilder.PlayerGetTeleportDistance((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetTeleportDistance_" + PortKey(), () => ChipBuilder.PlayerGetTeleportDistance((PlayerPort)this));
             set => ChipBuilder.PlayerSetTeleportDistance((PlayerPort)this, value);
         }
 
         public IntPort TimeZone
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetTimeZone_" + Port.PortKey(), () => ChipBuilder.PlayerGetTimeZone((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetTimeZone_" + PortKey(), () => ChipBuilder.PlayerGetTimeZone((PlayerPort)this));
         }
 
         public CombatantPort ToCombatant
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_ToCombatant_" + Port.PortKey(), () => ChipBuilder.ToCombatant((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_ToCombatant_" + PortKey(), () => ChipBuilder.ToCombatant((PlayerPort)this));
         }
 
         public RecRoomObjectPort UnequipFromPlayer
@@ -1670,116 +1670,116 @@ namespace RRCGGenerated
 
         public Vector3Port UpVector
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetUpVector_" + Port.PortKey(), () => ChipBuilder.GetUpVector((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetUpVector_" + PortKey(), () => ChipBuilder.GetUpVector((PlayerPort)this));
         }
 
         public Vector3Port UpVectorDeprecated
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetUpVectorDeprecated_" + Port.PortKey(), () => ChipBuilder.GetUpVectorDeprecated((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetUpVectorDeprecated_" + PortKey(), () => ChipBuilder.GetUpVectorDeprecated((PlayerPort)this));
         }
 
         public Vector3Port Velocity
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetVelocity_" + Port.PortKey(), () => ChipBuilder.GetVelocity((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetVelocity_" + PortKey(), () => ChipBuilder.GetVelocity((PlayerPort)this));
         }
 
         public Vector3Port VelocityDeprecated
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetVelocityDeprecated_" + Port.PortKey(), () => ChipBuilder.GetVelocityDeprecated((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetVelocityDeprecated_" + PortKey(), () => ChipBuilder.GetVelocityDeprecated((PlayerPort)this));
         }
 
         public FloatPort VoiceRolloffDistance
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetVoiceRolloffDistance_" + Port.PortKey(), () => ChipBuilder.PlayerGetVoiceRolloffDistance((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetVoiceRolloffDistance_" + PortKey(), () => ChipBuilder.PlayerGetVoiceRolloffDistance((PlayerPort)this));
             set => ChipBuilder.PlayerSetVoiceRolloffDistance((PlayerPort)this, value);
         }
 
         public BoolPort WalkInputEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWalkInputEnabled_" + Port.PortKey(), () => ChipBuilder.PlayerGetWalkInputEnabled((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWalkInputEnabled_" + PortKey(), () => ChipBuilder.PlayerGetWalkInputEnabled((PlayerPort)this));
             set => ChipBuilder.PlayerSetWalkInputEnabled((PlayerPort)this, value);
         }
 
         public FloatPort WalkSpeed
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWalkSpeed_" + Port.PortKey(), () => ChipBuilder.PlayerGetWalkSpeed((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWalkSpeed_" + PortKey(), () => ChipBuilder.PlayerGetWalkSpeed((PlayerPort)this));
             set => ChipBuilder.PlayerSetWalkSpeed((PlayerPort)this, value);
         }
 
         public BoolPort WorldUIEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUIEnabled_" + Port.PortKey(), () => ChipBuilder.GetPlayerWorldUIEnabled((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUIEnabled_" + PortKey(), () => ChipBuilder.GetPlayerWorldUIEnabled((PlayerPort)this));
         }
 
         public ColorPort WorldUIPrimaryBarColor
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUIPrimaryBarColor_" + Port.PortKey(), () => ChipBuilder.GetPlayerWorldUIPrimaryBarColor((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUIPrimaryBarColor_" + PortKey(), () => ChipBuilder.GetPlayerWorldUIPrimaryBarColor((PlayerPort)this));
             set => ChipBuilder.SetPlayerWorldUIPrimaryBarColor((PlayerPort)this, value);
         }
 
         public BoolPort WorldUIPrimaryBarEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUIPrimaryBarEnabled_" + Port.PortKey(), () => ChipBuilder.GetPlayerWorldUIPrimaryBarEnabled((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUIPrimaryBarEnabled_" + PortKey(), () => ChipBuilder.GetPlayerWorldUIPrimaryBarEnabled((PlayerPort)this));
             set => ChipBuilder.SetPlayerWorldUIPrimaryBarEnabled((PlayerPort)this, value);
         }
 
         public IntPort WorldUIPrimaryBarMaxValue
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUIPrimaryBarMaxValue_" + Port.PortKey(), () => ChipBuilder.GetPlayerWorldUIPrimaryBarMaxValue((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUIPrimaryBarMaxValue_" + PortKey(), () => ChipBuilder.GetPlayerWorldUIPrimaryBarMaxValue((PlayerPort)this));
             set => ChipBuilder.SetPlayerWorldUIPrimaryBarMaxValue((PlayerPort)this, value);
         }
 
         public IntPort WorldUIPrimaryBarValue
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUIPrimaryBarValue_" + Port.PortKey(), () => ChipBuilder.GetPlayerWorldUIPrimaryBarValue((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUIPrimaryBarValue_" + PortKey(), () => ChipBuilder.GetPlayerWorldUIPrimaryBarValue((PlayerPort)this));
             set => ChipBuilder.SetPlayerWorldUIPrimaryBarValue((PlayerPort)this, value);
         }
 
         public ColorPort WorldUISecondaryBarColor
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUISecondaryBarColor_" + Port.PortKey(), () => ChipBuilder.GetPlayerWorldUISecondaryBarColor((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUISecondaryBarColor_" + PortKey(), () => ChipBuilder.GetPlayerWorldUISecondaryBarColor((PlayerPort)this));
             set => ChipBuilder.SetPlayerWorldUISecondaryBarColor((PlayerPort)this, value);
         }
 
         public BoolPort WorldUISecondaryBarEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUISecondaryBarEnabled_" + Port.PortKey(), () => ChipBuilder.GetPlayerWorldUISecondaryBarEnabled((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUISecondaryBarEnabled_" + PortKey(), () => ChipBuilder.GetPlayerWorldUISecondaryBarEnabled((PlayerPort)this));
             set => ChipBuilder.SetPlayerWorldUISecondaryBarEnabled((PlayerPort)this, value);
         }
 
         public IntPort WorldUISecondaryBarMaxValue
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUISecondaryBarMaxValue_" + Port.PortKey(), () => ChipBuilder.GetPlayerWorldUISecondaryBarMaxValue((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUISecondaryBarMaxValue_" + PortKey(), () => ChipBuilder.GetPlayerWorldUISecondaryBarMaxValue((PlayerPort)this));
             set => ChipBuilder.SetPlayerWorldUISecondaryBarMaxValue((PlayerPort)this, value);
         }
 
         public IntPort WorldUISecondaryBarValue
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUISecondaryBarValue_" + Port.PortKey(), () => ChipBuilder.GetPlayerWorldUISecondaryBarValue((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUISecondaryBarValue_" + PortKey(), () => ChipBuilder.GetPlayerWorldUISecondaryBarValue((PlayerPort)this));
             set => ChipBuilder.SetPlayerWorldUISecondaryBarValue((PlayerPort)this, value);
         }
 
         public ColorPort WorldUITextColor
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUITextColor_" + Port.PortKey(), () => ChipBuilder.GetPlayerWorldUITextColor((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUITextColor_" + PortKey(), () => ChipBuilder.GetPlayerWorldUITextColor((PlayerPort)this));
             set => ChipBuilder.SetPlayerWorldUITextColor((PlayerPort)this, value);
         }
 
         public BoolPort WorldUITextEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUITextEnabled_" + Port.PortKey(), () => ChipBuilder.GetPlayerWorldUITextEnabled((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUITextEnabled_" + PortKey(), () => ChipBuilder.GetPlayerWorldUITextEnabled((PlayerPort)this));
             set => ChipBuilder.SetPlayerWorldUITextEnabled((PlayerPort)this, value);
         }
 
         public StringPort WorldUITextValue
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUITextValue_" + Port.PortKey(), () => ChipBuilder.GetPlayerWorldUITextValue((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetWorldUITextValue_" + PortKey(), () => ChipBuilder.GetPlayerWorldUITextValue((PlayerPort)this));
             set => ChipBuilder.SetPlayerWorldUITextValue((PlayerPort)this, value);
         }
 
         public IntPort XP
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetXP_" + Port.PortKey(), () => ChipBuilder.PlayerGetXP((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetXP_" + PortKey(), () => ChipBuilder.PlayerGetXP((PlayerPort)this));
         }
 
         public void AddTag(StringPort Tag)
@@ -1809,7 +1809,7 @@ namespace RRCGGenerated
 
         public (IntPort Health, IntPort Shield, IntPort MaxHealth) CombatantGetHealth()
         {
-            return CircuitBuilder.Singleton("RRCG_Player_CombatantGetHealth_" + Port.PortKey(), () => ChipBuilder.CombatantGetHealth((PlayerPort)this));
+            return CircuitBuilder.Singleton("RRCG_Player_CombatantGetHealth_" + PortKey(), () => ChipBuilder.CombatantGetHealth((PlayerPort)this));
         }
 
         public void CombatantReceiveDamage(IntPort Damage, BoolPort IgnoreShield, AIPort DamageSource)
@@ -2217,7 +2217,7 @@ namespace RRCGGenerated
     {
         public BoolPort Active
         {
-            get => CircuitBuilder.Singleton("RRCG_PlayerSpawnPointV2_GetActive_" + Port.PortKey(), () => ChipBuilder.RespawnPointGetActive((PlayerSpawnPointV2Port)this));
+            get => CircuitBuilder.Singleton("RRCG_PlayerSpawnPointV2_GetActive_" + PortKey(), () => ChipBuilder.RespawnPointGetActive((PlayerSpawnPointV2Port)this));
             set => ChipBuilder.RespawnPointSetActive((PlayerSpawnPointV2Port)this, value);
         }
 
@@ -2279,61 +2279,61 @@ namespace RRCGGenerated
     {
         public PlayerPort FiringPlayer
         {
-            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetFiringPlayer_" + Port.PortKey(), () => ChipBuilder.ProjectileLauncherGetFiringPlayer((ProjectileLauncherPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetFiringPlayer_" + PortKey(), () => ChipBuilder.ProjectileLauncherGetFiringPlayer((ProjectileLauncherPort)this));
             set => ChipBuilder.ProjectileLauncherSetFiringPlayer((ProjectileLauncherPort)this, value);
         }
 
         public IntPort HandDamage
         {
-            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetHandDamage_" + Port.PortKey(), () => ChipBuilder.ProjectileLauncherGetHandDamage((ProjectileLauncherPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetHandDamage_" + PortKey(), () => ChipBuilder.ProjectileLauncherGetHandDamage((ProjectileLauncherPort)this));
             set => ChipBuilder.ProjectileLauncherSetHandDamage((ProjectileLauncherPort)this, value);
         }
 
         public IntPort HeadDamage
         {
-            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetHeadDamage_" + Port.PortKey(), () => ChipBuilder.ProjectileLauncherGetHeadDamage((ProjectileLauncherPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetHeadDamage_" + PortKey(), () => ChipBuilder.ProjectileLauncherGetHeadDamage((ProjectileLauncherPort)this));
             set => ChipBuilder.ProjectileLauncherSetHeadDamage((ProjectileLauncherPort)this, value);
         }
 
         public ColorPort ProjectileColor
         {
-            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetProjectileColor_" + Port.PortKey(), () => ChipBuilder.ProjectileLauncherGetProjectileColor((ProjectileLauncherPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetProjectileColor_" + PortKey(), () => ChipBuilder.ProjectileLauncherGetProjectileColor((ProjectileLauncherPort)this));
             set => ChipBuilder.ProjectileLauncherSetProjectileColor((ProjectileLauncherPort)this, value);
         }
 
         public IntPort ProjectileCount
         {
-            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetProjectileCount_" + Port.PortKey(), () => ChipBuilder.ProjectileLauncherGetProjectileCount((ProjectileLauncherPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetProjectileCount_" + PortKey(), () => ChipBuilder.ProjectileLauncherGetProjectileCount((ProjectileLauncherPort)this));
             set => ChipBuilder.ProjectileLauncherSetProjectileCount((ProjectileLauncherPort)this, value);
         }
 
         public FloatPort ProjectileLifetime
         {
-            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetProjectileLifetime_" + Port.PortKey(), () => ChipBuilder.ProjectileLauncherGetProjectileLifetime((ProjectileLauncherPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetProjectileLifetime_" + PortKey(), () => ChipBuilder.ProjectileLauncherGetProjectileLifetime((ProjectileLauncherPort)this));
             set => ChipBuilder.ProjectileLauncherSetProjectileLifetime((ProjectileLauncherPort)this, value);
         }
 
         public FloatPort ProjectileSpeed
         {
-            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetProjectileSpeed_" + Port.PortKey(), () => ChipBuilder.ProjectileLauncherGetProjectileSpeed((ProjectileLauncherPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetProjectileSpeed_" + PortKey(), () => ChipBuilder.ProjectileLauncherGetProjectileSpeed((ProjectileLauncherPort)this));
             set => ChipBuilder.ProjectileLauncherSetProjectileSpeed((ProjectileLauncherPort)this, value);
         }
 
         public FloatPort ProjectileSpread
         {
-            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetProjectileSpread_" + Port.PortKey(), () => ChipBuilder.ProjectileLauncherGetProjectileSpread((ProjectileLauncherPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetProjectileSpread_" + PortKey(), () => ChipBuilder.ProjectileLauncherGetProjectileSpread((ProjectileLauncherPort)this));
             set => ChipBuilder.ProjectileLauncherSetProjectileSpread((ProjectileLauncherPort)this, value);
         }
 
         public IntPort RecRoomObjectDamage
         {
-            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetRecRoomObjectDamage_" + Port.PortKey(), () => ChipBuilder.ProjectileLauncherGetRecRoomObjectDamage((ProjectileLauncherPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetRecRoomObjectDamage_" + PortKey(), () => ChipBuilder.ProjectileLauncherGetRecRoomObjectDamage((ProjectileLauncherPort)this));
             set => ChipBuilder.ProjectileLauncherSetRecRoomObjectDamage((ProjectileLauncherPort)this, value);
         }
 
         public IntPort TorsoDamage
         {
-            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetTorsoDamage_" + Port.PortKey(), () => ChipBuilder.ProjectileLauncherGetTorsoDamage((ProjectileLauncherPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ProjectileLauncher_GetTorsoDamage_" + PortKey(), () => ChipBuilder.ProjectileLauncherGetTorsoDamage((ProjectileLauncherPort)this));
             set => ChipBuilder.ProjectileLauncherSetTorsoDamage((ProjectileLauncherPort)this, value);
         }
 
@@ -2347,89 +2347,89 @@ namespace RRCGGenerated
     {
         public Vector3Port AngularVelocity
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetAngularVelocity_" + Port.PortKey(), () => ChipBuilder.GetAngularVelocity((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetAngularVelocity_" + PortKey(), () => ChipBuilder.GetAngularVelocity((RecRoomObjectPort)this));
         }
 
         public PlayerPort Authority
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetAuthority_" + Port.PortKey(), () => ChipBuilder.RecRoomObjectGetAuthority((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetAuthority_" + PortKey(), () => ChipBuilder.RecRoomObjectGetAuthority((RecRoomObjectPort)this));
             set => ChipBuilder.RecRoomObjectSetAuthority((RecRoomObjectPort)this, value);
         }
 
         public StringPort FirstTag
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetFirstTag_" + Port.PortKey(), () => ChipBuilder.GetFirstTag((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetFirstTag_" + PortKey(), () => ChipBuilder.GetFirstTag((RecRoomObjectPort)this));
         }
 
         public Vector3Port ForwardVector
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetForwardVector_" + Port.PortKey(), () => ChipBuilder.GetForwardVector((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetForwardVector_" + PortKey(), () => ChipBuilder.GetForwardVector((RecRoomObjectPort)this));
         }
 
         public Vector3Port ForwardVectorDeprecated
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetForwardVectorDeprecated_" + Port.PortKey(), () => ChipBuilder.GetForwardVectorDeprecated((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetForwardVectorDeprecated_" + PortKey(), () => ChipBuilder.GetForwardVectorDeprecated((RecRoomObjectPort)this));
         }
 
         public (BoolPort IsHeld, PlayerPort HolderPlayer) HolderPlayer
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetHolderPlayer_" + Port.PortKey(), () => ChipBuilder.RecRoomObjectGetHolderPlayer((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetHolderPlayer_" + PortKey(), () => ChipBuilder.RecRoomObjectGetHolderPlayer((RecRoomObjectPort)this));
         }
 
         public BoolPort IsLocalPlayerAuthority
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetIsLocalPlayerAuthority_" + Port.PortKey(), () => ChipBuilder.RecRoomObjectGetIsLocalPlayerAuthority((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetIsLocalPlayerAuthority_" + PortKey(), () => ChipBuilder.RecRoomObjectGetIsLocalPlayerAuthority((RecRoomObjectPort)this));
         }
 
         public (PlayerPort Player, BoolPort CurrentlyHeldOrEquipped) LastHoldingOrEquippingPlayer
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetLastHoldingOrEquippingPlayer_" + Port.PortKey(), () => ChipBuilder.RecRoomObjectGetLastHoldingOrEquippingPlayer((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetLastHoldingOrEquippingPlayer_" + PortKey(), () => ChipBuilder.RecRoomObjectGetLastHoldingOrEquippingPlayer((RecRoomObjectPort)this));
         }
 
         public Vector3Port Position
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetPosition_" + Port.PortKey(), () => ChipBuilder.GetPosition((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetPosition_" + PortKey(), () => ChipBuilder.GetPosition((RecRoomObjectPort)this));
             set => ChipBuilder.SetPosition((RecRoomObjectPort)this, value);
         }
 
         public Vector3Port PositionDeprecated
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetPositionDeprecated_" + Port.PortKey(), () => ChipBuilder.GetPositionDeprecated((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetPositionDeprecated_" + PortKey(), () => ChipBuilder.GetPositionDeprecated((RecRoomObjectPort)this));
         }
 
         public QuaternionPort Rotation
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetRotation_" + Port.PortKey(), () => ChipBuilder.GetRotation((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetRotation_" + PortKey(), () => ChipBuilder.GetRotation((RecRoomObjectPort)this));
         }
 
         public QuaternionPort RotationDeprecated
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetRotationDeprecated_" + Port.PortKey(), () => ChipBuilder.GetRotationDeprecated((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetRotationDeprecated_" + PortKey(), () => ChipBuilder.GetRotationDeprecated((RecRoomObjectPort)this));
         }
 
         public ListPort<StringPort> Tags
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetTags_" + Port.PortKey(), () => ChipBuilder.GetTags((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetTags_" + PortKey(), () => ChipBuilder.GetTags((RecRoomObjectPort)this));
         }
 
         public Vector3Port UpVector
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetUpVector_" + Port.PortKey(), () => ChipBuilder.GetUpVector((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetUpVector_" + PortKey(), () => ChipBuilder.GetUpVector((RecRoomObjectPort)this));
         }
 
         public Vector3Port UpVectorDeprecated
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetUpVectorDeprecated_" + Port.PortKey(), () => ChipBuilder.GetUpVectorDeprecated((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetUpVectorDeprecated_" + PortKey(), () => ChipBuilder.GetUpVectorDeprecated((RecRoomObjectPort)this));
         }
 
         public Vector3Port Velocity
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetVelocity_" + Port.PortKey(), () => ChipBuilder.GetVelocity((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetVelocity_" + PortKey(), () => ChipBuilder.GetVelocity((RecRoomObjectPort)this));
         }
 
         public Vector3Port VelocityDeprecated
         {
-            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetVelocityDeprecated_" + Port.PortKey(), () => ChipBuilder.GetVelocityDeprecated((RecRoomObjectPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetVelocityDeprecated_" + PortKey(), () => ChipBuilder.GetVelocityDeprecated((RecRoomObjectPort)this));
         }
 
         public void AddTag(StringPort Tag)
@@ -2525,7 +2525,7 @@ namespace RRCGGenerated
         public T FromRecRoomObject<T>()
             where T : AnyPort, new()
         {
-            return CircuitBuilder.Singleton("RRCG_RecRoomObject_FromRecRoomObject_" + Port.PortKey(), () => ChipBuilder.FromRecRoomObject<T>((RecRoomObjectPort)this));
+            return CircuitBuilder.Singleton("RRCG_RecRoomObject_FromRecRoomObject_" + PortKey(), () => ChipBuilder.FromRecRoomObject<T>((RecRoomObjectPort)this));
         }
 
         public (RecRoomObjectPort Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(ListPort<RecRoomObjectPort> Targets)
@@ -2709,13 +2709,13 @@ namespace RRCGGenerated
     {
         public DestinationRoomPort Destination
         {
-            get => CircuitBuilder.Singleton("RRCG_RoomDoor_GetDestination_" + Port.PortKey(), () => ChipBuilder.DoorGetDestination((RoomDoorPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RoomDoor_GetDestination_" + PortKey(), () => ChipBuilder.DoorGetDestination((RoomDoorPort)this));
             set => ChipBuilder.DoorSetDestination((RoomDoorPort)this, value);
         }
 
         public BoolPort Locked
         {
-            get => CircuitBuilder.Singleton("RRCG_RoomDoor_GetLocked_" + Port.PortKey(), () => ChipBuilder.DoorGetLocked((RoomDoorPort)this));
+            get => CircuitBuilder.Singleton("RRCG_RoomDoor_GetLocked_" + PortKey(), () => ChipBuilder.DoorGetLocked((RoomDoorPort)this));
             set => ChipBuilder.DoorSetLocked((RoomDoorPort)this, value);
         }
     }
@@ -2745,25 +2745,25 @@ namespace RRCGGenerated
     {
         public FloatPort Rotation
         {
-            get => CircuitBuilder.Singleton("RRCG_Rotator_GetRotation_" + Port.PortKey(), () => ChipBuilder.RotatorGetRotation((RotatorPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Rotator_GetRotation_" + PortKey(), () => ChipBuilder.RotatorGetRotation((RotatorPort)this));
             set => ChipBuilder.RotatorSetRotation((RotatorPort)this, value);
         }
 
         public FloatPort RotationAcceleration
         {
-            get => CircuitBuilder.Singleton("RRCG_Rotator_GetRotationAcceleration_" + Port.PortKey(), () => ChipBuilder.RotatorGetRotationAcceleration((RotatorPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Rotator_GetRotationAcceleration_" + PortKey(), () => ChipBuilder.RotatorGetRotationAcceleration((RotatorPort)this));
             set => ChipBuilder.RotatorSetRotationAcceleration((RotatorPort)this, value);
         }
 
         public FloatPort RotationSpeed
         {
-            get => CircuitBuilder.Singleton("RRCG_Rotator_GetRotationSpeed_" + Port.PortKey(), () => ChipBuilder.RotatorGetRotationSpeed((RotatorPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Rotator_GetRotationSpeed_" + PortKey(), () => ChipBuilder.RotatorGetRotationSpeed((RotatorPort)this));
             set => ChipBuilder.RotatorSetRotationSpeed((RotatorPort)this, value);
         }
 
         public FloatPort TargetRotation
         {
-            get => CircuitBuilder.Singleton("RRCG_Rotator_GetTargetRotation_" + Port.PortKey(), () => ChipBuilder.RotatorGetTargetRotation((RotatorPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Rotator_GetTargetRotation_" + PortKey(), () => ChipBuilder.RotatorGetTargetRotation((RotatorPort)this));
             set => ChipBuilder.RotatorSetTargetRotation((RotatorPort)this, value);
         }
     }
@@ -2772,19 +2772,19 @@ namespace RRCGGenerated
     {
         public BoolPort LockPlayersIn
         {
-            get => CircuitBuilder.Singleton("RRCG_Seat_GetLockPlayersIn_" + Port.PortKey(), () => ChipBuilder.SeatGetLockPlayersIn((SeatPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Seat_GetLockPlayersIn_" + PortKey(), () => ChipBuilder.SeatGetLockPlayersIn((SeatPort)this));
             set => ChipBuilder.SeatSetLockPlayersIn((SeatPort)this, value);
         }
 
         public BoolPort LockPlayersOut
         {
-            get => CircuitBuilder.Singleton("RRCG_Seat_GetLockPlayersOut_" + Port.PortKey(), () => ChipBuilder.SeatGetLockPlayersOut((SeatPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Seat_GetLockPlayersOut_" + PortKey(), () => ChipBuilder.SeatGetLockPlayersOut((SeatPort)this));
             set => ChipBuilder.SeatSetLockPlayersOut((SeatPort)this, value);
         }
 
         public PlayerPort SeatedPlayer
         {
-            get => CircuitBuilder.Singleton("RRCG_Seat_GetSeatedPlayer_" + Port.PortKey(), () => ChipBuilder.SeatGetSeatedPlayer((SeatPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Seat_GetSeatedPlayer_" + PortKey(), () => ChipBuilder.SeatGetSeatedPlayer((SeatPort)this));
         }
 
         public void SetSeatedPlayer(PlayerPort Player, AlternativeExec Fail)
@@ -2802,12 +2802,12 @@ namespace RRCGGenerated
     {
         public BoolPort IsPlaying
         {
-            get => CircuitBuilder.Singleton("RRCG_SFX_GetIsPlaying_" + Port.PortKey(), () => ChipBuilder.SFXGetIsPlaying((SFXPort)this));
+            get => CircuitBuilder.Singleton("RRCG_SFX_GetIsPlaying_" + PortKey(), () => ChipBuilder.SFXGetIsPlaying((SFXPort)this));
         }
 
         public IntPort Volume
         {
-            get => CircuitBuilder.Singleton("RRCG_SFX_GetVolume_" + Port.PortKey(), () => ChipBuilder.SFXGetVolume((SFXPort)this));
+            get => CircuitBuilder.Singleton("RRCG_SFX_GetVolume_" + PortKey(), () => ChipBuilder.SFXGetVolume((SFXPort)this));
             set => ChipBuilder.SFXSetVolume((SFXPort)this, value);
         }
 
@@ -2926,7 +2926,7 @@ namespace RRCGGenerated
     {
         public BoolPort IsSwinging
         {
-            get => CircuitBuilder.Singleton("RRCG_SwingHandle_GetIsSwinging_" + Port.PortKey(), () => ChipBuilder.SwingHandleGetIsSwinging((SwingHandlePort)this));
+            get => CircuitBuilder.Singleton("RRCG_SwingHandle_GetIsSwinging_" + PortKey(), () => ChipBuilder.SwingHandleGetIsSwinging((SwingHandlePort)this));
         }
 
         public void PlayHandleHaptics(IntPort Duration, FloatPort Intensity)
@@ -2939,7 +2939,7 @@ namespace RRCGGenerated
     {
         public ColorPort Color
         {
-            get => CircuitBuilder.Singleton("RRCG_Text_GetColor_" + Port.PortKey(), () => ChipBuilder.TextGetColor((TextPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Text_GetColor_" + PortKey(), () => ChipBuilder.TextGetColor((TextPort)this));
             set => ChipBuilder.TextSetColor((TextPort)this, value);
         }
 
@@ -2955,7 +2955,7 @@ namespace RRCGGenerated
 
         public StringPort Text
         {
-            get => CircuitBuilder.Singleton("RRCG_Text_GetText_" + Port.PortKey(), () => ChipBuilder.TextGetText((TextPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Text_GetText_" + PortKey(), () => ChipBuilder.TextGetText((TextPort)this));
             set => ChipBuilder.TextSetText((TextPort)this, value);
         }
     }
@@ -2977,7 +2977,7 @@ namespace RRCGGenerated
     {
         public BoolPort IsPressed
         {
-            get => CircuitBuilder.Singleton("RRCG_ToggleButton_GetIsPressed_" + Port.PortKey(), () => ChipBuilder.ToggleButtonGetIsPressed((ToggleButtonPort)this));
+            get => CircuitBuilder.Singleton("RRCG_ToggleButton_GetIsPressed_" + PortKey(), () => ChipBuilder.ToggleButtonGetIsPressed((ToggleButtonPort)this));
             set => ChipBuilder.ToggleButtonSetIsPressed((ToggleButtonPort)this, value);
         }
     }
@@ -2986,18 +2986,18 @@ namespace RRCGGenerated
     {
         public (BoolPort IsTouchActive, Vector3Port TouchPosition, Vector3Port WorldPosition) ActiveTouch
         {
-            get => CircuitBuilder.Singleton("RRCG_Touchpad_GetActiveTouch_" + Port.PortKey(), () => ChipBuilder.TouchpadComponentGetActiveTouch((TouchpadPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Touchpad_GetActiveTouch_" + PortKey(), () => ChipBuilder.TouchpadComponentGetActiveTouch((TouchpadPort)this));
         }
 
         public StringPort InteractionLabel
         {
-            get => CircuitBuilder.Singleton("RRCG_Touchpad_GetInteractionLabel_" + Port.PortKey(), () => ChipBuilder.TouchpadComponentGetInteractionLabel((TouchpadPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Touchpad_GetInteractionLabel_" + PortKey(), () => ChipBuilder.TouchpadComponentGetInteractionLabel((TouchpadPort)this));
             set => ChipBuilder.TouchpadComponentSetInteractionLabel((TouchpadPort)this, value);
         }
 
         public BoolPort IsEnabled
         {
-            get => CircuitBuilder.Singleton("RRCG_Touchpad_GetIsEnabled_" + Port.PortKey(), () => ChipBuilder.TouchpadComponentGetIsEnabled((TouchpadPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Touchpad_GetIsEnabled_" + PortKey(), () => ChipBuilder.TouchpadComponentGetIsEnabled((TouchpadPort)this));
             set => ChipBuilder.TouchpadComponentSetIsEnabled((TouchpadPort)this, value);
         }
     }
@@ -3006,13 +3006,13 @@ namespace RRCGGenerated
     {
         public StringPort ControlPrompt
         {
-            get => CircuitBuilder.Singleton("RRCG_TriggerHandle_GetControlPrompt_" + Port.PortKey(), () => ChipBuilder.TriggerHandleGetControlPrompt((TriggerHandlePort)this));
+            get => CircuitBuilder.Singleton("RRCG_TriggerHandle_GetControlPrompt_" + PortKey(), () => ChipBuilder.TriggerHandleGetControlPrompt((TriggerHandlePort)this));
             set => ChipBuilder.TriggerHandleSetControlPrompt((TriggerHandlePort)this, value);
         }
 
         public BoolPort PrimaryActionHeld
         {
-            get => CircuitBuilder.Singleton("RRCG_TriggerHandle_GetPrimaryActionHeld_" + Port.PortKey(), () => ChipBuilder.TriggerHandleGetPrimaryActionHeld((TriggerHandlePort)this));
+            get => CircuitBuilder.Singleton("RRCG_TriggerHandle_GetPrimaryActionHeld_" + PortKey(), () => ChipBuilder.TriggerHandleGetPrimaryActionHeld((TriggerHandlePort)this));
         }
 
         public void PlayHandleHaptics(IntPort Duration, FloatPort Intensity)
@@ -3025,34 +3025,34 @@ namespace RRCGGenerated
     {
         public StringPort FilterRole
         {
-            get => CircuitBuilder.Singleton("RRCG_TriggerVolume_GetFilterRole_" + Port.PortKey(), () => ChipBuilder.TriggerVolumeGetFilterRole((TriggerVolumePort)this));
+            get => CircuitBuilder.Singleton("RRCG_TriggerVolume_GetFilterRole_" + PortKey(), () => ChipBuilder.TriggerVolumeGetFilterRole((TriggerVolumePort)this));
             set => ChipBuilder.TriggerVolumeSetFilterRole((TriggerVolumePort)this, value);
         }
 
         public ListPort<StringPort> FilterTags
         {
-            get => CircuitBuilder.Singleton("RRCG_TriggerVolume_GetFilterTags_" + Port.PortKey(), () => ChipBuilder.TriggerVolumeGetFilterTags((TriggerVolumePort)this));
+            get => CircuitBuilder.Singleton("RRCG_TriggerVolume_GetFilterTags_" + PortKey(), () => ChipBuilder.TriggerVolumeGetFilterTags((TriggerVolumePort)this));
             set => ChipBuilder.TriggerVolumeSetFilterTags((TriggerVolumePort)this, value);
         }
 
         public IntPort ObjectCount
         {
-            get => CircuitBuilder.Singleton("RRCG_TriggerVolume_GetObjectCount_" + Port.PortKey(), () => ChipBuilder.TriggerVolumeGetObjectCount((TriggerVolumePort)this));
+            get => CircuitBuilder.Singleton("RRCG_TriggerVolume_GetObjectCount_" + PortKey(), () => ChipBuilder.TriggerVolumeGetObjectCount((TriggerVolumePort)this));
         }
 
         public ListPort<RecRoomObjectPort> Objects
         {
-            get => CircuitBuilder.Singleton("RRCG_TriggerVolume_GetObjects_" + Port.PortKey(), () => ChipBuilder.TriggerVolumeGetObjects((TriggerVolumePort)this));
+            get => CircuitBuilder.Singleton("RRCG_TriggerVolume_GetObjects_" + PortKey(), () => ChipBuilder.TriggerVolumeGetObjects((TriggerVolumePort)this));
         }
 
         public IntPort PlayerCount
         {
-            get => CircuitBuilder.Singleton("RRCG_TriggerVolume_GetPlayerCount_" + Port.PortKey(), () => ChipBuilder.TriggerVolumeGetPlayerCount((TriggerVolumePort)this));
+            get => CircuitBuilder.Singleton("RRCG_TriggerVolume_GetPlayerCount_" + PortKey(), () => ChipBuilder.TriggerVolumeGetPlayerCount((TriggerVolumePort)this));
         }
 
         public ListPort<PlayerPort> Players
         {
-            get => CircuitBuilder.Singleton("RRCG_TriggerVolume_GetPlayers_" + Port.PortKey(), () => ChipBuilder.TriggerVolumeGetPlayers((TriggerVolumePort)this));
+            get => CircuitBuilder.Singleton("RRCG_TriggerVolume_GetPlayers_" + PortKey(), () => ChipBuilder.TriggerVolumeGetPlayers((TriggerVolumePort)this));
         }
     }
 
@@ -3068,7 +3068,7 @@ namespace RRCGGenerated
     {
         public BoolPort Enabled
         {
-            get => CircuitBuilder.Singleton("RRCG_WelcomeMat_GetEnabled_" + Port.PortKey(), () => ChipBuilder.WelcomeMatGetEnabled((WelcomeMatPort)this));
+            get => CircuitBuilder.Singleton("RRCG_WelcomeMat_GetEnabled_" + PortKey(), () => ChipBuilder.WelcomeMatGetEnabled((WelcomeMatPort)this));
             set => ChipBuilder.WelcomeMatSetEnabled((WelcomeMatPort)this, value);
         }
     }

@@ -68,7 +68,7 @@ namespace RRCGBuild
             get
             {
                 if (IsDataPort) return false;
-                else return CircuitBuilder.Singleton("IsValid_" + Port.PortKey(), () => ChipBuilder.IsValid(this));
+                else return CircuitBuilder.Singleton("IsValid_" + PortKey(), () => ChipBuilder.IsValid(this));
             }
         }
 
@@ -90,7 +90,13 @@ namespace RRCGBuild
             }
 
             if (this is StringPort sp) return sp;
-            return CircuitBuilder.Singleton("ToString_" + Port.PortKey(), () => ChipBuilder.ToString(this));
+            return CircuitBuilder.Singleton("ToString_" + PortKey(), () => ChipBuilder.ToString(this));
+        }
+
+        public string PortKey()
+        {
+            if (IsActualPort) return Port.Node.Id + "_" + Port.Group + "_" + Port.Index;
+            return "Data_" + Data.GetType() + "_" + Data.ToString();
         }
 
         public bool EquivalentTo(AnyPort b)
@@ -123,7 +129,7 @@ namespace RRCGBuild
 
         public IntPort IndexOf(T value)
         {
-            if (IsActualPort) return CircuitBuilder.Singleton("List_IndexOf_" + Port.PortKey(), () => ChipBuilder.ListGetFirstIndexOf(this, value));
+            if (IsActualPort) return CircuitBuilder.Singleton("List_IndexOf_" + PortKey(), () => ChipBuilder.ListGetFirstIndexOf(this, value));
             return Data.IndexOf(value);
         }
 
@@ -133,8 +139,8 @@ namespace RRCGBuild
             {
                 var minValue = this switch
                 {
-                    ListPort<FloatPort> floatList => CircuitBuilder.Singleton("List_Min_" + Port.PortKey(), () => ChipBuilder.ListMin(floatList)),
-                    ListPort<IntPort> intList => CircuitBuilder.Singleton("List_Min_" + Port.PortKey(), () => ChipBuilder.ListMin(intList)),
+                    ListPort<FloatPort> floatList => CircuitBuilder.Singleton("List_Min_" + PortKey(), () => ChipBuilder.ListMin(floatList)),
+                    ListPort<IntPort> intList => CircuitBuilder.Singleton("List_Min_" + PortKey(), () => ChipBuilder.ListMin(intList)),
 
                     _ => throw new Exception("Min() is only supported on number ports")
                 };
@@ -159,8 +165,8 @@ namespace RRCGBuild
             {
                 var maxValue = this switch
                 {
-                    ListPort<FloatPort> floatList => CircuitBuilder.Singleton("List_Max_" + Port.PortKey(), () => ChipBuilder.ListMax(floatList)),
-                    ListPort<IntPort> intList => CircuitBuilder.Singleton("List_Max_" + Port.PortKey(), () => ChipBuilder.ListMax(intList)),
+                    ListPort<FloatPort> floatList => CircuitBuilder.Singleton("List_Max_" + PortKey(), () => ChipBuilder.ListMax(floatList)),
+                    ListPort<IntPort> intList => CircuitBuilder.Singleton("List_Max_" + PortKey(), () => ChipBuilder.ListMax(intList)),
 
                     _ => throw new Exception("Max() is only supported on number ports")
                 };
@@ -179,7 +185,7 @@ namespace RRCGBuild
             }
         }
 
-        public IntPort Count => CircuitBuilder.Singleton("List_Get_Count_" + Port.PortKey(), () => ChipBuilder.ListGetCount(this));
+        public IntPort Count => CircuitBuilder.Singleton("List_Get_Count_" + PortKey(), () => ChipBuilder.ListGetCount(this));
     }
     public class RRTuplePort<T0, T1> : AnyPort { }
 
