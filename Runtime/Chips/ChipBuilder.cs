@@ -937,6 +937,14 @@ namespace RRCGBuild
 
         #endregion MathNodes
 
+        //
+        // Shorthands
+        //
+        #region Shorthands
+        public static BoolPort LocalPlayerIsAuthority => Equals(GetAuthority(), PlayerPort.Local);
+        public static BoolPort LocalPlayerIsRoomAuthority => Equals(GetRoomAuthority(), PlayerPort.Local);
+        #endregion
+
         // 
         // Misc
         // 

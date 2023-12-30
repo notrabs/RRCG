@@ -108,6 +108,9 @@ public class Optimizer : CircuitDescriptor
         // Test non-dangling condition
         var condition = Player.Local == GetAuthority();
         if (condition) ChipLib.Log(condition);
+
+        // Test shorthand
+        if (LocalPlayerIsAuthority) LogString("true");
     }
 
     void TestIfLocalPlayerIsRoomAuthorityOptimizer()
@@ -146,6 +149,9 @@ public class Optimizer : CircuitDescriptor
         // Test non-dangling condition
         var condition = Player.Local == GetRoomAuthority();
         if (condition) ChipLib.Log(condition);
+
+        // Test shorthand
+        if (LocalPlayerIsRoomAuthority) LogString("true");
     }
 
     void TestIfLocalPlayerShouldRunOptimizer()

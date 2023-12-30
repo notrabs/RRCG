@@ -442,6 +442,20 @@ namespace RRCGBuild
             }
 
             );
+            __If(__ConditionalContext(false), () => LocalPlayerIsAuthority, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
             __EndAccessibilityScope();
             ExecFlow.current.Merge(rrcg_return_flow);
         }
@@ -605,6 +619,20 @@ namespace RRCGBuild
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 ChipLib.Log(condition);
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            __If(__ConditionalContext(false), () => LocalPlayerIsRoomAuthority, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                LogString("true");
                 __EndAccessibilityScope();
             }
 
