@@ -769,11 +769,8 @@ namespace RRCG
 
             // Split declaration from initialization
             // so the getter method in __VariableDeclarationExpression works
-            if (visited.Declaration.Variables.All(v => v.Initializer == null))
-                return visited;
-
             var statements = new SyntaxList<StatementSyntax>();
-            visited = visited.ReplaceNodes(visited.Declaration.Variables.Where(v => v.Initializer != null), (node, _) =>
+            visited = visited.ReplaceNodes(visited.Declaration.Variables, (node, _) =>
             {
                 // Create initialization statement
                 // (the __VariableDeclaratorExpression call would be written
@@ -820,26 +817,23 @@ namespace RRCG
             // Attempt to resolve build-realm type for the declaration.
             // Write it as the generic parameter for the call to __VariableDeclaratorExpression
             TypeSyntax? finalType = null;
-            if (node.Initializer is EqualsValueClauseSyntax initializer)
+            var symbolInfo = SemanticModel.GetDeclaredSymbol(node);
+
+            // Try to grab the type from the symbol
+            var resolvedType = symbolInfo.GetResolvedType();
+
+            // If we found it (and correctly resolved it),
+            // parse & rewrite the type, then write it as
+            // the type assignment for invocation.
+            if (resolvedType != null)
             {
-                    var symbolInfo = SemanticModel.GetDeclaredSymbol(node);
-
-                // Try to grab the type from the symbol
-                var resolvedType = symbolInfo.GetResolvedType();
-
-                // If we found it (and correctly resolved it),
-                // parse & rewrite the type, then write it as
-                // the type assignment for invocation.
-                if (resolvedType != null)
-                {
-                    // Not sure if this is the best way to get the syntax node for a type. Some types get over-qualified, but at least they work.
-                    var type = ParseTypeName(resolvedType.ToString());
-                    finalType = (TypeSyntax)Visit(type);
-                }
-                else
-                {
-                    Debug.LogWarning($"Failed to determine result type for variable declarator expression: {node}");
-                }
+                // Not sure if this is the best way to get the syntax node for a type. Some types get over-qualified, but at least they work.
+                var type = ParseTypeName(resolvedType.ToString());
+                finalType = (TypeSyntax)Visit(type);
+            }
+            else
+            {
+                Debug.LogWarning($"Failed to determine result type for variable declarator expression: {node}");
             }
 
             var name = node.Identifier.ToString();
@@ -1266,7 +1260,7 @@ namespace RRCG
         {
 
             ExpressionSyntax initializerArg = initializer != null ? ParenthesizedLambdaExpression(initializer) : LiteralExpression(SyntaxKind.NullLiteralExpression);
-            SimpleNameSyntax invocationName = resolvedType == null ? IdentifierName(identifierName)
+            SimpleNameSyntax invocationName = resolvedType == null ? IdentifierName("__VariableDeclaratorExpression")
                                                                    : GenericName(Identifier("__VariableDeclaratorExpression"))
                                                                          .WithTypeArgumentList(
                                                                              TypeArgumentList(SingletonSeparatedList(resolvedType)));
