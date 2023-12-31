@@ -25,7 +25,8 @@ namespace RRCG.Optimizer.ContextOptimizations
                     varUsageMap[node.VariableData.Name] = (new List<Node>(), new List<Node>());
 
                 (var readOnlyInstances, var writeInstances) = varUsageMap[node.VariableData.Name];
-                var isReadOnly = context.Connections.Where(c => c.To.Node == node && c.To.Index == 0).Count() <= 0;
+                var isReadOnly = context.Connections.Where(c => (c.To.Node == node && c.To.Index == 0) ||
+                                                                (c.From.Node == node && c.From.Index == 0)).Count() <= 0;
 
                 if (isReadOnly)
                     readOnlyInstances.Add(node);
