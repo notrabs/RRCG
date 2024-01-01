@@ -217,6 +217,12 @@ namespace RRCGBuild
             }
         }
 
+        public static QuaternionPort Euler(FloatPort X, FloatPort Y, FloatPort Z)
+        {
+            if (X.IsDataPort && Y.IsDataPort && Z.IsDataPort) return (QuaternionPort)Quaternion.Euler(X.Data, Y.Data, Z.Data);
+            return ChipBuilder.QuaternionCreateEulerAngles(new Vector3Port(X, Y, Z));
+        }
+
         public static QuaternionPort operator *(QuaternionPort a, QuaternionPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new QuaternionPort { Data = (Quaternion)a.Data * (Quaternion)b.Data };
