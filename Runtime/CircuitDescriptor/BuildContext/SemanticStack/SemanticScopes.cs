@@ -42,7 +42,7 @@ namespace RRCGBuild
 
             public void Break()
             {
-                WritePromotedVariables(false);
+                ConditionalContext.WritePromotedVariables();
 
                 BreakFlow.Merge(ExecFlow.current);
                 ExecFlow.current.Clear();
@@ -51,7 +51,7 @@ namespace RRCGBuild
 
             public void Continue()
             {
-                WritePromotedVariables(false);
+                ConditionalContext.WritePromotedVariables();
 
                 // Note: For CV2-native iterators (For, For Each),
                 // continue can just be implemented as clearing the current exec flow.
@@ -95,20 +95,6 @@ namespace RRCGBuild
                 }
 
                 if (!foundSource) throw new Exception("Iterator discontinuity detected -- provided ExecFlow did not connect back to sourceExec!");
-            }
-
-            /// <summary>
-            /// Writes the current C# state of each promoted variable to the RR variable on the current exec flow.
-            /// If readRRVariables is set, the C# state of each promoted variable will reference the RR variable value pin.
-            /// </summary>
-            public void WritePromotedVariables(bool readRRVariables)
-            {
-                foreach (var promotedVariable in ConditionalContext.PromotedVariables.Values)
-                {
-                    promotedVariable.RRVariableValue = promotedVariable.DeclaredVariable.Getter();
-                    if (readRRVariables && promotedVariable.DeclaredVariable.Setter != null)
-                        promotedVariable.DeclaredVariable.Setter(promotedVariable.RRVariableValue);
-                }
             }
         }
     }
@@ -212,6 +198,30 @@ namespace RRCGBuild
 
         // Variable promotion state
         public Dictionary<string, PromotedVariable> PromotedVariables;
+
+        /// <summary>
+        /// Writes the current C# state of each promoted variable to the RR variable on the current exec flow.
+        /// </summary>
+        public void WritePromotedVariables()
+        {
+            foreach (var promotedVariable in PromotedVariables.Values)
+                promotedVariable.RRVariableValue = promotedVariable.DeclaredVariable.Getter();
+        }
+
+        /// <summary>
+        /// Resets the C# state of each promoted variable to either
+        /// the pre-promotion state, or the RR variable output (if setToVariableValue is set)
+        /// </summary>
+        public void ResetPromotedVariables(bool setToVariableValue)
+        {
+            foreach (var promotedVariable in PromotedVariables.Values)
+            {
+                if (promotedVariable.DeclaredVariable.Setter == null) continue;
+
+                var value = setToVariableValue ? promotedVariable.RRVariableValue : promotedVariable.ValueBeforePromotion;
+                promotedVariable.DeclaredVariable.Setter(value);
+            }
+        }
     }
 }
 #nullable disable

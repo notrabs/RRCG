@@ -541,10 +541,11 @@ namespace RRCGBuild
                 ConditionalContext = conditional
             };
 
-            // Write promoted variables before building the If node
-            whileScope.WritePromotedVariables(true);
+            // Write promoted variables & set their C# state to the output pins
+            conditional.WritePromotedVariables();
+            conditional.ResetPromotedVariables(true);
 
-            // Evaluate condition now that values have been promoted
+            // Evaluate condition now that C# states point to the RR variable outputs
             var conditionResult = condition();
 
             // Build the If node on a new execution flow
@@ -566,14 +567,13 @@ namespace RRCGBuild
             SemanticStack.current.Push(whileScope);
             block();
 
-            // End the while scope
-            if (!SemanticStack.current.Pop().Equals(whileScope))
-                throw new Exception("Expected WhileScope at the top of the semantic stack but this wasn't the case!");
+            // Write the promoted variables & re-set C# state to reference RR variables
+            conditional.WritePromotedVariables();
+            conditional.ResetPromotedVariables(true);
 
-            // Grab the final values of the promoted variables
-            // and end the conditional context.
-            var finalValues = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
-            SemanticStackUtils.EndConditionalContext(conditional, new() { { ExecFlow.current, finalValues } });
+            // End our semantic scopes
+            SemanticStack.current.PopExpectedScope(whileScope);
+            SemanticStack.current.PopExpectedScope(conditional);
 
             // Merge the continue flow into the current execution flow,
             // and loop back to the if node.
@@ -603,7 +603,7 @@ namespace RRCGBuild
             ExecFlow current = ExecFlow.current;
             current.Merge(switchScope.BreakFlow);
 
-            SemanticStack.current.Pop();
+            SemanticStack.current.PopExpectedScope(switchScope);
         }
 
         public void __Break()
@@ -794,22 +794,17 @@ namespace RRCGBuild
             // Push conditional context
             SemanticStack.current.Push(conditional);
 
-            // Run each branch and get the final value of promoted variables
+            // Run each branch, writing & resetting promoted variables in-between
             var ifFlow = __IfBranch(ifNode.Port(0, 0), ifBranch);
-            var finalValuesIfBranch = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
-            SemanticStackUtils.ResetPromotedVariables(conditional.PromotedVariables);
+            conditional.WritePromotedVariables();
+            conditional.ResetPromotedVariables(false);
 
             var elseFlow = __IfBranch(ifNode.Port(0, 1), elseBranch);
-            var finalValuesElseBranch = SemanticStackUtils.GetDeclaredVariableValues(conditional.PromotedVariables.Keys);
-            SemanticStackUtils.ResetPromotedVariables(conditional.PromotedVariables);
+            conditional.WritePromotedVariables();
+            conditional.ResetPromotedVariables(true);
 
-            // End the context, writing the variables at the end of each branch.
-            SemanticStackUtils.EndConditionalContext(conditional, new() {
-                { ifFlow, finalValuesIfBranch },
-                { elseFlow, finalValuesElseBranch }
-            });
-
-            // Merge branch execution flows & we're done
+            // Pop the conditional context, merge branch execution flows & we're done
+            SemanticStack.current.PopExpectedScope(conditional);
             ExecFlow.current = ifFlow;
             ExecFlow.current.Merge(elseFlow);
         }
@@ -869,8 +864,9 @@ namespace RRCGBuild
             SemanticStack.current.Push(scope);
             SemanticStack.current.Push(conditional);
 
-            // Write promoted variable values before entering the block
-            scope.WritePromotedVariables(true);
+            // Write & re-set promoted variable values
+            conditional.WritePromotedVariables();
+            conditional.ResetPromotedVariables(true);
 
             // Build loop body under the assumption we can use the For Each node.
             // We'll swap this out later if we learn this isn't the case (we don't know beforehand)
@@ -881,15 +877,15 @@ namespace RRCGBuild
             body(new T { Port = forEachNode.Port(0, 1) });
 
             // End the conditional context
-            var finalValues = conditional.PromotedVariables.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.DeclaredVariable.Getter());
-            SemanticStackUtils.EndConditionalContext(conditional, new() { { ExecFlow.current, finalValues } });
+            conditional.WritePromotedVariables();
+            conditional.ResetPromotedVariables(true);
 
             // Now validate execflow continuity from the current back to the "Loop" port
             scope.EnsureContinuityAndCheckDelays(ExecFlow.current, forEachNode.Port(0, 0));
 
-            // Now we can pop the ForEach scope from the stack
-            if (SemanticStack.current.Pop() != scope)
-                throw new Exception("Topmost element of SemanticStack.current was not ForEachScope");
+            // Now we can pop our semantic scopes
+            SemanticStack.current.PopExpectedScope(conditional);
+            SemanticStack.current.PopExpectedScope(scope);
 
             // If we don't need to build a manual implementation, we can continue building nodes from the Done pin
             if (!scope.NeedsManualImplementation)
