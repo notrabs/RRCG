@@ -533,9 +533,16 @@ namespace RRCGBuild
 
         public void __While(ConditionalContext conditional, Func<BoolPort> condition, bool buildIfAfterBlock, AlternativeExec block)
         {
+            // Create While scope
+            var whileScope = new WhileScope()
+            {
+                BreakFlow = new() { hasAdvanced = true },
+                ContinueFlow = new(),
+                ConditionalContext = conditional
+            };
+
             // Write promoted variables before building the If node
-            foreach (var variable in conditional.PromotedVariables.Values)
-                variable.RRVariableValue = variable.ValueBeforePromotion;
+            whileScope.WritePromotedVariables(true);
 
             // Evaluate condition now that values have been promoted
             var conditionResult = condition();
@@ -545,13 +552,6 @@ namespace RRCGBuild
             ExecFlow.current = new();
             If(conditionResult, () => { });
             var ifNode = Context.lastSpawnedNode;
-
-            // Create While scope
-            var whileScope = new WhileScope()
-            {
-                BreakFlow = new() { hasAdvanced = true },
-                ContinueFlow = new(),
-            };
 
             // If we're building the if before the block, advance execution flow now & add the Then port.
             // Otherwise, just add the Then port to the current execution flow.
@@ -588,6 +588,7 @@ namespace RRCGBuild
 
         public void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
         {
+            // TODO: Conditional context for switch statements
             // Create & push our switch scope
             var switchScope = new SwitchScope
             {
@@ -813,9 +814,9 @@ namespace RRCGBuild
             ExecFlow.current.Merge(elseFlow);
         }
 
-        public ConditionalContext __ConditionalContext(bool initialReadsFromVariables, params string[] promotedIdentifiers)
+        public ConditionalContext __ConditionalContext(params string[] promotedIdentifiers)
         {
-            var conditionalContext = new ConditionalContext() { PromotedVariables = new(), InitialReadsFromVariables = initialReadsFromVariables };
+            var conditionalContext = new ConditionalContext() { PromotedVariables = new() };
 
             // Create promoted variables
             foreach (var identifier in promotedIdentifiers)
@@ -847,14 +848,8 @@ namespace RRCGBuild
                     declaredVariable.RRVariableForPromotion = variableForPromotion;
                 }
 
-                // Create promoted variable
+                // Create promoted variable & add to conditional context
                 var promotedVariable = new PromotedVariable() { DeclaredVariable = declaredVariable, ValueBeforePromotion = variableValue };
-
-                // Should the value be set to the RR variable output?
-                if (initialReadsFromVariables && declaredVariable.Setter != null)
-                    declaredVariable.Setter(promotedVariable.RRVariableValue);
-
-                // Finally, add to the conditional context.
                 conditionalContext.PromotedVariables[identifier] = promotedVariable;
             }
 
@@ -867,15 +862,15 @@ namespace RRCGBuild
             var scope = new ForEachScope
             {
                 BreakFlow = new() { hasAdvanced = true },
-                ContinueFlow = new()
+                ContinueFlow = new(),
+                ConditionalContext = conditional
             };
 
             SemanticStack.current.Push(scope);
             SemanticStack.current.Push(conditional);
 
             // Write promoted variable values before entering the block
-            foreach (var variable in conditional.PromotedVariables.Values)
-                variable.RRVariableValue = variable.ValueBeforePromotion;
+            scope.WritePromotedVariables(true);
 
             // Build loop body under the assumption we can use the For Each node.
             // We'll swap this out later if we learn this isn't the case (we don't know beforehand)

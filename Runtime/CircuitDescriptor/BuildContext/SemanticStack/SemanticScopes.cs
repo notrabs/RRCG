@@ -33,6 +33,7 @@ namespace RRCGBuild
 
             public ExecFlow BreakFlow; // Break out of loop
             public ExecFlow ContinueFlow; // Jump back to the start of the loop
+            public ConditionalContext ConditionalContext; // Required to write variable values when breaking/continuing
 
             // If this is true, the iterator will need to be built
             // with a manual implementation, and cannot be built with
@@ -41,6 +42,8 @@ namespace RRCGBuild
 
             public void Break()
             {
+                WritePromotedVariables(false);
+
                 BreakFlow.Merge(ExecFlow.current);
                 ExecFlow.current.Clear();
                 NeedsManualImplementation = true;
@@ -48,6 +51,8 @@ namespace RRCGBuild
 
             public void Continue()
             {
+                WritePromotedVariables(false);
+
                 // Note: For CV2-native iterators (For, For Each),
                 // continue can just be implemented as clearing the current exec flow.
                 // But we still store this flow so we can use it in the manual case.
@@ -90,7 +95,20 @@ namespace RRCGBuild
                 }
 
                 if (!foundSource) throw new Exception("Iterator discontinuity detected -- provided ExecFlow did not connect back to sourceExec!");
+            }
 
+            /// <summary>
+            /// Writes the current C# state of each promoted variable to the RR variable on the current exec flow.
+            /// If readRRVariables is set, the C# state of each promoted variable will reference the RR variable value pin.
+            /// </summary>
+            public void WritePromotedVariables(bool readRRVariables)
+            {
+                foreach (var promotedVariable in ConditionalContext.PromotedVariables.Values)
+                {
+                    promotedVariable.RRVariableValue = promotedVariable.DeclaredVariable.Getter();
+                    if (readRRVariables && promotedVariable.DeclaredVariable.Setter != null)
+                        promotedVariable.DeclaredVariable.Setter(promotedVariable.RRVariableValue);
+                }
             }
         }
     }
@@ -194,9 +212,6 @@ namespace RRCGBuild
 
         // Variable promotion state
         public Dictionary<string, PromotedVariable> PromotedVariables;
-
-        // Should the initial read refer to the RR variable value output?
-        public bool InitialReadsFromVariables;
     }
 }
 #nullable disable

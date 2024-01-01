@@ -899,7 +899,7 @@ namespace RRCG
         {
             // Build conditional context creation invocation
             var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(SemanticModel, false, locals, node.Statement, node.Else?.Statement);
+            var createConditional = CreateConditionalContext(SemanticModel, locals, node.Statement, node.Else?.Statement);
 
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
             StatementSyntax trueStatement = (StatementSyntax)Visit(node.Statement);
@@ -1047,7 +1047,7 @@ namespace RRCG
         {
             // Build conditional context creation invocation
             var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(SemanticModel, true, locals, bodyStatement);
+            var createConditional = CreateConditionalContext(SemanticModel, locals, bodyStatement);
 
             ExpressionSyntax test = (ExpressionSyntax)Visit(condition);
             StatementSyntax whileStatement = (StatementSyntax)Visit(bodyStatement);
@@ -1079,7 +1079,7 @@ namespace RRCG
         {
             // Build conditional context creation invocation
             var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(SemanticModel, true, locals, node.Statement);
+            var createConditional = CreateConditionalContext(SemanticModel, locals, node.Statement);
 
             // Visit statement & ensure block w/ accessibility scope
             var visitedStatement = (StatementSyntax)Visit(node.Statement);
@@ -1295,13 +1295,10 @@ namespace RRCG
                    .NormalizeWhitespace();
         }
 
-        public InvocationExpressionSyntax CreateConditionalContext(SemanticModel semanticModel, bool initialReadsFromVariables, IEnumerable<ILocalSymbol> accessibleLocals, params SyntaxNode?[] nodesToSearch)
+        public InvocationExpressionSyntax CreateConditionalContext(SemanticModel semanticModel, IEnumerable<ILocalSymbol> accessibleLocals, params SyntaxNode?[] nodesToSearch)
         {
-            // 1. Create arguments list consisting of the first argument, initialReadsFromVariables
-            var arguments = new List<ExpressionSyntax>()
-            {
-                LiteralExpression(initialReadsFromVariables ? SyntaxKind.TrueLiteralExpression : SyntaxKind.FalseLiteralExpression),
-            };
+            // 1. Create arguments list to store our identifier names
+            var arguments = new List<ExpressionSyntax>() { };
             
             var promotedSymbols = new List<ILocalSymbol>();
             foreach (var nodeToSearch in nodesToSearch)

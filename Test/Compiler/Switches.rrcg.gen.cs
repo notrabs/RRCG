@@ -136,7 +136,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_0 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"0\"");
-                    __If(__ConditionalContext(false), () => condition, delegate
+                    __If(__ConditionalContext(), () => condition, delegate
                     {
                         __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         __Break();
@@ -162,7 +162,7 @@ namespace RRCGBuild
                         AlternativeExec rrcg_switch_section_0 = delegate
                         {
                             __LabelDecl("rrcg_switch_case_label_\"0\"");
-                            __If(__ConditionalContext(false), () => condition, delegate
+                            __If(__ConditionalContext(), () => condition, delegate
                             {
                                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                                 __Break();
@@ -196,7 +196,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_2 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"while\"");
-                    __While(__ConditionalContext(true), () => condition, false, delegate
+                    __While(__ConditionalContext(), () => condition, false, delegate
                     {
                         __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         {
@@ -225,7 +225,7 @@ namespace RRCGBuild
                         }
 
                         LogString("After Switch While Switch Case 0");
-                        __If(__ConditionalContext(false), () => condition, delegate
+                        __If(__ConditionalContext(), () => condition, delegate
                         {
                             __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                             LogString("Break out of while");
@@ -236,7 +236,7 @@ namespace RRCGBuild
                         , delegate
                         {
                             __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                            __If(__ConditionalContext(false), () => condition, delegate
+                            __If(__ConditionalContext(), () => condition, delegate
                             {
                                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                                 LogString("Return");
@@ -282,7 +282,7 @@ namespace RRCGBuild
         {
             ExecFlow rrcg_return_flow = new ExecFlow();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            __While(__ConditionalContext(true), () => true, false, delegate
+            __While(__ConditionalContext(), () => true, false, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 {
