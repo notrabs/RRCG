@@ -9,7 +9,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             SwitchTypes("test", 22);
             LogString("Return from SwitchTypes()");
@@ -18,12 +18,12 @@ namespace RRCGBuild
             SwitchInWhileLoop();
             LogString("Return from SwitchInWhileLoop()");
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         public void SwitchTypes(StringPort switchString, IntPort switchInt)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
@@ -58,7 +58,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_4 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"case5\"");
-                    __Return(rrcg_return_flow);
+                    __Return();
                 }
 
                 ;
@@ -107,7 +107,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_4 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_5");
-                    __Return(rrcg_return_flow);
+                    __Return();
                 }
 
                 ;
@@ -124,12 +124,12 @@ namespace RRCGBuild
             }
 
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         public void ConditionalReturn(StringPort switchString, BoolPort condition)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
@@ -150,7 +150,7 @@ namespace RRCGBuild
                     }
 
                     );
-                    __Return(rrcg_return_flow);
+                    __Return();
                 }
 
                 ;
@@ -176,7 +176,7 @@ namespace RRCGBuild
                             }
 
                             );
-                            __Return(rrcg_return_flow);
+                            __Return();
                         }
 
                         ;
@@ -212,7 +212,7 @@ namespace RRCGBuild
                             AlternativeExec rrcg_switch_section_1 = delegate
                             {
                                 __LabelDecl("rrcg_switch_case_label_\"return\"");
-                                __Return(rrcg_return_flow);
+                                __Return();
                             }
 
                             ;
@@ -240,7 +240,7 @@ namespace RRCGBuild
                             {
                                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                                 LogString("Return");
-                                __Return(rrcg_return_flow);
+                                __Return();
                                 __EndAccessibilityScope();
                             }
 
@@ -275,12 +275,12 @@ namespace RRCGBuild
 
             LogString("After Switch 1");
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void SwitchInWhileLoop()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             __While(__ConditionalContext(), () => true, false, delegate
             {
@@ -309,7 +309,7 @@ namespace RRCGBuild
             );
             LogString("After while");
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
     }
 }

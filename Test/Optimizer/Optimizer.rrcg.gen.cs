@@ -10,7 +10,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             TestNotIfOptimizer();
             TestIfLocalPlayerIsAuthorityOptimizer();
@@ -23,12 +23,12 @@ namespace RRCGBuild
             TestVariableCollapseOptimizer();
             TestAssociativeOperationCollapseOptimizer();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void TestNotIfOptimizer()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestNotIfOptimizer").Receiver();
                 BoolPort optimizableBool = default !;
@@ -270,12 +270,12 @@ namespace RRCGBuild
             );
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void TestIfLocalPlayerIsAuthorityOptimizer()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfLocalPlayerIsAuthorityOptimizer").Receiver();
             __If(__ConditionalContext(), () => ChipBuilder.Equals(GetAuthority(), PlayerPort.Local), delegate
@@ -457,12 +457,12 @@ namespace RRCGBuild
 
             );
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void TestIfLocalPlayerIsRoomAuthorityOptimizer()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfLocalPlayerIsRoomAuthorityOptimizer").Receiver();
             __If(__ConditionalContext(), () => ChipBuilder.Equals(GetRoomAuthority(), PlayerPort.Local), delegate
@@ -644,12 +644,12 @@ namespace RRCGBuild
 
             );
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void TestIfLocalPlayerShouldRunOptimizer()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfLocalPlayerShouldRunOptimizer").Receiver();
                 RRCGBuild.PlayerPort player = default !;
@@ -743,12 +743,12 @@ namespace RRCGBuild
 
             );
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void TestIfPlayerHasRoleOptimizer()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfPlayerHasRoleOptimizer").Receiver();
             __If(__ConditionalContext(), () => PlayerPort.Local.HasRole("testrole"), delegate
@@ -842,12 +842,12 @@ namespace RRCGBuild
 
             );
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void TestIfPlayerIsLocalOptimizer()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfPlayerIsLocalOptimizer").Receiver();
             __If(__ConditionalContext(), () => PlayerPort.Local.IsLocal, delegate
@@ -941,12 +941,12 @@ namespace RRCGBuild
 
             );
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void TestIfPlayerIsValidOptimizer()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfPlayerIsValidOptimizer").Receiver();
             __If(__ConditionalContext(), () => PlayerPort.Local.IsValid, delegate
@@ -1009,12 +1009,12 @@ namespace RRCGBuild
 
             );
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void TestKnownSingletonChipsOptimizer()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestKnownSingletonChipsOptimizer").Receiver();
                 RRCGBuild.Variable<FloatPort> floatVar = default !;
@@ -1029,12 +1029,12 @@ namespace RRCGBuild
             floatVar.Value = TimeGetPreciseSeconds();
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void TestVariableCollapseOptimizer()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestVariableCollapseOptimiser").Receiver();
                 RRCGBuild.Variable<FloatPort> var0 = default !;
@@ -1058,12 +1058,12 @@ namespace RRCGBuild
             ChipLib.Log(var3.Value);
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void TestAssociativeOperationCollapseOptimizer()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestAssociativeOperationCollapseOptimizer").Receiver();
                 RRCGBuild.Variable<FloatPort> variable = default !;
@@ -1092,7 +1092,7 @@ namespace RRCGBuild
             ChipLib.Log(undeletableDivide / 5f);
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
     }
 }

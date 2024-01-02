@@ -10,18 +10,18 @@ namespace RRCGBuild
         EventDefinition<IntPort> testEvent;
         public override void CircuitGraph()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             RandomExample();
             EventCacheExample();
             VariableLoopExample();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         public void RandomExample()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             EventReceiver(RoomEvents.Hz30);
                 IntPort rand1 = default !;
@@ -44,12 +44,12 @@ namespace RRCGBuild
 
             );
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         public void EventCacheExample()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             EventReceiver(RoomEvents.Hz30);
                 IntPort rand1 = default !;
@@ -60,12 +60,12 @@ namespace RRCGBuild
                 cached = __VariableDeclaratorExpression<IntPort>("cached", () => ChipLib.EventCache<IntPort>(sum), () => cached, (_RRCG_SETTER_VALUE) => cached = _RRCG_SETTER_VALUE);
             PlayerShowSubtitle(GetLocalPlayer(), ToString<IntPort>(cached), 3.0f, 0);
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         public void VariableLoopExample()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 IntPort intValue = default !;
                 intValue = __VariableDeclaratorExpression<IntPort>("intValue", () => testEvent.Receiver(), () => intValue, (_RRCG_SETTER_VALUE) => intValue = _RRCG_SETTER_VALUE);
@@ -81,7 +81,7 @@ namespace RRCGBuild
 
             );
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         public ExampleRoom()

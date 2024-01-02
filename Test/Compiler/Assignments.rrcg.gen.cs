@@ -19,7 +19,7 @@ namespace RRCGBuild
         IVariable<IntPort> variableAssignment;
         public override void CircuitGraph()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 IntPort methodValueAssignment = default !;
                 methodValueAssignment = __VariableDeclaratorExpression<IntPort>("methodValueAssignment", () => 3, () => methodValueAssignment, (_RRCG_SETTER_VALUE) => methodValueAssignment = _RRCG_SETTER_VALUE);
@@ -36,7 +36,7 @@ namespace RRCGBuild
                 ListPort<IntPort> test = default !;
                 test = __VariableDeclaratorExpression<ListPort<IntPort>>("test", () => ListCreate<IntPort>(1), () => test, (_RRCG_SETTER_VALUE) => test = _RRCG_SETTER_VALUE);
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         public AssignmentsTest()

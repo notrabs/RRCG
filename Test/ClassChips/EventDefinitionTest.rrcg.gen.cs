@@ -7,18 +7,18 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             ParamCounts();
             SendTypes();
             Existing();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void ParamCounts()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.EventDefinition params0 = default !;
                 params0 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("params0", () => new EventDefinition(), () => params0, (_RRCG_SETTER_VALUE) => params0 = _RRCG_SETTER_VALUE);
@@ -35,12 +35,12 @@ namespace RRCGBuild
                 params2Value = __VariableDeclaratorExpression<(StringPort, BoolPort)>("params2Value", () => params2.Receiver(), () => params2Value, (_RRCG_SETTER_VALUE) => params2Value = _RRCG_SETTER_VALUE);
             params2.SendLocal(params2Value.Item1, params2Value.Item2);
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void SendTypes()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.EventDefinition params0 = default !;
                 params0 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("params0", () => new EventDefinition(), () => params0, (_RRCG_SETTER_VALUE) => params0 = _RRCG_SETTER_VALUE);
@@ -53,12 +53,12 @@ namespace RRCGBuild
             params0.SendPlayer(PlayerPort.Local);
             params0.SendPlayer(GetLocalPlayer());
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void Existing()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.EventDefinition params0 = default !;
                 params0 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("params0", () => ExistingEvent("Existing0"), () => params0, (_RRCG_SETTER_VALUE) => params0 = _RRCG_SETTER_VALUE);
@@ -75,7 +75,7 @@ namespace RRCGBuild
                 params2Value = __VariableDeclaratorExpression<(IntPort, StringPort)>("params2Value", () => params2.Receiver(), () => params2Value, (_RRCG_SETTER_VALUE) => params2Value = _RRCG_SETTER_VALUE);
             params2.SendLocal(params2Value.Item1, params2Value.Item2);
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
     }
 }

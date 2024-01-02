@@ -12,7 +12,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("GotoTest").Receiver();
                 __LabelDecl("label1");
@@ -90,7 +90,7 @@ namespace RRCGBuild
             // No scoping weirdness
             CircuitBoard(() =>
             {
-                ExecFlow rrcg_return_flow = new ExecFlow();
+                __BeginReturnScope();
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                     __LabelDecl("innerLabel1");
                     LogString("Inner label 1");
@@ -165,7 +165,7 @@ namespace RRCGBuild
                 }
 
                 __EndAccessibilityScope();
-                ExecFlow.current.Merge(rrcg_return_flow);
+                __EndReturnScope();
             }
 
             );
@@ -277,7 +277,7 @@ namespace RRCGBuild
             }
 
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
     }
 }

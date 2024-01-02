@@ -223,5 +223,11 @@ namespace RRCGBuild
             }
         }
     }
+
+    public class ReturnScope : SemanticScope
+    {
+        public dynamic? ReturnData;
+        public ExecFlow ReturnFlow;
+    }
 }
 #nullable disable

@@ -7,17 +7,17 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             ReadWrite();
             SyncedArrayInt();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         public void ReadWrite()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             ChipLib.Log("Start before inline definitions.");
                 RRCGBuild.SyncedArray<IntPort> arrayInt = default !;
@@ -37,12 +37,12 @@ namespace RRCGBuild
             arrayBool[3] = true;
             ChipLib.Log(arrayBool[0]);
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         public void SyncedArrayInt()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.SyncedArrayInt arrayInt = default !;
                 arrayInt = __VariableDeclaratorExpression<RRCGBuild.SyncedArrayInt>("arrayInt", () => new SyncedArrayInt(5), () => arrayInt, (_RRCG_SETTER_VALUE) => arrayInt = _RRCG_SETTER_VALUE);
@@ -54,7 +54,7 @@ namespace RRCGBuild
             ChipLib.Log(casted[1]);
             arrayInt.Add(4, 5);
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
     }
 }

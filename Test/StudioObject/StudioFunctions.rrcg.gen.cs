@@ -8,7 +8,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 StudioFunctionsObject studioObject = default !;
                 studioObject = __VariableDeclaratorExpression<StudioFunctionsObject>("studioObject", () => new StudioFunctionsObject(RecRoomObjectPort.Invalid), () => studioObject, (_RRCG_SETTER_VALUE) => studioObject = _RRCG_SETTER_VALUE);
@@ -20,7 +20,7 @@ namespace RRCGBuild
             ChipLib.Log(multiReturn.Item1);
             ChipLib.Log(multiReturn.Item2);
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
     }
 

@@ -8,7 +8,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 IntPort a = default !;
                 a = __VariableDeclaratorExpression<IntPort>("a", () => RandomInt(1, 10), () => a, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
@@ -29,66 +29,62 @@ namespace RRCGBuild
             //});
             CircuitBoard<IntPort>((IntPort test) =>
             {
-                ExecFlow rrcg_return_flow = new ExecFlow();
+                __BeginReturnScope();
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 ChipLib.Log("Anonymous Parameter");
                 __EndAccessibilityScope();
-                ExecFlow.current.Merge(rrcg_return_flow);
+                __EndReturnScope();
             }
 
             , a);
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void ContentsExec()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             RandomInt(1, 10);
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         IntPort ContentsMixed(IntPort a)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
-            dynamic rrcg_return_data = default;
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            __Return(rrcg_return_flow, out rrcg_return_data, RandomInt(a, 10));
+            __Return(RandomInt(a, 10));
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
-            return rrcg_return_data;
+            return __EndReturnScope();
         }
 
         (IntPort namedValue, IntPort) ContentsData(IntPort a, IntPort b)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
-            dynamic rrcg_return_data = default;
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            __Return(rrcg_return_flow, out rrcg_return_data, (a, b));
+            __Return((a, b));
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
-            return rrcg_return_data;
+            return __EndReturnScope();
         }
 
         void ExecOut()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             EventReceiver(RoomEvents.Hz30);
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void ExecIn()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             RandomInt(1, 10);
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
     }
 }

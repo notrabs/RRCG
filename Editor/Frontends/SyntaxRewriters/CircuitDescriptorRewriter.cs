@@ -180,7 +180,7 @@ namespace RRCG
                 );
             }
 
-            var statements = WrapFunctionStatements(method.Body.Statements, method.ReturnType.ToString() == "void");
+            var statements = WrapStatementsInReturnScope(method.Body.Statements, method.ReturnType.ToString() == "void");
 
             // special functions
             var isEventFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "EventFunction"));
@@ -278,7 +278,7 @@ namespace RRCG
 
             if (method.Block != null)
             {
-                statements = WrapFunctionStatements(
+                statements = WrapStatementsInReturnScope(
                     visitedMethod.Block.Statements,
                     SyntaxUtils.IsBlockVoid(method.Block)
                 );
@@ -294,7 +294,7 @@ namespace RRCG
                                             : ValueReturnStatement(visitedMethod.ExpressionBody)
                                 );
 
-                statements = WrapStatementsInAccessibilityScope(WrapFunctionStatements(statements, returnsVoid), AccessibilityScope.Kind.MethodRoot);
+                statements = WrapStatementsInAccessibilityScope(WrapStatementsInReturnScope(statements, returnsVoid), AccessibilityScope.Kind.MethodRoot);
             }
 
             return (T)visitedMethod.WithBody(
@@ -302,14 +302,16 @@ namespace RRCG
             );
         }
 
-        public SyntaxList<StatementSyntax> WrapFunctionStatements(SyntaxList<StatementSyntax> statements, bool isVoid)
+        public SyntaxList<StatementSyntax> WrapStatementsInReturnScope(SyntaxList<StatementSyntax> statements, bool isVoid)
         {
-            if (!isVoid) statements = statements.Insert(0, SyntaxFactory.ParseStatement("dynamic rrcg_return_data = default;"));
-            statements = statements.Insert(0, SyntaxFactory.ParseStatement("ExecFlow rrcg_return_flow = new ExecFlow();"));
+            statements = statements.Insert(0, ParseStatement("__BeginReturnScope();"));
 
-            statements = statements.Add(SyntaxFactory.ParseStatement("ExecFlow.current.Merge(rrcg_return_flow);"));
-            if (!isVoid) statements = statements.Add(SyntaxFactory.ParseStatement("return rrcg_return_data;"));
+            var endInvocation = ParseExpression("__EndReturnScope()");
+            StatementSyntax endStatement = isVoid ? ExpressionStatement(endInvocation)
+                                                  : ReturnStatement(endInvocation);
 
+            statements = statements.Add(endStatement);
+            
             return statements;
         }
 
@@ -337,12 +339,30 @@ namespace RRCG
                                         IdentifierName(scopeKind.ToString("G")))
                                     ))))));
 
-            // Insert end before return
-            int insertIndex = statements.Count;
-            if (statements[insertIndex - 1].Kind() == SyntaxKind.ReturnStatement)
-                insertIndex -= 1;
+            int insertEndIndex = statements.Count;
+            if (statements[insertEndIndex - 1] is ReturnStatementSyntax returnStatement &&
+                returnStatement.Expression is ExpressionSyntax returnExp)
+            {
+                // We want the return expression to be evaluated within the accessibility scope,
+                // which means we have to decouple it from the return statement itself.
+                // Replace "return <expression>" -> "dynamic __RRCG_RETURN_DATA = <expression>"
+                statements = statements.Replace(returnStatement,
+                    LocalDeclarationStatement(
+                        VariableDeclaration(
+                            IdentifierName("dynamic"))
+                        .WithVariables(
+                            SingletonSeparatedList<VariableDeclaratorSyntax>(
+                                VariableDeclarator(
+                                    Identifier("__RRCG_RETURN_DATA"))
+                                .WithInitializer(
+                                    EqualsValueClause(returnExp))))));
 
-            return statements.Insert(insertIndex, SyntaxFactory.ParseStatement("__EndAccessibilityScope();"));
+                // Then return __RRCG_RETURN_DATA. The __EndAccessibilityScope call will then
+                // be inserted between this new return statement and the __RRCG_RETURN_DATA evaluation.
+                statements = statements.Insert(insertEndIndex, ReturnStatement(IdentifierName("__RRCG_RETURN_DATA")));
+            }
+
+            return statements.Insert(insertEndIndex, SyntaxFactory.ParseStatement("__EndAccessibilityScope();"));
         }
 
 
@@ -699,13 +719,7 @@ namespace RRCG
             if (expression == null)
             {
                 return ExpressionStatement(
-                    InvocationExpression(IdentifierName("__Return"))
-                    .WithArgumentList(
-                        SyntaxUtils.ArgumentList(
-                            IdentifierName("rrcg_return_flow")
-                        )
-                    )
-                );
+                    InvocationExpression(IdentifierName("__Return")));
             }
 
             return ValueReturnStatement(expression);
@@ -717,23 +731,8 @@ namespace RRCG
                 InvocationExpression(
                     IdentifierName("__Return"))
                 .WithArgumentList(
-                    ArgumentList(
-                        SeparatedList<ArgumentSyntax>(
-                            new SyntaxNodeOrToken[]{
-                                Argument(
-                                    IdentifierName("rrcg_return_flow")),
-                                Token(SyntaxKind.CommaToken),
-                                Argument(
-                                    IdentifierName("rrcg_return_data"))
-                                .WithRefOrOutKeyword(
-                                    Token(SyntaxKind.OutKeyword)),
-                                Token(SyntaxKind.CommaToken),
-                                Argument(expression)
-                            }
-                        )
-                    )
-                )
-            );
+                    SyntaxUtils.ArgumentList(
+                        expression)));
         }
 
         // 
@@ -1024,10 +1023,7 @@ namespace RRCG
                         ))
                     );
 
-            // Wrap our statements in an accessibility scope & return
-            // TODO: Why was this necessary? I think AccessibilityScopes should reflect source scoping,
-            //       in this case I wrapped it in a block for the section declarations.. so the AccessibilityScope
-            //       feels unnecessary today. Retaining it for now though
+            // Wrap our statements in an accessibility scope (for goto scoping) & return
             return SyntaxFactory.Block(
                     WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.General)
                 ).NormalizeWhitespace();

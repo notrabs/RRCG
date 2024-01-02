@@ -7,17 +7,17 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             DelayTest();
             ErrorTest();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void DelayTest()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.Delay delay = default !;
                 delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new Delay(5), () => delay, (_RRCG_SETTER_VALUE) => delay = _RRCG_SETTER_VALUE);
@@ -34,28 +34,28 @@ namespace RRCGBuild
             ChipLib.Log("Delay Test 3");
             delay.Run();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void ErrorTest()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             TestUtils.ExpectToThrow(() =>
             {
-                ExecFlow rrcg_return_flow = new ExecFlow();
+                __BeginReturnScope();
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                     RRCGBuild.Delay delay = default !;
                     delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new Delay(1), () => delay, (_RRCG_SETTER_VALUE) => delay = _RRCG_SETTER_VALUE);
                 delay.Await();
                 delay.Await();
                 __EndAccessibilityScope();
-                ExecFlow.current.Merge(rrcg_return_flow);
+                __EndReturnScope();
             }
 
             , "Await can only be called once");
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
     }
 }

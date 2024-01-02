@@ -503,22 +503,51 @@ namespace RRCGBuild
             return __RRCG_SHARED_PROPERTIES[name];
         }
 
-        public static void __Return(ExecFlow returnFlow)
+        public static void __BeginReturnScope()
+        {
+            var scope = new ReturnScope
+            {
+                ReturnData = null,
+                ReturnFlow = new ExecFlow()
+            };
+
+            SemanticStack.current.Push(scope);
+        }
+
+        public static dynamic? __EndReturnScope()
+        {
+            var scope = SemanticStack.current.Pop();
+            if (scope is not ReturnScope returnScope)
+                throw new Exception("Topmost element of SemanticStack.current was not ReturnScope");
+
+            ExecFlow.current.Merge(returnScope.ReturnFlow);
+            return returnScope.ReturnData;
+        }
+
+        public static void __Return()
         {
             SemanticStackUtils.AllIteratorsNeedManual();
 
-            returnFlow.Merge(ExecFlow.current);
+            var returnScope = SemanticStack.current.GetNextScopeWithType<ReturnScope>();
+            if (returnScope == null)
+                throw new Exception("Could not find ReturnScope in SemanticStack");
+
+            returnScope.ReturnFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();
         }
 
-        public static void __Return<T>(ExecFlow returnFlow, out T returnData, T expression)
+        public static void __Return<T>(T expression)
         {
             SemanticStackUtils.AllIteratorsNeedManual();
 
-            returnFlow.Merge(ExecFlow.current);
+            var returnScope = SemanticStack.current.GetNextScopeWithType<ReturnScope>();
+            if (returnScope == null)
+                throw new Exception("Could not find ReturnScope in SemanticStack");
+
+            returnScope.ReturnFlow.Merge(ExecFlow.current);
             ExecFlow.current.Clear();
 
-            returnData = expression;
+            returnScope.ReturnData = expression;
         }
 
         public T __Assign<T>(string identifier, out T variable, Func<T> value)

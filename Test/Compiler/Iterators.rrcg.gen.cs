@@ -10,7 +10,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             // Test using while loops
             WhileTest();
@@ -31,12 +31,11 @@ namespace RRCGBuild
                 list = __VariableDeclaratorExpression<ListPort<IntPort>>("list", () => InlineGraph<ListPort<IntPort>>(() =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-                    ExecFlow rrcg_return_flow = new ExecFlow();
-                    dynamic rrcg_return_data = default;
-                    __Return(rrcg_return_flow, out rrcg_return_data, ChipLib.EventCache<ListPort<IntPort>>(ListCreate<IntPort>(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)));
-                    ExecFlow.current.Merge(rrcg_return_flow);
+                    __BeginReturnScope();
+                    __Return(ChipLib.EventCache<ListPort<IntPort>>(ListCreate<IntPort>(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)));
+                    dynamic __RRCG_RETURN_DATA = __EndReturnScope();
                     __EndAccessibilityScope();
-                    return rrcg_return_data;
+                    return __RRCG_RETURN_DATA;
                 }
 
                 ), () => list, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
@@ -57,12 +56,12 @@ namespace RRCGBuild
             // Test promoted variables
             ForEachPromotedTest(list);
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void WhileTest()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("WhileTest").Receiver();
                 ListPort<StringPort> list = default !;
@@ -83,12 +82,12 @@ namespace RRCGBuild
             ChipLib.Log("While loop done!");
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void WhileReturnTest()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.EventDefinition entry = default !;
                 entry = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("entry", () => new EventDefinition("WhileReturnTest"), () => entry, (_RRCG_SETTER_VALUE) => entry = _RRCG_SETTER_VALUE);
@@ -101,7 +100,7 @@ namespace RRCGBuild
             ChipLib.Log(Concat("Repeated string (event function): ", StringRepeatEventFunction("Hi", 10)));
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         [EventFunction]
@@ -109,13 +108,11 @@ namespace RRCGBuild
         {
             return __DispatchEventFunction<StringPort, StringPort, IntPort>("StringRepeatEventFunction", delegate (StringPort str, IntPort count)
             {
-                ExecFlow rrcg_return_flow = new ExecFlow();
-                dynamic rrcg_return_data = default;
+                __BeginReturnScope();
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-                __Return(rrcg_return_flow, out rrcg_return_data, StringRepeat(str, count));
+                __Return(StringRepeat(str, count));
                 __EndAccessibilityScope();
-                ExecFlow.current.Merge(rrcg_return_flow);
-                return rrcg_return_data;
+                return __EndReturnScope();
             }
 
             , str, count);
@@ -123,8 +120,7 @@ namespace RRCGBuild
 
         public StringPort StringRepeat(StringPort str, IntPort count)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
-            dynamic rrcg_return_data = default;
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.Variable<StringPort> strStaging = default !;
                 strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
@@ -135,7 +131,7 @@ namespace RRCGBuild
                 __If(__ConditionalContext(), () => ChipBuilder.GreaterOrEqual(strStaging.Value.Length, str.Length * count), delegate
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                    __Return(rrcg_return_flow, out rrcg_return_data, strStaging.Value);
+                    __Return(strStaging.Value);
                     __EndAccessibilityScope();
                 }
 
@@ -151,13 +147,12 @@ namespace RRCGBuild
 
             );
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
-            return rrcg_return_data;
+            return __EndReturnScope();
         }
 
         void UnreachableNodesTest()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("UnreachableNodesTest").Receiver();
                 RRCGBuild.Variable<IntPort> index = default !;
@@ -206,12 +201,12 @@ namespace RRCGBuild
             ChipLib.Log("Unreachable nodes test done!");
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void NestedWhileTest()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NestedWhileTest").Receiver();
             LogString("Start");
@@ -235,12 +230,12 @@ namespace RRCGBuild
             LogString("2");
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void DoWhileTest()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("DoWhileTest").Receiver();
             __While(__ConditionalContext(), () => true, true, delegate
@@ -284,12 +279,12 @@ namespace RRCGBuild
             );
             LogString("Do while loop done");
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void DoWhileReturnTest()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("DoWhileReturnTest").Receiver();
             // Test returns from do while block within an "inline" graph (functions are transparent)
@@ -300,7 +295,7 @@ namespace RRCGBuild
             ChipLib.Log(Concat("Repeated string (do while, event function): ", StringRepeatDoWhileEventFunction("Hi", 10)));
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         [EventFunction]
@@ -308,13 +303,11 @@ namespace RRCGBuild
         {
             return __DispatchEventFunction<StringPort, StringPort, IntPort>("StringRepeatDoWhileEventFunction", delegate (StringPort str, IntPort count)
             {
-                ExecFlow rrcg_return_flow = new ExecFlow();
-                dynamic rrcg_return_data = default;
+                __BeginReturnScope();
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-                __Return(rrcg_return_flow, out rrcg_return_data, StringRepeatDoWhile(str, count));
+                __Return(StringRepeatDoWhile(str, count));
                 __EndAccessibilityScope();
-                ExecFlow.current.Merge(rrcg_return_flow);
-                return rrcg_return_data;
+                return __EndReturnScope();
             }
 
             , str, count);
@@ -322,8 +315,7 @@ namespace RRCGBuild
 
         public StringPort StringRepeatDoWhile(StringPort str, IntPort count)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
-            dynamic rrcg_return_data = default;
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.Variable<StringPort> strStaging = default !;
                 strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
@@ -334,7 +326,7 @@ namespace RRCGBuild
                 __If(__ConditionalContext(), () => ChipBuilder.GreaterOrEqual(strStaging.Value.Length, str.Length * count), delegate
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                    __Return(rrcg_return_flow, out rrcg_return_data, strStaging.Value);
+                    __Return(strStaging.Value);
                     __EndAccessibilityScope();
                 }
 
@@ -350,13 +342,12 @@ namespace RRCGBuild
 
             );
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
-            return rrcg_return_data;
+            return __EndReturnScope();
         }
 
         void NestedDoWhileTest()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NestedDoWhileTest").Receiver();
             __While(__ConditionalContext(), () => true, true, delegate
@@ -440,12 +431,12 @@ namespace RRCGBuild
             );
             LogString("Loop 1 done");
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void ForEachTest(ListPort<IntPort> list)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("ForEachTest").Receiver();
             __ForEach(__ConditionalContext(), list, (item) =>
@@ -459,12 +450,12 @@ namespace RRCGBuild
             LogString("For each done");
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void ManualForEachTest(ListPort<IntPort> list)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("ManualForEachTest").Receiver();
             __ForEach(__ConditionalContext(), list, (item) =>
@@ -492,12 +483,12 @@ namespace RRCGBuild
             LogString("Manual for each done");
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void NestedForEach(ListPort<IntPort> list)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NestedForEach").Receiver();
             __ForEach(__ConditionalContext(), list, (item) =>
@@ -520,12 +511,12 @@ namespace RRCGBuild
             LogString("Nested for each done");
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void ManualWithinStandardForEach(ListPort<IntPort> list)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("ManualWithinStandardForEach").Receiver();
             __ForEach(__ConditionalContext(), list, (item) =>
@@ -562,12 +553,12 @@ namespace RRCGBuild
             LogString("Nested for each (manual within standard) done");
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void StandardWithinManualForEach(ListPort<IntPort> list)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("StandardWithinManualForEach").Receiver();
             __ForEach(__ConditionalContext(), list, (item) =>
@@ -604,12 +595,12 @@ namespace RRCGBuild
             LogString("Nested for each (standard within manual) done");
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void TestDelaysForEach(ListPort<IntPort> list)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestDelaysForEach").Receiver();
             __ForEach(__ConditionalContext(), list, (item) =>
@@ -653,7 +644,7 @@ namespace RRCGBuild
             LogString("All done");
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         [EventFunction]
@@ -661,13 +652,11 @@ namespace RRCGBuild
         {
             return __DispatchEventFunction<IntPort, ListPort<IntPort>>("ForEachReturnEventFunction", delegate (ListPort<IntPort> list)
             {
-                ExecFlow rrcg_return_flow = new ExecFlow();
-                dynamic rrcg_return_data = default;
+                __BeginReturnScope();
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-                __Return(rrcg_return_flow, out rrcg_return_data, ForEachReturnImpl(list));
+                __Return(ForEachReturnImpl(list));
                 __EndAccessibilityScope();
-                ExecFlow.current.Merge(rrcg_return_flow);
-                return rrcg_return_data;
+                return __EndReturnScope();
             }
 
             , list);
@@ -675,8 +664,7 @@ namespace RRCGBuild
 
         public IntPort ForEachReturnImpl(ListPort<IntPort> list)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
-            dynamic rrcg_return_data = default;
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             __ForEach(__ConditionalContext(), list, (item) =>
             {
@@ -685,7 +673,7 @@ namespace RRCGBuild
                 __If(__ConditionalContext(), () => ChipBuilder.Equals(item, 5), delegate
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                    __Return(rrcg_return_flow, out rrcg_return_data, Reroute<IntPort>(item));
+                    __Return(Reroute<IntPort>(item));
                     __EndAccessibilityScope();
                 }
 
@@ -702,13 +690,12 @@ namespace RRCGBuild
             );
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
-            return rrcg_return_data;
+            return __EndReturnScope();
         }
 
         void ForEachReturnTest(ListPort<IntPort> list)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.EventDefinition entry = default !;
                 entry = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("entry", () => new EventDefinition("ForEachReturnTest"), () => entry, (_RRCG_SETTER_VALUE) => entry = _RRCG_SETTER_VALUE);
@@ -722,12 +709,12 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation("Result (event function): ", ForEachReturnEventFunction(list)));
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void ForEachPromotedTest(ListPort<IntPort> list)
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("ForEachPromotedTest").Receiver();
                 IntPort i = default !;
@@ -742,7 +729,7 @@ namespace RRCGBuild
 
             );
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
     }
 }

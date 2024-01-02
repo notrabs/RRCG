@@ -9,18 +9,18 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             InterpolatePureData();
             InterpolateDataWithPort();
             InterpolateNonStrings();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void InterpolatePureData()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("InterpolatePureData").Receiver();
                 StringPort port1 = default !;
@@ -30,12 +30,12 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation(port1, ", ", port2, "!"));
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void InterpolateDataWithPort()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("InterpolateDataWithPort").Receiver();
                 RRCGBuild.Variable<StringPort> variable = default !;
@@ -46,12 +46,12 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation("String interpolation works with both ", port1, " and ", variable.Value, "s!"));
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
 
         void InterpolateNonStrings()
         {
-            ExecFlow rrcg_return_flow = new ExecFlow();
+            __BeginReturnScope();
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("InterpolateNonStrings").Receiver();
                 IntPort intData = default !;
@@ -86,7 +86,7 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation("Interpolating with Quaternions. Data: ", quatData, ", Port: ", quatPort));
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
-            ExecFlow.current.Merge(rrcg_return_flow);
+            __EndReturnScope();
         }
     }
 }
