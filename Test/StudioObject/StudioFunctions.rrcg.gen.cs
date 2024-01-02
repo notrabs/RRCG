@@ -8,15 +8,15 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 StudioFunctionsObject studioObject = default !;
-                studioObject = __VariableDeclaratorExpression<StudioFunctionsObject>("studioObject", () => new StudioFunctionsObject(RecRoomObjectPort.Invalid), () => studioObject, (_RRCG_SETTER_VALUE) => studioObject = _RRCG_SETTER_VALUE);
+                studioObject = __VariableDeclaratorExpression<StudioFunctionsObject>("studioObject", () => new StudioFunctionsObject(RecRoomObjectPort.Invalid), () => studioObject!, (_RRCG_SETTER_VALUE) => studioObject = _RRCG_SETTER_VALUE);
             studioObject.VoidFunction();
             studioObject.AllParameterTypes(true, 23f, 7, "test", new ColorPort(1.0f, 0, 0), Vector3Port.up, QuaternionPort.identity);
             ChipLib.Log(studioObject.SingleReturn(Vector3Port.zero));
                 (Vector3Port, QuaternionPort) multiReturn = default !;
-                multiReturn = __VariableDeclaratorExpression<(Vector3Port, QuaternionPort)>("multiReturn", () => studioObject.MultiReturn(), () => multiReturn, (_RRCG_SETTER_VALUE) => multiReturn = _RRCG_SETTER_VALUE);
+                multiReturn = __VariableDeclaratorExpression<(Vector3Port, QuaternionPort)>("multiReturn", () => studioObject.MultiReturn(), () => multiReturn!, (_RRCG_SETTER_VALUE) => multiReturn = _RRCG_SETTER_VALUE);
             ChipLib.Log(multiReturn.Item1);
             ChipLib.Log(multiReturn.Item2);
             __EndAccessibilityScope();

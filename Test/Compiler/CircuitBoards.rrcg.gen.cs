@@ -8,13 +8,13 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 IntPort a = default !;
-                a = __VariableDeclaratorExpression<IntPort>("a", () => RandomInt(1, 10), () => a, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
+                a = __VariableDeclaratorExpression<IntPort>("a", () => RandomInt(1, 10), () => a!, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
             CircuitBoard(ContentsExec);
                 IntPort b = default !;
-                b = __VariableDeclaratorExpression<IntPort>("b", () => CircuitBoard<IntPort, IntPort>(ContentsMixed, a), () => b, (_RRCG_SETTER_VALUE) => b = _RRCG_SETTER_VALUE);
+                b = __VariableDeclaratorExpression<IntPort>("b", () => CircuitBoard<IntPort, IntPort>(ContentsMixed, a), () => b!, (_RRCG_SETTER_VALUE) => b = _RRCG_SETTER_VALUE);
             ChipLib.Log(b);
             var(c, d) = CircuitBoard<IntPort, IntPort, (IntPort namedValue, IntPort)>(ContentsData, b, b);
             ChipLib.Log(c);
@@ -29,7 +29,7 @@ namespace RRCGBuild
             //});
             CircuitBoard<IntPort>((IntPort test) =>
             {
-                __BeginReturnScope();
+                __BeginReturnScope(null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 ChipLib.Log("Anonymous Parameter");
                 __EndAccessibilityScope();
@@ -43,7 +43,7 @@ namespace RRCGBuild
 
         void ContentsExec()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             RandomInt(1, 10);
             __EndAccessibilityScope();
@@ -52,7 +52,7 @@ namespace RRCGBuild
 
         IntPort ContentsMixed(IntPort a)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(typeof(IntPort));
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             __Return(RandomInt(a, 10));
             __EndAccessibilityScope();
@@ -61,7 +61,7 @@ namespace RRCGBuild
 
         (IntPort namedValue, IntPort) ContentsData(IntPort a, IntPort b)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(typeof((IntPort namedValue, IntPort)));
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             __Return((a, b));
             __EndAccessibilityScope();
@@ -70,7 +70,7 @@ namespace RRCGBuild
 
         void ExecOut()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             EventReceiver(RoomEvents.Hz30);
             __EndAccessibilityScope();
@@ -79,7 +79,7 @@ namespace RRCGBuild
 
         void ExecIn()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             RandomInt(1, 10);
             ExecFlow.current.Clear();

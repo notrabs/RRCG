@@ -503,15 +503,13 @@ namespace RRCGBuild
             return __RRCG_SHARED_PROPERTIES[name];
         }
 
-        public static void __BeginReturnScope()
+        public static void __BeginReturnScope(Type? type)
         {
-            var scope = new ReturnScope
+            SemanticStack.current.Push(new ReturnScope
             {
-                ReturnData = null,
-                ReturnFlow = new ExecFlow()
-            };
-
-            SemanticStack.current.Push(scope);
+                ReturnType = type,
+                Returns = new()
+            });
         }
 
         public static dynamic? __EndReturnScope()
@@ -520,11 +518,10 @@ namespace RRCGBuild
             if (scope is not ReturnScope returnScope)
                 throw new Exception("Topmost element of SemanticStack.current was not ReturnScope");
 
-            ExecFlow.current.Merge(returnScope.ReturnFlow);
-            return returnScope.ReturnData;
+            return returnScope.FinalizeReturns();
         }
 
-        public static void __Return()
+        public static void __Return(dynamic? data)
         {
             SemanticStackUtils.AllIteratorsNeedManual();
 
@@ -532,22 +529,7 @@ namespace RRCGBuild
             if (returnScope == null)
                 throw new Exception("Could not find ReturnScope in SemanticStack");
 
-            returnScope.ReturnFlow.Merge(ExecFlow.current);
-            ExecFlow.current.Clear();
-        }
-
-        public static void __Return<T>(T expression)
-        {
-            SemanticStackUtils.AllIteratorsNeedManual();
-
-            var returnScope = SemanticStack.current.GetNextScopeWithType<ReturnScope>();
-            if (returnScope == null)
-                throw new Exception("Could not find ReturnScope in SemanticStack");
-
-            returnScope.ReturnFlow.Merge(ExecFlow.current);
-            ExecFlow.current.Clear();
-
-            returnScope.ReturnData = expression;
+            returnScope.AddReturn(data);
         }
 
         public T __Assign<T>(string identifier, out T variable, Func<T> value)
@@ -937,21 +919,20 @@ namespace RRCGBuild
             var itemConnections = Context.current.Connections.Where(c => c.From.EquivalentTo(forEachNode.Port(0, 1))).ToList();
 
             var returnScope = SemanticStack.current.GetNextScopeWithType<ReturnScope>();
-            bool returnDataNeedsFixup = (
-                returnScope != null &&
-                returnScope.ReturnData is T returnPort &&
-                returnPort.IsActualPort &&
-                returnPort.Port.EquivalentTo(forEachNode.Port(0, 1))
-            );
+            var returnsNeedFix = returnScope == null ? Enumerable.Empty<ReturnScope.Return>()
+                                    : returnScope.Returns.Where(r => r.Data != null &&
+                                                                     r.Data is T port && // Apparently this is undeclared..? :(
+                                                                     (r.Data as T)!.IsActualPort &&
+                                                                     (r.Data as T)!.Port.EquivalentTo(forEachNode.Port(0, 1)));
 
-            if (itemConnections.Count > 0 || returnDataNeedsFixup)
+            if (itemConnections.Count > 0 || returnsNeedFix.Count() > 0)
             {
                 var port = ListGetElement(list, indexVariable.Value).Port;
                 foreach (var conn in itemConnections)
                     conn.From = port;
 
-                if (returnDataNeedsFixup)
-                    returnScope!.ReturnData = new T { Port = port };
+                foreach (var ret in returnsNeedFix)
+                    ret.Data = new T { Port = port };
             }
 
             // Determine exec input source

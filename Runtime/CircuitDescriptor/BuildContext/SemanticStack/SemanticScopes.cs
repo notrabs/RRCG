@@ -224,15 +224,54 @@ namespace RRCGBuild
         }
     }
 
-    // TODO: What if we collected ExecFlows & return data when in __Return,
-    //       and automatically inserted event senders accordingly in __EndReturnScope?
-    //       We could preserve the current behaviour in the single return case, but with
-    //       multiple/conditional returns we could then go back to each return location
-    //       and make use of events as a "merge point" for the data.
     public class ReturnScope : SemanticScope
     {
-        public dynamic? ReturnData;
-        public ExecFlow ReturnFlow;
+        public Type? ReturnType;
+        public List<Return> Returns;
+
+        public class Return
+        {
+            public ExecFlow ExecFlow;
+            public dynamic? Data;
+        }
+
+        public void AddReturn(dynamic? data)
+        {
+            // ValueTuple doesn't support '=='.
+            // We just want to check if it's null, so this'll do
+            var dataIsNull = Object.Equals(data, null);
+
+            // Ensure return type
+            if (ReturnType == null && !dataIsNull)
+                throw new Exception("Return scope had void return type, but return data was provided!");
+
+            if (ReturnType != null)
+            {
+                if (dataIsNull)
+                    throw new Exception("Return scope had non-void return type, but no return data was provided!");
+
+                if (!ReturnType.IsAssignableFrom(data!.GetType()))
+                    throw new Exception("The return data type was not compatible with the ReturnScope return type!");
+            }
+
+            // Copy the current exec flow, store it with the data
+            var returnFlow = new ExecFlow();
+            returnFlow.Merge(ExecFlow.current);
+            Returns.Add(new Return { ExecFlow = returnFlow, Data = data });
+
+            // Clear the current exec flow & we're done
+            ExecFlow.current.Clear();
+        }
+
+        public dynamic? FinalizeReturns()
+        {
+            // Replicate old behaviour for now.
+            // But now we can insert event senders to support multiple/conditional returns!
+            foreach (var ret in Returns)
+                ExecFlow.current.Merge(ret.ExecFlow);
+
+            return Returns.LastOrDefault()?.Data;
+        }
     }
 }
 #nullable disable

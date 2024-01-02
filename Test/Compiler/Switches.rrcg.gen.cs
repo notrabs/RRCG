@@ -9,7 +9,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             SwitchTypes("test", 22);
             LogString("Return from SwitchTypes()");
@@ -23,7 +23,7 @@ namespace RRCGBuild
 
         public void SwitchTypes(StringPort switchString, IntPort switchInt)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
@@ -58,7 +58,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_4 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"case5\"");
-                    __Return();
+                    __Return(null);
                 }
 
                 ;
@@ -107,7 +107,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_4 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_5");
-                    __Return();
+                    __Return(null);
                 }
 
                 ;
@@ -129,7 +129,7 @@ namespace RRCGBuild
 
         public void ConditionalReturn(StringPort switchString, BoolPort condition)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
@@ -150,7 +150,7 @@ namespace RRCGBuild
                     }
 
                     );
-                    __Return();
+                    __Return(null);
                 }
 
                 ;
@@ -176,7 +176,7 @@ namespace RRCGBuild
                             }
 
                             );
-                            __Return();
+                            __Return(null);
                         }
 
                         ;
@@ -212,7 +212,7 @@ namespace RRCGBuild
                             AlternativeExec rrcg_switch_section_1 = delegate
                             {
                                 __LabelDecl("rrcg_switch_case_label_\"return\"");
-                                __Return();
+                                __Return(null);
                             }
 
                             ;
@@ -240,7 +240,7 @@ namespace RRCGBuild
                             {
                                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                                 LogString("Return");
-                                __Return();
+                                __Return(null);
                                 __EndAccessibilityScope();
                             }
 
@@ -280,7 +280,7 @@ namespace RRCGBuild
 
         void SwitchInWhileLoop()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             __While(__ConditionalContext(), () => true, false, delegate
             {

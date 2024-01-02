@@ -10,7 +10,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             // Test using while loops
             WhileTest();
@@ -31,14 +31,14 @@ namespace RRCGBuild
                 list = __VariableDeclaratorExpression<ListPort<IntPort>>("list", () => InlineGraph<ListPort<IntPort>>(() =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-                    __BeginReturnScope();
+                    __BeginReturnScope(typeof(ListPort<IntPort>));
                     __Return(ChipLib.EventCache<ListPort<IntPort>>(ListCreate<IntPort>(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)));
                     dynamic __RRCG_RETURN_DATA = __EndReturnScope();
                     __EndAccessibilityScope();
                     return __RRCG_RETURN_DATA;
                 }
 
-                ), () => list, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
+                ), () => list!, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
             // Standard For Each form
             ForEachTest(list);
             // Manual For Each form
@@ -61,13 +61,13 @@ namespace RRCGBuild
 
         void WhileTest()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("WhileTest").Receiver();
                 ListPort<StringPort> list = default !;
-                list = __VariableDeclaratorExpression<ListPort<StringPort>>("list", () => ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"), () => list, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
+                list = __VariableDeclaratorExpression<ListPort<StringPort>>("list", () => ListCreate<StringPort>("Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"), () => list!, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
                 ListPort<StringPort> listCache = default !;
-                listCache = __VariableDeclaratorExpression<ListPort<StringPort>>("listCache", () => ChipLib.EventCache<ListPort<StringPort>>(list), () => listCache, (_RRCG_SETTER_VALUE) => listCache = _RRCG_SETTER_VALUE);
+                listCache = __VariableDeclaratorExpression<ListPort<StringPort>>("listCache", () => ChipLib.EventCache<ListPort<StringPort>>(list), () => listCache!, (_RRCG_SETTER_VALUE) => listCache = _RRCG_SETTER_VALUE);
             __While(__ConditionalContext(), () => ChipBuilder.GreaterThan(listCache.Count, 0), false, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
@@ -87,10 +87,10 @@ namespace RRCGBuild
 
         void WhileReturnTest()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.EventDefinition entry = default !;
-                entry = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("entry", () => new EventDefinition("WhileReturnTest"), () => entry, (_RRCG_SETTER_VALUE) => entry = _RRCG_SETTER_VALUE);
+                entry = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("entry", () => new EventDefinition("WhileReturnTest"), () => entry!, (_RRCG_SETTER_VALUE) => entry = _RRCG_SETTER_VALUE);
             entry.Receiver();
             // Test returns from while block within an "inline" graph (functions are transparent)
             ChipLib.Log(Concat("Repeated string (inline graph): ", StringRepeat("Hello", 5)));
@@ -108,7 +108,7 @@ namespace RRCGBuild
         {
             return __DispatchEventFunction<StringPort, StringPort, IntPort>("StringRepeatEventFunction", delegate (StringPort str, IntPort count)
             {
-                __BeginReturnScope();
+                __BeginReturnScope(typeof(StringPort));
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 __Return(StringRepeat(str, count));
                 __EndAccessibilityScope();
@@ -120,10 +120,10 @@ namespace RRCGBuild
 
         public StringPort StringRepeat(StringPort str, IntPort count)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(typeof(StringPort));
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.Variable<StringPort> strStaging = default !;
-                strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
+                strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging!, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
             __While(__ConditionalContext(), () => true, false, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
@@ -152,11 +152,11 @@ namespace RRCGBuild
 
         void UnreachableNodesTest()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("UnreachableNodesTest").Receiver();
                 RRCGBuild.Variable<IntPort> index = default !;
-                index = __VariableDeclaratorExpression<RRCGBuild.Variable<IntPort>>("index", () => new Variable<IntPort>(), () => index, (_RRCG_SETTER_VALUE) => index = _RRCG_SETTER_VALUE);
+                index = __VariableDeclaratorExpression<RRCGBuild.Variable<IntPort>>("index", () => new Variable<IntPort>(), () => index!, (_RRCG_SETTER_VALUE) => index = _RRCG_SETTER_VALUE);
             index.Value = 0;
             __While(__ConditionalContext(), () => ChipBuilder.LessThan(index.Value, 100), false, delegate
             {
@@ -206,7 +206,7 @@ namespace RRCGBuild
 
         void NestedWhileTest()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NestedWhileTest").Receiver();
             LogString("Start");
@@ -235,7 +235,7 @@ namespace RRCGBuild
 
         void DoWhileTest()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("DoWhileTest").Receiver();
             __While(__ConditionalContext(), () => true, true, delegate
@@ -284,7 +284,7 @@ namespace RRCGBuild
 
         void DoWhileReturnTest()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("DoWhileReturnTest").Receiver();
             // Test returns from do while block within an "inline" graph (functions are transparent)
@@ -303,7 +303,7 @@ namespace RRCGBuild
         {
             return __DispatchEventFunction<StringPort, StringPort, IntPort>("StringRepeatDoWhileEventFunction", delegate (StringPort str, IntPort count)
             {
-                __BeginReturnScope();
+                __BeginReturnScope(typeof(StringPort));
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 __Return(StringRepeatDoWhile(str, count));
                 __EndAccessibilityScope();
@@ -315,10 +315,10 @@ namespace RRCGBuild
 
         public StringPort StringRepeatDoWhile(StringPort str, IntPort count)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(typeof(StringPort));
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.Variable<StringPort> strStaging = default !;
-                strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
+                strStaging = __VariableDeclaratorExpression<RRCGBuild.Variable<StringPort>>("strStaging", () => new Variable<StringPort>(), () => strStaging!, (_RRCG_SETTER_VALUE) => strStaging = _RRCG_SETTER_VALUE);
             __While(__ConditionalContext(), () => true, true, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
@@ -347,7 +347,7 @@ namespace RRCGBuild
 
         void NestedDoWhileTest()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NestedDoWhileTest").Receiver();
             __While(__ConditionalContext(), () => true, true, delegate
@@ -436,7 +436,7 @@ namespace RRCGBuild
 
         void ForEachTest(ListPort<IntPort> list)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("ForEachTest").Receiver();
             __ForEach(__ConditionalContext(), list, (item) =>
@@ -455,7 +455,7 @@ namespace RRCGBuild
 
         void ManualForEachTest(ListPort<IntPort> list)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("ManualForEachTest").Receiver();
             __ForEach(__ConditionalContext(), list, (item) =>
@@ -488,7 +488,7 @@ namespace RRCGBuild
 
         void NestedForEach(ListPort<IntPort> list)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NestedForEach").Receiver();
             __ForEach(__ConditionalContext(), list, (item) =>
@@ -516,7 +516,7 @@ namespace RRCGBuild
 
         void ManualWithinStandardForEach(ListPort<IntPort> list)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("ManualWithinStandardForEach").Receiver();
             __ForEach(__ConditionalContext(), list, (item) =>
@@ -558,7 +558,7 @@ namespace RRCGBuild
 
         void StandardWithinManualForEach(ListPort<IntPort> list)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("StandardWithinManualForEach").Receiver();
             __ForEach(__ConditionalContext(), list, (item) =>
@@ -600,7 +600,7 @@ namespace RRCGBuild
 
         void TestDelaysForEach(ListPort<IntPort> list)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestDelaysForEach").Receiver();
             __ForEach(__ConditionalContext(), list, (item) =>
@@ -652,7 +652,7 @@ namespace RRCGBuild
         {
             return __DispatchEventFunction<IntPort, ListPort<IntPort>>("ForEachReturnEventFunction", delegate (ListPort<IntPort> list)
             {
-                __BeginReturnScope();
+                __BeginReturnScope(typeof(IntPort));
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 __Return(ForEachReturnImpl(list));
                 __EndAccessibilityScope();
@@ -664,7 +664,7 @@ namespace RRCGBuild
 
         public IntPort ForEachReturnImpl(ListPort<IntPort> list)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(typeof(IntPort));
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             __ForEach(__ConditionalContext(), list, (item) =>
             {
@@ -695,15 +695,15 @@ namespace RRCGBuild
 
         void ForEachReturnTest(ListPort<IntPort> list)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.EventDefinition entry = default !;
-                entry = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("entry", () => new EventDefinition("ForEachReturnTest"), () => entry, (_RRCG_SETTER_VALUE) => entry = _RRCG_SETTER_VALUE);
+                entry = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("entry", () => new EventDefinition("ForEachReturnTest"), () => entry!, (_RRCG_SETTER_VALUE) => entry = _RRCG_SETTER_VALUE);
             entry.Receiver();
             // Test returns from while block within an "inline" graph (functions are transparent)
             ChipLib.Log(__StringInterpolation("Result (inline graph): ", ForEachReturnImpl(list)));
                 IntPort result = default !;
-                result = __VariableDeclaratorExpression<IntPort>("result", () => CircuitBoard<ListPort<IntPort>, IntPort>(ForEachReturnImpl, list), () => result, (_RRCG_SETTER_VALUE) => result = _RRCG_SETTER_VALUE);
+                result = __VariableDeclaratorExpression<IntPort>("result", () => CircuitBoard<ListPort<IntPort>, IntPort>(ForEachReturnImpl, list), () => result!, (_RRCG_SETTER_VALUE) => result = _RRCG_SETTER_VALUE);
             ChipLib.Log(__StringInterpolation("Result (circuit board): ", result));
             // Test returns from while block within event functions
             ChipLib.Log(__StringInterpolation("Result (event function): ", ForEachReturnEventFunction(list)));
@@ -714,11 +714,11 @@ namespace RRCGBuild
 
         void ForEachPromotedTest(ListPort<IntPort> list)
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("ForEachPromotedTest").Receiver();
                 IntPort i = default !;
-                i = __VariableDeclaratorExpression<IntPort>("i", () => 0, () => i, (_RRCG_SETTER_VALUE) => i = _RRCG_SETTER_VALUE);
+                i = __VariableDeclaratorExpression<IntPort>("i", () => 0, () => i!, (_RRCG_SETTER_VALUE) => i = _RRCG_SETTER_VALUE);
             __ForEach(__ConditionalContext("i"), list, (item) =>
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);

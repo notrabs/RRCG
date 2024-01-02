@@ -180,7 +180,9 @@ namespace RRCG
                 );
             }
 
-            var statements = WrapStatementsInReturnScope(method.Body.Statements, method.ReturnType.ToString() == "void");
+            var methodSymbol = SemanticModel.GetDeclaredSymbol(node);
+            var rewrittenReturnType = (TypeSyntax)Visit(methodSymbol.ReturnType.ToTypeSyntax());
+            var statements = WrapStatementsInReturnScope(method.Body.Statements, rewrittenReturnType);
 
             // special functions
             var isEventFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "EventFunction"));
@@ -275,36 +277,42 @@ namespace RRCG
         {
             SyntaxList<StatementSyntax> statements;
             var visitedMethod = (T)visitMethod(method);
+            var returnType = (SemanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnType.ToTypeSyntax();
+            var rewrittenReturnType = (TypeSyntax)Visit(returnType);
 
             if (method.Block != null)
             {
                 statements = WrapStatementsInReturnScope(
                     visitedMethod.Block.Statements,
-                    SyntaxUtils.IsBlockVoid(method.Block)
+                    rewrittenReturnType
                 );
             }
             else
             {
                 // .ExpressionBody and .Block are mutually exclusive -- this function is without a block.
                 // We need one for accessibility scopes, so let's create one.
-                var returnsVoid = (SemanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnsVoid;
-
                 statements = SyntaxFactory.SingletonList<StatementSyntax>(
-                                returnsVoid ? SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
-                                            : ValueReturnStatement(visitedMethod.ExpressionBody)
+                                returnType.ToString() == "void" ? SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
+                                                                : ValueReturnStatement(visitedMethod.ExpressionBody)
                                 );
 
-                statements = WrapStatementsInAccessibilityScope(WrapStatementsInReturnScope(statements, returnsVoid), AccessibilityScope.Kind.MethodRoot);
+                statements = WrapStatementsInAccessibilityScope(WrapStatementsInReturnScope(statements, rewrittenReturnType), AccessibilityScope.Kind.MethodRoot);
             }
 
-            return (T)visitedMethod.WithBody(
-                SyntaxFactory.Block(statements)
-            );
+            return (T)visitedMethod.WithBody(Block(statements));
         }
 
-        public SyntaxList<StatementSyntax> WrapStatementsInReturnScope(SyntaxList<StatementSyntax> statements, bool isVoid)
+        public SyntaxList<StatementSyntax> WrapStatementsInReturnScope(SyntaxList<StatementSyntax> statements, TypeSyntax returnType)
         {
-            statements = statements.Insert(0, ParseStatement("__BeginReturnScope();"));
+            bool isVoid = returnType.ToString() == "void";
+
+            statements = statements.Insert(0, ExpressionStatement(
+                InvocationExpression(
+                    IdentifierName("__BeginReturnScope"))
+                .WithArgumentList(
+                    SyntaxUtils.ArgumentList(
+                        isVoid ? LiteralExpression(SyntaxKind.NullLiteralExpression)
+                               : TypeOfExpression(returnType)))));
 
             var endInvocation = ParseExpression("__EndReturnScope()");
             StatementSyntax endStatement = isVoid ? ExpressionStatement(endInvocation)
@@ -715,14 +723,7 @@ namespace RRCG
         public override SyntaxNode VisitReturnStatement(ReturnStatementSyntax node)
         {
             var expression = (ExpressionSyntax)base.Visit(node.Expression);
-
-            if (expression == null)
-            {
-                return ExpressionStatement(
-                    InvocationExpression(IdentifierName("__Return")));
-            }
-
-            return ValueReturnStatement(expression);
+            return ValueReturnStatement(expression ?? LiteralExpression(SyntaxKind.NullLiteralExpression));
         }
 
         public ExpressionStatementSyntax ValueReturnStatement(ExpressionSyntax expression)
@@ -755,7 +756,7 @@ namespace RRCG
                 return visited;
             }
 
-            var type = ParseTypeName(resolvedType.ToString());
+            var type = resolvedType.ToTypeSyntax();
             var rewrittenType = (TypeSyntax)Visit(type);
             var result = visited.WithType(rewrittenType);
             return result;
@@ -826,8 +827,7 @@ namespace RRCG
             // the type assignment for invocation.
             if (resolvedType != null)
             {
-                // Not sure if this is the best way to get the syntax node for a type. Some types get over-qualified, but at least they work.
-                var type = ParseTypeName(resolvedType.ToString());
+                var type = resolvedType.ToTypeSyntax();
                 finalType = (TypeSyntax)Visit(type);
             }
             else
@@ -1285,7 +1285,9 @@ namespace RRCG
                                    Argument(
                                        ParenthesizedLambdaExpression()
                                            .WithExpressionBody(
-                                               IdentifierName(identifierName))),
+                                               PostfixUnaryExpression(
+                                                   SyntaxKind.SuppressNullableWarningExpression,
+                                                   IdentifierName(identifierName)))),
                                    Token(SyntaxKind.CommaToken),
                                    Argument(setterArg)})))
                    .NormalizeWhitespace();

@@ -7,7 +7,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             DelayTest();
             ErrorTest();
@@ -17,10 +17,10 @@ namespace RRCGBuild
 
         void DelayTest()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.Delay delay = default !;
-                delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new Delay(5), () => delay, (_RRCG_SETTER_VALUE) => delay = _RRCG_SETTER_VALUE);
+                delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new Delay(5), () => delay!, (_RRCG_SETTER_VALUE) => delay = _RRCG_SETTER_VALUE);
             ChipLib.Log("Delay Test 1");
             delay.Cancel().Run();
             ChipLib.Log("Delay is scheduled");
@@ -39,14 +39,14 @@ namespace RRCGBuild
 
         void ErrorTest()
         {
-            __BeginReturnScope();
+            __BeginReturnScope(null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             TestUtils.ExpectToThrow(() =>
             {
-                __BeginReturnScope();
+                __BeginReturnScope(null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                     RRCGBuild.Delay delay = default !;
-                    delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new Delay(1), () => delay, (_RRCG_SETTER_VALUE) => delay = _RRCG_SETTER_VALUE);
+                    delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new Delay(1), () => delay!, (_RRCG_SETTER_VALUE) => delay = _RRCG_SETTER_VALUE);
                 delay.Await();
                 delay.Await();
                 __EndAccessibilityScope();
