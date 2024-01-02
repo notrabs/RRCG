@@ -673,7 +673,7 @@ namespace RRCGBuild
                 __If(__ConditionalContext(), () => ChipBuilder.Equals(item, 5), delegate
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                    __Return(Reroute<IntPort>(item));
+                    __Return(item);
                     __EndAccessibilityScope();
                 }
 

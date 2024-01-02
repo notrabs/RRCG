@@ -933,13 +933,25 @@ namespace RRCGBuild
             var indexVariable = new Variable<IntPort>();
             SemanticStack.current.Pop();
 
-            // Rewire all item connections to a List Get Element chip
+            // Rewire all item connections (& return data) to a List Get Element chip
             var itemConnections = Context.current.Connections.Where(c => c.From.EquivalentTo(forEachNode.Port(0, 1))).ToList();
-            if (itemConnections.Count > 0)
+
+            var returnScope = SemanticStack.current.GetNextScopeWithType<ReturnScope>();
+            bool returnDataNeedsFixup = (
+                returnScope != null &&
+                returnScope.ReturnData is T returnPort &&
+                returnPort.IsActualPort &&
+                returnPort.Port.EquivalentTo(forEachNode.Port(0, 1))
+            );
+
+            if (itemConnections.Count > 0 || returnDataNeedsFixup)
             {
                 var port = ListGetElement(list, indexVariable.Value).Port;
                 foreach (var conn in itemConnections)
                     conn.From = port;
+
+                if (returnDataNeedsFixup)
+                    returnScope!.ReturnData = new T { Port = port };
             }
 
             // Determine exec input source

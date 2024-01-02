@@ -404,14 +404,7 @@ public class Iterators : CircuitDescriptor
         foreach (var item in list)
         {
             LogString($"Item: {item}");
-
-            // We have to return the item in a reroute
-            // for now because returning Item directly would
-            // return the port on the For Each node, which will be removed.
-            // The invalid reference would hang out in rrcg_return_data where we
-            // can't correct it. Maybe conditional returns would fix this,
-            // if we use an event cache to store returned values (and get conditionals for free)?
-            if (item == 5) return Reroute(item);
+            if (item == 5) return item;
         }
 
         throw null;

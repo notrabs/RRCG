@@ -224,6 +224,11 @@ namespace RRCGBuild
         }
     }
 
+    // TODO: What if we collected ExecFlows & return data when in __Return,
+    //       and automatically inserted event senders accordingly in __EndReturnScope?
+    //       We could preserve the current behaviour in the single return case, but with
+    //       multiple/conditional returns we could then go back to each return location
+    //       and make use of events as a "merge point" for the data.
     public class ReturnScope : SemanticScope
     {
         public dynamic? ReturnData;
