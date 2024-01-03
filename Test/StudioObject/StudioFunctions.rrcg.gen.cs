@@ -8,7 +8,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 StudioFunctionsObject studioObject = default !;
                 studioObject = __VariableDeclaratorExpression<StudioFunctionsObject>("studioObject", () => new StudioFunctionsObject(RecRoomObjectPort.Invalid), () => studioObject!, (_RRCG_SETTER_VALUE) => studioObject = _RRCG_SETTER_VALUE);

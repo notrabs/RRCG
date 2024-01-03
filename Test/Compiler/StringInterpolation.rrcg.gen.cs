@@ -9,7 +9,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             InterpolatePureData();
             InterpolateDataWithPort();
@@ -20,7 +20,7 @@ namespace RRCGBuild
 
         void InterpolatePureData()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("InterpolatePureData", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("InterpolatePureData").Receiver();
                 StringPort port1 = default !;
@@ -35,7 +35,7 @@ namespace RRCGBuild
 
         void InterpolateDataWithPort()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("InterpolateDataWithPort", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("InterpolateDataWithPort").Receiver();
                 RRCGBuild.Variable<StringPort> variable = default !;
@@ -51,7 +51,7 @@ namespace RRCGBuild
 
         void InterpolateNonStrings()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("InterpolateNonStrings", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("InterpolateNonStrings").Receiver();
                 IntPort intData = default !;

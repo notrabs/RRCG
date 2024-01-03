@@ -10,7 +10,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             TestNotIfOptimizer();
             TestIfLocalPlayerIsAuthorityOptimizer();
@@ -28,7 +28,7 @@ namespace RRCGBuild
 
         void TestNotIfOptimizer()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("TestNotIfOptimizer", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestNotIfOptimizer").Receiver();
                 BoolPort optimizableBool = default !;
@@ -275,7 +275,7 @@ namespace RRCGBuild
 
         void TestIfLocalPlayerIsAuthorityOptimizer()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("TestIfLocalPlayerIsAuthorityOptimizer", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfLocalPlayerIsAuthorityOptimizer").Receiver();
             __If(__ConditionalContext(), () => ChipBuilder.Equals(GetAuthority(), PlayerPort.Local), delegate
@@ -462,7 +462,7 @@ namespace RRCGBuild
 
         void TestIfLocalPlayerIsRoomAuthorityOptimizer()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("TestIfLocalPlayerIsRoomAuthorityOptimizer", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfLocalPlayerIsRoomAuthorityOptimizer").Receiver();
             __If(__ConditionalContext(), () => ChipBuilder.Equals(GetRoomAuthority(), PlayerPort.Local), delegate
@@ -649,7 +649,7 @@ namespace RRCGBuild
 
         void TestIfLocalPlayerShouldRunOptimizer()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("TestIfLocalPlayerShouldRunOptimizer", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfLocalPlayerShouldRunOptimizer").Receiver();
                 RRCGBuild.PlayerPort player = default !;
@@ -748,7 +748,7 @@ namespace RRCGBuild
 
         void TestIfPlayerHasRoleOptimizer()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("TestIfPlayerHasRoleOptimizer", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfPlayerHasRoleOptimizer").Receiver();
             __If(__ConditionalContext(), () => PlayerPort.Local.HasRole("testrole"), delegate
@@ -847,7 +847,7 @@ namespace RRCGBuild
 
         void TestIfPlayerIsLocalOptimizer()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("TestIfPlayerIsLocalOptimizer", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfPlayerIsLocalOptimizer").Receiver();
             __If(__ConditionalContext(), () => PlayerPort.Local.IsLocal, delegate
@@ -946,7 +946,7 @@ namespace RRCGBuild
 
         void TestIfPlayerIsValidOptimizer()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("TestIfPlayerIsValidOptimizer", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfPlayerIsValidOptimizer").Receiver();
             __If(__ConditionalContext(), () => PlayerPort.Local.IsValid, delegate
@@ -1014,7 +1014,7 @@ namespace RRCGBuild
 
         void TestKnownSingletonChipsOptimizer()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("TestKnownSingletonChipsOptimizer", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestKnownSingletonChipsOptimizer").Receiver();
                 RRCGBuild.Variable<FloatPort> floatVar = default !;
@@ -1034,7 +1034,7 @@ namespace RRCGBuild
 
         void TestVariableCollapseOptimizer()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("TestVariableCollapseOptimizer", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestVariableCollapseOptimiser").Receiver();
                 RRCGBuild.Variable<FloatPort> var0 = default !;
@@ -1063,7 +1063,7 @@ namespace RRCGBuild
 
         void TestAssociativeOperationCollapseOptimizer()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("TestAssociativeOperationCollapseOptimizer", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestAssociativeOperationCollapseOptimizer").Receiver();
                 RRCGBuild.Variable<FloatPort> variable = default !;

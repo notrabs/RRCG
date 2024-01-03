@@ -503,13 +503,9 @@ namespace RRCGBuild
             return __RRCG_SHARED_PROPERTIES[name];
         }
 
-        public static void __BeginReturnScope(Type? type)
+        public static void __BeginReturnScope(string methodName, Type? returnType, string[]? tupleElementNames)
         {
-            SemanticStack.current.Push(new ReturnScope
-            {
-                ReturnType = type,
-                Returns = new()
-            });
+            SemanticStack.current.Push(new ReturnScope(methodName, returnType, tupleElementNames));
         }
 
         public static dynamic? __EndReturnScope()

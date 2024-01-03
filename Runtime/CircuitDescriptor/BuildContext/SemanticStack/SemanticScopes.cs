@@ -5,6 +5,7 @@ using DeclaredVariable = RRCGBuild.AccessibilityScope.DeclaredVariable;
 using PromotedVariable = RRCGBuild.ConditionalContext.PromotedVariable;
 using RRCGGenerated;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 // TODO: Should we start initializing members within the class declarations?
 //       We currently do this at each construction site, which gets quite verbose.
@@ -227,12 +228,30 @@ namespace RRCGBuild
     public class ReturnScope : SemanticScope
     {
         public Type? ReturnType;
-        public List<Return> Returns;
+        public string MethodName;
+        public string[]? TupleElementNames;
+        public List<Return> Returns = new();
+
+        private bool ReturnTypeIsTupleType;
 
         public class Return
         {
             public ExecFlow ExecFlow;
             public dynamic? Data;
+        }
+
+        public ReturnScope(string methodName, Type? returnType, string[]? tupleElementNames)
+        {
+            MethodName = methodName;
+            ReturnType = returnType;
+            TupleElementNames = tupleElementNames;
+
+            ReturnTypeIsTupleType = returnType != null && typeof(ITuple).IsAssignableFrom(returnType);
+            int numTupleItems = returnType != null ? returnType.GetGenericArguments().Length : 0;
+
+            if (ReturnTypeIsTupleType && (tupleElementNames == null || tupleElementNames.Length != numTupleItems))
+                throw new Exception("Return type was a tuple type, but the number of " +
+                                    "provided tuple element names didn't match!");
         }
 
         public void AddReturn(dynamic? data)

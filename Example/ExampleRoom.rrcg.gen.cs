@@ -10,7 +10,7 @@ namespace RRCGBuild
         EventDefinition<IntPort> testEvent;
         public override void CircuitGraph()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             RandomExample();
             EventCacheExample();
@@ -21,7 +21,7 @@ namespace RRCGBuild
 
         public void RandomExample()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("RandomExample", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             EventReceiver(RoomEvents.Hz30);
                 IntPort rand1 = default !;
@@ -49,7 +49,7 @@ namespace RRCGBuild
 
         public void EventCacheExample()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("EventCacheExample", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             EventReceiver(RoomEvents.Hz30);
                 IntPort rand1 = default !;
@@ -65,7 +65,7 @@ namespace RRCGBuild
 
         public void VariableLoopExample()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("VariableLoopExample", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 IntPort intValue = default !;
                 intValue = __VariableDeclaratorExpression<IntPort>("intValue", () => testEvent.Receiver(), () => intValue!, (_RRCG_SETTER_VALUE) => intValue = _RRCG_SETTER_VALUE);

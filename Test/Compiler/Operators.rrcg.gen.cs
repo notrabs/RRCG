@@ -8,7 +8,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             NativeIntOperators();
             NativeFloatOperators();
@@ -24,7 +24,7 @@ namespace RRCGBuild
 
         public void NativeIntOperators()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("NativeIntOperators", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NativeIntOperators").Receiver();
                 IntPort nativeA = default !;
@@ -59,7 +59,7 @@ namespace RRCGBuild
 
         public void NativeFloatOperators()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("NativeFloatOperators", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("NativeFloatOperators").Receiver();
                 FloatPort nativeA = default !;
@@ -94,7 +94,7 @@ namespace RRCGBuild
 
         public void PortIntOperators()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("PortIntOperators", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("PortIntOperators").Receiver();
                 IntPort portA = default !;
@@ -129,7 +129,7 @@ namespace RRCGBuild
 
         public void PortFloatOperators()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("PortFloatOperators", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("PortFloatOperators").Receiver();
                 FloatPort portA = default !;
@@ -164,7 +164,7 @@ namespace RRCGBuild
 
         public void VectorOperators()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("VectorOperators", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("VectorOperators").Receiver();
                 Vector3Port vectorA = default !;
@@ -196,7 +196,7 @@ namespace RRCGBuild
 
         public void MixedOperators()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("MixedOperators", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("MixedOperators").Receiver();
                 FloatPort portA = default !;
@@ -217,7 +217,7 @@ namespace RRCGBuild
 
         public void TernaryOperator()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("TernaryOperator", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TernaryOperator").Receiver();
                 FloatPort dataA = default !;
@@ -247,7 +247,7 @@ namespace RRCGBuild
 
         public void BitwiseOperators()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("BitwiseOperators", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("BitwiseOperators").Receiver();
                 IntPort dataA = default !;

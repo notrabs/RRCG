@@ -8,7 +8,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 IntPort a = default !;
                 a = __VariableDeclaratorExpression<IntPort>("a", () => RandomInt(1, 10), () => a!, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
@@ -29,7 +29,7 @@ namespace RRCGBuild
             //});
             CircuitBoard<IntPort>((IntPort test) =>
             {
-                __BeginReturnScope(null);
+                __BeginReturnScope("ParenthesizedLambda", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 ChipLib.Log("Anonymous Parameter");
                 __EndAccessibilityScope();
@@ -43,7 +43,7 @@ namespace RRCGBuild
 
         void ContentsExec()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("ContentsExec", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             RandomInt(1, 10);
             __EndAccessibilityScope();
@@ -52,25 +52,25 @@ namespace RRCGBuild
 
         IntPort ContentsMixed(IntPort a)
         {
-            __BeginReturnScope(typeof(IntPort));
+            __BeginReturnScope("ContentsMixed", typeof(IntPort), null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             __Return(RandomInt(a, 10));
             __EndAccessibilityScope();
-            return __EndReturnScope();
+            return __EndReturnScope()!;
         }
 
         (IntPort namedValue, IntPort) ContentsData(IntPort a, IntPort b)
         {
-            __BeginReturnScope(typeof((IntPort namedValue, IntPort)));
+            __BeginReturnScope("ContentsData", typeof((IntPort namedValue, IntPort)), new[]{"namedValue", "value1"});
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             __Return((a, b));
             __EndAccessibilityScope();
-            return __EndReturnScope();
+            return __EndReturnScope()!;
         }
 
         void ExecOut()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("ExecOut", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             EventReceiver(RoomEvents.Hz30);
             __EndAccessibilityScope();
@@ -79,7 +79,7 @@ namespace RRCGBuild
 
         void ExecIn()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("ExecIn", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             RandomInt(1, 10);
             ExecFlow.current.Clear();

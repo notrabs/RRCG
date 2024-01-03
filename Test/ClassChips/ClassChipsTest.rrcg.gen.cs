@@ -7,7 +7,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             DelayTest();
             ErrorTest();
@@ -17,7 +17,7 @@ namespace RRCGBuild
 
         void DelayTest()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("DelayTest", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.Delay delay = default !;
                 delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new Delay(5), () => delay!, (_RRCG_SETTER_VALUE) => delay = _RRCG_SETTER_VALUE);
@@ -39,11 +39,11 @@ namespace RRCGBuild
 
         void ErrorTest()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("ErrorTest", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             TestUtils.ExpectToThrow(() =>
             {
-                __BeginReturnScope(null);
+                __BeginReturnScope("ParenthesizedLambda", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                     RRCGBuild.Delay delay = default !;
                     delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new Delay(1), () => delay!, (_RRCG_SETTER_VALUE) => delay = _RRCG_SETTER_VALUE);

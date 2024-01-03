@@ -9,7 +9,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             SwitchTypes("test", 22);
             LogString("Return from SwitchTypes()");
@@ -23,7 +23,7 @@ namespace RRCGBuild
 
         public void SwitchTypes(StringPort switchString, IntPort switchInt)
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("SwitchTypes", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
@@ -129,7 +129,7 @@ namespace RRCGBuild
 
         public void ConditionalReturn(StringPort switchString, BoolPort condition)
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("ConditionalReturn", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
@@ -280,7 +280,7 @@ namespace RRCGBuild
 
         void SwitchInWhileLoop()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("SwitchInWhileLoop", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             __While(__ConditionalContext(), () => true, false, delegate
             {

@@ -12,7 +12,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("GotoTest").Receiver();
                 __LabelDecl("label1");
@@ -90,7 +90,7 @@ namespace RRCGBuild
             // No scoping weirdness
             CircuitBoard(() =>
             {
-                __BeginReturnScope(null);
+                __BeginReturnScope("ParenthesizedLambda", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                     __LabelDecl("innerLabel1");
                     LogString("Inner label 1");

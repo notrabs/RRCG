@@ -182,7 +182,7 @@ namespace RRCG
 
             var methodSymbol = SemanticModel.GetDeclaredSymbol(node);
             var rewrittenReturnType = (TypeSyntax)Visit(methodSymbol.ReturnType.ToTypeSyntax());
-            var statements = WrapStatementsInReturnScope(method.Body.Statements, rewrittenReturnType);
+            var statements = WrapStatementsInReturnScope(method.Body.Statements, methodName, rewrittenReturnType);
 
             // special functions
             var isEventFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "EventFunction"));
@@ -261,19 +261,19 @@ namespace RRCG
 
         public override SyntaxNode VisitSimpleLambdaExpression(SimpleLambdaExpressionSyntax method)
         {
-            return VisitAnonymousFunction(method, base.VisitSimpleLambdaExpression);
+            return VisitAnonymousFunction(method, base.VisitSimpleLambdaExpression, "SimpleLambda");
         }
         public override SyntaxNode VisitParenthesizedLambdaExpression(ParenthesizedLambdaExpressionSyntax method)
         {
-            return VisitAnonymousFunction(method, base.VisitParenthesizedLambdaExpression);
+            return VisitAnonymousFunction(method, base.VisitParenthesizedLambdaExpression, "ParenthesizedLambda");
         }
 
         public override SyntaxNode VisitAnonymousMethodExpression(AnonymousMethodExpressionSyntax method)
         {
-            return VisitAnonymousFunction(method, base.VisitAnonymousMethodExpression);
+            return VisitAnonymousFunction(method, base.VisitAnonymousMethodExpression, "AnonymousMethod");
         }
 
-        public T VisitAnonymousFunction<T>(T method, Func<T, SyntaxNode> visitMethod) where T : AnonymousFunctionExpressionSyntax
+        public T VisitAnonymousFunction<T>(T method, Func<T, SyntaxNode> visitMethod, string methodName) where T : AnonymousFunctionExpressionSyntax
         {
             SyntaxList<StatementSyntax> statements;
             var visitedMethod = (T)visitMethod(method);
@@ -284,6 +284,7 @@ namespace RRCG
             {
                 statements = WrapStatementsInReturnScope(
                     visitedMethod.Block.Statements,
+                    methodName,
                     rewrittenReturnType
                 );
             }
@@ -296,27 +297,55 @@ namespace RRCG
                                                                 : ValueReturnStatement(visitedMethod.ExpressionBody)
                                 );
 
-                statements = WrapStatementsInAccessibilityScope(WrapStatementsInReturnScope(statements, rewrittenReturnType), AccessibilityScope.Kind.MethodRoot);
+                statements = WrapStatementsInAccessibilityScope(WrapStatementsInReturnScope(statements, methodName, rewrittenReturnType), AccessibilityScope.Kind.MethodRoot);
             }
 
             return (T)visitedMethod.WithBody(Block(statements));
         }
 
-        public SyntaxList<StatementSyntax> WrapStatementsInReturnScope(SyntaxList<StatementSyntax> statements, TypeSyntax returnType)
+        public SyntaxList<StatementSyntax> WrapStatementsInReturnScope(SyntaxList<StatementSyntax> statements, string methodName, TypeSyntax returnType)
         {
             bool isVoid = returnType.ToString() == "void";
+
+            // Create array of tuple element names (in the tuple case)
+            ExpressionSyntax tupleElementNames = LiteralExpression(SyntaxKind.NullLiteralExpression);
+            if (returnType is TupleTypeSyntax tupleType)
+            {
+                // Collect element names
+                var names = new List<ExpressionSyntax>();
+
+                for (int i=0; i < tupleType.Elements.Count; i++)
+                {
+                    var element = tupleType.Elements[i];
+                    names.Add(
+                        SyntaxUtils.StringLiteral(
+                            element.Identifier.Kind() == SyntaxKind.None ? $"value{i}" : element.Identifier.Text
+                        ));
+                }
+
+                // Create an array constructor with the names
+                tupleElementNames = ImplicitArrayCreationExpression(
+                    InitializerExpression(
+                        SyntaxKind.ArrayInitializerExpression,
+                        SyntaxUtils.ExpressionList(names.ToArray())));
+            }
 
             statements = statements.Insert(0, ExpressionStatement(
                 InvocationExpression(
                     IdentifierName("__BeginReturnScope"))
                 .WithArgumentList(
                     SyntaxUtils.ArgumentList(
+                        SyntaxUtils.StringLiteral(methodName),
                         isVoid ? LiteralExpression(SyntaxKind.NullLiteralExpression)
-                               : TypeOfExpression(returnType)))));
+                               : TypeOfExpression(returnType),
+                        tupleElementNames))));
 
             var endInvocation = ParseExpression("__EndReturnScope()");
             StatementSyntax endStatement = isVoid ? ExpressionStatement(endInvocation)
-                                                  : ReturnStatement(endInvocation);
+                                                  : ReturnStatement(
+                                                      PostfixUnaryExpression(
+                                                          SyntaxKind.SuppressNullableWarningExpression,
+                                                          endInvocation));
 
             statements = statements.Add(endStatement);
             

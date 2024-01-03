@@ -7,7 +7,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             ReadWrite();
             SyncedArrayInt();
@@ -17,7 +17,7 @@ namespace RRCGBuild
 
         public void ReadWrite()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("ReadWrite", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             ChipLib.Log("Start before inline definitions.");
                 RRCGBuild.SyncedArray<IntPort> arrayInt = default !;
@@ -42,7 +42,7 @@ namespace RRCGBuild
 
         public void SyncedArrayInt()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("SyncedArrayInt", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.SyncedArrayInt arrayInt = default !;
                 arrayInt = __VariableDeclaratorExpression<RRCGBuild.SyncedArrayInt>("arrayInt", () => new SyncedArrayInt(5), () => arrayInt!, (_RRCG_SETTER_VALUE) => arrayInt = _RRCG_SETTER_VALUE);

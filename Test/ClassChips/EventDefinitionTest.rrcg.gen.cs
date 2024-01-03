@@ -7,7 +7,7 @@ namespace RRCGBuild
     {
         public override void CircuitGraph()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             ParamCounts();
             SendTypes();
@@ -18,7 +18,7 @@ namespace RRCGBuild
 
         void ParamCounts()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("ParamCounts", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.EventDefinition params0 = default !;
                 params0 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("params0", () => new EventDefinition(), () => params0!, (_RRCG_SETTER_VALUE) => params0 = _RRCG_SETTER_VALUE);
@@ -40,7 +40,7 @@ namespace RRCGBuild
 
         void SendTypes()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("SendTypes", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.EventDefinition params0 = default !;
                 params0 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("params0", () => new EventDefinition(), () => params0!, (_RRCG_SETTER_VALUE) => params0 = _RRCG_SETTER_VALUE);
@@ -58,7 +58,7 @@ namespace RRCGBuild
 
         void Existing()
         {
-            __BeginReturnScope(null);
+            __BeginReturnScope("Existing", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.EventDefinition params0 = default !;
                 params0 = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("params0", () => ExistingEvent("Existing0"), () => params0!, (_RRCG_SETTER_VALUE) => params0 = _RRCG_SETTER_VALUE);
