@@ -235,8 +235,12 @@ namespace RRCGBuild
         public ColorPort(float r, float g, float b) { Data = PortConversionUtils.EncodeColor(new Color(r, g, b)); }
         public ColorPort(float r, float g, float b, float a) { Data = PortConversionUtils.EncodeColor(new Color(r, g, b, a)); }
 
-        public static implicit operator ColorPort(Color data) => new ColorPort { Data = PortConversionUtils.EncodeColor(data) };
+        public static ColorPort HSVToRGB(FloatPort h, FloatPort s, FloatPort v)
+        {
+            if (h.IsDataPort && s.IsDataPort && v.IsDataPort) return (ColorPort)Color.HSVToRGB(h.Data, s.Data, v.Data);
+            return ChipBuilder.HSVToColor(h, s, v);
+        }
 
-        
+        public static implicit operator ColorPort(Color data) => new ColorPort { Data = PortConversionUtils.EncodeColor(data) };
     }
 }
