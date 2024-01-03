@@ -21,6 +21,7 @@ namespace RRCG
             { "Spherecast", "RaycastData" },
             { "OverlapBox", "RaycastData" },
             { "OverlapSphere", "RaycastData" },
+            { "DataTableReadCell", "DataTableColumnData" }
         };
 
         public static string GetConfigType(string chipName)
@@ -109,6 +110,11 @@ namespace RRCG
         VariableKind Kind,
         Type Type,
         object HomeValue
+    );
+
+    public record DataTableColumnData(
+        string DataTableName,
+        string ColumnName
     );
 }
 

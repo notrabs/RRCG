@@ -1,3 +1,4 @@
+using RRCG;
 using System;
 using System.Collections.Generic;
 
@@ -26,6 +27,16 @@ namespace RRCGSource
         public static void ExecutionStringSwitch(int match, AlternativeExec failed, Dictionary<string, AlternativeExec> cases) { }
         public static T ValueIntegerSwitch<T>(int match, T failed, Dictionary<int, T> cases) { return default; }
         public static T ValueStringSwitch<T>(int match, T failed, Dictionary<string, T> cases) { return default; }
+
+        //
+        // Data Table
+        //
+
+        public static T DataTableReadCell<T>(int Row, DataTableColumnData config) => default;
+
+        //
+        // Misc
+        //
 
         public static T Self<T>() { return default; }
 

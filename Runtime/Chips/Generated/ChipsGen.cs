@@ -1294,7 +1294,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the value in the specified row from the specified column. Use the configuration menu to set which Data Table and Column to read from, which will also determine the output pin type.
         /// </summary>
-        public static void DataTableReadCell(int Row)
+        internal static void DataTableReadCell(int Row, DataTableColumnData config)
         {
             return;
         }

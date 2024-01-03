@@ -937,6 +937,21 @@ namespace RRCGBuild
 
         #endregion MathNodes
 
+
+        //
+        // Data Table
+        //
+        #region DataTable
+
+        public static T DataTableReadCell<T>(IntPort Row, DataTableColumnData config) where T : AnyPort, new()
+        {
+            DataTableReadCell(Row, config);
+            Context.lastSpawnedNode.InputCount = 1;
+            return new T() { Port = Context.lastSpawnedNode.Port(0, 0) };
+        }
+
+        #endregion
+
         //
         // Shorthands
         //

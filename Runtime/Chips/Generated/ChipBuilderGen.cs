@@ -1820,12 +1820,13 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static void DataTableReadCell(IntPort Row)
+        internal static void DataTableReadCell(IntPort Row, DataTableColumnData config)
         {
             Node node = new Node()
             {Name = "Data Table Read Cell", Type = "4b6cff3d-0ead-43cd-bfa7-a22c87b31b0a", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Row, new Port{Node = node, Index = 0});
+            node.DataTableColumnData = config;
             return;
         }
 
