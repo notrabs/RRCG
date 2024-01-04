@@ -135,13 +135,13 @@ namespace RRCGBuild
 
         public void Add(T value)
         {
-            if (IsActualPort) CircuitBuilder.Singleton("List_Add_" + PortKey(), () => ChipBuilder.ListAdd(this, value));
+            if (IsActualPort) ChipBuilder.ListAdd(this, value);
             else Data.Add(value);
         }
 
         public void Clear()
         {
-            if (IsActualPort) CircuitBuilder.Singleton("List_Clear_" + PortKey(), () => ChipBuilder.ListClear(this));
+            if (IsActualPort) ChipBuilder.ListClear(this);
             else Data.Clear();
         }
 
