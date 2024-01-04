@@ -54,7 +54,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("ContentsMixed", typeof(IntPort), null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            __Return(RandomInt(a, 10));
+            __Return<IntPort>(RandomInt(a, 10));
             __EndAccessibilityScope();
             return __EndReturnScope()!;
         }
@@ -63,7 +63,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("ContentsData", typeof((IntPort namedValue, IntPort)), new[]{"namedValue", "value1"});
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            __Return((a, b));
+            __Return<(IntPort namedValue, IntPort)>((a, b));
             __EndAccessibilityScope();
             return __EndReturnScope()!;
         }

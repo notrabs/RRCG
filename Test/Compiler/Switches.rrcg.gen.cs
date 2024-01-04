@@ -58,7 +58,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_4 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"case5\"");
-                    __Return(null);
+                    __Return();
                 }
 
                 ;
@@ -107,7 +107,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_4 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_5");
-                    __Return(null);
+                    __Return();
                 }
 
                 ;
@@ -150,7 +150,7 @@ namespace RRCGBuild
                     }
 
                     );
-                    __Return(null);
+                    __Return();
                 }
 
                 ;
@@ -176,7 +176,7 @@ namespace RRCGBuild
                             }
 
                             );
-                            __Return(null);
+                            __Return();
                         }
 
                         ;
@@ -212,7 +212,7 @@ namespace RRCGBuild
                             AlternativeExec rrcg_switch_section_1 = delegate
                             {
                                 __LabelDecl("rrcg_switch_case_label_\"return\"");
-                                __Return(null);
+                                __Return();
                             }
 
                             ;
@@ -240,7 +240,7 @@ namespace RRCGBuild
                             {
                                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                                 LogString("Return");
-                                __Return(null);
+                                __Return();
                                 __EndAccessibilityScope();
                             }
 

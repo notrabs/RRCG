@@ -32,7 +32,7 @@ namespace RRCGBuild
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                     __BeginReturnScope("ParenthesizedLambda", typeof(ListPort<IntPort>), null);
-                    __Return(ChipLib.EventCache<ListPort<IntPort>>(ListCreate<IntPort>(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)));
+                    __Return<ListPort<IntPort>>(ChipLib.EventCache<ListPort<IntPort>>(ListCreate<IntPort>(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)));
                     dynamic __RRCG_RETURN_DATA = __EndReturnScope()!;
                     __EndAccessibilityScope();
                     return __RRCG_RETURN_DATA;
@@ -110,7 +110,7 @@ namespace RRCGBuild
             {
                 __BeginReturnScope("StringRepeatEventFunction", typeof(StringPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-                __Return(StringRepeat(str, count));
+                __Return<StringPort>(StringRepeat(str, count));
                 __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
@@ -131,7 +131,7 @@ namespace RRCGBuild
                 __If(__ConditionalContext(), () => ChipBuilder.GreaterOrEqual(strStaging.Value.Length, str.Length * count), delegate
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                    __Return(strStaging.Value);
+                    __Return<StringPort>(strStaging.Value);
                     __EndAccessibilityScope();
                 }
 
@@ -305,7 +305,7 @@ namespace RRCGBuild
             {
                 __BeginReturnScope("StringRepeatDoWhileEventFunction", typeof(StringPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-                __Return(StringRepeatDoWhile(str, count));
+                __Return<StringPort>(StringRepeatDoWhile(str, count));
                 __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
@@ -326,7 +326,7 @@ namespace RRCGBuild
                 __If(__ConditionalContext(), () => ChipBuilder.GreaterOrEqual(strStaging.Value.Length, str.Length * count), delegate
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                    __Return(strStaging.Value);
+                    __Return<StringPort>(strStaging.Value);
                     __EndAccessibilityScope();
                 }
 
@@ -654,7 +654,7 @@ namespace RRCGBuild
             {
                 __BeginReturnScope("ForEachReturnEventFunction", typeof(IntPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-                __Return(ForEachReturnImpl(list));
+                __Return<IntPort>(ForEachReturnImpl(list));
                 __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
@@ -673,7 +673,7 @@ namespace RRCGBuild
                 __If(__ConditionalContext(), () => ChipBuilder.Equals(item, 5), delegate
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                    __Return(item);
+                    __Return<IntPort>(item);
                     __EndAccessibilityScope();
                 }
 
