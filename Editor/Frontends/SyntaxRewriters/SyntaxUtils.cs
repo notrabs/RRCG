@@ -79,6 +79,17 @@ namespace RRCG
 
             return SyntaxFactory.TypeParameterList(SyntaxFactory.SeparatedList<TypeParameterSyntax>(withCommas));
         }
+        public static SyntaxList<TypeParameterConstraintClauseSyntax> TypeParameterConstraintList(params TypeParameterConstraintClauseSyntax[] arguments)
+        {
+            return SyntaxFactory.List(arguments);
+        }
+        public static TypeParameterConstraintClauseSyntax TypeParameterConstraintClause(IdentifierNameSyntax identifier, params TypeParameterConstraintSyntax[] constraints)
+        {
+            var withCommas = CommaSeparated(constraints.Select(arg => (SyntaxNodeOrToken)arg));
+
+            return SyntaxFactory.TypeParameterConstraintClause(identifier)
+                    .WithConstraints(SyntaxFactory.SeparatedList<TypeParameterConstraintSyntax>(withCommas));
+        }
 
         public static SeparatedSyntaxList<ExpressionSyntax> ExpressionList(params ExpressionSyntax[] arguments)
         {

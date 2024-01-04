@@ -104,6 +104,18 @@ namespace RRCG
                 }
             }
 
+            // Makes sure generic types in RRCG classes are constrained to port types in build realm
+            if (node.TypeParameterList != null)
+            {
+                visited = visited.WithConstraintClauses(
+                    SyntaxUtils.TypeParameterConstraintList(
+                        node.TypeParameterList.Parameters.Select(
+                            p => SyntaxUtils.TypeParameterConstraintClause(IdentifierName(p.Identifier.Text), TypeConstraint(IdentifierName("AnyPort")), ConstructorConstraint())
+                        ).ToArray()
+                    )
+                );
+            }
+
             return visited;
         }
 
