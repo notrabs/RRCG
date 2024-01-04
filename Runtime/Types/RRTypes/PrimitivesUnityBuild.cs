@@ -232,13 +232,25 @@ namespace RRCGBuild
     public class ColorPort : AnyPort
     {
         public ColorPort() { }
-        public ColorPort(FloatPort r, FloatPort g, FloatPort b) { 
+        public ColorPort(FloatPort r, FloatPort g, FloatPort b)
+        {
             if (r.IsDataPort && g.IsDataPort && b.IsDataPort) Data = PortConversionUtils.EncodeColor(new Color(r.Data, g.Data, b.Data));
             else Port = ChipBuilder.RGBToColor(r, g, b).Port;
         }
 
         // There is no alpha in the in-game color type. This constructure should probably not be used.
         public ColorPort(float r, float g, float b, float a) { Data = PortConversionUtils.EncodeColor(new Color(r, g, b, a)); }
+
+        public FloatPort grayscale
+        {
+            get
+            {
+                if (IsDataPort) return (FloatPort)PortConversionUtils.DecodeColor(Data).grayscale;
+                
+                var (r, g, b) = ChipBuilder.ColorToRGB(this);
+                return 0.299f * r + 0.587f * g + 0.114f * b;
+            }
+        }
 
         public static ColorPort HSVToRGB(FloatPort h, FloatPort s, FloatPort v)
         {

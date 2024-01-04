@@ -12,5 +12,16 @@ namespace RRCG
 
             return (r << 16) + (g << 8) + b + 1000;
         }
+
+        public static Color DecodeColor(int colorInt)
+        {
+            colorInt -= 1000;
+
+            int r = (colorInt >> 16) & 0xFF;
+            int g = (colorInt >> 8) & 0xFF;
+            int b = colorInt & 0xFF;
+
+            return new Color(r / 255f, g / 255f, b / 255f);
+        }
     }
 }
