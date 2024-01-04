@@ -23,17 +23,10 @@
       "InputCount": 0
     },
     {
-      "Id": "String_Concat_0",
-      "Type": "on7tc63OWkCznB/sS/1CNg==",
-      "Name": "String Concat",
-      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Hello"],[[0,2],"System.String",", "],[[0,3],"System.String","World"],[[0,4],"System.String","!"]],
-      "InputCount": 5
-    },
-    {
       "Id": "Log_String_0",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
-      "DefaultValues": [],
+      "DefaultValues": [[[0,1],"System.String","Hello, World!"]],
       "InputCount": 2
     },
     {
@@ -70,7 +63,7 @@
       "InputCount": 2
     },
     {
-      "Id": "String_Concat_1",
+      "Id": "String_Concat_0",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","String interpolation works with both "],[[0,2],"System.String","data"],[[0,3],"System.String"," and "],[[0,5],"System.String","s!"]],
@@ -119,7 +112,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_2",
+      "Id": "String_Concat_1",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Interpolating with ints. Data: "],[[0,2],"System.String","5"],[[0,3],"System.String",", Port: "]],
@@ -147,7 +140,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_3",
+      "Id": "String_Concat_2",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Interpolating with floats. Data: "],[[0,2],"System.String","5.25"],[[0,3],"System.String",", Port: "]],
@@ -175,7 +168,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_4",
+      "Id": "String_Concat_3",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Interpolating with bools. Data: "],[[0,2],"System.String","False"],[[0,3],"System.String",", Port: "]],
@@ -203,7 +196,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_5",
+      "Id": "String_Concat_4",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Interpolating with colors. Data: "],[[0,2],"System.String","#FF0000"],[[0,3],"System.String",", Port: "]],
@@ -231,7 +224,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_6",
+      "Id": "String_Concat_5",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Interpolating with Vector3s. Data: "],[[0,2],"System.String","(1.00, 2.00, 3.00)"],[[0,3],"System.String",", Port: "]],
@@ -259,7 +252,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_7",
+      "Id": "String_Concat_6",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Interpolating with Quaternions. Data: "],[[0,2],"System.String","(1.00000, 2.00000, 3.00000, 4.00000)"],[[0,3],"System.String",", Port: "]],
@@ -274,19 +267,6 @@
     }
   ],
   "Connections": [
-    {
-      "From": {
-        "Node": "String_Concat_0",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_0",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
     {
       "From": {
         "Node": "Event_Receiver_0",
@@ -320,7 +300,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "String_Concat_1",
+        "Node": "String_Concat_0",
         "Group": 0,
         "Index": 4
       },
@@ -328,7 +308,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_1",
+        "Node": "String_Concat_0",
         "Group": 0,
         "Index": 0
       },
@@ -372,7 +352,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "String_Concat_2",
+        "Node": "String_Concat_1",
         "Group": 0,
         "Index": 4
       },
@@ -380,7 +360,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_2",
+        "Node": "String_Concat_1",
         "Group": 0,
         "Index": 0
       },
@@ -424,7 +404,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "String_Concat_3",
+        "Node": "String_Concat_2",
         "Group": 0,
         "Index": 4
       },
@@ -432,7 +412,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_3",
+        "Node": "String_Concat_2",
         "Group": 0,
         "Index": 0
       },
@@ -476,7 +456,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "String_Concat_4",
+        "Node": "String_Concat_3",
         "Group": 0,
         "Index": 4
       },
@@ -484,7 +464,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_4",
+        "Node": "String_Concat_3",
         "Group": 0,
         "Index": 0
       },
@@ -528,7 +508,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "String_Concat_5",
+        "Node": "String_Concat_4",
         "Group": 0,
         "Index": 4
       },
@@ -536,7 +516,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_5",
+        "Node": "String_Concat_4",
         "Group": 0,
         "Index": 0
       },
@@ -580,7 +560,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "String_Concat_6",
+        "Node": "String_Concat_5",
         "Group": 0,
         "Index": 4
       },
@@ -588,7 +568,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_6",
+        "Node": "String_Concat_5",
         "Group": 0,
         "Index": 0
       },
@@ -632,7 +612,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "String_Concat_7",
+        "Node": "String_Concat_6",
         "Group": 0,
         "Index": 4
       },
@@ -640,7 +620,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_7",
+        "Node": "String_Concat_6",
         "Group": 0,
         "Index": 0
       },

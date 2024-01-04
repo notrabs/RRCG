@@ -644,10 +644,9 @@ namespace RRCGBuild
                 stringPorts.Add(port.ToString());
             }
 
-            if (stringPorts.Count == 0)
-                return new StringPort { Data = "" };
-            if (stringPorts.Count == 1)
-                return stringPorts[0];
+            if (stringPorts.Count == 0) return new StringPort { Data = "" };
+            if (stringPorts.Count == 1) return stringPorts[0];
+            if (stringPorts.All(s => s.IsDataPort)) return string.Join("", stringPorts.Select(s => s.Data));
 
             return Concat(stringPorts.ToArray());
         }

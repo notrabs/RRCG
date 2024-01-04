@@ -1611,17 +1611,10 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_1",
-      "Type": "on7tc63OWkCznB/sS/1CNg==",
-      "Name": "String Concat",
-      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise AND, pure data: "],[[0,2],"System.String","00000000000011111111000000000000"]],
-      "InputCount": 3
-    },
-    {
       "Id": "Log_String_68",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
-      "DefaultValues": [],
+      "DefaultValues": [[[0,1],"System.String","Bitwise AND, pure data: 00000000000011111111000000000000"]],
       "InputCount": 2
     },
     {
@@ -1693,7 +1686,7 @@
       "InputCount": 0
     },
     {
-      "Id": "String_Concat_2",
+      "Id": "String_Concat_1",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise AND, with ports: "]],
@@ -1707,17 +1700,10 @@
       "InputCount": 2
     },
     {
-      "Id": "String_Concat_3",
-      "Type": "on7tc63OWkCznB/sS/1CNg==",
-      "Name": "String Concat",
-      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise OR, pure data: "],[[0,2],"System.String","11111111111111111111111111111111"]],
-      "InputCount": 3
-    },
-    {
       "Id": "Log_String_70",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
-      "DefaultValues": [],
+      "DefaultValues": [[[0,1],"System.String","Bitwise OR, pure data: 11111111111111111111111111111111"]],
       "InputCount": 2
     },
     {
@@ -1739,7 +1725,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_4",
+      "Id": "String_Concat_2",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise OR, with ports: "]],
@@ -1753,17 +1739,10 @@
       "InputCount": 2
     },
     {
-      "Id": "String_Concat_5",
-      "Type": "on7tc63OWkCznB/sS/1CNg==",
-      "Name": "String Concat",
-      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise XOR, pure data: "],[[0,2],"System.String","11111111111100000000111111111111"]],
-      "InputCount": 3
-    },
-    {
       "Id": "Log_String_72",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
-      "DefaultValues": [],
+      "DefaultValues": [[[0,1],"System.String","Bitwise XOR, pure data: 11111111111100000000111111111111"]],
       "InputCount": 2
     },
     {
@@ -1785,7 +1764,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_6",
+      "Id": "String_Concat_3",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise XOR, with ports: "]],
@@ -1824,7 +1803,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_7",
+      "Id": "String_Concat_4",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bit shift left, pure data: "]],
@@ -1856,7 +1835,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_8",
+      "Id": "String_Concat_5",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bit shift left, with ports: "]],
@@ -1888,7 +1867,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_9",
+      "Id": "String_Concat_6",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bit shift right, pure data: "]],
@@ -1920,7 +1899,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_10",
+      "Id": "String_Concat_7",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bit shift right, with ports: "]],
@@ -1941,17 +1920,10 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_11",
-      "Type": "on7tc63OWkCznB/sS/1CNg==",
-      "Name": "String Concat",
-      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise complement, pure data: "],[[0,2],"System.String","11110000111100001111000011110011"]],
-      "InputCount": 3
-    },
-    {
       "Id": "Log_String_78",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
-      "DefaultValues": [],
+      "DefaultValues": [[[0,1],"System.String","Bitwise complement, pure data: 11110000111100001111000011110011"]],
       "InputCount": 2
     },
     {
@@ -1973,7 +1945,7 @@
       "InputCount": 1
     },
     {
-      "Id": "String_Concat_12",
+      "Id": "String_Concat_8",
       "Type": "on7tc63OWkCznB/sS/1CNg==",
       "Name": "String Concat",
       "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Bitwise complement, with ports: "]],
@@ -5344,19 +5316,6 @@
     },
     {
       "From": {
-        "Node": "String_Concat_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_68",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
         "Node": "Event_Receiver_10",
         "Group": 0,
         "Index": 0
@@ -5414,7 +5373,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "String_Concat_2",
+        "Node": "String_Concat_1",
         "Group": 0,
         "Index": 2
       },
@@ -5422,7 +5381,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_2",
+        "Node": "String_Concat_1",
         "Group": 0,
         "Index": 0
       },
@@ -5448,19 +5407,6 @@
     },
     {
       "From": {
-        "Node": "String_Concat_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_70",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
         "Node": "Log_String_69",
         "Group": 0,
         "Index": 0
@@ -5518,7 +5464,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "String_Concat_4",
+        "Node": "String_Concat_2",
         "Group": 0,
         "Index": 2
       },
@@ -5526,7 +5472,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_4",
+        "Node": "String_Concat_2",
         "Group": 0,
         "Index": 0
       },
@@ -5549,19 +5495,6 @@
         "Index": 0
       },
       "isExec": true
-    },
-    {
-      "From": {
-        "Node": "String_Concat_5",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_72",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
     },
     {
       "From": {
@@ -5622,7 +5555,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "String_Concat_6",
+        "Node": "String_Concat_3",
         "Group": 0,
         "Index": 2
       },
@@ -5630,7 +5563,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_6",
+        "Node": "String_Concat_3",
         "Group": 0,
         "Index": 0
       },
@@ -5687,7 +5620,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "String_Concat_7",
+        "Node": "String_Concat_4",
         "Group": 0,
         "Index": 2
       },
@@ -5695,7 +5628,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_7",
+        "Node": "String_Concat_4",
         "Group": 0,
         "Index": 0
       },
@@ -5765,7 +5698,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "String_Concat_8",
+        "Node": "String_Concat_5",
         "Group": 0,
         "Index": 2
       },
@@ -5773,7 +5706,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_8",
+        "Node": "String_Concat_5",
         "Group": 0,
         "Index": 0
       },
@@ -5830,7 +5763,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "String_Concat_9",
+        "Node": "String_Concat_6",
         "Group": 0,
         "Index": 2
       },
@@ -5838,7 +5771,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_9",
+        "Node": "String_Concat_6",
         "Group": 0,
         "Index": 0
       },
@@ -5908,7 +5841,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "String_Concat_10",
+        "Node": "String_Concat_7",
         "Group": 0,
         "Index": 2
       },
@@ -5916,7 +5849,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_10",
+        "Node": "String_Concat_7",
         "Group": 0,
         "Index": 0
       },
@@ -5939,19 +5872,6 @@
         "Index": 0
       },
       "isExec": true
-    },
-    {
-      "From": {
-        "Node": "String_Concat_11",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_78",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
     },
     {
       "From": {
@@ -6012,7 +5932,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "String_Concat_12",
+        "Node": "String_Concat_8",
         "Group": 0,
         "Index": 2
       },
@@ -6020,7 +5940,7 @@
     },
     {
       "From": {
-        "Node": "String_Concat_12",
+        "Node": "String_Concat_8",
         "Group": 0,
         "Index": 0
       },
@@ -6611,7 +6531,7 @@
           "InputCount": 3
         },
         {
-          "Id": "String_Concat_13",
+          "Id": "String_Concat_9",
           "Type": "on7tc63OWkCznB/sS/1CNg==",
           "Name": "String Concat",
           "DefaultValues": [[[0,0],"System.String",""]],
@@ -7476,7 +7396,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 1
           },
@@ -7489,7 +7409,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 2
           },
@@ -7502,7 +7422,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 3
           },
@@ -7515,7 +7435,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 4
           },
@@ -7528,7 +7448,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 5
           },
@@ -7541,7 +7461,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 6
           },
@@ -7554,7 +7474,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 7
           },
@@ -7567,7 +7487,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 8
           },
@@ -7580,7 +7500,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 9
           },
@@ -7593,7 +7513,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 10
           },
@@ -7606,7 +7526,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 11
           },
@@ -7619,7 +7539,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 12
           },
@@ -7632,7 +7552,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 13
           },
@@ -7645,7 +7565,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 14
           },
@@ -7658,7 +7578,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 15
           },
@@ -7671,7 +7591,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 16
           },
@@ -7684,7 +7604,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 17
           },
@@ -7697,7 +7617,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 18
           },
@@ -7710,7 +7630,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 19
           },
@@ -7723,7 +7643,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 20
           },
@@ -7736,7 +7656,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 21
           },
@@ -7749,7 +7669,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 22
           },
@@ -7762,7 +7682,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 23
           },
@@ -7775,7 +7695,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 24
           },
@@ -7788,7 +7708,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 25
           },
@@ -7801,7 +7721,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 26
           },
@@ -7814,7 +7734,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 27
           },
@@ -7827,7 +7747,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 28
           },
@@ -7840,7 +7760,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 29
           },
@@ -7853,7 +7773,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 30
           },
@@ -7866,7 +7786,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 31
           },
@@ -7879,7 +7799,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 32
           },
@@ -7900,7 +7820,7 @@
         },
         {
           "From": {
-            "Node": "String_Concat_13",
+            "Node": "String_Concat_9",
             "Group": 0,
             "Index": 0
           },
