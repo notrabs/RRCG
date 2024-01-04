@@ -29,6 +29,17 @@ public class AssignmentsTest : CircuitDescriptor
         Vector3 vec3 = new Vector3();
         UnityEngine.Vector3 fullyQualifiedVec3 = new UnityEngine.Vector3();
         List<int> test = ListCreate(1);
+
+        // Test conditional/promoted assignments with a terminated execution flow
+        string result = Reroute("Hello");
+        if (ParseBool("true").Result)
+        {
+            result += ", world!";
+            LogString(result);
+            throw null;
+        }
+
+        LogString(result);
     }
 }
 class TypeTest

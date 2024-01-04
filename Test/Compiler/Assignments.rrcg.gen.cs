@@ -35,6 +35,25 @@ namespace RRCGBuild
                 fullyQualifiedVec3 = __VariableDeclaratorExpression<Vector3Port>("fullyQualifiedVec3", () => new Vector3Port(), () => fullyQualifiedVec3!, (_RRCG_SETTER_VALUE) => fullyQualifiedVec3 = _RRCG_SETTER_VALUE);
                 ListPort<IntPort> test = default !;
                 test = __VariableDeclaratorExpression<ListPort<IntPort>>("test", () => ListCreate<IntPort>(1), () => test!, (_RRCG_SETTER_VALUE) => test = _RRCG_SETTER_VALUE);
+                StringPort result = default !;
+                result = __VariableDeclaratorExpression<StringPort>("result", () => Reroute<StringPort>("Hello"), () => result!, (_RRCG_SETTER_VALUE) => result = _RRCG_SETTER_VALUE);
+            __If(__ConditionalContext("result"), () => ParseBool("true").Result, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __Assign("result", out result, () => result + ", world!");
+                LogString(result);
+                ExecFlow.current.Clear();
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            LogString(result);
             __EndAccessibilityScope();
             __EndReturnScope();
         }

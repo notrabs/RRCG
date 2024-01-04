@@ -19,8 +19,141 @@
       "Name": "List Create",
       "DefaultValues": [[[0,0],"System.Int32",1]],
       "InputCount": 1
+    },
+    {
+      "Id": "Reroute_0",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "DefaultValues": [[[0,0],"System.String","Hello"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "string_Variable_0",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_result",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Parse_Bool_0",
+      "Type": "vF7AkmcZpEmUtS0B/h5rhQ==",
+      "Name": "Parse Bool",
+      "DefaultValues": [[[0,0],"System.String","true"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "If_0",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_0",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""],[[0,2],"System.String",", world!"]],
+      "InputCount": 3
+    },
+    {
+      "Id": "Log_String_0",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_1",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
     }
   ],
-  "Connections": [],
+  "Connections": [
+    {
+      "From": {
+        "Node": "Parse_Bool_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    }
+  ],
   "SubContexts": []
 }

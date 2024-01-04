@@ -784,7 +784,7 @@ namespace RRCGBuild
             ExecFlow.current.Clear();
         }
 
-        private static ExecFlow __IfBranch(Port fromPort, AlternativeExec branch)
+        private static ExecFlow IfBranch(Port fromPort, AlternativeExec branch)
         {
             var branchFlow = new ExecFlow();
             branchFlow.Ports.Add(fromPort);
@@ -805,16 +805,51 @@ namespace RRCGBuild
             SemanticStack.current.Push(conditional);
 
             // Run each branch, writing & resetting promoted variables in-between
-            var ifFlow = __IfBranch(ifNode.Port(0, 0), ifBranch);
-            conditional.WritePromotedVariables();
+            var ifFlow = IfBranch(ifNode.Port(0, 0), ifBranch);
+            var finalValuesIf = conditional.PromotedVariables.ToDictionary(kvp => kvp.Value, kvp => kvp.Value.DeclaredVariable.Getter());
             conditional.ResetPromotedVariables(false);
 
-            var elseFlow = __IfBranch(ifNode.Port(0, 1), elseBranch);
-            conditional.WritePromotedVariables();
-            conditional.ResetPromotedVariables(true);
+            var elseFlow = IfBranch(ifNode.Port(0, 1), elseBranch);
+            var finalValuesElse = conditional.PromotedVariables.ToDictionary(kvp => kvp.Value, kvp => kvp.Value.DeclaredVariable.Getter());
 
-            // Pop the conditional context, merge branch execution flows & we're done
+            // Pop the conditional context
             SemanticStack.current.PopExpectedScope(conditional);
+
+            // Now we have a couple cases.
+            if (ifFlow.Ports.Count > 0 && elseFlow.Ports.Count > 0)
+            {
+                // If both exec flows have ports, we write the final values of each
+                // promoted variable to their RR variables, on their respective flows
+                ExecFlow.current = ifFlow;
+                foreach (var kvp in finalValuesIf)
+                    kvp.Key.RRVariableValue = kvp.Value;
+
+                ExecFlow.current = elseFlow;
+                foreach (var kvp in finalValuesElse)
+                    kvp.Key.RRVariableValue = kvp.Value;
+            }
+            else
+            {
+                // Otherwise, if one branch has ports, but not the other,
+                // we set the C# state of each promoted variable to the
+                // final values of the branch that has ports.
+                var leastPorts = ifFlow.Ports.Count > elseFlow.Ports.Count
+                    ? (elseFlow, finalValuesElse) : (ifFlow, finalValuesIf);
+
+                var mostPorts = ifFlow.Ports.Count > elseFlow.Ports.Count
+                    ? (ifFlow, finalValuesIf) : (elseFlow, finalValuesElse);
+
+                if (leastPorts.Item1.Ports.Count <= 0 && mostPorts.Item1.Ports.Count > 0)
+                    foreach (var kvp in mostPorts.Item2)
+                        if (kvp.Key.DeclaredVariable.Setter != null)
+                            kvp.Key.DeclaredVariable.Setter(kvp.Value);
+            }
+
+            // If both flows don't have ports, it probably doesn't matter what the
+            // c# state of the promoted variables is set to. TODO?
+
+            // Otherwise, now that we've handled the variable promotions,
+            // we can now merge the execution flows & continue building nodes.
             ExecFlow.current = ifFlow;
             ExecFlow.current.Merge(elseFlow);
         }
