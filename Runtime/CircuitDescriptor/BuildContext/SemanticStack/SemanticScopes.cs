@@ -231,8 +231,7 @@ namespace RRCGBuild
         public string MethodName;
         public string[]? TupleElementNames;
         public List<Return> Returns = new();
-
-        private bool ReturnTypeIsTupleType;
+        public bool ReturnTypeIsTupleType => ReturnType != null && typeof(ITuple).IsAssignableFrom(ReturnType);
 
         public class Return
         {
@@ -246,9 +245,7 @@ namespace RRCGBuild
             ReturnType = returnType;
             TupleElementNames = tupleElementNames;
 
-            ReturnTypeIsTupleType = returnType != null && typeof(ITuple).IsAssignableFrom(returnType);
             int numTupleItems = returnType != null ? returnType.GetGenericArguments().Length : 0;
-
             if (ReturnTypeIsTupleType && (tupleElementNames == null || tupleElementNames.Length != numTupleItems))
                 throw new Exception("Return type was a tuple type, but the number of " +
                                     "provided tuple element names didn't match!");

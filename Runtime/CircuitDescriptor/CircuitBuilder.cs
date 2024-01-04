@@ -914,23 +914,31 @@ namespace RRCGBuild
             var indexVariable = new Variable<IntPort>();
             SemanticStack.current.Pop();
 
-            // Rewire all item connections (& return data) to a List Get Element chip
+            // Rewire all item connections (& return data) to a List Get Element chip..
             var itemConnections = Context.current.Connections.Where(c => c.From.EquivalentTo(forEachNode.Port(0, 1))).ToList();
+            Func<T> getElementPort = () => Singleton($"ForEach_GetElement_{list.PortKey()}_{indexVariable.Value.PortKey()}",
+                                                     () => ListGetElement(list, indexVariable.Value));
 
-            var returnScope = SemanticStack.current.GetNextScopeWithType<ReturnScope>();
-            var returnsNeedFix = returnScope == null ? Enumerable.Empty<ReturnScope.Return>()
-                                    : returnScope.Returns.Where(r => r.Data is T port && // Apparently this is undeclared..? :(
-                                                                     (r.Data as T)!.IsActualPort &&
-                                                                     (r.Data as T)!.Port.EquivalentTo(forEachNode.Port(0, 1)));
-
-            if (itemConnections.Count > 0 || returnsNeedFix.Count() > 0)
-            {
-                var port = ListGetElement(list, indexVariable.Value).Port;
+            // Rewire connections
+            if (itemConnections.Count > 0)
                 foreach (var conn in itemConnections)
-                    conn.From = port;
+                    conn.From = getElementPort().Port;
 
-                foreach (var ret in returnsNeedFix)
-                    ret.Data = new T { Port = port };
+            // Modify returns. A bit complicated because we have to handle the tuple case.
+            // TODO: Do we have to handle nested tuples? And can we "helper-ify" this to use in For loops?
+            var returnScope = SemanticStack.current.GetNextScopeWithType<ReturnScope>();
+            Func<dynamic, bool> dataIsForEachItem = (data) => data is T port && port.IsActualPort && port.Port.EquivalentTo(forEachNode.Port(0, 1));
+
+            foreach (var ret in returnScope?.Returns ?? Enumerable.Empty<ReturnScope.Return>())
+            {
+                var data = ret.Data;
+
+                if (dataIsForEachItem(data)) ret.Data = getElementPort();
+                else if (data is ITuple tuple)
+                {
+                    var result = TupleUtils.WrapTuple(tuple).Select((v) => dataIsForEachItem(v) ? getElementPort() : v);
+                    ret.Data = TupleUtils.UnwrapTuple(tuple.GetType(), result.ToArray());
+                }
             }
 
             // Determine exec input source

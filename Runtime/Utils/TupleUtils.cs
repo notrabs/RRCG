@@ -1,12 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 
 internal class TupleUtils
 {
+    public static dynamic[] WrapTuple(ITuple tuple)
+    {
+        var wrapped = new List<dynamic>();
+        for (int i=0; i < tuple.Length; i++)
+            wrapped.Add(tuple[i]);
+
+        return wrapped.ToArray();
+    }
+
     public static dynamic UnwrapTuple(Type tupleType, dynamic[] tupleSource)
     {
         dynamic tuple = Activator.CreateInstance(tupleType);
