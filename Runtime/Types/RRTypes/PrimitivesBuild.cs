@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace RRCGBuild
 {
     public class BoolPort : AnyPort
@@ -199,6 +201,19 @@ namespace RRCGBuild
             }
         }
 
+        public StringPort Substring(IntPort Index, IntPort Length = null)
+        {
+            if (IsActualPort || Index.IsActualPort || Length.IsActualPort) return CircuitBuilder.Singleton("String_Substring_" + PortKey(), () => ChipBuilder.StringSubstring(this, Index, Length));
+
+            string str = (string)Data;
+            return new StringPort { Data = str.Substring(Index.Data, Length?.Data ?? int.MaxValue) };
+        }
+        public ListPort<StringPort> Split(StringPort Divider)
+        {
+            if (IsDataPort && Divider.IsDataPort) return new ListPort<StringPort>() { Data = Data.Split(Divider.AsData<string>()) };
+            return ChipBuilder.StringSplit(this, Divider);
+        }
+
         public StringPort ToUpper()
         {
             if (IsActualPort) return CircuitBuilder.Singleton("String_To_Upper_" + PortKey(), () => ChipBuilder.StringToUpper(this));
@@ -221,4 +236,13 @@ namespace RRCGBuild
         }
     }
 
+    // This crashes Unity for some reason...
+    //public static class StringExtensions
+    //{
+    //    // This is needed to make "".Split(stringPort) work on literals
+    //    public static ListPort<StringPort> Split(this string input, StringPort chr)
+    //    {
+    //        return input.Split(chr);
+    //    }
+    //}
 }
