@@ -2,18 +2,6 @@
   "Id": "0",
   "Nodes": [
     {
-      "Id": "int_Variable_0",
-      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
-      "Name": "int Variable",
-      "VariableData": {
-        "Name": "RRCG_variableAssignment",
-        "Kind": 0,
-        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
-      },
-      "DefaultValues": [],
-      "InputCount": 2
-    },
-    {
       "Id": "List_Create_0",
       "Type": "VjItVFENM0yiofvES34fBw==",
       "Name": "List Create",
@@ -26,18 +14,6 @@
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.String","Hello"]],
       "InputCount": 1
-    },
-    {
-      "Id": "string_Variable_0",
-      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
-      "Name": "string Variable",
-      "VariableData": {
-        "Name": "RRCG_Conditional_result",
-        "Kind": 0,
-        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
-      },
-      "DefaultValues": [],
-      "InputCount": 2
     },
     {
       "Id": "Parse_Bool_0",

@@ -37,32 +37,34 @@ namespace RRCG.Optimizer.ContextOptimizations
             // Now go through and collapse each variable in the context.
             foreach ((var readOnlyInstances, var writeInstances) in varUsageMap.Values)
             {
-                // Case A. At least one write instance.
-                // All read only instances will be collapsed
-                // into the first write instance.
                 if (writeInstances.Count > 0)
                 {
-                    foreach (var node in readOnlyInstances)
+                    // Collapse all read-only instances into the first write instance.
+                    while (readOnlyInstances.Count > 0)
                     {
-                        CollapseVariable(context, node, writeInstances[0]);
+                        CollapseVariable(context, readOnlyInstances[0], writeInstances[0]);
+                        readOnlyInstances.RemoveAt(0);
                         removedNodes++;
                     }
-
-                    continue;
+                }
+                else
+                {
+                    // Collapse all read-only instances into the first read-only instance.
+                    while (readOnlyInstances.Count > 1)
+                    {
+                        CollapseVariable(context, readOnlyInstances[1], readOnlyInstances[0]);
+                        readOnlyInstances.RemoveAt(1);
+                        removedNodes++;
+                    }
                 }
 
-                // Case B. No write instances, but at least one read only instance.
-                // All read only instances will be
-                // collapsed into the first read only instance.
-                if (writeInstances.Count <= 0 && readOnlyInstances.Count > 0)
+                // Remove completely disconnected variables
+                foreach (var node in readOnlyInstances.Concat(writeInstances))
                 {
-                    for (int i = 1; i < readOnlyInstances.Count; i++)
-                    {
-                        CollapseVariable(context, readOnlyInstances[i], readOnlyInstances[0]);
-                        removedNodes++;
-                    }
+                    if (context.Connections.Any(c => c.From.Node == node || c.To.Node == node)) continue;
 
-                    continue;
+                    context.RemoveNode(node);
+                    removedNodes++;
                 }
             }
 
