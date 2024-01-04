@@ -165,6 +165,7 @@ namespace RRCG
 
             var isVoid = method.ReturnType.ToString() == "void";
             var hasParameters = method.ParameterList.Parameters.Count > 0;
+            var rewrittenReturnType = (TypeSyntax)Visit(node.ReturnType);
 
             // Make sure the function has a block body
             if (method.ExpressionBody != null)
@@ -176,12 +177,10 @@ namespace RRCG
                        isVoid ?
                             Block(ExpressionStatement(method.ExpressionBody.Expression)):
                             // The return needs to be applied already translated here, as to not invalidate the semantic model further down
-                            Block(ValueReturnStatement(method.ExpressionBody.Expression))
+                            Block(ValueReturnStatement(method.ExpressionBody.Expression, rewrittenReturnType))
                 );
             }
 
-            var methodSymbol = SemanticModel.GetDeclaredSymbol(node);
-            var rewrittenReturnType = (TypeSyntax)Visit(methodSymbol.ReturnType.ToTypeSyntax());
             var statements = WrapStatementsInReturnScope(method.Body.Statements, methodName, rewrittenReturnType);
 
             // special functions
@@ -294,7 +293,7 @@ namespace RRCG
                 // We need one for accessibility scopes, so let's create one.
                 statements = SyntaxFactory.SingletonList<StatementSyntax>(
                                 returnType.ToString() == "void" ? SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
-                                                                : ValueReturnStatement(visitedMethod.ExpressionBody)
+                                                                : ValueReturnStatement(visitedMethod.ExpressionBody, rewrittenReturnType)
                                 );
 
                 statements = WrapStatementsInAccessibilityScope(WrapStatementsInReturnScope(statements, methodName, rewrittenReturnType), AccessibilityScope.Kind.MethodRoot);
@@ -752,14 +751,33 @@ namespace RRCG
         public override SyntaxNode VisitReturnStatement(ReturnStatementSyntax node)
         {
             var expression = (ExpressionSyntax)base.Visit(node.Expression);
-            return ValueReturnStatement(expression ?? LiteralExpression(SyntaxKind.NullLiteralExpression));
+            if (expression == null)
+                return ParseStatement("__Return();");
+
+            // Attempt to resolve build-realm type to ensure implicit cast to Port types
+            TypeSyntax? rewrittenType = null;
+            var typeSymbol = SemanticModel.GetTypeInfo(node.Expression).ConvertedType;
+
+            if (typeSymbol.ToString() != "?")
+                rewrittenType = (TypeSyntax)Visit(typeSymbol.ToTypeSyntax());
+            else
+                Debug.LogWarning($"Failed to determine converted type of expression: {expression}");
+
+            return ValueReturnStatement(expression, rewrittenType);
         }
 
-        public ExpressionStatementSyntax ValueReturnStatement(ExpressionSyntax expression)
+        public ExpressionStatementSyntax ValueReturnStatement(ExpressionSyntax expression, TypeSyntax? returnType)
         {
+            SimpleNameSyntax invocationName = IdentifierName("__Return");
+
+            if (returnType != null)
+                invocationName = GenericName(
+                        Identifier("__Return"))
+                    .WithTypeArgumentList(
+                        SyntaxUtils.TypeArgumentList(returnType));
+
             return ExpressionStatement(
-                InvocationExpression(
-                    IdentifierName("__Return"))
+                InvocationExpression(invocationName)
                 .WithArgumentList(
                     SyntaxUtils.ArgumentList(
                         expression)));

@@ -517,7 +517,10 @@ namespace RRCGBuild
             return returnScope.FinalizeReturns();
         }
 
-        public static void __Return(dynamic? data)
+        // We use the generics to ensure implicit casting to Port types.
+        // The parameterless one does.. that, to avoid duplicate code.
+        public static void __Return() => __Return<dynamic>(null!);
+        public static void __Return<T>(T data)
         {
             SemanticStackUtils.AllIteratorsNeedManual();
 
@@ -916,8 +919,7 @@ namespace RRCGBuild
 
             var returnScope = SemanticStack.current.GetNextScopeWithType<ReturnScope>();
             var returnsNeedFix = returnScope == null ? Enumerable.Empty<ReturnScope.Return>()
-                                    : returnScope.Returns.Where(r => r.Data != null &&
-                                                                     r.Data is T port && // Apparently this is undeclared..? :(
+                                    : returnScope.Returns.Where(r => r.Data is T port && // Apparently this is undeclared..? :(
                                                                      (r.Data as T)!.IsActualPort &&
                                                                      (r.Data as T)!.Port.EquivalentTo(forEachNode.Port(0, 1)));
 
