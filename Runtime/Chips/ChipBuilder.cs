@@ -643,66 +643,17 @@ namespace RRCGBuild
 
         public static void ExecutionIntegerSwitch(IntPort match, AlternativeExec failed, Dictionary<IntPort, AlternativeExec> branches)
         {
-            ExecutionIntegerSwitch(match);
-            var node = Context.lastSpawnedNode;
-            node.SwitchCases = new List<string>();
-
-            var execFlow = ExecFlow.current;
-            execFlow.Clear();
-
-            // Create exec flow for each delegate
-            var delegateToExecFlow = new Dictionary<AlternativeExec, ExecFlow>();
-            var defaultFlow = new ExecFlow();
-
-            delegateToExecFlow[failed] = defaultFlow;
-            foreach (var branch in branches)
-                delegateToExecFlow[branch.Value] = new ExecFlow();
-
-            // Now add the necessary ports to each flow
-            int branchIndex = 0;
-            delegateToExecFlow[failed].Ports.Add(new Port { Node = node });
-
-            foreach (var branch in branches)
-            {
-                delegateToExecFlow[branch.Value].Ports.Add(new Port { Node = node, Index = 1 + branchIndex });
-                branchIndex++;
-            }
-
-            // Finally we can start building the branches.
-            // Build the failed branch..
-            ExecFlow.current = defaultFlow;
-            failed();
-            execFlow.Merge(defaultFlow);
-
-            // ..then the other branches.
-            branchIndex = 0;
-            var evaluatedBranches = new List<AlternativeExec>() { failed };
-            foreach (var branch in branches)
-            {
-                if (branch.Key.Port != null) throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass an int value!");
-                node.SwitchCases.Add(branch.Key.Data.ToString());
-
-                // Only build each branch once.
-                if (!evaluatedBranches.Contains(branch.Value))
-                {
-                    ExecFlow.current = delegateToExecFlow[branch.Value];
-                    branch.Value();
-
-                    var branchFlow = ExecFlow.current;
-                    execFlow.Merge(branchFlow);
-
-                    evaluatedBranches.Add(branch.Value);
-                }
-
-                branchIndex++;
-            }
-
-            ExecFlow.current = execFlow;
+            TypedExecutionSwitch(ExecutionIntegerSwitch, match, failed, branches);
         }
 
         public static void ExecutionStringSwitch(StringPort match, AlternativeExec failed, Dictionary<StringPort, AlternativeExec> branches)
         {
-            ExecutionStringSwitch(match);
+            TypedExecutionSwitch(ExecutionStringSwitch, match, failed, branches);
+        }
+
+        static void TypedExecutionSwitch<T>(Action<T> switchNode, T match, AlternativeExec failed, Dictionary<T, AlternativeExec> branches) where T : AnyPort, new()
+        {
+            switchNode(match);
             var node = Context.lastSpawnedNode;
             node.SwitchCases = new List<string>();
 
@@ -739,7 +690,7 @@ namespace RRCGBuild
             var evaluatedBranches = new List<AlternativeExec>() { failed };
             foreach (var branch in branches)
             {
-                if (branch.Key.Port != null) throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a string value!");
+                if (branch.Key.Port != null) throw new Exception($"Can't create Switch Cases with dynamic data. Make sure to pass a pure-data {typeof(T).Name} value!");
                 node.SwitchCases.Add(branch.Key.Data.ToString());
 
                 // Only build each branch once.
@@ -769,7 +720,19 @@ namespace RRCGBuild
 
         public static T ValueIntegerSwitch<T>(IntPort match, T defaultValue, Dictionary<IntPort, T> cases) where T : AnyPort, new()
         {
-            var switchValue = ValueIntegerSwitch(match, defaultValue);
+            return TypedValueSwitch(ValueIntegerSwitch, match, defaultValue, cases);
+        }
+
+        public static T ValueStringSwitch<T>(StringPort match, T defaultValue, Dictionary<StringPort, T> cases) where T : AnyPort, new()
+        {
+            return TypedValueSwitch(ValueStringSwitch, match, defaultValue, cases);
+        }
+
+        static TResult TypedValueSwitch<TMatch, TResult>(Func<TMatch, TResult, TResult> switchNode, TMatch match, TResult defaultValue, Dictionary<TMatch, TResult> cases)
+            where TMatch : AnyPort, new()
+            where TResult : AnyPort, new()
+        {
+            var switchValue = switchNode(match, defaultValue);
             var node = Context.lastSpawnedNode;
             node.SwitchCases = new List<string>();
             node.InputCount += cases.Count();
@@ -777,7 +740,7 @@ namespace RRCGBuild
             var portIndex = 2;
             foreach (var switchCase in cases)
             {
-                if (switchCase.Key.IsActualPort) throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a int value!");
+                if (switchCase.Key.IsActualPort) throw new Exception($"Can't create Switch Cases with dynamic data. Make sure to pass a pure-data {typeof(TMatch).Name} value!");
 
                 node.SwitchCases.Add(switchCase.Key.Data.ToString());
                 node.ConnectInputPort(switchCase.Value, portIndex);
@@ -785,28 +748,7 @@ namespace RRCGBuild
                 portIndex++;
             }
 
-            return new T() { Port = switchValue.Port };
-        }
-
-        public static T ValueStringSwitch<T>(StringPort match, T defaultValue, Dictionary<StringPort, T> cases) where T : AnyPort, new()
-        {
-            var switchValue = ValueStringSwitch(match, defaultValue);
-            var node = Context.lastSpawnedNode;
-            node.SwitchCases = new List<string>();
-            node.InputCount += cases.Count();
-
-            var portIndex = 2;
-            foreach (var switchCase in cases)
-            {
-                if (switchCase.Key.IsActualPort) throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a string value!");
-
-                node.SwitchCases.Add(switchCase.Key.Data);
-                node.ConnectInputPort(switchCase.Value, portIndex);
-
-                portIndex++;
-            }
-
-            return new T() { Port = switchValue.Port };
+            return new TResult() { Port = switchValue.Port };
         }
 
 

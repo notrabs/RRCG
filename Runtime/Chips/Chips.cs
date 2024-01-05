@@ -24,9 +24,9 @@ namespace RRCGSource
         /// <summary>  For loop executing forEach [from, to) and continuing on the Done pin  </summary>
         public static void For(AlternativeExec<int> forEach, int from, int to) { }
         public static void ExecutionIntegerSwitch(int match, AlternativeExec failed, Dictionary<int, AlternativeExec> cases) { }
-        public static void ExecutionStringSwitch(int match, AlternativeExec failed, Dictionary<string, AlternativeExec> cases) { }
+        public static void ExecutionStringSwitch(string match, AlternativeExec failed, Dictionary<string, AlternativeExec> cases) { }
         public static T ValueIntegerSwitch<T>(int match, T failed, Dictionary<int, T> cases) { return default; }
-        public static T ValueStringSwitch<T>(int match, T failed, Dictionary<string, T> cases) { return default; }
+        public static T ValueStringSwitch<T>(string match, T failed, Dictionary<string, T> cases) { return default; }
 
         //
         // Data Table
