@@ -531,7 +531,7 @@ namespace RRCGBuild
             returnScope.AddReturn(data);
         }
 
-        public T __Assign<T>(string identifier, out T variable, Func<T> value)
+        public static T __Assign<T>(string identifier, out T variable, Func<T> value)
         {
             // TODO: Now that variable promotions are computed at rewriting time,
             //       maybe this isn't necessary anymore.
@@ -541,7 +541,7 @@ namespace RRCGBuild
             return assignedValue;
         }
 
-        public void __While(ConditionalContext conditional, Func<BoolPort> condition, bool buildIfAfterBlock, AlternativeExec block)
+        public static void __While(ConditionalContext conditional, Func<BoolPort> condition, bool buildIfAfterBlock, AlternativeExec block)
         {
             // Create While scope
             var whileScope = new WhileScope()
@@ -596,7 +596,7 @@ namespace RRCGBuild
             ExecFlow.current.Ports.Add(ifNode.Port(0, 1));
         }
 
-        public void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
+        public static void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
         {
             // TODO: Conditional context for switch statements
             // Create & push our switch scope
@@ -616,14 +616,14 @@ namespace RRCGBuild
             SemanticStack.current.PopExpectedScope(switchScope);
         }
 
-        public void __Break()
+        public static void __Break()
         {
             var breakable = SemanticStack.current.GetNextScopeWithType<SemanticScope.IBreak>();
             if (breakable != null)
                 breakable.Break();
         }
 
-        public void __Continue()
+        public static void __Continue()
         {
             var continuable = SemanticStack.current.GetNextScopeWithType<SemanticScope.IContinue>();
             if (continuable != null)
@@ -853,7 +853,7 @@ namespace RRCGBuild
             ExecFlow.current.Merge(elseFlow);
         }
 
-        public ConditionalContext __ConditionalContext(params string[] promotedIdentifiers)
+        public static ConditionalContext __ConditionalContext(params string[] promotedIdentifiers)
         {
             var conditionalContext = new ConditionalContext() { PromotedVariables = new() };
 
@@ -895,7 +895,7 @@ namespace RRCGBuild
             return conditionalContext;
         }
 
-        public void __ForEach<T>(ConditionalContext conditional, ListPort<T> list, Action<T> body) where T : AnyPort, new()
+        public static void __ForEach<T>(ConditionalContext conditional, ListPort<T> list, Action<T> body) where T : AnyPort, new()
         {
             // First, create ForEach scope & push onto the semantic stack.
             var scope = new ForEachScope
