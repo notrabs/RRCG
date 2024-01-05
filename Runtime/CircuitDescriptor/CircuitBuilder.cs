@@ -292,7 +292,7 @@ namespace RRCGBuild
         {
         }
 
-        public void StudioEventReceiver(string eventName)
+        public static void StudioEventReceiver(string eventName)
         {
             CircuitBuilder.Singleton("StudioEventReceiver_" + eventName, () => EventDefinition(eventName));
             EventReceiver(eventName);

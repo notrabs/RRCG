@@ -48,62 +48,62 @@ namespace RRCGSource
         /// <summary>
         /// Starts a new Circuit Graph without modyfing the current one.
         /// </summary>
-        public void StartNewGraph() { }
+        public static void StartNewGraph() { }
 
         /// <summary>
         /// Clears the current exec flow. (this marks the existing exec flow as "cleared", which can be useful to detect if a changes have occured).
         /// </summary>
-        public void ClearExec() { }
+        public static void ClearExec() { }
 
         /// <summary>
         /// Define a new graph from your current context without destroying your current execution state.
         /// </summary>
-        public void InlineGraph(AlternativeExec graphFn) { }
+        public static void InlineGraph(AlternativeExec graphFn) { }
         /// <inheritdoc cref="InlineGraph(AlternativeExec)" />
-        public T InlineGraph<T>(Func<T> graphFn) { return default; }
+        public static T InlineGraph<T>(Func<T> graphFn) { return default; }
 
         /// <summary>
         /// Constructs a simple circuit board from a function. If the function contains executable chips, the board will have one exec input and output.
         /// </summary>
-        public void CircuitBoard(Action circuitBoardFn) { }
+        public static void CircuitBoard(Action circuitBoardFn) { }
         /// <inheritdoc cref="CircuitBoard(Action)" />
-        public T CircuitBoard<T>(Func<T> circuitBoardFn) { return default; }
+        public static T CircuitBoard<T>(Func<T> circuitBoardFn) { return default; }
         /// <inheritdoc cref="CircuitBoard(Action)" />
-        public void CircuitBoard<P0>(Action<P0> circuitBoardFn, P0 value0) { }
+        public static void CircuitBoard<P0>(Action<P0> circuitBoardFn, P0 value0) { }
         /// <inheritdoc cref="CircuitBoard(Action)" />
-        public T CircuitBoard<P0, T>(Func<P0, T> circuitBoardFn, P0 value0) { return default; }
+        public static T CircuitBoard<P0, T>(Func<P0, T> circuitBoardFn, P0 value0) { return default; }
         /// <inheritdoc cref="CircuitBoard(Action)" />
-        public void CircuitBoard<P0, P1>(Action<P0, P1> circuitBoardFn, P0 value0, P1 value1) { }
+        public static void CircuitBoard<P0, P1>(Action<P0, P1> circuitBoardFn, P0 value0, P1 value1) { }
         /// <inheritdoc cref="CircuitBoard(Action)" />
-        public T CircuitBoard<P0, P1, T>(Func<P0, P1, T> circuitBoardFn, P0 value0, P1 value1) { return default; }
+        public static T CircuitBoard<P0, P1, T>(Func<P0, P1, T> circuitBoardFn, P0 value0, P1 value1) { return default; }
 
         /// <inheritdoc cref="CircuitBoard(Action)" />
-        public void CircuitBoard(string name, Action circuitBoardFn) { }
+        public static void CircuitBoard(string name, Action circuitBoardFn) { }
         /// <inheritdoc cref="CircuitBoard(Action)" />
-        public T CircuitBoard<T>(string name, Func<T> circuitBoardFn) { return default; }
+        public static T CircuitBoard<T>(string name, Func<T> circuitBoardFn) { return default; }
         /// <inheritdoc cref="CircuitBoard(Action)" />
-        public void CircuitBoard<P0>(string name, Action<P0> circuitBoardFn, P0 value0) { }
+        public static void CircuitBoard<P0>(string name, Action<P0> circuitBoardFn, P0 value0) { }
         /// <inheritdoc cref="CircuitBoard(Action)" />
-        public T CircuitBoard<P0, T>(string name, Func<P0, T> circuitBoardFn, P0 value0) { return default; }
+        public static T CircuitBoard<P0, T>(string name, Func<P0, T> circuitBoardFn, P0 value0) { return default; }
         /// <inheritdoc cref="CircuitBoard(Action)" />
-        public void CircuitBoard<P0, P1>(string name, Action<P0, P1> circuitBoardFn, P0 value0, P1 value1) { }
+        public static void CircuitBoard<P0, P1>(string name, Action<P0, P1> circuitBoardFn, P0 value0, P1 value1) { }
         /// <inheritdoc cref="CircuitBoard(Action)" />
-        public T CircuitBoard<P0, P1, T>(string name, Func<P0, P1, T> circuitBoardFn, P0 value0, P1 value1) { return default; }
+        public static T CircuitBoard<P0, P1, T>(string name, Func<P0, P1, T> circuitBoardFn, P0 value0, P1 value1) { return default; }
 
         /// <summary>
         /// Use this function to place circuits inside an existing board. The boardName must be unique.
         /// </summary>
-        public void ExistingCircuitBoard(string boardName, AlternativeExec circuitBoardFn) { }
+        public static void ExistingCircuitBoard(string boardName, AlternativeExec circuitBoardFn) { }
 
-        public PinType ExistingDataInput<PinType>(string portName) { return default; }
-        public void ExistingDataOutput<PinType>(string portName, PinType value) { }
-        public void ExistingExecInput(string portName) { }
-        public void ExistingExecOutput(string portName) { }
+        public static PinType ExistingDataInput<PinType>(string portName) { return default; }
+        public static void ExistingDataOutput<PinType>(string portName, PinType value) { }
+        public static void ExistingExecInput(string portName) { }
+        public static void ExistingExecOutput(string portName) { }
 
         /// <summary>
         /// Shorthand to create an event receiver for a studio event. Automatically creates an EventDefinition if needed.
         /// </summary>
-        public void StudioEventReceiver(string eventName) { }
+        public static void StudioEventReceiver(string eventName) { }
 
         /// <summary>
         /// Returns an Instance of the Event class for an already exising Event in the room
