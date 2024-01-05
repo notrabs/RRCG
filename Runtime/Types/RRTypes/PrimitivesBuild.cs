@@ -9,7 +9,7 @@ namespace RRCGBuild
         public static explicit operator bool(BoolPort data) => data.AsData<bool>();
 
         public static explicit operator string(BoolPort data) => data.AsData<int>().ToString();
-        public static explicit operator StringPort(BoolPort data) => (string)data;
+        public static explicit operator StringPort(BoolPort data) => data.ToString();
         public static BoolPort operator !(BoolPort data)
         {
             if (data.IsDataPort) return new BoolPort { Data = !data.Data };
@@ -25,7 +25,7 @@ namespace RRCGBuild
         public static implicit operator FloatPort(IntPort data) => data.IsDataPort ? new FloatPort() { Data = (float)data.Data } : ChipBuilder.IntToFloat(data);
 
         public static explicit operator string(IntPort data) => data.AsData<int>().ToString();
-        public static explicit operator StringPort(IntPort data) => (string)data;
+        public static explicit operator StringPort(IntPort data) => data.ToString();
 
         public static IntPort operator -(IntPort data)
         {
@@ -133,7 +133,7 @@ namespace RRCGBuild
         public static explicit operator IntPort(FloatPort data) => data.IsDataPort ? new IntPort() { Data = (int)data.Data } : ChipBuilder.FloorToInt(data);
 
         public static explicit operator string(FloatPort data) => data.AsData<int>().ToString();
-        public static explicit operator StringPort(FloatPort data) => (string)data;
+        public static explicit operator StringPort(FloatPort data) => data.ToString();
         public static FloatPort operator -(FloatPort data)
         {
             if (data.IsDataPort) return new FloatPort { Data = -data.Data };

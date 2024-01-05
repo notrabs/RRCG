@@ -24,6 +24,9 @@ namespace RRCGBuild
         public static implicit operator AnyPort(Vector3 data) => new Vector3Port { Data = data };
         public static implicit operator AnyPort(Quaternion data) => new QuaternionPort { Data = data };
 
+        public static StringPort operator +(StringPort a, AnyPort b) => a + b.ToString();
+        public static StringPort operator +(AnyPort a, StringPort b) => a.ToString() + b;
+
         /// <summary>
         /// Converts complex data value ports into actual ports that can be connected to
         /// </summary>

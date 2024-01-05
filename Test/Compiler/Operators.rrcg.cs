@@ -13,6 +13,8 @@ public class Operators : CircuitDescriptor
 
         PortFloatOperators();
 
+        StringOperators();
+
         VectorOperators();
 
         MixedOperators();
@@ -148,6 +150,35 @@ public class Operators : CircuitDescriptor
         ChipLib.Log(preDecrement);
 
         throw null;
+    }
+
+    public void StringOperators()
+    {
+        new EventDefinition("StringOperators").Receiver();
+
+        ChipLib.Log("a" + 1);
+        ChipLib.Log("a" + 1f);
+        ChipLib.Log(1 + "b");
+        ChipLib.Log(1f + "b");
+        ChipLib.Log("a" + "b");
+
+        var intPort = RandomInt(1, 1);
+        var floatPort = RandomInt(1, 1);
+        var stringPort = GetPlayerAccountName(Player.Local);
+
+        ChipLib.Log("a" + intPort);
+        ChipLib.Log("a" + floatPort);
+        ChipLib.Log("a" + stringPort);
+        ChipLib.Log(intPort + "b");
+        ChipLib.Log(floatPort + "b");
+        ChipLib.Log(stringPort + "b");
+
+        ChipLib.Log(stringPort + intPort);
+        ChipLib.Log(stringPort + floatPort);
+        ChipLib.Log(stringPort + stringPort);
+        ChipLib.Log(intPort + stringPort);
+        ChipLib.Log(floatPort + stringPort);
+        ChipLib.Log(stringPort + stringPort);
     }
 
     public void VectorOperators()

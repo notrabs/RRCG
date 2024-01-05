@@ -14,6 +14,7 @@ namespace RRCGBuild
             NativeFloatOperators();
             PortIntOperators();
             PortFloatOperators();
+            StringOperators();
             VectorOperators();
             MixedOperators();
             TernaryOperator();
@@ -158,6 +159,38 @@ namespace RRCGBuild
             ChipLib.Log(--preDecrement);
             ChipLib.Log(preDecrement);
             ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
+
+        public void StringOperators()
+        {
+            __BeginReturnScope("StringOperators", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("StringOperators").Receiver();
+            ChipLib.Log("a" + 1);
+            ChipLib.Log("a" + 1f);
+            ChipLib.Log(1 + "b");
+            ChipLib.Log(1f + "b");
+            ChipLib.Log("a" + "b");
+                IntPort intPort = default !;
+                intPort = __VariableDeclaratorExpression<IntPort>("intPort", () => RandomInt(1, 1), () => intPort!, (_RRCG_SETTER_VALUE) => intPort = _RRCG_SETTER_VALUE);
+                IntPort floatPort = default !;
+                floatPort = __VariableDeclaratorExpression<IntPort>("floatPort", () => RandomInt(1, 1), () => floatPort!, (_RRCG_SETTER_VALUE) => floatPort = _RRCG_SETTER_VALUE);
+                StringPort stringPort = default !;
+                stringPort = __VariableDeclaratorExpression<StringPort>("stringPort", () => GetPlayerAccountName(PlayerPort.Local), () => stringPort!, (_RRCG_SETTER_VALUE) => stringPort = _RRCG_SETTER_VALUE);
+            ChipLib.Log("a" + intPort);
+            ChipLib.Log("a" + floatPort);
+            ChipLib.Log("a" + stringPort);
+            ChipLib.Log(intPort + "b");
+            ChipLib.Log(floatPort + "b");
+            ChipLib.Log(stringPort + "b");
+            ChipLib.Log(stringPort + intPort);
+            ChipLib.Log(stringPort + floatPort);
+            ChipLib.Log(stringPort + stringPort);
+            ChipLib.Log(intPort + stringPort);
+            ChipLib.Log(floatPort + stringPort);
+            ChipLib.Log(stringPort + stringPort);
             __EndAccessibilityScope();
             __EndReturnScope();
         }
