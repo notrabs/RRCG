@@ -28,7 +28,7 @@ namespace RRCG
 
             if (GUILayout.Button("Update Events/Functions", GUILayout.Height(50)))
             {
-                RoslynFrontend.UpdateRRO(rrcgMeta);
+                _ = RoslynFrontend.UpdateRRO(rrcgMeta);
             }
         }
     }

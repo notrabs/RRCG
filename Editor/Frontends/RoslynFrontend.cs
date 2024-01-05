@@ -102,11 +102,20 @@ namespace RRCG
             return context;
         }
 
-        public static void UpdateRRO(RRCGStudioObject rrcgMeta)
+        public static async Task UpdateRRO(RRCGStudioObject rrcgMeta)
         {
-            var type = Utils.GetTypeInAssembly(rrcgMeta.Assembly, rrcgMeta.DescriptorClass);
+            if (!string.IsNullOrEmpty(rrcgMeta.Assembly)) UpdateRRO(rrcgMeta.Assembly, rrcgMeta.DescriptorClass, rrcgMeta.gameObject);
 
-            var instance = (StudioObjectBuilder)Activator.CreateInstance(type, new object[] { new StudioObjectPort() { Data = rrcgMeta.gameObject } });
+            var assemblyName = await RoslynProjectCompiler.CompileAndLoadProject(rrcgMeta.Project);
+
+            UpdateRRO(assemblyName, rrcgMeta.DescriptorClass, rrcgMeta.gameObject);
+        }
+
+        public static void UpdateRRO(string assembly, string descriptorClass, GameObject gameObject)
+        {
+            var type = Utils.GetTypeInAssembly(assembly, descriptorClass);
+
+            var instance = (StudioObjectBuilder)Activator.CreateInstance(type, new object[] { new StudioObjectPort() { Data = gameObject } });
             instance.__UpdateStudioEvents();
         }
     }
