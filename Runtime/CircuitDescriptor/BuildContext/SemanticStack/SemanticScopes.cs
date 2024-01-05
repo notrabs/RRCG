@@ -6,6 +6,7 @@ using PromotedVariable = RRCGBuild.ConditionalContext.PromotedVariable;
 using RRCGGenerated;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using RRCG;
 
 // TODO: Should we start initializing members within the class declarations?
 //       We currently do this at each construction site, which gets quite verbose.
@@ -279,14 +280,77 @@ namespace RRCGBuild
             ExecFlow.current.Clear();
         }
 
+        bool ReturnTypeIsPortCompatible()
+        {
+            if (ReturnTypeIsTupleType)
+                return ReturnType!.GetGenericArguments().All(t => typeof(AnyPort).IsAssignableFrom(t));
+            else
+                return ReturnType != null && typeof(AnyPort).IsAssignableFrom(ReturnType);
+        }
+
         public dynamic? FinalizeReturns()
         {
-            // Replicate old behaviour for now.
-            // But now we can insert event senders to support multiple/conditional returns!
-            foreach (var ret in Returns)
-                ExecFlow.current.Merge(ret.ExecFlow);
+            // If we have only one return, or the type isn't supported,
+            // merge exec flows and just return the single port (or emulate old behaviour)
+            if (Returns.Count <= 1 || ReturnType == null || !ReturnTypeIsPortCompatible())
+            {
+                foreach (var ret in Returns)
+                    ExecFlow.current.Merge(ret.ExecFlow);
 
-            return Returns.LastOrDefault()?.Data;
+                return Returns.LastOrDefault()?.Data;
+            }
+
+            // Otherwise we construct an event to serve
+            // as a "merge point" for the return data.
+            // Start by creating the list of port definitions..
+            var ports = new List<(string Name, Type Type)>();
+            if (ReturnTypeIsTupleType)
+            {
+                var types = ReturnType.GetGenericArguments();
+                for (int i = 0; i < types.Length; i++)
+                    ports.Add((TupleElementNames![i], types[i]));
+            }
+            else ports.Add(("result", ReturnType));
+
+            // Now we can create the event definition from those
+            var eventName = Context.current.GetUniqueId($"RRCG_Return_{MethodName}");
+            var eventConfig = new EventDefinitionData(eventName, ports.ToArray());
+            CircuitBuilder.InlineGraph(() => ChipBuilderGen.EventDefinition(eventConfig));
+
+            // Jump to each return location and use our
+            // new event to cache the return data
+            var returnFlow = ExecFlow.current;
+            foreach (var ret in Returns)
+            {
+                ExecFlow.current = ret.ExecFlow;
+
+                // Build list of ports to connect.
+                // C# doesn't recognize dynamic[] as being an enumerable,
+                // so we cast directly to use the Cast<> extension.
+                AnyPort[] dataPorts = !ReturnTypeIsTupleType ? new AnyPort[] { ret.Data! }
+                    : ((IEnumerable<dynamic>)TupleUtils.WrapTuple(ret.Data)).Cast<AnyPort>().ToArray();
+
+                // Build event sender & merge into return flow
+                ChipBuilder.EventSender(eventName, EventTarget.LOCAL, dataPorts);
+                returnFlow.Merge(ExecFlow.current);
+            }
+
+            // Receive the new event
+            ExecFlow.current = returnFlow;
+            CircuitBuilder.InlineGraph(() => ChipBuilderGen.EventReceiver(new(eventName)));
+            var eventReceiver = Context.lastSpawnedNode;
+
+            // Create references to output ports
+            var cachePorts = new List<dynamic>();
+            for (int i = 0; i < ports.Count; i++)
+            {
+                dynamic outPort = Activator.CreateInstance(ports[i].Type);
+                outPort.Port = eventReceiver.Port(0, i + 1);
+                cachePorts.Add(outPort);
+            }
+
+            // Return the first port or a tuple as necessary
+            return !ReturnTypeIsTupleType ? cachePorts.FirstOrDefault() : TupleUtils.UnwrapTuple(ReturnType, cachePorts.ToArray());
         }
     }
 }

@@ -1,0 +1,6461 @@
+{
+  "Id": "0",
+  "Nodes": [
+    {
+      "Id": "Event_Definition_0",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_InlineTests",
+        "EventDefinition": []
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_0",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_InlineTests"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_0",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Starting test InlineTests"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_1",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Single Return"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "If_0",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [[[0,1],"System.Boolean",true]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_1",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_Return_MultipleNonTupleReturns",
+        "EventDefinition": [
+          {
+            "Item1": "result",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_0",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_MultipleNonTupleReturns",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Return Value 1"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_1",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_MultipleNonTupleReturns",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Return Value 2"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_1",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_Return_MultipleNonTupleReturns"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_2",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_3",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Named: Named Element, Item2: 2147483647"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "If_1",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [[[0,1],"System.Boolean",true]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_2",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_Return_MultipleTupleReturns",
+        "EventDefinition": [
+          {
+            "Item1": "Named",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          },
+          {
+            "Item1": "value1",
+            "Item2": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_2",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_MultipleTupleReturns",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Named 1"],[[0,2],"System.Int32",1]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_3",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_MultipleTupleReturns",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Named 2"],[[0,2],"System.Int32",2]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_2",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_Return_MultipleTupleReturns"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "To_String_0",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_0",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Named: "],[[0,3],"System.String",", Item2: "]],
+      "InputCount": 5
+    },
+    {
+      "Id": "Log_String_4",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Reroute_0",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "DefaultValues": [[[0,0],"System.String","Hello"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Parse_Bool_0",
+      "Type": "vF7AkmcZpEmUtS0B/h5rhQ==",
+      "Name": "Parse Bool",
+      "DefaultValues": [[[0,0],"System.String","true"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "If_2",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_1",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""],[[0,2],"System.String",", world!"]],
+      "InputCount": 3
+    },
+    {
+      "Id": "String_Concat_2",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Default return: "]],
+      "InputCount": 3
+    },
+    {
+      "Id": "Event_Definition_3",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_Return_TestIfReturnWithPromoted",
+        "EventDefinition": [
+          {
+            "Item1": "result",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_4",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestIfReturnWithPromoted",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_5",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestIfReturnWithPromoted",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_3",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_Return_TestIfReturnWithPromoted"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_5",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Create_0",
+      "Type": "VjItVFENM0yiofvES34fBw==",
+      "Name": "List Create",
+      "DefaultValues": [[[0,0],"System.String","H"],[[0,1],"System.String","e"],[[0,2],"System.String","l"],[[0,3],"System.String","l"],[[0,4],"System.String","o"],[[0,5],"System.String"," "],[[0,6],"System.String","w"],[[0,7],"System.String","o"],[[0,8],"System.String","r"],[[0,9],"System.String","l"],[[0,10],"System.String","d"],[[0,11],"System.String","!"],[[0,12],"System.String","END"]],
+      "InputCount": 13
+    },
+    {
+      "Id": "Event_Definition_4",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventCache",
+        "EventDefinition": [
+          {
+            "Item1": "value0",
+            "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_4",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventCache"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_6",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventCache",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "string_Variable_0",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_output",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.String",""]],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_0",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_i",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.Int32",0]],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Get_Count_0",
+      "Type": "TSCTBBWYqUmMh03t9cz36A==",
+      "Name": "List Get Count",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Less_Than_0",
+      "Type": "3tBcoJpgkk2TrWW2NTBiMw==",
+      "Name": "Less Than",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "If_3",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Get_Element_0",
+      "Type": "LwjF6HUKJUCWeSk7yNcpiQ==",
+      "Name": "List Get Element",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Equals_0",
+      "Type": "Xrbx4YKNr0eGN64tCvpDHw==",
+      "Name": "Equals",
+      "DefaultValues": [[[0,1],"System.String","END"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "If_4",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_3",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""]],
+      "InputCount": 3
+    },
+    {
+      "Id": "Add_0",
+      "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+      "Name": "Add",
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "InputCount": 2
+    },
+    {
+      "Id": "string_Variable_1",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_output",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_1",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_i",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_5",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_Return_TestWhileReturnWithPromoted",
+        "EventDefinition": [
+          {
+            "Item1": "result",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_7",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestWhileReturnWithPromoted",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_8",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestWhileReturnWithPromoted",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Failed to find END"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_5",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_Return_TestWhileReturnWithPromoted"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_6",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Subtract_0",
+      "Type": "TDa7H/Aau0SoK5BcrraBmg==",
+      "Name": "Subtract",
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Set_Element_0",
+      "Type": "xazaiFJ2Ok21BbolbOP9nQ==",
+      "Name": "List Set Element",
+      "DefaultValues": [[[0,3],"System.String","Not END"]],
+      "InputCount": 4
+    },
+    {
+      "Id": "string_Variable_2",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_output_1",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.String",""]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Equals_1",
+      "Type": "Xrbx4YKNr0eGN64tCvpDHw==",
+      "Name": "Equals",
+      "DefaultValues": [[[0,1],"System.String","END"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "If_5",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_4",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""]],
+      "InputCount": 3
+    },
+    {
+      "Id": "string_Variable_3",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_output_1",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Get_Element_1",
+      "Type": "LwjF6HUKJUCWeSk7yNcpiQ==",
+      "Name": "List Get Element",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_2",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_ForEach_index",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.Int32",0]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Less_Than_1",
+      "Type": "3tBcoJpgkk2TrWW2NTBiMw==",
+      "Name": "Less Than",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "If_6",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Add_1",
+      "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+      "Name": "Add",
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_3",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_ForEach_index",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_6",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_Return_TestForEachReturnWithPromoted",
+        "EventDefinition": [
+          {
+            "Item1": "result",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_9",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestForEachReturnWithPromoted",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_10",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestForEachReturnWithPromoted",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Failed to find END"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_6",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_Return_TestForEachReturnWithPromoted"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_7",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_8",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Finished test InlineTests"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_7",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_CircuitBoardTests",
+        "EventDefinition": []
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_7",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_CircuitBoardTests"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_9",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Starting test CircuitBoardTests"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "RRCG_SingleNonTupleReturn_0",
+      "Type": "et7rFMB230ew3QGx2qUIIQ==",
+      "Name": "RRCG_SingleNonTupleReturn",
+      "DefaultValues": [],
+      "CircuitBoardId": "0_0",
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_10",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "RRCG_MultipleNonTupleReturns_0",
+      "Type": "et7rFMB230ew3QGx2qUIIQ==",
+      "Name": "RRCG_MultipleNonTupleReturns",
+      "DefaultValues": [],
+      "CircuitBoardId": "0_1",
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_11",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "RRCG_SingleTupleReturn_0",
+      "Type": "et7rFMB230ew3QGx2qUIIQ==",
+      "Name": "RRCG_SingleTupleReturn",
+      "DefaultValues": [],
+      "CircuitBoardId": "0_2",
+      "InputCount": 0
+    },
+    {
+      "Id": "To_String_1",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_5",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Named: "],[[0,3],"System.String",", Item2: "]],
+      "InputCount": 5
+    },
+    {
+      "Id": "Log_String_12",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "RRCG_MultipleTupleReturns_0",
+      "Type": "et7rFMB230ew3QGx2qUIIQ==",
+      "Name": "RRCG_MultipleTupleReturns",
+      "DefaultValues": [],
+      "CircuitBoardId": "0_3",
+      "InputCount": 0
+    },
+    {
+      "Id": "To_String_2",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_6",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Named: "],[[0,3],"System.String",", Item2: "]],
+      "InputCount": 5
+    },
+    {
+      "Id": "Log_String_13",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "RRCG_TestIfReturnWithPromoted_0",
+      "Type": "et7rFMB230ew3QGx2qUIIQ==",
+      "Name": "RRCG_TestIfReturnWithPromoted",
+      "DefaultValues": [],
+      "CircuitBoardId": "0_4",
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_14",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Create_1",
+      "Type": "VjItVFENM0yiofvES34fBw==",
+      "Name": "List Create",
+      "DefaultValues": [[[0,0],"System.String","H"],[[0,1],"System.String","e"],[[0,2],"System.String","l"],[[0,3],"System.String","l"],[[0,4],"System.String","o"],[[0,5],"System.String"," "],[[0,6],"System.String","w"],[[0,7],"System.String","o"],[[0,8],"System.String","r"],[[0,9],"System.String","l"],[[0,10],"System.String","d"],[[0,11],"System.String","!"],[[0,12],"System.String","END"]],
+      "InputCount": 13
+    },
+    {
+      "Id": "Event_Definition_8",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventCache_1",
+        "EventDefinition": [
+          {
+            "Item1": "value0",
+            "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_8",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventCache_1"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_11",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventCache_1",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "RRCG_TestWhileReturnWithPromoted_0",
+      "Type": "et7rFMB230ew3QGx2qUIIQ==",
+      "Name": "RRCG_TestWhileReturnWithPromoted",
+      "DefaultValues": [],
+      "CircuitBoardId": "0_5",
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_15",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Get_Count_1",
+      "Type": "TSCTBBWYqUmMh03t9cz36A==",
+      "Name": "List Get Count",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Subtract_1",
+      "Type": "TDa7H/Aau0SoK5BcrraBmg==",
+      "Name": "Subtract",
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Set_Element_1",
+      "Type": "xazaiFJ2Ok21BbolbOP9nQ==",
+      "Name": "List Set Element",
+      "DefaultValues": [[[0,3],"System.String","Not END"]],
+      "InputCount": 4
+    },
+    {
+      "Id": "RRCG_TestForEachReturnWithPromoted_0",
+      "Type": "et7rFMB230ew3QGx2qUIIQ==",
+      "Name": "RRCG_TestForEachReturnWithPromoted",
+      "DefaultValues": [],
+      "CircuitBoardId": "0_6",
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_16",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_17",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Finished test CircuitBoardTests"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_9",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventFunctionTests",
+        "EventDefinition": []
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_9",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventFunctionTests"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_18",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Starting test EventFunctionTests"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_10",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventFunction_EFSingleNonTupleReturn",
+        "EventDefinition": []
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_10",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventFunction_EFSingleNonTupleReturn"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_12",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventFunction_EFSingleNonTupleReturn",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_19",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Single Return"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_11",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventFunction_EFMultipleNonTupleReturns",
+        "EventDefinition": []
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_11",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventFunction_EFMultipleNonTupleReturns"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "If_7",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [[[0,1],"System.Boolean",true]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_12",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_Return_MultipleNonTupleReturns_2",
+        "EventDefinition": [
+          {
+            "Item1": "result",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_13",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_MultipleNonTupleReturns_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Return Value 1"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_14",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_MultipleNonTupleReturns_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Return Value 2"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_12",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_Return_MultipleNonTupleReturns_2"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_15",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventFunction_EFMultipleNonTupleReturns",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_20",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_13",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventFunction_EFSingleTupleReturn",
+        "EventDefinition": []
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_13",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventFunction_EFSingleTupleReturn"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_16",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventFunction_EFSingleTupleReturn",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_21",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Named: Named Element, Item2: 2147483647"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_14",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventFunction_EFMultipleTupleReturns",
+        "EventDefinition": []
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_14",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventFunction_EFMultipleTupleReturns"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "If_8",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [[[0,1],"System.Boolean",true]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_15",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_Return_MultipleTupleReturns_2",
+        "EventDefinition": [
+          {
+            "Item1": "Named",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          },
+          {
+            "Item1": "value1",
+            "Item2": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_17",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_MultipleTupleReturns_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Named 1"],[[0,2],"System.Int32",1]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_18",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_MultipleTupleReturns_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Named 2"],[[0,2],"System.Int32",2]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_15",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_Return_MultipleTupleReturns_2"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_19",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventFunction_EFMultipleTupleReturns",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "To_String_3",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_7",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Named: "],[[0,3],"System.String",", Item2: "]],
+      "InputCount": 5
+    },
+    {
+      "Id": "Log_String_22",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_16",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventFunction_EFTestIfReturnWithPromoted",
+        "EventDefinition": []
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_16",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventFunction_EFTestIfReturnWithPromoted"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Reroute_1",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "DefaultValues": [[[0,0],"System.String","Hello"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Parse_Bool_1",
+      "Type": "vF7AkmcZpEmUtS0B/h5rhQ==",
+      "Name": "Parse Bool",
+      "DefaultValues": [[[0,0],"System.String","true"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "If_9",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_8",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""],[[0,2],"System.String",", world!"]],
+      "InputCount": 3
+    },
+    {
+      "Id": "String_Concat_9",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Default return: "]],
+      "InputCount": 3
+    },
+    {
+      "Id": "Event_Definition_17",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_Return_TestIfReturnWithPromoted_2",
+        "EventDefinition": [
+          {
+            "Item1": "result",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_20",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestIfReturnWithPromoted_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_21",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestIfReturnWithPromoted_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_17",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_Return_TestIfReturnWithPromoted_2"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_22",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventFunction_EFTestIfReturnWithPromoted",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_23",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Create_2",
+      "Type": "VjItVFENM0yiofvES34fBw==",
+      "Name": "List Create",
+      "DefaultValues": [[[0,0],"System.String","H"],[[0,1],"System.String","e"],[[0,2],"System.String","l"],[[0,3],"System.String","l"],[[0,4],"System.String","o"],[[0,5],"System.String"," "],[[0,6],"System.String","w"],[[0,7],"System.String","o"],[[0,8],"System.String","r"],[[0,9],"System.String","l"],[[0,10],"System.String","d"],[[0,11],"System.String","!"],[[0,12],"System.String","END"]],
+      "InputCount": 13
+    },
+    {
+      "Id": "Event_Definition_18",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventCache_2",
+        "EventDefinition": [
+          {
+            "Item1": "value0",
+            "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_18",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventCache_2"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_23",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventCache_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Definition_19",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventFunction_EFTestWhileReturnWithPromoted",
+        "EventDefinition": [
+          {
+            "Item1": "value0",
+            "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_19",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventFunction_EFTestWhileReturnWithPromoted"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "string_Variable_4",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_output_4",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.String",""]],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_4",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_i_2",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.Int32",0]],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Get_Count_2",
+      "Type": "TSCTBBWYqUmMh03t9cz36A==",
+      "Name": "List Get Count",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Less_Than_2",
+      "Type": "3tBcoJpgkk2TrWW2NTBiMw==",
+      "Name": "Less Than",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "If_10",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Get_Element_2",
+      "Type": "LwjF6HUKJUCWeSk7yNcpiQ==",
+      "Name": "List Get Element",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Equals_2",
+      "Type": "Xrbx4YKNr0eGN64tCvpDHw==",
+      "Name": "Equals",
+      "DefaultValues": [[[0,1],"System.String","END"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "If_11",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_10",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""]],
+      "InputCount": 3
+    },
+    {
+      "Id": "Add_2",
+      "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+      "Name": "Add",
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "InputCount": 2
+    },
+    {
+      "Id": "string_Variable_5",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_output_4",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_5",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_i_2",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_20",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_Return_TestWhileReturnWithPromoted_2",
+        "EventDefinition": [
+          {
+            "Item1": "result",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_24",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestWhileReturnWithPromoted_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_25",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestWhileReturnWithPromoted_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Failed to find END"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_20",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_Return_TestWhileReturnWithPromoted_2"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_26",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventFunction_EFTestWhileReturnWithPromoted",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_24",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Get_Count_3",
+      "Type": "TSCTBBWYqUmMh03t9cz36A==",
+      "Name": "List Get Count",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Subtract_2",
+      "Type": "TDa7H/Aau0SoK5BcrraBmg==",
+      "Name": "Subtract",
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Set_Element_2",
+      "Type": "xazaiFJ2Ok21BbolbOP9nQ==",
+      "Name": "List Set Element",
+      "DefaultValues": [[[0,3],"System.String","Not END"]],
+      "InputCount": 4
+    },
+    {
+      "Id": "Event_Definition_21",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventFunction_EFTestForEachReturnWithPromoted",
+        "EventDefinition": [
+          {
+            "Item1": "value0",
+            "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_21",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventFunction_EFTestForEachReturnWithPromoted"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "string_Variable_6",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_output_5",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.String",""]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Equals_3",
+      "Type": "Xrbx4YKNr0eGN64tCvpDHw==",
+      "Name": "Equals",
+      "DefaultValues": [[[0,1],"System.String","END"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "If_12",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_11",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""]],
+      "InputCount": 3
+    },
+    {
+      "Id": "string_Variable_7",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_output_5",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Get_Element_3",
+      "Type": "LwjF6HUKJUCWeSk7yNcpiQ==",
+      "Name": "List Get Element",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_6",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_ForEach_index_2",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.Int32",0]],
+      "InputCount": 2
+    },
+    {
+      "Id": "List_Get_Count_4",
+      "Type": "TSCTBBWYqUmMh03t9cz36A==",
+      "Name": "List Get Count",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Less_Than_3",
+      "Type": "3tBcoJpgkk2TrWW2NTBiMw==",
+      "Name": "Less Than",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "If_13",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Add_3",
+      "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+      "Name": "Add",
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_7",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_ForEach_index_2",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_22",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_Return_TestForEachReturnWithPromoted_2",
+        "EventDefinition": [
+          {
+            "Item1": "result",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_27",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestForEachReturnWithPromoted_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_28",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestForEachReturnWithPromoted_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Failed to find END"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_22",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_Return_TestForEachReturnWithPromoted_2"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_29",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventFunction_EFTestForEachReturnWithPromoted",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_25",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_26",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Finished test EventFunctionTests"]],
+      "InputCount": 2
+    }
+  ],
+  "Connections": [
+    {
+      "From": {
+        "Node": "Event_Receiver_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_2",
+        "Group": 0,
+        "Index": 2
+      },
+      "To": {
+        "Node": "To_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_0",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_0",
+        "Group": 0,
+        "Index": 4
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Parse_Bool_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_2",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "String_Concat_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "String_Concat_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_5",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_5",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "List_Create_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Count_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Less_Than_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Count_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Less_Than_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Less_Than_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Element_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Element_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Element_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Equals_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Equals_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Element_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_3",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Add_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_7",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_5",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "List_Get_Count_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Subtract_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Set_Element_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Subtract_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "List_Set_Element_0",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "List_Set_Element_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "List_Set_Element_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "List_Get_Element_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Equals_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Equals_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_5",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Element_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_4",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_5",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "string_Variable_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Element_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Element_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Less_Than_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Count_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Less_Than_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Less_Than_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Add_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_9",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_7",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "RRCG_SingleNonTupleReturn_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_10",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "RRCG_MultipleNonTupleReturns_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "RRCG_MultipleNonTupleReturns_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_MultipleNonTupleReturns_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "RRCG_SingleTupleReturn_0",
+        "Group": 2,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_SingleTupleReturn_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_5",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_5",
+        "Group": 0,
+        "Index": 4
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "RRCG_MultipleTupleReturns_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "RRCG_MultipleTupleReturns_0",
+        "Group": 2,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_MultipleTupleReturns_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_6",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_6",
+        "Group": 0,
+        "Index": 4
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_13",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_MultipleTupleReturns_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "RRCG_TestIfReturnWithPromoted_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestIfReturnWithPromoted_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_14",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestIfReturnWithPromoted_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_14",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_14",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "List_Create_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "RRCG_TestWhileReturnWithPromoted_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_8",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "RRCG_TestWhileReturnWithPromoted_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestWhileReturnWithPromoted_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_15",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestWhileReturnWithPromoted_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_15",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_8",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Count_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Count_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Subtract_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_8",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Set_Element_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Subtract_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "List_Set_Element_1",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_15",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "List_Set_Element_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "List_Set_Element_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "RRCG_TestForEachReturnWithPromoted_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_8",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "RRCG_TestForEachReturnWithPromoted_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestForEachReturnWithPromoted_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_16",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestForEachReturnWithPromoted_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_16",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_16",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_17",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_18",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_18",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_19",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_7",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_14",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_19",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_15",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_12",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_20",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_15",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_20",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_20",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_16",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_16",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_21",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_14",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_17",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_8",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_18",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_21",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_19",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_15",
+        "Group": 0,
+        "Index": 2
+      },
+      "To": {
+        "Node": "To_String_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_15",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_7",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_7",
+        "Group": 0,
+        "Index": 4
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_22",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_19",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_22",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Parse_Bool_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_9",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_16",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Reroute_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_8",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Reroute_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_9",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_20",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "String_Concat_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_20",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_9",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_21",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "String_Concat_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_21",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_22",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_22",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_17",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_23",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_22",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_23",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_23",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_23",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "List_Create_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_23",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_19",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_19",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Count_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Less_Than_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Count_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Less_Than_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Less_Than_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_10",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_19",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Element_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Element_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Element_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Equals_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Equals_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_10",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Element_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_10",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_5",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "string_Variable_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Add_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_5",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_24",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_24",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_10",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_25",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_23",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_26",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_18",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_26",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_20",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_24",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_26",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_24",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_18",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Count_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Count_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Subtract_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_18",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Set_Element_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Subtract_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "List_Set_Element_2",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_24",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "List_Set_Element_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_21",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "List_Get_Element_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Equals_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Equals_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_12",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Element_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_11",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_7",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_12",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "string_Variable_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_21",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Element_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Element_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_21",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Count_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Less_Than_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Count_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Less_Than_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Less_Than_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_13",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Add_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_7",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_27",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_27",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_13",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_28",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "List_Set_Element_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_29",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_18",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_29",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_22",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_25",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_29",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_25",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_25",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_26",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    }
+  ],
+  "SubContexts": [
+    {
+      "Id": "0_0",
+      "Nodes": [
+        {
+          "Id": "In_0",
+          "Type": "iCvgE/VGAkaXNYhWrrPrew==",
+          "Name": "In",
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Out_0",
+          "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
+          "Name": "Out",
+          "DefaultValues": [[[2,0],"System.String","Single Return"]],
+          "InputCount": 0
+        }
+      ],
+      "Connections": [],
+      "SubContexts": [],
+      "MetaNewBoard": [
+        {
+          "Name": "Dummy",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Exec",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Data",
+          "Inputs": [],
+          "Outputs": [
+            {
+              "Item1": "result",
+              "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "0_1",
+      "Nodes": [
+        {
+          "Id": "In_1",
+          "Type": "iCvgE/VGAkaXNYhWrrPrew==",
+          "Name": "In",
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "If_14",
+          "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+          "Name": "If",
+          "DefaultValues": [[[0,1],"System.Boolean",true]],
+          "InputCount": 2
+        },
+        {
+          "Id": "Event_Definition_23",
+          "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+          "Name": "Event Definition",
+          "EventDefinitionData": {
+            "EventName": "RRCG_Return_MultipleNonTupleReturns_1",
+            "EventDefinition": [
+              {
+                "Item1": "result",
+                "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            ]
+          },
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Event_Sender_30",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_MultipleNonTupleReturns_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [[[0,1],"System.String","Return Value 1"]],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Sender_31",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_MultipleNonTupleReturns_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [[[0,1],"System.String","Return Value 2"]],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Receiver_23",
+          "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+          "Name": "Event Receiver",
+          "EventReceiverData": {
+            "EventName": "RRCG_Return_MultipleNonTupleReturns_1"
+          },
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Out_1",
+          "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
+          "Name": "Out",
+          "DefaultValues": [],
+          "InputCount": 0
+        }
+      ],
+      "Connections": [
+        {
+          "From": {
+            "Node": "In_1",
+            "Group": 1,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_14",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "If_14",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_30",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "If_14",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Event_Sender_31",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_30",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_1",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_31",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_1",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_23",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Out_1",
+            "Group": 2,
+            "Index": 0
+          },
+          "isExec": false
+        }
+      ],
+      "SubContexts": [],
+      "MetaNewBoard": [
+        {
+          "Name": "Dummy",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Exec",
+          "Inputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ],
+          "Outputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ]
+        },
+        {
+          "Name": "Data",
+          "Inputs": [],
+          "Outputs": [
+            {
+              "Item1": "result",
+              "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "0_2",
+      "Nodes": [
+        {
+          "Id": "In_2",
+          "Type": "iCvgE/VGAkaXNYhWrrPrew==",
+          "Name": "In",
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Out_2",
+          "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
+          "Name": "Out",
+          "DefaultValues": [[[2,0],"System.String","Named Element"],[[2,1],"System.Int32",2147483647]],
+          "InputCount": 0
+        }
+      ],
+      "Connections": [],
+      "SubContexts": [],
+      "MetaNewBoard": [
+        {
+          "Name": "Dummy",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Exec",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Data",
+          "Inputs": [],
+          "Outputs": [
+            {
+              "Item1": "Named",
+              "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            },
+            {
+              "Item1": "value1",
+              "Item2": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "0_3",
+      "Nodes": [
+        {
+          "Id": "In_3",
+          "Type": "iCvgE/VGAkaXNYhWrrPrew==",
+          "Name": "In",
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "If_15",
+          "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+          "Name": "If",
+          "DefaultValues": [[[0,1],"System.Boolean",true]],
+          "InputCount": 2
+        },
+        {
+          "Id": "Event_Definition_24",
+          "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+          "Name": "Event Definition",
+          "EventDefinitionData": {
+            "EventName": "RRCG_Return_MultipleTupleReturns_1",
+            "EventDefinition": [
+              {
+                "Item1": "Named",
+                "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              },
+              {
+                "Item1": "value1",
+                "Item2": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            ]
+          },
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Event_Sender_32",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_MultipleTupleReturns_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [[[0,1],"System.String","Named 1"],[[0,2],"System.Int32",1]],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Sender_33",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_MultipleTupleReturns_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [[[0,1],"System.String","Named 2"],[[0,2],"System.Int32",2]],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Receiver_24",
+          "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+          "Name": "Event Receiver",
+          "EventReceiverData": {
+            "EventName": "RRCG_Return_MultipleTupleReturns_1"
+          },
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Out_3",
+          "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
+          "Name": "Out",
+          "DefaultValues": [],
+          "InputCount": 0
+        }
+      ],
+      "Connections": [
+        {
+          "From": {
+            "Node": "In_3",
+            "Group": 1,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_15",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "If_15",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_32",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "If_15",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Event_Sender_33",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_32",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_3",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_33",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_3",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_24",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Out_3",
+            "Group": 2,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_24",
+            "Group": 0,
+            "Index": 2
+          },
+          "To": {
+            "Node": "Out_3",
+            "Group": 2,
+            "Index": 1
+          },
+          "isExec": false
+        }
+      ],
+      "SubContexts": [],
+      "MetaNewBoard": [
+        {
+          "Name": "Dummy",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Exec",
+          "Inputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ],
+          "Outputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ]
+        },
+        {
+          "Name": "Data",
+          "Inputs": [],
+          "Outputs": [
+            {
+              "Item1": "Named",
+              "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            },
+            {
+              "Item1": "value1",
+              "Item2": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "0_4",
+      "Nodes": [
+        {
+          "Id": "In_4",
+          "Type": "iCvgE/VGAkaXNYhWrrPrew==",
+          "Name": "In",
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Reroute_2",
+          "Type": "okvb+IBzoEmgurzcoR/slg==",
+          "Name": "Reroute",
+          "DefaultValues": [[[0,0],"System.String","Hello"]],
+          "InputCount": 1
+        },
+        {
+          "Id": "Parse_Bool_2",
+          "Type": "vF7AkmcZpEmUtS0B/h5rhQ==",
+          "Name": "Parse Bool",
+          "DefaultValues": [[[0,0],"System.String","true"]],
+          "InputCount": 1
+        },
+        {
+          "Id": "If_16",
+          "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+          "Name": "If",
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "String_Concat_12",
+          "Type": "on7tc63OWkCznB/sS/1CNg==",
+          "Name": "String Concat",
+          "DefaultValues": [[[0,0],"System.String",""],[[0,2],"System.String",", world!"]],
+          "InputCount": 3
+        },
+        {
+          "Id": "String_Concat_13",
+          "Type": "on7tc63OWkCznB/sS/1CNg==",
+          "Name": "String Concat",
+          "DefaultValues": [[[0,0],"System.String",""],[[0,1],"System.String","Default return: "]],
+          "InputCount": 3
+        },
+        {
+          "Id": "Event_Definition_25",
+          "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+          "Name": "Event Definition",
+          "EventDefinitionData": {
+            "EventName": "RRCG_Return_TestIfReturnWithPromoted_1",
+            "EventDefinition": [
+              {
+                "Item1": "result",
+                "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            ]
+          },
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Event_Sender_34",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_TestIfReturnWithPromoted_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Sender_35",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_TestIfReturnWithPromoted_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Receiver_25",
+          "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+          "Name": "Event Receiver",
+          "EventReceiverData": {
+            "EventName": "RRCG_Return_TestIfReturnWithPromoted_1"
+          },
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Out_4",
+          "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
+          "Name": "Out",
+          "DefaultValues": [],
+          "InputCount": 0
+        }
+      ],
+      "Connections": [
+        {
+          "From": {
+            "Node": "Parse_Bool_2",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_16",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "In_4",
+            "Group": 1,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_16",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Reroute_2",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_12",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Reroute_2",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_13",
+            "Group": 0,
+            "Index": 2
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "If_16",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_34",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "String_Concat_12",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_34",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "If_16",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Event_Sender_35",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "String_Concat_13",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_35",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_34",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_4",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_35",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_4",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_25",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Out_4",
+            "Group": 2,
+            "Index": 0
+          },
+          "isExec": false
+        }
+      ],
+      "SubContexts": [],
+      "MetaNewBoard": [
+        {
+          "Name": "Dummy",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Exec",
+          "Inputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ],
+          "Outputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ]
+        },
+        {
+          "Name": "Data",
+          "Inputs": [],
+          "Outputs": [
+            {
+              "Item1": "result",
+              "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "0_5",
+      "Nodes": [
+        {
+          "Id": "In_5",
+          "Type": "iCvgE/VGAkaXNYhWrrPrew==",
+          "Name": "In",
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "string_Variable_8",
+          "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+          "Name": "string Variable",
+          "VariableData": {
+            "Name": "RRCG_Conditional_output_2",
+            "Kind": 0,
+            "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          },
+          "DefaultValues": [[[0,1],"System.String",""]],
+          "InputCount": 2
+        },
+        {
+          "Id": "int_Variable_8",
+          "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+          "Name": "int Variable",
+          "VariableData": {
+            "Name": "RRCG_Conditional_i_1",
+            "Kind": 0,
+            "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          },
+          "DefaultValues": [[[0,1],"System.Int32",0]],
+          "InputCount": 2
+        },
+        {
+          "Id": "List_Get_Count_5",
+          "Type": "TSCTBBWYqUmMh03t9cz36A==",
+          "Name": "List Get Count",
+          "DefaultValues": [],
+          "InputCount": 1
+        },
+        {
+          "Id": "Less_Than_4",
+          "Type": "3tBcoJpgkk2TrWW2NTBiMw==",
+          "Name": "Less Than",
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "If_17",
+          "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+          "Name": "If",
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "List_Get_Element_4",
+          "Type": "LwjF6HUKJUCWeSk7yNcpiQ==",
+          "Name": "List Get Element",
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "Equals_4",
+          "Type": "Xrbx4YKNr0eGN64tCvpDHw==",
+          "Name": "Equals",
+          "DefaultValues": [[[0,1],"System.String","END"]],
+          "InputCount": 2
+        },
+        {
+          "Id": "If_18",
+          "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+          "Name": "If",
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "String_Concat_14",
+          "Type": "on7tc63OWkCznB/sS/1CNg==",
+          "Name": "String Concat",
+          "DefaultValues": [[[0,0],"System.String",""]],
+          "InputCount": 3
+        },
+        {
+          "Id": "Add_4",
+          "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+          "Name": "Add",
+          "DefaultValues": [[[0,1],"System.Int32",1]],
+          "InputCount": 2
+        },
+        {
+          "Id": "string_Variable_9",
+          "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+          "Name": "string Variable",
+          "VariableData": {
+            "Name": "RRCG_Conditional_output_2",
+            "Kind": 0,
+            "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          },
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "int_Variable_9",
+          "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+          "Name": "int Variable",
+          "VariableData": {
+            "Name": "RRCG_Conditional_i_1",
+            "Kind": 0,
+            "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          },
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "Event_Definition_26",
+          "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+          "Name": "Event Definition",
+          "EventDefinitionData": {
+            "EventName": "RRCG_Return_TestWhileReturnWithPromoted_1",
+            "EventDefinition": [
+              {
+                "Item1": "result",
+                "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            ]
+          },
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Event_Sender_36",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_TestWhileReturnWithPromoted_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Sender_37",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_TestWhileReturnWithPromoted_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [[[0,1],"System.String","Failed to find END"]],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Receiver_26",
+          "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+          "Name": "Event Receiver",
+          "EventReceiverData": {
+            "EventName": "RRCG_Return_TestWhileReturnWithPromoted_1"
+          },
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Out_5",
+          "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
+          "Name": "Out",
+          "DefaultValues": [],
+          "InputCount": 0
+        }
+      ],
+      "Connections": [
+        {
+          "From": {
+            "Node": "In_5",
+            "Group": 1,
+            "Index": 0
+          },
+          "To": {
+            "Node": "string_Variable_8",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "string_Variable_8",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "int_Variable_8",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "In_5",
+            "Group": 2,
+            "Index": 0
+          },
+          "To": {
+            "Node": "List_Get_Count_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "int_Variable_8",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Less_Than_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "List_Get_Count_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Less_Than_4",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Less_Than_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_17",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "int_Variable_8",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_17",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "In_5",
+            "Group": 2,
+            "Index": 0
+          },
+          "To": {
+            "Node": "List_Get_Element_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "int_Variable_8",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Get_Element_4",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "List_Get_Element_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Equals_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Equals_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_18",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "If_17",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_18",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "string_Variable_8",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "String_Concat_14",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "List_Get_Element_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_14",
+            "Group": 0,
+            "Index": 2
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "int_Variable_8",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Add_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "String_Concat_14",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "string_Variable_9",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "If_18",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "string_Variable_9",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Add_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "int_Variable_9",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "string_Variable_9",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "int_Variable_9",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "int_Variable_9",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_17",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "If_18",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_36",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "string_Variable_8",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Event_Sender_36",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "If_17",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Event_Sender_37",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_36",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_5",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_37",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_5",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_26",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Out_5",
+            "Group": 2,
+            "Index": 0
+          },
+          "isExec": false
+        }
+      ],
+      "SubContexts": [],
+      "MetaNewBoard": [
+        {
+          "Name": "Dummy",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Exec",
+          "Inputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ],
+          "Outputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ]
+        },
+        {
+          "Name": "Data",
+          "Inputs": [
+            {
+              "Item1": "list",
+              "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ],
+          "Outputs": [
+            {
+              "Item1": "result",
+              "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "0_6",
+      "Nodes": [
+        {
+          "Id": "In_6",
+          "Type": "iCvgE/VGAkaXNYhWrrPrew==",
+          "Name": "In",
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "string_Variable_10",
+          "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+          "Name": "string Variable",
+          "VariableData": {
+            "Name": "RRCG_Conditional_output_3",
+            "Kind": 0,
+            "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          },
+          "DefaultValues": [[[0,1],"System.String",""]],
+          "InputCount": 2
+        },
+        {
+          "Id": "Equals_5",
+          "Type": "Xrbx4YKNr0eGN64tCvpDHw==",
+          "Name": "Equals",
+          "DefaultValues": [[[0,1],"System.String","END"]],
+          "InputCount": 2
+        },
+        {
+          "Id": "If_19",
+          "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+          "Name": "If",
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "String_Concat_15",
+          "Type": "on7tc63OWkCznB/sS/1CNg==",
+          "Name": "String Concat",
+          "DefaultValues": [[[0,0],"System.String",""]],
+          "InputCount": 3
+        },
+        {
+          "Id": "string_Variable_11",
+          "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+          "Name": "string Variable",
+          "VariableData": {
+            "Name": "RRCG_Conditional_output_3",
+            "Kind": 0,
+            "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          },
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "List_Get_Element_5",
+          "Type": "LwjF6HUKJUCWeSk7yNcpiQ==",
+          "Name": "List Get Element",
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "int_Variable_10",
+          "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+          "Name": "int Variable",
+          "VariableData": {
+            "Name": "RRCG_ForEach_index_1",
+            "Kind": 0,
+            "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          },
+          "DefaultValues": [[[0,1],"System.Int32",0]],
+          "InputCount": 2
+        },
+        {
+          "Id": "List_Get_Count_6",
+          "Type": "TSCTBBWYqUmMh03t9cz36A==",
+          "Name": "List Get Count",
+          "DefaultValues": [],
+          "InputCount": 1
+        },
+        {
+          "Id": "Less_Than_5",
+          "Type": "3tBcoJpgkk2TrWW2NTBiMw==",
+          "Name": "Less Than",
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "If_20",
+          "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+          "Name": "If",
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "Add_5",
+          "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+          "Name": "Add",
+          "DefaultValues": [[[0,1],"System.Int32",1]],
+          "InputCount": 2
+        },
+        {
+          "Id": "int_Variable_11",
+          "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+          "Name": "int Variable",
+          "VariableData": {
+            "Name": "RRCG_ForEach_index_1",
+            "Kind": 0,
+            "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          },
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
+          "Id": "Event_Definition_27",
+          "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+          "Name": "Event Definition",
+          "EventDefinitionData": {
+            "EventName": "RRCG_Return_TestForEachReturnWithPromoted_1",
+            "EventDefinition": [
+              {
+                "Item1": "result",
+                "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            ]
+          },
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Event_Sender_38",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_TestForEachReturnWithPromoted_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Sender_39",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_TestForEachReturnWithPromoted_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [[[0,1],"System.String","Failed to find END"]],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Receiver_27",
+          "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+          "Name": "Event Receiver",
+          "EventReceiverData": {
+            "EventName": "RRCG_Return_TestForEachReturnWithPromoted_1"
+          },
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Out_6",
+          "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
+          "Name": "Out",
+          "DefaultValues": [],
+          "InputCount": 0
+        }
+      ],
+      "Connections": [
+        {
+          "From": {
+            "Node": "In_6",
+            "Group": 1,
+            "Index": 0
+          },
+          "To": {
+            "Node": "string_Variable_10",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "List_Get_Element_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Equals_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Equals_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_19",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "string_Variable_10",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "String_Concat_15",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "List_Get_Element_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "String_Concat_15",
+            "Group": 0,
+            "Index": 2
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "String_Concat_15",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "string_Variable_11",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "If_19",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "string_Variable_11",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "In_6",
+            "Group": 2,
+            "Index": 0
+          },
+          "To": {
+            "Node": "List_Get_Element_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "int_Variable_10",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Get_Element_5",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "string_Variable_10",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "int_Variable_10",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "In_6",
+            "Group": 2,
+            "Index": 0
+          },
+          "To": {
+            "Node": "List_Get_Count_6",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "int_Variable_10",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Less_Than_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "List_Get_Count_6",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Less_Than_5",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Less_Than_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_20",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "int_Variable_10",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_20",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "If_20",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_19",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "int_Variable_10",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Add_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Add_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "int_Variable_11",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "string_Variable_11",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "int_Variable_11",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "int_Variable_11",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "If_20",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "If_19",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_38",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "string_Variable_10",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Event_Sender_38",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "If_20",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Event_Sender_39",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_38",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_6",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_39",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_6",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_27",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Out_6",
+            "Group": 2,
+            "Index": 0
+          },
+          "isExec": false
+        }
+      ],
+      "SubContexts": [],
+      "MetaNewBoard": [
+        {
+          "Name": "Dummy",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Exec",
+          "Inputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ],
+          "Outputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ]
+        },
+        {
+          "Name": "Data",
+          "Inputs": [
+            {
+              "Item1": "list",
+              "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ],
+          "Outputs": [
+            {
+              "Item1": "result",
+              "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
