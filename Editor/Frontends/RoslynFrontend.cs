@@ -80,12 +80,14 @@ namespace RRCG
             Context context = new Context();
 
             Context.current = context;
-            ExecFlow.current = new ExecFlow();
+            ExecFlow.current = new ExecFlow(); // exec flow for initializers
 
             var instance = (CircuitBuilder)Activator.CreateInstance(type);
+
+            ExecFlow.current = new ExecFlow(); // exec flow for main graph
             instance.CircuitGraph();
 
-            var additionalCircuitGraphs = instance.GetType().GetMethods().Where(m => m.GetCustomAttribute<CircuitGraph>() != null);
+            var additionalCircuitGraphs = instance.GetType().GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).Where(m => m.GetCustomAttribute<CircuitGraph>() != null);
             foreach (var method in additionalCircuitGraphs)
             {
                 ExecFlow.current = new ExecFlow();
