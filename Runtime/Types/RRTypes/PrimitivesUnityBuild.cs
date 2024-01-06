@@ -241,6 +241,16 @@ namespace RRCGBuild
         // There is no alpha in the in-game color type. This constructure should probably not be used.
         public ColorPort(float r, float g, float b, float a) { Data = PortConversionUtils.EncodeColor(new Color(r, g, b, a)); }
 
+        public static ColorPort black => Color.black;
+        public static ColorPort cyan => Color.cyan;
+        public static ColorPort gray => Color.gray;
+        public static ColorPort green => Color.green;
+        public static ColorPort grey => Color.grey;
+        public static ColorPort magenta => Color.magenta;
+        public static ColorPort red => Color.red;
+        public static ColorPort white => Color.white;
+        public static ColorPort yellow => Color.yellow;
+
         public FloatPort grayscale
         {
             get
