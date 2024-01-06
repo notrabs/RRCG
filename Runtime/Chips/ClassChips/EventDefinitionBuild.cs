@@ -1,5 +1,6 @@
 ﻿using RRCG;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RRCGBuild
@@ -7,6 +8,7 @@ namespace RRCGBuild
     public abstract class BaseEvent
     {
         protected string EventName;
+        protected (StringPort, Type)[] EventDefinition;
 
         protected BaseEvent() { }
 
@@ -17,6 +19,7 @@ namespace RRCGBuild
             var eventNameBase = eventName ?? sourceName;
 
             EventName = Context.current.GetUniqueId($"RRCG_{eventNameBase}");
+            EventDefinition = eventDefinition;
 
             ChipBuilder.EventDefinition(EventName, eventDefinition);
         }
@@ -34,6 +37,33 @@ namespace RRCGBuild
         public void SendPlayer(PlayerPort player, params AnyPort[] values) => ChipBuilder.EventSender(EventName, EventTarget.PLAYER, new[] { player }.Concat(values).ToArray());
     }
 
+    // Access to the generic interface. It is up to the user to make sure the types are correct.
+    internal class DynamicEventDefinition : BaseEvent
+    {
+        public DynamicEventDefinition(StringPort eventName, params (StringPort, Type)[] eventDefinition) => InitNewEvent(eventName.AsData<string>(), eventDefinition);
+
+        public AnyPort[] Receiver()
+        {
+            ChipBuilder.EventReceiver(EventName);
+
+            var node = Context.lastSpawnedNode;
+
+            var ports = new List<AnyPort>();
+
+            for (var i = 0; i < EventDefinition.Length; i++)
+            {
+                var portType = EventDefinition[i].Item2;
+
+                var port = (AnyPort)Activator.CreateInstance(portType);
+
+                port.Port = node.Port(0, 1 + i);
+
+                ports.Add(port);
+            }
+
+            return ports.ToArray();
+        }
+    }
 
     public class EventDefinition : BaseEvent
     {

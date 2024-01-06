@@ -331,164 +331,169 @@ namespace RRCGBuild
         // Compilation Helpers
         //
 
-        internal readonly Dictionary<string, dynamic> __RRCG_EVENT_FUNCTIONS = new Dictionary<string, dynamic>();
+        internal readonly Dictionary<string, DynamicEventDefinition> __RRCG_EVENT_FUNCTIONS = new Dictionary<string, DynamicEventDefinition>();
         internal readonly Dictionary<string, object> __RRCG_EVENT_FUNCTION_RETURNS = new Dictionary<string, object>();
-        internal readonly Dictionary<string, dynamic> __RRCG_EVENT_FUNCTIONS_P1 = new Dictionary<string, dynamic>();
-        internal readonly Dictionary<string, object> __RRCG_EVENT_FUNCTION_RETURNS_P1 = new Dictionary<string, object>();
-        internal readonly Dictionary<string, dynamic> __RRCG_EVENT_FUNCTIONS_P2 = new Dictionary<string, dynamic>();
-        internal readonly Dictionary<string, object> __RRCG_EVENT_FUNCTION_RETURNS_P2 = new Dictionary<string, object>();
-        internal readonly Dictionary<string, dynamic> __RRCG_EVENT_FUNCTIONS_P3 = new Dictionary<string, dynamic>();
-        internal readonly Dictionary<string, object> __RRCG_EVENT_FUNCTION_RETURNS_P3 = new Dictionary<string, object>();
 
         internal readonly Dictionary<string, dynamic> __RRCG_SHARED_PROPERTIES = new Dictionary<string, dynamic>();
 
-        protected void __DispatchEventFunction(string name, Action fn)
+        private string __DispatchFunctionSignature(MethodInfo method) => method.ToString();
+
+        private void __DispatchEventFunctionVoid(string name, MethodInfo method, object target, params AnyPort[] args)
         {
-            if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(name))
+            var signature = __DispatchFunctionSignature(method);
+
+            Debug.Log(signature);
+
+            if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(signature))
             {
-                __RRCG_EVENT_FUNCTIONS[name] = new EventDefinition("EventFunction_" + name);
+                (StringPort, Type)[] eventDefinition = args.Select((arg, index) => ((StringPort)"value" + index, arg.GetType())).ToArray();
+
+                __RRCG_EVENT_FUNCTIONS[signature] = new DynamicEventDefinition("EventFunction_" + name, eventDefinition);
 
                 InlineGraph(() =>
                 {
-                    __RRCG_EVENT_FUNCTIONS[name].Receiver();
-                    fn();
+                    var ports = __RRCG_EVENT_FUNCTIONS[signature].Receiver();
+                    __RRCG_EVENT_FUNCTION_RETURNS[signature] = method.Invoke(target, ports);
                 });
             }
 
-            __RRCG_EVENT_FUNCTIONS[name].SendLocal();
+            __RRCG_EVENT_FUNCTIONS[signature].SendLocal(args);
         }
 
-        protected T __DispatchEventFunction<T>(string name, Func<T> fn)
+        private T __DispatchEventFunctionData<T>(string name, MethodInfo method, object target, params AnyPort[] args)
         {
-            if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(name))
-            {
-                __RRCG_EVENT_FUNCTIONS[name] = new EventDefinition("EventFunction_" + name);
+            var signature = __DispatchFunctionSignature(method);
 
-                InlineGraph(() =>
-                {
-                    __RRCG_EVENT_FUNCTIONS[name].Receiver();
-                    __RRCG_EVENT_FUNCTION_RETURNS[name] = fn();
-                });
-            }
+            __DispatchEventFunctionVoid(name, method, target, args);
 
-            __RRCG_EVENT_FUNCTIONS[name].SendLocal();
-
-            return (T)__RRCG_EVENT_FUNCTION_RETURNS[name];
+            return (T)__RRCG_EVENT_FUNCTION_RETURNS[signature];
         }
+
+        protected void __DispatchEventFunction(string name, Action fn) => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target);
+
+
+        protected T __DispatchEventFunction<T>(string name, Func<T> fn) => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target);
 
         protected void __DispatchEventFunction<T0>(string name, Action<T0> fn, T0 param0)
             where T0 : AnyPort, new()
-        {
-            if (!__RRCG_EVENT_FUNCTIONS_P1.ContainsKey(name))
-            {
-                __RRCG_EVENT_FUNCTIONS_P1[name] = new EventDefinition<T0>("EventFunction_" + name, "value0");
+        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0);
 
-                InlineGraph(() =>
-                {
-                    var param0 = __RRCG_EVENT_FUNCTIONS_P1[name].Receiver();
-                    fn((T0)param0);
-                });
-            }
-
-            __RRCG_EVENT_FUNCTIONS_P1[name].SendLocal(param0);
-        }
 
         protected T __DispatchEventFunction<T, T0>(string name, Func<T0, T> fn, T0 param0)
             where T0 : AnyPort, new()
-        {
-            if (!__RRCG_EVENT_FUNCTIONS_P1.ContainsKey(name))
-            {
-                __RRCG_EVENT_FUNCTIONS_P1[name] = new EventDefinition<T0>("EventFunction_" + name, "value0");
-
-                InlineGraph(() =>
-                {
-                    var param0 = __RRCG_EVENT_FUNCTIONS_P1[name].Receiver();
-                    __RRCG_EVENT_FUNCTION_RETURNS_P1[name] = fn(param0);
-                });
-            }
-
-            __RRCG_EVENT_FUNCTIONS_P1[name].SendLocal(param0);
-
-            return (T)__RRCG_EVENT_FUNCTION_RETURNS_P1[name];
-        }
+        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0);
 
         protected void __DispatchEventFunction<T0, T1>(string name, Action<T0, T1> fn, T0 param0, T1 param1)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
-        {
-            if (!__RRCG_EVENT_FUNCTIONS_P2.ContainsKey(name))
-            {
-                __RRCG_EVENT_FUNCTIONS_P2[name] = new EventDefinition<T0, T1>("EventFunction_" + name, "value0", "value1");
-
-                InlineGraph(() =>
-                {
-                    var (param0, param1) = ((EventDefinition<T0, T1>)__RRCG_EVENT_FUNCTIONS_P2[name]).Receiver();
-                    fn(param0, param1);
-                });
-            }
-
-            __RRCG_EVENT_FUNCTIONS_P2[name].SendLocal(param0, param1);
-        }
+        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1);
 
         protected T __DispatchEventFunction<T, T0, T1>(string name, Func<T0, T1, T> fn, T0 param0, T1 param1)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
-        {
-            if (!__RRCG_EVENT_FUNCTIONS_P2.ContainsKey(name))
-            {
-                __RRCG_EVENT_FUNCTIONS_P2[name] = new EventDefinition<T0, T1>("EventFunction_" + name, "value0", "value1");
-
-                InlineGraph(() =>
-                {
-                    var (param0, param1) = ((EventDefinition<T0, T1>)__RRCG_EVENT_FUNCTIONS_P2[name]).Receiver();
-                    __RRCG_EVENT_FUNCTION_RETURNS_P2[name] = fn(param0, param1);
-                });
-            }
-
-            __RRCG_EVENT_FUNCTIONS_P2[name].SendLocal(param0, param1);
-
-            return (T)__RRCG_EVENT_FUNCTION_RETURNS_P2[name];
-        }
+        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1);
 
         protected void __DispatchEventFunction<T0, T1, T2>(string name, Action<T0, T1, T2> fn, T0 param0, T1 param1, T2 param2)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
-        {
-            if (!__RRCG_EVENT_FUNCTIONS_P3.ContainsKey(name))
-            {
-                __RRCG_EVENT_FUNCTIONS_P3[name] = new EventDefinition<T0, T1, T2>("EventFunction_" + name, "value0", "value1", "value2");
-
-                InlineGraph(() =>
-                {
-                    var (param0, param1, param2) = ((EventDefinition<T0, T1, T2>)__RRCG_EVENT_FUNCTIONS_P3[name]).Receiver();
-                    fn(param0, param1, param2);
-                });
-            }
-
-            __RRCG_EVENT_FUNCTIONS_P3[name].SendLocal(param0, param1, param2);
-        }
+        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2);
 
         protected T __DispatchEventFunction<T, T0, T1, T2>(string name, Func<T0, T1, T2, T> fn, T0 param0, T1 param1, T2 param2)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
-        {
-            if (!__RRCG_EVENT_FUNCTIONS_P3.ContainsKey(name))
-            {
-                __RRCG_EVENT_FUNCTIONS_P3[name] = new EventDefinition<T0, T1, T2>("EventFunction_" + name, "value0", "value1", "value2");
+        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2);
 
-                InlineGraph(() =>
-                {
-                    var (param0, param1, param2) = ((EventDefinition<T0, T1, T2>)__RRCG_EVENT_FUNCTIONS_P3[name]).Receiver();
-                    __RRCG_EVENT_FUNCTION_RETURNS_P3[name] = fn(param0, param1, param2);
-                });
-            }
+        protected void __DispatchEventFunction<T0, T1, T2, T3>(string name, Action<T0, T1, T2, T3> fn, T0 param0, T1 param1, T2 param2, T3 param3)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3);
 
-            __RRCG_EVENT_FUNCTIONS_P3[name].SendLocal(param0, param1, param2);
+        protected T __DispatchEventFunction<T, T0, T1, T2, T3>(string name, Func<T0, T1, T2, T3, T> fn, T0 param0, T1 param1, T2 param2, T3 param3)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3);
 
-            return (T)__RRCG_EVENT_FUNCTION_RETURNS_P3[name];
-        }
+        protected void __DispatchEventFunction<T0, T1, T2, T3, T4>(string name, Action<T0, T1, T2, T3, T4> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+            where T4 : AnyPort, new()
+        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4);
+
+        protected T __DispatchEventFunction<T, T0, T1, T2, T3, T4>(string name, Func<T0, T1, T2, T3, T4, T> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+            where T4 : AnyPort, new()
+        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4);
+
+        protected void __DispatchEventFunction<T0, T1, T2, T3, T4, T5>(string name, Action<T0, T1, T2, T3, T4, T5> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+            where T4 : AnyPort, new()
+            where T5 : AnyPort, new()
+        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4, param5);
+
+        protected T __DispatchEventFunction<T, T0, T1, T2, T3, T4, T5>(string name, Func<T0, T1, T2, T3, T4, T5, T> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+            where T4 : AnyPort, new()
+            where T5 : AnyPort, new()
+        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4, param5);
+
+        protected void __DispatchEventFunction<T0, T1, T2, T3, T4, T5, T6>(string name, Action<T0, T1, T2, T3, T4, T5, T6> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, T6 param6)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+            where T4 : AnyPort, new()
+            where T5 : AnyPort, new()
+            where T6 : AnyPort, new()
+        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4, param5, param6);
+
+        protected T __DispatchEventFunction<T, T0, T1, T2, T3, T4, T5, T6>(string name, Func<T0, T1, T2, T3, T4, T5, T6, T> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, T6 param6)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+            where T4 : AnyPort, new()
+            where T5 : AnyPort, new()
+            where T6 : AnyPort, new()
+        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4, param5, param6);
+
+        protected void __DispatchEventFunction<T0, T1, T2, T3, T4, T5, T6, T7>(string name, Action<T0, T1, T2, T3, T4, T5, T6, T7> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, T6 param6, T7 param7)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+            where T4 : AnyPort, new()
+            where T5 : AnyPort, new()
+            where T6 : AnyPort, new()
+            where T7 : AnyPort, new()
+        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4, param5, param6, param7);
+
+        protected T __DispatchEventFunction<T, T0, T1, T2, T3, T4, T5, T6, T7>(string name, Func<T0, T1, T2, T3, T4, T5, T6, T7, T> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, T6 param6, T7 param7)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+            where T4 : AnyPort, new()
+            where T5 : AnyPort, new()
+            where T6 : AnyPort, new()
+            where T7 : AnyPort, new()
+        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4, param5, param6, param7);
 
         protected dynamic __DispatchSharedPropertyFunction<T>(string name, Func<T> fn)
         {
