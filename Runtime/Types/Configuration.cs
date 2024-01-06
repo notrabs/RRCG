@@ -14,6 +14,7 @@ namespace RRCG
             { "StudioFunction", "StudioFunctionData" },
             { "RoomKeyConstant", "RoomKeyData" },
             { "RoomCurrencyConstant", "RoomCurrencyData" },
+            { "ConsumableConstant", "RoomConsumableData" },
             { "EventDefinition", "EventDefinitionData" },
             { "EventSender", "EventSenderData" },
             { "EventReceiver", "EventReceiverData" },
@@ -85,6 +86,7 @@ namespace RRCG
 
     public record RoomKeyData(string Id);
     public record RoomCurrencyData(string Id);
+    public record RoomConsumableData(string Id);
 
     public record EventDefinitionData(
        string EventName,

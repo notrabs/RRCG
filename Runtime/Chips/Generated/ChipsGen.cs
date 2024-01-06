@@ -1201,7 +1201,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static Consumable ConsumableConstant()
+        public static Consumable ConsumableConstant(RoomConsumableData config)
         {
             return default;
         }
