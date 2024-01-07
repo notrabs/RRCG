@@ -32,6 +32,7 @@ namespace RRCGBuild
         public StudioFunctionData StudioFunctionData = null;
         public RoomKeyData RoomKeyData = null;
         public RoomCurrencyData RoomCurrencyData = null;
+        public RoomConsumableData RoomConsumableData = null;
         public EventDefinitionData EventDefinitionData = null;
         public EventSenderData EventSenderData = null;
         public EventReceiverData EventReceiverData = null;

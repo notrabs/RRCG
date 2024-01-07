@@ -1705,12 +1705,13 @@ namespace RRCGGenerated
             return;
         }
 
-        public static ConsumablePort ConsumableConstant()
+        public static ConsumablePort ConsumableConstant(RoomConsumableData config)
         {
             Node node = new Node()
             {Name = "Consumable Constant", Type = "3dc63876-39a9-4828-9967-67821e620cb1", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new ConsumablePort{Port = new Port{Node = node, Index = 0}};
+            node.RoomConsumableData = config;
             return output_ports;
         }
 
