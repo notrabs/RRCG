@@ -1,5 +1,6 @@
 ﻿using RRCG;
 using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace RRCGBuild
@@ -28,20 +29,21 @@ namespace RRCGBuild
 
         private T VariableGetterPort;
 
+        private static readonly Type[] SupportsHomeValue = new[] { typeof(IntPort), typeof(BoolPort), typeof(FloatPort), typeof(StringPort), typeof(ColorPort) };
+
         public NamedVariable(string name, T homeValue = null, VariableKind kind = VariableKind.Local)
         {
-            if (homeValue != null && !homeValue.IsDataPort) throw new ArgumentException("homeValue needs to be static, not a port");
+            if (homeValue != null)
+                if (!homeValue.IsDataPort)
+                    throw new ArgumentException("homeValue needs to be static, not a port");
+                else if (!SupportsHomeValue.Contains(typeof(T)))
+                    throw new ArgumentException($"Home values not supported for variable type {typeof(T).Name}");
 
             this.name = name;
             this.kind = kind;
             this.homeValue = homeValue;
 
-            var prevFlow = ExecFlow.current;
-            ExecFlow.current = new ExecFlow();
-
-            this.VariableGetterPort = CreateVariableNode(new T());
-
-            ExecFlow.current = prevFlow;
+            this.VariableGetterPort = CircuitBuilder.InlineGraph(() => CreateVariableNode(new T()));
         }
 
         private T CreateVariableNode(T value)
