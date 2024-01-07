@@ -132,7 +132,7 @@ namespace RRCGBuild
 
         public IntPort IndexOf(T value)
         {
-            if (IsActualPort) return CircuitBuilder.Singleton("List_IndexOf_" + PortKey(), () => ChipBuilder.ListGetFirstIndexOf(this, value));
+            if (IsActualPort) return CircuitBuilder.Singleton($"List_IndexOf_{PortKey()}_value_{value.PortKey()}", () => ChipBuilder.ListGetFirstIndexOf(this, value));
             return Data.IndexOf(value);
         }
 
