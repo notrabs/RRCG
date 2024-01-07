@@ -70,7 +70,8 @@ namespace RRCGBuild
                 }
 
                 ;
-                __Switch(switchString, rrcg_switch_section_5, new Dictionary<AnyPort, AlternativeExec>{{"test", rrcg_switch_section_0}, {"case2", rrcg_switch_section_1}, {"case3", rrcg_switch_section_1}, {"case4", rrcg_switch_section_3}, {"case5", rrcg_switch_section_4}});
+                __Switch(switchString, rrcg_switch_section_5, new()
+                {{"test", rrcg_switch_section_0}, {"case2", rrcg_switch_section_1}, {"case3", rrcg_switch_section_1}, {"case4", rrcg_switch_section_3}, {"case5", rrcg_switch_section_4}});
                 __EndAccessibilityScope();
             }
 
@@ -119,7 +120,8 @@ namespace RRCGBuild
                 }
 
                 ;
-                __Switch(switchInt, rrcg_switch_section_5, new Dictionary<AnyPort, AlternativeExec>{{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}, {3, rrcg_switch_section_1}, {4, rrcg_switch_section_3}, {5, rrcg_switch_section_4}});
+                __Switch(switchInt, rrcg_switch_section_5, new()
+                {{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}, {3, rrcg_switch_section_1}, {4, rrcg_switch_section_3}, {5, rrcg_switch_section_4}});
                 __EndAccessibilityScope();
             }
 
@@ -184,7 +186,8 @@ namespace RRCGBuild
                         {
                         }
 
-                        , new Dictionary<AnyPort, AlternativeExec>{{"0", rrcg_switch_section_0}});
+                        , new()
+                        {{"0", rrcg_switch_section_0}});
                         __EndAccessibilityScope();
                     }
 
@@ -220,7 +223,8 @@ namespace RRCGBuild
                             {
                             }
 
-                            , new Dictionary<AnyPort, AlternativeExec>{{"0", rrcg_switch_section_0}, {"return", rrcg_switch_section_1}});
+                            , new()
+                            {{"0", rrcg_switch_section_0}, {"return", rrcg_switch_section_1}});
                             __EndAccessibilityScope();
                         }
 
@@ -269,7 +273,8 @@ namespace RRCGBuild
                 {
                 }
 
-                , new Dictionary<AnyPort, AlternativeExec>{{"0", rrcg_switch_section_0}, {"switch", rrcg_switch_section_1}, {"while", rrcg_switch_section_2}});
+                , new()
+                {{"0", rrcg_switch_section_0}, {"switch", rrcg_switch_section_1}, {"while", rrcg_switch_section_2}});
                 __EndAccessibilityScope();
             }
 
@@ -298,7 +303,8 @@ namespace RRCGBuild
                     {
                     }
 
-                    , new Dictionary<AnyPort, AlternativeExec>{{5, rrcg_switch_section_0}});
+                    , new()
+                    {{5, rrcg_switch_section_0}});
                     __EndAccessibilityScope();
                 }
 

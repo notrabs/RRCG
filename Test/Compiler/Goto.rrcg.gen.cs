@@ -83,7 +83,8 @@ namespace RRCGBuild
                 {
                 }
 
-                , new Dictionary<AnyPort, AlternativeExec>{{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}, {3, rrcg_switch_section_2}});
+                , new()
+                {{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}, {3, rrcg_switch_section_2}});
                 __EndAccessibilityScope();
             }
 
@@ -160,7 +161,8 @@ namespace RRCGBuild
                     {
                     }
 
-                    , new Dictionary<AnyPort, AlternativeExec>{{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}, {3, rrcg_switch_section_2}});
+                    , new()
+                    {{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}, {3, rrcg_switch_section_2}});
                     __EndAccessibilityScope();
                 }
 
@@ -220,7 +222,8 @@ namespace RRCGBuild
                 {
                 }
 
-                , new Dictionary<AnyPort, AlternativeExec>{{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}});
+                , new()
+                {{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}});
                 __EndAccessibilityScope();
             }
 
@@ -246,7 +249,8 @@ namespace RRCGBuild
                 {
                 }
 
-                , new Dictionary<AnyPort, AlternativeExec>{{"World", rrcg_switch_section_0}, {"World2", rrcg_switch_section_1}});
+                , new()
+                {{"World", rrcg_switch_section_0}, {"World2", rrcg_switch_section_1}});
                 __EndAccessibilityScope();
             }
 
@@ -272,7 +276,8 @@ namespace RRCGBuild
                 {
                 }
 
-                , new Dictionary<AnyPort, AlternativeExec>{{0, rrcg_switch_section_0}, {1, rrcg_switch_section_1}});
+                , new()
+                {{0, rrcg_switch_section_0}, {1, rrcg_switch_section_1}});
                 __EndAccessibilityScope();
             }
 

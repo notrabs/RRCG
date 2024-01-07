@@ -1064,20 +1064,11 @@ namespace RRCG
                         SyntaxUtils.ArgumentList(
                             test,
                             defaultCaseExpression ?? ExecDelegate(),
-                            ObjectCreationExpression(
-                                GenericName(
-                                    Identifier("Dictionary"))
-                                .WithTypeArgumentList(
-                                    TypeArgumentList(
-                                        SeparatedList<TypeSyntax>(
-                                            new SyntaxNodeOrToken[]{
-                                                IdentifierName("AnyPort"),
-                                                Token(SyntaxKind.CommaToken),
-                                                IdentifierName("AlternativeExec")}))))
-                                .WithInitializer(
-                                    InitializerExpression(
-                                        SyntaxKind.CollectionInitializerExpression,
-                                        SyntaxUtils.ExpressionList(caseInitializers.ToArray())
+                            ImplicitObjectCreationExpression()
+                            .WithInitializer(
+                                InitializerExpression(
+                                    SyntaxKind.CollectionInitializerExpression,
+                                    SyntaxUtils.ExpressionList(caseInitializers.ToArray())
                             )))
                         ))
                     );
