@@ -342,8 +342,6 @@ namespace RRCGBuild
         {
             var signature = __DispatchFunctionSignature(method);
 
-            Debug.Log(signature);
-
             if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(signature))
             {
                 (StringPort, Type)[] eventDefinition = args.Select((arg, index) => ((StringPort)"value" + index, arg.GetType())).ToArray();

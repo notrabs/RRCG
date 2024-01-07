@@ -1,11 +1,15 @@
+using RRCGBuild;
+using System;
+
 namespace RRCG
 {
+    [Obsolete("Use RoomEvent class instead for type safety")]
     public static class RoomEvents
     {
         public static string Hz30 = "Update 30Hz";
         public static string TestEvent = "Test Event";
+        public static string ConsumableUsed = "Consumable Used";
     }
-
 
     public enum StudioEventType
     {
