@@ -1,4 +1,5 @@
 #nullable enable
+using RRCG;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1040,6 +1041,34 @@ namespace RRCGBuild
             SemanticStack.current.PopExpectedScope(scope);
 
             return result;
+        }
+
+        public static void FieldVariableChanged<T>(T fieldVariable) where T : AnyPort, new()
+        {
+            // fieldVariable must reference the value pin of a Variable node
+            if (!fieldVariable.IsActualPort) goto fail;
+
+            var port = fieldVariable.Port;
+            var node = port.Node;
+
+            if (!ChipTypeUtils.VariableTypes.Contains(node.Type)) goto fail;
+            if (!port.EquivalentTo(node.Port(0, 1))) goto fail;
+
+            // All checks pass, create the event
+            EventReceiver(node.VariableData.Name + " Changed");
+            return;
+
+        fail: // I didn't want to duplicate the message
+            throw new ArgumentException("The fieldVariable argument must refer to a variable output port!");
+        }
+
+        public static void FieldVariableChanged<T>(T fieldVariable, AlternativeExec onChanged) where T : AnyPort, new()
+        {
+            InlineGraph(() =>
+            {
+                FieldVariableChanged(fieldVariable);
+                onChanged();
+            });
         }
     }
 }

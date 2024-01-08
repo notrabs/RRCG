@@ -28,6 +28,7 @@ namespace RRCGSource
     /// Fields declared with this attribute will be placed as variable chips.
     /// The initializer will become the home value.
     /// </summary>
+    /// <see cref="CircuitDescriptor.FieldVariableChanged{T}(T)"/>
     [AttributeUsage(AttributeTargets.Field)]
     public class Variable : Attribute { }
 
@@ -160,5 +161,13 @@ namespace RRCGSource
         /// be passed back to the caller.
         /// </summary>
         public static T Singleton<T>(string key, Func<T> creator) { return default; }
+
+        /// <summary>
+        /// Allows you to use the changed event for variables created with [Variable], [SyncedVariable], [CloudVariable], etc.
+        /// Pass the field as the argument and the corresponding Event Receiver will be placed.
+        /// </summary>
+        public static void FieldVariableChanged<T>(T fieldVariable) { }
+        /// <inheritdoc cref="FieldVariableChanged{T}(T)"/>
+        public static void FieldVariableChanged<T>(T fieldVariable, AlternativeExec onChanged) { }
     }
 }
