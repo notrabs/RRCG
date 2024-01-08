@@ -723,7 +723,7 @@ namespace RRCGBuild
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString(__StringInterpolation("Item: ", item, ", index: ", i));
-                __Assign("i", out i, () => i + 1);
+                i += 1;
                 __EndAccessibilityScope();
             }
 

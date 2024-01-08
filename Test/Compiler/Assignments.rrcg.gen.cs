@@ -9,14 +9,14 @@ namespace RRCGBuild
 
     public class AssignmentsTest : CircuitBuilder
     {
-        IntPort methodValueAssignment;
-        TypeTest mehtodTypeAssignment;
-        TypeTest mehtodTypeAssignmentAnonymous;
-        TypeTest.NestedTypeTest mehtodNestedTypeAssignment;
-        TypeTest.NestedTypeTest mehtodNestedTypeAssignmentAnonymous;
-        FloatPort outOfScopeType;
+        IntPort methodValueAssignment = 3;
+        TypeTest mehtodTypeAssignment = new TypeTest();
+        TypeTest mehtodTypeAssignmentAnonymous = new();
+        TypeTest.NestedTypeTest mehtodNestedTypeAssignment = new TypeTest.NestedTypeTest();
+        TypeTest.NestedTypeTest mehtodNestedTypeAssignmentAnonymous = new();
+        FloatPort outOfScopeType = Mathf.Sqrt(4);
         // Test interface assignments
-        IVariable<IntPort> variableAssignment;
+        IVariable<IntPort> variableAssignment = new Variable<IntPort>();
         public override void CircuitGraph()
         {
             __BeginReturnScope("CircuitGraph", null, null);
@@ -40,7 +40,7 @@ namespace RRCGBuild
             __If(__ConditionalContext("result"), () => ParseBool("true").Result, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __Assign("result", out result, () => result + ", world!");
+                result += ", world!";
                 LogString(result);
                 ExecFlow.current.Clear();
                 __EndAccessibilityScope();
@@ -54,19 +54,69 @@ namespace RRCGBuild
 
             );
             LogString(result);
+            // Assign to our variable fields
+            MemberString = "Hello";
+            SyncedMemberColour = ColorPort.red;
+            TestMultipleDeclarations = ColorPort.magenta;
+            MemberCloudVar1 = 1;
+            MemberCloudVar2 = 2;
+            MemberCloudVar3 = 3;
+            // Log all our variable fields
+            ChipLib.Log(MemberString);
+            ChipLib.Log(SyncedMemberColour);
+            ChipLib.Log(TestMultipleDeclarations);
+            ChipLib.Log(MemberCloudVar1);
+            ChipLib.Log(MemberCloudVar2);
+            ChipLib.Log(MemberCloudVar3);
+            // TODO: Collapse sequential variable writes.
+            MemberString += ", world!";
+            MemberString += " How";
+            MemberString += " are";
+            MemberString += "you?";
             __EndAccessibilityScope();
             __EndReturnScope();
         }
 
-        public AssignmentsTest()
+        private NamedVariable<StringPort> __RRCG_FIELD_VARIABLE_MemberString = __CreateNamedVariable<StringPort>("MemberString", "Home value", VariableKind.Local);
+        public StringPort MemberString
         {
-            methodValueAssignment = __VariableDeclaratorExpression<IntPort>("methodValueAssignment", () => 3, () => methodValueAssignment!, (_RRCG_SETTER_VALUE) => methodValueAssignment = _RRCG_SETTER_VALUE);
-            mehtodTypeAssignment = __VariableDeclaratorExpression<TypeTest>("mehtodTypeAssignment", () => new TypeTest(), () => mehtodTypeAssignment!, (_RRCG_SETTER_VALUE) => mehtodTypeAssignment = _RRCG_SETTER_VALUE);
-            mehtodTypeAssignmentAnonymous = __VariableDeclaratorExpression<TypeTest>("mehtodTypeAssignmentAnonymous", () => new(), () => mehtodTypeAssignmentAnonymous!, (_RRCG_SETTER_VALUE) => mehtodTypeAssignmentAnonymous = _RRCG_SETTER_VALUE);
-            mehtodNestedTypeAssignment = __VariableDeclaratorExpression<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignment", () => new TypeTest.NestedTypeTest(), () => mehtodNestedTypeAssignment!, (_RRCG_SETTER_VALUE) => mehtodNestedTypeAssignment = _RRCG_SETTER_VALUE);
-            mehtodNestedTypeAssignmentAnonymous = __VariableDeclaratorExpression<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignmentAnonymous", () => new(), () => mehtodNestedTypeAssignmentAnonymous!, (_RRCG_SETTER_VALUE) => mehtodNestedTypeAssignmentAnonymous = _RRCG_SETTER_VALUE);
-            outOfScopeType = __VariableDeclaratorExpression<FloatPort>("outOfScopeType", () => Mathf.Sqrt(4), () => outOfScopeType!, (_RRCG_SETTER_VALUE) => outOfScopeType = _RRCG_SETTER_VALUE);
-            variableAssignment = __VariableDeclaratorExpression<IVariable<IntPort>>("variableAssignment", () => new Variable<IntPort>(), () => variableAssignment!, (_RRCG_SETTER_VALUE) => variableAssignment = _RRCG_SETTER_VALUE);
+            get => __RRCG_FIELD_VARIABLE_MemberString.Value;
+            set => __RRCG_FIELD_VARIABLE_MemberString.Value = value;
+        }
+
+        private NamedVariable<ColorPort> __RRCG_FIELD_VARIABLE_SyncedMemberColour = __CreateNamedVariable<ColorPort>("SyncedMemberColour", new ColorPort(1, 0, 0), VariableKind.Synced);
+        private ColorPort SyncedMemberColour
+        {
+            get => __RRCG_FIELD_VARIABLE_SyncedMemberColour.Value;
+            set => __RRCG_FIELD_VARIABLE_SyncedMemberColour.Value = value;
+        }
+
+        private NamedVariable<ColorPort> __RRCG_FIELD_VARIABLE_TestMultipleDeclarations = __CreateNamedVariable<ColorPort>("TestMultipleDeclarations", new ColorPort(0, 1, 0), VariableKind.Synced);
+        private ColorPort TestMultipleDeclarations
+        {
+            get => __RRCG_FIELD_VARIABLE_TestMultipleDeclarations.Value;
+            set => __RRCG_FIELD_VARIABLE_TestMultipleDeclarations.Value = value;
+        }
+
+        private NamedVariable<IntPort> __RRCG_FIELD_VARIABLE_MemberCloudVar1 = __CreateNamedVariable<IntPort>("CloudVar1", null !, VariableKind.Cloud);
+        private IntPort MemberCloudVar1
+        {
+            get => __RRCG_FIELD_VARIABLE_MemberCloudVar1.Value;
+            set => __RRCG_FIELD_VARIABLE_MemberCloudVar1.Value = value;
+        }
+
+        private NamedVariable<IntPort> __RRCG_FIELD_VARIABLE_MemberCloudVar2 = __CreateNamedVariable<IntPort>("CloudVar2", null !, VariableKind.Cloud);
+        private IntPort MemberCloudVar2
+        {
+            get => __RRCG_FIELD_VARIABLE_MemberCloudVar2.Value;
+            set => __RRCG_FIELD_VARIABLE_MemberCloudVar2.Value = value;
+        }
+
+        private NamedVariable<IntPort> __RRCG_FIELD_VARIABLE_MemberCloudVar3 = __CreateNamedVariable<IntPort>("CloudVar3", null !, VariableKind.Cloud);
+        private IntPort MemberCloudVar3
+        {
+            get => __RRCG_FIELD_VARIABLE_MemberCloudVar3.Value;
+            set => __RRCG_FIELD_VARIABLE_MemberCloudVar3.Value = value;
         }
     }
 

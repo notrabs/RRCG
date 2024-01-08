@@ -28,81 +28,6 @@ namespace RRCG
         public SyntaxNode VisitClassDeclarationRoot(ClassDeclarationSyntax node)
         {
             var visited = (ClassDeclarationSyntax)base.VisitClassDeclaration(node);
-            var fieldDeclarations = visited.Members.Where(node => node.Kind() == SyntaxKind.FieldDeclaration).Cast<FieldDeclarationSyntax>().ToArray();
-
-            if (fieldDeclarations.Length <= 0)
-                return visited;
-
-            // Remove field initializers from declarations
-            visited = visited.ReplaceNodes(fieldDeclarations, (fieldDecl, _) =>
-            {
-                var variables = new SeparatedSyntaxList<VariableDeclaratorSyntax>();
-                foreach (var varDecl in fieldDecl.Declaration.Variables)
-                    variables = variables.Add(varDecl.WithInitializer(null));
-
-                return fieldDecl.WithDeclaration(fieldDecl.Declaration.WithVariables(variables)).NormalizeWhitespace();
-            });
-
-            // Create methods to initialize static/instance fields.
-            var staticFields = CreateFieldInitializers(fieldDeclarations.Where(d => d.Modifiers.Any(SyntaxKind.StaticKeyword)));
-            var instanceFields = CreateFieldInitializers(fieldDeclarations.Where(d => !d.Modifiers.Any(SyntaxKind.StaticKeyword)));
-
-            if (staticFields.Count > 0)
-            {
-                // Insert field initializers into static constructor
-                // Find existing static constructor
-                var staticConstructor = visited.Members.Where(node => node.Kind() == SyntaxKind.ConstructorDeclaration)
-                    .Cast<ConstructorDeclarationSyntax>()
-                    .Where(node => node.Modifiers.Any(SyntaxKind.StaticKeyword))
-                    .FirstOrDefault();
-
-                // If we found an existing static constructor,
-                // insert field initializers at the start
-                if (staticConstructor != default)
-                {
-                    var statements = staticConstructor.Body?.Statements ?? new SyntaxList<StatementSyntax>();
-                    statements = statements.InsertRange(0, staticFields);
-                    visited = visited.ReplaceNode(staticConstructor, staticConstructor.WithBody(Block(statements)).NormalizeWhitespace());
-                } else
-                {
-                    // Otherwise we create a new one
-                    visited = visited.AddMembers(ConstructorDeclaration(visited.Identifier)
-                        .WithModifiers(TokenList(Token(SyntaxKind.StaticKeyword)))
-                        .WithBody(Block(staticFields))
-                        .NormalizeWhitespace());
-                }
-            }
-
-            if (instanceFields.Count > 0)
-            {
-                // Insert initializers into instance constructor(s)
-                // Find existing instance constructors
-                var instanceConstructors = visited.Members.Where(node => node.Kind() == SyntaxKind.ConstructorDeclaration)
-                    .Cast<ConstructorDeclarationSyntax>()
-                    .Where(node => !node.Modifiers.Any(SyntaxKind.StaticKeyword))
-                    .ToArray();
-
-                // If we found existing instance constructors,
-                // insert the initializers at the beginning of each.
-                if (instanceConstructors.Length > 0)
-                {
-                    visited = visited.ReplaceNodes(instanceConstructors, (constructor, _) =>
-                    {
-                        var statements = constructor.Body?.Statements ?? new SyntaxList<StatementSyntax>();
-                        statements = statements.InsertRange(0, instanceFields);
-                        return constructor.WithBody(Block(statements)).NormalizeWhitespace();
-                    });
-                }
-                else
-                {
-                    // If we didn't find any constructors, insert a parameterless public constructor
-                    // (C# would normally do this anyway)
-                    visited = visited.AddMembers(ConstructorDeclaration(visited.Identifier)
-                        .WithModifiers(TokenList(Token(SyntaxKind.PublicKeyword)))
-                        .WithBody(Block(instanceFields))
-                        .NormalizeWhitespace());
-                }
-            }
 
             // Makes sure generic types in RRCG classes are constrained to port types in build realm
             if (node.TypeParameterList != null)
@@ -116,34 +41,130 @@ namespace RRCG
                 );
             }
 
-            return visited;
-        }
-
-        SyntaxList<StatementSyntax> CreateFieldInitializers(IEnumerable<FieldDeclarationSyntax> fieldDeclarations)
-        {
-            var statements = new SyntaxList<StatementSyntax>();
-            
-            // Create statements to "rrcg-declare" & initialize the fields
-            // by writing call to __VariableDeclaratorExpression
-            foreach (var fieldDecl in fieldDeclarations)
+            // Rewrite fields into variables & properties as necessary
+            var allMembers = visited.Members.ToList();
+            foreach (var member in allMembers.ToList()) // shallow copy
             {
-                foreach (var varDecl in fieldDecl.Declaration.Variables)
-                {
-                    var name = varDecl.Identifier.ToString();
-                    var initializer = varDecl.Initializer != null ? varDecl.Initializer.Value : null;
-                    bool cantHaveSetter = fieldDecl.Modifiers.Any(m => m.Kind() == SyntaxKind.ReadOnlyKeyword ||
-                                                                       m.Kind() == SyntaxKind.ConstKeyword);
+                // SKip over non-fields
+                if (member is not FieldDeclarationSyntax field) continue;
 
-                    statements = statements.Add(
-                         ExpressionStatement(
-                             AssignmentExpression(
-                                 SyntaxKind.SimpleAssignmentExpression,
-                                 IdentifierName(name),
-                                 VariableDeclaratorExpressionInvocation(name, initializer, fieldDecl.Declaration.Type.StripTrivia(), !cantHaveSetter))));
+                // Skip over unsafe fields.
+                // (What does this even do in C# normally..?)
+                if (field.Modifiers.Any(SyntaxKind.UnsafeKeyword)) continue;
+
+                // Ensure field has a Variable attribute
+                var variableAttr = field.AttributeLists.SelectMany(c => c.Attributes)
+                                       .Where(a => a.Name.ToString() == "Variable" ||
+                                                   a.Name.ToString() == "SyncedVariable" ||
+                                                   a.Name.ToString() == "CloudVariable").FirstOrDefault();
+                if (variableAttr == null) continue;
+
+                // Cloud variables have special behaviour we need to enforce.
+                var attributeName = variableAttr.Name.ToString();
+                var attributeArgs = variableAttr.ArgumentList?.Arguments ?? new();
+
+                if (attributeName == "CloudVariable")
+                {
+                    // The number of declared variables must match the number of arguments
+                    if (field.Declaration.Variables.Count != attributeArgs.Count)
+                        throw new Exception("You must supply a cloud variable name for each member in the field declaration!");
+
+                    // The arguments must all be strings, and they must be unique.
+                    var uniqueStrings = attributeArgs.Where(a => a.Expression.Kind() == SyntaxKind.StringLiteralExpression)
+                                            .Select(a => a.Expression.ToString()).Distinct();
+
+                    if (uniqueStrings.Count() != attributeArgs.Count)
+                        throw new Exception("CloudVariable attribute arguments must consist of unique strings!");
                 }
+
+                // Setup VariableKind accessor
+                var variableKind = MemberAccessExpression(
+                                    SyntaxKind.SimpleMemberAccessExpression,
+                                    IdentifierName("VariableKind"),
+                                    IdentifierName(attributeName switch
+                                    {
+                                        "Variable" => "Local",
+                                        "SyncedVariable" => "Synced",
+                                        "CloudVariable" => "Cloud",
+                                        _ => throw new NotImplementedException()
+                                    }));
+
+                // Setup NamedVariable type
+                // Need to re-parse so the root is TypeSyntax, see VisitIdentifierName
+                var rewrittenType = (TypeSyntax)Visit(ParseTypeName(field.Declaration.Type.ToString()));
+                var namedVariableType = GenericName("NamedVariable")
+                                            .WithTypeArgumentList(
+                                                SyntaxUtils.TypeArgumentList(rewrittenType));
+
+                // Setup modifiers for the underlying NamedVariable field
+                var varFieldModifiers = new SyntaxTokenList(field.Modifiers.Where(m => m.Kind() != SyntaxKind.PublicKeyword));
+                if (!varFieldModifiers.Any(SyntaxKind.PrivateKeyword))
+                    varFieldModifiers = varFieldModifiers.Add(Token(SyntaxKind.PrivateKeyword));
+
+                // Now we can begin creating variable fields & properties.
+                for (int i=0; i < field.Declaration.Variables.Count; i++)
+                {
+                    var variable = field.Declaration.Variables[i];
+
+                    var variableName = variable.Identifier.ToString();
+                    var fieldName = $"__RRCG_FIELD_VARIABLE_{variableName}";
+
+                    // Create a private field to store & create the variable
+                    var rrVariableName = attributeName == "CloudVariable"
+                        ? ((LiteralExpressionSyntax)attributeArgs[i].Expression).Token.ValueText
+                        : variableName;
+
+                    var homeValueExpression = variable.Initializer?.Value ?? PostfixUnaryExpression(SyntaxKind.SuppressNullableWarningExpression,
+                                                                                LiteralExpression(SyntaxKind.NullLiteralExpression));
+
+                    allMembers.Add(FieldDeclaration(
+                        VariableDeclaration(namedVariableType)
+                        .WithVariables(
+                            SingletonSeparatedList(
+                                VariableDeclarator(fieldName)
+                                .WithInitializer(
+                                    EqualsValueClause(
+                                        InvocationExpression(
+                                            GenericName("__CreateNamedVariable")
+                                            .WithTypeArgumentList(
+                                                SyntaxUtils.TypeArgumentList(rewrittenType)))
+                                        .WithArgumentList(
+                                            SyntaxUtils.ArgumentList(
+                                                SyntaxUtils.StringLiteral(rrVariableName),
+                                                homeValueExpression,
+                                                variableKind))))))).WithModifiers(varFieldModifiers));
+
+                    // Now create a property to access it with the original syntax
+                    var valueAccessor = MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression,
+                                                               IdentifierName(fieldName), IdentifierName("Value"));
+
+                    allMembers.Add(PropertyDeclaration(rewrittenType, variableName)
+                        .WithAccessorList(
+                            AccessorList(
+                                List<AccessorDeclarationSyntax>(
+                                    new AccessorDeclarationSyntax[]
+                                    {
+                                        AccessorDeclaration(SyntaxKind.GetAccessorDeclaration)
+                                        .WithExpressionBody(
+                                            ArrowExpressionClause(valueAccessor))
+                                        .WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
+                                        AccessorDeclaration(SyntaxKind.SetAccessorDeclaration)
+                                        .WithExpressionBody(
+                                            ArrowExpressionClause(
+                                                AssignmentExpression(
+                                                    SyntaxKind.SimpleAssignmentExpression,
+                                                    valueAccessor,
+                                                    IdentifierName("value"))))
+                                        .WithSemicolonToken(Token(SyntaxKind.SemicolonToken))
+                                    })))
+                        .WithModifiers(field.Modifiers));
+                }
+
+                // Finally remove the field declaration from the class members.
+                allMembers.Remove(field);
             }
 
-            return statements;
+            return visited.WithMembers(new SyntaxList<MemberDeclarationSyntax>(allMembers));
         }
 
         public override SyntaxNode VisitClassDeclaration(ClassDeclarationSyntax node)
@@ -168,7 +189,7 @@ namespace RRCG
         {
             if (node.Identifier.Text.Equals("BuildCircuitGraph")) return node;
 
-            if (node.Modifiers.Any(t => t.Kind() == SyntaxKind.UnsafeKeyword))
+            if (node.Modifiers.Any(SyntaxKind.UnsafeKeyword))
                 return node.WithModifiers(new SyntaxTokenList(node.Modifiers.Where(t => t.Kind() != SyntaxKind.UnsafeKeyword)));
 
             var method = (MethodDeclarationSyntax)base.VisitMethodDeclaration(node);
@@ -445,7 +466,7 @@ namespace RRCG
 
         public override SyntaxNode VisitFieldDeclaration(FieldDeclarationSyntax node)
         {
-            if (node.Modifiers.Any(t => t.Kind() == SyntaxKind.UnsafeKeyword))
+            if (node.Modifiers.Any(SyntaxKind.UnsafeKeyword))
                 return node.WithModifiers(new SyntaxTokenList(node.Modifiers.Where(t => t.Kind() != SyntaxKind.UnsafeKeyword)));
 
             return base.VisitFieldDeclaration(node);
@@ -897,43 +918,6 @@ namespace RRCG
             var name = node.Identifier.ToString();
             var initializerArg = node.Initializer != null ? (ExpressionSyntax)base.Visit(node.Initializer.Value) : null;
             return node.WithInitializer(EqualsValueClause(VariableDeclaratorExpressionInvocation(name, initializerArg, finalType, true)));
-        }
-
-        public override SyntaxNode VisitAssignmentExpression(AssignmentExpressionSyntax node)
-        {
-            var visited = (AssignmentExpressionSyntax)base.VisitAssignmentExpression(node);
-
-            // Check if the left-hand side of the assignment is an identifier (variable).
-            if (visited.Left is not IdentifierNameSyntax identifier)
-                return visited;
-
-            // Remove comments from the identifier
-            identifier = identifier.StripTrivia();
-
-            // Expand +=, -=, etc
-            ExpressionSyntax valueExpression = visited.Right.StripTrivia();
-            if (SyntaxUtils.AssignmentExpressionToBinaryExpression.TryGetValue(visited.Kind(), out var binaryKind))
-                valueExpression = BinaryExpression(binaryKind, identifier, valueExpression);
-
-            return InvocationExpression(
-                    IdentifierName("__Assign"))
-                .WithArgumentList(
-                    ArgumentList(
-                        SeparatedList<ArgumentSyntax>(
-                            new SyntaxNodeOrToken[]{
-                                Argument(SyntaxUtils.StringLiteral(identifier.ToString())),
-                                Token(SyntaxKind.CommaToken),
-                                Argument(identifier)
-                                .WithRefOrOutKeyword(
-                                    Token(SyntaxKind.OutKeyword)),
-                                Token(SyntaxKind.CommaToken),
-                                Argument(
-                                    ParenthesizedLambdaExpression()
-                                    .WithExpressionBody(
-                                        valueExpression))})))
-                .WithLeadingTrivia(visited.GetLeadingTrivia())
-                .WithTrailingTrivia(visited.GetTrailingTrivia())
-                .NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitPostfixUnaryExpression(PostfixUnaryExpressionSyntax node)

@@ -29,7 +29,7 @@ namespace RRCGBuild
                 tuple = __VariableDeclaratorExpression<(IntPort, StringPort)>("tuple", () => TupleReturn(5), () => tuple!, (_RRCG_SETTER_VALUE) => tuple = _RRCG_SETTER_VALUE);
             ChipLib.Log(tuple.Item1);
             ChipLib.Log(tuple.Item2);
-            __Assign("tuple", out tuple, () => MultiInOut(6, "test"));
+            tuple = MultiInOut(6, "test");
             ChipLib.Log(tuple.Item1);
             ChipLib.Log(tuple.Item2);
             // Check that all remaining interfaces compile

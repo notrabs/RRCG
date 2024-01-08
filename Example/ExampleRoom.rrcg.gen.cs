@@ -7,7 +7,7 @@ namespace RRCGBuild
 {
     public class ExampleRoom : CircuitBuilder
     {
-        EventDefinition<IntPort> testEvent;
+        EventDefinition<IntPort> testEvent = new EventDefinition<IntPort>("intValue");
         public override void CircuitGraph()
         {
             __BeginReturnScope("CircuitGraph", null, null);
@@ -82,11 +82,6 @@ namespace RRCGBuild
             );
             __EndAccessibilityScope();
             __EndReturnScope();
-        }
-
-        public ExampleRoom()
-        {
-            testEvent = __VariableDeclaratorExpression<EventDefinition<IntPort>>("testEvent", () => new EventDefinition<IntPort>("intValue"), () => testEvent!, (_RRCG_SETTER_VALUE) => testEvent = _RRCG_SETTER_VALUE);
         }
     }
 }

@@ -13,6 +13,12 @@ namespace RRCGBuild
     public class EventFunction : Attribute { }
     public class SharedProperty : Attribute { }
     public class CircuitGraph : Attribute { }
+    public class Variable : Attribute { }
+    public class SyncedVariable : Attribute { }
+    public class CloudVariable : Attribute
+    {
+        public CloudVariable(params string[] names) { }
+    }
 
     /// <summary>
     /// A compiled RRCG building class containing parts of a circuit.
@@ -1017,6 +1023,23 @@ namespace RRCGBuild
             // (with the Else port added in)
             ExecFlow.current = scope.BreakFlow;
             ExecFlow.current.Ports.Add(ifNode.Port(0, 1));
+        }
+
+        public static NamedVariable<T> __CreateNamedVariable<T>(string name, T homeValue, VariableKind kind) where T : AnyPort, new()
+        {
+            // Don't apply automatic naming to cloud variables.
+            if (kind == VariableKind.Cloud)
+                return new NamedVariable<T>(name, homeValue, kind);
+
+            // Otherwise make use of NamedAssignmentScope and AutoNamedVariable
+            // to ensure the variable has a unique name.
+            var scope = new NamedAssignmentScope { Identifier = name };
+            SemanticStack.current.Push(scope);
+
+            var result = new AutoNamedVariable<T>(homeValue, kind);
+            SemanticStack.current.PopExpectedScope(scope);
+
+            return result;
         }
     }
 }

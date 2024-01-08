@@ -193,7 +193,7 @@ namespace RRCGBuild
             __If(__ConditionalContext("promoted"), () => ParseBool("true").Result, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __Assign("promoted", out promoted, () => promoted + ", world!");
+                promoted += ", world!";
                 __Return<StringPort>(promoted);
                 __EndAccessibilityScope();
             }
@@ -237,7 +237,7 @@ namespace RRCGBuild
                 }
 
                 );
-                __Assign("output", out output, () => output + character);
+                output += character;
                 i++;
                 __EndAccessibilityScope();
             }
@@ -271,7 +271,7 @@ namespace RRCGBuild
                 }
 
                 );
-                __Assign("output", out output, () => output + character);
+                output += character;
                 __EndAccessibilityScope();
             }
 

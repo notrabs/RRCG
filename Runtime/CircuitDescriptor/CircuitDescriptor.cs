@@ -25,6 +25,30 @@ namespace RRCGSource
     public class CircuitGraph : Attribute { }
 
     /// <summary>
+    /// Fields declared with this attribute will be placed as variable chips.
+    /// The initializer will become the home value.
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Field)]
+    public class Variable : Attribute { }
+
+    /// <summary>
+    /// Fields declared with this attribute will be placed as synced variable chips.
+    /// The initializer will become the home value.
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Field)]
+    public class SyncedVariable : Attribute { }
+
+    /// <summary>
+    /// Fields declared with this attribute will be placed as cloud variable chips.
+    /// Home values are not supported with cloud variables!
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Field)]
+    public class CloudVariable : Attribute
+    {
+        public CloudVariable(params string[] names) { }
+    }
+
+    /// <summary>
     /// A compiled RRCG class containing parts of a circuit.
     /// </summary>
     public abstract class CircuitLibrary: CircuitDescriptor {

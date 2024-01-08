@@ -7,10 +7,9 @@ namespace RRCGBuild
 {
     public class EntryPointsTest : CircuitBuilder
     {
-        IntPort a;
+        IntPort a = RandomInt(1, 10);
         public EntryPointsTest()
         {
-            a = __VariableDeclaratorExpression<IntPort>("a", () => RandomInt(1, 10), () => a!, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
             __BeginAccessibilityScope(AccessibilityScope.Kind.General);
             // This should be executed after class initializers, and before the circuit graph
             ChipLib.Log("constructor");

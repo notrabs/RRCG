@@ -15,7 +15,17 @@ public class AssignmentsTest : CircuitDescriptor
     float outOfScopeType = Mathf.Sqrt(4);
 
     // Test interface assignments
-    IVariable<int> variableAssignment = new Variable<int>(); 
+    IVariable<int> variableAssignment = new Variable<int>();
+
+    // Field -> variable assignments
+    [Variable]
+    public string MemberString = "Home value";
+
+    [SyncedVariable]
+    private Color SyncedMemberColour = new Color(1, 0, 0), TestMultipleDeclarations = new Color(0, 1, 0);
+
+    [CloudVariable("CloudVar1", "CloudVar2", "CloudVar3")]
+    private int MemberCloudVar1, MemberCloudVar2, MemberCloudVar3; // home values unsupported
 
     public override void CircuitGraph()
     {
@@ -40,6 +50,28 @@ public class AssignmentsTest : CircuitDescriptor
         }
 
         LogString(result);
+
+        // Assign to our variable fields
+        MemberString = "Hello";
+        SyncedMemberColour = Color.red;
+        TestMultipleDeclarations = Color.magenta;
+        MemberCloudVar1 = 1;
+        MemberCloudVar2 = 2;
+        MemberCloudVar3 = 3;
+
+        // Log all our variable fields
+        ChipLib.Log(MemberString);
+        ChipLib.Log(SyncedMemberColour);
+        ChipLib.Log(TestMultipleDeclarations);
+        ChipLib.Log(MemberCloudVar1);
+        ChipLib.Log(MemberCloudVar2);
+        ChipLib.Log(MemberCloudVar3);
+
+        // TODO: Collapse sequential variable writes.
+        MemberString += ", world!";
+        MemberString += " How";
+        MemberString += " are";
+        MemberString += "you?";
     }
 }
 class TypeTest

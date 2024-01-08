@@ -34,10 +34,12 @@ namespace RRCGBuild
         public NamedVariable(string name, T homeValue = null, VariableKind kind = VariableKind.Local)
         {
             if (homeValue != null)
-                if (!homeValue.IsDataPort)
-                    throw new ArgumentException("homeValue needs to be static, not a port");
+                if (kind == VariableKind.Cloud)
+                    throw new ArgumentException("Cloud variables don't support home values!");
                 else if (!SupportsHomeValue.Contains(typeof(T)))
                     throw new ArgumentException($"Home values not supported for variable type {typeof(T).Name}");
+                else if (!homeValue.IsDataPort)
+                    throw new ArgumentException("homeValue needs to be static, not a port");
 
             this.name = name;
             this.kind = kind;
