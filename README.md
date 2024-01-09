@@ -17,12 +17,11 @@ What if you never had to move a wire by hand? RRCG brings text-based scripting s
 4. [Troubleshooting](Docs/Troubleshooting.md)
 5. [Feature Matrix](Docs/FeatureMatrix.md)
 
-
 ## Install
 
 RRCG comes as a Unity package to be installed in your [Rec Room Studio](https://docs.alexagirl.studio/docs) project.
 
-[Using the Package Manager](https://docs.unity3d.com/Manual/upm-ui-giturl.html) install a package from this Git URL: 
+[Using the Package Manager](https://docs.unity3d.com/Manual/upm-ui-giturl.html) install a package from this Git URL:
 `https://github.com/notrabs/RRCG.git`
 
 <details>
@@ -31,7 +30,7 @@ RRCG comes as a Unity package to be installed in your [Rec Room Studio](https://
 Occasionally an update might include breaking changes, most likely if chips get changed or the compiler internals are changed. This can invalidate RRCG's generated files. To safely update, please follow these steps:
 
 1. **Make sure Unity is open before you update**
-2. Update using the Package Manager (or git) 
+2. Update using the Package Manager (or git)
 3. If you get errors in generated files => Use "Clean All" in the window menu
 4. If you get errors in source files => Resolve them manually (e.g. adjust to chip changes)
 5. Hit "Recompile All" to make sure your files are compiled with the latest compiler
@@ -44,8 +43,8 @@ Occasionally an update might include breaking changes, most likely if chips get 
 Clone the repository into the "Packages" folder of your Studio project.
 
 e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Packages/RRCG`
-</details>
 
+</details>
 
 ## Using the Compiler
 
@@ -60,6 +59,7 @@ e.g. as a submodule: `git submodule add https://github.com/notrabs/RRCG.git Pack
 RRCG compiles every file in your project with a `.rrcg.cs` extension. Any `CircuitDescriptor` class that was successfully compiled by RRCG will be available to select in the RRCG inspector. See the next chapter for how to write valid code.
 
 You can get started with this [example file](https://github.com/notrabs/RRCG/blob/main/Example/ExampleRoom.rrcg.cs) that is configured by default when you spawn the prefab.
+
 </details>
 
 <details>
@@ -72,6 +72,7 @@ Technically this is achieved by dynamically compiling and loading each iteration
 The main limitation for now is that there is no mechanism for dependencies between standalone projects yet, but you can still reference any assembly compiled within your regular Assets. So the compromise for now is that shared RRCG code needs to stay within the slow Unity compiler.
 
 To get started using standalone projects:
+
 1. Open the Inspector for your `RRCG` prefab
 2. Select the "Standalone Project" option
 3. Create a new project (or select an existing one)
@@ -89,12 +90,14 @@ After that, you can build circuits like with the integrated workflow, just witho
 With watch mode on all `.rrcg.cs` files in your project are compiled automatically when Unity imports them. This also happens every time you make a change to a script file. There's no downside to leaving it watch mode on, but the option to disable it is there if you want to disable automatic compilation during development.
 
 In case you want to manually recompile a file you can use Unity's reimport functionality or use the "Recompile all" feature from the `RRCG` window menu. This should only be needed after you downloaded a new compiler version or during compiler development.
+
 </details>
 
 <details>
 <summary> DOT Graph </summary>
 
 DOT is a standard graph format that can be [visualized online](https://dreampuf.github.io/GraphvizOnline/). You can copy a DOT graph for a compiled circuit by pressing the button in the inspector.
+
 </details>
 
 ## Writing Code
@@ -121,7 +124,7 @@ public class ExampleRoom : CircuitDescriptor
 <details>
 <summary> Circuit Libraries </summary>
 
-If you want to create reusable logic without an entry point, extend the `CircuitLibrary` class instead. 
+If you want to create reusable logic without an entry point, extend the `CircuitLibrary` class instead.
 This will also hide the class in the Circuit Selection menu. Place it inside a `.rrcg.cs` file anywhere in your project.
 
 ```c#
@@ -139,10 +142,10 @@ public class ExampleLibrary : CircuitLibrary
 <details>
 <summary> Additional Entry Points </summary>
 
-A room is usually made up of multiple graphs. 
-You can create separate graphs within a function by using exec chips with no exec inputs, or the `StartNewGraph()` method. 
-But for code organization it is often nicer to have them as separate methods. 
-Use the `[CircuitGraph]` attribute to mark functions in your CircuitDescriptor as additional entry points. 
+A room is usually made up of multiple graphs.
+You can create separate graphs within a function by using exec chips with no exec inputs, or the `StartNewGraph()` method.
+But for code organization it is often nicer to have them as separate methods.
+Use the `[CircuitGraph]` attribute to mark functions in your CircuitDescriptor as additional entry points.
 Note that they must be parameterless functions to work.
 
 ```c#
@@ -169,7 +172,7 @@ public class ExampleRoom : CircuitDescriptor
 }
 ```
 
-Sometimes you need an exec chip, without connecting it to your exisiting execution flow. 
+Sometimes you need an exec chip, without connecting it to your exisiting execution flow.
 You could place it in a separate graph and reference to it with variables, but that quickly gets very verbose.
 Instead use the `InlineGraph()` helper to create new graphs without destryoing your current context.
 
@@ -224,8 +227,6 @@ Ports are data. Data is Ports. Don't worry what the type system might say. Write
 ```c#
 public void ExampleCircuit()
 {
-    EventReceiver(RoomEvents.Hz30);
-
     int rand1 = RandomInt(0, 10);
     var rand2 = RandomInt(0, rand1);
 
@@ -255,14 +256,14 @@ Functions are invisible. By default the execution flow follows the first pin. If
 public void ExampleCircuit()
 {
     // starts a new graph
-    EventReceiver(RoomEvents.Hz30);
+    RoomEvent.Hz30();
 
     // connects the random chip inside the function directly to the event receiver
     var rand1 = MyFunction();
     LogString(ToString(rand1));
 
     // starts a new graph
-    EventReceiver(RoomEvents.Hz30);
+    RoomEvent.Hz30();
     LogString("1");
 }
 
@@ -412,12 +413,12 @@ public void ExampleCircuit()
 }
 ```
 
-Access the predefined events using the `RoomEvents` enum:
+Access the predefined events using the methods in the `RoomEvent` class:
 
 ```c#
-public void StudioBoard()
+public void GameLoop()
 {
-    EventReceiver(RoomEvents.Hz30);
+    var deltaTime = RoomEvent.Hz30();
     // ... react to event
 }
 ```
@@ -459,7 +460,7 @@ public void ExpensiveFunction(string parameter)
 
 ### Variable Helpers
 
-The `Variable`, `SyncedVariable` and `CloudVariable` classes help you to write type-safe code. Instance and Synced Variables are named automatically and uniquely.
+The `Variable`, `SyncedVariable` and `CloudVariable` classes help you to write type-safe code. Instance and Synced Variables are named automatically and uniquely for each instance.
 
 ```c#
 Variable<int> count = new Variable<int>();
@@ -473,6 +474,55 @@ public void ExampleCircuit()
 
     // Access/Modify the Value using the Value getter/setter
     count.Value = count.Value + 1;
+}
+```
+
+Using attributes, this code can be made less verbose for class variables. This code without `.Value` accesses is equivalent to the code above:
+
+```c#
+[Variable]
+int count;
+
+[SyncedVariable]
+int syncedVarWithHomeValue = 2;
+
+[CloudVariable("Name_of_my_Variable")]
+string cloudVar;
+
+public void ExampleCircuit()
+{
+    // The compiler will parse the changed event out of the reference to the C# value.
+    FieldVariableChanged(count);
+
+    // Access/Modify the Value using the c# variable
+    count++;
+}
+```
+
+### Conditional assignments
+
+The compiler will automatically handle the creation of temporary variables that are required to implement conditional assignments.
+
+```c#
+public int Example(bool condition){
+    int a = 1; // This will remain optimized value that can be inserted into ports
+    int b = 2; // This will be created as a variable, due to the conditional assignment below.
+
+    if (condition) b = -2;
+
+    return a + b;
+}
+```
+This also works for loops, so you can create proper iteration variables without using the Variable classes explicitly:
+```c#
+public void Example(){
+    int i = 0;
+
+    while (i < 10) {
+        ChipLib.Log(i);
+
+        i++;
+    }
 }
 ```
 
@@ -521,7 +571,7 @@ public class MyStudioObject : StudioObjectDescriptor
     public void SetScale(Vector3 scale) { }
 
     // For manually defined functions return "default". The function will work once in-game.
-    [ExistingStudioFunction]   
+    [ExistingStudioFunction]
     public Vector3 GetPosition() { return default; }
 
     // If your function has multiple outputs, return a tuple
@@ -532,6 +582,7 @@ public class MyStudioObject : StudioObjectDescriptor
 }
 
 ```
+
 To use a function from a CircuitDescriptor, create an instance of your StudioObjectDescriptor class and call its functions directly.
 
 ```c#
@@ -540,7 +591,7 @@ public class ExampleRoom : CircuitDescriptor
     public override void CircuitGraph()
     {
         var rro = RecRoomObjectGetFirstWithTag("mystudioobj");
-        
+
         // Pass a reference to your studio object. It will be connected to the according event/function pins.
         var myStudioObject = new MyStudioObject(rro);
 
@@ -550,7 +601,6 @@ public class ExampleRoom : CircuitDescriptor
     }
 }
 ```
-
 
 ### Interfacing with Unity
 
@@ -567,16 +617,16 @@ public void ExampleCircuit()
 }
 ```
 
-
 ## Custom Building Code (.rrcg.gen.cs files)
 
-For more advanced use-cases, the C# source code translation might not be expressive enough for your needs. 
+For more advanced use-cases, the C# source code translation might not be expressive enough for your needs.
 Expecially the conversion of control structures is limiting, if you want to create dynamic circuits.
 
-One simple example for dynamic chip generation is the `ChipLib.Log(object)` helper. 
+One simple example for dynamic chip generation is the `ChipLib.Log(object)` helper.
 It needs to insert a ToString chip, if and only if the inputted data is not already a string.
 
 If you look at the ChipLib implementation you'll notice that the source-realm (=`RRCGSource` namespace) function is empty:
+
 ```c#
 namespace RRCGSource {
     /// <summary>
@@ -605,30 +655,30 @@ For normal RRCG scripts this conversion happens automatically with the compiler.
 
 #### Compilation Pipeline
 
-To understand how the build realm fits into the compilation process, it helps to have a rough idea on how RRCG is implemented. 
+To understand how the build realm fits into the compilation process, it helps to have a rough idea on how RRCG is implemented.
 
 ![image](./Docs/Images/flow_chart.png)
 
 The conversion of RRCG scripts into CV2 circuits does not happen in a single step.
-The source-realm code you write isn't executable. 
+The source-realm code you write isn't executable.
 The actual circuit graph building happens when the build realm code (=`rrcg.gen.cs` files) is executed.
 Most of the magic of RRCG happens in the first syntax transformation that converts your code into executable build-realm automatically.
-
 
 It is during the execution of the build-realm code that we can also execute custom building code to create chips with standard C# logic. Since we are not limited by the syntax of a small C# subset, we can have more control at the price of a bit more verbose syntax.
 
 #### Writing Build Realm code
 
-Build-realm code is roughly structured like normal RRCG scripts. 
+Build-realm code is roughly structured like normal RRCG scripts.
 You can look at the generated files to get an idea, but the main concept to understand is that calling a circuit function will spawn that node into the current graph.
 The functions get access to the current graph via the static `Context.current` property, so the timepoint of execution dicatates where chips are placed in the execution flow.
-At the same time also only executed functions have their chips placed. 
+At the same time also only executed functions have their chips placed.
 
-For example, this means that unlike in the source-realm, this function will only spawn one chip. 
+For example, this means that unlike in the source-realm, this function will only spawn one chip.
+
 ```c#
 namespace RRCGBuild {
     void BuildFunction(){
-        // This if is an actual if in the build-realm. Executing it will evaluate 
+        // This if is an actual if in the build-realm. Executing it will evaluate
         // the bool as "true", and go into the if branch.
         if (true) {
             LogString("Chip A");
@@ -640,15 +690,15 @@ namespace RRCGBuild {
 }
 ```
 
-Having full c# capabilities back in turn means, that there is also no magical interchangeability between C# data and CV2 data anymore. 
+Having full c# capabilities back in turn means, that there is also no magical interchangeability between C# data and CV2 data anymore.
 You need to be explicit about what is CV2 data and what is a regular C# type.
 RRCG uses the `[...}Port` classes to distinguish one from the other.
 The CV2 type can be obtained by appending "Port" to the original type name:
 
-* `bool` => `BoolPort`
-* `string` => `StringPort`
-* `Player` => `PlayerPort`
-* ...
+- `bool` => `BoolPort`
+- `string` => `StringPort`
+- `Player` => `PlayerPort`
+- ...
 
 These Port classes are still fairly clever as they implement a lot of the logic that you already know from the source-realm.
 For example doing arithmetic on `FloatPorts` will still only create math chips as needed.
@@ -665,8 +715,7 @@ void BuildFunction(){
 #### Get started
 
 To use the build realm simply write your code in a non-compiled file and provide an interface to it in both, the `RRCGSource` and `RRCGBuild` namespaces.
-More documnentation to come, but looking at the ChipLib source would be a good place to start looking for inspiration. 
-
+More documnentation to come, but looking at the ChipLib source would be a good place to start looking for inspiration.
 
 ## Roadmap
 
@@ -680,7 +729,6 @@ Things to do that are in scope of the RRCG project. Although contributions are w
 - [ ] Decompilation (Circuits to Code)
 - [ ] Circuit Graph Optimization
 - [ ] Online playground ([SharpLab](https://github.com/ashmind/SharpLab) looks prmomising)
-
 
 ## Useful Resources
 
