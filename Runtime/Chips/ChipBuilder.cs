@@ -641,80 +641,81 @@ namespace RRCGBuild
             ExecFlow.current.Ports.Add(node.Port(0, 2));
         }
 
-        public static void ExecutionIntegerSwitch(IntPort match, AlternativeExec failed, Dictionary<IntPort, AlternativeExec> branches)
+        public static void ExecutionIntegerSwitch(IntPort match, AlternativeExec failed, Dictionary<IntPort, AlternativeExec> branches, ConditionalContext conditional = null)
         {
-            TypedExecutionSwitch(ExecutionIntegerSwitch, match, failed, branches);
+            TypedExecutionSwitch(ExecutionIntegerSwitch, match, failed, branches, conditional);
         }
 
-        public static void ExecutionStringSwitch(StringPort match, AlternativeExec failed, Dictionary<StringPort, AlternativeExec> branches)
+        public static void ExecutionStringSwitch(StringPort match, AlternativeExec failed, Dictionary<StringPort, AlternativeExec> branches, ConditionalContext conditional = null)
         {
-            TypedExecutionSwitch(ExecutionStringSwitch, match, failed, branches);
+            TypedExecutionSwitch(ExecutionStringSwitch, match, failed, branches, conditional);
         }
 
-        static void TypedExecutionSwitch<T>(Action<T> switchNode, T match, AlternativeExec failed, Dictionary<T, AlternativeExec> branches) where T : AnyPort, new()
+        static void TypedExecutionSwitch<T>(Action<T> switchNode, T match, AlternativeExec failed, Dictionary<T, AlternativeExec> branches, ConditionalContext conditional = null) where T : AnyPort, new()
         {
+            // Build switch node
             switchNode(match);
             var node = Context.lastSpawnedNode;
             node.SwitchCases = new List<string>();
 
+            // Keep track of previous exec flow for merging later.
+            // We re-use this to preserve its state.
             var execFlow = ExecFlow.current;
             execFlow.Clear();
 
-            // Create exec flow for each delegate
-            var delegateToExecFlow = new Dictionary<AlternativeExec, ExecFlow>();
-            var defaultFlow = new ExecFlow();
-
-            delegateToExecFlow[failed] = defaultFlow;
-            foreach (var branch in branches)
-                if (!delegateToExecFlow.ContainsKey(branch.Value))
-                    delegateToExecFlow[branch.Value] = new ExecFlow();
-
-            // Now add the necessary ports to each flow
+            // Build each branch
+            var evaluatedBranches = new List<AlternativeExec>();
             int branchIndex = 0;
-            defaultFlow.Ports.Add(new Port { Node = node });
+            var branchDelegates = branches.Values.Prepend(failed).ToList();
 
-            foreach (var branch in branches)
+            foreach (var branch in branchDelegates)
             {
-                delegateToExecFlow[branch.Value].Ports.Add(new Port { Node = node, Index = 1 + branchIndex });
-                branchIndex++;
-            }
+                // Don't build branches we've already built
+                if (evaluatedBranches.Contains(branch)) continue;
 
-            // Finally we can start building the branches.
-            // Build the failed branch..
-            ExecFlow.current = defaultFlow;
-            failed();
-            execFlow.Merge(defaultFlow);
+                // Create exec flow with respective port(s) & add switch cases
+                ExecFlow.current = new ExecFlow();
 
-            // ..then the other branches.
-            branchIndex = 0;
-            var evaluatedBranches = new List<AlternativeExec>() { failed };
-            foreach (var branch in branches)
-            {
-                if (branch.Key.Port != null) throw new Exception($"Can't create Switch Cases with dynamic data. Make sure to pass a pure-data {typeof(T).Name} value!");
-                node.SwitchCases.Add(branch.Key.Data.ToString());
-
-                // Only build each branch once.
-                if (!evaluatedBranches.Contains(branch.Value))
+                for (int i = 0; i < branchDelegates.Count; i++)
                 {
-                    ExecFlow.current = delegateToExecFlow[branch.Value];
-                    branch.Value();
+                    // Looking for all match values that point at this branch...
+                    if (branchDelegates.ElementAt(i) != branch) continue;
 
-                    var branchFlow = ExecFlow.current;
-                    execFlow.Merge(branchFlow);
+                    // Add respective port
+                    ExecFlow.current.Ports.Add(node.Port(0, i));
 
-                    evaluatedBranches.Add(branch.Value);
+                    // Edge-case: don't add switch case for Failed pin
+                    if (i == 0) continue;
+
+                    var data = branches.Keys.ElementAt(i - 1); // -1 because we have Failed prepended
+                    if (data.IsActualPort)
+                        throw new Exception($"Can't create Switch Cases with actual ports. Make sure to pass a pure-data {typeof(T).Name} value!");
+
+                    node.SwitchCases.Add(data.Data.ToString());
                 }
 
+                // Finally we can build the branch
+                branch();
+                evaluatedBranches.Add(branch);
+
+                // Reset promoted variables C# state to their RR variables
+                // between branches if we have a conditional context.
+                // SwitchScope.Break / __Goto should handle the writing in all cases
+                conditional?.ResetPromotedVariables(true);
+
+                // Merge execution flow & continue
+                execFlow.Merge(ExecFlow.current);
                 branchIndex++;
             }
 
+            // Finally restore the execution flow & continue building from there.
             ExecFlow.current = execFlow;
         }
 
-        public static void ExecutionAnySwitch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
+        public static void ExecutionAnySwitch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches, ConditionalContext conditional = null)
         {
-            if (match is IntPort) ExecutionIntegerSwitch((IntPort)match, failed, branches.ToDictionary(item => new IntPort() { Data = item.Key.Data }, item => item.Value));
-            else if (match is StringPort) ExecutionStringSwitch((StringPort)match, failed, branches.ToDictionary(item => new StringPort() { Data = item.Key.Data }, item => item.Value));
+            if (match is IntPort) ExecutionIntegerSwitch((IntPort)match, failed, branches.ToDictionary(item => new IntPort() { Data = item.Key.Data }, item => item.Value), conditional);
+            else if (match is StringPort) ExecutionStringSwitch((StringPort)match, failed, branches.ToDictionary(item => new StringPort() { Data = item.Key.Data }, item => item.Value), conditional);
             else throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a int or string value!");
         }
 

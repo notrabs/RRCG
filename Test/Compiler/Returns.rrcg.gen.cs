@@ -43,6 +43,8 @@ namespace RRCGBuild
                 LogString(TestWhileReturnWithPromoted(list));
                 list[list.Count - 1] = "Not END";
                 LogString(TestForEachReturnWithPromoted(list));
+                // Test returns from switch statements
+                LogString(TestSwitchReturn(0));
                 __EndAccessibilityScope();
                 __EndReturnScope();
             }
@@ -77,6 +79,8 @@ namespace RRCGBuild
                 LogString(CircuitBoard<ListPort<StringPort>, StringPort>(TestWhileReturnWithPromoted, list));
                 list[list.Count - 1] = "Not END";
                 LogString(CircuitBoard<ListPort<StringPort>, StringPort>(TestForEachReturnWithPromoted, list));
+                // Test returns from switch statements
+                LogString(CircuitBoard<IntPort, StringPort>(TestSwitchReturn, 0));
                 __EndAccessibilityScope();
                 __EndReturnScope();
             }
@@ -111,6 +115,8 @@ namespace RRCGBuild
                 LogString(EFTestWhileReturnWithPromoted(list));
                 list[list.Count - 1] = "Not END";
                 LogString(EFTestForEachReturnWithPromoted(list));
+                // Test returns from switch statements
+                LogString(EFTestSwitchReturn(0));
                 __EndAccessibilityScope();
                 __EndReturnScope();
             }
@@ -281,6 +287,54 @@ namespace RRCGBuild
             return __EndReturnScope()!;
         }
 
+        StringPort TestSwitchReturn(IntPort match)
+        {
+            __BeginReturnScope("TestSwitchReturn", typeof(StringPort), null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                AlternativeExec rrcg_switch_section_0 = delegate
+                {
+                    __LabelDecl("rrcg_switch_case_label_0");
+                    LogString("Case 0 matched");
+                    __Return<StringPort>("0");
+                }
+
+                ;
+                AlternativeExec rrcg_switch_section_1 = delegate
+                {
+                    __LabelDecl("rrcg_switch_case_label_1");
+                    LogString("Case 1 matched");
+                    __Return<StringPort>("1");
+                }
+
+                ;
+                AlternativeExec rrcg_switch_section_2 = delegate
+                {
+                    __LabelDecl("rrcg_switch_case_label_2");
+                    LogString("Case 2 matched");
+                    match += 2;
+                    __Return<StringPort>(match.ToString());
+                }
+
+                ;
+                AlternativeExec rrcg_switch_section_3 = delegate
+                {
+                    __LabelDecl("rrcg_switch_case_label_default");
+                    LogString("Default case");
+                    __Return<StringPort>("Error: default case matched!");
+                }
+
+                ;
+                __Switch(__ConditionalContext(), () => match, rrcg_switch_section_3, new()
+                {{0, rrcg_switch_section_0}, {1, rrcg_switch_section_1}, {2, rrcg_switch_section_2}});
+                __EndAccessibilityScope();
+            }
+
+            __EndAccessibilityScope();
+            return __EndReturnScope()!;
+        }
+
         [EventFunction]
         StringPort EFSingleNonTupleReturn()
         {
@@ -370,6 +424,19 @@ namespace RRCGBuild
             }
 
             , list);
+        }
+
+        [EventFunction]
+        StringPort EFTestSwitchReturn(IntPort match)
+        {
+            return __DispatchEventFunction<StringPort, IntPort>("EFTestSwitchReturn", delegate (IntPort match)
+            {
+                __BeginReturnScope("EFTestSwitchReturn", typeof(StringPort), null);
+                __Return<StringPort>(TestSwitchReturn(match));
+                return __EndReturnScope()!;
+            }
+
+            , match);
         }
 
         private void Test(StringPort name, Action test)

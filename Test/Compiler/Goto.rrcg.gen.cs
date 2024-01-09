@@ -79,7 +79,7 @@ namespace RRCGBuild
                 }
 
                 ;
-                __Switch(0, delegate
+                __Switch(__ConditionalContext(), () => 0, delegate
                 {
                 }
 
@@ -157,7 +157,7 @@ namespace RRCGBuild
                     }
 
                     ;
-                    __Switch(0, delegate
+                    __Switch(__ConditionalContext(), () => 0, delegate
                     {
                     }
 
@@ -218,7 +218,7 @@ namespace RRCGBuild
                 }
 
                 ;
-                __Switch(1, delegate
+                __Switch(__ConditionalContext(), () => 1, delegate
                 {
                 }
 
@@ -245,7 +245,7 @@ namespace RRCGBuild
                 }
 
                 ;
-                __Switch("Hello", delegate
+                __Switch(__ConditionalContext(), () => "Hello", delegate
                 {
                 }
 
@@ -272,7 +272,7 @@ namespace RRCGBuild
                 }
 
                 ;
-                __Switch(2, delegate
+                __Switch(__ConditionalContext(), () => 2, delegate
                 {
                 }
 

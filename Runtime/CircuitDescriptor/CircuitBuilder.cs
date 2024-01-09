@@ -606,24 +606,32 @@ namespace RRCGBuild
             ExecFlow.current.Ports.Add(ifNode.Port(0, 1));
         }
 
-        public static void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
+        public static void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches) { }
+        public static void __Switch(ConditionalContext conditional, Func<AnyPort> match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
         {
-            // TODO: Conditional context for switch statements
-            // Create & push our switch scope
+            // Push our semantic scopes
             var switchScope = new SwitchScope
             {
-                BreakFlow = new ExecFlow()
+                BreakFlow = new ExecFlow(),
+                ConditionalContext = conditional
             };
+            SemanticStack.current.Push(conditional);
             SemanticStack.current.Push(switchScope);
 
+            // Write promoted variables & set their C# state to
+            // reference their RR variables before building the Switch
+            conditional.WritePromotedVariables();
+            conditional.ResetPromotedVariables(true);
+
             // Build the switch chip & all the branches
-            ChipBuilder.ExecutionAnySwitch(match, failed, branches);
+            ChipBuilder.ExecutionAnySwitch(match(), failed, branches, conditional);
 
             // Merge the break flow back into the current flow
             ExecFlow current = ExecFlow.current;
             current.Merge(switchScope.BreakFlow);
 
             SemanticStack.current.PopExpectedScope(switchScope);
+            SemanticStack.current.PopExpectedScope(conditional);
         }
 
         public static void __Break()
@@ -754,6 +762,12 @@ namespace RRCGBuild
 
         public static void __Goto(string labelName)
         {
+            // If we're within a SwitchScope and we're jumping to
+            // a switch label, write promoted variables beforehand
+            if (labelName.StartsWith("rrcg_switch_case_label") &&
+                SemanticStack.current.GetNextScopeWithType<SwitchScope>() is SwitchScope swScope)
+                swScope.ConditionalContext.WritePromotedVariables();
+
             // See if this label exists in the current/a parent AccessibilityScope
             for (int i = 0; i < SemanticStack.current.Count; i++)
             {

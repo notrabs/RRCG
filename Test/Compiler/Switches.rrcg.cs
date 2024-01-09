@@ -16,6 +16,10 @@ public class Switches : CircuitDescriptor
         SwitchInWhileLoop();
 
         LogString("Return from SwitchInWhileLoop()");
+
+        SwitchPromotedVariables();
+
+        LogString("Return from SwitchPromotedVariables()");
     }
     public void SwitchTypes(string switchString, int switchInt)
     {
@@ -120,6 +124,33 @@ public class Switches : CircuitDescriptor
             LogString("After switch");
         }
         LogString("After while");
+    }
+
+    public void SwitchPromotedVariables()
+    {
+        int myLocal = 0;
+        float otherLocal = 0f;
+        switch (myLocal)
+        {
+            case 0:
+                myLocal += 1;
+                break;
+            case 1:
+                if (true)
+                    myLocal += 2;
+
+                myLocal += 3;
+                break;
+            case 3:
+                myLocal += 4;
+                otherLocal = 10f;
+                goto case 0;
+            default:
+                myLocal = int.MinValue;
+                break;
+        }
+
+        LogString($"{myLocal}, {otherLocal}");
     }
 }
 #pragma warning restore CS0162 // Unreachable code detected

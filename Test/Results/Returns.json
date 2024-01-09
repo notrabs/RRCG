@@ -645,14 +645,131 @@
       "InputCount": 2
     },
     {
+      "Id": "Execution_Integer_Switch_0",
+      "Type": "x+SHAxe5GU2Tf12je59BzA==",
+      "Name": "Execution Integer Switch",
+      "DefaultValues": [[[0,1],"System.Int32",0]],
+      "SwitchCases": [
+        "0",
+        "1",
+        "2"
+      ],
+      "InputCount": 2
+    },
+    {
       "Id": "Log_String_8",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Default case"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_9",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Case 0 matched"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_10",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Case 1 matched"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_11",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Case 2 matched"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_7",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_Return_TestSwitchReturn",
+        "EventDefinition": [
+          {
+            "Item1": "result",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_11",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestSwitchReturn",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Error: default case matched!"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_12",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestSwitchReturn",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","0"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_13",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestSwitchReturn",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","1"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_14",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestSwitchReturn",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","2"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_7",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_Return_TestSwitchReturn"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_12",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_13",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Finished test InlineTests"]],
       "InputCount": 2
     },
     {
-      "Id": "Event_Definition_7",
+      "Id": "Event_Definition_8",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -663,7 +780,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_7",
+      "Id": "Event_Receiver_8",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -673,7 +790,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Log_String_9",
+      "Id": "Log_String_14",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Starting test CircuitBoardTests"]],
@@ -688,7 +805,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Log_String_10",
+      "Id": "Log_String_15",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
@@ -703,7 +820,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Log_String_11",
+      "Id": "Log_String_16",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
@@ -732,7 +849,7 @@
       "InputCount": 5
     },
     {
-      "Id": "Log_String_12",
+      "Id": "Log_String_17",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
@@ -761,7 +878,7 @@
       "InputCount": 5
     },
     {
-      "Id": "Log_String_13",
+      "Id": "Log_String_18",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
@@ -776,7 +893,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Log_String_14",
+      "Id": "Log_String_19",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
@@ -790,7 +907,7 @@
       "InputCount": 13
     },
     {
-      "Id": "Event_Definition_8",
+      "Id": "Event_Definition_9",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -806,7 +923,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_8",
+      "Id": "Event_Receiver_9",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -816,7 +933,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_11",
+      "Id": "Event_Sender_15",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -835,7 +952,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Log_String_15",
+      "Id": "Log_String_20",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
@@ -871,21 +988,36 @@
       "InputCount": 0
     },
     {
-      "Id": "Log_String_16",
+      "Id": "Log_String_21",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
       "InputCount": 2
     },
     {
-      "Id": "Log_String_17",
+      "Id": "RRCG_TestSwitchReturn_0",
+      "Type": "et7rFMB230ew3QGx2qUIIQ==",
+      "Name": "RRCG_TestSwitchReturn",
+      "DefaultValues": [[[2,0],"System.Int32",0]],
+      "CircuitBoardId": "0_7",
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_22",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_23",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Finished test CircuitBoardTests"]],
       "InputCount": 2
     },
     {
-      "Id": "Event_Definition_9",
+      "Id": "Event_Definition_10",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -896,7 +1028,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_9",
+      "Id": "Event_Receiver_10",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -906,14 +1038,14 @@
       "InputCount": 0
     },
     {
-      "Id": "Log_String_18",
+      "Id": "Log_String_24",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Starting test EventFunctionTests"]],
       "InputCount": 2
     },
     {
-      "Id": "Event_Definition_10",
+      "Id": "Event_Definition_11",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -924,7 +1056,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_10",
+      "Id": "Event_Receiver_11",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -934,7 +1066,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_12",
+      "Id": "Event_Sender_16",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -945,14 +1077,14 @@
       "InputCount": 1
     },
     {
-      "Id": "Log_String_19",
+      "Id": "Log_String_25",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Single Return"]],
       "InputCount": 2
     },
     {
-      "Id": "Event_Definition_11",
+      "Id": "Event_Definition_12",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -963,7 +1095,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_11",
+      "Id": "Event_Receiver_12",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -980,7 +1112,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Event_Definition_12",
+      "Id": "Event_Definition_13",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -996,7 +1128,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_13",
+      "Id": "Event_Sender_17",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1007,7 +1139,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Event_Sender_14",
+      "Id": "Event_Sender_18",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1018,7 +1150,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Event_Receiver_12",
+      "Id": "Event_Receiver_13",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -1028,7 +1160,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_15",
+      "Id": "Event_Sender_19",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1039,14 +1171,14 @@
       "InputCount": 1
     },
     {
-      "Id": "Log_String_20",
+      "Id": "Log_String_26",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
       "InputCount": 2
     },
     {
-      "Id": "Event_Definition_13",
+      "Id": "Event_Definition_14",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -1057,7 +1189,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_13",
+      "Id": "Event_Receiver_14",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -1067,7 +1199,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_16",
+      "Id": "Event_Sender_20",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1078,14 +1210,14 @@
       "InputCount": 1
     },
     {
-      "Id": "Log_String_21",
+      "Id": "Log_String_27",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Named: Named Element, Item2: 2147483647"]],
       "InputCount": 2
     },
     {
-      "Id": "Event_Definition_14",
+      "Id": "Event_Definition_15",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -1096,7 +1228,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_14",
+      "Id": "Event_Receiver_15",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -1113,7 +1245,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Event_Definition_15",
+      "Id": "Event_Definition_16",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -1133,7 +1265,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_17",
+      "Id": "Event_Sender_21",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1144,7 +1276,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Event_Sender_18",
+      "Id": "Event_Sender_22",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1155,7 +1287,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Event_Receiver_15",
+      "Id": "Event_Receiver_16",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -1165,7 +1297,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_19",
+      "Id": "Event_Sender_23",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1190,14 +1322,14 @@
       "InputCount": 5
     },
     {
-      "Id": "Log_String_22",
+      "Id": "Log_String_28",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
       "InputCount": 2
     },
     {
-      "Id": "Event_Definition_16",
+      "Id": "Event_Definition_17",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -1208,7 +1340,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_16",
+      "Id": "Event_Receiver_17",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -1253,7 +1385,7 @@
       "InputCount": 3
     },
     {
-      "Id": "Event_Definition_17",
+      "Id": "Event_Definition_18",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -1269,7 +1401,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_20",
+      "Id": "Event_Sender_24",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1280,7 +1412,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Event_Sender_21",
+      "Id": "Event_Sender_25",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1291,7 +1423,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Event_Receiver_17",
+      "Id": "Event_Receiver_18",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -1301,7 +1433,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_22",
+      "Id": "Event_Sender_26",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1312,7 +1444,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Log_String_23",
+      "Id": "Log_String_29",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
@@ -1326,7 +1458,7 @@
       "InputCount": 13
     },
     {
-      "Id": "Event_Definition_18",
+      "Id": "Event_Definition_19",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -1342,7 +1474,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_18",
+      "Id": "Event_Receiver_19",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -1352,7 +1484,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_23",
+      "Id": "Event_Sender_27",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1363,7 +1495,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Event_Definition_19",
+      "Id": "Event_Definition_20",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -1379,7 +1511,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_19",
+      "Id": "Event_Receiver_20",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -1493,7 +1625,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Event_Definition_20",
+      "Id": "Event_Definition_21",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -1509,7 +1641,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_24",
+      "Id": "Event_Sender_28",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1520,7 +1652,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Event_Sender_25",
+      "Id": "Event_Sender_29",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1531,7 +1663,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Event_Receiver_20",
+      "Id": "Event_Receiver_21",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -1541,7 +1673,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_26",
+      "Id": "Event_Sender_30",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1552,7 +1684,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Log_String_24",
+      "Id": "Log_String_30",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
@@ -1580,7 +1712,7 @@
       "InputCount": 4
     },
     {
-      "Id": "Event_Definition_21",
+      "Id": "Event_Definition_22",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -1596,7 +1728,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Receiver_21",
+      "Id": "Event_Receiver_22",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -1710,7 +1842,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Event_Definition_22",
+      "Id": "Event_Definition_23",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
       "EventDefinitionData": {
@@ -1726,7 +1858,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_27",
+      "Id": "Event_Sender_31",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1737,7 +1869,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Event_Sender_28",
+      "Id": "Event_Sender_32",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1748,7 +1880,7 @@
       "InputCount": 1
     },
     {
-      "Id": "Event_Receiver_22",
+      "Id": "Event_Receiver_23",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
       "EventReceiverData": {
@@ -1758,7 +1890,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Event_Sender_29",
+      "Id": "Event_Sender_33",
       "Type": "UP6olje8i0W6yVgtRTFHeQ==",
       "Name": "Event Sender",
       "EventSenderData": {
@@ -1769,14 +1901,182 @@
       "InputCount": 1
     },
     {
-      "Id": "Log_String_25",
+      "Id": "Log_String_31",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
       "InputCount": 2
     },
     {
-      "Id": "Log_String_26",
+      "Id": "Event_Definition_24",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventFunction_EFTestSwitchReturn",
+        "EventDefinition": [
+          {
+            "Item1": "value0",
+            "Item2": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_24",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventFunction_EFTestSwitchReturn"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Execution_Integer_Switch_1",
+      "Type": "x+SHAxe5GU2Tf12je59BzA==",
+      "Name": "Execution Integer Switch",
+      "DefaultValues": [],
+      "SwitchCases": [
+        "0",
+        "1",
+        "2"
+      ],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_32",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Default case"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_33",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Case 0 matched"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_34",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Case 1 matched"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_35",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Case 2 matched"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Add_4",
+      "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+      "Name": "Add",
+      "DefaultValues": [[[0,1],"System.Int32",2]],
+      "InputCount": 2
+    },
+    {
+      "Id": "To_String_4",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Definition_25",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_Return_TestSwitchReturn_2",
+        "EventDefinition": [
+          {
+            "Item1": "result",
+            "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        ]
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_34",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestSwitchReturn_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","Error: default case matched!"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_35",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestSwitchReturn_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","0"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_36",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestSwitchReturn_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.String","1"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_37",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_Return_TestSwitchReturn_2",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Receiver_25",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_Return_TestSwitchReturn_2"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Sender_38",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventFunction_EFTestSwitchReturn",
+        "EventTarget": 0
+      },
+      "DefaultValues": [[[0,1],"System.Int32",0]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_36",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_37",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Finished test EventFunctionTests"]],
@@ -2909,7 +3209,111 @@
         "Index": 0
       },
       "To": {
+        "Node": "Execution_Integer_Switch_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
         "Node": "Log_String_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_0",
+        "Group": 0,
+        "Index": 2
+      },
+      "To": {
+        "Node": "Log_String_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_0",
+        "Group": 0,
+        "Index": 3
+      },
+      "To": {
+        "Node": "Log_String_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_14",
         "Group": 0,
         "Index": 0
       },
@@ -2919,10 +3323,88 @@
       "From": {
         "Node": "Event_Receiver_7",
         "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_11",
+        "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_9",
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_14",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_14",
         "Group": 0,
         "Index": 0
       },
@@ -2935,7 +3417,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_10",
+        "Node": "Log_String_15",
         "Group": 0,
         "Index": 1
       },
@@ -2943,12 +3425,12 @@
     },
     {
       "From": {
-        "Node": "Log_String_9",
+        "Node": "Log_String_14",
         "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_10",
+        "Node": "Log_String_15",
         "Group": 0,
         "Index": 0
       },
@@ -2956,7 +3438,7 @@
     },
     {
       "From": {
-        "Node": "Log_String_10",
+        "Node": "Log_String_15",
         "Group": 0,
         "Index": 0
       },
@@ -2974,7 +3456,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_11",
+        "Node": "Log_String_16",
         "Group": 0,
         "Index": 1
       },
@@ -2987,7 +3469,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_11",
+        "Node": "Log_String_16",
         "Group": 0,
         "Index": 0
       },
@@ -3039,336 +3521,11 @@
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_12",
+        "Node": "Log_String_17",
         "Group": 0,
         "Index": 1
       },
       "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Log_String_11",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_12",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Log_String_12",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "RRCG_MultipleTupleReturns_0",
-        "Group": 1,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "RRCG_MultipleTupleReturns_0",
-        "Group": 2,
-        "Index": 1
-      },
-      "To": {
-        "Node": "To_String_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "RRCG_MultipleTupleReturns_0",
-        "Group": 2,
-        "Index": 0
-      },
-      "To": {
-        "Node": "String_Concat_6",
-        "Group": 0,
-        "Index": 2
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "To_String_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "String_Concat_6",
-        "Group": 0,
-        "Index": 4
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "String_Concat_6",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_13",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "RRCG_MultipleTupleReturns_0",
-        "Group": 1,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_13",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Log_String_13",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "RRCG_TestIfReturnWithPromoted_0",
-        "Group": 1,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "RRCG_TestIfReturnWithPromoted_0",
-        "Group": 2,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_14",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "RRCG_TestIfReturnWithPromoted_0",
-        "Group": 1,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_14",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Log_String_14",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Event_Sender_11",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "List_Create_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Event_Sender_11",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Event_Sender_11",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "RRCG_TestWhileReturnWithPromoted_0",
-        "Group": 1,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Event_Receiver_8",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "RRCG_TestWhileReturnWithPromoted_0",
-        "Group": 2,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "RRCG_TestWhileReturnWithPromoted_0",
-        "Group": 2,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_15",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "RRCG_TestWhileReturnWithPromoted_0",
-        "Group": 1,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_15",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Event_Receiver_8",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "List_Get_Count_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "List_Get_Count_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Subtract_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Event_Receiver_8",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "List_Set_Element_1",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Subtract_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "List_Set_Element_1",
-        "Group": 0,
-        "Index": 2
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Log_String_15",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "List_Set_Element_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "List_Set_Element_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "RRCG_TestForEachReturnWithPromoted_0",
-        "Group": 1,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Event_Receiver_8",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "RRCG_TestForEachReturnWithPromoted_0",
-        "Group": 2,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "RRCG_TestForEachReturnWithPromoted_0",
-        "Group": 2,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_16",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "RRCG_TestForEachReturnWithPromoted_0",
-        "Group": 1,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Log_String_16",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
     },
     {
       "From": {
@@ -3385,8 +3542,73 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_9",
+        "Node": "Log_String_17",
         "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "RRCG_MultipleTupleReturns_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "RRCG_MultipleTupleReturns_0",
+        "Group": 2,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_MultipleTupleReturns_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_6",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_6",
+        "Group": 0,
+        "Index": 4
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_18",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_MultipleTupleReturns_0",
+        "Group": 1,
         "Index": 0
       },
       "To": {
@@ -3403,59 +3625,33 @@
         "Index": 0
       },
       "To": {
-        "Node": "Event_Sender_12",
-        "Group": 0,
+        "Node": "RRCG_TestIfReturnWithPromoted_0",
+        "Group": 1,
         "Index": 0
       },
       "isExec": true
     },
     {
       "From": {
-        "Node": "Event_Sender_12",
-        "Group": 0,
+        "Node": "RRCG_TestIfReturnWithPromoted_0",
+        "Group": 2,
         "Index": 0
       },
       "To": {
         "Node": "Log_String_19",
         "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Event_Receiver_11",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_7",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "If_7",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Event_Sender_13",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "If_7",
-        "Group": 0,
         "Index": 1
       },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestIfReturnWithPromoted_0",
+        "Group": 1,
+        "Index": 0
+      },
       "To": {
-        "Node": "Event_Sender_14",
+        "Node": "Log_String_19",
         "Group": 0,
         "Index": 0
       },
@@ -3476,12 +3672,12 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_12",
+        "Node": "List_Create_1",
         "Group": 0,
-        "Index": 1
+        "Index": 0
       },
       "To": {
-        "Node": "Log_String_20",
+        "Node": "Event_Sender_15",
         "Group": 0,
         "Index": 1
       },
@@ -3494,11 +3690,102 @@
         "Index": 0
       },
       "To": {
+        "Node": "RRCG_TestWhileReturnWithPromoted_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_9",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "RRCG_TestWhileReturnWithPromoted_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestWhileReturnWithPromoted_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_20",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestWhileReturnWithPromoted_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "To": {
         "Node": "Log_String_20",
         "Group": 0,
         "Index": 0
       },
       "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_9",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Count_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Count_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Subtract_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_9",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Set_Element_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Subtract_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "List_Set_Element_1",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
     },
     {
       "From": {
@@ -3507,7 +3794,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "Event_Sender_16",
+        "Node": "List_Set_Element_1",
         "Group": 0,
         "Index": 0
       },
@@ -3515,8 +3802,47 @@
     },
     {
       "From": {
-        "Node": "Event_Sender_16",
+        "Node": "List_Set_Element_1",
         "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "RRCG_TestForEachReturnWithPromoted_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_9",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "RRCG_TestForEachReturnWithPromoted_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestForEachReturnWithPromoted_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_21",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestForEachReturnWithPromoted_0",
+        "Group": 1,
         "Index": 0
       },
       "To": {
@@ -3528,12 +3854,38 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_14",
+        "Node": "Log_String_21",
         "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "If_8",
+        "Node": "RRCG_TestSwitchReturn_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestSwitchReturn_0",
+        "Group": 2,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_22",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "RRCG_TestSwitchReturn_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_22",
         "Group": 0,
         "Index": 0
       },
@@ -3541,7 +3893,72 @@
     },
     {
       "From": {
-        "Node": "If_8",
+        "Node": "Log_String_22",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_23",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_24",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_24",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_16",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_16",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_25",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_7",
         "Group": 0,
         "Index": 0
       },
@@ -3554,7 +3971,7 @@
     },
     {
       "From": {
-        "Node": "If_8",
+        "Node": "If_7",
         "Group": 0,
         "Index": 1
       },
@@ -3567,7 +3984,7 @@
     },
     {
       "From": {
-        "Node": "Log_String_21",
+        "Node": "Log_String_25",
         "Group": 0,
         "Index": 0
       },
@@ -3580,7 +3997,111 @@
     },
     {
       "From": {
+        "Node": "Event_Receiver_13",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_26",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_19",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_26",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_26",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_20",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_20",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_27",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
         "Node": "Event_Receiver_15",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_21",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_8",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_22",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_27",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_23",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_16",
         "Group": 0,
         "Index": 2
       },
@@ -3593,7 +4114,7 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_15",
+        "Node": "Event_Receiver_16",
         "Group": 0,
         "Index": 1
       },
@@ -3624,7 +4145,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_22",
+        "Node": "Log_String_28",
         "Group": 0,
         "Index": 1
       },
@@ -3632,12 +4153,12 @@
     },
     {
       "From": {
-        "Node": "Event_Sender_19",
+        "Node": "Event_Sender_23",
         "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_22",
+        "Node": "Log_String_28",
         "Group": 0,
         "Index": 0
       },
@@ -3658,129 +4179,12 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_16",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_9",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Reroute_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "String_Concat_8",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Reroute_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "String_Concat_9",
-        "Group": 0,
-        "Index": 2
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "If_9",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Event_Sender_20",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "String_Concat_8",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Event_Sender_20",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "If_9",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "Event_Sender_21",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "String_Concat_9",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Event_Sender_21",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Log_String_22",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Event_Sender_22",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
         "Node": "Event_Receiver_17",
         "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "Log_String_23",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Event_Sender_22",
-        "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_23",
+        "Node": "If_9",
         "Group": 0,
         "Index": 0
       },
@@ -3788,25 +4192,12 @@
     },
     {
       "From": {
-        "Node": "Log_String_23",
+        "Node": "Reroute_1",
         "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "Event_Sender_23",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "List_Create_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Event_Sender_23",
+        "Node": "String_Concat_8",
         "Group": 0,
         "Index": 1
       },
@@ -3814,181 +4205,12 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_19",
+        "Node": "Reroute_1",
         "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "string_Variable_4",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "string_Variable_4",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "int_Variable_4",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Event_Receiver_19",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "List_Get_Count_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "int_Variable_4",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "Less_Than_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "List_Get_Count_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Less_Than_2",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Less_Than_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_10",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "int_Variable_4",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_10",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Event_Receiver_19",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "List_Get_Element_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "int_Variable_4",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "List_Get_Element_2",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "List_Get_Element_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Equals_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Equals_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_11",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "If_10",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_11",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "string_Variable_4",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "String_Concat_10",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "List_Get_Element_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "String_Concat_10",
+        "Node": "String_Concat_9",
         "Group": 0,
         "Index": 2
       },
@@ -3996,85 +4218,7 @@
     },
     {
       "From": {
-        "Node": "int_Variable_4",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "Add_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "String_Concat_10",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "string_Variable_5",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "If_11",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "string_Variable_5",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Add_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "int_Variable_5",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "string_Variable_5",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "int_Variable_5",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "int_Variable_5",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_10",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "If_11",
+        "Node": "If_9",
         "Group": 0,
         "Index": 0
       },
@@ -4087,9 +4231,9 @@
     },
     {
       "From": {
-        "Node": "string_Variable_4",
+        "Node": "String_Concat_8",
         "Group": 0,
-        "Index": 1
+        "Index": 0
       },
       "To": {
         "Node": "Event_Sender_24",
@@ -4100,7 +4244,7 @@
     },
     {
       "From": {
-        "Node": "If_10",
+        "Node": "If_9",
         "Group": 0,
         "Index": 1
       },
@@ -4113,7 +4257,20 @@
     },
     {
       "From": {
-        "Node": "Event_Sender_23",
+        "Node": "String_Concat_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_25",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_28",
         "Group": 0,
         "Index": 0
       },
@@ -4131,7 +4288,46 @@
         "Index": 1
       },
       "To": {
+        "Node": "Log_String_29",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
         "Node": "Event_Sender_26",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_29",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_29",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_27",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "List_Create_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_27",
         "Group": 0,
         "Index": 1
       },
@@ -4141,23 +4337,10 @@
       "From": {
         "Node": "Event_Receiver_20",
         "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "Log_String_24",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Event_Sender_26",
-        "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_24",
+        "Node": "string_Variable_4",
         "Group": 0,
         "Index": 0
       },
@@ -4165,12 +4348,25 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_18",
+        "Node": "string_Variable_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_20",
         "Group": 0,
         "Index": 1
       },
       "To": {
-        "Node": "List_Get_Count_3",
+        "Node": "List_Get_Count_2",
         "Group": 0,
         "Index": 0
       },
@@ -4178,12 +4374,12 @@
     },
     {
       "From": {
-        "Node": "List_Get_Count_3",
+        "Node": "int_Variable_4",
         "Group": 0,
-        "Index": 0
+        "Index": 1
       },
       "To": {
-        "Node": "Subtract_2",
+        "Node": "Less_Than_2",
         "Group": 0,
         "Index": 0
       },
@@ -4191,12 +4387,12 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_18",
+        "Node": "List_Get_Count_2",
         "Group": 0,
-        "Index": 1
+        "Index": 0
       },
       "To": {
-        "Node": "List_Set_Element_2",
+        "Node": "Less_Than_2",
         "Group": 0,
         "Index": 1
       },
@@ -4204,12 +4400,116 @@
     },
     {
       "From": {
-        "Node": "Subtract_2",
+        "Node": "Less_Than_2",
         "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "List_Set_Element_2",
+        "Node": "If_10",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_20",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Element_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Element_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Element_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Equals_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Equals_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_10",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Element_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_10",
         "Group": 0,
         "Index": 2
       },
@@ -4217,12 +4517,38 @@
     },
     {
       "From": {
-        "Node": "Log_String_24",
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_10",
         "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "List_Set_Element_2",
+        "Node": "string_Variable_5",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "string_Variable_5",
         "Group": 0,
         "Index": 0
       },
@@ -4230,12 +4556,25 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_21",
+        "Node": "Add_2",
         "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "string_Variable_6",
+        "Node": "int_Variable_5",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_5",
         "Group": 0,
         "Index": 0
       },
@@ -4243,77 +4582,12 @@
     },
     {
       "From": {
-        "Node": "List_Get_Element_3",
+        "Node": "int_Variable_5",
         "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "Equals_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Equals_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_12",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "string_Variable_6",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "String_Concat_11",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "List_Get_Element_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "String_Concat_11",
-        "Group": 0,
-        "Index": 2
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "String_Concat_11",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "string_Variable_7",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "If_12",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "string_Variable_7",
+        "Node": "If_10",
         "Group": 0,
         "Index": 0
       },
@@ -4321,204 +4595,9 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_21",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "List_Get_Element_3",
+        "Node": "If_11",
         "Group": 0,
         "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "int_Variable_6",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "List_Get_Element_3",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "string_Variable_6",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "int_Variable_6",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Event_Receiver_21",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "List_Get_Count_4",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "int_Variable_6",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "Less_Than_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "List_Get_Count_4",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Less_Than_3",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Less_Than_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_13",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "int_Variable_6",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_13",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "If_13",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_12",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "int_Variable_6",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "Add_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "Add_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "int_Variable_7",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "string_Variable_7",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "int_Variable_7",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "int_Variable_7",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_13",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "If_12",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Event_Sender_27",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "string_Variable_6",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
-        "Node": "Event_Sender_27",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "If_13",
-        "Group": 0,
-        "Index": 1
       },
       "To": {
         "Node": "Event_Sender_28",
@@ -4529,9 +4608,22 @@
     },
     {
       "From": {
-        "Node": "List_Set_Element_2",
+        "Node": "string_Variable_4",
         "Group": 0,
-        "Index": 0
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_28",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_10",
+        "Group": 0,
+        "Index": 1
       },
       "To": {
         "Node": "Event_Sender_29",
@@ -4542,16 +4634,211 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_18",
+        "Node": "Event_Sender_27",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_30",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_19",
         "Group": 0,
         "Index": 1
       },
       "To": {
-        "Node": "Event_Sender_29",
+        "Node": "Event_Sender_30",
         "Group": 0,
         "Index": 1
       },
       "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_21",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_30",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_30",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_30",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_19",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Count_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Count_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Subtract_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_19",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Set_Element_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Subtract_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "List_Set_Element_2",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_30",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "List_Set_Element_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_22",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "List_Get_Element_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Equals_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Equals_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_12",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Element_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_11",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_7",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_12",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "string_Variable_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
     },
     {
       "From": {
@@ -4560,7 +4847,20 @@
         "Index": 1
       },
       "To": {
-        "Node": "Log_String_25",
+        "Node": "List_Get_Element_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Element_3",
         "Group": 0,
         "Index": 1
       },
@@ -4568,12 +4868,12 @@
     },
     {
       "From": {
-        "Node": "Event_Sender_29",
+        "Node": "string_Variable_6",
         "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_25",
+        "Node": "int_Variable_6",
         "Group": 0,
         "Index": 0
       },
@@ -4581,12 +4881,441 @@
     },
     {
       "From": {
-        "Node": "Log_String_25",
+        "Node": "Event_Receiver_22",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "List_Get_Count_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Less_Than_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "List_Get_Count_4",
         "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_26",
+        "Node": "Less_Than_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Less_Than_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_13",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Add_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_7",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "If_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_31",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_31",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_13",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_32",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "List_Set_Element_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_33",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_19",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Event_Sender_33",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_23",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_31",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_33",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_31",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_24",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Execution_Integer_Switch_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_24",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Execution_Integer_Switch_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_32",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_33",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_1",
+        "Group": 0,
+        "Index": 2
+      },
+      "To": {
+        "Node": "Log_String_34",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_1",
+        "Group": 0,
+        "Index": 3
+      },
+      "To": {
+        "Node": "Log_String_35",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_24",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Add_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "To_String_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_32",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_34",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_33",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_35",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_34",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_36",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_35",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_37",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "To_String_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_37",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_31",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_38",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_25",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_36",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Sender_38",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_36",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_36",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_37",
         "Group": 0,
         "Index": 0
       },
@@ -4655,7 +5384,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Event_Definition_23",
+          "Id": "Event_Definition_26",
           "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
           "Name": "Event Definition",
           "EventDefinitionData": {
@@ -4671,7 +5400,7 @@
           "InputCount": 0
         },
         {
-          "Id": "Event_Sender_30",
+          "Id": "Event_Sender_39",
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
@@ -4682,7 +5411,7 @@
           "InputCount": 1
         },
         {
-          "Id": "Event_Sender_31",
+          "Id": "Event_Sender_40",
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
@@ -4693,7 +5422,7 @@
           "InputCount": 1
         },
         {
-          "Id": "Event_Receiver_23",
+          "Id": "Event_Receiver_26",
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
@@ -4731,7 +5460,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Event_Sender_30",
+            "Node": "Event_Sender_39",
             "Group": 0,
             "Index": 0
           },
@@ -4744,7 +5473,7 @@
             "Index": 1
           },
           "To": {
-            "Node": "Event_Sender_31",
+            "Node": "Event_Sender_40",
             "Group": 0,
             "Index": 0
           },
@@ -4752,20 +5481,7 @@
         },
         {
           "From": {
-            "Node": "Event_Sender_30",
-            "Group": 0,
-            "Index": 0
-          },
-          "To": {
-            "Node": "Out_1",
-            "Group": 1,
-            "Index": 0
-          },
-          "isExec": true
-        },
-        {
-          "From": {
-            "Node": "Event_Sender_31",
+            "Node": "Event_Sender_39",
             "Group": 0,
             "Index": 0
           },
@@ -4778,7 +5494,20 @@
         },
         {
           "From": {
-            "Node": "Event_Receiver_23",
+            "Node": "Event_Sender_40",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_1",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_26",
             "Group": 0,
             "Index": 1
           },
@@ -4889,7 +5618,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Event_Definition_24",
+          "Id": "Event_Definition_27",
           "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
           "Name": "Event Definition",
           "EventDefinitionData": {
@@ -4909,7 +5638,7 @@
           "InputCount": 0
         },
         {
-          "Id": "Event_Sender_32",
+          "Id": "Event_Sender_41",
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
@@ -4920,7 +5649,7 @@
           "InputCount": 1
         },
         {
-          "Id": "Event_Sender_33",
+          "Id": "Event_Sender_42",
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
@@ -4931,7 +5660,7 @@
           "InputCount": 1
         },
         {
-          "Id": "Event_Receiver_24",
+          "Id": "Event_Receiver_27",
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
@@ -4969,7 +5698,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Event_Sender_32",
+            "Node": "Event_Sender_41",
             "Group": 0,
             "Index": 0
           },
@@ -4982,7 +5711,7 @@
             "Index": 1
           },
           "To": {
-            "Node": "Event_Sender_33",
+            "Node": "Event_Sender_42",
             "Group": 0,
             "Index": 0
           },
@@ -4990,20 +5719,7 @@
         },
         {
           "From": {
-            "Node": "Event_Sender_32",
-            "Group": 0,
-            "Index": 0
-          },
-          "To": {
-            "Node": "Out_3",
-            "Group": 1,
-            "Index": 0
-          },
-          "isExec": true
-        },
-        {
-          "From": {
-            "Node": "Event_Sender_33",
+            "Node": "Event_Sender_41",
             "Group": 0,
             "Index": 0
           },
@@ -5016,7 +5732,20 @@
         },
         {
           "From": {
-            "Node": "Event_Receiver_24",
+            "Node": "Event_Sender_42",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_3",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_27",
             "Group": 0,
             "Index": 1
           },
@@ -5029,7 +5758,7 @@
         },
         {
           "From": {
-            "Node": "Event_Receiver_24",
+            "Node": "Event_Receiver_27",
             "Group": 0,
             "Index": 2
           },
@@ -5125,7 +5854,7 @@
           "InputCount": 3
         },
         {
-          "Id": "Event_Definition_25",
+          "Id": "Event_Definition_28",
           "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
           "Name": "Event Definition",
           "EventDefinitionData": {
@@ -5141,7 +5870,7 @@
           "InputCount": 0
         },
         {
-          "Id": "Event_Sender_34",
+          "Id": "Event_Sender_43",
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
@@ -5152,7 +5881,7 @@
           "InputCount": 1
         },
         {
-          "Id": "Event_Sender_35",
+          "Id": "Event_Sender_44",
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
@@ -5163,7 +5892,7 @@
           "InputCount": 1
         },
         {
-          "Id": "Event_Receiver_25",
+          "Id": "Event_Receiver_28",
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
@@ -5240,7 +5969,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Event_Sender_34",
+            "Node": "Event_Sender_43",
             "Group": 0,
             "Index": 0
           },
@@ -5253,7 +5982,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Event_Sender_34",
+            "Node": "Event_Sender_43",
             "Group": 0,
             "Index": 1
           },
@@ -5266,7 +5995,7 @@
             "Index": 1
           },
           "To": {
-            "Node": "Event_Sender_35",
+            "Node": "Event_Sender_44",
             "Group": 0,
             "Index": 0
           },
@@ -5279,7 +6008,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Event_Sender_35",
+            "Node": "Event_Sender_44",
             "Group": 0,
             "Index": 1
           },
@@ -5287,7 +6016,7 @@
         },
         {
           "From": {
-            "Node": "Event_Sender_34",
+            "Node": "Event_Sender_43",
             "Group": 0,
             "Index": 0
           },
@@ -5300,7 +6029,7 @@
         },
         {
           "From": {
-            "Node": "Event_Sender_35",
+            "Node": "Event_Sender_44",
             "Group": 0,
             "Index": 0
           },
@@ -5313,7 +6042,7 @@
         },
         {
           "From": {
-            "Node": "Event_Receiver_25",
+            "Node": "Event_Receiver_28",
             "Group": 0,
             "Index": 1
           },
@@ -5443,7 +6172,7 @@
           "InputCount": 3
         },
         {
-          "Id": "Add_4",
+          "Id": "Add_5",
           "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
           "Name": "Add",
           "DefaultValues": [[[0,1],"System.Int32",1]],
@@ -5474,7 +6203,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Event_Definition_26",
+          "Id": "Event_Definition_29",
           "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
           "Name": "Event Definition",
           "EventDefinitionData": {
@@ -5490,7 +6219,7 @@
           "InputCount": 0
         },
         {
-          "Id": "Event_Sender_36",
+          "Id": "Event_Sender_45",
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
@@ -5501,7 +6230,7 @@
           "InputCount": 1
         },
         {
-          "Id": "Event_Sender_37",
+          "Id": "Event_Sender_46",
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
@@ -5512,7 +6241,7 @@
           "InputCount": 1
         },
         {
-          "Id": "Event_Receiver_26",
+          "Id": "Event_Receiver_29",
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
@@ -5719,7 +6448,7 @@
             "Index": 1
           },
           "To": {
-            "Node": "Add_4",
+            "Node": "Add_5",
             "Group": 0,
             "Index": 0
           },
@@ -5753,7 +6482,7 @@
         },
         {
           "From": {
-            "Node": "Add_4",
+            "Node": "Add_5",
             "Group": 0,
             "Index": 0
           },
@@ -5797,7 +6526,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Event_Sender_36",
+            "Node": "Event_Sender_45",
             "Group": 0,
             "Index": 0
           },
@@ -5810,7 +6539,7 @@
             "Index": 1
           },
           "To": {
-            "Node": "Event_Sender_36",
+            "Node": "Event_Sender_45",
             "Group": 0,
             "Index": 1
           },
@@ -5823,7 +6552,7 @@
             "Index": 1
           },
           "To": {
-            "Node": "Event_Sender_37",
+            "Node": "Event_Sender_46",
             "Group": 0,
             "Index": 0
           },
@@ -5831,20 +6560,7 @@
         },
         {
           "From": {
-            "Node": "Event_Sender_36",
-            "Group": 0,
-            "Index": 0
-          },
-          "To": {
-            "Node": "Out_5",
-            "Group": 1,
-            "Index": 0
-          },
-          "isExec": true
-        },
-        {
-          "From": {
-            "Node": "Event_Sender_37",
+            "Node": "Event_Sender_45",
             "Group": 0,
             "Index": 0
           },
@@ -5857,7 +6573,20 @@
         },
         {
           "From": {
-            "Node": "Event_Receiver_26",
+            "Node": "Event_Sender_46",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_5",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_29",
             "Group": 0,
             "Index": 1
           },
@@ -6004,7 +6733,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Add_5",
+          "Id": "Add_6",
           "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
           "Name": "Add",
           "DefaultValues": [[[0,1],"System.Int32",1]],
@@ -6023,7 +6752,7 @@
           "InputCount": 2
         },
         {
-          "Id": "Event_Definition_27",
+          "Id": "Event_Definition_30",
           "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
           "Name": "Event Definition",
           "EventDefinitionData": {
@@ -6039,7 +6768,7 @@
           "InputCount": 0
         },
         {
-          "Id": "Event_Sender_38",
+          "Id": "Event_Sender_47",
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
@@ -6050,7 +6779,7 @@
           "InputCount": 1
         },
         {
-          "Id": "Event_Sender_39",
+          "Id": "Event_Sender_48",
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
@@ -6061,7 +6790,7 @@
           "InputCount": 1
         },
         {
-          "Id": "Event_Receiver_27",
+          "Id": "Event_Receiver_30",
           "Type": "yzxTizpkHUmYLJRBfOmZVA==",
           "Name": "Event Receiver",
           "EventReceiverData": {
@@ -6294,7 +7023,7 @@
             "Index": 1
           },
           "To": {
-            "Node": "Add_5",
+            "Node": "Add_6",
             "Group": 0,
             "Index": 0
           },
@@ -6302,7 +7031,7 @@
         },
         {
           "From": {
-            "Node": "Add_5",
+            "Node": "Add_6",
             "Group": 0,
             "Index": 0
           },
@@ -6346,7 +7075,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Event_Sender_38",
+            "Node": "Event_Sender_47",
             "Group": 0,
             "Index": 0
           },
@@ -6359,7 +7088,7 @@
             "Index": 1
           },
           "To": {
-            "Node": "Event_Sender_38",
+            "Node": "Event_Sender_47",
             "Group": 0,
             "Index": 1
           },
@@ -6372,7 +7101,7 @@
             "Index": 1
           },
           "To": {
-            "Node": "Event_Sender_39",
+            "Node": "Event_Sender_48",
             "Group": 0,
             "Index": 0
           },
@@ -6380,20 +7109,7 @@
         },
         {
           "From": {
-            "Node": "Event_Sender_38",
-            "Group": 0,
-            "Index": 0
-          },
-          "To": {
-            "Node": "Out_6",
-            "Group": 1,
-            "Index": 0
-          },
-          "isExec": true
-        },
-        {
-          "From": {
-            "Node": "Event_Sender_39",
+            "Node": "Event_Sender_47",
             "Group": 0,
             "Index": 0
           },
@@ -6406,7 +7122,20 @@
         },
         {
           "From": {
-            "Node": "Event_Receiver_27",
+            "Node": "Event_Sender_48",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_6",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_30",
             "Group": 0,
             "Index": 1
           },
@@ -6446,6 +7175,423 @@
             {
               "Item1": "list",
               "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ],
+          "Outputs": [
+            {
+              "Item1": "result",
+              "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "0_7",
+      "Nodes": [
+        {
+          "Id": "In_7",
+          "Type": "iCvgE/VGAkaXNYhWrrPrew==",
+          "Name": "In",
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Execution_Integer_Switch_2",
+          "Type": "x+SHAxe5GU2Tf12je59BzA==",
+          "Name": "Execution Integer Switch",
+          "DefaultValues": [],
+          "SwitchCases": [
+            "0",
+            "1",
+            "2"
+          ],
+          "InputCount": 2
+        },
+        {
+          "Id": "Log_String_38",
+          "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+          "Name": "Log String",
+          "DefaultValues": [[[0,1],"System.String","Default case"]],
+          "InputCount": 2
+        },
+        {
+          "Id": "Log_String_39",
+          "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+          "Name": "Log String",
+          "DefaultValues": [[[0,1],"System.String","Case 0 matched"]],
+          "InputCount": 2
+        },
+        {
+          "Id": "Log_String_40",
+          "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+          "Name": "Log String",
+          "DefaultValues": [[[0,1],"System.String","Case 1 matched"]],
+          "InputCount": 2
+        },
+        {
+          "Id": "Log_String_41",
+          "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+          "Name": "Log String",
+          "DefaultValues": [[[0,1],"System.String","Case 2 matched"]],
+          "InputCount": 2
+        },
+        {
+          "Id": "Add_7",
+          "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+          "Name": "Add",
+          "DefaultValues": [[[0,1],"System.Int32",2]],
+          "InputCount": 2
+        },
+        {
+          "Id": "To_String_5",
+          "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+          "Name": "To String",
+          "DefaultValues": [],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Definition_31",
+          "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+          "Name": "Event Definition",
+          "EventDefinitionData": {
+            "EventName": "RRCG_Return_TestSwitchReturn_1",
+            "EventDefinition": [
+              {
+                "Item1": "result",
+                "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            ]
+          },
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Event_Sender_49",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_TestSwitchReturn_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [[[0,1],"System.String","Error: default case matched!"]],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Sender_50",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_TestSwitchReturn_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [[[0,1],"System.String","0"]],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Sender_51",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_TestSwitchReturn_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [[[0,1],"System.String","1"]],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Sender_52",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_Return_TestSwitchReturn_1",
+            "EventTarget": 0
+          },
+          "DefaultValues": [],
+          "InputCount": 1
+        },
+        {
+          "Id": "Event_Receiver_31",
+          "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+          "Name": "Event Receiver",
+          "EventReceiverData": {
+            "EventName": "RRCG_Return_TestSwitchReturn_1"
+          },
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Out_7",
+          "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
+          "Name": "Out",
+          "DefaultValues": [],
+          "InputCount": 0
+        }
+      ],
+      "Connections": [
+        {
+          "From": {
+            "Node": "In_7",
+            "Group": 2,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Execution_Integer_Switch_2",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "In_7",
+            "Group": 1,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Execution_Integer_Switch_2",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Execution_Integer_Switch_2",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Log_String_38",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Execution_Integer_Switch_2",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Log_String_39",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Execution_Integer_Switch_2",
+            "Group": 0,
+            "Index": 2
+          },
+          "To": {
+            "Node": "Log_String_40",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Execution_Integer_Switch_2",
+            "Group": 0,
+            "Index": 3
+          },
+          "To": {
+            "Node": "Log_String_41",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "In_7",
+            "Group": 2,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Add_7",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Add_7",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "To_String_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Log_String_38",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_49",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Log_String_39",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_50",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Log_String_40",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_51",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Log_String_41",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_52",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "To_String_5",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_52",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_49",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_7",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_50",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_7",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_51",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_7",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_52",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_7",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Receiver_31",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "Out_7",
+            "Group": 2,
+            "Index": 0
+          },
+          "isExec": false
+        }
+      ],
+      "SubContexts": [],
+      "MetaNewBoard": [
+        {
+          "Name": "Dummy",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Exec",
+          "Inputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ],
+          "Outputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ]
+        },
+        {
+          "Name": "Data",
+          "Inputs": [
+            {
+              "Item1": "match",
+              "Item2": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
             }
           ],
           "Outputs": [

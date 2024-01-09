@@ -246,6 +246,184 @@
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Return from SwitchInWhileLoop()"]],
       "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_0",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_myLocal",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.Int32",0]],
+      "InputCount": 2
+    },
+    {
+      "Id": "float_Variable_0",
+      "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
+      "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_otherLocal",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.Single",0.0]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Execution_Integer_Switch_2",
+      "Type": "x+SHAxe5GU2Tf12je59BzA==",
+      "Name": "Execution Integer Switch",
+      "DefaultValues": [],
+      "SwitchCases": [
+        "0",
+        "1",
+        "3"
+      ],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_1",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_myLocal",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.Int32",-2147483648]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Add_0",
+      "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+      "Name": "Add",
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_2",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_myLocal",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "If_6",
+      "Type": "sWrceqv8RkeuxgBjUuKc3A==",
+      "Name": "If",
+      "DefaultValues": [[[0,1],"System.Boolean",true]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Add_1",
+      "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+      "Name": "Add",
+      "DefaultValues": [[[0,1],"System.Int32",2]],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_3",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_myLocal",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Add_2",
+      "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+      "Name": "Add",
+      "DefaultValues": [[[0,1],"System.Int32",3]],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_4",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_myLocal",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Add_3",
+      "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+      "Name": "Add",
+      "DefaultValues": [[[0,1],"System.Int32",4]],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_5",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_myLocal",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "float_Variable_1",
+      "Type": "pRyjBNKRaUq/PUhNGEEcwA==",
+      "Name": "float Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_otherLocal",
+        "Kind": 0,
+        "Type": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.Single",10.0]],
+      "InputCount": 2
+    },
+    {
+      "Id": "To_String_0",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "To_String_1",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "String_Concat_0",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""],[[0,2],"System.String",", "]],
+      "InputCount": 4
+    },
+    {
+      "Id": "Log_String_19",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_20",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Return from SwitchPromotedVariables()"]],
+      "InputCount": 2
     }
   ],
   "Connections": [
@@ -907,6 +1085,396 @@
       },
       "To": {
         "Node": "Log_String_18",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_18",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "float_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Execution_Integer_Switch_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "float_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Execution_Integer_Switch_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Add_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "int_Variable_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_2",
+        "Group": 0,
+        "Index": 2
+      },
+      "To": {
+        "Node": "If_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Add_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "If_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Add_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "If_6",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Add_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_5",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Execution_Integer_Switch_2",
+        "Group": 0,
+        "Index": 3
+      },
+      "To": {
+        "Node": "int_Variable_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "float_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "float_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "float_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "String_Concat_0",
+        "Group": 0,
+        "Index": 3
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_19",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_19",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_19",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_19",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_19",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_20",
         "Group": 0,
         "Index": 0
       },

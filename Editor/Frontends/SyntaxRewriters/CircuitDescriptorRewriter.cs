@@ -974,6 +974,10 @@ namespace RRCG
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Expression);
             var statements = new SyntaxList<SyntaxNode>();
 
+            // Build conditional context creation invocation
+            var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
+            var createConditional = CreateConditionalContext(SemanticModel, locals, node.Sections.ToArray());
+
             // We'll declare the AlternativeExecs for each branch
             // ahead of time, so that we can pass the same reference
             // for multiple branches and avoid duplicate chips.
@@ -1046,7 +1050,9 @@ namespace RRCG
                     InvocationExpression(IdentifierName("__Switch"))
                     .WithArgumentList(
                         SyntaxUtils.ArgumentList(
-                            test,
+                            createConditional,
+                            ParenthesizedLambdaExpression()
+                                .WithExpressionBody(test),
                             defaultCaseExpression ?? ExecDelegate(),
                             ImplicitObjectCreationExpression()
                             .WithInitializer(

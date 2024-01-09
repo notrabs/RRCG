@@ -17,6 +17,8 @@ namespace RRCGBuild
             LogString("Return from ConditionalReturn()");
             SwitchInWhileLoop();
             LogString("Return from SwitchInWhileLoop()");
+            SwitchPromotedVariables();
+            LogString("Return from SwitchPromotedVariables()");
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -70,7 +72,7 @@ namespace RRCGBuild
                 }
 
                 ;
-                __Switch(switchString, rrcg_switch_section_5, new()
+                __Switch(__ConditionalContext(), () => switchString, rrcg_switch_section_5, new()
                 {{"test", rrcg_switch_section_0}, {"case2", rrcg_switch_section_1}, {"case3", rrcg_switch_section_1}, {"case4", rrcg_switch_section_3}, {"case5", rrcg_switch_section_4}});
                 __EndAccessibilityScope();
             }
@@ -120,7 +122,7 @@ namespace RRCGBuild
                 }
 
                 ;
-                __Switch(switchInt, rrcg_switch_section_5, new()
+                __Switch(__ConditionalContext(), () => switchInt, rrcg_switch_section_5, new()
                 {{1, rrcg_switch_section_0}, {2, rrcg_switch_section_1}, {3, rrcg_switch_section_1}, {4, rrcg_switch_section_3}, {5, rrcg_switch_section_4}});
                 __EndAccessibilityScope();
             }
@@ -182,7 +184,7 @@ namespace RRCGBuild
                         }
 
                         ;
-                        __Switch(switchString, delegate
+                        __Switch(__ConditionalContext(), () => switchString, delegate
                         {
                         }
 
@@ -219,7 +221,7 @@ namespace RRCGBuild
                             }
 
                             ;
-                            __Switch(switchString, delegate
+                            __Switch(__ConditionalContext(), () => switchString, delegate
                             {
                             }
 
@@ -269,7 +271,7 @@ namespace RRCGBuild
                 }
 
                 ;
-                __Switch(switchString, delegate
+                __Switch(__ConditionalContext(), () => switchString, delegate
                 {
                 }
 
@@ -299,7 +301,7 @@ namespace RRCGBuild
                     }
 
                     ;
-                    __Switch(5, delegate
+                    __Switch(__ConditionalContext(), () => 5, delegate
                     {
                     }
 
@@ -314,6 +316,73 @@ namespace RRCGBuild
 
             );
             LogString("After while");
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
+
+        public void SwitchPromotedVariables()
+        {
+            __BeginReturnScope("SwitchPromotedVariables", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                IntPort myLocal = default !;
+                myLocal = __VariableDeclaratorExpression<IntPort>("myLocal", () => 0, () => myLocal!, (_RRCG_SETTER_VALUE) => myLocal = _RRCG_SETTER_VALUE);
+                FloatPort otherLocal = default !;
+                otherLocal = __VariableDeclaratorExpression<FloatPort>("otherLocal", () => 0f, () => otherLocal!, (_RRCG_SETTER_VALUE) => otherLocal = _RRCG_SETTER_VALUE);
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                AlternativeExec rrcg_switch_section_0 = delegate
+                {
+                    __LabelDecl("rrcg_switch_case_label_0");
+                    myLocal += 1;
+                    __Break();
+                }
+
+                ;
+                AlternativeExec rrcg_switch_section_1 = delegate
+                {
+                    __LabelDecl("rrcg_switch_case_label_1");
+                    __If(__ConditionalContext("myLocal"), () => true, delegate
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        myLocal += 2;
+                        __EndAccessibilityScope();
+                    }
+
+                    , delegate
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        __EndAccessibilityScope();
+                    }
+
+                    );
+                    myLocal += 3;
+                    __Break();
+                }
+
+                ;
+                AlternativeExec rrcg_switch_section_2 = delegate
+                {
+                    __LabelDecl("rrcg_switch_case_label_3");
+                    myLocal += 4;
+                    otherLocal = 10f;
+                    __Goto("rrcg_switch_case_label_0");
+                }
+
+                ;
+                AlternativeExec rrcg_switch_section_3 = delegate
+                {
+                    __LabelDecl("rrcg_switch_case_label_default");
+                    myLocal = IntPort.MinValue;
+                    __Break();
+                }
+
+                ;
+                __Switch(__ConditionalContext("myLocal", "otherLocal"), () => myLocal, rrcg_switch_section_3, new()
+                {{0, rrcg_switch_section_0}, {1, rrcg_switch_section_1}, {3, rrcg_switch_section_2}});
+                __EndAccessibilityScope();
+            }
+
+            LogString(__StringInterpolation(myLocal, ", ", otherLocal));
             __EndAccessibilityScope();
             __EndReturnScope();
         }

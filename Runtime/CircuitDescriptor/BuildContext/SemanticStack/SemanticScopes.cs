@@ -105,9 +105,13 @@ namespace RRCGBuild
     public class SwitchScope : SemanticScope.IBreak
     {
         public ExecFlow BreakFlow;
+        public ConditionalContext ConditionalContext;
 
         public void Break()
         {
+            // Write promoted variables
+            ConditionalContext.WritePromotedVariables();
+
             // Merge the current exec flow into the break flow,
             // then clear the current exec flow.
             BreakFlow.Merge(ExecFlow.current);

@@ -39,6 +39,9 @@ public class Returns : CircuitDescriptor
 
             list[list.Count - 1] = "Not END";
             LogString(TestForEachReturnWithPromoted(list));
+
+            // Test returns from switch statements
+            LogString(TestSwitchReturn(0));
         });
     }
 
@@ -68,6 +71,9 @@ public class Returns : CircuitDescriptor
 
             list[list.Count - 1] = "Not END";
             LogString(CircuitBoard(TestForEachReturnWithPromoted, list));
+
+            // Test returns from switch statements
+            LogString(CircuitBoard(TestSwitchReturn, 0));
         });
     }
 
@@ -97,6 +103,9 @@ public class Returns : CircuitDescriptor
 
             list[list.Count - 1] = "Not END";
             LogString(EFTestForEachReturnWithPromoted(list));
+
+            // Test returns from switch statements
+            LogString(EFTestSwitchReturn(0));
         });
     }
 
@@ -170,6 +179,26 @@ public class Returns : CircuitDescriptor
         return "Failed to find END";
     }
 
+    string TestSwitchReturn(int match)
+    {
+        switch (match)
+        {
+            case 0:
+                LogString("Case 0 matched");
+                return "0";
+            case 1:
+                LogString("Case 1 matched");
+                return "1";
+            case 2:
+                LogString("Case 2 matched");
+                match += 2;
+                return match.ToString();
+            default:
+                LogString("Default case");
+                return "Error: default case matched!";
+        }
+    }
+
     [EventFunction]
     string EFSingleNonTupleReturn() => SingleNonTupleReturn();
     [EventFunction]
@@ -184,6 +213,8 @@ public class Returns : CircuitDescriptor
     string EFTestWhileReturnWithPromoted(List<string> list) => TestWhileReturnWithPromoted(list);
     [EventFunction]
     string EFTestForEachReturnWithPromoted(List<string> list) => TestForEachReturnWithPromoted(list);
+    [EventFunction]
+    string EFTestSwitchReturn(int match) => TestSwitchReturn(match);
 
     private void Test(string name, Action test)
     {
