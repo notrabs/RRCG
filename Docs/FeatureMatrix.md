@@ -113,11 +113,12 @@ implemented
 
 ## Iteration statements 
 
-**Implemented:** `while`, `do`
+**Implemented:** `while`, `do`, `foreach`
 
 Will place equivalent circuitry to implement the loops.
+If the iterator has a native CV2 chip (e.g. For Each), RRCG will prefer to use it, but will swap it out with an equivalent manual implementation if required to preserve semantics (e.g. delays, return, break).
 
-**Not implmented:** `for`, `foreach`
+**Not implmented:** `for`
 
 ## Selection statements
 
@@ -129,7 +130,7 @@ Switch only supports int and string cases and single values without case guards.
 
 **Implemented:** `break`, `continue`, `return`, `goto` (and `goto case`)
 
-Note that return only works as expected for void functions. In a value function only the last returned value will currently be returned. (This is the same limitation as given for the assignment operator)
+In the cases where you're returning in a `void` function, or you only return a single value from a function, execution flow will merge & the single port will be returned. If you have multiple returns within a non-`void` function, RRCG will automatically create & place event senders at each return location to cache the return data, which will be read from a corresponding event receiver.
 
 Gotos will jump to the first exec input after the label declaration. If you declare a label but don't use a chip that takes an exec input somewhere ahead of it, it will not resolve correctly and you'll get an error when building your graph.
 
@@ -137,6 +138,8 @@ C# scoping rules apply to labels:
 * you *can't* goto a label declared in a child scope
 * you *can* goto a label defined in a parent scope
 * you *can't* goto a label defined in a different function (also meaning no cross-context gotos, e.g. Circuit Boards, etc)
+
+Note that for gotos, RRCG is unable to determine conditional assignments ahead of time. Using `goto case` in a `switch` statement works as you expect, but anything else will have to be implemented manually using the Variable classes.
 
 ## String interpolation
 
