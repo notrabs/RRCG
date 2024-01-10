@@ -307,7 +307,7 @@ namespace RRCGBuild
             // Otherwise we construct an event to serve
             // as a "merge point" for the return data.
             // Start by creating the list of port definitions..
-            var ports = new List<(string Name, Type Type)>();
+            var ports = new List<(StringPort Name, Type Type)>();
             if (ReturnTypeIsTupleType)
             {
                 var types = ReturnType.GetGenericArguments();
@@ -317,9 +317,7 @@ namespace RRCGBuild
             else ports.Add(("result", ReturnType));
 
             // Now we can create the event definition from those
-            var eventName = Context.current.GetUniqueId($"RRCG_Return_{MethodName}");
-            var eventConfig = new EventDefinitionData(eventName, ports.ToArray());
-            CircuitBuilder.InlineGraph(() => ChipBuilderGen.EventDefinition(eventConfig));
+            var returnEvent = new DynamicEventDefinition($"Return_{MethodName}", ports.ToArray());
 
             // Jump to each return location and use our
             // new event to cache the return data
@@ -335,25 +333,15 @@ namespace RRCGBuild
                     : ((IEnumerable<dynamic>)TupleUtils.WrapTuple(ret.Data)).Cast<AnyPort>().ToArray();
 
                 // Build event sender & merge into return flow
-                ChipBuilder.EventSender(eventName, EventTarget.LOCAL, dataPorts);
+                returnEvent.SendLocal(dataPorts);
                 returnFlow.Merge(ExecFlow.current);
             }
 
             // Receive the new event
-            ExecFlow.current = returnFlow;
-            CircuitBuilder.InlineGraph(() => ChipBuilderGen.EventReceiver(new(eventName)));
-            var eventReceiver = Context.lastSpawnedNode;
-
-            // Create references to output ports
-            var cachePorts = new List<dynamic>();
-            for (int i = 0; i < ports.Count; i++)
-            {
-                dynamic outPort = Activator.CreateInstance(ports[i].Type);
-                outPort.Port = eventReceiver.Port(0, i + 1);
-                cachePorts.Add(outPort);
-            }
+            var cachePorts = CircuitBuilder.InlineGraph(() => returnEvent.Receiver());
 
             // Return the first port or a tuple as necessary
+            ExecFlow.current = returnFlow;
             return !ReturnTypeIsTupleType ? cachePorts.FirstOrDefault() : TupleUtils.UnwrapTuple(ReturnType, cachePorts.ToArray());
         }
     }
