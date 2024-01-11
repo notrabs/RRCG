@@ -68,11 +68,113 @@ namespace RRCGBuild
             ChipLib.Log(MemberCloudVar1);
             ChipLib.Log(MemberCloudVar2);
             ChipLib.Log(MemberCloudVar3);
-            // TODO: Collapse sequential variable writes.
-            MemberString += ", world!";
-            MemberString += " How";
-            MemberString += " are";
-            MemberString += "you?";
+            // Test conditional assignments to method parameters
+            // Simple lambdas
+            RoomEvent.TestEvent(param =>
+            {
+                __BeginReturnScope("SimpleLambda", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression("param", null, () => param!, (_RRCG_SETTER_VALUE) => param = _RRCG_SETTER_VALUE);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __If(__ConditionalContext("param"), () => true, delegate
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    param += ", conditional suffix (simple lambda)";
+                    __EndAccessibilityScope();
+                }
+
+                , delegate
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    __EndAccessibilityScope();
+                }
+
+                );
+                LogString(param);
+                __EndAccessibilityScope();
+                __EndAccessibilityScope();
+                __EndReturnScope();
+            }
+
+            );
+            // Parenthesized lambdas
+            RoomEvent.TestEvent((param) =>
+            {
+                __BeginReturnScope("ParenthesizedLambda", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression("param", null, () => param!, (_RRCG_SETTER_VALUE) => param = _RRCG_SETTER_VALUE);
+                __If(__ConditionalContext("param"), () => true, delegate
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    param += ", conditional suffix (parenthesized lambda)";
+                    __EndAccessibilityScope();
+                }
+
+                , delegate
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    __EndAccessibilityScope();
+                }
+
+                );
+                LogString(param);
+                __EndAccessibilityScope();
+                __EndReturnScope();
+            }
+
+            );
+            // Anonymous methods
+            RoomEvent.TestEvent(delegate (StringPort param)
+            {
+                __BeginReturnScope("AnonymousMethod", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<StringPort>("param", null, () => param!, (_RRCG_SETTER_VALUE) => param = _RRCG_SETTER_VALUE);
+                __If(__ConditionalContext("param"), () => true, delegate
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    param += ", conditional suffix (anonymous method)";
+                    __EndAccessibilityScope();
+                }
+
+                , delegate
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    __EndAccessibilityScope();
+                }
+
+                );
+                LogString(param);
+                __EndAccessibilityScope();
+                __EndReturnScope();
+            }
+
+            );
+            // Methods
+            RoomEvent.TestEvent(ConditionalParamsTest);
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
+
+        void ConditionalParamsTest(StringPort param)
+        {
+            __BeginReturnScope("ConditionalParamsTest", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            __VariableDeclaratorExpression<StringPort>("param", null, () => param!, (_RRCG_SETTER_VALUE) => param = _RRCG_SETTER_VALUE);
+            __If(__ConditionalContext("param"), () => true, delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                param += ", conditional suffix (member method)";
+                __EndAccessibilityScope();
+            }
+
+            , delegate
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __EndAccessibilityScope();
+            }
+
+            );
+            LogString(param);
             __EndAccessibilityScope();
             __EndReturnScope();
         }

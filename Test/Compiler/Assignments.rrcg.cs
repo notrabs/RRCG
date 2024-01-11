@@ -67,11 +67,38 @@ public class AssignmentsTest : CircuitDescriptor
         ChipLib.Log(MemberCloudVar2);
         ChipLib.Log(MemberCloudVar3);
 
-        // TODO: Collapse sequential variable writes.
-        MemberString += ", world!";
-        MemberString += " How";
-        MemberString += " are";
-        MemberString += "you?";
+        // Test conditional assignments to method parameters
+        // Simple lambdas
+        RoomEvent.TestEvent(param =>
+        {
+            if (true) param += ", conditional suffix (simple lambda)";
+            LogString(param);
+        });
+
+        // Parenthesized lambdas
+        RoomEvent.TestEvent((param) =>
+        {
+            if (true) param += ", conditional suffix (parenthesized lambda)";
+            LogString(param);
+        });
+
+        // Anonymous methods
+        RoomEvent.TestEvent(delegate (string param)
+        {
+            if (true) param += ", conditional suffix (anonymous method)";
+            LogString(param);
+        });
+
+        // Methods
+        RoomEvent.TestEvent(ConditionalParamsTest);
+    }
+
+    void ConditionalParamsTest(string param)
+    {
+        if (true)
+            param += ", conditional suffix (member method)";
+
+        LogString(param);
     }
 }
 class TypeTest

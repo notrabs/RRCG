@@ -31,6 +31,7 @@ namespace RRCGBuild
             {
                 __BeginReturnScope("ParenthesizedLambda", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("test", null, () => test!, (_RRCG_SETTER_VALUE) => test = _RRCG_SETTER_VALUE);
                 ChipLib.Log("Anonymous Parameter");
                 __EndAccessibilityScope();
                 __EndReturnScope();
@@ -54,6 +55,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("ContentsMixed", typeof(IntPort), null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            __VariableDeclaratorExpression<IntPort>("a", null, () => a!, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
             __Return<IntPort>(RandomInt(a, 10));
             __EndAccessibilityScope();
             return __EndReturnScope()!;
@@ -63,6 +65,8 @@ namespace RRCGBuild
         {
             __BeginReturnScope("ContentsData", typeof((IntPort namedValue, IntPort)), new[]{"namedValue", "value1"});
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            __VariableDeclaratorExpression<IntPort>("a", null, () => a!, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
+            __VariableDeclaratorExpression<IntPort>("b", null, () => b!, (_RRCG_SETTER_VALUE) => b = _RRCG_SETTER_VALUE);
             __Return<(IntPort namedValue, IntPort)>((a, b));
             __EndAccessibilityScope();
             return __EndReturnScope()!;

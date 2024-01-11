@@ -220,6 +220,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("TestWhileReturnWithPromoted", typeof(StringPort), null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            __VariableDeclaratorExpression<ListPort<StringPort>>("list", null, () => list!, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
                 StringPort output = default !;
                 output = __VariableDeclaratorExpression<StringPort>("output", () => "", () => output!, (_RRCG_SETTER_VALUE) => output = _RRCG_SETTER_VALUE);
                 IntPort i = default !;
@@ -258,6 +259,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("TestForEachReturnWithPromoted", typeof(StringPort), null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            __VariableDeclaratorExpression<ListPort<StringPort>>("list", null, () => list!, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
                 StringPort output = default !;
                 output = __VariableDeclaratorExpression<StringPort>("output", () => "", () => output!, (_RRCG_SETTER_VALUE) => output = _RRCG_SETTER_VALUE);
             __ForEach(__ConditionalContext("output"), list, (character) =>
@@ -291,6 +293,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("TestSwitchReturn", typeof(StringPort), null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            __VariableDeclaratorExpression<IntPort>("match", null, () => match!, (_RRCG_SETTER_VALUE) => match = _RRCG_SETTER_VALUE);
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 AlternativeExec rrcg_switch_section_0 = delegate
@@ -326,7 +329,7 @@ namespace RRCGBuild
                 }
 
                 ;
-                __Switch(__ConditionalContext(), () => match, rrcg_switch_section_3, new()
+                __Switch(__ConditionalContext("match"), () => match, rrcg_switch_section_3, new()
                 {{0, rrcg_switch_section_0}, {1, rrcg_switch_section_1}, {2, rrcg_switch_section_2}});
                 __EndAccessibilityScope();
             }
@@ -341,7 +344,9 @@ namespace RRCGBuild
             return __DispatchEventFunction<StringPort>("EFSingleNonTupleReturn", delegate ()
             {
                 __BeginReturnScope("EFSingleNonTupleReturn", typeof(StringPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 __Return<StringPort>(SingleNonTupleReturn());
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -354,7 +359,9 @@ namespace RRCGBuild
             return __DispatchEventFunction<StringPort>("EFMultipleNonTupleReturns", delegate ()
             {
                 __BeginReturnScope("EFMultipleNonTupleReturns", typeof(StringPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 __Return<StringPort>(MultipleNonTupleReturns());
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -367,7 +374,9 @@ namespace RRCGBuild
             return __DispatchEventFunction<(StringPort Named, IntPort)>("EFSingleTupleReturn", delegate ()
             {
                 __BeginReturnScope("EFSingleTupleReturn", typeof((StringPort Named, IntPort)), new[]{"Named", "value1"});
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 __Return<(StringPort Named, IntPort)>(SingleTupleReturn());
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -380,7 +389,9 @@ namespace RRCGBuild
             return __DispatchEventFunction<(StringPort Named, IntPort)>("EFMultipleTupleReturns", delegate ()
             {
                 __BeginReturnScope("EFMultipleTupleReturns", typeof((StringPort Named, IntPort)), new[]{"Named", "value1"});
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 __Return<(StringPort Named, IntPort)>(MultipleTupleReturns());
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -393,7 +404,9 @@ namespace RRCGBuild
             return __DispatchEventFunction<StringPort>("EFTestIfReturnWithPromoted", delegate ()
             {
                 __BeginReturnScope("EFTestIfReturnWithPromoted", typeof(StringPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 __Return<StringPort>(TestIfReturnWithPromoted());
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -406,7 +419,10 @@ namespace RRCGBuild
             return __DispatchEventFunction<StringPort, ListPort<StringPort>>("EFTestWhileReturnWithPromoted", delegate (ListPort<StringPort> list)
             {
                 __BeginReturnScope("EFTestWhileReturnWithPromoted", typeof(StringPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<ListPort<StringPort>>("list", null, () => list!, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
                 __Return<StringPort>(TestWhileReturnWithPromoted(list));
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -419,7 +435,10 @@ namespace RRCGBuild
             return __DispatchEventFunction<StringPort, ListPort<StringPort>>("EFTestForEachReturnWithPromoted", delegate (ListPort<StringPort> list)
             {
                 __BeginReturnScope("EFTestForEachReturnWithPromoted", typeof(StringPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<ListPort<StringPort>>("list", null, () => list!, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
                 __Return<StringPort>(TestForEachReturnWithPromoted(list));
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -432,7 +451,10 @@ namespace RRCGBuild
             return __DispatchEventFunction<StringPort, IntPort>("EFTestSwitchReturn", delegate (IntPort match)
             {
                 __BeginReturnScope("EFTestSwitchReturn", typeof(StringPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("match", null, () => match!, (_RRCG_SETTER_VALUE) => match = _RRCG_SETTER_VALUE);
                 __Return<StringPort>(TestSwitchReturn(match));
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -443,6 +465,8 @@ namespace RRCGBuild
         {
             __BeginReturnScope("Test", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            __VariableDeclaratorExpression<StringPort>("name", null, () => name!, (_RRCG_SETTER_VALUE) => name = _RRCG_SETTER_VALUE);
+            __VariableDeclaratorExpression<Action>("test", null, () => test!, (_RRCG_SETTER_VALUE) => test = _RRCG_SETTER_VALUE);
             new EventDefinition(name).Receiver();
             LogString(__StringInterpolation("Starting test ", name));
             test();

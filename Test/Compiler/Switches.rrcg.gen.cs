@@ -27,6 +27,8 @@ namespace RRCGBuild
         {
             __BeginReturnScope("SwitchTypes", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            __VariableDeclaratorExpression<StringPort>("switchString", null, () => switchString!, (_RRCG_SETTER_VALUE) => switchString = _RRCG_SETTER_VALUE);
+            __VariableDeclaratorExpression<IntPort>("switchInt", null, () => switchInt!, (_RRCG_SETTER_VALUE) => switchInt = _RRCG_SETTER_VALUE);
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 AlternativeExec rrcg_switch_section_0 = delegate
@@ -135,6 +137,8 @@ namespace RRCGBuild
         {
             __BeginReturnScope("ConditionalReturn", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            __VariableDeclaratorExpression<StringPort>("switchString", null, () => switchString!, (_RRCG_SETTER_VALUE) => switchString = _RRCG_SETTER_VALUE);
+            __VariableDeclaratorExpression<BoolPort>("condition", null, () => condition!, (_RRCG_SETTER_VALUE) => condition = _RRCG_SETTER_VALUE);
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 AlternativeExec rrcg_switch_section_0 = delegate

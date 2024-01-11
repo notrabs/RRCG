@@ -54,7 +54,9 @@ namespace RRCGBuild
             __DispatchEventFunction("Void0", delegate ()
             {
                 __BeginReturnScope("Void0", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 ChipLib.Log("void0");
+                __EndAccessibilityScope();
                 __EndReturnScope();
             }
 
@@ -67,7 +69,10 @@ namespace RRCGBuild
             __DispatchEventFunction<StringPort>("Void1", delegate (StringPort p0)
             {
                 __BeginReturnScope("Void1", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<StringPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
                 ChipLib.Log(__StringInterpolation("void1 ", p0));
+                __EndAccessibilityScope();
                 __EndReturnScope();
             }
 
@@ -80,7 +85,10 @@ namespace RRCGBuild
             __DispatchEventFunction<IntPort>("Void1", delegate (IntPort p0)
             {
                 __BeginReturnScope("Void1", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
                 ChipLib.Log(__StringInterpolation("void1 ", p0));
+                __EndAccessibilityScope();
                 __EndReturnScope();
             }
 
@@ -93,7 +101,11 @@ namespace RRCGBuild
             __DispatchEventFunction<StringPort, IntPort>("Void2", delegate (StringPort p0, IntPort p1)
             {
                 __BeginReturnScope("Void2", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<StringPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p1", null, () => p1!, (_RRCG_SETTER_VALUE) => p1 = _RRCG_SETTER_VALUE);
                 ChipLib.Log(__StringInterpolation("void2 ", p0, " ", p1));
+                __EndAccessibilityScope();
                 __EndReturnScope();
             }
 
@@ -106,7 +118,12 @@ namespace RRCGBuild
             __DispatchEventFunction<StringPort, IntPort, FloatPort>("Void3", delegate (StringPort p0, IntPort p1, FloatPort p2)
             {
                 __BeginReturnScope("Void3", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<StringPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p1", null, () => p1!, (_RRCG_SETTER_VALUE) => p1 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<FloatPort>("p2", null, () => p2!, (_RRCG_SETTER_VALUE) => p2 = _RRCG_SETTER_VALUE);
                 ChipLib.Log(__StringInterpolation("void3 ", p0, " ", p1, " ", p2));
+                __EndAccessibilityScope();
                 __EndReturnScope();
             }
 
@@ -119,7 +136,9 @@ namespace RRCGBuild
             return __DispatchEventFunction<IntPort>("SingleReturn", delegate ()
             {
                 __BeginReturnScope("SingleReturn", typeof(IntPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 __Return<IntPort>(RandomInt(1, 10));
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -132,7 +151,9 @@ namespace RRCGBuild
             return __DispatchEventFunction<IntPort>("DataReturn", delegate ()
             {
                 __BeginReturnScope("DataReturn", typeof(IntPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 __Return<IntPort>(3);
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -145,7 +166,10 @@ namespace RRCGBuild
             return __DispatchEventFunction<(IntPort, StringPort), IntPort>("TupleReturn", delegate (IntPort number)
             {
                 __BeginReturnScope("TupleReturn", typeof((IntPort, StringPort)), new[]{"value0", "value1"});
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("number", null, () => number!, (_RRCG_SETTER_VALUE) => number = _RRCG_SETTER_VALUE);
                 __Return<(IntPort, StringPort)>((number, number.ToString()));
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -158,7 +182,11 @@ namespace RRCGBuild
             return __DispatchEventFunction<(IntPort, StringPort), IntPort, StringPort>("MultiInOut", delegate (IntPort number, StringPort text)
             {
                 __BeginReturnScope("MultiInOut", typeof((IntPort, StringPort)), new[]{"value0", "value1"});
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("number", null, () => number!, (_RRCG_SETTER_VALUE) => number = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<StringPort>("text", null, () => text!, (_RRCG_SETTER_VALUE) => text = _RRCG_SETTER_VALUE);
                 __Return<(IntPort, StringPort)>((number, text));
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -172,7 +200,13 @@ namespace RRCGBuild
             __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort>("Void4", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3)
             {
                 __BeginReturnScope("Void4", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p1", null, () => p1!, (_RRCG_SETTER_VALUE) => p1 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p2", null, () => p2!, (_RRCG_SETTER_VALUE) => p2 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p3", null, () => p3!, (_RRCG_SETTER_VALUE) => p3 = _RRCG_SETTER_VALUE);
                 ChipLib.Log("compiled!");
+                __EndAccessibilityScope();
                 __EndReturnScope();
             }
 
@@ -185,7 +219,14 @@ namespace RRCGBuild
             __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort>("Void5", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4)
             {
                 __BeginReturnScope("Void5", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p1", null, () => p1!, (_RRCG_SETTER_VALUE) => p1 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p2", null, () => p2!, (_RRCG_SETTER_VALUE) => p2 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p3", null, () => p3!, (_RRCG_SETTER_VALUE) => p3 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p4", null, () => p4!, (_RRCG_SETTER_VALUE) => p4 = _RRCG_SETTER_VALUE);
                 ChipLib.Log("compiled!");
+                __EndAccessibilityScope();
                 __EndReturnScope();
             }
 
@@ -198,7 +239,15 @@ namespace RRCGBuild
             __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("Void6", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5)
             {
                 __BeginReturnScope("Void6", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p1", null, () => p1!, (_RRCG_SETTER_VALUE) => p1 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p2", null, () => p2!, (_RRCG_SETTER_VALUE) => p2 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p3", null, () => p3!, (_RRCG_SETTER_VALUE) => p3 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p4", null, () => p4!, (_RRCG_SETTER_VALUE) => p4 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p5", null, () => p5!, (_RRCG_SETTER_VALUE) => p5 = _RRCG_SETTER_VALUE);
                 ChipLib.Log("compiled!");
+                __EndAccessibilityScope();
                 __EndReturnScope();
             }
 
@@ -211,7 +260,16 @@ namespace RRCGBuild
             __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("Void7", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6)
             {
                 __BeginReturnScope("Void7", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p1", null, () => p1!, (_RRCG_SETTER_VALUE) => p1 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p2", null, () => p2!, (_RRCG_SETTER_VALUE) => p2 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p3", null, () => p3!, (_RRCG_SETTER_VALUE) => p3 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p4", null, () => p4!, (_RRCG_SETTER_VALUE) => p4 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p5", null, () => p5!, (_RRCG_SETTER_VALUE) => p5 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p6", null, () => p6!, (_RRCG_SETTER_VALUE) => p6 = _RRCG_SETTER_VALUE);
                 ChipLib.Log("compiled!");
+                __EndAccessibilityScope();
                 __EndReturnScope();
             }
 
@@ -224,7 +282,17 @@ namespace RRCGBuild
             __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("Void8", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6, IntPort p7)
             {
                 __BeginReturnScope("Void8", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p1", null, () => p1!, (_RRCG_SETTER_VALUE) => p1 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p2", null, () => p2!, (_RRCG_SETTER_VALUE) => p2 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p3", null, () => p3!, (_RRCG_SETTER_VALUE) => p3 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p4", null, () => p4!, (_RRCG_SETTER_VALUE) => p4 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p5", null, () => p5!, (_RRCG_SETTER_VALUE) => p5 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p6", null, () => p6!, (_RRCG_SETTER_VALUE) => p6 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p7", null, () => p7!, (_RRCG_SETTER_VALUE) => p7 = _RRCG_SETTER_VALUE);
                 ChipLib.Log("compiled!");
+                __EndAccessibilityScope();
                 __EndReturnScope();
             }
 
@@ -237,7 +305,13 @@ namespace RRCGBuild
             return __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort>("NonVoid4", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3)
             {
                 __BeginReturnScope("NonVoid4", typeof(IntPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p1", null, () => p1!, (_RRCG_SETTER_VALUE) => p1 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p2", null, () => p2!, (_RRCG_SETTER_VALUE) => p2 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p3", null, () => p3!, (_RRCG_SETTER_VALUE) => p3 = _RRCG_SETTER_VALUE);
                 __Return<IntPort>(RandomInt(1, 2));
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -250,7 +324,14 @@ namespace RRCGBuild
             return __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("NonVoid5", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4)
             {
                 __BeginReturnScope("NonVoid5", typeof(IntPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p1", null, () => p1!, (_RRCG_SETTER_VALUE) => p1 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p2", null, () => p2!, (_RRCG_SETTER_VALUE) => p2 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p3", null, () => p3!, (_RRCG_SETTER_VALUE) => p3 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p4", null, () => p4!, (_RRCG_SETTER_VALUE) => p4 = _RRCG_SETTER_VALUE);
                 __Return<IntPort>(RandomInt(1, 2));
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -263,7 +344,15 @@ namespace RRCGBuild
             return __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("NonVoid6", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5)
             {
                 __BeginReturnScope("NonVoid6", typeof(IntPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p1", null, () => p1!, (_RRCG_SETTER_VALUE) => p1 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p2", null, () => p2!, (_RRCG_SETTER_VALUE) => p2 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p3", null, () => p3!, (_RRCG_SETTER_VALUE) => p3 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p4", null, () => p4!, (_RRCG_SETTER_VALUE) => p4 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p5", null, () => p5!, (_RRCG_SETTER_VALUE) => p5 = _RRCG_SETTER_VALUE);
                 __Return<IntPort>(RandomInt(1, 2));
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -276,7 +365,16 @@ namespace RRCGBuild
             return __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("NonVoid7", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6)
             {
                 __BeginReturnScope("NonVoid7", typeof(IntPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p1", null, () => p1!, (_RRCG_SETTER_VALUE) => p1 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p2", null, () => p2!, (_RRCG_SETTER_VALUE) => p2 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p3", null, () => p3!, (_RRCG_SETTER_VALUE) => p3 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p4", null, () => p4!, (_RRCG_SETTER_VALUE) => p4 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p5", null, () => p5!, (_RRCG_SETTER_VALUE) => p5 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p6", null, () => p6!, (_RRCG_SETTER_VALUE) => p6 = _RRCG_SETTER_VALUE);
                 __Return<IntPort>(RandomInt(1, 2));
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 
@@ -289,7 +387,17 @@ namespace RRCGBuild
             return __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("NonVoid8", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6, IntPort p7)
             {
                 __BeginReturnScope("NonVoid8", typeof(IntPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression<IntPort>("p0", null, () => p0!, (_RRCG_SETTER_VALUE) => p0 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p1", null, () => p1!, (_RRCG_SETTER_VALUE) => p1 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p2", null, () => p2!, (_RRCG_SETTER_VALUE) => p2 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p3", null, () => p3!, (_RRCG_SETTER_VALUE) => p3 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p4", null, () => p4!, (_RRCG_SETTER_VALUE) => p4 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p5", null, () => p5!, (_RRCG_SETTER_VALUE) => p5 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p6", null, () => p6!, (_RRCG_SETTER_VALUE) => p6 = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<IntPort>("p7", null, () => p7!, (_RRCG_SETTER_VALUE) => p7 = _RRCG_SETTER_VALUE);
                 __Return<IntPort>(RandomInt(1, 2));
+                __EndAccessibilityScope();
                 return __EndReturnScope()!;
             }
 

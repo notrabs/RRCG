@@ -36,6 +36,7 @@ namespace RRCGSource
     /// Fields declared with this attribute will be placed as synced variable chips.
     /// The initializer will become the home value.
     /// </summary>
+    /// <see cref="CircuitDescriptor.FieldVariableChanged{T}(T)"/>
     [AttributeUsage(AttributeTargets.Field)]
     public class SyncedVariable : Attribute { }
 
@@ -43,6 +44,7 @@ namespace RRCGSource
     /// Fields declared with this attribute will be placed as cloud variable chips.
     /// Home values are not supported with cloud variables!
     /// </summary>
+    /// <see cref="CircuitDescriptor.FieldVariableChanged{T}(T)"/>
     [AttributeUsage(AttributeTargets.Field)]
     public class CloudVariable : Attribute
     {

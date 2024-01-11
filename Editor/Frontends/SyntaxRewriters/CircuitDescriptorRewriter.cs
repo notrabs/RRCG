@@ -214,7 +214,14 @@ namespace RRCG
                 );
             }
 
-            var statements = WrapStatementsInReturnScope(method.Body.Statements, methodName, rewrittenReturnType);
+            var statements = method.Body.Statements;
+
+            // Declare parameters as as variables
+            statements = statements.InsertRange(0, VariableDeclaratorsFromParameters(method.ParameterList.Parameters.ToArray()));
+
+            // Wrap in accessibility & return scope
+            statements = WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.MethodRoot);
+            statements = WrapStatementsInReturnScope(statements, methodName, rewrittenReturnType);
 
             // special functions
             var isEventFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "EventFunction"));
@@ -293,46 +300,65 @@ namespace RRCG
 
         public override SyntaxNode VisitSimpleLambdaExpression(SimpleLambdaExpressionSyntax method)
         {
-            return VisitAnonymousFunction(method, base.VisitSimpleLambdaExpression, "SimpleLambda");
+            var visitedMethod = (SimpleLambdaExpressionSyntax)base.VisitSimpleLambdaExpression(method);
+            return VisitAnonymousFunction(method, visitedMethod, "SimpleLambda", visitedMethod.Parameter);
         }
         public override SyntaxNode VisitParenthesizedLambdaExpression(ParenthesizedLambdaExpressionSyntax method)
         {
-            return VisitAnonymousFunction(method, base.VisitParenthesizedLambdaExpression, "ParenthesizedLambda");
+            var visitedMethod = (ParenthesizedLambdaExpressionSyntax)base.VisitParenthesizedLambdaExpression(method);
+            return VisitAnonymousFunction(method, visitedMethod, "ParenthesizedLambda", visitedMethod.ParameterList.Parameters.ToArray());
         }
 
         public override SyntaxNode VisitAnonymousMethodExpression(AnonymousMethodExpressionSyntax method)
         {
-            return VisitAnonymousFunction(method, base.VisitAnonymousMethodExpression, "AnonymousMethod");
+            var visitedMethod = (AnonymousMethodExpressionSyntax)base.VisitAnonymousMethodExpression(method);
+            return VisitAnonymousFunction(method, visitedMethod, "AnonymousMethod", visitedMethod.ParameterList.Parameters.ToArray());
         }
 
-        public T VisitAnonymousFunction<T>(T method, Func<T, SyntaxNode> visitMethod, string methodName) where T : AnonymousFunctionExpressionSyntax
+        public T VisitAnonymousFunction<T>(T method, T visitedMethod, string methodName, params ParameterSyntax[] visitedParameters) where T : AnonymousFunctionExpressionSyntax
         {
             SyntaxList<StatementSyntax> statements;
-            var visitedMethod = (T)visitMethod(method);
+
             var returnType = (SemanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnType.ToTypeSyntax();
             var rewrittenReturnType = (TypeSyntax)Visit(returnType);
 
+            // Grab statements from the block/expression body
             if (method.Block != null)
             {
-                statements = WrapStatementsInReturnScope(
-                    visitedMethod.Block.Statements,
-                    methodName,
-                    rewrittenReturnType
-                );
+                statements = visitedMethod.Block.Statements;
             }
             else
             {
-                // .ExpressionBody and .Block are mutually exclusive -- this function is without a block.
-                // We need one for accessibility scopes, so let's create one.
                 statements = SyntaxFactory.SingletonList<StatementSyntax>(
                                 returnType.ToString() == "void" ? SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
                                                                 : ValueReturnStatement(visitedMethod.ExpressionBody, rewrittenReturnType)
                                 );
-
-                statements = WrapStatementsInAccessibilityScope(WrapStatementsInReturnScope(statements, methodName, rewrittenReturnType), AccessibilityScope.Kind.MethodRoot);
             }
 
+            // Now we can declare method parameters as variables for the root accessibility scope.
+            statements = statements.InsertRange(0, VariableDeclaratorsFromParameters(visitedParameters));
+
+            // Wrap the statements in an accessibility & return scope
+            statements = WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.MethodRoot);
+            statements = WrapStatementsInReturnScope(statements, methodName, rewrittenReturnType);
+
+            // Finally return the method with the new statements
             return (T)visitedMethod.WithBody(Block(statements));
+        }
+
+        public SyntaxList<StatementSyntax> VariableDeclaratorsFromParameters(params ParameterSyntax[] parameters)
+        {
+            var invocations = new SyntaxList<StatementSyntax>();
+            foreach (var parameter in parameters)
+            {
+                // Skip if the parameter has the ref or out keyword. We don't support this currently, the safe option is to skip.
+                if (parameter.Modifiers.Any(m => m.Kind() == SyntaxKind.RefKeyword || m.Kind() == SyntaxKind.OutKeyword)) continue;
+
+                var invocation = VariableDeclaratorExpressionInvocation(parameter.Identifier.ToString(), null, parameter.Type, true);
+                invocations = invocations.Add(ExpressionStatement(invocation));
+            }
+
+            return invocations;
         }
 
         public SyntaxList<StatementSyntax> WrapStatementsInReturnScope(SyntaxList<StatementSyntax> statements, string methodName, TypeSyntax returnType)
@@ -442,19 +468,24 @@ namespace RRCG
         public override SyntaxNode VisitBlock(BlockSyntax node)
         {
             var kind = AccessibilityScope.Kind.General;
-
-            if (node.Parent != null)
-                kind = node.Parent.Kind() switch
-                {
-                    SyntaxKind.MethodDeclaration => AccessibilityScope.Kind.MethodRoot,
-                    SyntaxKind.AnonymousMethodExpression => AccessibilityScope.Kind.MethodRoot,
-                    SyntaxKind.ParenthesizedLambdaExpression => AccessibilityScope.Kind.MethodRoot,
-                    SyntaxKind.SimpleAssignmentExpression => AccessibilityScope.Kind.MethodRoot,
-                    _ => AccessibilityScope.Kind.General
-                };
-
             var newStatements = new SyntaxList<StatementSyntax>(node.Statements.Select(s => (StatementSyntax)Visit(s)));
-            return SyntaxFactory.Block(
+
+            switch (node.Parent?.Kind())
+            {
+                case SyntaxKind.MethodDeclaration:
+                case SyntaxKind.AnonymousMethodExpression:
+                case SyntaxKind.ParenthesizedLambdaExpression:
+                case SyntaxKind.SimpleAssignmentExpression:
+                    // In these cases we need to declare parameters as variables
+                    // within the method's root accessibility scope. To make things
+                    // easier for ourselves, we'll skip inserting one here and leave it
+                    // to VisitMethodDeclaration / VisitAnonymousFunction.
+                    return Block(newStatements);
+
+            }
+
+            // Otherwise we can wrap it & return.
+            return Block(
                         WrapStatementsInAccessibilityScope(newStatements, kind)
                     );
         }
@@ -940,8 +971,8 @@ namespace RRCG
         public override SyntaxNode VisitIfStatement(IfStatementSyntax node)
         {
             // Build conditional context creation invocation
-            var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(SemanticModel, locals, node.Statement, node.Else?.Statement);
+            var symbols = GetAccessibleSymbolsForConditionalContext(node.SpanStart);
+            var createConditional = CreateConditionalContext(symbols, node.Statement, node.Else?.Statement);
 
             ExpressionSyntax test = (ExpressionSyntax)Visit(node.Condition);
             StatementSyntax trueStatement = (StatementSyntax)Visit(node.Statement);
@@ -975,8 +1006,8 @@ namespace RRCG
             var statements = new SyntaxList<SyntaxNode>();
 
             // Build conditional context creation invocation
-            var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(SemanticModel, locals, node.Sections.ToArray());
+            var symbols = GetAccessibleSymbolsForConditionalContext(node.SpanStart);
+            var createConditional = CreateConditionalContext(symbols, node.Sections.ToArray());
 
             // We'll declare the AlternativeExecs for each branch
             // ahead of time, so that we can pass the same reference
@@ -1082,8 +1113,8 @@ namespace RRCG
         public SyntaxNode VisitWhileIterator(SyntaxNode node, ExpressionSyntax condition, StatementSyntax bodyStatement, bool buildIfAfterBlock)
         {
             // Build conditional context creation invocation
-            var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(SemanticModel, locals, bodyStatement);
+            var symbols = GetAccessibleSymbolsForConditionalContext(node.SpanStart);
+            var createConditional = CreateConditionalContext(symbols, bodyStatement);
 
             ExpressionSyntax test = (ExpressionSyntax)Visit(condition);
             StatementSyntax whileStatement = (StatementSyntax)Visit(bodyStatement);
@@ -1114,8 +1145,8 @@ namespace RRCG
         public override SyntaxNode VisitForEachStatement(ForEachStatementSyntax node)
         {
             // Build conditional context creation invocation
-            var locals = SemanticModel.GetAccessibleLocals(node.SpanStart);
-            var createConditional = CreateConditionalContext(SemanticModel, locals, node.Statement);
+            var symbols = GetAccessibleSymbolsForConditionalContext(node.SpanStart);
+            var createConditional = CreateConditionalContext(symbols, node.Statement);
 
             // Visit statement & ensure block w/ accessibility scope
             var visitedStatement = (StatementSyntax)Visit(node.Statement);
@@ -1333,12 +1364,18 @@ namespace RRCG
                    .NormalizeWhitespace();
         }
 
-        public InvocationExpressionSyntax CreateConditionalContext(SemanticModel semanticModel, IEnumerable<ILocalSymbol> accessibleLocals, params SyntaxNode?[] nodesToSearch)
+        // Leaving this seperate for now in case we need to force-promote symbols
+        IEnumerable<ISymbol> GetAccessibleSymbolsForConditionalContext(int position)
+        {
+            return SemanticModel.GetAccessibleSymbols(position, SymbolKind.Local, SymbolKind.Parameter);
+        }
+
+        InvocationExpressionSyntax CreateConditionalContext(IEnumerable<ISymbol> accessibleSymbols, params SyntaxNode?[] nodesToSearch)
         {
             // 1. Create arguments list to store our identifier names
             var arguments = new List<ExpressionSyntax>() { };
             
-            var promotedSymbols = new List<ILocalSymbol>();
+            var promotedSymbols = new List<ISymbol>();
             foreach (var nodeToSearch in nodesToSearch)
             {
                 if (nodeToSearch == null) continue;
@@ -1366,20 +1403,18 @@ namespace RRCG
 
                     if (assignedLocalExpression == null) continue;
 
-                    // Ensure the target of the assignment is a local variable.
-                    var symbolInfo = semanticModel.GetSymbolInfo(assignedLocalExpression);
+                    var symbolInfo = SemanticModel.GetSymbolInfo(assignedLocalExpression);
                     if (symbolInfo.Symbol == null) continue;
-                    if (symbolInfo.Symbol is not ILocalSymbol localSymbol) continue;
 
-                    // If the local symbol is contained within the accessible locals,
+                    // If the symbol being assigned to is contained within the accessible symbols,
                     // then the variable should be promoted (if we haven't promoted it already)
-                    if (!accessibleLocals.Any(s => s.Equals(localSymbol))) continue;
-                    if (promotedSymbols.Any(s => s.Equals(localSymbol))) continue;
+                    if (!accessibleSymbols.Any(s => s.Equals(symbolInfo.Symbol))) continue;
+                    if (promotedSymbols.Any(s => s.Equals(symbolInfo.Symbol))) continue;
 
-                    promotedSymbols.Add(localSymbol);
+                    promotedSymbols.Add(symbolInfo.Symbol);
                     arguments.Add(LiteralExpression(
                                       SyntaxKind.StringLiteralExpression,
-                                      Literal(localSymbol.Name)));
+                                      Literal(symbolInfo.Symbol.Name)));
                 }
             }
 

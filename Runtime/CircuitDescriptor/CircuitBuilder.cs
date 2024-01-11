@@ -669,7 +669,7 @@ namespace RRCGBuild
             return Concat(stringPorts.ToArray());
         }
 
-        public static T __VariableDeclaratorExpression<T>(string identifier, Func<T>? initializer, Func<dynamic> getter, Action<dynamic>? setter)
+        public static T __VariableDeclaratorExpression<T>(string identifier, Func<T>? initializer, Func<T> getter, Action<T>? setter)
         {
             // Store in accessibility scope?
             var scope = SemanticStack.current.GetNextScopeWithType<AccessibilityScope>();
@@ -680,8 +680,15 @@ namespace RRCGBuild
                     throw new Exception($"Attempt to declare variable with identifier \"{identifier}\", but there was " +
                                          "already a variable with the same identifier in an enclosing accessibility scope!");
 
+                // In the case of method parameters, the rewriter may not have easy access to the type information to write
+                // as the generic parameters. To aid in this, we can use the getter/setter/initializer lambdas to help C# resolve the type.
+                // However, we need the getters/setters to work with the dynamic type.
+                // To resolve this we just wrap the methods, but maybe there's a better way to do this?
+                Func<dynamic> dynamicGetter = () => getter()!;
+                Action<dynamic>? dynamicSetter = setter != null ? (v) => setter(v) : null;
+
                 // Add to current scope
-                accessScope.DeclaredVariables[identifier] = new() { Getter = getter, Setter = setter, Type = typeof(T) };
+                accessScope.DeclaredVariables[identifier] = new() { Getter = dynamicGetter, Setter = dynamicSetter, Type = typeof(T) };
             }
 
             // Initialize the variable?

@@ -207,17 +207,18 @@ namespace RRCG
             return resolvedType;
         }
 
-        public static IEnumerable<ILocalSymbol> GetAccessibleLocals(this SemanticModel semanticModel, int position)
+        public static IEnumerable<ISymbol> GetAccessibleSymbols(this SemanticModel semanticModel, int position, params SymbolKind[] filterKinds)
         {
+            var symbols = semanticModel.LookupSymbols(position);
+
             return semanticModel.LookupSymbols(position)
-                .Where(s => s.Kind == SymbolKind.Local)
-                .Cast<ILocalSymbol>()
-                .Where(local =>
+                .Where(s => filterKinds.Contains(s.Kind))
+                .Where(symbol =>
                 {
-                    if (local.IsImplicitlyDeclared) return true;
+                    if (symbol.IsImplicitlyDeclared) return true;
 
                     // TODO: do we need to handle multiple declarations?
-                    var declaration = local.DeclaringSyntaxReferences.Select(s => s.GetSyntax()).FirstOrDefault();
+                    var declaration = symbol.DeclaringSyntaxReferences.Select(s => s.GetSyntax()).FirstOrDefault();
                     if (declaration == null) return false;
 
                     return position > declaration.SpanStart;
