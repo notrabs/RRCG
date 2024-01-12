@@ -46,9 +46,16 @@ namespace RRCG
             return AppDomain.CurrentDomain.GetAssemblies().Select(
                  a =>
                  {
-                     // RRCG.Hot dlls are not loaded from files (yet).
-                     if (a.FullName.StartsWith("RRCG.Hot")) return null;
-                     try { return MetadataReference.CreateFromFile(a.Location); }
+                     try
+                     {
+                         // RRCG.Hot dlls are not loaded from files (yet).
+                         if (a.FullName.StartsWith("RRCG.Hot")) return null;
+
+                         // We need assemblies with a valid location
+                         if (a.Location == "") return null;
+
+                         return MetadataReference.CreateFromFile(a.Location);
+                     }
                      catch (NotSupportedException) { return null; } // dynamic assemblies
                  }
              ).Where(a => a != null);
