@@ -10090,12 +10090,13 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static AudioPort StudioAudioConstant()
+        public static AudioPort StudioAudioConstant(SFXConstantData config)
         {
             Node node = new Node()
             {Name = "Studio Audio Constant", Type = "7dc47ad4-9b51-4cb3-8e40-6b76f1243e6f", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new AudioPort{Port = new Port{Node = node, Index = 0}};
+            node.SFXConstantData = config;
             return output_ports;
         }
 

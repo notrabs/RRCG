@@ -6873,7 +6873,7 @@ namespace RRCGGenerated
             return default;
         }
 
-        public static Audio StudioAudioConstant()
+        public static Audio StudioAudioConstant(SFXConstantData config)
         {
             return default;
         }

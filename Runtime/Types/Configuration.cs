@@ -9,6 +9,7 @@ namespace RRCG
     {
         private static Dictionary<string, string> ConfigurableChips = new Dictionary<string, string>() {
             { "SFXConstant", "SFXConstantData" },
+            { "StudioAudioConstant", "SFXConstantData" },
             { "PlayAudioAtPosition", "PlayAudioAtPositionData" },
             { "PlayerWorldUI", "PlayerWorldUIData" },
             { "StudioFunction", "StudioFunctionData" },
@@ -66,7 +67,7 @@ namespace RRCG
     );
 
     public record SFXConstantData(
-        string ClipName,
+        string ClipNameOrId,
         float Volume = 1.0f,
         float SpeedShift = 0.0f,
         float SpeedVariation = 0.0f
