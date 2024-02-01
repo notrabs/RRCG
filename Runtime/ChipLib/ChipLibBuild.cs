@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using UnityEngine;
 
 namespace RRCGBuild
 {
-    public class ChipLib : ChipBuilder
+    public class ChipLib: ChipBuilder
     {
         public static T0 VariableCache<T0>(T0 value0)
             where T0 : AnyPort, new()
@@ -160,7 +162,8 @@ namespace RRCGBuild
                 }
 
                 inputValue = ValueIntegerSwitch(randomPort, 0, cases);
-            } else
+            }
+            else
             {
                 inputValue = (randomPort + 1) % modulus;
             }
@@ -266,9 +269,17 @@ namespace RRCGBuild
             public T UnsafeReadPort;
             private EventDefinition<IntPort> readEvent;
 
-            private IEnumerable<object> list;
+            private IEnumerable<T> list;
 
-            public LUT(IEnumerable<object> list)
+            // Typing is a bit awkward for native types
+            public LUT(IEnumerable<int> list) => InitLUT(list.Select(el => (T)el));
+            public LUT(IEnumerable<float> list) => InitLUT(list.Select(el => (T)el));
+            public LUT(IEnumerable<string> list) => InitLUT(list.Select(el => (T)el));
+            public LUT(IEnumerable<Vector3> list) => InitLUT(list.Select(el => (T)el));
+            public LUT(IEnumerable<Quaternion> list) => InitLUT(list.Select(el => (T)el));
+            public LUT(IEnumerable<object> list) => InitLUT(list.Select(el => (T)el));
+
+            public void InitLUT(IEnumerable<T> list)
             {
                 readEvent = new EventDefinition<IntPort>("LUT", "index");
 
@@ -279,30 +290,56 @@ namespace RRCGBuild
 
             private T LUT_Data()
             {
-
                 var index = readEvent.Receiver();
 
-                if (list.Count() <= 64)
-                {
-                    var cases = new Dictionary<IntPort, T>();
+                if (typeof(T) == typeof(Vector3Port)) return LUT_Data_Vector3(index, list as IEnumerable<Vector3Port>) as T;
+                if (typeof(T) == typeof(QuaternionPort)) return LUT_Data_Quaternion(index, list as IEnumerable<QuaternionPort>) as T;
 
-                    for (var i = 0; i < list.Count(); i++)
+                return LUT_Data_Single<T>(index, list);
+            }
+
+            private Vector3Port LUT_Data_Vector3(IntPort index, IEnumerable<Vector3Port> list)
+            {
+                var x = LUT_Data_Single<FloatPort>(index, list.Select(v => v.x));
+                var y = LUT_Data_Single<FloatPort>(index, list.Select(v => v.y));
+                var z = LUT_Data_Single<FloatPort>(index, list.Select(v => v.z));
+
+                return Vector3Create(x, y, z);
+            }
+
+            private QuaternionPort LUT_Data_Quaternion(IntPort index, IEnumerable<QuaternionPort> list)
+            {
+                var x = LUT_Data_Single<FloatPort>(index, list.Select(v => v.x));
+                var y = LUT_Data_Single<FloatPort>(index, list.Select(v => v.y));
+                var z = LUT_Data_Single<FloatPort>(index, list.Select(v => v.z));
+                var w = LUT_Data_Single<FloatPort>(index, list.Select(v => v.w));
+
+                return QuaternionCreate(x, y, z, w);
+            }
+
+            private PrimitiveT LUT_Data_Single<PrimitiveT>(IntPort index, IEnumerable<PrimitiveT> primitiveList) where PrimitiveT : AnyPort, new()
+            {
+                if (primitiveList.Count() <= 64)
+                {
+                    var cases = new Dictionary<IntPort, PrimitiveT>();
+
+                    for (var i = 0; i < primitiveList.Count(); i++)
                     {
-                        cases.Add(i, (T)list.ElementAt(i));
+                        cases.Add(i, (PrimitiveT)primitiveList.ElementAt(i));
                     }
 
-                    return ChipBuilder.ValueIntegerSwitch<T>(index, null, cases);
+                    return ChipBuilder.ValueIntegerSwitch<PrimitiveT>(index, null, cases);
                 }
-                else if (list.Count() <= 64 * 64)
+                else if (primitiveList.Count() <= 64 * 64)
                 {
-                    var partitions = Partition<object>(list, 64);
+                    var partitions = Partition<object>(primitiveList, 64);
 
-                    var rootCases = new Dictionary<IntPort, T>();
+                    var rootCases = new Dictionary<IntPort, PrimitiveT>();
 
                     int paritionIndex = 0;
                     foreach (var partition in partitions)
                     {
-                        var cases = new Dictionary<IntPort, T>();
+                        var cases = new Dictionary<IntPort, PrimitiveT>();
 
                         int itemIndex = 0;
                         foreach (var item in partition)
@@ -311,13 +348,13 @@ namespace RRCGBuild
                             itemIndex++;
                         }
 
-                        var partitionSwitch = ChipBuilder.ValueIntegerSwitch<T>(index, null, cases);
+                        var partitionSwitch = ChipBuilder.ValueIntegerSwitch<PrimitiveT>(index, null, cases);
 
                         rootCases.Add(paritionIndex, partitionSwitch);
                         paritionIndex++;
                     }
 
-                    return ChipBuilder.ValueIntegerSwitch<T>(ChipBuilder.Divide(index, 64), null, rootCases);
+                    return ChipBuilder.ValueIntegerSwitch<PrimitiveT>(ChipBuilder.Divide(index, 64), null, rootCases);
                 }
                 else
                 {
@@ -396,7 +433,7 @@ namespace RRCGBuild
             // Collect outputs of value switches for concatenation later
             var digits = new List<StringPort>();
 
-            for (int i=31; i >= 0; i--)
+            for (int i = 31; i >= 0; i--)
             {
                 // Test for bit i to be set
                 int mask = 1 << i;
