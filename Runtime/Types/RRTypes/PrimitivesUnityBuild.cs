@@ -184,6 +184,11 @@ namespace RRCGBuild
             }
         }
 
+        public FloatPort x { get => split.X; }
+        public FloatPort y { get => split.Y; }
+        public FloatPort z { get => split.Z; }
+        public FloatPort w { get => split.W; }
+
         public Vector3Port eulerAngles
         {
             get
