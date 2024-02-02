@@ -9,6 +9,7 @@ namespace RRCGSource
         public static implicit operator RecRoomObject(StudioObject data) => default;
         public static implicit operator RecRoomObject(Seat data) => default;
         public static implicit operator RecRoomObject(Text data) => default;
+        public static implicit operator RecRoomObject(Light data) => default;
 
         public static RecRoomObject Invalid = null;
     }
@@ -173,5 +174,9 @@ namespace RRCGSource
     public class AnimationController: AnimationControllerGen
     {
         public static implicit operator AnimationController(RecRoomObject data) => default;
+    }
+    public class Light: AnimationControllerGen
+    {
+        public static implicit operator Light(RecRoomObject data) => default;
     }
 }

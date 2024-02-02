@@ -227,7 +227,6 @@ namespace RRCGBuild
     public class FogPort : FogPortGen { }
     public class HUDElementPort : HUDElementPortGen { }
     public class RewardPort : RewardPortGen { }
-    public class LightPort : LightPortGen { }
     public class PlayerOutfitSlotPort : PlayerOutfitSlotPortGen { }
     public class SkydomePort : SkydomePortGen { }
     public class SunPort : SunPortGen { }

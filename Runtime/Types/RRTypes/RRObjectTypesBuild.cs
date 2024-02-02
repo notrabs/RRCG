@@ -182,4 +182,8 @@ namespace RRCGBuild
     {
         public static implicit operator AnimationControllerPort(RecRoomObjectPort data) => new AnimationControllerPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
+    public class LightPort: LightPortGen
+    {
+        public static implicit operator LightPort(RecRoomObjectPort data) => new LightPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
+    }
 }

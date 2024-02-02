@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RRCGSource;
 using RRCG;
+using Light = RRCGSource.Light;
 
 namespace RRCGGenerated
 {
