@@ -12,6 +12,7 @@ namespace RRCGBuild
         protected EventDefinition<IntPort, T> writeEvent;
 
         protected T readPort;
+        protected ListPort<T> listPort;
 
         public SyncedArray() { }
         public SyncedArray(IntPort count)
@@ -29,7 +30,7 @@ namespace RRCGBuild
 
             CircuitBuilder.InlineGraph(() =>
             {
-                readPort = CircuitBuilder.CircuitBoard("SyncedArray", () =>
+                (readPort, listPort) = CircuitBuilder.CircuitBoard("SyncedArray", () =>
                 {
                     for (int i = 0; i < count.AsData<int>(); i++)
                     {
@@ -52,7 +53,10 @@ namespace RRCGBuild
                     // prevents an exit pin on the board
                     CircuitBuilder.ClearExec();
 
-                    return ChipLib.ValueSwitch(readIndex, variables.Select(v => v.Value).ToArray());
+                    return (
+                        ChipLib.ValueSwitch(readIndex, variables.Select(v => v.Value).ToArray()),
+                        ChipBuilder.ListCreate<T>(variables.Select(v => v.Value).ToArray())
+                    );
                 });
             });
         }
@@ -70,9 +74,11 @@ namespace RRCGBuild
                 writeEvent.SendLocal(i, value);
             }
         }
+
+        public ListPort<T> AsList() => listPort;
     }
 
-    public class SyncedArrayInt : SyncedArray<IntPort>
+    public class SyncedArrayInt: SyncedArray<IntPort>
     {
         EventDefinition<IntPort, IntPort> addEvent;
 

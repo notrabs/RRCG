@@ -1,4 +1,6 @@
-﻿namespace RRCGSource
+﻿using System.Collections.Generic;
+
+namespace RRCGSource
 {
     /// <summary>
     /// A helper that creates a synced variable for each entry of the array.
@@ -17,6 +19,9 @@
             get { return default; }
             set { }
         }
+
+        // Returns the current state of the SyncedArray wrapped in a list (creates the list on every read)
+        public List<T> AsList() => default;
     }
 
     /// <summary>
