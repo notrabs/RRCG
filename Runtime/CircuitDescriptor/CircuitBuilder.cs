@@ -334,6 +334,18 @@ namespace RRCGBuild
             return new EventDefinition<T0, T1>(true, eventName);
         }
 
+        /// <summary>
+        /// Returns an Instance of the Event class for an already exising Event in the room. 
+        /// With three Event parameter.
+        /// </summary>
+        public static EventDefinition<T0, T1, T2> ExistingEvent<T0, T1, T2>(string eventName)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+        {
+            return new EventDefinition<T0, T1, T2>(true, eventName);
+        }
+
         //
         // Compilation Helpers
         //
