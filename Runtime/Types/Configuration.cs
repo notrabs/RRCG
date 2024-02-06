@@ -23,7 +23,8 @@ namespace RRCG
             { "Spherecast", "RaycastData" },
             { "OverlapBox", "RaycastData" },
             { "OverlapSphere", "RaycastData" },
-            { "DataTableReadCell", "DataTableColumnData" }
+            { "DataTableReadCell", "DataTableColumnData" },
+            { "FogConstant", "FogData" }
         };
 
         public static string GetConfigType(string chipName)
@@ -118,6 +119,12 @@ namespace RRCG
     public record DataTableColumnData(
         string DataTableName,
         string ColumnName
+    );
+
+    public record FogData(
+        int Color,
+        float StartDistance,
+        float FadeDistance
     );
 }
 

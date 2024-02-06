@@ -150,6 +150,12 @@ namespace RRCGSource
         public static EventDefinition<T0, T1> ExistingEvent<T0, T1>(string eventName) { return default; }
 
         /// <summary>
+        /// Returns an Instance of the Event class for an already exising Event in the room. 
+        /// With three Event parameter.
+        /// </summary>
+        public static EventDefinition<T0, T1, T2> ExistingEvent<T0, T1, T2>(string eventName) { return default; }
+
+        /// <summary>
         /// Helper method to ensure the provided function only runs once per context.
         /// The key parameter should be unique. Calls to Singleton with a key that was already used in the context
         /// will not invoke the creator method.

@@ -2986,12 +2986,13 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static FogPort FogConstant()
+        public static FogPort FogConstant(FogData config)
         {
             Node node = new Node()
             {Name = "Fog Constant", Type = "3026a5c6-232f-4961-b18a-5ad179e6b24d", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new FogPort{Port = new Port{Node = node, Index = 0}};
+            node.FogData = config;
             return output_ports;
         }
 

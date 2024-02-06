@@ -2109,7 +2109,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Defines settings for room fog.
         /// </summary>
-        public static Fog FogConstant()
+        public static Fog FogConstant(FogData config)
         {
             return default;
         }

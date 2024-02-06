@@ -39,6 +39,7 @@ namespace RRCGBuild
         public RaycastData RaycastData = null;
         public VariableData VariableData = null;
         public DataTableColumnData DataTableColumnData = null;
+        public FogData FogData = null;
 
         [JsonConverter(typeof(DefaultValuesConverter))]
         public Dictionary<(int Group, int Port), object> DefaultValues = new Dictionary<(int Group, int Port), object>();
