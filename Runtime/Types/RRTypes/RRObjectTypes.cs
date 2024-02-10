@@ -10,6 +10,7 @@ namespace RRCGSource
         public static implicit operator RecRoomObject(Seat data) => default;
         public static implicit operator RecRoomObject(Text data) => default;
         public static implicit operator RecRoomObject(Light data) => default;
+        public static implicit operator RecRoomObject(InteractionVolume data) => default;
 
         public static RecRoomObject Invalid = null;
     }
