@@ -236,9 +236,9 @@ namespace RRCGBuild
             return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllWithTag(tag)).Closest;
         }
 
-        public static void RequireKey(StringPort keyName)
+        public static void RequireKey(Guid keyGuid)
         {
-            var key = CircuitBuilder.Singleton("RequireKey_" + keyName.AsData<string>(), () => ChipBuilder.RoomKeyConstant(new RoomKeyData(keyName.AsData<string>())));
+            var key = CircuitBuilder.Singleton("RequireKey_" + keyGuid, () => ChipBuilder.RoomKeyConstant(new RoomKeyData(keyGuid)));
 
             var ownsKey = PlayerOwnsRoomKey(PlayerPort.Local, key, (_) => { });
             ExecFlow.current.Ports[0].Index = 1;

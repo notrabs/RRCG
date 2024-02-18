@@ -86,9 +86,9 @@ namespace RRCG
         string FunctionName
     );
 
-    public record RoomKeyData(string Id);
-    public record RoomCurrencyData(string Id);
-    public record RoomConsumableData(string Id);
+    public record RoomKeyData(Guid Id);
+    public record RoomCurrencyData(Guid Id);
+    public record RoomConsumableData(Guid Id);
 
     public record EventDefinitionData(
        string EventName,
