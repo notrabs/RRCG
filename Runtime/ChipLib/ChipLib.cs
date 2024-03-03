@@ -1,4 +1,5 @@
 ﻿using RRCG;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -78,7 +79,7 @@ namespace RRCGSource
         public static T GetClosest<T>(Vector3 position, string tag) => default;
         public static T GetClosest<T>(RecRoomObject position, string tag) => default;
 
-        public static void RequireKey(string keyName) { }
+        public static void RequireKey(Guid keyName) { }
 
         /// <summary>
         /// Creates a list with [count] inputs and the given value assigned to all elements

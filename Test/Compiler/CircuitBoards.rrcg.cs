@@ -51,7 +51,7 @@ public class CircuitBoards : CircuitDescriptor
 
     void ExecOut()
     {
-        EventReceiver(RoomEvents.Hz30);
+        RoomEvent.Hz30();
     }
 
     void ExecIn()

@@ -17,7 +17,7 @@ public class ExampleRoom : CircuitDescriptor
 
     public void RandomExample()
     {
-        EventReceiver(RoomEvents.Hz30);
+        RoomEvent.Hz30();
 
         var rand1 = RandomInt(0, 10);
         var rand2 = RandomInt(0, 10);
@@ -28,7 +28,7 @@ public class ExampleRoom : CircuitDescriptor
 
     public void EventCacheExample()
     {
-        EventReceiver(RoomEvents.Hz30);
+        RoomEvent.Hz30();
 
         var rand1 = RandomInt(0, 10);
         var sum = (rand1 + 3) + (4 + 5);

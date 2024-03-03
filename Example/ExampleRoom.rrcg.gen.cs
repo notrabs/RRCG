@@ -23,7 +23,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("RandomExample", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            EventReceiver(RoomEvents.Hz30);
+            RoomEvent.Hz30();
                 IntPort rand1 = default !;
                 rand1 = __VariableDeclaratorExpression<IntPort>("rand1", () => RandomInt(0, 10), () => rand1!, (_RRCG_SETTER_VALUE) => rand1 = _RRCG_SETTER_VALUE);
                 IntPort rand2 = default !;
@@ -51,7 +51,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("EventCacheExample", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            EventReceiver(RoomEvents.Hz30);
+            RoomEvent.Hz30();
                 IntPort rand1 = default !;
                 rand1 = __VariableDeclaratorExpression<IntPort>("rand1", () => RandomInt(0, 10), () => rand1!, (_RRCG_SETTER_VALUE) => rand1 = _RRCG_SETTER_VALUE);
                 IntPort sum = default !;

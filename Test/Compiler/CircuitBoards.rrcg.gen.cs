@@ -76,7 +76,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("ExecOut", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            EventReceiver(RoomEvents.Hz30);
+            RoomEvent.Hz30();
             __EndAccessibilityScope();
             __EndReturnScope();
         }

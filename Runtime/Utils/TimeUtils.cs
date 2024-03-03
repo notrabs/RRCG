@@ -10,7 +10,8 @@ namespace RRCG
     public class ProfilingTimer
     {
         DateTime startTime = DateTime.Now;
-        public string Formatted { get => $"{(DateTime.Now - startTime).TotalSeconds:f2}s"; }
+        public double SecondsElapsed => (DateTime.Now - startTime).TotalSeconds;
+        public string Formatted { get => $"{SecondsElapsed:f2}s"; }
 
         /// <summary> Returns the current time and resets afterwards </summary>
         public string StartNew()
