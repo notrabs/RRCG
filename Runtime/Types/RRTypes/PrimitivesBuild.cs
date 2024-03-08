@@ -229,6 +229,15 @@ namespace RRCGBuild
             string str = (string)Data;
             return new StringPort { Data = str.ToLower() };
         }
+
+        public StringPort Trim()
+        {
+            if (IsActualPort) return CircuitBuilder.Singleton("String_Trim_" + PortKey(), () => ChipBuilder.StringTrim(this));
+
+            string str = (string)Data;
+            return new StringPort { Data = str.Trim() };
+        }
+
         public static StringPort operator +(StringPort a, StringPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new StringPort { Data = a.Data + b.Data };
