@@ -136,6 +136,12 @@ namespace RRCGBuild
             return Data.IndexOf(value);
         }
 
+        public BoolPort Contains(T value)
+        {
+            if (IsActualPort) return CircuitBuilder.Singleton($"List_Contains_{PortKey()}_value_{value.PortKey()}", () => ChipBuilder.ListContains(this, value));
+            return Data.Contains(value);
+        }
+
         public void Add(T value)
         {
             if (IsActualPort) ChipBuilder.ListAdd(this, value);
