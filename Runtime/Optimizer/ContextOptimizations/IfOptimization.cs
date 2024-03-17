@@ -50,7 +50,7 @@ namespace RRCG.Optimizer.ContextOptimizations
                     return OptimizeEqualsIf(context, ifNode, connectionToIf, prevNode);
                 case ChipType.PlayerGetIsLocal:
                     return OptimizePlayerGetIsLocalIf(context, ifNode, prevNode);
-                case ChipType.PlayerHasRole:
+                case ChipType.PlayerHasRoleR1:
                     return OptimizePlayerHasRoleIf(context, ifNode, prevNode);
                 // TODO: IfLocalPlayerShouldRun (does anyone even use this chip voluntarily?)
                 // TODO: IfPlayerIsValid (this needs the type knowledge of the actual isValid input. maybe we can attach this to the node during compilation?)
@@ -139,7 +139,7 @@ namespace RRCG.Optimizer.ContextOptimizations
 
         static bool OptimizePlayerHasRoleIf(Context context, Node ifNode, Node hasRoleNode)
         {
-            ifNode.Type = ChipType.IfPlayerHasRole;
+            ifNode.Type = ChipType.IfPlayerHasRoleR1;
             ifNode.InputCount += 1;
             OptimizerUtils.CopyDataInputPort(context, hasRoleNode.Port(0, 0), ifNode.Port(0, 1));
             OptimizerUtils.CopyDataInputPort(context, hasRoleNode.Port(0, 1), ifNode.Port(0, 2));

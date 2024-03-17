@@ -90,11 +90,9 @@ namespace RRCGBuild
 
         public void __SpawnStudioFunctionChip(string fnName, params AnyPort[] parameters)
         {
-            ChipBuilder.StudioFunction(new StudioFunctionData(__GetPrefabName(), fnName));
+            ChipBuilder.StudioFunction(__Target, new StudioFunctionData(__GetPrefabName(), fnName));
             var node = Context.lastSpawnedNode;
             node.InputCount = 2 + parameters.Length;
-
-            node.ConnectInputPort(__Target, 1);
 
             var index = 2;
             foreach (var parameter in parameters)

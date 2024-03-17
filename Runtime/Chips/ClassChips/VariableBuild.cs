@@ -63,8 +63,8 @@ namespace RRCGBuild
                 Vector3Port typed => ChipBuilder.Vector3Variable(typed, variableConfig) as T,
                 QuaternionPort typed => ChipBuilder.QuaternionVariable(typed, variableConfig) as T,
                 ColorPort typed => ChipBuilder.ColorVariable(typed, variableConfig) as T,
-                AIPort typed => ChipBuilder.AIVariable(typed, variableConfig) as T,
-                CombatantPort typed => ChipBuilder.CombatantVariable(typed, variableConfig) as T,
+                AIPort typed => ChipBuilder.AIVariableR1(typed, variableConfig) as T,
+                CombatantPort typed => ChipBuilder.CombatantVariableR1(typed, variableConfig) as T,
                 DestinationRoomPort typed => ChipBuilder.DestinationRoomVariable(typed, variableConfig) as T,
 
                 ListPort<IntPort> typed => ChipBuilder.ListIntVariable(typed, variableConfig) as T,

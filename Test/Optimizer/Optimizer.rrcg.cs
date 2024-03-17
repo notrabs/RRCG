@@ -181,24 +181,24 @@ public class Optimizer : CircuitDescriptor
     {
         new EventDefinition("TestIfPlayerHasRoleOptimizer").Receiver();
 
-        if (Player.Local.HasRole("testrole")) LogString("true");
+        if (Player.Local.HasRoleR1("testrole")) LogString("true");
         else LogString("false");
 
-        if (GetLocalPlayer().HasRole("testrole")) LogString("true");
+        if (GetLocalPlayer().HasRoleR1("testrole")) LogString("true");
         else LogString("false");
 
-        if (PlayerGetFirstWithTag("tag").HasRole("testrole")) LogString("true");
+        if (PlayerGetFirstWithTag("tag").HasRoleR1("testrole")) LogString("true");
         else LogString("false");
 
         // Test negation
-        if (!Player.Local.HasRole("testrole")) LogString("true");
+        if (!Player.Local.HasRoleR1("testrole")) LogString("true");
         else LogString("false");
 
         // Test only one branch
-        if (Player.Local.HasRole("testrole")) LogString("true");
+        if (Player.Local.HasRoleR1("testrole")) LogString("true");
 
         // non-dangling condition
-        var condition = PlayerGetFirstWithTag("tag").HasRole("testrole");
+        var condition = PlayerGetFirstWithTag("tag").HasRoleR1("testrole");
         if (condition) ChipLib.Log(condition);
     }
 

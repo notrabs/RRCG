@@ -751,7 +751,7 @@ namespace RRCGBuild
             __BeginReturnScope("TestIfPlayerHasRoleOptimizer", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TestIfPlayerHasRoleOptimizer").Receiver();
-            __If(__ConditionalContext(), () => PlayerPort.Local.HasRole("testrole"), delegate
+            __If(__ConditionalContext(), () => PlayerPort.Local.HasRoleR1("testrole"), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -766,7 +766,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(__ConditionalContext(), () => GetLocalPlayer().HasRole("testrole"), delegate
+            __If(__ConditionalContext(), () => GetLocalPlayer().HasRoleR1("testrole"), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -781,7 +781,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(__ConditionalContext(), () => PlayerGetFirstWithTag("tag").HasRole("testrole"), delegate
+            __If(__ConditionalContext(), () => PlayerGetFirstWithTag("tag").HasRoleR1("testrole"), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -796,7 +796,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(__ConditionalContext(), () => !PlayerPort.Local.HasRole("testrole"), delegate
+            __If(__ConditionalContext(), () => !PlayerPort.Local.HasRoleR1("testrole"), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -811,7 +811,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(__ConditionalContext(), () => PlayerPort.Local.HasRole("testrole"), delegate
+            __If(__ConditionalContext(), () => PlayerPort.Local.HasRoleR1("testrole"), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -826,7 +826,7 @@ namespace RRCGBuild
 
             );
                 BoolPort condition = default !;
-                condition = __VariableDeclaratorExpression<BoolPort>("condition", () => PlayerGetFirstWithTag("tag").HasRole("testrole"), () => condition!, (_RRCG_SETTER_VALUE) => condition = _RRCG_SETTER_VALUE);
+                condition = __VariableDeclaratorExpression<BoolPort>("condition", () => PlayerGetFirstWithTag("tag").HasRoleR1("testrole"), () => condition!, (_RRCG_SETTER_VALUE) => condition = _RRCG_SETTER_VALUE);
             __If(__ConditionalContext(), () => condition, delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);

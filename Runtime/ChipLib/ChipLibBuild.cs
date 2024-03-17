@@ -236,16 +236,16 @@ namespace RRCGBuild
             return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllWithTag(tag)).Closest;
         }
 
-        public static void RequireKey(Guid keyGuid)
+        public static void RequireKeyR1(Guid keyGuid)
         {
-            var key = CircuitBuilder.Singleton("RequireKey_" + keyGuid, () => ChipBuilder.RoomKeyConstant(new RoomKeyData(keyGuid)));
+            var key = CircuitBuilder.Singleton("RequireKey_" + keyGuid, () => ChipBuilder.RoomKeyConstantR1(new RoomKeyData(keyGuid)));
 
-            var ownsKey = PlayerOwnsRoomKey(PlayerPort.Local, key, (_) => { });
+            var ownsKey = PlayerOwnsRoomKeyR1(PlayerPort.Local, key, (_) => { });
             ExecFlow.current.Ports[0].Index = 1;
 
             If(ownsKey, delegate () { }, delegate ()
             {
-                ShowPurchasePrompt(key, PlayerPort.Local);
+                ShowPurchasePromptR1(key, PlayerPort.Local);
                 CircuitBuilder.ClearExec();
             });
         }

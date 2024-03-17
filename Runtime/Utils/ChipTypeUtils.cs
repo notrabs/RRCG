@@ -7,8 +7,8 @@ namespace RRCG
         // All Variable types
         public static readonly string[] VariableTypes = new string[]
         {
-            ChipType.AIVariable, ChipType.BoolVariable, ChipType.ColorVariable,
-            ChipType.CombatantVariable, ChipType.DestinationRoomVariable, ChipType.FloatVariable,
+            ChipType.AIVariableR1, ChipType.BoolVariable, ChipType.ColorVariable,
+            ChipType.CombatantVariableR1, ChipType.DestinationRoomVariable, ChipType.FloatVariable,
             ChipType.IntVariable, ChipType.ListBoolVariable, ChipType.ListColorVariable,
             ChipType.ListDestinationRoomVariable, ChipType.ListFloatVariable, ChipType.ListIntVariable,
             ChipType.ListObjectiveMarkerVariable, ChipType.ListPlayerVariable, ChipType.ListQuaternionVariable,
