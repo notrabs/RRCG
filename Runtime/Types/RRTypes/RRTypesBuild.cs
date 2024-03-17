@@ -245,4 +245,6 @@ namespace RRCGBuild
     public class DialogueUIPort : DialogueUIPortGen { }
     public class CollisionDetectionVolumePort : CollisionDetectionVolumePortGen { }
     public class RoomOfferPort : RoomOfferPortGen { }
+    public class RecNetImagePort : RecNetImagePortGen { }
+    public class RangedWeaponPort : RangedWeaponPortGen { }
 }

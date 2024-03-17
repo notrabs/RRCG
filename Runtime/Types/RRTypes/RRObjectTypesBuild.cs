@@ -80,6 +80,12 @@ namespace RRCGBuild
     {
         public static implicit operator GroundVehiclePort(RecRoomObjectPort data) => new GroundVehiclePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
+    public class HandlePort : HandlePortGen
+    {
+        public static implicit operator HandlePort(RecRoomObjectPort data) => new HandlePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
+        public static implicit operator HandlePort(GunHandlePort data) => new HandlePort() { Data = data.Data, Port = data.Port };
+        public static implicit operator HandlePort(TriggerHandlePort data) => new HandlePort() { Data = data.Data, Port = data.Port };
+    }
     public class GunHandlePort : GunHandlePortGen
     {
         public static implicit operator GunHandlePort(RecRoomObjectPort data) => new GunHandlePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };

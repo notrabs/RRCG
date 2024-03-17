@@ -72,6 +72,12 @@ namespace RRCGSource
     {
         public static implicit operator GroundVehicle(RecRoomObject data) => default;
     }
+    public class Handle: HandleGen
+    {
+        public static implicit operator Handle(RecRoomObject data) => default;
+        public static implicit operator Handle(GunHandle data) => default;
+        public static implicit operator Handle(TriggerHandle data) => default;
+    }
     public class GunHandle: GunHandleGen
     {
         public static implicit operator GunHandle(RecRoomObject data) => default;

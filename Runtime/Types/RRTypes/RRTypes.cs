@@ -46,4 +46,6 @@ namespace RRCGSource
     public class DialogueUI : DialogueUIGen { }
     public class CollisionDetectionVolume : CollisionDetectionVolumeGen { }
     public class RoomOffer : RoomOfferGen { }
+    public class RecNetImage : RecNetImageGen { }
+    public class RangedWeapon : RangedWeaponGen { }
 }
