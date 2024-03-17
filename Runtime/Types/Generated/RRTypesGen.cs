@@ -7,7 +7,7 @@ namespace RRCGGenerated
 {
     public abstract class AIGen : AnyObject
     {
-        public Vector3 CombatantGetGroundPosition
+        public Vector3 CombatantGetGroundPositionR1
         {
             /// <summary>
             /// Outputs the ground position of an input combatant.
@@ -15,7 +15,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public bool CombatantGetIsAlive
+        public bool CombatantGetIsAliveR1
         {
             /// <summary>
             /// Outputs True if the input combatant is alive.
@@ -23,7 +23,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public (Vector3 Velocity, float Speed) CombatantGetVelocity
+        public (Vector3 Velocity, float Speed) CombatantGetVelocityR1
         {
             /// <summary>
             /// Outputs the input combatant's current velocity and speed.
@@ -31,7 +31,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public int CombatantSetMaxHealth
+        public int CombatantSetMaxHealthR1
         {
             /// <summary>
             /// Sets the Max Health property of the input combatant.
@@ -41,7 +41,7 @@ namespace RRCGGenerated
             }
         }
 
-        public (string VisionType, float VisionRange, float VisionConeAngle, float HearingRange) LineOfSightParameters
+        public (string VisionType, float VisionRange, float VisionConeAngle, float HearingRange) LineOfSightParametersR1
         {
             /// <summary>
             /// Outputs the current line of sight parameters from the input AI.
@@ -49,7 +49,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public float PathingSpeed
+        public float PathingSpeedR1
         {
             /// <summary>
             /// Sets the speed for an inputted AI. This same setting can be determined by configuring the AI itself.
@@ -59,7 +59,7 @@ namespace RRCGGenerated
             }
         }
 
-        public PatrolPoint PatrolPoint
+        public PatrolPoint PatrolPointR1
         {
             /// <summary>
             /// Set an AIs Path Point.
@@ -85,7 +85,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public Combatant Target
+        public Combatant TargetR1
         {
             /// <summary>
             /// Outputs the current combat target of an inputted AI.
@@ -99,7 +99,7 @@ namespace RRCGGenerated
             }
         }
 
-        public Combatant ToCombatant
+        public Combatant ToCombatantR1
         {
             /// <summary>
             /// Covert a player or an AI value into a Combatant value.
@@ -110,7 +110,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public bool HasLineOfSightToTarget(AI Target)
+        public bool HasLineOfSightToTargetR1(AI Target)
         {
             return default;
         }
@@ -118,7 +118,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public bool HasLineOfSightToTarget(Combatant Target)
+        public bool HasLineOfSightToTargetR1(Combatant Target)
         {
             return default;
         }
@@ -126,7 +126,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public bool HasLineOfSightToTarget(RecRoomObject Target)
+        public bool HasLineOfSightToTargetR1(RecRoomObject Target)
         {
             return default;
         }
@@ -134,7 +134,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public bool HasLineOfSightToTarget(PatrolPoint Target)
+        public bool HasLineOfSightToTargetR1(PatrolPoint Target)
         {
             return default;
         }
@@ -142,7 +142,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public bool HasLineOfSightToTarget(Player Target)
+        public bool HasLineOfSightToTargetR1(Player Target)
         {
             return default;
         }
@@ -150,7 +150,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public bool HasLineOfSightToTarget(Vector3 Target)
+        public bool HasLineOfSightToTargetR1(Vector3 Target)
         {
             return default;
         }
@@ -158,7 +158,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Command an AI to look at the input target. If you want the AI to look in a passed in vector as a direction, set the “Look Target Is Direction” parameter to True. To make an AI stop looking, use the AI Stop Looking node.
         /// </summary>
-        public void LookAt(AI LookTarget, bool LookTargetisDirection)
+        public void LookAtR1(AI LookTarget, bool LookTargetisDirection)
         {
             return;
         }
@@ -166,7 +166,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Command an AI to look at the input target. If you want the AI to look in a passed in vector as a direction, set the “Look Target Is Direction” parameter to True. To make an AI stop looking, use the AI Stop Looking node.
         /// </summary>
-        public void LookAt(Combatant LookTarget, bool LookTargetisDirection)
+        public void LookAtR1(Combatant LookTarget, bool LookTargetisDirection)
         {
             return;
         }
@@ -174,7 +174,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Command an AI to look at the input target. If you want the AI to look in a passed in vector as a direction, set the “Look Target Is Direction” parameter to True. To make an AI stop looking, use the AI Stop Looking node.
         /// </summary>
-        public void LookAt(RecRoomObject LookTarget, bool LookTargetisDirection)
+        public void LookAtR1(RecRoomObject LookTarget, bool LookTargetisDirection)
         {
             return;
         }
@@ -182,7 +182,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Command an AI to look at the input target. If you want the AI to look in a passed in vector as a direction, set the “Look Target Is Direction” parameter to True. To make an AI stop looking, use the AI Stop Looking node.
         /// </summary>
-        public void LookAt(PatrolPoint LookTarget, bool LookTargetisDirection)
+        public void LookAtR1(PatrolPoint LookTarget, bool LookTargetisDirection)
         {
             return;
         }
@@ -190,7 +190,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Command an AI to look at the input target. If you want the AI to look in a passed in vector as a direction, set the “Look Target Is Direction” parameter to True. To make an AI stop looking, use the AI Stop Looking node.
         /// </summary>
-        public void LookAt(Player LookTarget, bool LookTargetisDirection)
+        public void LookAtR1(Player LookTarget, bool LookTargetisDirection)
         {
             return;
         }
@@ -198,7 +198,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Command an AI to look at the input target. If you want the AI to look in a passed in vector as a direction, set the “Look Target Is Direction” parameter to True. To make an AI stop looking, use the AI Stop Looking node.
         /// </summary>
-        public void LookAt(Vector3 LookTarget, bool LookTargetisDirection)
+        public void LookAtR1(Vector3 LookTarget, bool LookTargetisDirection)
         {
             return;
         }
@@ -206,7 +206,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands the AI to path to the input target destination.
         /// </summary>
-        public void PathTo(AI Target)
+        public void PathToR1(AI Target)
         {
             return;
         }
@@ -214,7 +214,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands the AI to path to the input target destination.
         /// </summary>
-        public void PathTo(Combatant Target)
+        public void PathToR1(Combatant Target)
         {
             return;
         }
@@ -222,7 +222,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands the AI to path to the input target destination.
         /// </summary>
-        public void PathTo(RecRoomObject Target)
+        public void PathToR1(RecRoomObject Target)
         {
             return;
         }
@@ -230,7 +230,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands the AI to path to the input target destination.
         /// </summary>
-        public void PathTo(PatrolPoint Target)
+        public void PathToR1(PatrolPoint Target)
         {
             return;
         }
@@ -238,7 +238,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands the AI to path to the input target destination.
         /// </summary>
-        public void PathTo(Player Target)
+        public void PathToR1(Player Target)
         {
             return;
         }
@@ -246,7 +246,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands the AI to path to the input target destination.
         /// </summary>
-        public void PathTo(Vector3 Target)
+        public void PathToR1(Vector3 Target)
         {
             return;
         }
@@ -254,7 +254,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands an AI to turn an inputted number of degrees. To command the AI to back to default rotating behavior, use the AI Stop Looking node.
         /// </summary>
-        public void Rotate(float Rotation)
+        public void RotateR1(float Rotation)
         {
             return;
         }
@@ -262,7 +262,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands an AI to turn an inputted number of degrees. To command the AI to back to default rotating behavior, use the AI Stop Looking node.
         /// </summary>
-        public void Rotate(int Rotation)
+        public void RotateR1(int Rotation)
         {
             return;
         }
@@ -270,7 +270,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands an AI to turn an inputted number of degrees. To command the AI to back to default rotating behavior, use the AI Stop Looking node.
         /// </summary>
-        public void Rotate(Vector3 Rotation)
+        public void RotateR1(Vector3 Rotation)
         {
             return;
         }
@@ -278,7 +278,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets an AI’s various LoS paramters. The “Cone” setting acts like a vision cone that sits in front of AIs like eyes, where the “Circle” setting acts like a radius around the AI. The Require LoS For Targetting parameter defines if AIs can see you through walls.
         /// </summary>
-        public void SetLineOfSightParameters(string VisionType, float VisionRange, float VisionConeAngle, float HearingRange, bool RequireLoSfortargeting)
+        public void SetLineOfSightParametersR1(string VisionType, float VisionRange, float VisionConeAngle, float HearingRange, bool RequireLoSfortargeting)
         {
             return;
         }
@@ -286,7 +286,7 @@ namespace RRCGGenerated
         /// <summary>
         /// RRO Quest AI black box. This node tells the input AI to start their C# defined combat behavior. Note: this behavior varies per AI.
         /// </summary>
-        public void StartCombatBehavior()
+        public void StartCombatBehaviorR1()
         {
             return;
         }
@@ -294,7 +294,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Tells the input AI to stop its C# defined combat behavior.
         /// </summary>
-        public void StopCombatBehavior()
+        public void StopCombatBehaviorR1()
         {
             return;
         }
@@ -302,12 +302,12 @@ namespace RRCGGenerated
         /// <summary>
         /// Command the input AI to cancel its current Rotate and Look At commands. Call this before telling an AI to path after having it Rotate/Look At so it rotates properly while moving again.
         /// </summary>
-        public void StopLooking()
+        public void StopLookingR1()
         {
             return;
         }
 
-        internal AI Variable(VariableData config)
+        internal AI VariableR1(VariableData config)
         {
             return default;
         }
@@ -315,7 +315,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the Health property of the input combatant.
         /// </summary>
-        public (int Health, int Shield, int MaxHealth) CombatantGetHealth()
+        public (int Health, int Shield, int MaxHealth) CombatantGetHealthR1()
         {
             return default;
         }
@@ -323,7 +323,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void CombatantReceiveDamage(int Damage, bool IgnoreShield, AI DamageSource)
+        public void CombatantReceiveDamageR1(int Damage, bool IgnoreShield, AI DamageSource)
         {
             return;
         }
@@ -331,7 +331,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void CombatantReceiveDamage(int Damage, bool IgnoreShield, Combatant DamageSource)
+        public void CombatantReceiveDamageR1(int Damage, bool IgnoreShield, Combatant DamageSource)
         {
             return;
         }
@@ -339,7 +339,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void CombatantReceiveDamage(int Damage, bool IgnoreShield, Player DamageSource)
+        public void CombatantReceiveDamageR1(int Damage, bool IgnoreShield, Player DamageSource)
         {
             return;
         }
@@ -347,7 +347,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the Health property of an input combatant.
         /// </summary>
-        public void CombatantSetHealth(int Health)
+        public void CombatantSetHealthR1(int Health)
         {
             return;
         }
@@ -622,9 +622,25 @@ namespace RRCGGenerated
 
     public abstract class BackgroundObjectsGen : AnyObject
     {
-        public bool RoomBackgroundObjectsModify(AlternativeExec<bool> BlendFinished)
+        public bool RoomBackgroundObjectsModifyR1(AlternativeExec<bool> BlendFinished)
         {
             return default;
+        }
+
+        /// <summary>
+        /// Changes the room's shared background objects state to the given configuration.
+        /// </summary>
+        public void RoomBackgroundObjectsModifyR2(float BlendTime, AlternativeExec BlendFinished)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Overrides the given player's room background objects state to the given configuration. This will take precedent over the room's shared background objects state.
+        /// </summary>
+        public void RoomBackgroundObjectsPlayerOverrideR2(Player Player, float BlendTime, AlternativeExec BlendFinished)
+        {
+            return;
         }
     }
 
@@ -754,7 +770,7 @@ namespace RRCGGenerated
 
     public abstract class CombatantGen : AnyObject
     {
-        public Vector3 GroundPosition
+        public Vector3 GroundPositionR1
         {
             /// <summary>
             /// Outputs the ground position of an input combatant.
@@ -762,7 +778,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public bool IsAlive
+        public bool IsAliveR1
         {
             /// <summary>
             /// Outputs True if the input combatant is alive.
@@ -770,7 +786,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public int MaxHealth
+        public int MaxHealthR1
         {
             /// <summary>
             /// Sets the Max Health property of the input combatant.
@@ -796,7 +812,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public (bool IsPlayer, Player Player, AI AI) Split
+        public (bool IsPlayer, Player Player, AI AI) SplitR1
         {
             /// <summary>
             /// Splits the input Combatant into Player and AI types. Use this off of Combatant outputs to directly access the Player or AI.
@@ -804,7 +820,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public (Vector3 Velocity, float Speed) Velocity
+        public (Vector3 Velocity, float Speed) VelocityR1
         {
             /// <summary>
             /// Outputs the input combatant's current velocity and speed.
@@ -815,7 +831,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the Health property of the input combatant.
         /// </summary>
-        public (int Health, int Shield, int MaxHealth) GetHealth()
+        public (int Health, int Shield, int MaxHealth) GetHealthR1()
         {
             return default;
         }
@@ -823,7 +839,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void ReceiveDamage(int Damage, bool IgnoreShield, AI DamageSource)
+        public void ReceiveDamageR1(int Damage, bool IgnoreShield, AI DamageSource)
         {
             return;
         }
@@ -831,7 +847,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void ReceiveDamage(int Damage, bool IgnoreShield, Combatant DamageSource)
+        public void ReceiveDamageR1(int Damage, bool IgnoreShield, Combatant DamageSource)
         {
             return;
         }
@@ -839,7 +855,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void ReceiveDamage(int Damage, bool IgnoreShield, Player DamageSource)
+        public void ReceiveDamageR1(int Damage, bool IgnoreShield, Player DamageSource)
         {
             return;
         }
@@ -847,12 +863,12 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the Health property of an input combatant.
         /// </summary>
-        public void SetHealth(int Health)
+        public void SetHealthR1(int Health)
         {
             return;
         }
 
-        internal Combatant Variable(VariableData config)
+        internal Combatant VariableR1(VariableData config)
         {
             return default;
         }
@@ -943,7 +959,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Award a room consumable to a player. Multiple award room consumable requests from the same client are sent in bulk with a ten-second cooldown. The Success port will be TRUE if the consumable was entirely, or in part, awarded to the player. If the consumable could not be awarded, the Success port will be FALSE. Use the Log Output toggle in the configuration settings to see more information about why a failure occurred. Logging output may impact room performance and should be toggled off when not in use.
         /// </summary>
-        public bool AwardConsumable(Player Player, int Quantity, AlternativeExec<bool> OnAwardConsumableComplete)
+        public bool AwardConsumableR1(Player Player, int Quantity, AlternativeExec<bool> OnAwardConsumableComplete)
         {
             return default;
         }
@@ -951,7 +967,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the input consumable to active. Use this to confirm a consumable used event. Can also be used independently. Displays the consumable as active in the backback and decreases the number of comsumables the player owns.
         /// </summary>
-        public void Activate()
+        public void ActivateR1()
         {
             return;
         }
@@ -959,7 +975,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the input consumable to inactive. Displays the consumable as not active in the backback and allow using another one.
         /// </summary>
-        public void Deactivate()
+        public void DeactivateR1()
         {
             return;
         }
@@ -967,7 +983,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
         /// </summary>
-        public void ShowPurchasePrompt(Player Player)
+        public void ShowPurchasePromptR1(Player Player)
         {
             return;
         }
@@ -1028,7 +1044,7 @@ namespace RRCGGenerated
             /// </summary>
             get => default;
             /// <summary>
-            /// Toggles whether or not the target Dialogue UI is enabled for the local player.             
+            /// Toggles whether or not the target Dialogue UI is enabled for the local player.
             /// </summary>
             set
             {
@@ -1119,7 +1135,7 @@ namespace RRCGGenerated
             }
         }
 
-        public int ColorId
+        public int ColorIdDeprecated
         {
             /// <summary>
             /// Sets the color for the particles emitted.
@@ -1248,9 +1264,25 @@ namespace RRCGGenerated
 
     public abstract class FogGen : AnyObject
     {
-        public bool RoomFogModify(AlternativeExec<bool> BlendFinished)
+        public bool RoomFogModifyR1(AlternativeExec<bool> BlendFinished)
         {
             return default;
+        }
+
+        /// <summary>
+        /// Changes the room's shared fog state to the given configuration.
+        /// </summary>
+        public void RoomFogModifyR2(float BlendTime, AlternativeExec BlendFinished)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Overrides the given player's room fog state to the given configuration. This will take precedent over the room's shared fog state.
+        /// </summary>
+        public void RoomFogPlayerOverrideR2(Player Player, float BlendTime, AlternativeExec BlendFinished)
+        {
+            return;
         }
     }
 
@@ -1260,7 +1292,7 @@ namespace RRCGGenerated
 
     public abstract class GrabberGen : AnyObject
     {
-        public (bool HasHeldObject, RecRoomObject HeldObject) HeldObject
+        public (bool HasHeldObject, RecRoomObject HeldObject) HeldObjectR2
         {
             /// <summary>
             /// Returns whether the Grabber is currently holding an object, and a reference to that object if so. If no object is held, returns Invalid Object.
@@ -1268,7 +1300,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public bool PlayerCanStealFromGrabber
+        public bool PlayerCanStealFromGrabberR2
         {
             /// <summary>
             /// On execution, the target grabber will lock or unlock the object being held. If true, the held object will interactable for a player to steal.  If false, the held object will not be interactable for a player to steal.
@@ -1281,7 +1313,7 @@ namespace RRCGGenerated
         /// <summary>
         /// On execution, the target Grabber will attempt to grab the specified object. If Steal From Player is true, it will steal the object from a player who has it held or holstered. If Snap to Grabber is true, the object will be moved to the Grabber’s position. If Snap to Grabber is false, the distance between Grabber and object at the moment of execution will be maintained until the object is released.
         /// </summary>
-        public bool GrabObject(RecRoomObject Object, bool StealfromPlayer, bool SnaptoGrabber)
+        public bool GrabObjectR2(RecRoomObject Object, bool StealfromPlayer, bool SnaptoGrabber)
         {
             return default;
         }
@@ -1289,7 +1321,7 @@ namespace RRCGGenerated
         /// <summary>
         /// On execution, the target Grabber will release anything it’s holding. If an object is dropped, a reference to that object will be passed as an output. If nothing is dropped, it will return Invalid Object.
         /// </summary>
-        public RecRoomObject Release()
+        public RecRoomObject ReleaseR2()
         {
             return default;
         }
@@ -1369,8 +1401,22 @@ namespace RRCGGenerated
             }
         }
 
-        public List<string> AutoAimRoles
+        public List<string> AutoAimRolesDeprecated
         {
+            set
+            {
+            }
+        }
+
+        public bool ContinuousFire
+        {
+            /// <summary>
+            /// Returns whether the given gun handle will fire continuously.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets whether the given gun handle will fire continuously.
+            /// </summary>
             set
             {
             }
@@ -1413,7 +1459,7 @@ namespace RRCGGenerated
             }
         }
 
-        public string RemoveAutoAimRole
+        public string RemoveAutoAimRoleDeprecated
         {
             set
             {
@@ -1428,7 +1474,7 @@ namespace RRCGGenerated
             }
         }
 
-        public void AddAutoAimRole(string Role)
+        public void AddAutoAimRoleDeprecatedR1(string Role)
         {
             return;
         }
@@ -1441,6 +1487,37 @@ namespace RRCGGenerated
         public Vector3 GetFiringDirection(RecRoomObject Source)
         {
             return default;
+        }
+    }
+
+    public abstract class HandleGen : AnyObject
+    {
+        public string ControlPrompt
+        {
+            /// <summary>
+            /// Gets the primary action label on the target handle type object
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets the primary action label on the target handle type object
+            /// </summary>
+            set
+            {
+            }
+        }
+
+        public List<string> PlayerFilterTagsR2
+        {
+            /// <summary>
+            /// Gets the tags that a handle is using in its Tag Filter. The Tag Filter must be enabled in the handle's configure menu for this to work.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets the tags that a handle is using in its Tag Filter. The Tag Filter must be enabled in the handle's configure menu for this to work.
+            /// </summary>
+            set
+            {
+            }
         }
 
         /// <summary>
@@ -1468,6 +1545,10 @@ namespace RRCGGenerated
 
         public bool Enabled
         {
+            /// <summary>
+            /// Returns true if the local player has a HUD element of the given type currently enabled.
+            /// </summary>
+            get => default;
             set
             {
             }
@@ -1584,10 +1665,18 @@ namespace RRCGGenerated
 
     public abstract class InventoryItemGen : AnyObject
     {
-        public (string Name, string Description, bool SupportsUseAction) Definition
+        public (string Name, string Description, bool SupportsUseAction, RecNetImage Image) DefinitionR2
         {
             /// <summary>
-            /// Gets the friendly name and description of the given inventory item.
+            /// Gets the friendly name, description, and image of the given inventory item.
+            /// </summary>
+            get => default;
+        }
+
+        public RecNetImage ImageR2
+        {
+            /// <summary>
+            /// Gets the image of the given inventory item
             /// </summary>
             get => default;
         }
@@ -1595,7 +1684,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Add an inventory item to the given player.
         /// </summary>
-        public (bool Success, int TotalCount) Add(Player Player, int Quantity, AlternativeExec<(bool Success, int TotalCount)> Complete)
+        public (bool Success, int TotalCount) AddR2(Player Player, int Quantity, AlternativeExec<(bool Success, int TotalCount)> Complete)
         {
             return default;
         }
@@ -1603,7 +1692,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Get the count of how many of the given inventory item the given player owns.
         /// </summary>
-        public int GetCount(Player Player, AlternativeExec<int> Complete)
+        public int GetCountR2(Player Player, AlternativeExec<int> Complete)
         {
             return default;
         }
@@ -1611,7 +1700,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Remove an inventory item from the given player.
         /// </summary>
-        public (bool Success, int TotalCount) Remove(Player Player, int Quantity, AlternativeExec<(bool Success, int TotalCount)> Complete)
+        public (bool Success, int TotalCount) RemoveR2(Player Player, int Quantity, AlternativeExec<(bool Success, int TotalCount)> Complete)
         {
             return default;
         }
@@ -1619,7 +1708,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Uses the given inventory item.
         /// </summary>
-        public void Use()
+        public void UseR2()
         {
             return;
         }
@@ -1723,7 +1812,7 @@ namespace RRCGGenerated
             }
         }
 
-        public int ColorId
+        public int ColorIdDeprecated
         {
             /// <summary>
             /// Sets the color for a point light or a spotlight.
@@ -2119,6 +2208,24 @@ namespace RRCGGenerated
             get => default;
         }
 
+        public string AddAimAssistTag
+        {
+            /// <summary>
+            /// Adds a tag to the list of player tags that the provided player can target with aim assist.
+            set
+            {
+            }
+        }
+
+        public List<string> AimAssistTags
+        {
+            /// <summary>
+            /// Sets the list of player tags that the provided player can target with aim assist.
+            set
+            {
+            }
+        }
+
         public Quaternion BodyOrientation
         {
             /// <summary>
@@ -2135,7 +2242,15 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public bool CanTeleport
+        public bool CanFlyR2
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public bool CanTeleportR2
         {
             /// <summary>
             /// Returns whether a given player is allowed to teleport.
@@ -2147,7 +2262,21 @@ namespace RRCGGenerated
             }
         }
 
-        public Vector3 CombatantGetGroundPosition
+        public bool CanWallClimbR2
+        {
+            /// <summary>
+            /// Gets whether the player can Wall Climb. Enforced via circuits.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets whether the player can Wall Climb. Enforced via circuits.
+            /// </summary>
+            set
+            {
+            }
+        }
+
+        public Vector3 CombatantGetGroundPositionR1
         {
             /// <summary>
             /// Outputs the ground position of an input combatant.
@@ -2155,7 +2284,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public bool CombatantGetIsAlive
+        public bool CombatantGetIsAliveR1
         {
             /// <summary>
             /// Outputs True if the input combatant is alive.
@@ -2163,7 +2292,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public (Vector3 Velocity, float Speed) CombatantGetVelocity
+        public (Vector3 Velocity, float Speed) CombatantGetVelocityR1
         {
             /// <summary>
             /// Outputs the input combatant's current velocity and speed.
@@ -2171,7 +2300,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public int CombatantSetMaxHealth
+        public int CombatantSetMaxHealthR1
         {
             /// <summary>
             /// Sets the Max Health property of the input combatant.
@@ -2189,7 +2318,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public bool CrouchInputEnabled
+        public bool CrouchInputEnabledR2
         {
             /// <summary>
             /// Returns whether crouch input is enabled for a given player
@@ -2197,6 +2326,20 @@ namespace RRCGGenerated
             get => default;
             /// <summary>
             /// Sets whether crouch input is enabled for a given player. Setting this to false will remove crouch button prompts / UI elements on supported platforms.
+            /// </summary>
+            set
+            {
+            }
+        }
+
+        public float CrouchSpeedR2
+        {
+            /// <summary>
+            /// Returns the crouch speed for a given player.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets the crouch speed for a given player
             /// </summary>
             set
             {
@@ -2219,6 +2362,15 @@ namespace RRCGGenerated
             get => default;
         }
 
+        public bool EquipShareCamera
+        {
+            /// <summary>
+            /// Equips Share Camera to a player's dominant hand if the player is not already holding the Share Camera.
+            set
+            {
+            }
+        }
+
         public string FirstTag
         {
             /// <summary>
@@ -2227,7 +2379,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public bool ForceManualSprint
+        public bool ForceManualSprintR2
         {
             /// <summary>
             /// Returns whether manual sprint is required for a given player
@@ -2240,7 +2392,7 @@ namespace RRCGGenerated
             }
         }
 
-        public bool ForceVirtualHeightMode
+        public bool ForceVirtualHeightModeR2
         {
             /// <summary>
             /// Returns whether Virtual Height Mode is required for a given player
@@ -2253,7 +2405,7 @@ namespace RRCGGenerated
             }
         }
 
-        public bool ForceVRWalk
+        public bool ForceVRWalkR2
         {
             /// <summary>
             /// Returns whether the given player will be forced to use walk mode if they are playing in VR. 
@@ -2283,7 +2435,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public AlternativeExec<(bool Success, int TotalBalance)> GetCurrencyBalance
+        public AlternativeExec<(bool Success, int TotalBalance)> GetCurrencyBalanceDeprecatedR1
         {
             /// <summary>
             /// Returns the local players balance of one room currency. Configure this chip to selecht which currency to use.
@@ -2367,6 +2519,19 @@ namespace RRCGGenerated
             get => default;
         }
 
+        public bool IsCustomFootstepAudioEnabled
+        {
+            get => default;
+        }
+
+        public bool IsFlying
+        {
+            /// <summary>
+            /// Returns whether the given player is flying.
+            /// </summary>
+            get => default;
+        }
+
         public (bool IsGrounded, float TimeSinceLastGrounded, RecRoomObject SurfaceObject, Vector3 SurfaceNormal) IsGrounded
         {
             /// <summary>
@@ -2404,6 +2569,14 @@ namespace RRCGGenerated
         {
             /// <summary>
             /// Returns whether the given player is prone.
+            /// </summary>
+            get => default;
+        }
+
+        public bool IsRoomContributor
+        {
+            /// <summary>
+            /// Outputs True if the input Player is one of the current room's contributors.
             /// </summary>
             get => default;
         }
@@ -2448,7 +2621,23 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public float JumpHeight
+        public bool IsWallClimbing
+        {
+            /// <summary>
+            /// Gets whether the player is currently in the Wall Climb state.
+            /// </summary>
+            get => default;
+        }
+
+        public bool IsWallRunning
+        {
+            /// <summary>
+            /// Returns whether the given player is wall running.
+            /// </summary>
+            get => default;
+        }
+
+        public float JumpHeightR2
         {
             /// <summary>
             /// Returns the jump height for a given player
@@ -2462,7 +2651,7 @@ namespace RRCGGenerated
             }
         }
 
-        public bool JumpInputEnabled
+        public bool JumpInputEnabledR2
         {
             /// <summary>
             /// Returns whether jump input is enabled for a given player
@@ -2516,6 +2705,15 @@ namespace RRCGGenerated
             get => default;
         }
 
+        public float LocalPlayerOverridePlayerVoiceRolloffR2
+        {
+            /// <summary>
+            /// Override the voice rolloff distance of the target player as heard by the local player.
+            set
+            {
+            }
+        }
+
         public Color NameColor
         {
             set
@@ -2523,10 +2721,10 @@ namespace RRCGGenerated
             }
         }
 
-        public float NormalizedSteeringSpeed
+        public float NormalizedSteeringSpeedDeprecated
         {
             /// <summary>
-            /// Returns the normalized (zero to one) steering speed requested by the player. This value represents how fast a player is wanting to move relative to their max speed.
+            /// (DEPRECATED: Use PlayerGetSteeringSpeed / GetWalkSpeed) Returns the steering speed requested by the player, squared, and normalized by the square of the default walk speed.
             /// </summary>
             get => default;
         }
@@ -2561,6 +2759,20 @@ namespace RRCGGenerated
             get => default;
         }
 
+        public float ProneSpeedR2
+        {
+            /// <summary>
+            /// Returns the prone speed for a given player.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets the prone speed for a given player
+            /// </summary>
+            set
+            {
+            }
+        }
+
         public int RadioChannel
         {
             /// <summary>
@@ -2575,7 +2787,16 @@ namespace RRCGGenerated
             }
         }
 
-        public string RemoveRole
+        public string RemoveAimAssistTag
+        {
+            /// <summary>
+            /// Removes a tag from the list of player tags that the provided player can target with aim assist.
+            set
+            {
+            }
+        }
+
+        public string RemoveRoleR1
         {
             /// <summary>
             /// Removes the input role from a target player.
@@ -2657,7 +2878,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public string SeasonLeagueName
+        public string SeasonLeagueNameDeprecated
         {
             get => default;
         }
@@ -2667,7 +2888,29 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public bool SprintInputEnabled
+        public bool ShareCameraGetIsSpawned
+        {
+            /// <summary>
+            /// Gets whether the target player has their Share Camera spawned
+            /// </summary>
+            get => default;
+        }
+
+        public float SlideSpeedR2
+        {
+            /// <summary>
+            /// Returns the slide speed for a given player.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets the slide speed for a given player
+            /// </summary>
+            set
+            {
+            }
+        }
+
+        public bool SprintInputEnabledR2
         {
             /// <summary>
             /// Returns whether sprint input is enabled for a given player
@@ -2681,7 +2924,7 @@ namespace RRCGGenerated
             }
         }
 
-        public float SprintSpeed
+        public float SprintSpeedR2
         {
             /// <summary>
             /// Returns the sprint speed for a given player
@@ -2703,7 +2946,30 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public (bool Result, int SecondsUntilEnabled) SubscribesToRoomOwner
+        public bool SteeringInputEnabled
+        {
+            get => default;
+        }
+
+        public bool SteeringInputEnabledR2
+        {
+            /// <summary>
+            /// Sets whether walk input is enabled for a given player. Setting this to false will stop Steering Input events from firing, and will remove walk-related button prompts / UI elements on supported platforms.
+            /// </summary>
+            set
+            {
+            }
+        }
+
+        public float SteeringSpeed
+        {
+            /// <summary>
+            /// Returns the steering speed requested by the player. This value represents how fast a player is wanting to move in world units.
+            /// </summary>
+            get => default;
+        }
+
+        public (bool Result, int SecondsUntilEnabled) SubscribesToRoomOwnerDeprecated
         {
             /// <summary>
             /// Outputs True if the input Player subscribes to one of the current room's owners.
@@ -2719,7 +2985,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public float TeleportDelay
+        public float TeleportDelayR2
         {
             /// <summary>
             /// Returns the teleport delay for a given player
@@ -2733,7 +2999,7 @@ namespace RRCGGenerated
             }
         }
 
-        public float TeleportDistance
+        public float TeleportDistanceR2
         {
             /// <summary>
             /// Returns the max teleport distance for a given player
@@ -2755,7 +3021,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public Combatant ToCombatant
+        public Combatant ToCombatantR1
         {
             /// <summary>
             /// Covert a player or an AI value into a Combatant value.
@@ -2802,35 +3068,16 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public float VoiceRolloffDistance
+        public float VoiceRolloffDistanceR2
         {
             /// <summary>
-            /// Returns the voice rolloff distance for a given player
-            /// </summary>
-            get => default;
-            /// <summary>
-            /// Sets the voice rolloff distance for a given player. Beyond this distance, they cannot be heard.
-            /// </summary>
+            /// Sets the voice rolloff distance for a given player as heard by all other players.
             set
             {
             }
         }
 
-        public bool WalkInputEnabled
-        {
-            /// <summary>
-            /// Returns whether walk input is enabled for a given player
-            /// </summary>
-            get => default;
-            /// <summary>
-            /// Sets whether walk input is enabled for a given player. Setting this to false will stop Steering Input events from firing, and will remove walk-related button prompts / UI elements on supported platforms.
-            /// </summary>
-            set
-            {
-            }
-        }
-
-        public float WalkSpeed
+        public float WalkSpeedR2
         {
             /// <summary>
             /// Returns the walk speed for a given player
@@ -2838,6 +3085,20 @@ namespace RRCGGenerated
             get => default;
             /// <summary>
             /// Sets the walk speed for a given player
+            /// </summary>
+            set
+            {
+            }
+        }
+
+        public bool WallRunEnabledR2
+        {
+            /// <summary>
+            /// Gets the whether the player can Wall Run. Enforced via circuits.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets the whether the player can Wall Run. Enforced via circuits.
             /// </summary>
             set
             {
@@ -3033,7 +3294,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Award some amount to the Player's balance of one room currency. Configure this chip to set the affected currency.
         /// </summary>
-        public (bool Success, int TotalBalance) AwardCurrency(int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
+        public (bool Success, int TotalBalance) AwardCurrencyDeprecatedR1(int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
         {
             return default;
         }
@@ -3057,7 +3318,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the Health property of the input combatant.
         /// </summary>
-        public (int Health, int Shield, int MaxHealth) CombatantGetHealth()
+        public (int Health, int Shield, int MaxHealth) CombatantGetHealthR1()
         {
             return default;
         }
@@ -3065,7 +3326,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void CombatantReceiveDamage(int Damage, bool IgnoreShield, AI DamageSource)
+        public void CombatantReceiveDamageR1(int Damage, bool IgnoreShield, AI DamageSource)
         {
             return;
         }
@@ -3073,7 +3334,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void CombatantReceiveDamage(int Damage, bool IgnoreShield, Combatant DamageSource)
+        public void CombatantReceiveDamageR1(int Damage, bool IgnoreShield, Combatant DamageSource)
         {
             return;
         }
@@ -3081,7 +3342,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void CombatantReceiveDamage(int Damage, bool IgnoreShield, Player DamageSource)
+        public void CombatantReceiveDamageR1(int Damage, bool IgnoreShield, Player DamageSource)
         {
             return;
         }
@@ -3089,7 +3350,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the Health property of an input combatant.
         /// </summary>
-        public void CombatantSetHealth(int Health)
+        public void CombatantSetHealthR1(int Health)
         {
             return;
         }
@@ -3272,7 +3533,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Runs Has Role if the input player has the input role, otherwise runs Does Not Have Role.
         /// </summary>
-        public void IfPlayerHasRole(string Role, AlternativeExec DoesNotHaveRole)
+        public void IfPlayerHasRoleR1(string Role, AlternativeExec DoesNotHaveRole)
         {
             return;
         }
@@ -3310,6 +3571,13 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Clears the local player's override of target player's voice rolloff distance.
+        public void LocalPlayerClearPlayerVoiceRolloffOverrideR2()
+        {
+            return;
+        }
+
+        /// <summary>
         /// Removes the ability for the local player to interact with the provided player. This state is NOT synced with other users, and player interactivity will be removed only for players that ran this chip.
         /// </summary>
         public void LocalPlayerDisableInteractionWithTargetPlayer()
@@ -3336,7 +3604,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds a Role to a Player.
         /// </summary>
-        public void AddRole(string Value)
+        public void AddRoleR1(string Value)
         {
             return;
         }
@@ -3360,7 +3628,14 @@ namespace RRCGGenerated
         /// <summary>
         /// For the target player, equip the specified Inventory Item to the specified Inventory Equipment Slot. If the Slot is of Inventory type, this chip will take effect whether or not the Slot is enabled, but the Slot must then be enabled separately.
         /// </summary>
-        public bool EquipInventoryItem(InventoryItem InventoryItem, EquipmentSlot InventoryEquipmentSlot, AlternativeExec<bool> OnEquipComplete)
+        public bool EquipInventoryItemR2(InventoryItem InventoryItem, EquipmentSlot InventoryEquipmentSlot, AlternativeExec<bool> OnEquipComplete)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Gets the list of player tags that the provided player can target with aim assist.
+        public List<string> GetAimAssistTags()
         {
             return default;
         }
@@ -3368,7 +3643,7 @@ namespace RRCGGenerated
         /// <summary>
         /// For the target player, get whether the specified equipment slot is enabled.
         /// </summary>
-        public bool GetEquipmentSlotIsEnabled(EquipmentSlot EquipmentSlot)
+        public bool GetEquipmentSlotIsEnabledR2(EquipmentSlot EquipmentSlot)
         {
             return default;
         }
@@ -3382,9 +3657,21 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Returns the voice rolloff distance for the target player, as reckoned by the local player.
+        public (float VoiceRolloffDistance, bool HasLocalOverride) GetVoiceRolloffDistanceR2()
+        {
+            return default;
+        }
+
+        public bool HasPurchasedRoomOfferR2(RoomOffer RoomOffer, AlternativeExec<bool> OnPlayerHasPurchasedRoomOfferComplete)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Outputs True if the input player has the input role.
         /// </summary>
-        public bool HasRole(string Value)
+        public bool HasRoleR1(string Value)
         {
             return default;
         }
@@ -3392,12 +3679,12 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns true if the given player owns at least one of the given inventory item.
         /// </summary>
-        public bool OwnsInventoryItem(InventoryItem InventoryItem, AlternativeExec<bool> Complete)
+        public bool OwnsInventoryItemR2(InventoryItem InventoryItem, AlternativeExec<bool> Complete)
         {
             return default;
         }
 
-        public bool OwnsRoomKey(RoomKey RoomKey, AlternativeExec<bool> OnPlayerOwnsRoomKeyComplete)
+        public bool OwnsRoomKeyR1(RoomKey RoomKey, AlternativeExec<bool> OnPlayerOwnsRoomKeyComplete)
         {
             return default;
         }
@@ -3405,7 +3692,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sends a watch notification to the specified player containing the prompt title and body, along with each of the answer choices on its own line. Once this watch notification is opened, the player can choose a response and hit "ok," triggering the On Prompt Complete event. Since there is a delay between sending a notification and receiving the response in which other responses may be received, the Player output can be used to disambiguate multiple responses
         /// </summary>
-        public (bool Success, Player ReceivingPlayer, string Response, int ResponseIndex) PromptMultipleChoice(string PromptTitle, string PromptBody, List<string> AnswerChoices, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response, int ResponseIndex)> OnPromptComplete)
+        public (bool Success, Player ReceivingPlayer, string Response, int ResponseIndex) PromptMultipleChoiceR1(string PromptTitle, string PromptBody, List<string> AnswerChoices, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response, int ResponseIndex)> OnPromptComplete)
         {
             return default;
         }
@@ -3421,7 +3708,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Enables the specified equipment slot on the target player
         /// </summary>
-        public void SetEquipmentSlotIsEnabled(EquipmentSlot EquipmentSlot, bool IsEnabled)
+        public void SetEquipmentSlotIsEnabledR2(EquipmentSlot EquipmentSlot, bool IsEnabled)
         {
             return;
         }
@@ -3437,7 +3724,7 @@ namespace RRCGGenerated
         /// <summary>
         /// For the specified player, unequip anything which is equipped to the specified slot. If the slot is of Inventory type, this chip will take effect whether or not the slot is enabled.
         /// </summary>
-        public bool UnequipFromSlot(EquipmentSlot EquipmentSlot, AlternativeExec<bool> OnUnequipComplete)
+        public bool UnequipFromSlotR2(EquipmentSlot EquipmentSlot, AlternativeExec<bool> OnUnequipComplete)
         {
             return default;
         }
@@ -3445,7 +3732,7 @@ namespace RRCGGenerated
         /// <summary>
         /// For the target player, unequip the specified Inventory Item from any slot to which it is equipped.
         /// </summary>
-        public bool UnequipInventoryItem(InventoryItem InventoryItem, AlternativeExec<bool> OnUnequipComplete)
+        public bool UnequipInventoryItemR2(InventoryItem InventoryItem, AlternativeExec<bool> OnUnequipComplete)
         {
             return default;
         }
@@ -3544,6 +3831,38 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Clears the given player's local room background objects state override.
+        /// </summary>
+        public void RoomBackgroundObjectsClearPlayerOverrideR2(float BlendTime, AlternativeExec BlendFinished)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Clears the given player's local room fog state override.
+        /// </summary>
+        public void RoomFogClearPlayerOverrideR2(float BlendTime, AlternativeExec BlendFinished)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Clears the given player's local room skydome state override.
+        /// </summary>
+        public void RoomSkydomeClearPlayerOverrideR2(float BlendTime, AlternativeExec BlendFinished)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Clears the given player's local room sun state override.
+        /// </summary>
+        public void RoomSunClearPlayerOverrideR2(float BlendTime, AlternativeExec BlendFinished)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Start a screen shake effect for the given player. This will have no effect on VR players.
         /// </summary>
         public void SetCameraShake(float Intensity, float Duration)
@@ -3600,6 +3919,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Shows a player a banner notification. Appearance can be customized in the config menu!
+        /// </summary>
+        public void ShowBannerNotification(string Title, string MainText, float Duration)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Prints the input notification to the given player's screen.
         /// </summary>
         public void ShowNotification<T>(string Value)
@@ -3631,7 +3958,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public List<RecRoomObject> UnequipFromSlots(bool DominantHand, bool OffHand, bool LeftHipHolster, bool RightHipHolster, bool ShoulderHolster)
+        public List<RecRoomObject> UnequipFromSlotsR1(bool DominantHand, bool OffHand, bool LeftHipHolster, bool RightHipHolster, bool ShoulderHolster)
         {
             return default;
         }
@@ -3639,7 +3966,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds velocity to the input target. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocityAdd(float Speed, Vector3 Direction, float MaximumSpeed)
+        public void VelocityAdd(float Multiplier, Vector3 Velocity, float MaximumSpeed)
         {
             return;
         }
@@ -3647,7 +3974,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds velocity to the input target. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocityAddNew(float Multiplier, Vector3 Velocity, float MaximumSpeed)
+        public void VelocityAddDeprecated(float Speed, Vector3 Direction, float MaximumSpeed)
         {
             return;
         }
@@ -3691,7 +4018,7 @@ namespace RRCGGenerated
             }
         }
 
-        public bool AddAvoidRole(string Role)
+        public bool AddAvoidRoleR1(string Role)
         {
             return default;
         }
@@ -3701,7 +4028,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public bool AddSpawnRole(string Role)
+        public bool AddSpawnRoleR1(string Role)
         {
             return default;
         }
@@ -3711,7 +4038,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public void RemoveAvoidRole(string Role)
+        public void RemoveAvoidRoleR1(string Role)
         {
             return;
         }
@@ -3721,7 +4048,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public void RemoveSpawnRole(string Role)
+        public void RemoveSpawnRoleR1(string Role)
         {
             return;
         }
@@ -3764,30 +4091,6 @@ namespace RRCGGenerated
             }
         }
 
-        public int HandDamage
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int HeadDamage
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public Color ProjectileColor
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
         public int ProjectileCount
         {
             get => default;
@@ -3820,6 +4123,46 @@ namespace RRCGGenerated
             }
         }
 
+        public void FireProjectile(Vector3 Direction)
+        {
+            return;
+        }
+    }
+
+    public abstract class RangedWeaponGen : AnyObject
+    {
+        public Color Color
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public int HeadDamage
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public int LimbDamage
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public Color ProjectileColor
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public int RecRoomObjectDamage
         {
             /// <summary>
@@ -3841,11 +4184,10 @@ namespace RRCGGenerated
             {
             }
         }
+    }
 
-        public void FireProjectile(Vector3 Direction)
-        {
-            return;
-        }
+    public abstract class RecNetImageGen : AnyObject
+    {
     }
 
     public abstract class RecRoomObjectGen : AnyObject
@@ -4311,12 +4653,12 @@ namespace RRCGGenerated
             return default;
         }
 
-        public void SpawnerInternalStartSpawning(int Amountofobjectstospawn, float Timebetweenspawns, Vector3 SpawnPosition)
+        public void SpawnerInternalStartSpawningR1(int Amountofobjectstospawn, float Timebetweenspawns, Vector3 SpawnPosition)
         {
             return;
         }
 
-        public void SpawnerReset()
+        public void SpawnerResetR1()
         {
             return;
         }
@@ -4329,7 +4671,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds velocity to the input target. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocityAdd(float Speed, Vector3 Direction, float MaximumSpeed)
+        public void VelocityAdd(float Multiplier, Vector3 Velocity, float MaximumSpeed)
         {
             return;
         }
@@ -4337,7 +4679,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds velocity to the input target. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocityAddNew(float Multiplier, Vector3 Velocity, float MaximumSpeed)
+        public void VelocityAddDeprecated(float Speed, Vector3 Direction, float MaximumSpeed)
         {
             return;
         }
@@ -4380,7 +4722,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Award some amount to the Player's balance of the given room currency.
         /// </summary>
-        public (bool Success, int TotalBalance) AwardCurrencyNew(Player Player, int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
+        public (bool Success, int TotalBalance) AwardCurrencyR1(Player Player, int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
         {
             return default;
         }
@@ -4388,7 +4730,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the given player's balance of the given room currency.
         /// </summary>
-        public (bool Success, int TotalBalance) GetCurrencyBalanceNew(Player Player, AlternativeExec<(bool Success, int TotalBalance)> OnGetBalanceComplete)
+        public (bool Success, int TotalBalance) GetCurrencyBalanceR1(Player Player, AlternativeExec<(bool Success, int TotalBalance)> OnGetBalanceComplete)
         {
             return default;
         }
@@ -4396,7 +4738,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
         /// </summary>
-        public void ShowPurchasePrompt(Player Player)
+        public void ShowPurchasePromptR1(Player Player)
         {
             return;
         }
@@ -4404,7 +4746,7 @@ namespace RRCGGenerated
 
     public abstract class RoomDoorGen : AnyObject
     {
-        public DestinationRoom Destination
+        public DestinationRoom DestinationR1
         {
             get => default;
             set
@@ -4412,7 +4754,7 @@ namespace RRCGGenerated
             }
         }
 
-        public bool Locked
+        public bool LockedR1
         {
             get => default;
             set
@@ -4425,7 +4767,7 @@ namespace RRCGGenerated
     {
         /// <summary>
         /// Unlocks a room key for the target player. Multiple award room key requests from the same client are sent in bulk with a one-second cooldown.
-        public bool AwardRoomKey(Player Player, AlternativeExec<bool> OnAwardRoomKeyComplete)
+        public bool AwardRoomKeyR1(Player Player, AlternativeExec<bool> OnAwardRoomKeyComplete)
         {
             return default;
         }
@@ -4433,7 +4775,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
         /// </summary>
-        public void ShowPurchasePrompt(Player Player)
+        public void ShowPurchasePromptR1(Player Player)
         {
             return;
         }
@@ -4601,9 +4943,25 @@ namespace RRCGGenerated
 
     public abstract class SkydomeGen : AnyObject
     {
-        public bool RoomSkydomeModify(AlternativeExec<bool> BlendFinished)
+        public bool RoomSkydomeModifyR1(AlternativeExec<bool> BlendFinished)
         {
             return default;
+        }
+
+        /// <summary>
+        /// Changes the room's shared skydome state to the given configuration.
+        /// </summary>
+        public void RoomSkydomeModifyR2(float BlendTime, AlternativeExec BlendFinished)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Overrides the given player's room skydome state to the given configuration. This will take precedent over the room's shared skydome state.
+        /// </summary>
+        public void RoomSkydomePlayerOverrideR2(Player Player, float BlendTime, AlternativeExec BlendFinished)
+        {
+            return;
         }
     }
 
@@ -4624,6 +4982,13 @@ namespace RRCGGenerated
 
     public abstract class StudioObjectGen : AnyObject
     {
+        public StudioFunctionData StudioFunction
+        {
+            set
+            {
+            }
+        }
+
         public void StudioEventSender(string Event)
         {
             return;
@@ -4692,9 +5057,25 @@ namespace RRCGGenerated
 
     public abstract class SunGen : AnyObject
     {
-        public bool RoomSunModify(SunDirection SunDirection, AlternativeExec<bool> BlendFinished)
+        public bool RoomSunModifyR1(SunDirection SunDirection, AlternativeExec<bool> BlendFinished)
         {
             return default;
+        }
+
+        /// <summary>
+        /// Changes the room's shared sun state to the given configuration.
+        /// </summary>
+        public void RoomSunModifyR2(SunDirection SunDirection, float BlendTime, AlternativeExec BlendFinished)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Overrides the given player's room sun state to the given configuration. This will take precedent over the room's shared sun state.
+        /// </summary>
+        public void RoomSunPlayerOverrideR2(SunDirection SunDirection, Player Player, float BlendTime, AlternativeExec BlendFinished)
+        {
+            return;
         }
     }
 
@@ -4707,14 +5088,6 @@ namespace RRCGGenerated
         public bool IsSwinging
         {
             get => default;
-        }
-
-        /// <summary>
-        /// Plays haptic feedback through a held Handle object Duration is an integer in milliseconds between 1 and 500 Intensity is a float value from 0 to 1  At this time, haptics are only supported on VR. 
-        /// </summary>
-        public void PlayHandleHaptics(int Duration, float Intensity)
-        {
-            return;
         }
     }
 
@@ -4734,7 +5107,7 @@ namespace RRCGGenerated
             }
         }
 
-        public int ColorId
+        public int ColorIdDeprecated
         {
             /// <summary>
             /// Sets the color for a Text object.
@@ -4840,7 +5213,7 @@ namespace RRCGGenerated
 
     public abstract class TriggerHandleGen : AnyObject
     {
-        public string ControlPrompt
+        public string ControlPromptDeprecated
         {
             get => default;
             set
@@ -4855,19 +5228,11 @@ namespace RRCGGenerated
             /// </summary>
             get => default;
         }
-
-        /// <summary>
-        /// Plays haptic feedback through a held Handle object Duration is an integer in milliseconds between 1 and 500 Intensity is a float value from 0 to 1  At this time, haptics are only supported on VR. 
-        /// </summary>
-        public void PlayHandleHaptics(int Duration, float Intensity)
-        {
-            return;
-        }
     }
 
     public abstract class TriggerVolumeGen : AnyObject
     {
-        public string FilterRole
+        public string FilterRoleR1
         {
             /// <summary>
             /// Gets the role name that is being used as a filter for a Trigger Volume.
@@ -4881,26 +5246,26 @@ namespace RRCGGenerated
             }
         }
 
-        public List<string> FilterTags
-        {
-            /// <summary>
-            /// Gets the tags that are being used as a filter for a Trigger Volume.
-            /// </summary>
-            get => default;
-            /// <summary>
-            /// Sets the tags that are being used as a filter for a Trigger Volume. An object is considered by the Trigger Volume, if it has any of the tags in this list.
-            /// </summary>
-            set
-            {
-            }
-        }
-
         public int ObjectCount
         {
             /// <summary>
             /// Gets the number of objects currently inside a Trigger Volume. This is not synchronized with the Trigger Volume's events!
             /// </summary>
             get => default;
+        }
+
+        public List<string> ObjectFilterTags
+        {
+            /// <summary>
+            /// Gets the tags that are being used as the object filter for a Trigger Volume.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets the tags that are being used as the object filter for a Trigger Volume. An object is considered by the Trigger Volume, if it has any of the tags in this list.
+            /// </summary>
+            set
+            {
+            }
         }
 
         public List<RecRoomObject> Objects
@@ -4917,6 +5282,20 @@ namespace RRCGGenerated
             /// Gets the number of players currently inside a Trigger Volume. This is not synchronized with the Trigger Volume's events!
             /// </summary>
             get => default;
+        }
+
+        public List<string> PlayerFilterTagsR2
+        {
+            /// <summary>
+            /// Gets the tags that are being used as the player filter for a Trigger Volume.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets the tags that are being used as the player filter for a Trigger  Volume. A player is considered by the Trigger Volume, if they have any of the tags in this list.
+            /// </summary>
+            set
+            {
+            }
         }
 
         public List<Player> Players
