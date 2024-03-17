@@ -465,9 +465,9 @@
       "InputCount": 5
     },
     {
-      "Id": "Modulo_0",
+      "Id": "Remainder_0",
       "Type": "eS5G/p+eNEK1lHtsCmkymw==",
-      "Name": "Modulo",
+      "Name": "Remainder",
       "DefaultValues": [[[0,1],"System.Int32",5]],
       "InputCount": 2
     },
@@ -3225,7 +3225,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Modulo_0",
+        "Node": "Remainder_0",
         "Group": 0,
         "Index": 0
       },
@@ -3233,7 +3233,7 @@
     },
     {
       "From": {
-        "Node": "Modulo_0",
+        "Node": "Remainder_0",
         "Group": 0,
         "Index": 0
       },

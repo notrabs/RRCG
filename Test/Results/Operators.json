@@ -345,9 +345,9 @@
       "InputCount": 2
     },
     {
-      "Id": "Modulo_0",
+      "Id": "Remainder_0",
       "Type": "eS5G/p+eNEK1lHtsCmkymw==",
-      "Name": "Modulo",
+      "Name": "Remainder",
       "DefaultValues": [],
       "InputCount": 2
     },
@@ -639,9 +639,9 @@
       "InputCount": 2
     },
     {
-      "Id": "Modulo_1",
+      "Id": "Remainder_1",
       "Type": "eS5G/p+eNEK1lHtsCmkymw==",
-      "Name": "Modulo",
+      "Name": "Remainder",
       "DefaultValues": [],
       "InputCount": 2
     },
@@ -2850,7 +2850,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Modulo_0",
+        "Node": "Remainder_0",
         "Group": 0,
         "Index": 0
       },
@@ -2863,7 +2863,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Modulo_0",
+        "Node": "Remainder_0",
         "Group": 0,
         "Index": 1
       },
@@ -2871,7 +2871,7 @@
     },
     {
       "From": {
-        "Node": "Modulo_0",
+        "Node": "Remainder_0",
         "Group": 0,
         "Index": 0
       },
@@ -3591,7 +3591,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Modulo_1",
+        "Node": "Remainder_1",
         "Group": 0,
         "Index": 0
       },
@@ -3604,7 +3604,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Modulo_1",
+        "Node": "Remainder_1",
         "Group": 0,
         "Index": 1
       },
@@ -3612,7 +3612,7 @@
     },
     {
       "From": {
-        "Node": "Modulo_1",
+        "Node": "Remainder_1",
         "Group": 0,
         "Index": 0
       },

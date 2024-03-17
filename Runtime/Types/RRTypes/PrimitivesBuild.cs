@@ -70,7 +70,7 @@ namespace RRCGBuild
         public static IntPort operator %(IntPort a, IntPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new IntPort { Data = a.Data % b.Data };
-            return ChipBuilder.Modulo(a, b);
+            return ChipBuilder.Remainder(a, b);
         }
 
         // These float variants are needed, because the automatic casting for [IntPort op float] will not look into the FloatPort class
@@ -173,7 +173,7 @@ namespace RRCGBuild
         public static FloatPort operator %(FloatPort a, FloatPort b)
         {
             if (a.IsDataPort && b.IsDataPort) return new FloatPort { Data = a.Data % b.Data };
-            return ChipBuilder.Modulo(a, b);
+            return ChipBuilder.Remainder(a, b);
         }
 
         public static FloatPort PositiveInfinity => new FloatPort { Data = float.PositiveInfinity };

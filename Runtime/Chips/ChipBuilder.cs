@@ -531,6 +531,17 @@ namespace RRCGBuild
             return ConnectDynamicPins(0, ports);
         }
 
+        public static IntPort Remainder(params IntPort[] ports)
+        {
+            ChipBuilderGen.Remainder(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+        public static FloatPort Remainder(params FloatPort[] ports)
+        {
+            ChipBuilderGen.Remainder(ports[0]);
+            return ConnectDynamicPins(0, ports);
+        }
+
         public static IntPort Min(params IntPort[] ports)
         {
             ChipBuilderGen.Min(ports[0]);
