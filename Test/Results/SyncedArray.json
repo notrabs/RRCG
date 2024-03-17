@@ -971,6 +971,13 @@
           "InputCount": 3
         },
         {
+          "Id": "List_Create_0",
+          "Type": "VjItVFENM0yiofvES34fBw==",
+          "Name": "List Create",
+          "DefaultValues": [],
+          "InputCount": 2
+        },
+        {
           "Id": "Out_0",
           "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
           "Name": "Out",
@@ -1098,6 +1105,32 @@
         },
         {
           "From": {
+            "Node": "int_Variable_0",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_0",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "int_Variable_1",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_0",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
             "Node": "Value_Integer_Switch_0",
             "Group": 0,
             "Index": 0
@@ -1106,6 +1139,19 @@
             "Node": "Out_0",
             "Group": 2,
             "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "List_Create_0",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_0",
+            "Group": 2,
+            "Index": 1
           },
           "isExec": false
         }
@@ -1127,8 +1173,12 @@
           "Inputs": [],
           "Outputs": [
             {
-              "Item1": "result",
+              "Item1": "value0",
               "Item2": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            },
+            {
+              "Item1": "value1",
+              "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
             }
           ]
         }
@@ -1236,6 +1286,13 @@
             "3"
           ],
           "InputCount": 5
+        },
+        {
+          "Id": "List_Create_1",
+          "Type": "VjItVFENM0yiofvES34fBw==",
+          "Name": "List Create",
+          "DefaultValues": [],
+          "InputCount": 4
         },
         {
           "Id": "Out_1",
@@ -1443,6 +1500,58 @@
         },
         {
           "From": {
+            "Node": "float_Variable_0",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_1",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "float_Variable_1",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_1",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "float_Variable_2",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_1",
+            "Group": 0,
+            "Index": 2
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "float_Variable_3",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_1",
+            "Group": 0,
+            "Index": 3
+          },
+          "isExec": false
+        },
+        {
+          "From": {
             "Node": "Value_Integer_Switch_1",
             "Group": 0,
             "Index": 0
@@ -1451,6 +1560,19 @@
             "Node": "Out_1",
             "Group": 2,
             "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "List_Create_1",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_1",
+            "Group": 2,
+            "Index": 1
           },
           "isExec": false
         }
@@ -1472,8 +1594,12 @@
           "Inputs": [],
           "Outputs": [
             {
-              "Item1": "result",
+              "Item1": "value0",
               "Item2": "RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            },
+            {
+              "Item1": "value1",
+              "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.FloatPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
             }
           ]
         }
@@ -1609,6 +1735,13 @@
             "5"
           ],
           "InputCount": 7
+        },
+        {
+          "Id": "List_Create_2",
+          "Type": "VjItVFENM0yiofvES34fBw==",
+          "Name": "List Create",
+          "DefaultValues": [],
+          "InputCount": 6
         },
         {
           "Id": "Out_2",
@@ -1894,6 +2027,84 @@
         },
         {
           "From": {
+            "Node": "string_Variable_0",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_2",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "string_Variable_1",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_2",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "string_Variable_2",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_2",
+            "Group": 0,
+            "Index": 2
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "string_Variable_3",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_2",
+            "Group": 0,
+            "Index": 3
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "string_Variable_4",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_2",
+            "Group": 0,
+            "Index": 4
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "string_Variable_5",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_2",
+            "Group": 0,
+            "Index": 5
+          },
+          "isExec": false
+        },
+        {
+          "From": {
             "Node": "Value_Integer_Switch_2",
             "Group": 0,
             "Index": 0
@@ -1902,6 +2113,19 @@
             "Node": "Out_2",
             "Group": 2,
             "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "List_Create_2",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_2",
+            "Group": 2,
+            "Index": 1
           },
           "isExec": false
         }
@@ -1923,8 +2147,12 @@
           "Inputs": [],
           "Outputs": [
             {
-              "Item1": "result",
+              "Item1": "value0",
               "Item2": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            },
+            {
+              "Item1": "value1",
+              "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
             }
           ]
         }
@@ -2088,6 +2316,13 @@
             "7"
           ],
           "InputCount": 9
+        },
+        {
+          "Id": "List_Create_3",
+          "Type": "VjItVFENM0yiofvES34fBw==",
+          "Name": "List Create",
+          "DefaultValues": [],
+          "InputCount": 8
         },
         {
           "Id": "Out_3",
@@ -2451,6 +2686,110 @@
         },
         {
           "From": {
+            "Node": "bool_Variable_0",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_3",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "bool_Variable_1",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_3",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "bool_Variable_2",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_3",
+            "Group": 0,
+            "Index": 2
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "bool_Variable_3",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_3",
+            "Group": 0,
+            "Index": 3
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "bool_Variable_4",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_3",
+            "Group": 0,
+            "Index": 4
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "bool_Variable_5",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_3",
+            "Group": 0,
+            "Index": 5
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "bool_Variable_6",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_3",
+            "Group": 0,
+            "Index": 6
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "bool_Variable_7",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_3",
+            "Group": 0,
+            "Index": 7
+          },
+          "isExec": false
+        },
+        {
+          "From": {
             "Node": "Value_Integer_Switch_3",
             "Group": 0,
             "Index": 0
@@ -2459,6 +2798,19 @@
             "Node": "Out_3",
             "Group": 2,
             "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "List_Create_3",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_3",
+            "Group": 2,
+            "Index": 1
           },
           "isExec": false
         }
@@ -2480,8 +2832,12 @@
           "Inputs": [],
           "Outputs": [
             {
-              "Item1": "result",
+              "Item1": "value0",
               "Item2": "RRCGBuild.BoolPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            },
+            {
+              "Item1": "value1",
+              "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.BoolPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
             }
           ]
         }
@@ -2644,6 +3000,13 @@
             "4"
           ],
           "InputCount": 6
+        },
+        {
+          "Id": "List_Create_4",
+          "Type": "VjItVFENM0yiofvES34fBw==",
+          "Name": "List Create",
+          "DefaultValues": [],
+          "InputCount": 5
         },
         {
           "Id": "Out_4",
@@ -3033,6 +3396,71 @@
         },
         {
           "From": {
+            "Node": "int_Variable_2",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "int_Variable_3",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_4",
+            "Group": 0,
+            "Index": 1
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "int_Variable_4",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_4",
+            "Group": 0,
+            "Index": 2
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "int_Variable_5",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_4",
+            "Group": 0,
+            "Index": 3
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "int_Variable_6",
+            "Group": 0,
+            "Index": 1
+          },
+          "To": {
+            "Node": "List_Create_4",
+            "Group": 0,
+            "Index": 4
+          },
+          "isExec": false
+        },
+        {
+          "From": {
             "Node": "Value_Integer_Switch_5",
             "Group": 0,
             "Index": 0
@@ -3041,6 +3469,19 @@
             "Node": "Out_4",
             "Group": 2,
             "Index": 0
+          },
+          "isExec": false
+        },
+        {
+          "From": {
+            "Node": "List_Create_4",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_4",
+            "Group": 2,
+            "Index": 1
           },
           "isExec": false
         }
@@ -3062,8 +3503,12 @@
           "Inputs": [],
           "Outputs": [
             {
-              "Item1": "result",
+              "Item1": "value0",
               "Item2": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            },
+            {
+              "Item1": "value1",
+              "Item2": "RRCGBuild.ListPort`1[[RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
             }
           ]
         }

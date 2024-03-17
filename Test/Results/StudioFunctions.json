@@ -157,19 +157,6 @@
     },
     {
       "From": {
-        "Node": "Studio_Function_0",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Studio_Function_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
         "Node": "From_Rec_Room_Object_0",
         "Group": 0,
         "Index": 0
@@ -180,6 +167,19 @@
         "Index": 1
       },
       "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Studio_Function_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Studio_Function_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
     },
     {
       "From": {
@@ -209,19 +209,6 @@
     },
     {
       "From": {
-        "Node": "Studio_Function_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Studio_Function_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
         "Node": "From_Rec_Room_Object_0",
         "Group": 0,
         "Index": 0
@@ -232,6 +219,19 @@
         "Index": 1
       },
       "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Studio_Function_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Studio_Function_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
     },
     {
       "From": {
@@ -287,19 +287,6 @@
     },
     {
       "From": {
-        "Node": "Log_String_0",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Studio_Function_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
         "Node": "From_Rec_Room_Object_0",
         "Group": 0,
         "Index": 0
@@ -310,6 +297,19 @@
         "Index": 1
       },
       "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Studio_Function_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
     },
     {
       "From": {
