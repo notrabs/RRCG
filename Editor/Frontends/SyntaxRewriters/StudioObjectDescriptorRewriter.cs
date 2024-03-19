@@ -140,6 +140,8 @@ namespace RRCG
             }
 
             return method
+                .WithExpressionBody(null)
+                .WithSemicolonToken(MissingToken(SyntaxKind.SemicolonToken))
                 .WithBody(Block(statements))
                 .WithParameterList(SyntaxUtils.ParameterList(parameters.ToArray()))
                 .WithReturnType(GetStudioFunctionReturnType(method));
@@ -257,6 +259,8 @@ namespace RRCG
             }
 
             return method
+                .WithExpressionBody(null)
+                .WithSemicolonToken(MissingToken(SyntaxKind.SemicolonToken))
                 .WithBody(Block(statements))
                 .WithParameterList(SyntaxUtils.ParameterList(parameters.ToArray()));
         }
