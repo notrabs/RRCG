@@ -91,6 +91,27 @@ namespace RRCGBuild
             return ports;
         }
 
+        public static (T0, T1, T2, T3, T4) EventCache<T0, T1, T2, T3, T4>(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+            where T3 : AnyPort, new()
+            where T4 : AnyPort, new()
+        {
+            var cacheEvent = new EventDefinition<T0, T1, T2, T3, T4>("EventCache", "value0", "value1", "value2", "value3", "value4");
+
+            (T0, T1, T2, T3, T4) ports = default;
+
+            CircuitBuilder.InlineGraph(() =>
+            {
+                ports = cacheEvent.Receiver();
+            });
+
+            cacheEvent.SendLocal(value0, value1, value2, value3, value4);
+
+            return ports;
+        }
+
 
         public static void Log(AnyPort obj)
         {

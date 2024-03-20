@@ -26,6 +26,7 @@ namespace RRCGSource
         public static (T0, T1) EventCache<T0, T1>(T0 value0, T1 value1)  => default;
         public static (T0, T1, T2) EventCache<T0, T1, T2>(T0 value0, T1 value1, T2 value2)  => default;
         public static (T0, T1, T2, T3) EventCache<T0, T1, T2, T3>(T0 value0, T1 value1, T2 value2, T3 value3)  => default;
+        public static (T0, T1, T2, T3, T4) EventCache<T0, T1, T2, T3, T4>(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4)  => default;
 
         /// <summary>
         /// Logs a value to the console with automatic ToString conversion
