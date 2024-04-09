@@ -162,6 +162,8 @@ namespace RRCGBuild
             if (b.IsDataPort) return a / ChipLib.FloatConst(b);
             return a / (FloatPort)b;
         }
+
+        public static implicit operator Vector3Port(Vector3 data) => new Vector3Port { Data = data };
     }
     public class QuaternionPort : AnyPort
     {
@@ -233,7 +235,10 @@ namespace RRCGBuild
             if (a.IsDataPort && b.IsDataPort) return new QuaternionPort { Data = (Quaternion)a.Data * (Quaternion)b.Data };
             return ChipBuilder.Multiply(a, b);
         }
+
+        public static implicit operator QuaternionPort(Quaternion data) => new QuaternionPort { Data = data };
     }
+
     public class ColorPort : AnyPort
     {
         public ColorPort() { }
