@@ -55,7 +55,7 @@
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
       "VariableData": {
-        "Name": "RRCG_MemberString",
+        "Name": "RRCG_FieldString",
         "Kind": 0,
         "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
         "HomeValue": "Home value"
@@ -68,7 +68,7 @@
       "Type": "tdAvPazuzEWmIhcBcQ8Hkg==",
       "Name": "Color Variable",
       "VariableData": {
-        "Name": "RRCG_SyncedMemberColour",
+        "Name": "RRCG_SyncedFieldColour",
         "Kind": 1,
         "Type": "RRCGBuild.ColorPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
         "HomeValue": 16712680
@@ -81,7 +81,7 @@
       "Type": "tdAvPazuzEWmIhcBcQ8Hkg==",
       "Name": "Color Variable",
       "VariableData": {
-        "Name": "RRCG_TestMultipleDeclarations",
+        "Name": "RRCG_TestMultipleDeclarationsField",
         "Kind": 1,
         "Type": "RRCGBuild.ColorPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
         "HomeValue": 66280
@@ -94,7 +94,7 @@
       "Type": "B0kiM/9oAkGALnw+7UgdNw==",
       "Name": "int Variable",
       "VariableData": {
-        "Name": "CloudVar1",
+        "Name": "FieldCloudVar1",
         "Kind": 2,
         "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
       },
@@ -106,7 +106,7 @@
       "Type": "B0kiM/9oAkGALnw+7UgdNw==",
       "Name": "int Variable",
       "VariableData": {
-        "Name": "CloudVar2",
+        "Name": "FieldCloudVar2",
         "Kind": 2,
         "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
       },
@@ -118,11 +118,49 @@
       "Type": "B0kiM/9oAkGALnw+7UgdNw==",
       "Name": "int Variable",
       "VariableData": {
-        "Name": "CloudVar3",
+        "Name": "FieldCloudVar3",
         "Kind": 2,
         "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
       },
       "DefaultValues": [[[0,1],"System.Int32",3]],
+      "InputCount": 2
+    },
+    {
+      "Id": "string_Variable_1",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_PropertyString",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "HomeValue": "Home value"
+      },
+      "DefaultValues": [[[0,1],"System.String","world"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Color_Variable_2",
+      "Type": "tdAvPazuzEWmIhcBcQ8Hkg==",
+      "Name": "Color Variable",
+      "VariableData": {
+        "Name": "RRCG_SyncedPropertyColour",
+        "Kind": 1,
+        "Type": "RRCGBuild.ColorPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "HomeValue": 16712680
+      },
+      "DefaultValues": [[[0,1],"System.Int32",1255]],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_3",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "PropertyCloudVar1",
+        "Kind": 2,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.Int32",4]],
       "InputCount": 2
     },
     {
@@ -203,6 +241,41 @@
       "InputCount": 2
     },
     {
+      "Id": "Log_String_8",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "To_String_5",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_9",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "To_String_6",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_10",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
       "Id": "Event_Receiver_0",
       "Type": "yzxTizpkHUmYLJRBfOmZVA==",
       "Name": "Event Receiver",
@@ -227,18 +300,6 @@
       "InputCount": 3
     },
     {
-      "Id": "string_Variable_1",
-      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
-      "Name": "string Variable",
-      "VariableData": {
-        "Name": "RRCG_Conditional_param",
-        "Kind": 0,
-        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
-      },
-      "DefaultValues": [],
-      "InputCount": 2
-    },
-    {
       "Id": "string_Variable_2",
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
@@ -251,7 +312,19 @@
       "InputCount": 2
     },
     {
-      "Id": "Log_String_8",
+      "Id": "string_Variable_3",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_param",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_11",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
@@ -282,18 +355,6 @@
       "InputCount": 3
     },
     {
-      "Id": "string_Variable_3",
-      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
-      "Name": "string Variable",
-      "VariableData": {
-        "Name": "RRCG_Conditional_param_1",
-        "Kind": 0,
-        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
-      },
-      "DefaultValues": [],
-      "InputCount": 2
-    },
-    {
       "Id": "string_Variable_4",
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
@@ -306,7 +367,19 @@
       "InputCount": 2
     },
     {
-      "Id": "Log_String_9",
+      "Id": "string_Variable_5",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_param_1",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_12",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
@@ -337,18 +410,6 @@
       "InputCount": 3
     },
     {
-      "Id": "string_Variable_5",
-      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
-      "Name": "string Variable",
-      "VariableData": {
-        "Name": "RRCG_Conditional_param_2",
-        "Kind": 0,
-        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
-      },
-      "DefaultValues": [],
-      "InputCount": 2
-    },
-    {
       "Id": "string_Variable_6",
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
@@ -361,7 +422,19 @@
       "InputCount": 2
     },
     {
-      "Id": "Log_String_10",
+      "Id": "string_Variable_7",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_param_2",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_13",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
@@ -392,18 +465,6 @@
       "InputCount": 3
     },
     {
-      "Id": "string_Variable_7",
-      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
-      "Name": "string Variable",
-      "VariableData": {
-        "Name": "RRCG_Conditional_param_3",
-        "Kind": 0,
-        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
-      },
-      "DefaultValues": [],
-      "InputCount": 2
-    },
-    {
       "Id": "string_Variable_8",
       "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
       "Name": "string Variable",
@@ -416,7 +477,19 @@
       "InputCount": 2
     },
     {
-      "Id": "Log_String_11",
+      "Id": "string_Variable_9",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_Conditional_param_3",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_14",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
       "DefaultValues": [],
@@ -582,6 +655,45 @@
     },
     {
       "From": {
+        "Node": "int_Variable_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Color_Variable_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Color_Variable_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
         "Node": "string_Variable_0",
         "Group": 0,
         "Index": 1
@@ -595,7 +707,7 @@
     },
     {
       "From": {
-        "Node": "int_Variable_2",
+        "Node": "int_Variable_3",
         "Group": 0,
         "Index": 0
       },
@@ -803,6 +915,110 @@
     },
     {
       "From": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_8",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Color_Variable_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_9",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_10",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
         "Node": "Event_Receiver_0",
         "Group": 0,
         "Index": 0
@@ -834,32 +1050,6 @@
         "Index": 0
       },
       "To": {
-        "Node": "string_Variable_1",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "If_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "string_Variable_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Event_Receiver_0",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
         "Node": "string_Variable_2",
         "Group": 0,
         "Index": 1
@@ -870,7 +1060,7 @@
       "From": {
         "Node": "If_1",
         "Group": 0,
-        "Index": 1
+        "Index": 0
       },
       "To": {
         "Node": "string_Variable_2",
@@ -886,7 +1076,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Log_String_8",
+        "Node": "string_Variable_3",
         "Group": 0,
         "Index": 1
       },
@@ -894,16 +1084,29 @@
     },
     {
       "From": {
-        "Node": "string_Variable_1",
+        "Node": "If_1",
         "Group": 0,
-        "Index": 0
+        "Index": 1
       },
       "To": {
-        "Node": "Log_String_8",
+        "Node": "string_Variable_3",
         "Group": 0,
         "Index": 0
       },
       "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_11",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
     },
     {
       "From": {
@@ -912,7 +1115,20 @@
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_8",
+        "Node": "Log_String_11",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_11",
         "Group": 0,
         "Index": 0
       },
@@ -951,32 +1167,6 @@
         "Index": 0
       },
       "To": {
-        "Node": "string_Variable_3",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "If_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "string_Variable_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Event_Receiver_1",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
         "Node": "string_Variable_4",
         "Group": 0,
         "Index": 1
@@ -987,7 +1177,7 @@
       "From": {
         "Node": "If_2",
         "Group": 0,
-        "Index": 1
+        "Index": 0
       },
       "To": {
         "Node": "string_Variable_4",
@@ -1003,7 +1193,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Log_String_9",
+        "Node": "string_Variable_5",
         "Group": 0,
         "Index": 1
       },
@@ -1011,16 +1201,29 @@
     },
     {
       "From": {
-        "Node": "string_Variable_3",
+        "Node": "If_2",
         "Group": 0,
-        "Index": 0
+        "Index": 1
       },
       "To": {
-        "Node": "Log_String_9",
+        "Node": "string_Variable_5",
         "Group": 0,
         "Index": 0
       },
       "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
     },
     {
       "From": {
@@ -1029,7 +1232,20 @@
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_9",
+        "Node": "Log_String_12",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_12",
         "Group": 0,
         "Index": 0
       },
@@ -1068,32 +1284,6 @@
         "Index": 0
       },
       "To": {
-        "Node": "string_Variable_5",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "If_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "string_Variable_5",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Event_Receiver_2",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
         "Node": "string_Variable_6",
         "Group": 0,
         "Index": 1
@@ -1104,7 +1294,7 @@
       "From": {
         "Node": "If_3",
         "Group": 0,
-        "Index": 1
+        "Index": 0
       },
       "To": {
         "Node": "string_Variable_6",
@@ -1120,7 +1310,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Log_String_10",
+        "Node": "string_Variable_7",
         "Group": 0,
         "Index": 1
       },
@@ -1128,16 +1318,29 @@
     },
     {
       "From": {
-        "Node": "string_Variable_5",
+        "Node": "If_3",
         "Group": 0,
-        "Index": 0
+        "Index": 1
       },
       "To": {
-        "Node": "Log_String_10",
+        "Node": "string_Variable_7",
         "Group": 0,
         "Index": 0
       },
       "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_13",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
     },
     {
       "From": {
@@ -1146,7 +1349,20 @@
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_10",
+        "Node": "Log_String_13",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_13",
         "Group": 0,
         "Index": 0
       },
@@ -1185,32 +1401,6 @@
         "Index": 0
       },
       "To": {
-        "Node": "string_Variable_7",
-        "Group": 0,
-        "Index": 1
-      },
-      "isExec": false
-    },
-    {
-      "From": {
-        "Node": "If_4",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "string_Variable_7",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Event_Receiver_3",
-        "Group": 0,
-        "Index": 1
-      },
-      "To": {
         "Node": "string_Variable_8",
         "Group": 0,
         "Index": 1
@@ -1221,7 +1411,7 @@
       "From": {
         "Node": "If_4",
         "Group": 0,
-        "Index": 1
+        "Index": 0
       },
       "To": {
         "Node": "string_Variable_8",
@@ -1237,7 +1427,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Log_String_11",
+        "Node": "string_Variable_9",
         "Group": 0,
         "Index": 1
       },
@@ -1245,16 +1435,29 @@
     },
     {
       "From": {
-        "Node": "string_Variable_7",
+        "Node": "If_4",
         "Group": 0,
-        "Index": 0
+        "Index": 1
       },
       "To": {
-        "Node": "Log_String_11",
+        "Node": "string_Variable_9",
         "Group": 0,
         "Index": 0
       },
       "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_14",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
     },
     {
       "From": {
@@ -1263,7 +1466,20 @@
         "Index": 0
       },
       "To": {
-        "Node": "Log_String_11",
+        "Node": "Log_String_14",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_14",
         "Group": 0,
         "Index": 0
       },

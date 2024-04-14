@@ -54,20 +54,26 @@ namespace RRCGBuild
 
             );
             LogString(result);
-            // Assign to our variable fields
-            MemberString = "Hello";
-            SyncedMemberColour = ColorPort.red;
-            TestMultipleDeclarations = ColorPort.magenta;
-            MemberCloudVar1 = 1;
-            MemberCloudVar2 = 2;
-            MemberCloudVar3 = 3;
+            // Assign to our member variables
+            FieldString = "Hello";
+            SyncedFieldColour = ColorPort.red;
+            TestMultipleDeclarationsField = ColorPort.magenta;
+            FieldCloudVar1 = 1;
+            FieldCloudVar2 = 2;
+            FieldCloudVar3 = 3;
+            PropertyString = "world";
+            SyncedPropertyColour = ColorPort.blue;
+            PropertyCloudVar1 = 4;
             // Log all our variable fields
-            ChipLib.Log(MemberString);
-            ChipLib.Log(SyncedMemberColour);
-            ChipLib.Log(TestMultipleDeclarations);
-            ChipLib.Log(MemberCloudVar1);
-            ChipLib.Log(MemberCloudVar2);
-            ChipLib.Log(MemberCloudVar3);
+            ChipLib.Log(FieldString);
+            ChipLib.Log(SyncedFieldColour);
+            ChipLib.Log(TestMultipleDeclarationsField);
+            ChipLib.Log(FieldCloudVar1);
+            ChipLib.Log(FieldCloudVar2);
+            ChipLib.Log(FieldCloudVar3);
+            ChipLib.Log(PropertyString);
+            ChipLib.Log(SyncedPropertyColour);
+            ChipLib.Log(PropertyCloudVar1);
             // Test conditional assignments to method parameters
             // Simple lambdas
             RoomEvent.TestEvent(param =>
@@ -179,46 +185,67 @@ namespace RRCGBuild
             __EndReturnScope();
         }
 
-        private NamedVariable<StringPort> __RRCG_FIELD_VARIABLE_MemberString = __CreateNamedVariable<StringPort>("MemberString", "Home value", VariableKind.Local);
-        public StringPort MemberString
+        private NamedVariable<StringPort> __RRCG_MEMBER_VARIABLE_FieldString = __CreateNamedVariable<StringPort>("FieldString", "Home value", VariableKind.Local);
+        public StringPort FieldString
         {
-            get => __RRCG_FIELD_VARIABLE_MemberString.Value;
-            set => __RRCG_FIELD_VARIABLE_MemberString.Value = value;
+            get => __RRCG_MEMBER_VARIABLE_FieldString.Value;
+            set => __RRCG_MEMBER_VARIABLE_FieldString.Value = value;
         }
 
-        private NamedVariable<ColorPort> __RRCG_FIELD_VARIABLE_SyncedMemberColour = __CreateNamedVariable<ColorPort>("SyncedMemberColour", new ColorPort(1, 0, 0), VariableKind.Synced);
-        private ColorPort SyncedMemberColour
+        private NamedVariable<ColorPort> __RRCG_MEMBER_VARIABLE_SyncedFieldColour = __CreateNamedVariable<ColorPort>("SyncedFieldColour", new ColorPort(1, 0, 0), VariableKind.Synced);
+        private ColorPort SyncedFieldColour
         {
-            get => __RRCG_FIELD_VARIABLE_SyncedMemberColour.Value;
-            set => __RRCG_FIELD_VARIABLE_SyncedMemberColour.Value = value;
+            get => __RRCG_MEMBER_VARIABLE_SyncedFieldColour.Value;
+            set => __RRCG_MEMBER_VARIABLE_SyncedFieldColour.Value = value;
         }
 
-        private NamedVariable<ColorPort> __RRCG_FIELD_VARIABLE_TestMultipleDeclarations = __CreateNamedVariable<ColorPort>("TestMultipleDeclarations", new ColorPort(0, 1, 0), VariableKind.Synced);
-        private ColorPort TestMultipleDeclarations
+        private NamedVariable<ColorPort> __RRCG_MEMBER_VARIABLE_TestMultipleDeclarationsField = __CreateNamedVariable<ColorPort>("TestMultipleDeclarationsField", new ColorPort(0, 1, 0), VariableKind.Synced);
+        private ColorPort TestMultipleDeclarationsField
         {
-            get => __RRCG_FIELD_VARIABLE_TestMultipleDeclarations.Value;
-            set => __RRCG_FIELD_VARIABLE_TestMultipleDeclarations.Value = value;
+            get => __RRCG_MEMBER_VARIABLE_TestMultipleDeclarationsField.Value;
+            set => __RRCG_MEMBER_VARIABLE_TestMultipleDeclarationsField.Value = value;
         }
 
-        private NamedVariable<IntPort> __RRCG_FIELD_VARIABLE_MemberCloudVar1 = __CreateNamedVariable<IntPort>("CloudVar1", null !, VariableKind.Cloud);
-        private IntPort MemberCloudVar1
+        private NamedVariable<IntPort> __RRCG_MEMBER_VARIABLE_FieldCloudVar1 = __CreateNamedVariable<IntPort>("FieldCloudVar1", null !, VariableKind.Cloud);
+        private IntPort FieldCloudVar1
         {
-            get => __RRCG_FIELD_VARIABLE_MemberCloudVar1.Value;
-            set => __RRCG_FIELD_VARIABLE_MemberCloudVar1.Value = value;
+            get => __RRCG_MEMBER_VARIABLE_FieldCloudVar1.Value;
+            set => __RRCG_MEMBER_VARIABLE_FieldCloudVar1.Value = value;
         }
 
-        private NamedVariable<IntPort> __RRCG_FIELD_VARIABLE_MemberCloudVar2 = __CreateNamedVariable<IntPort>("CloudVar2", null !, VariableKind.Cloud);
-        private IntPort MemberCloudVar2
+        private NamedVariable<IntPort> __RRCG_MEMBER_VARIABLE_FieldCloudVar2 = __CreateNamedVariable<IntPort>("FieldCloudVar2", null !, VariableKind.Cloud);
+        private IntPort FieldCloudVar2
         {
-            get => __RRCG_FIELD_VARIABLE_MemberCloudVar2.Value;
-            set => __RRCG_FIELD_VARIABLE_MemberCloudVar2.Value = value;
+            get => __RRCG_MEMBER_VARIABLE_FieldCloudVar2.Value;
+            set => __RRCG_MEMBER_VARIABLE_FieldCloudVar2.Value = value;
         }
 
-        private NamedVariable<IntPort> __RRCG_FIELD_VARIABLE_MemberCloudVar3 = __CreateNamedVariable<IntPort>("CloudVar3", null !, VariableKind.Cloud);
-        private IntPort MemberCloudVar3
+        private NamedVariable<IntPort> __RRCG_MEMBER_VARIABLE_FieldCloudVar3 = __CreateNamedVariable<IntPort>("FieldCloudVar3", null !, VariableKind.Cloud);
+        private IntPort FieldCloudVar3
         {
-            get => __RRCG_FIELD_VARIABLE_MemberCloudVar3.Value;
-            set => __RRCG_FIELD_VARIABLE_MemberCloudVar3.Value = value;
+            get => __RRCG_MEMBER_VARIABLE_FieldCloudVar3.Value;
+            set => __RRCG_MEMBER_VARIABLE_FieldCloudVar3.Value = value;
+        }
+
+        private NamedVariable<StringPort> __RRCG_MEMBER_VARIABLE_PropertyString = __CreateNamedVariable<StringPort>("PropertyString", "Home value", VariableKind.Local);
+        public StringPort PropertyString
+        {
+            get => __RRCG_MEMBER_VARIABLE_PropertyString.Value;
+            set => __RRCG_MEMBER_VARIABLE_PropertyString.Value = value;
+        }
+
+        private NamedVariable<ColorPort> __RRCG_MEMBER_VARIABLE_SyncedPropertyColour = __CreateNamedVariable<ColorPort>("SyncedPropertyColour", new ColorPort(1, 0, 0), VariableKind.Synced);
+        private ColorPort SyncedPropertyColour
+        {
+            get => __RRCG_MEMBER_VARIABLE_SyncedPropertyColour.Value;
+            set => __RRCG_MEMBER_VARIABLE_SyncedPropertyColour.Value = value;
+        }
+
+        private NamedVariable<IntPort> __RRCG_MEMBER_VARIABLE_PropertyCloudVar1 = __CreateNamedVariable<IntPort>("PropertyCloudVar1", null !, VariableKind.Cloud);
+        private IntPort PropertyCloudVar1
+        {
+            get => __RRCG_MEMBER_VARIABLE_PropertyCloudVar1.Value;
+            set => __RRCG_MEMBER_VARIABLE_PropertyCloudVar1.Value = value;
         }
     }
 

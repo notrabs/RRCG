@@ -224,5 +224,31 @@ namespace RRCG
                     return position > declaration.SpanStart;
                 }).ToArray();
         }
+
+        public static (AccessorDeclarationSyntax Getter, AccessorDeclarationSyntax Setter) GetAccessors(this PropertyDeclarationSyntax property)
+        {
+            AccessorDeclarationSyntax getter = null;
+            AccessorDeclarationSyntax setter = null;
+
+            var accessors = property.AccessorList?.Accessors;
+            if (accessors == null) return (null, null);
+
+            foreach (var accessor in property.AccessorList!.Accessors!)
+            {
+                var accessorKind = accessor.Kind();
+                if (accessorKind == SyntaxKind.GetAccessorDeclaration) getter = accessor;
+                if (accessorKind == SyntaxKind.SetAccessorDeclaration) setter = accessor;
+            }
+
+            return (getter, setter);
+        }
+
+        public static bool IsAutoImplemented(this PropertyDeclarationSyntax property)
+        {
+            // string myProperty => "readonly";
+            if (property.AccessorList == null) return false;
+
+            return property.AccessorList.Accessors.All(a => a.Body == null && a.ExpressionBody == null);
+        }
     }
 }

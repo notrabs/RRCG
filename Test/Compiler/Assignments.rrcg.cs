@@ -19,13 +19,23 @@ public class AssignmentsTest : CircuitDescriptor
 
     // Field -> variable assignments
     [Variable]
-    public string MemberString = "Home value";
+    public string FieldString = "Home value";
 
     [SyncedVariable]
-    private Color SyncedMemberColour = new Color(1, 0, 0), TestMultipleDeclarations = new Color(0, 1, 0);
+    private Color SyncedFieldColour = new Color(1, 0, 0), TestMultipleDeclarationsField = new Color(0, 1, 0);
 
-    [CloudVariable("CloudVar1", "CloudVar2", "CloudVar3")]
-    private int MemberCloudVar1, MemberCloudVar2, MemberCloudVar3; // home values unsupported
+    [CloudVariable("FieldCloudVar1", "FieldCloudVar2", "FieldCloudVar3")]
+    private int FieldCloudVar1, FieldCloudVar2, FieldCloudVar3; // home values unsupported
+
+    // Property -> variable assignments
+    [Variable]
+    public string PropertyString { get; set; } = "Home value";
+
+    [SyncedVariable]
+    private Color SyncedPropertyColour { get; set; } = new Color(1, 0, 0);
+
+    [CloudVariable("PropertyCloudVar1")]
+    private int PropertyCloudVar1 { get; set; }
 
     public override void CircuitGraph()
     {
@@ -51,21 +61,29 @@ public class AssignmentsTest : CircuitDescriptor
 
         LogString(result);
 
-        // Assign to our variable fields
-        MemberString = "Hello";
-        SyncedMemberColour = Color.red;
-        TestMultipleDeclarations = Color.magenta;
-        MemberCloudVar1 = 1;
-        MemberCloudVar2 = 2;
-        MemberCloudVar3 = 3;
+        // Assign to our member variables
+        FieldString = "Hello";
+        SyncedFieldColour = Color.red;
+        TestMultipleDeclarationsField = Color.magenta;
+        FieldCloudVar1 = 1;
+        FieldCloudVar2 = 2;
+        FieldCloudVar3 = 3;
+
+        PropertyString = "world";
+        SyncedPropertyColour = Color.blue;
+        PropertyCloudVar1 = 4;
 
         // Log all our variable fields
-        ChipLib.Log(MemberString);
-        ChipLib.Log(SyncedMemberColour);
-        ChipLib.Log(TestMultipleDeclarations);
-        ChipLib.Log(MemberCloudVar1);
-        ChipLib.Log(MemberCloudVar2);
-        ChipLib.Log(MemberCloudVar3);
+        ChipLib.Log(FieldString);
+        ChipLib.Log(SyncedFieldColour);
+        ChipLib.Log(TestMultipleDeclarationsField);
+        ChipLib.Log(FieldCloudVar1);
+        ChipLib.Log(FieldCloudVar2);
+        ChipLib.Log(FieldCloudVar3);
+
+        ChipLib.Log(PropertyString);
+        ChipLib.Log(SyncedPropertyColour);
+        ChipLib.Log(PropertyCloudVar1);
 
         // Test conditional assignments to method parameters
         // Simple lambdas

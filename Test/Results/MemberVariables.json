@@ -1,0 +1,672 @@
+{
+  "Id": "0",
+  "Nodes": [
+    {
+      "Id": "Event_Receiver_0",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "Test Event"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Add_0",
+      "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+      "Name": "Add",
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_0",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_FieldVariable",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "HomeValue": 1000
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_0",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""],[[0,2],"System.String",", assigned suffix (field)"]],
+      "InputCount": 3
+    },
+    {
+      "Id": "string_Variable_0",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_SyncedFieldVariable",
+        "Kind": 1,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "HomeValue": "Home value"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "bool_Variable_0",
+      "Type": "iFWVgHp/fE+0b20ekFf7oA==",
+      "Name": "bool Variable",
+      "VariableData": {
+        "Name": "FieldCloudVariable",
+        "Kind": 2,
+        "Type": "RRCGBuild.BoolPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.Boolean",false]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Add_1",
+      "Type": "PBXLDAjdIk+A/Z2MWUCSjA==",
+      "Name": "Add",
+      "DefaultValues": [[[0,1],"System.Int32",1]],
+      "InputCount": 2
+    },
+    {
+      "Id": "int_Variable_1",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_PropertyVariable",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "HomeValue": 2000
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "String_Concat_1",
+      "Type": "on7tc63OWkCznB/sS/1CNg==",
+      "Name": "String Concat",
+      "DefaultValues": [[[0,0],"System.String",""],[[0,2],"System.String",", assigned suffix (property)"]],
+      "InputCount": 3
+    },
+    {
+      "Id": "string_Variable_1",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_SyncedPropertyVariable",
+        "Kind": 1,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "HomeValue": "Home value"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "bool_Variable_1",
+      "Type": "iFWVgHp/fE+0b20ekFf7oA==",
+      "Name": "bool Variable",
+      "VariableData": {
+        "Name": "PropertyCloudVariable",
+        "Kind": 2,
+        "Type": "RRCGBuild.BoolPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.Boolean",true]],
+      "InputCount": 2
+    },
+    {
+      "Id": "To_String_0",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_0",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_1",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "To_String_1",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_2",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "To_String_2",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_3",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_4",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "To_String_3",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_5",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Receiver_1",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_FieldVariable Changed"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_6",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Change event fired for member: FieldVariable"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Receiver_2",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_SyncedFieldVariable Changed"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_7",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Change event fired for member: SyncedFieldVariable"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Receiver_3",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "FieldCloudVariable Changed"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Log_String_8",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Change event fired for member: CloudFieldVariable"]],
+      "InputCount": 2
+    }
+  ],
+  "Connections": [
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Add_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "bool_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Add_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Add_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "bool_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "int_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "String_Concat_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "String_Concat_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "int_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "bool_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "bool_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "bool_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Log_String_4",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "bool_Variable_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_5",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_4",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_5",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_7",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    }
+  ],
+  "SubContexts": []
+}

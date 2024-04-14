@@ -1076,33 +1076,38 @@ namespace RRCGBuild
             return result;
         }
 
-        public static void FieldVariableChanged<T>(T fieldVariable) where T : AnyPort, new()
+        public static void MemberVariableChanged<T>(T memberVariable) where T : AnyPort, new()
         {
-            // fieldVariable must reference the value pin of a Variable node
-            if (!fieldVariable.IsActualPort) goto fail;
+            // memberVariable must reference the value pin of a Variable node
+            if (!memberVariable.IsActualPort) goto fail;
 
-            var port = fieldVariable.Port;
+            var port = memberVariable.Port;
             var node = port.Node;
 
             if (!ChipTypeUtils.VariableTypes.Contains(node.Type)) goto fail;
             if (!port.EquivalentTo(node.Port(0, 1))) goto fail;
 
-            // All checks pass, create the event
+            // All checks pass, create the event receiver
             EventReceiver(node.VariableData.Name + " Changed");
             return;
 
         fail: // I didn't want to duplicate the message
-            throw new ArgumentException("The fieldVariable argument must refer to a variable output port!");
+            throw new ArgumentException("The memberVariable argument must refer to a variable output port!");
         }
 
-        public static void FieldVariableChanged<T>(T fieldVariable, AlternativeExec onChanged) where T : AnyPort, new()
+        public static void MemberVariableChanged<T>(T fieldVariable, AlternativeExec onChanged) where T : AnyPort, new()
         {
             InlineGraph(() =>
             {
-                FieldVariableChanged(fieldVariable);
+                MemberVariableChanged(fieldVariable);
                 onChanged();
             });
         }
+
+        [Obsolete("Renamed - use MemberVariableChanged instead.")]
+        public static void FieldVariableChanged<T>(T fieldVariable) where T : AnyPort, new() => MemberVariableChanged(fieldVariable);
+        [Obsolete("Renamed - use MemberVariableChanged instead.")]
+        public static void FieldVariableChanged<T>(T fieldVariable, AlternativeExec onChanged) where T : AnyPort, new() => MemberVariableChanged(fieldVariable, onChanged);
     }
 }
 #nullable disable

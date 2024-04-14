@@ -25,27 +25,27 @@ namespace RRCGSource
     public class CircuitGraph : Attribute { }
 
     /// <summary>
-    /// Fields declared with this attribute will be placed as variable chips.
+    /// Fields or properties declared with this attribute will be placed as variable chips.
     /// The initializer will become the home value.
     /// </summary>
-    /// <see cref="CircuitDescriptor.FieldVariableChanged{T}(T)"/>
-    [AttributeUsage(AttributeTargets.Field)]
+    /// <see cref="CircuitDescriptor.MemberVariableChanged{T}(T)"/>
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class Variable : Attribute { }
 
     /// <summary>
-    /// Fields declared with this attribute will be placed as synced variable chips.
+    /// Fields or properties declared with this attribute will be placed as synced variable chips.
     /// The initializer will become the home value.
     /// </summary>
-    /// <see cref="CircuitDescriptor.FieldVariableChanged{T}(T)"/>
-    [AttributeUsage(AttributeTargets.Field)]
+    /// <see cref="CircuitDescriptor.MemberVariableChanged{T}(T)"/>
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class SyncedVariable : Attribute { }
 
     /// <summary>
-    /// Fields declared with this attribute will be placed as cloud variable chips.
+    /// Fields or properties declared with this attribute will be placed as cloud variable chips.
     /// Home values are not supported with cloud variables!
     /// </summary>
-    /// <see cref="CircuitDescriptor.FieldVariableChanged{T}(T)"/>
-    [AttributeUsage(AttributeTargets.Field)]
+    /// <see cref="CircuitDescriptor.MemberVariableChanged{T}(T)"/>
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class CloudVariable : Attribute
     {
         public CloudVariable(params string[] names) { }
@@ -172,10 +172,15 @@ namespace RRCGSource
 
         /// <summary>
         /// Allows you to use the changed event for variables created with [Variable], [SyncedVariable], [CloudVariable], etc.
-        /// Pass the field as the argument and the corresponding Event Receiver will be placed.
+        /// Pass the member as the argument and the corresponding Event Receiver will be placed.
         /// </summary>
+        public static void MemberVariableChanged<T>(T memberVariable) { }
+        /// <inheritdoc cref="MemberVariableChanged{T}(T)"/>
+        public static void MemberVariableChanged<T>(T memberVariable, AlternativeExec onChanged) { }
+
+        [Obsolete("Renamed - use MemberVariableChanged instead.")]
         public static void FieldVariableChanged<T>(T fieldVariable) { }
-        /// <inheritdoc cref="FieldVariableChanged{T}(T)"/>
+        [Obsolete("Renamed - use MemberVariableChanged instead.")]
         public static void FieldVariableChanged<T>(T fieldVariable, AlternativeExec onChanged) { }
     }
 }
