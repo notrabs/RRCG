@@ -618,7 +618,6 @@ namespace RRCGBuild
             ExecFlow.current.Ports.Add(ifNode.Port(0, 1));
         }
 
-        public static void __Switch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches) { }
         public static void __Switch(ConditionalContext conditional, Func<AnyPort> match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
         {
             // Push our semantic scopes
@@ -660,14 +659,15 @@ namespace RRCGBuild
                 continuable.Continue();
         }
 
-        public static StringPort __StringInterpolation(params AnyPort[] ports)
+        public static StringPort __StringInterpolation(params object[] values)
         {
             var stringPorts = new List<StringPort>();
-            foreach (var port in ports)
+            foreach (var value in values)
             {
-                if (port is StringPort)
+                var port = PortConversionUtils.ToAnyPort(value);
+                if (port is StringPort stringPort)
                 {
-                    stringPorts.Add((StringPort)port);
+                    stringPorts.Add(stringPort);
                     continue;
                 }
 
@@ -1076,12 +1076,13 @@ namespace RRCGBuild
             return result;
         }
 
-        public static void MemberVariableChanged<T>(T memberVariable) where T : AnyPort, new()
+        public static void MemberVariableChanged(object memberVariable)
         {
             // memberVariable must reference the value pin of a Variable node
-            if (!memberVariable.IsActualPort) goto fail;
+            var memberVariablePort = PortConversionUtils.ToAnyPort(memberVariable);
+            if (!memberVariablePort.IsActualPort) goto fail;
 
-            var port = memberVariable.Port;
+            var port = memberVariablePort.Port;
             var node = port.Node;
 
             if (!ChipTypeUtils.VariableTypes.Contains(node.Type)) goto fail;
@@ -1095,7 +1096,7 @@ namespace RRCGBuild
             throw new ArgumentException("The memberVariable argument must refer to a variable output port!");
         }
 
-        public static void MemberVariableChanged<T>(T fieldVariable, AlternativeExec onChanged) where T : AnyPort, new()
+        public static void MemberVariableChanged(object fieldVariable, AlternativeExec onChanged)
         {
             InlineGraph(() =>
             {

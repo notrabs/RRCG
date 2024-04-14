@@ -59,17 +59,13 @@ namespace RRCGBuild
             __EndReturnScope();
         }
 
-        // TODO: We should probably make these use object, and create
-        //       some utility to attempt implicit conversions
-        //       to all the AnyPort-derived types for use by the helpers..
-        //       For now, though, we have to do this trickery.
-        void TestChangeEvent(StringPort name, dynamic member)
+        void TestChangeEvent(StringPort name, object member)
         {
             __BeginReturnScope("TestChangeEvent", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             __VariableDeclaratorExpression<StringPort>("name", null, () => name!, (_RRCG_SETTER_VALUE) => name = _RRCG_SETTER_VALUE);
-            __VariableDeclaratorExpression<dynamic>("member", null, () => member!, (_RRCG_SETTER_VALUE) => member = _RRCG_SETTER_VALUE);
-            MemberVariableChanged<RRCGBuild.AnyPort>(member, (AlternativeExec)(() =>
+            __VariableDeclaratorExpression<object>("member", null, () => member!, (_RRCG_SETTER_VALUE) => member = _RRCG_SETTER_VALUE);
+            MemberVariableChanged(member, () =>
             {
                 __BeginReturnScope("ParenthesizedLambda", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -78,7 +74,7 @@ namespace RRCGBuild
                 __EndReturnScope();
             }
 
-            ));
+            );
             __EndAccessibilityScope();
             __EndReturnScope();
         }

@@ -85,15 +85,11 @@ public class MemberVariables : CircuitDescriptor
         TestChangeEvent("CloudFieldVariable", CloudFieldVariable);
     }
 
-    // TODO: We should probably make these use object, and create
-    //       some utility to attempt implicit conversions
-    //       to all the AnyPort-derived types for use by the helpers..
-    //       For now, though, we have to do this trickery.
-    void TestChangeEvent(string name, dynamic member)
+    void TestChangeEvent(string name, object member)
     {
-        MemberVariableChanged<RRCGBuild.AnyPort>(member, (AlternativeExec)(() =>
+        MemberVariableChanged(member, () =>
         {
             LogString($"Change event fired for member: {name}");
-        }));
+        });
     }
 }
