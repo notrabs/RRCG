@@ -741,25 +741,25 @@ namespace RRCGBuild
             // Attempt to carry pending items into the parent scope, if allowed
             if (accessScope.PendingLabels.Count > 0)
             {
-                if (!canCarry)
+                if (canCarry)
+                    parentScope!.PendingLabels.AddRange(accessScope.PendingLabels);
+                else
                     Debug.LogWarning("Accessibility scope had pending labels waiting on execution to advance.");
-
-                parentScope!.PendingLabels.AddRange(accessScope.PendingLabels);
             }
 
             if (accessScope.PendingGotos.Count > 0)
             {
-                if (!canCarry)
+                if (canCarry)
+                    foreach (var kvp in accessScope.PendingGotos)
+                    {
+                        if (!parentScope!.PendingGotos.ContainsKey(kvp.Key))
+                            parentScope!.PendingGotos[kvp.Key] = new ExecFlow();
+
+                        parentScope!.PendingGotos[kvp.Key].Merge(kvp.Value);
+                    }
+                else
                     Debug.LogWarning("Accessibility scope had pending gotos waiting for labels that were never defined " +
                                      "(or had no suitable exec port to advance to)");
-
-                foreach (var kvp in accessScope.PendingGotos)
-                {
-                    if (!parentScope!.PendingGotos.ContainsKey(kvp.Key))
-                        parentScope!.PendingGotos[kvp.Key] = new ExecFlow();
-
-                    parentScope!.PendingGotos[kvp.Key].Merge(kvp.Value);
-                }
             }
 
         }
