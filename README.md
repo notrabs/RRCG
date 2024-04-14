@@ -477,7 +477,7 @@ public void ExampleCircuit()
 }
 ```
 
-Using attributes, this code can be made less verbose for class variables. This code without `.Value` accesses is equivalent to the code above:
+Using attributes, this code can be made less verbose for member variables. This code without `.Value` accesses is equivalent to the code above:
 
 ```c#
 [Variable]
@@ -492,7 +492,7 @@ string cloudVar;
 public void ExampleCircuit()
 {
     // The compiler will parse the changed event out of the reference to the C# value.
-    FieldVariableChanged(count);
+    MemberVariableChanged(count);
 
     // Access/Modify the Value using the c# variable
     count++;
