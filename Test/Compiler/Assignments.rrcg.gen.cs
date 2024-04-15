@@ -9,14 +9,6 @@ namespace RRCGBuild
 
     public class AssignmentsTest : CircuitBuilder
     {
-        IntPort methodValueAssignment = 3;
-        TypeTest mehtodTypeAssignment = new TypeTest();
-        TypeTest mehtodTypeAssignmentAnonymous = new();
-        TypeTest.NestedTypeTest mehtodNestedTypeAssignment = new TypeTest.NestedTypeTest();
-        TypeTest.NestedTypeTest mehtodNestedTypeAssignmentAnonymous = new();
-        FloatPort outOfScopeType = Mathf.Sqrt(4);
-        // Test interface assignments
-        IVariable<IntPort> variableAssignment = new Variable<IntPort>();
         public override void CircuitGraph()
         {
             __BeginReturnScope("CircuitGraph", null, null);
@@ -247,6 +239,14 @@ namespace RRCGBuild
             get => __RRCG_MEMBER_VARIABLE_PropertyCloudVar1.Value;
             set => __RRCG_MEMBER_VARIABLE_PropertyCloudVar1.Value = value;
         }
+
+        IntPort methodValueAssignment = __NamedAssignment<IntPort>("methodValueAssignment", () => 3);
+        TypeTest mehtodTypeAssignment = __NamedAssignment<TypeTest>("mehtodTypeAssignment", () => new TypeTest());
+        TypeTest mehtodTypeAssignmentAnonymous = __NamedAssignment<TypeTest>("mehtodTypeAssignmentAnonymous", () => new());
+        TypeTest.NestedTypeTest mehtodNestedTypeAssignment = __NamedAssignment<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignment", () => new TypeTest.NestedTypeTest());
+        TypeTest.NestedTypeTest mehtodNestedTypeAssignmentAnonymous = __NamedAssignment<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignmentAnonymous", () => new());
+        FloatPort outOfScopeType = __NamedAssignment<FloatPort>("outOfScopeType", () => Mathf.Sqrt(4));
+        IVariable<IntPort> variableAssignment = __NamedAssignment<IVariable<IntPort>>("variableAssignment", () => new Variable<IntPort>());
     }
 
     class TypeTest

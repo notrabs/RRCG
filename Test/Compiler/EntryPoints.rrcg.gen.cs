@@ -7,7 +7,6 @@ namespace RRCGBuild
 {
     public class EntryPointsTest : CircuitBuilder
     {
-        IntPort a = RandomInt(1, 10);
         public EntryPointsTest()
         {
             __BeginAccessibilityScope(AccessibilityScope.Kind.General);
@@ -69,5 +68,7 @@ namespace RRCGBuild
             __EndAccessibilityScope();
             __EndReturnScope();
         }
+
+        IntPort a = __NamedAssignment<IntPort>("a", () => RandomInt(1, 10));
     }
 }

@@ -19,8 +19,10 @@ namespace RRCG
                 CircuitDescriptorRewriter = circuitRewriter;
             }
 
-            public void ProcessMemberVariables(List<MemberDeclarationSyntax> allMembers)
+            public List<MemberDeclarationSyntax> ProcessMemberVariables(List<MemberDeclarationSyntax> allMembers)
             {
+                var newMembers = new List<MemberDeclarationSyntax>();
+
                 foreach (var member in allMembers.ToList()) // shallow copy
                 {
                     // Skip over unsafe members
@@ -38,16 +40,19 @@ namespace RRCG
 
                     // Break out into type-specific logic
                     if (member is FieldDeclarationSyntax field)
-                        VisitPotentialMemberVariable(field, allMembers, attributeName, attributeArgs);
+                        VisitPotentialMemberVariable(field, allMembers, newMembers, attributeName, attributeArgs);
                     else if (member is PropertyDeclarationSyntax property)
-                        VisitPotentialMemberVariable(property, allMembers, attributeName, attributeArgs);
+                        VisitPotentialMemberVariable(property, allMembers, newMembers, attributeName, attributeArgs);
                     else
                         throw new Exception($"Attribute [{attributeName}] is not supported for member of kind {member.Kind()}!");
                 }
+
+                return newMembers;
             }
 
             void VisitPotentialMemberVariable(FieldDeclarationSyntax field,
                           List<MemberDeclarationSyntax> allMembers,
+                          List<MemberDeclarationSyntax> newMembers,
                           string attribute,
                           SeparatedSyntaxList<AttributeArgumentSyntax> attributeArgs)
             {
@@ -94,7 +99,7 @@ namespace RRCG
                     var homeValueExpression = variable.Initializer?.Value ?? PostfixUnaryExpression(SyntaxKind.SuppressNullableWarningExpression,
                                                                                 LiteralExpression(SyntaxKind.NullLiteralExpression));
 
-                    allMembers.Add(FieldDeclaration(
+                    newMembers.Add(FieldDeclaration(
                         VariableDeclaration(namedVariableType)
                         .WithVariables(
                             SingletonSeparatedList(
@@ -115,7 +120,7 @@ namespace RRCG
                     var valueAccessor = MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression,
                                                                IdentifierName(fieldName), IdentifierName("Value"));
 
-                    allMembers.Add(PropertyDeclaration(rewrittenType, variableName)
+                    newMembers.Add(PropertyDeclaration(rewrittenType, variableName)
                         .WithAccessorList(
                             AccessorList(
                                 List<AccessorDeclarationSyntax>(
@@ -137,12 +142,13 @@ namespace RRCG
                         .WithModifiers(field.Modifiers));
                 }
 
-                // Finally remove the field declaration from the class members.
+                // Finally remove the field declaration from the existing members
                 allMembers.Remove(field);
             }
 
             void VisitPotentialMemberVariable(PropertyDeclarationSyntax property,
                                       List<MemberDeclarationSyntax> allMembers,
+                                      List<MemberDeclarationSyntax> newMembers,
                                       string attribute,
                                       SeparatedSyntaxList<AttributeArgumentSyntax> attributeArgs)
             {
@@ -192,7 +198,7 @@ namespace RRCG
                 var homeValueExpression = property.Initializer?.Value ?? PostfixUnaryExpression(SyntaxKind.SuppressNullableWarningExpression,
                                                                             LiteralExpression(SyntaxKind.NullLiteralExpression));
 
-                allMembers.Add(FieldDeclaration(
+                newMembers.Add(FieldDeclaration(
                     VariableDeclaration(namedVariableType)
                     .WithVariables(
                         SingletonSeparatedList(
@@ -215,7 +221,7 @@ namespace RRCG
                 var valueAccessor = MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression,
                                                             IdentifierName(fieldName), IdentifierName("Value"));
 
-                allMembers.Add(PropertyDeclaration(rewrittenType, variableName)
+                newMembers.Add(PropertyDeclaration(rewrittenType, variableName)
                     .WithAccessorList(
                         AccessorList(
                             List<AccessorDeclarationSyntax>(

@@ -708,12 +708,27 @@ namespace RRCGBuild
 
             if (initializer != null)
             {
-                SemanticStack.current.Push(new NamedAssignmentScope { Identifier = identifier });
+                var assignmentScope = new NamedAssignmentScope { Identifier = identifier };
+                SemanticStack.current.Push(assignmentScope);
                 value = initializer();
-                SemanticStack.current.Pop();
+                SemanticStack.current.PopExpectedScope(assignmentScope);
             }
 
             return value;
+        }
+
+        public static T __NamedAssignment<T>(string identifier, Func<T> initializer)
+        {
+            // This method is purely to push/pop a named assignment scope to the SemanticStack,
+            // and does not interface with AccessibilityScopes.
+            var scope = new NamedAssignmentScope { Identifier = identifier };
+
+            SemanticStack.current.Push(scope);
+            T value = initializer();
+            SemanticStack.current.PopExpectedScope(scope);
+
+            return value;
+
         }
 
         public static void __BeginAccessibilityScope(AccessibilityScope.Kind scopeKind)

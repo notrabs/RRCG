@@ -14,11 +14,13 @@ namespace RRCG
     {
         private RRCGSyntaxRewriter rrcgRewriter;
         private MemberVariablesProcessor memberVariablesProcessor;
+        private NamedAssignmentProcessor namedAssignmentProcessor;
 
         public CircuitDescriptorRewriter(RRCGSyntaxRewriter rrcgRewriter)
         {
             this.rrcgRewriter = rrcgRewriter;
             memberVariablesProcessor = new(this);
+            namedAssignmentProcessor = new(this);
         }
 
         SemanticModel SemanticModel => rrcgRewriter.SemanticModel;
@@ -44,19 +46,25 @@ namespace RRCG
             }
 
             // Process class members as necessary
+
+            // Processors consume from allMembers by reference.
+            // They return a list of new members, which is merged into newMembers.
+
+            // We do this so that any already-processed members
+            // aren't re-processed by other processors.
+
             var allMembers = visited.Members.ToList();
+            var newMembers = new List<MemberDeclarationSyntax>();
 
             // Process member variables..
-            memberVariablesProcessor.ProcessMemberVariables(allMembers);
+            newMembers.AddRange(memberVariablesProcessor.ProcessMemberVariables(allMembers));
 
-            // ..and we could add more member processors here too.
+            // Process named assignments...
+            newMembers.AddRange(namedAssignmentProcessor.ProcessMemberAssignments(allMembers));
 
-            // TODO: Introduce a member processor & compilation helper to
-            //       preserve source naming for any leftover fields (event definitions etc)
-            //
-            //       This is currently done by __VariableDeclaratorExpression, but for (non-Variable) fields
-            //       we probably don't want the conditional assignment logic that comes with it.
-
+            // Now that all the processors are done, merge the new members back into the
+            // list of original (surviving..?) members, and return.
+            allMembers.AddRange(newMembers);
             return visited.WithMembers(new SyntaxList<MemberDeclarationSyntax>(allMembers));
         }
 
