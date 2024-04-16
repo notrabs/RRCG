@@ -573,7 +573,7 @@ namespace RRCG
                 var symbolInfo = SemanticModel.GetSymbolInfo(node);
 
                 // Only rewrite if the symbol is referring to a type
-                if (symbolInfo.Symbol is not INamedTypeSymbol) return base.VisitIdentifierName(node);
+                if (symbolInfo.Symbol is not INamedTypeSymbol) return base.VisitIdentifierName(node).NormalizeWhitespace();
             }
 
             switch (node.Identifier.ValueText)
@@ -642,12 +642,12 @@ namespace RRCG
                 case "RoomLevelHUD":
                 case "Touchpad":
                 case "AnimationController":
-                    return IdentifierName(node.Identifier.ValueText + "Port");
+                    return IdentifierName(node.Identifier.ValueText + "Port").NormalizeWhitespace();
                 case "RRCGSource":
                     return IdentifierName("RRCGBuild");
             }
 
-            return base.VisitIdentifierName(node);
+            return base.VisitIdentifierName(node).NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitBreakStatement(BreakStatementSyntax node)
@@ -663,6 +663,14 @@ namespace RRCG
         public override SyntaxNode VisitThrowStatement(ThrowStatementSyntax node)
         {
             return SyntaxFactory.ParseStatement("ExecFlow.current.Clear();");
+        }
+
+        public override SyntaxNode VisitTupleType(TupleTypeSyntax node)
+        {
+            // Need to forcibly normalize whitespace
+            // so that a space is inserted between the type and the name
+            // (Playerplayer, intscore) -> (Player player, int score)
+            return base.VisitTupleType(node).NormalizeWhitespace();
         }
 
         public override SyntaxNode VisitGotoStatement(GotoStatementSyntax node)
