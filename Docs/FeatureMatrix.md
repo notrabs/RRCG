@@ -93,7 +93,12 @@ implemented
 
 ## Pattern matching
 
-Not implemented. The `value switch` could be an interesting candidate for the Value Switch chip
+**Implemented:** `value switch`
+
+Switch Expressions are implemented and map to value switch chips in-game. They will be evaluated ahead-of-time if the match value is pure-data, but will fallback to using Value Integer/String Switch chips otherwise.
+As such the restrictions are that the match value must be an integer or string, and the match patterns must be constant values.
+
+**Not implemented:** Advanced pattern matching (case guards, etc)
 
 ## Async/Await
 
