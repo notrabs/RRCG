@@ -65,7 +65,8 @@ namespace RRCG
                             VariableDeclaration(rewrittenType)
                             .WithVariables(
                                 SingletonSeparatedList<VariableDeclaratorSyntax>(
-                                    newVariable))));
+                                    newVariable)))
+                            .WithModifiers(fieldDecl.Modifiers));
                     }
 
                     // Now that we've processed all the variables in the field,
