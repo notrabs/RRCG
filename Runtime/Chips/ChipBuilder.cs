@@ -723,11 +723,32 @@ namespace RRCGBuild
             ExecFlow.current = execFlow;
         }
 
+        /// <summary>
+        /// Helper for ExecutionAnySwitch/ValueAnySwitch that ensures type safety.
+        /// </summary>
+        private static TMatch SwitchCase<TMatch>(AnyPort data) where TMatch : AnyPort, new()
+        {
+            if (data is not TMatch match)
+                throw new Exception($"Match value was not of type {typeof(TMatch).Name}!");
+
+            if (!match.IsDataPort)
+                throw new Exception("Can't create switch cases with dynamic data! Be sure to pass a pure-data value.");
+
+            return match;
+        }
+
         public static void ExecutionAnySwitch(AnyPort match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches, ConditionalContext conditional = null)
         {
-            if (match is IntPort) ExecutionIntegerSwitch((IntPort)match, failed, branches.ToDictionary(item => new IntPort() { Data = item.Key.Data }, item => item.Value), conditional);
-            else if (match is StringPort) ExecutionStringSwitch((StringPort)match, failed, branches.ToDictionary(item => new StringPort() { Data = item.Key.Data }, item => item.Value), conditional);
-            else throw new Exception("Can't create Switch Cases with dynamic data. Make sure to pass a int or string value!");
+            if (match is IntPort matchInt) ExecutionIntegerSwitch(matchInt, failed, branches.ToDictionary(item => SwitchCase<IntPort>(item.Key), item => item.Value), conditional);
+            else if (match is StringPort matchStr) ExecutionStringSwitch(matchStr, failed, branches.ToDictionary(item => SwitchCase<StringPort>(item.Key), item => item.Value), conditional);
+            else throw new Exception("Unsupported match type! Make sure to pass an int or string value!");
+        }
+
+        public static TResult ValueAnySwitch<TResult>(AnyPort match, TResult defaultValue, Dictionary<AnyPort, TResult> cases) where TResult : AnyPort, new()
+        {
+            if (match is IntPort matchInt) return ValueIntegerSwitch(matchInt, defaultValue, cases.ToDictionary(item => SwitchCase<IntPort>(item.Key), item => item.Value));
+            else if (match is StringPort matchStr) return ValueStringSwitch(matchStr, defaultValue, cases.ToDictionary(item => SwitchCase<StringPort>(item.Key), item => item.Value));
+            else throw new Exception("Unsupported match type! Make sure to pass an int or string value!");
         }
 
         public static T ValueIntegerSwitch<T>(IntPort match, T defaultValue, Dictionary<IntPort, T> cases) where T : AnyPort, new()

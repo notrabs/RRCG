@@ -1,6 +1,8 @@
 ﻿using RRCGSource;
 
 #pragma warning disable CS0162 // Unreachable code detected
+#pragma warning disable CS8509 // The switch expression does not handle all possible values of its input type (it is not exhaustive).
+
 public class Switches : CircuitDescriptor
 {
     public override void CircuitGraph()
@@ -20,7 +22,12 @@ public class Switches : CircuitDescriptor
         SwitchPromotedVariables();
 
         LogString("Return from SwitchPromotedVariables()");
+
+        SwitchExpressions();
+
+        LogString("Return from SwitchExpressions()");
     }
+
     public void SwitchTypes(string switchString, int switchInt)
     {
 
@@ -152,5 +159,66 @@ public class Switches : CircuitDescriptor
 
         LogString($"{myLocal}, {otherLocal}");
     }
+
+    public void SwitchExpressions()
+    {
+        int matchIntData = 5;
+        int matchIntPort = Reroute(5);
+
+        string matchStrData = "Match";
+        string matchStrPort = Reroute("Match");
+
+        // Test with data match
+        // The compiler will only evaluate the matching branch
+        string dataIntResult = ChipLib.VariableCache(matchIntData switch
+        {
+            0 => "Zero",
+            1 => "One",
+            _ => "Default"
+        });
+
+        string dataStrResult = ChipLib.VariableCache(matchStrData switch
+        {
+            "Hello" => "World",
+            "Match" => "Matched",
+            _ => "Default"
+        });
+
+        // Test with port match
+        // The compiler has to evaluate all possibilities and spawn a value switch chip
+        string portIntResult = ChipLib.VariableCache(matchIntPort switch
+        {
+            0 => "Zero",
+            1 => "One",
+            _ => "Default"
+        });
+
+        string portStrResult = ChipLib.VariableCache(matchStrPort switch
+        {
+            "Hello" => "World",
+            "Match" => "Matched",
+            _ => "Default"
+        });
+
+        // Test match failure with no default
+        // This should produce a circuits error due to the unwired port:
+        var rrObjResultPort = ChipLib.VariableCache(matchIntPort switch
+        {
+            -1 => RecRoomObject.Invalid
+        });
+
+        // And this should produce a build-time exception.
+        // (Maybe there's a difference in semantics
+        //  when the result type supports default values. FIXME?)
+        TestUtils.ExpectToThrow(() =>
+        {
+            var rrObjResultData = ChipLib.VariableCache(matchIntData switch
+            {
+                -1 => RecRoomObject.Invalid
+            });
+        }, "Failed to match against pure-data value, but no default value was provided!");
+    }
 }
+
+#pragma warning restore CS8509 // The switch expression does not handle all possible values of its input type (it is not exhaustive).
 #pragma warning restore CS0162 // Unreachable code detected

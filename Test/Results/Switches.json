@@ -424,6 +424,131 @@
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","Return from SwitchPromotedVariables()"]],
       "InputCount": 2
+    },
+    {
+      "Id": "Reroute_0",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "DefaultValues": [[[0,0],"System.Int32",5]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Reroute_1",
+      "Type": "okvb+IBzoEmgurzcoR/slg==",
+      "Name": "Reroute",
+      "DefaultValues": [[[0,0],"System.String","Match"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "string_Variable_0",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_dataIntResult",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.String","Default"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "string_Variable_1",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_dataStrResult",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [[[0,1],"System.String","Matched"]],
+      "InputCount": 2
+    },
+    {
+      "Id": "Value_Integer_Switch_0",
+      "Type": "OEBTvj5HrUC04qvTinZxGw==",
+      "Name": "Value Integer Switch",
+      "DefaultValues": [[[0,1],"System.String","Default"],[[0,2],"System.String","Zero"],[[0,3],"System.String","One"]],
+      "SwitchCases": [
+        "0",
+        "1"
+      ],
+      "InputCount": 4
+    },
+    {
+      "Id": "string_Variable_2",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_portIntResult",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Value_String_Switch_0",
+      "Type": "VM2dLGXdjkmKE1DCIUSDWA==",
+      "Name": "Value String Switch",
+      "DefaultValues": [[[0,1],"System.String","Default"],[[0,2],"System.String","World"],[[0,3],"System.String","Matched"]],
+      "SwitchCases": [
+        "Hello",
+        "Match"
+      ],
+      "InputCount": 4
+    },
+    {
+      "Id": "string_Variable_3",
+      "Type": "IOq2ZgCagE+WNiz7Z2s5ZQ==",
+      "Name": "string Variable",
+      "VariableData": {
+        "Name": "RRCG_portStrResult",
+        "Kind": 0,
+        "Type": "RRCGBuild.StringPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Rec_Room_Object_Variable_0",
+      "Type": "OdF3cHaYXkmXVlgVD++fOw==",
+      "Name": "Rec Room Object Variable",
+      "VariableData": {
+        "Name": "RRCG_Invalid_RRO",
+        "Kind": 0,
+        "Type": "RRCGBuild.RecRoomObjectPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Value_Integer_Switch_1",
+      "Type": "OEBTvj5HrUC04qvTinZxGw==",
+      "Name": "Value Integer Switch",
+      "DefaultValues": [],
+      "SwitchCases": [
+        "-1"
+      ],
+      "InputCount": 3
+    },
+    {
+      "Id": "Rec_Room_Object_Variable_1",
+      "Type": "OdF3cHaYXkmXVlgVD++fOw==",
+      "Name": "Rec Room Object Variable",
+      "VariableData": {
+        "Name": "RRCG_rrObjResultPort",
+        "Kind": 0,
+        "Type": "RRCGBuild.RecRoomObjectPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Log_String_21",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [[[0,1],"System.String","Return from SwitchExpressions()"]],
+      "InputCount": 2
     }
   ],
   "Connections": [
@@ -1475,6 +1600,175 @@
       },
       "To": {
         "Node": "Log_String_20",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_20",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "string_Variable_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Value_Integer_Switch_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Value_Integer_Switch_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_2",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Reroute_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Value_String_Switch_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Value_String_Switch_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_3",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_2",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "string_Variable_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Reroute_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Value_Integer_Switch_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Rec_Room_Object_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "Value_Integer_Switch_1",
+        "Group": 0,
+        "Index": 2
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Value_Integer_Switch_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Rec_Room_Object_Variable_1",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "string_Variable_3",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Rec_Room_Object_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Rec_Room_Object_Variable_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_21",
         "Group": 0,
         "Index": 0
       },

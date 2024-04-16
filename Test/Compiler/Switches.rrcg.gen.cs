@@ -5,6 +5,8 @@ namespace RRCGBuild
 {
 #pragma warning disable CS0162 // Unreachable code detected
 
+#pragma warning disable CS8509 // The switch expression does not handle all possible values of its input type (it is not exhaustive).
+
     public class Switches : CircuitBuilder
     {
         public override void CircuitGraph()
@@ -19,6 +21,8 @@ namespace RRCGBuild
             LogString("Return from SwitchInWhileLoop()");
             SwitchPromotedVariables();
             LogString("Return from SwitchPromotedVariables()");
+            SwitchExpressions();
+            LogString("Return from SwitchExpressions()");
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -390,7 +394,55 @@ namespace RRCGBuild
             __EndAccessibilityScope();
             __EndReturnScope();
         }
+
+        public void SwitchExpressions()
+        {
+            __BeginReturnScope("SwitchExpressions", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                IntPort matchIntData = default !;
+                matchIntData = __VariableDeclaratorExpression<IntPort>("matchIntData", () => 5, () => matchIntData!, (_RRCG_SETTER_VALUE) => matchIntData = _RRCG_SETTER_VALUE);
+                IntPort matchIntPort = default !;
+                matchIntPort = __VariableDeclaratorExpression<IntPort>("matchIntPort", () => Reroute<IntPort>(5), () => matchIntPort!, (_RRCG_SETTER_VALUE) => matchIntPort = _RRCG_SETTER_VALUE);
+                StringPort matchStrData = default !;
+                matchStrData = __VariableDeclaratorExpression<StringPort>("matchStrData", () => "Match", () => matchStrData!, (_RRCG_SETTER_VALUE) => matchStrData = _RRCG_SETTER_VALUE);
+                StringPort matchStrPort = default !;
+                matchStrPort = __VariableDeclaratorExpression<StringPort>("matchStrPort", () => Reroute<StringPort>("Match"), () => matchStrPort!, (_RRCG_SETTER_VALUE) => matchStrPort = _RRCG_SETTER_VALUE);
+                StringPort dataIntResult = default !;
+                dataIntResult = __VariableDeclaratorExpression<StringPort>("dataIntResult", () => ChipLib.VariableCache<StringPort>(__SwitchExpression<StringPort>(matchIntData, () => "Default", new()
+                {{0, () => "Zero"}, {1, () => "One"}})), () => dataIntResult!, (_RRCG_SETTER_VALUE) => dataIntResult = _RRCG_SETTER_VALUE);
+                StringPort dataStrResult = default !;
+                dataStrResult = __VariableDeclaratorExpression<StringPort>("dataStrResult", () => ChipLib.VariableCache<StringPort>(__SwitchExpression<StringPort>(matchStrData, () => "Default", new()
+                {{"Hello", () => "World"}, {"Match", () => "Matched"}})), () => dataStrResult!, (_RRCG_SETTER_VALUE) => dataStrResult = _RRCG_SETTER_VALUE);
+                StringPort portIntResult = default !;
+                portIntResult = __VariableDeclaratorExpression<StringPort>("portIntResult", () => ChipLib.VariableCache<StringPort>(__SwitchExpression<StringPort>(matchIntPort, () => "Default", new()
+                {{0, () => "Zero"}, {1, () => "One"}})), () => portIntResult!, (_RRCG_SETTER_VALUE) => portIntResult = _RRCG_SETTER_VALUE);
+                StringPort portStrResult = default !;
+                portStrResult = __VariableDeclaratorExpression<StringPort>("portStrResult", () => ChipLib.VariableCache<StringPort>(__SwitchExpression<StringPort>(matchStrPort, () => "Default", new()
+                {{"Hello", () => "World"}, {"Match", () => "Matched"}})), () => portStrResult!, (_RRCG_SETTER_VALUE) => portStrResult = _RRCG_SETTER_VALUE);
+                RRCGBuild.RecRoomObjectPort rrObjResultPort = default !;
+                rrObjResultPort = __VariableDeclaratorExpression<RRCGBuild.RecRoomObjectPort>("rrObjResultPort", () => ChipLib.VariableCache<RRCGBuild.RecRoomObjectPort>(__SwitchExpression<RRCGBuild.RecRoomObjectPort>(matchIntPort, () => null !, new()
+                {{-1, () => RecRoomObjectPort.Invalid}})), () => rrObjResultPort!, (_RRCG_SETTER_VALUE) => rrObjResultPort = _RRCG_SETTER_VALUE);
+            // And this should produce a build-time exception.
+            // (Maybe there's a difference in semantics
+            //  when the result type supports default values. FIXME?)
+            TestUtils.ExpectToThrow(() =>
+            {
+                __BeginReturnScope("ParenthesizedLambda", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                    RRCGBuild.RecRoomObjectPort rrObjResultData = default !;
+                    rrObjResultData = __VariableDeclaratorExpression<RRCGBuild.RecRoomObjectPort>("rrObjResultData", () => ChipLib.VariableCache<RRCGBuild.RecRoomObjectPort>(__SwitchExpression<RRCGBuild.RecRoomObjectPort>(matchIntData, () => null !, new()
+                    {{-1, () => RecRoomObjectPort.Invalid}})), () => rrObjResultData!, (_RRCG_SETTER_VALUE) => rrObjResultData = _RRCG_SETTER_VALUE);
+                __EndAccessibilityScope();
+                __EndReturnScope();
+            }
+
+            , "Failed to match against pure-data value, but no default value was provided!");
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
     }
 }
+#pragma warning restore CS8509 // The switch expression does not handle all possible values of its input type (it is not exhaustive).
+
 #pragma warning restore CS0162 // Unreachable code detected
 

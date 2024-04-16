@@ -1009,6 +1009,78 @@ namespace RRCG
                 ).NormalizeWhitespace();
         }
 
+        public override SyntaxNode VisitSwitchExpression(SwitchExpressionSyntax node)
+        {
+            // Create invocation name for call to __SwitchExpression
+            SimpleNameSyntax invocationName = IdentifierName(Identifier("__SwitchExpression"));
+
+            // Attempt to determine build-realm result type
+            var typeInfo = SemanticModel.GetTypeInfo(node);
+            if (typeInfo.ConvertedType is not IErrorTypeSymbol)
+            {
+                // Re-parse and rewrite, see VisitIdentifierName
+                var syntax = typeInfo.ConvertedType.ToTypeSyntax();
+                var rewritten = (TypeSyntax)Visit(syntax);
+                invocationName = GenericName(Identifier("__SwitchExpression"))
+                                    .WithTypeArgumentList(SyntaxUtils.TypeArgumentList(rewritten));
+            } else
+            {
+                Debug.LogWarning($"Unable to resolve result type for switch expression: {node}");
+            }
+
+            // Create dictionary initializer for all the arms
+            // (& try to find the default arm)
+            var initializers = new List<InitializerExpressionSyntax>();
+            bool foundDefault = false;
+            ExpressionSyntax defaultExpression = PostfixUnaryExpression(
+                                                    SyntaxKind.SuppressNullableWarningExpression,
+                                                    LiteralExpression(SyntaxKind.NullLiteralExpression));
+
+            foreach (var arm in node.Arms)
+            {
+                // Ensure we don't have case guards...
+                if (arm.WhenClause != null) throw new Exception("Case guards are not supported in switch expressions!");
+
+                // Is this the default value?
+                var armExpression = (ExpressionSyntax)Visit(arm.Expression);
+                if (arm.Pattern is DiscardPatternSyntax)
+                {
+                    if (foundDefault) throw new Exception($"Multiple default values defined for switch expression!");
+                    defaultExpression = armExpression;
+                    foundDefault = true;
+                    continue;
+                }
+
+                // Otherwise ensure the pattern is a constant
+                if (arm.Pattern is not ConstantPatternSyntax constant)
+                    throw new Exception("Switch expression arm patterns must be constants!");
+
+                // Create an initializer for the key & value.
+                initializers.Add(InitializerExpression(
+                                    SyntaxKind.ComplexElementInitializerExpression,
+                                    SyntaxUtils.ExpressionList(
+                                        (ExpressionSyntax)Visit(constant.Expression),
+                                        ParenthesizedLambdaExpression()
+                                            .WithExpressionBody(armExpression))));
+            }
+
+            // Now that we have all our cases, let's create the dictionary implicitly:
+            var dictionaryInitializer = ImplicitObjectCreationExpression()
+                                        .WithInitializer(
+                                            InitializerExpression(
+                                                SyntaxKind.CollectionInitializerExpression,
+                                                SyntaxUtils.ExpressionList(initializers.ToArray())));
+
+            // Finally, we can construct our call to __SwitchExpression.
+            return InvocationExpression(invocationName)
+                    .WithArgumentList(
+                        SyntaxUtils.ArgumentList(
+                            (ExpressionSyntax)Visit(node.GoverningExpression),
+                            ParenthesizedLambdaExpression()
+                                .WithExpressionBody(defaultExpression),
+                            dictionaryInitializer));
+        }
+
         public override SyntaxNode VisitWhileStatement(WhileStatementSyntax node)
         {
             return VisitWhileIterator(node, node.Condition, node.Statement, false);

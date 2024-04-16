@@ -1124,6 +1124,43 @@ namespace RRCGBuild
         public static void FieldVariableChanged<T>(T fieldVariable) where T : AnyPort, new() => MemberVariableChanged(fieldVariable);
         [Obsolete("Renamed - use MemberVariableChanged instead.")]
         public static void FieldVariableChanged<T>(T fieldVariable, AlternativeExec onChanged) where T : AnyPort, new() => MemberVariableChanged(fieldVariable, onChanged);
+
+        public static TResult __SwitchExpression<TResult>(AnyPort match, Func<TResult> defaultExpression, Dictionary<AnyPort, Func<TResult>> cases) where TResult : AnyPort, new()
+        {
+            // Ensure match type is supported
+            var matchType = match.GetType();
+            if (matchType != typeof(IntPort) && matchType != typeof(StringPort))
+                throw new Exception($"Switch expressions are not supported for match type '{matchType.Name}'!");
+
+            // If match is an actual port, we'll have to build this as a real switch chip.
+            if (match.IsActualPort)
+                return ValueAnySwitch(match, defaultExpression(), cases.ToDictionary(kvp => kvp.Key, kvp => kvp.Value()));
+
+            // Otherwise, we can determine the result ahead of time.
+            foreach (var kvp in cases)
+            {
+                var caseType = kvp.Key.GetType();
+
+                // Validate case/match type equality..
+                if (caseType != matchType)
+                    throw new Exception($"Case type '{caseType.Name}' is not equal to the match type '{matchType.Name}'!");
+
+                // Validate data port status..
+                if (!kvp.Key.IsDataPort)
+                    throw new Exception($"Cannot create switch cases with dynamic data! Be sure to pass a pure-data value.");
+
+                // Check for data equality
+                if (match.Data == kvp.Key.Data)
+                    return kvp.Value();
+            }
+
+            // No cases matched, return the default.
+            var result = defaultExpression();
+            if (result == null)
+                throw new Exception("Failed to match against pure-data value, but no default value was provided!");
+
+            return result;
+        }
     }
 }
 #nullable disable
