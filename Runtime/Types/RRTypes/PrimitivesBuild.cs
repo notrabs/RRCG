@@ -243,6 +243,12 @@ namespace RRCGBuild
             if (a.IsDataPort && b.IsDataPort) return new StringPort { Data = a.Data + b.Data };
             return ChipBuilder.Concat(a, b);
         }
+
+        public IntPort IndexOf(StringPort substring)
+        {
+            if (IsDataPort && substring.IsDataPort) return new IntPort { Data = Data.IndexOf(substring.Data) };
+            return CircuitBuilder.Singleton($"String_Index_Of_{PortKey()}_substring_{substring.PortKey()}", () => ChipBuilder.StringIndexOf(this, substring));
+        }
     }
 
     // This crashes Unity for some reason...
