@@ -33,6 +33,7 @@ namespace RRCGBuild
             // Going with a base class here, because for most
             // iterators the logic will basically be this.
 
+            public Port SourceExec; // Necessary to ensure continuity in Continue/Break
             public ExecFlow BreakFlow; // Break out of loop
             public ExecFlow ContinueFlow; // Jump back to the start of the loop
             public ConditionalContext ConditionalContext; // Required to write variable values when breaking/continuing
@@ -45,6 +46,7 @@ namespace RRCGBuild
             public void Break()
             {
                 ConditionalContext.WritePromotedVariables();
+                EnsureContinuityAndCheckDelays(ExecFlow.current);
 
                 BreakFlow.Merge(ExecFlow.current);
                 ExecFlow.current.Clear();
@@ -54,6 +56,7 @@ namespace RRCGBuild
             public void Continue()
             {
                 ConditionalContext.WritePromotedVariables();
+                EnsureContinuityAndCheckDelays(ExecFlow.current);
 
                 // Note: For CV2-native iterators (For, For Each),
                 // continue can just be implemented as clearing the current exec flow.
@@ -63,11 +66,16 @@ namespace RRCGBuild
             }
 
             /// <summary>
-            /// Ensures the provided ExecFlow connects back to the sourceExec.
+            /// Ensures the provided ExecFlow connects back to SourceExec.
             /// Also flags all open iterators on the SemanticStack as requiring a manual implementation if an After Delay port is present.
             /// </summary>
-            public void EnsureContinuityAndCheckDelays(ExecFlow execFlow, Port sourceExec)
+            public void EnsureContinuityAndCheckDelays(ExecFlow execFlow)
             {
+                // Edge-case: No ports in the exec flow.
+                // If you have something like: while (true) { break; }, you can trigger this.
+                // TODO: Is this the best way to handle this?
+                if (execFlow.Ports.Count <= 0) return;
+
                 var portsToCheck = new Stack<Port>(execFlow.Ports);
                 var checkedPorts = new List<Port>();
                 bool foundSource = false;
@@ -78,7 +86,7 @@ namespace RRCGBuild
                     var node = currPort.Node;
                     checkedPorts.Add(currPort);
 
-                    if (currPort.EquivalentTo(sourceExec))
+                    if (currPort.EquivalentTo(SourceExec))
                     {
                         foundSource = true;
                         continue; // Don't search behind this node

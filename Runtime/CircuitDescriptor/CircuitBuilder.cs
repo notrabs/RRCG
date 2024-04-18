@@ -565,14 +565,6 @@ namespace RRCGBuild
 
         public static void __While(ConditionalContext conditional, Func<BoolPort> condition, bool buildIfAfterBlock, AlternativeExec block)
         {
-            // Create While scope
-            var whileScope = new WhileScope()
-            {
-                BreakFlow = new() { hasAdvanced = true },
-                ContinueFlow = new(),
-                ConditionalContext = conditional
-            };
-
             // Write promoted variables & set their C# state to the output pins
             conditional.WritePromotedVariables();
             conditional.ResetPromotedVariables(true);
@@ -593,8 +585,16 @@ namespace RRCGBuild
             if (!buildIfAfterBlock) ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), ifNode.Port(0, 0));
             else ExecFlow.current.Ports.Add(ifNode.Port(0, 0));
 
-            // Now we can push our items onto the SemanticStack
-            // and build the loop block.
+            // Now we can create & push a WhileScope
+            // onto the SemanticStack and build the loop block.
+            var whileScope = new WhileScope()
+            {
+                BreakFlow = new() { hasAdvanced = true },
+                ContinueFlow = new(),
+                ConditionalContext = conditional,
+                SourceExec = ifNode.Port(0, 0)
+            };
+
             SemanticStack.current.Push(conditional);
             SemanticStack.current.Push(whileScope);
             block();
@@ -608,8 +608,9 @@ namespace RRCGBuild
             SemanticStack.current.PopExpectedScope(conditional);
 
             // Merge the continue flow into the current execution flow,
-            // and loop back to the if node.
+            // ensure continuity, and loop back to the if node.
             ExecFlow.current.Merge(whileScope.ContinueFlow);
+            whileScope.EnsureContinuityAndCheckDelays(ExecFlow.current);
             ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
 
             // Finally, add the Else port to the break flow,
@@ -955,18 +956,7 @@ namespace RRCGBuild
 
         public static void __ForEach<T>(ConditionalContext conditional, ListPort<T> list, Action<T> body) where T : AnyPort, new()
         {
-            // First, create ForEach scope & push onto the semantic stack.
-            var scope = new ForEachScope
-            {
-                BreakFlow = new() { hasAdvanced = true },
-                ContinueFlow = new(),
-                ConditionalContext = conditional
-            };
-
-            SemanticStack.current.Push(scope);
-            SemanticStack.current.Push(conditional);
-
-            // Write & re-set promoted variable values
+            // First, write & re-set promoted variable values
             conditional.WritePromotedVariables();
             conditional.ResetPromotedVariables(true);
 
@@ -974,8 +964,18 @@ namespace RRCGBuild
             // We'll swap this out later if we learn this isn't the case (we don't know beforehand)
             InlineGraph(() => ForEach(list, _ => { }));
             var forEachNode = Context.lastSpawnedNode;
-
             ExecFlow.current.Advance(Context.current, forEachNode.Port(0, 0), forEachNode.Port(0, 0));
+
+            var scope = new ForEachScope
+            {
+                BreakFlow = new() { hasAdvanced = true },
+                ContinueFlow = new(),
+                ConditionalContext = conditional,
+                SourceExec = forEachNode.Port(0, 0)
+            };
+
+            SemanticStack.current.Push(scope);
+            SemanticStack.current.Push(conditional);
             body(new T { Port = forEachNode.Port(0, 1) });
 
             // End the conditional context
@@ -983,7 +983,7 @@ namespace RRCGBuild
             conditional.ResetPromotedVariables(true);
 
             // Now validate execflow continuity from the current back to the "Loop" port
-            scope.EnsureContinuityAndCheckDelays(ExecFlow.current, forEachNode.Port(0, 0));
+            scope.EnsureContinuityAndCheckDelays(ExecFlow.current);
 
             // Now we can pop our semantic scopes
             SemanticStack.current.PopExpectedScope(conditional);
@@ -1061,8 +1061,11 @@ namespace RRCGBuild
             ExecFlow.current.Advance(Context.current, execOutputTo, null);
 
             // Jump back onto the loop body exec flow, increment index
+            // Edge-case: Empty execution flow (like: foreach (var _ in _) { break; })
+            //            In this case the increment will be unreachable, so don't spawn it.
             ExecFlow.current = prevFlow;
-            indexVariable.Value += 1;
+            if (ExecFlow.current.Ports.Count > 0)
+                indexVariable.Value += 1;
 
             // Merge continue flow into the current flow, advance back to If node
             ExecFlow.current.Merge(scope.ContinueFlow);
