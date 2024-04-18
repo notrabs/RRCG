@@ -292,6 +292,25 @@ namespace RRCGBuild
             ExecFlow.current.Clear();
         }
 
+        /// <summary>
+        /// Searches all returns for occurances of the targetPort, and replaces it with the result of newPort.
+        /// newPort is a delegate so that you can avoid spawning nodes when there are no occurances.
+        /// </summary>
+        public void ReplacePort(Port targetPort, Func<AnyPort> newPort)
+        {
+            Func<dynamic, bool> dataIsTargetPort = (data) => data is AnyPort port && port.IsActualPort && port.Port.EquivalentTo(targetPort);
+
+            foreach (var ret in Returns)
+            {
+                if (dataIsTargetPort(ret.Data)) ret.Data = newPort();
+                else if (ret.Data is ITuple tuple)
+                {
+                    var result = TupleUtils.WrapTuple(tuple).Select((v) => dataIsTargetPort(v) ? newPort() : v);
+                    ret.Data = TupleUtils.UnwrapTuple(tuple.GetType(), result.ToArray());
+                }
+            }
+        }
+
         bool ReturnTypeIsPortCompatible()
         {
             if (ReturnTypeIsTupleType)

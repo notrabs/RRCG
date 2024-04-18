@@ -1002,9 +1002,7 @@ namespace RRCGBuild
             ExecFlow.current = new();
 
             // Build index variable
-            SemanticStack.current.Push(new NamedAssignmentScope { Identifier = "ForEach_index" });
-            var indexVariable = new Variable<IntPort>();
-            SemanticStack.current.Pop();
+            var indexVariable = __CreateNamedVariable<IntPort>("ForEach_index", null, VariableKind.Local);
 
             // Rewire all item connections (& return data) to a List Get Element chip..
             var itemConnections = Context.current.Connections.Where(c => c.From.EquivalentTo(forEachNode.Port(0, 1))).ToList();
@@ -1016,22 +1014,9 @@ namespace RRCGBuild
                 foreach (var conn in itemConnections)
                     conn.From = getElementPort().Port;
 
-            // Modify returns. A bit complicated because we have to handle the tuple case.
-            // TODO: Do we have to handle nested tuples? And can we "helper-ify" this to use in For loops?
+            // Modify returns
             var returnScope = SemanticStack.current.GetNextScopeWithType<ReturnScope>();
-            Func<dynamic, bool> dataIsForEachItem = (data) => data is T port && port.IsActualPort && port.Port.EquivalentTo(forEachNode.Port(0, 1));
-
-            foreach (var ret in returnScope?.Returns ?? Enumerable.Empty<ReturnScope.Return>())
-            {
-                var data = ret.Data;
-
-                if (dataIsForEachItem(data)) ret.Data = getElementPort();
-                else if (data is ITuple tuple)
-                {
-                    var result = TupleUtils.WrapTuple(tuple).Select((v) => dataIsForEachItem(v) ? getElementPort() : v);
-                    ret.Data = TupleUtils.UnwrapTuple(tuple.GetType(), result.ToArray());
-                }
-            }
+            returnScope?.ReplacePort(forEachNode.Port(0, 1), getElementPort);
 
             // Determine exec input source
             var execInputFrom = Context.current.Connections
