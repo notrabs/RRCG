@@ -1364,6 +1364,14 @@ namespace RRCGBuild
 
             return result;
         }
+
+        public static T __Ternary<T>(BoolPort condition, Func<T> whenTrue, Func<T> whenFalse) where T : AnyPort, new()
+        {
+            if (condition.IsDataPort)
+                return condition.Data ? whenTrue() : whenFalse();
+
+            return IfValue<T>(condition, whenTrue(), whenFalse());
+        }
     }
 }
 #nullable disable

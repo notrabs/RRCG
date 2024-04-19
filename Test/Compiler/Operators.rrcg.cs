@@ -231,28 +231,34 @@ public class Operators : CircuitDescriptor
         new EventDefinition("TernaryOperator").Receiver();
 
         // Data / data
+        bool condition = Reroute(true);
         float dataA = 0;
         float dataB = 1;
-        ChipLib.EventCache(true ? dataA : dataB);
+        ChipLib.EventCache(condition ? dataA : dataB);
 
         // Port / port
         float portA = RandomFloat(0, 0);
         float portB = RandomFloat(1, 1);
-        ChipLib.EventCache(true ? portA : portB);
+        ChipLib.EventCache(condition ? portA : portB);
 
         // Port / data
-        ChipLib.EventCache(true ? portA : dataB);
+        ChipLib.EventCache(condition ? portA : dataB);
 
         // Implicit conversions
         // Floats without -f suffix
-        RandomFloat(0, true ? 123 : 456);
+        RandomFloat(0, condition ? 123 : 456);
 
         // Implicit conversions w/ real ports
         int intPort = RandomInt(0, 0);
-        RandomFloat(0, true ? 1.5f : intPort);
+        RandomFloat(0, condition ? 1.5f : intPort);
 
         // Implicit conversion for result
-        ChipLib.Log($"Result: {(false ? intPort : portA)}");
+        ChipLib.Log($"Result: {(condition ? intPort : portA)}");
+
+        // Data condition
+        // Will only evaluate the necessary branch
+        ChipLib.VariableCache<float>(true ? RandomInt(0, 0) : RandomFloat(0, 0));
+        ChipLib.VariableCache<float>(false ? RandomInt(0, 0) : RandomFloat(0, 0));
 
         throw null;
     }

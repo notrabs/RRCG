@@ -1488,7 +1488,7 @@ namespace RRCG
             ExpressionSyntax whenTrue = (ExpressionSyntax)Visit(node.WhenTrue);
             ExpressionSyntax whenFalse = (ExpressionSyntax)Visit(node.WhenFalse);
 
-            SimpleNameSyntax ifValueName = IdentifierName(Identifier("IfValue"));
+            SimpleNameSyntax invocationName = IdentifierName(Identifier("__Ternary"));
 
             // Query the semantic model for the result type of the expression.
             // We'll use the converted type (result type after implicit conversions).
@@ -1500,21 +1500,21 @@ namespace RRCG
                 var convertedType = typeInfo.ConvertedType.ToTypeSyntax();
                 var typeAssignment = (TypeSyntax)Visit(convertedType);
 
-                ifValueName = GenericName(Identifier("IfValue")).WithTypeArgumentList(SyntaxUtils.TypeArgumentList(typeAssignment));
+                invocationName = GenericName(Identifier("__Ternary")).WithTypeArgumentList(SyntaxUtils.TypeArgumentList(typeAssignment));
             }
             else
             {
                 Debug.LogWarning($"Unable to determine result type of ternary expression: {node}");
             }
 
-            return InvocationExpression(MemberAccessExpression(
-                        SyntaxKind.SimpleMemberAccessExpression,
-                        IdentifierName("ChipBuilder"),
-                        ifValueName
-                ))
-                .WithArgumentList(
-                    SyntaxUtils.ArgumentList(test, whenTrue, whenFalse)
-                );
+            return InvocationExpression(invocationName)
+                    .WithArgumentList(
+                        SyntaxUtils.ArgumentList(test,
+                                                 ParenthesizedLambdaExpression()
+                                                    .WithExpressionBody(whenTrue),
+                                                 ParenthesizedLambdaExpression()
+                                                    .WithExpressionBody(whenFalse))
+                    );
         }
 
         //

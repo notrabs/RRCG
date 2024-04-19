@@ -654,7 +654,7 @@ namespace RRCGBuild
             new EventDefinition("TestIfLocalPlayerShouldRunOptimizer").Receiver();
                 RRCGBuild.PlayerPort player = default !;
                 player = __VariableDeclaratorExpression<RRCGBuild.PlayerPort>("player", () => GetLocalPlayer(), () => player!, (_RRCG_SETTER_VALUE) => player = _RRCG_SETTER_VALUE);
-            __If(__ConditionalContext(), () => ChipBuilder.IfValue<BoolPort>(player.IsValid, player.IsLocal, ChipBuilder.Equals(GetAuthority(), player)), delegate
+            __If(__ConditionalContext(), () => __Ternary<BoolPort>(player.IsValid, () => player.IsLocal, () => ChipBuilder.Equals(GetAuthority(), player)), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -671,7 +671,7 @@ namespace RRCGBuild
             );
                 RRCGBuild.PlayerPort nonLocalPlayer = default !;
                 nonLocalPlayer = __VariableDeclaratorExpression<RRCGBuild.PlayerPort>("nonLocalPlayer", () => PlayerGetFirstWithTag("tag"), () => nonLocalPlayer!, (_RRCG_SETTER_VALUE) => nonLocalPlayer = _RRCG_SETTER_VALUE);
-            __If(__ConditionalContext(), () => ChipBuilder.IfValue<BoolPort>(nonLocalPlayer.IsValid, nonLocalPlayer.IsLocal, ChipBuilder.Equals(GetAuthority(), nonLocalPlayer)), delegate
+            __If(__ConditionalContext(), () => __Ternary<BoolPort>(nonLocalPlayer.IsValid, () => nonLocalPlayer.IsLocal, () => ChipBuilder.Equals(GetAuthority(), nonLocalPlayer)), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -686,7 +686,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(__ConditionalContext(), () => ChipBuilder.IfValue<BoolPort>(nonLocalPlayer.IsValid, nonLocalPlayer.IsLocal, ChipBuilder.Equals(GetAuthority(), nonLocalPlayer)), delegate
+            __If(__ConditionalContext(), () => __Ternary<BoolPort>(nonLocalPlayer.IsValid, () => nonLocalPlayer.IsLocal, () => ChipBuilder.Equals(GetAuthority(), nonLocalPlayer)), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -700,7 +700,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(__ConditionalContext(), () => ChipBuilder.IfValue<BoolPort>(GetLocalPlayer().IsValid, nonLocalPlayer.IsLocal, ChipBuilder.Equals(GetAuthority(), nonLocalPlayer)), delegate
+            __If(__ConditionalContext(), () => __Ternary<BoolPort>(GetLocalPlayer().IsValid, () => nonLocalPlayer.IsLocal, () => ChipBuilder.Equals(GetAuthority(), nonLocalPlayer)), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -714,7 +714,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(__ConditionalContext(), () => ChipBuilder.IfValue<BoolPort>(nonLocalPlayer.IsValid, GetLocalPlayer().IsLocal, ChipBuilder.Equals(GetAuthority(), nonLocalPlayer)), delegate
+            __If(__ConditionalContext(), () => __Ternary<BoolPort>(nonLocalPlayer.IsValid, () => GetLocalPlayer().IsLocal, () => ChipBuilder.Equals(GetAuthority(), nonLocalPlayer)), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");
@@ -728,7 +728,7 @@ namespace RRCGBuild
             }
 
             );
-            __If(__ConditionalContext(), () => ChipBuilder.IfValue<BoolPort>(nonLocalPlayer.IsValid, nonLocalPlayer.IsLocal, ChipBuilder.Equals(GetAuthority(), GetLocalPlayer())), delegate
+            __If(__ConditionalContext(), () => __Ternary<BoolPort>(nonLocalPlayer.IsValid, () => nonLocalPlayer.IsLocal, () => ChipBuilder.Equals(GetAuthority(), GetLocalPlayer())), delegate
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 LogString("true");

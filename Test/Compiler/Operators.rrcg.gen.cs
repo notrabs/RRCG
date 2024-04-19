@@ -253,26 +253,32 @@ namespace RRCGBuild
             __BeginReturnScope("TernaryOperator", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("TernaryOperator").Receiver();
+                BoolPort condition = default !;
+                condition = __VariableDeclaratorExpression<BoolPort>("condition", () => Reroute<BoolPort>(true), () => condition!, (_RRCG_SETTER_VALUE) => condition = _RRCG_SETTER_VALUE);
                 FloatPort dataA = default !;
                 dataA = __VariableDeclaratorExpression<FloatPort>("dataA", () => 0, () => dataA!, (_RRCG_SETTER_VALUE) => dataA = _RRCG_SETTER_VALUE);
                 FloatPort dataB = default !;
                 dataB = __VariableDeclaratorExpression<FloatPort>("dataB", () => 1, () => dataB!, (_RRCG_SETTER_VALUE) => dataB = _RRCG_SETTER_VALUE);
-            ChipLib.EventCache<FloatPort>(ChipBuilder.IfValue<FloatPort>(true, dataA, dataB));
+            ChipLib.EventCache<FloatPort>(__Ternary<FloatPort>(condition, () => dataA, () => dataB));
                 FloatPort portA = default !;
                 portA = __VariableDeclaratorExpression<FloatPort>("portA", () => RandomFloat(0, 0), () => portA!, (_RRCG_SETTER_VALUE) => portA = _RRCG_SETTER_VALUE);
                 FloatPort portB = default !;
                 portB = __VariableDeclaratorExpression<FloatPort>("portB", () => RandomFloat(1, 1), () => portB!, (_RRCG_SETTER_VALUE) => portB = _RRCG_SETTER_VALUE);
-            ChipLib.EventCache<FloatPort>(ChipBuilder.IfValue<FloatPort>(true, portA, portB));
+            ChipLib.EventCache<FloatPort>(__Ternary<FloatPort>(condition, () => portA, () => portB));
             // Port / data
-            ChipLib.EventCache<FloatPort>(ChipBuilder.IfValue<FloatPort>(true, portA, dataB));
+            ChipLib.EventCache<FloatPort>(__Ternary<FloatPort>(condition, () => portA, () => dataB));
             // Implicit conversions
             // Floats without -f suffix
-            RandomFloat(0, ChipBuilder.IfValue<FloatPort>(true, 123, 456));
+            RandomFloat(0, __Ternary<FloatPort>(condition, () => 123, () => 456));
                 IntPort intPort = default !;
                 intPort = __VariableDeclaratorExpression<IntPort>("intPort", () => RandomInt(0, 0), () => intPort!, (_RRCG_SETTER_VALUE) => intPort = _RRCG_SETTER_VALUE);
-            RandomFloat(0, ChipBuilder.IfValue<FloatPort>(true, 1.5f, intPort));
+            RandomFloat(0, __Ternary<FloatPort>(condition, () => 1.5f, () => intPort));
             // Implicit conversion for result
-            ChipLib.Log(__StringInterpolation("Result: ", (ChipBuilder.IfValue<FloatPort>(false, intPort, portA))));
+            ChipLib.Log(__StringInterpolation("Result: ", (__Ternary<FloatPort>(condition, () => intPort, () => portA))));
+            // Data condition
+            // Will only evaluate the necessary branch
+            ChipLib.VariableCache<FloatPort>(__Ternary<FloatPort>(true, () => RandomInt(0, 0), () => RandomFloat(0, 0)));
+            ChipLib.VariableCache<FloatPort>(__Ternary<FloatPort>(false, () => RandomInt(0, 0), () => RandomFloat(0, 0)));
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
             __EndReturnScope();
