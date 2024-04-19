@@ -1149,6 +1149,228 @@ namespace RRCG
                                 .WithBlock(bodyBlock))));
         }
 
+        public override SyntaxNode VisitForStatement(ForStatementSyntax node)
+        {
+            // First, try to determine if this For statement can use the For chip,
+            // and get the associated parameters (the index symbol, min/max value expression).
+            var canUseForChip = DetermineForStatementOptimization(node, out var iterateUpward, out var indexSymbol, out var minExpression, out var maxExpression);
+
+            // Now, we rewrite the variable declarations into actual locals.
+            var statements = new SyntaxList<StatementSyntax>();
+
+            if (node.Declaration != null)
+            {
+                // Re-parse and rewrite type, see VisitIdentifierName
+                var rewrittenType = (TypeSyntax)Visit(ParseTypeName(node.Declaration.Type.ToString()));
+
+                foreach (var variable in node.Declaration.Variables)
+                {
+                    var identifier = variable.Identifier.ToString();
+
+                    // Do not declare the index symbol as a local, if we have one
+                    var symbol = SemanticModel.GetDeclaredSymbol(variable);
+                    if (indexSymbol != null && symbol.Equals(indexSymbol)) continue;
+
+                    // Declare variable
+                    statements = statements.Add(LocalDeclarationStatement(
+                                                    VariableDeclaration(rewrittenType)
+                                                    .WithVariables(
+                                                        SingletonSeparatedList<VariableDeclaratorSyntax>(
+                                                            VariableDeclarator(identifier)
+                                                            .WithInitializer(
+                                                                EqualsValueClause(
+                                                                    ParseExpression("default!")))))));
+
+                    // Then initialize the variable with a call to __VariableDeclaratorExpression
+                    var initializer = variable.Initializer != null ? (ExpressionSyntax)Visit(variable.Initializer.Value) : null;
+                    statements = statements.Add(
+                        ExpressionStatement(
+                            AssignmentExpression(
+                                SyntaxKind.SimpleAssignmentExpression,
+                                IdentifierName(identifier),
+                                VariableDeclaratorExpressionInvocation(identifier, initializer, rewrittenType, true))));
+                }
+            }
+
+            // Visit loop body & turn into parenthesized lambda
+            var visitedStatement = (StatementSyntax)Visit(node.Statement);
+
+            // If the statement was a block, it will have been wrapped in an AccessibilityScope.
+            // Otherwise we do this ourselves:
+            if (visitedStatement is not BlockSyntax visitedBlock)
+                visitedBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(visitedStatement), AccessibilityScope.Kind.General);
+
+            var bodyLambda = ParenthesizedLambdaExpression().WithBlock(visitedBlock);
+            if (indexSymbol != null)
+                bodyLambda = bodyLambda.WithParameterList(
+                                SyntaxUtils.ParameterList(
+                                    Parameter(Identifier(indexSymbol.Name.ToString()))));
+
+
+            // Visit incrementors & turn into parenthesized lambda
+            var incrementorsStatements = new SyntaxList<StatementSyntax>();
+            foreach (var incrementor in node.Incrementors)
+            {
+                // If we have an optimizable index symbol, and this incrementor
+                // assigns to it, do not include it. In this case we get that value
+                // to the loop body as a parameter -- it won't exist here!
+                if (indexSymbol != null && SemanticModel.FindAssignedSymbolsRecursive(incrementor).Any(s => s.Equals(indexSymbol)))
+                    continue;
+
+                var visitedIncrementor = (ExpressionSyntax)Visit(incrementor);
+                incrementorsStatements = incrementorsStatements.Add(ExpressionStatement(visitedIncrementor));
+            }
+
+            var incrementorsLambda = ParenthesizedLambdaExpression()
+                                     .WithBlock(Block(incrementorsStatements));
+
+            // Construct conditional context invocation,
+            // searching the incrementors & statement for assignments
+            // to previously accessible & newly-defined symbols.
+            var symbols = GetAccessibleSymbolsForConditionalContext(node.SpanStart);
+            if (node.Declaration != null)
+                symbols = symbols.Concat(node.Declaration.Variables.Select(v => SemanticModel.GetDeclaredSymbol(v)));
+
+            var nodesToSearch = node.Incrementors
+                                    .Cast<SyntaxNode>()
+                                    .Append(node.Statement)
+                                    .ToArray();
+
+            var createConditional = CreateConditionalContext(symbols, nodesToSearch);
+
+            // If we can use the For node, construct call to __OptimizedFor.
+            // Otherwise we'll just call __ManualFor.
+            if (canUseForChip)
+            {
+                statements = statements.Add(ExpressionStatement(
+                                                InvocationExpression(
+                                                    IdentifierName("__OptimizedFor"))
+                                                .WithArgumentList(
+                                                    SyntaxUtils.ArgumentList(
+                                                        createConditional,
+                                                        LiteralExpression(iterateUpward ? SyntaxKind.TrueLiteralExpression
+                                                                                        : SyntaxKind.FalseLiteralExpression),
+                                                        (ExpressionSyntax)Visit(minExpression),
+                                                        (ExpressionSyntax)Visit(maxExpression),
+                                                        bodyLambda,
+                                                        incrementorsLambda))));
+            } else
+            {
+                var conditionLambda = ParenthesizedLambdaExpression()
+                                      .WithExpressionBody((ExpressionSyntax)Visit(node.Condition));
+
+                statements = statements.Add(ExpressionStatement(
+                                                InvocationExpression(
+                                                    IdentifierName("__ManualFor"))
+                                                .WithArgumentList(
+                                                    SyntaxUtils.ArgumentList(
+                                                        createConditional,
+                                                        bodyLambda,
+                                                        conditionLambda,
+                                                        incrementorsLambda))));
+            }
+
+            // Finally, wrap statements in an accessibility scope, and return a block.
+            return Block(WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.General));
+        }
+        
+        bool DetermineForStatementOptimization(ForStatementSyntax node, out bool iterateUpward, out ILocalSymbol indexSymbol, out ExpressionSyntax minExpression, out ExpressionSyntax maxExpression)
+        {
+            iterateUpward = false;
+            indexSymbol = null;
+            minExpression = null;
+            maxExpression = null;
+
+            // This method recognizes these forms:
+            // for (int i=MIN; i < MAX; i++)
+            // for (int i=MIN; i < MAX; ++i)
+            // for (int i=MAX; i > MIN; i--)
+            // for (int i=MAX; i > MIN; --i)
+
+            // TODO: It may be more doable to support more forms by writing multiple smaller
+            //       methods focused on recognizing each specific form, rather than one method
+            //       that tries to recognize multiple. We could call them all and only give up
+            //       if we find no match even after every one has been called.
+
+            // 1. The condition must be either:
+            //    - a Less Than expression (iterating in the positive direction)
+            //    - a Greater Than expression (iterating in the negative direction)
+            if (node.Condition is not BinaryExpressionSyntax binaryExpression)
+                return false;
+
+            var binExpKind = binaryExpression.Kind();
+            if (binExpKind != SyntaxKind.LessThanExpression && binExpKind != SyntaxKind.GreaterThanExpression)
+                return false;
+
+            var iteratingUpward = binExpKind == SyntaxKind.LessThanExpression;
+
+            // 2. The left side of the comparison must be a local variable
+            var leftSymbol = SemanticModel.GetSymbolInfo(binaryExpression.Left);
+            if (leftSymbol.Symbol is not ILocalSymbol localSymbol)
+                return false;
+
+            // 3. The local variable must be declared in the For statement.
+            //    It must also be initialized to a value.
+            var declaringReferences = localSymbol.DeclaringSyntaxReferences;
+            if (declaringReferences.Length != 1) return false;
+
+            var symbolDeclaration = declaringReferences[0].GetSyntax();
+            if (symbolDeclaration is not VariableDeclaratorSyntax localDeclaration) return false;
+            if (localDeclaration.Parent != node.Declaration) return false;
+            if (localDeclaration.Initializer == null) return false;
+
+            // 4. The type of the local variable must be int.
+            if (localSymbol.Type.SpecialType != SpecialType.System_Int32) return false;
+
+            // 5. There must not be any assignments to the
+            //    local variable within the loop body.
+            var assignmentsInBody = SemanticModel.FindAssignedSymbolsRecursive(node.Statement);
+            if (assignmentsInBody.Any(s => s.Equals(localSymbol))) return false;
+
+            // 6. The incrementors must contain exactly one
+            //    statement that assigns to the local variable.
+            //    The statement must increment or decrement
+            //    the variable by exactly 1.
+
+            // Map each incrementor to its assignments..
+            var incrementorToAssignments = node.Incrementors.ToDictionary(
+                inc => inc,
+                inc => SemanticModel.FindAssignedSymbolsRecursive(inc));
+
+            // Find all incrementor/assignment pairs that assign
+            // to the local variable..
+            var assignsToLocal = incrementorToAssignments
+                .Where(kvp => kvp.Value.Any(s => s.Equals(localSymbol)))
+                .ToArray();
+
+            // Ensure a count of 1 & grab the corresponding incrementor.
+            if (assignsToLocal.Length != 1) return false;
+            var incrementor = assignsToLocal[0].Key;
+
+            // Ensure it's contained within our increment/decrement syntax kinds..
+            SyntaxKind[] incrementKinds = { SyntaxKind.PreIncrementExpression, SyntaxKind.PostIncrementExpression };
+            SyntaxKind[] decrementKinds = { SyntaxKind.PreDecrementExpression, SyntaxKind.PostDecrementExpression };
+
+            var incrementorKind = incrementor.Kind();
+            if (!incrementKinds.Concat(decrementKinds).Contains(incrementorKind))
+                return false;
+
+            // 7. If we're iterating in the positive direction, the incrementor must
+            //    be incrementing the variable. If we're iterating in the negative direction,
+            //    the incrementor must be decrementing the variable.
+            var incrementing = incrementKinds.Contains(incrementorKind);
+            if (incrementing != iteratingUpward) return false;
+
+            // This for statement seems to follow the forms we can optimize.
+            var from = localDeclaration.Initializer.Value;
+            var to = binaryExpression.Right;
+
+            iterateUpward = iteratingUpward;
+            indexSymbol = localSymbol;
+            minExpression = iteratingUpward ? from : to;
+            maxExpression = iteratingUpward ? to : from;
+            return true;
+        }
         public override SyntaxNode VisitBinaryExpression(BinaryExpressionSyntax node)
         {
             string chip = null;
@@ -1361,41 +1583,20 @@ namespace RRCG
             {
                 if (nodeToSearch == null) continue;
 
-                // 2. Find all assignments each node to search.
-                var assignments = nodeToSearch.DescendantNodesAndSelf()
-                    .Where(n => SyntaxUtils.AllAssignmentKinds.Contains(n.Kind()))
-                    .ToArray();
+                // 2. Find all symbols that are assigned to within this node.
+                var assignedSymbols = SemanticModel.FindAssignedSymbolsRecursive(nodeToSearch);
 
-                // 3. For each assignment, determine if the symbol being assigned to
-                //    is in the list of accessible locals.
-                foreach (var assignment in assignments)
+                foreach (var symbol in assignedSymbols)
                 {
-                    var assignmentKind = assignment.Kind();
-                    ExpressionSyntax assignedLocalExpression = default;
-
-                    // Different syntax nodes store the assigned symbol differently.
-                    // We need to do per-kind reading, unfortunately.
-                    if (SyntaxUtils.AssignmentExpressionKinds.Contains(assignmentKind))
-                        assignedLocalExpression = ((AssignmentExpressionSyntax)assignment).Left;
-                    else if (SyntaxUtils.PrefixUnaryAssignmentKinds.Contains(assignmentKind))
-                        assignedLocalExpression = ((PrefixUnaryExpressionSyntax)assignment).Operand;
-                    else if (SyntaxUtils.PostfixUnaryAssignmentKinds.Contains(assignmentKind))
-                        assignedLocalExpression = ((PostfixUnaryExpressionSyntax)assignment).Operand;
-
-                    if (assignedLocalExpression == null) continue;
-
-                    var symbolInfo = SemanticModel.GetSymbolInfo(assignedLocalExpression);
-                    if (symbolInfo.Symbol == null) continue;
-
-                    // If the symbol being assigned to is contained within the accessible symbols,
+                    // 3. If the symbol being assigned to is contained within the accessible symbols,
                     // then the variable should be promoted (if we haven't promoted it already)
-                    if (!accessibleSymbols.Any(s => s.Equals(symbolInfo.Symbol))) continue;
-                    if (promotedSymbols.Any(s => s.Equals(symbolInfo.Symbol))) continue;
+                    if (!accessibleSymbols.Any(s => s.Equals(symbol))) continue;
+                    if (promotedSymbols.Any(s => s.Equals(symbol))) continue;
 
-                    promotedSymbols.Add(symbolInfo.Symbol);
+                    promotedSymbols.Add(symbol);
                     arguments.Add(LiteralExpression(
                                       SyntaxKind.StringLiteralExpression,
-                                      Literal(symbolInfo.Symbol.Name)));
+                                      Literal(symbol.Name)));
                 }
             }
 

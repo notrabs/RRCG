@@ -7,6 +7,7 @@ public class Iterators : CircuitDescriptor
 {
     public override void CircuitGraph()
     {
+        // WHILE TEST:
         // Test using while loops
         WhileTest();
 
@@ -29,7 +30,7 @@ public class Iterators : CircuitDescriptor
         // Test nested do while loops
         NestedDoWhileTest();
 
-        // For Each loops
+        // FOR EACH TEST:
         var list = InlineGraph(() => ChipLib.EventCache(ListCreate(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)));
 
         // Standard For Each form
@@ -54,6 +55,33 @@ public class Iterators : CircuitDescriptor
 
         // Test promoted variables
         ForEachPromotedTest(list);
+
+        // FOR LOOPS TEST:
+        // - Standard forms
+        ForLoopTest();
+
+        // - Manual form
+        ManualForLoopTest();
+
+        // - Optimized -> manual conversions
+        //   (ensure we do this correctly in all cases)
+        OptimizedToManualForLoopConversionsTest();
+
+        // - Nested standard
+        NestedForLoopTest();
+
+        // - Nested variations
+        ManualWithinStandardForLoopTest();
+        StandardWithinManualForLoopTest();
+
+        // - Test promoted (& multiple variables in the For declaration)
+        PromotedVariablesForLoopTest();
+
+        // - Test returns
+        ForLoopReturnTest();
+
+        // - Test unconventional for loops
+        UnconventionalForLoopsTest();
     }
 
     void WhileTest()
@@ -98,14 +126,14 @@ public class Iterators : CircuitDescriptor
     }
 
     [EventFunction]
-    public string StringRepeatEventFunction(string str, int count)
+    string StringRepeatEventFunction(string str, int count)
     {
         // Functions are transparent -- this will duplicate the logic
         // and represent it as an event function.
         return StringRepeat(str, count);
     }
 
-    public string StringRepeat(string str, int count)
+    string StringRepeat(string str, int count)
     {
         var strStaging = new Variable<string>();
 
@@ -211,12 +239,12 @@ public class Iterators : CircuitDescriptor
     }
 
     [EventFunction]
-    public string StringRepeatDoWhileEventFunction(string str, int count)
+    string StringRepeatDoWhileEventFunction(string str, int count)
     {
         return StringRepeatDoWhile(str, count);
     }
 
-    public string StringRepeatDoWhile(string str, int count)
+    string StringRepeatDoWhile(string str, int count)
     {
         var strStaging = new Variable<string>();
 
@@ -394,12 +422,12 @@ public class Iterators : CircuitDescriptor
     }
 
     [EventFunction]
-    public int ForEachReturnEventFunction(List<int> list)
+    int ForEachReturnEventFunction(List<int> list)
     {
         return ForEachReturnImpl(list);
     }
 
-    public int ForEachReturnImpl(List<int> list)
+    int ForEachReturnImpl(List<int> list)
     {
         foreach (var item in list)
         {
@@ -412,17 +440,16 @@ public class Iterators : CircuitDescriptor
 
     void ForEachReturnTest(List<int> list)
     {
-        var entry = new EventDefinition("ForEachReturnTest");
-        entry.Receiver();
+        new EventDefinition("ForEachReturnTest").Receiver();
 
-        // Test returns from while block within an "inline" graph (functions are transparent)
+        // Test returns from For Each within an "inline" graph (functions are transparent)
         ChipLib.Log($"Result (inline graph): {ForEachReturnImpl(list)}");
 
-        // Test returns from while block within a circuit board
+        // Test returns from For Each within a circuit board
         var result = CircuitBoard(ForEachReturnImpl, list);
         ChipLib.Log($"Result (circuit board): {result}");
 
-        // Test returns from while block within event functions
+        // Test returns from For Each within event functions
         ChipLib.Log($"Result (event function): {ForEachReturnEventFunction(list)}");
 
         throw null;
@@ -438,6 +465,307 @@ public class Iterators : CircuitDescriptor
             LogString($"Item: {item}, index: {i}");
             i += 1;
         }
+
+        throw null;
+    }
+
+    void ForLoopTest()
+    {
+        new EventDefinition("ForLoopTest").Receiver();
+
+        LogString("Testing standard form, positive iteration:");
+        for (int i = 0; i < 10; i++)
+            LogString($"i: {i}");
+
+        LogString("Testing standard form, positive iteration (with 'var' index declaration):");
+
+        // This should work too, because C# infers the type to be int.
+        // We check with the semantic model to determine the type when
+        // checking if a For statement can use the For node,
+        // not just the syntax alone.
+        for (var i = 0; i < 10; i++)
+            LogString($"i: {i}");
+
+        LogString("Testing standard form, negative iteration (data ports):");
+
+        // The For node does not support negative iteration.
+        // But, we can augment this functionality onto it.
+
+        // At rewriting time, depending on the condition of the loop,
+        // we determine the iteration direction, and what values are
+        // the minimum and maximum. So this should iterate upward,
+        // but use a Subtract chip to correct the index.
+        for (int i = 10; i > 0; i--)
+            LogString($"i: {i}");
+
+        LogString("Testing standard form, negative iteration (real ports):");
+
+        // When we apply the correction for the negative iteration,
+        // we want it to be as efficient as possible. With a pure-data
+        // max value, we can insert it directly into the Subtract chip.
+        // But if it's a real port, we cache it in an efficient Random store
+        // first, to ensure each access of the index is nice and cheap.
+
+        var minPort = Reroute(0);
+        var maxPort = Reroute(10);
+        for (int i = maxPort; i > minPort; i--)
+            LogString($"i: {i}");
+
+        LogString("All done!");
+        throw null;
+    }
+
+    void ManualForLoopTest()
+    {
+        new EventDefinition("ManualForLoopTest").Receiver();
+
+        for (int i = 0; i < 10; i++)
+        {
+            LogString($"i: {i}");
+            if (i == 5) break; // Breaking forces a manual implementation
+        }
+
+        LogString("For loop done");
+        throw null;
+    }
+
+    void OptimizedToManualForLoopConversionsTest()
+    {
+        new EventDefinition("OptimizedToManualForLoopConversions").Receiver();
+
+        // At rewriting time, we make a best-effort guess about whether or not
+        // a particular For statement can be optimized into using the For node.
+        //
+        // However, at build time, this guess may be proven wrong through a
+        // number of ways (iterators using Delays in their chain, breaks, etc).
+        //
+        // If this occurs, we need to go back and splice-in a manual iterator
+        // which can be a bit of a convoluted process, especially with the
+        // flexibility of For loops.
+        // So we need to make sure we get it right!
+
+        LogString("Testing positive iteration (data ports):");
+
+        // For positive iterators using data ports,
+        // all we need to do is splice out the For node itself.
+        for (int i = 0; i < 10; i++)
+        {
+            LogString($"i: {i}");
+            ChipLib.AwaitDelay();
+        }
+
+        LogString("Testing positive iteration (real ports):");
+
+        // For positive iterators using real ports, we have a problem.
+        //
+        // We want to preserve the semantics of the For node here.
+        // The start/end values are immutable while running the loop,
+        // so to preserve the semantics (& ensure efficiency), we need to
+        // cache the end value in a Random store before entering the loop.
+        var min = Reroute(0);
+        var max = Reroute(10);
+
+        for (int i = min; i < max; i++)
+        {
+            LogString($"i: {i}");
+            ChipLib.AwaitDelay();
+        }
+
+        LogString("Testing negative iteration (data ports):");
+
+        // For negative iterators using data ports, all we need to do
+        // is splice out the For node & the subtract node, and rather than
+        // checking if the index is less than a value, we check if it's greater.
+        for (int i = 10; i > 0; i--)
+        {
+            LogString($"i: {i}");
+            ChipLib.AwaitDelay();
+        }
+
+        LogString("Testing negative iteration (real ports):");
+
+        // For negative iterators using real ports, we again have a problem.
+        // We again have to cache the end value to preserve semantics & efficiency.
+        // This should look exactly like the positive iterator/real port case, except
+        // the value being cached should be the minimum value.
+        for (int i = max; i > min; i--)
+        {
+            LogString($"i: {i}");
+            ChipLib.AwaitDelay();
+        }
+
+        LogString("All done!");
+        throw null;
+    }
+
+    void NestedForLoopTest()
+    {
+        new EventDefinition("NestedForLoopTest").Receiver();
+
+        for (int outer = 0; outer < 10; outer++)
+        {
+            LogString($"outer: {outer}");
+            for (int inner = 0; inner < 10; inner++)
+            {
+                LogString($"inner: {inner}");
+            }
+            LogString("Inner done");
+        }
+
+        LogString("Outer done");
+        throw null;
+    }
+
+    void ManualWithinStandardForLoopTest()
+    {
+        new EventDefinition("ManualWithinStandardForLoopTest").Receiver();
+
+        for (int outer = 0; outer < 10; outer++)
+        {
+            LogString($"outer: {outer}");
+
+            for (int inner = 0; inner < 10; inner++)
+            {
+                LogString($"inner: {inner}");
+                if (inner == 5) break;
+            }
+
+            LogString("Inner done");
+        }
+
+        LogString("Outer done");
+        throw null;
+    }
+
+    void StandardWithinManualForLoopTest()
+    {
+        new EventDefinition("StandardWithinManualForLoopTest").Receiver();
+
+        for (int outer = 0; outer < 10; outer++)
+        {
+            LogString($"outer: {outer}");
+            if (outer == 5) break;
+
+            for (int inner = 0; inner < 10; inner++)
+            {
+                LogString($"inner: {inner}");
+            }
+
+            LogString("Inner done");
+        }
+
+        LogString("Outer done");
+        throw null;
+    }
+
+    void PromotedVariablesForLoopTest()
+    {
+        new EventDefinition("PromotedVariablesForLoopTest").Receiver();
+
+        LogString("Testing variable promotions with actual locals");
+
+        float promotedFloat = 1f;
+        string promotedString = "";
+
+        for (int i = 0; i < 10; i++)
+        {
+            promotedFloat *= 2;
+            promotedString += "a";
+        }
+
+        LogString($"promotedFloat: {promotedFloat}, promotedString: {promotedString}");
+        LogString($"Testing variable promotions with For-declared variables");
+
+        // This For statement should still be optimizable.
+        for (int i = 0, otherOne = 0, otherTwo = 0; i < 10; i++, otherOne += 10)
+        {
+            otherTwo += 1;
+            LogString($"otherOne: {otherOne}, otherTwo: {otherTwo}");
+        }
+
+        LogString("All done!");
+        throw null;
+    }
+
+    [EventFunction]
+    int ForLoopReturnEventFunction()
+    {
+        return ForLoopReturnImpl();
+    }
+
+    int ForLoopReturnImpl()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            LogString($"i: {i}");
+            if (i == 5) return i;
+        }
+
+        throw null;
+    }
+
+    void ForLoopReturnTest()
+    {
+        new EventDefinition("ForLoopReturnTest").Receiver();
+
+        // Test returns from a For loop within an "inline" graph (functions are transparent)
+        ChipLib.Log($"Result (inline graph): {ForLoopReturnImpl()}");
+
+        // Test returns from a For loop within a circuit board
+        var result = CircuitBoard(ForLoopReturnImpl);
+        ChipLib.Log($"Result (circuit board): {result}");
+
+        // Test returns from a For loop within event functions
+        ChipLib.Log($"Result (event function): {ForLoopReturnEventFunction()}");
+
+        throw null;
+    }
+
+    void UnconventionalForLoopsTest()
+    {
+        new EventDefinition("UnconventionalForLoopsTest").Receiver();
+
+        // The most common use-case of For loops is to get an incrementing index.
+        // But they aren't just limited to that task, so it's important that we
+        // support all the possible use-cases, even if it means manual iteration.
+        //
+        // So, let's throw some unconventional For loops at it,
+        // and ensure the resulting circuits match semantically..
+
+        LogString("Testing string for loop");
+
+        string nextChar = "";
+        for (string result = ""; result.Length < 14; result += nextChar)
+        {
+            nextChar = result.Length switch
+            {
+                0 => "H",
+                1 => "e",
+                2 => "l",
+                3 => "l",
+                4 => "o",
+                5 => ",",
+                6 => " ",
+                7 => "W",
+                8 => "o",
+                9 => "r",
+                10 => "l",
+                11 => "d",
+                12 => "!",
+                _ => " "
+            };
+            LogString($"result: {result}");
+        }
+
+        LogString("Testing float for loop");
+
+        for (float i = 0; i < 10; i += 0.5f)
+        {
+            LogString($"i: {i}");
+        }
+
+        LogString("All done!");
+        throw null;
     }
 }
 #pragma warning restore CS0162 // Unreachable code detected

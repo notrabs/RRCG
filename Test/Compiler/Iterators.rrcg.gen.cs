@@ -12,6 +12,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            // WHILE TEST:
             // Test using while loops
             WhileTest();
             // Test returning from within a while loop
@@ -54,6 +55,25 @@ namespace RRCGBuild
             ForEachReturnTest(list);
             // Test promoted variables
             ForEachPromotedTest(list);
+            // FOR LOOPS TEST:
+            // - Standard forms
+            ForLoopTest();
+            // - Manual form
+            ManualForLoopTest();
+            // - Optimized -> manual conversions
+            //   (ensure we do this correctly in all cases)
+            OptimizedToManualForLoopConversionsTest();
+            // - Nested standard
+            NestedForLoopTest();
+            // - Nested variations
+            ManualWithinStandardForLoopTest();
+            StandardWithinManualForLoopTest();
+            // - Test promoted (& multiple variables in the For declaration)
+            PromotedVariablesForLoopTest();
+            // - Test returns
+            ForLoopReturnTest();
+            // - Test unconventional for loops
+            UnconventionalForLoopsTest();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -103,7 +123,7 @@ namespace RRCGBuild
         }
 
         [EventFunction]
-        public StringPort StringRepeatEventFunction(StringPort str, IntPort count)
+        StringPort StringRepeatEventFunction(StringPort str, IntPort count)
         {
             return __DispatchEventFunction<StringPort, StringPort, IntPort>("StringRepeatEventFunction", delegate (StringPort str, IntPort count)
             {
@@ -119,7 +139,7 @@ namespace RRCGBuild
             , str, count);
         }
 
-        public StringPort StringRepeat(StringPort str, IntPort count)
+        StringPort StringRepeat(StringPort str, IntPort count)
         {
             __BeginReturnScope("StringRepeat", typeof(StringPort), null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -302,7 +322,7 @@ namespace RRCGBuild
         }
 
         [EventFunction]
-        public StringPort StringRepeatDoWhileEventFunction(StringPort str, IntPort count)
+        StringPort StringRepeatDoWhileEventFunction(StringPort str, IntPort count)
         {
             return __DispatchEventFunction<StringPort, StringPort, IntPort>("StringRepeatDoWhileEventFunction", delegate (StringPort str, IntPort count)
             {
@@ -318,7 +338,7 @@ namespace RRCGBuild
             , str, count);
         }
 
-        public StringPort StringRepeatDoWhile(StringPort str, IntPort count)
+        StringPort StringRepeatDoWhile(StringPort str, IntPort count)
         {
             __BeginReturnScope("StringRepeatDoWhile", typeof(StringPort), null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -661,7 +681,7 @@ namespace RRCGBuild
         }
 
         [EventFunction]
-        public IntPort ForEachReturnEventFunction(ListPort<IntPort> list)
+        IntPort ForEachReturnEventFunction(ListPort<IntPort> list)
         {
             return __DispatchEventFunction<IntPort, ListPort<IntPort>>("ForEachReturnEventFunction", delegate (ListPort<IntPort> list)
             {
@@ -676,7 +696,7 @@ namespace RRCGBuild
             , list);
         }
 
-        public IntPort ForEachReturnImpl(ListPort<IntPort> list)
+        IntPort ForEachReturnImpl(ListPort<IntPort> list)
         {
             __BeginReturnScope("ForEachReturnImpl", typeof(IntPort), null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -713,15 +733,13 @@ namespace RRCGBuild
             __BeginReturnScope("ForEachReturnTest", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             __VariableDeclaratorExpression<ListPort<IntPort>>("list", null, () => list!, (_RRCG_SETTER_VALUE) => list = _RRCG_SETTER_VALUE);
-                RRCGBuild.EventDefinition entry = default !;
-                entry = __VariableDeclaratorExpression<RRCGBuild.EventDefinition>("entry", () => new EventDefinition("ForEachReturnTest"), () => entry!, (_RRCG_SETTER_VALUE) => entry = _RRCG_SETTER_VALUE);
-            entry.Receiver();
-            // Test returns from while block within an "inline" graph (functions are transparent)
+            new EventDefinition("ForEachReturnTest").Receiver();
+            // Test returns from For Each within an "inline" graph (functions are transparent)
             ChipLib.Log(__StringInterpolation("Result (inline graph): ", ForEachReturnImpl(list)));
                 IntPort result = default !;
                 result = __VariableDeclaratorExpression<IntPort>("result", () => CircuitBoard<ListPort<IntPort>, IntPort>(ForEachReturnImpl, list), () => result!, (_RRCG_SETTER_VALUE) => result = _RRCG_SETTER_VALUE);
             ChipLib.Log(__StringInterpolation("Result (circuit board): ", result));
-            // Test returns from while block within event functions
+            // Test returns from For Each within event functions
             ChipLib.Log(__StringInterpolation("Result (event function): ", ForEachReturnEventFunction(list)));
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
@@ -745,6 +763,597 @@ namespace RRCGBuild
             }
 
             );
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
+
+        void ForLoopTest()
+        {
+            __BeginReturnScope("ForLoopTest", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("ForLoopTest").Receiver();
+            LogString("Testing standard form, positive iteration:");
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("i"), true, 0, 10, (i) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("i: ", i));
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("Testing standard form, positive iteration (with 'var' index declaration):");
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("i"), true, 0, 10, (i) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("i: ", i));
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("Testing standard form, negative iteration (data ports):");
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("i"), false, 0, 10, (i) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("i: ", i));
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("Testing standard form, negative iteration (real ports):");
+                IntPort minPort = default !;
+                minPort = __VariableDeclaratorExpression<IntPort>("minPort", () => Reroute<IntPort>(0), () => minPort!, (_RRCG_SETTER_VALUE) => minPort = _RRCG_SETTER_VALUE);
+                IntPort maxPort = default !;
+                maxPort = __VariableDeclaratorExpression<IntPort>("maxPort", () => Reroute<IntPort>(10), () => maxPort!, (_RRCG_SETTER_VALUE) => maxPort = _RRCG_SETTER_VALUE);
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("i"), false, minPort, maxPort, (i) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("i: ", i));
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("All done!");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
+
+        void ManualForLoopTest()
+        {
+            __BeginReturnScope("ManualForLoopTest", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("ManualForLoopTest").Receiver();
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("i"), true, 0, 10, (i) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("i: ", i));
+                    __If(__ConditionalContext(), () => ChipBuilder.Equals(i, 5), delegate
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        __Break();
+                        __EndAccessibilityScope();
+                    }
+
+                    , delegate
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        __EndAccessibilityScope();
+                    }
+
+                    );
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("For loop done");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
+
+        void OptimizedToManualForLoopConversionsTest()
+        {
+            __BeginReturnScope("OptimizedToManualForLoopConversionsTest", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("OptimizedToManualForLoopConversions").Receiver();
+            // At rewriting time, we make a best-effort guess about whether or not
+            // a particular For statement can be optimized into using the For node.
+            //
+            // However, at build time, this guess may be proven wrong through a
+            // number of ways (iterators using Delays in their chain, breaks, etc).
+            //
+            // If this occurs, we need to go back and splice-in a manual iterator
+            // which can be a bit of a convoluted process, especially with the
+            // flexibility of For loops.
+            // So we need to make sure we get it right!
+            LogString("Testing positive iteration (data ports):");
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("i"), true, 0, 10, (i) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("i: ", i));
+                    ChipLib.AwaitDelay();
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("Testing positive iteration (real ports):");
+                IntPort min = default !;
+                min = __VariableDeclaratorExpression<IntPort>("min", () => Reroute<IntPort>(0), () => min!, (_RRCG_SETTER_VALUE) => min = _RRCG_SETTER_VALUE);
+                IntPort max = default !;
+                max = __VariableDeclaratorExpression<IntPort>("max", () => Reroute<IntPort>(10), () => max!, (_RRCG_SETTER_VALUE) => max = _RRCG_SETTER_VALUE);
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("i"), true, min, max, (i) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("i: ", i));
+                    ChipLib.AwaitDelay();
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("Testing negative iteration (data ports):");
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("i"), false, 0, 10, (i) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("i: ", i));
+                    ChipLib.AwaitDelay();
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("Testing negative iteration (real ports):");
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("i"), false, min, max, (i) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("i: ", i));
+                    ChipLib.AwaitDelay();
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("All done!");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
+
+        void NestedForLoopTest()
+        {
+            __BeginReturnScope("NestedForLoopTest", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("NestedForLoopTest").Receiver();
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("outer"), true, 0, 10, (outer) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("outer: ", outer));
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        __OptimizedFor(__ConditionalContext("inner"), true, 0, 10, (inner) =>
+                        {
+                            __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                            LogString(__StringInterpolation("inner: ", inner));
+                            __EndAccessibilityScope();
+                        }
+
+                        , () =>
+                        {
+                        }
+
+                        );
+                        __EndAccessibilityScope();
+                    }
+
+                    LogString("Inner done");
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("Outer done");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
+
+        void ManualWithinStandardForLoopTest()
+        {
+            __BeginReturnScope("ManualWithinStandardForLoopTest", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("ManualWithinStandardForLoopTest").Receiver();
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("outer"), true, 0, 10, (outer) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("outer: ", outer));
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        __OptimizedFor(__ConditionalContext("inner"), true, 0, 10, (inner) =>
+                        {
+                            __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                            LogString(__StringInterpolation("inner: ", inner));
+                            __If(__ConditionalContext(), () => ChipBuilder.Equals(inner, 5), delegate
+                            {
+                                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                                __Break();
+                                __EndAccessibilityScope();
+                            }
+
+                            , delegate
+                            {
+                                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                                __EndAccessibilityScope();
+                            }
+
+                            );
+                            __EndAccessibilityScope();
+                        }
+
+                        , () =>
+                        {
+                        }
+
+                        );
+                        __EndAccessibilityScope();
+                    }
+
+                    LogString("Inner done");
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("Outer done");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
+
+        void StandardWithinManualForLoopTest()
+        {
+            __BeginReturnScope("StandardWithinManualForLoopTest", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("StandardWithinManualForLoopTest").Receiver();
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("outer"), true, 0, 10, (outer) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("outer: ", outer));
+                    __If(__ConditionalContext(), () => ChipBuilder.Equals(outer, 5), delegate
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        __Break();
+                        __EndAccessibilityScope();
+                    }
+
+                    , delegate
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        __EndAccessibilityScope();
+                    }
+
+                    );
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        __OptimizedFor(__ConditionalContext("inner"), true, 0, 10, (inner) =>
+                        {
+                            __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                            LogString(__StringInterpolation("inner: ", inner));
+                            __EndAccessibilityScope();
+                        }
+
+                        , () =>
+                        {
+                        }
+
+                        );
+                        __EndAccessibilityScope();
+                    }
+
+                    LogString("Inner done");
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("Outer done");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
+
+        void PromotedVariablesForLoopTest()
+        {
+            __BeginReturnScope("PromotedVariablesForLoopTest", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("PromotedVariablesForLoopTest").Receiver();
+            LogString("Testing variable promotions with actual locals");
+                FloatPort promotedFloat = default !;
+                promotedFloat = __VariableDeclaratorExpression<FloatPort>("promotedFloat", () => 1f, () => promotedFloat!, (_RRCG_SETTER_VALUE) => promotedFloat = _RRCG_SETTER_VALUE);
+                StringPort promotedString = default !;
+                promotedString = __VariableDeclaratorExpression<StringPort>("promotedString", () => "", () => promotedString!, (_RRCG_SETTER_VALUE) => promotedString = _RRCG_SETTER_VALUE);
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("i", "promotedFloat", "promotedString"), true, 0, 10, (i) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    promotedFloat *= 2;
+                    promotedString += "a";
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString(__StringInterpolation("promotedFloat: ", promotedFloat, ", promotedString: ", promotedString));
+            LogString(__StringInterpolation("Testing variable promotions with For-declared variables"));
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                IntPort otherOne = default !;
+                otherOne = __VariableDeclaratorExpression<IntPort>("otherOne", () => 0, () => otherOne!, (_RRCG_SETTER_VALUE) => otherOne = _RRCG_SETTER_VALUE);
+                IntPort otherTwo = default !;
+                otherTwo = __VariableDeclaratorExpression<IntPort>("otherTwo", () => 0, () => otherTwo!, (_RRCG_SETTER_VALUE) => otherTwo = _RRCG_SETTER_VALUE);
+                __OptimizedFor(__ConditionalContext("i", "otherOne", "otherTwo"), true, 0, 10, (i) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    otherTwo += 1;
+                    LogString(__StringInterpolation("otherOne: ", otherOne, ", otherTwo: ", otherTwo));
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                    otherOne += 10;
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("All done!");
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
+
+        [EventFunction]
+        IntPort ForLoopReturnEventFunction()
+        {
+            return __DispatchEventFunction<IntPort>("ForLoopReturnEventFunction", delegate ()
+            {
+                __BeginReturnScope("ForLoopReturnEventFunction", typeof(IntPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __Return<IntPort>(ForLoopReturnImpl());
+                __EndAccessibilityScope();
+                return __EndReturnScope()!;
+            }
+
+            );
+        }
+
+        IntPort ForLoopReturnImpl()
+        {
+            __BeginReturnScope("ForLoopReturnImpl", typeof(IntPort), null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                __OptimizedFor(__ConditionalContext("i"), true, 0, 10, (i) =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("i: ", i));
+                    __If(__ConditionalContext(), () => ChipBuilder.Equals(i, 5), delegate
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        __Return<IntPort>(i);
+                        __EndAccessibilityScope();
+                    }
+
+                    , delegate
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        __EndAccessibilityScope();
+                    }
+
+                    );
+                    __EndAccessibilityScope();
+                }
+
+                , () =>
+                {
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            return __EndReturnScope()!;
+        }
+
+        void ForLoopReturnTest()
+        {
+            __BeginReturnScope("ForLoopReturnTest", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("ForLoopReturnTest").Receiver();
+            // Test returns from a For loop within an "inline" graph (functions are transparent)
+            ChipLib.Log(__StringInterpolation("Result (inline graph): ", ForLoopReturnImpl()));
+                IntPort result = default !;
+                result = __VariableDeclaratorExpression<IntPort>("result", () => CircuitBoard<IntPort>(ForLoopReturnImpl), () => result!, (_RRCG_SETTER_VALUE) => result = _RRCG_SETTER_VALUE);
+            ChipLib.Log(__StringInterpolation("Result (circuit board): ", result));
+            // Test returns from a For loop within event functions
+            ChipLib.Log(__StringInterpolation("Result (event function): ", ForLoopReturnEventFunction()));
+            ExecFlow.current.Clear();
+            __EndAccessibilityScope();
+            __EndReturnScope();
+        }
+
+        void UnconventionalForLoopsTest()
+        {
+            __BeginReturnScope("UnconventionalForLoopsTest", null, null);
+            __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+            new EventDefinition("UnconventionalForLoopsTest").Receiver();
+            // The most common use-case of For loops is to get an incrementing index.
+            // But they aren't just limited to that task, so it's important that we
+            // support all the possible use-cases, even if it means manual iteration.
+            //
+            // So, let's throw some unconventional For loops at it,
+            // and ensure the resulting circuits match semantically..
+            LogString("Testing string for loop");
+                StringPort nextChar = default !;
+                nextChar = __VariableDeclaratorExpression<StringPort>("nextChar", () => "", () => nextChar!, (_RRCG_SETTER_VALUE) => nextChar = _RRCG_SETTER_VALUE);
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                StringPort result = default !;
+                result = __VariableDeclaratorExpression<StringPort>("result", () => "", () => result!, (_RRCG_SETTER_VALUE) => result = _RRCG_SETTER_VALUE);
+                __ManualFor(__ConditionalContext("result", "nextChar"), () =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    nextChar = __SwitchExpression<StringPort>(result.Length, () => " ", new()
+                    {{0, () => "H"}, {1, () => "e"}, {2, () => "l"}, {3, () => "l"}, {4, () => "o"}, {5, () => ","}, {6, () => " "}, {7, () => "W"}, {8, () => "o"}, {9, () => "r"}, {10, () => "l"}, {11, () => "d"}, {12, () => "!"}});
+                    LogString(__StringInterpolation("result: ", result));
+                    __EndAccessibilityScope();
+                }
+
+                , () => ChipBuilder.LessThan(result.Length, 14), () =>
+                {
+                    result += nextChar;
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("Testing float for loop");
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                FloatPort i = default !;
+                i = __VariableDeclaratorExpression<FloatPort>("i", () => 0, () => i!, (_RRCG_SETTER_VALUE) => i = _RRCG_SETTER_VALUE);
+                __ManualFor(__ConditionalContext("i"), () =>
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    LogString(__StringInterpolation("i: ", i));
+                    __EndAccessibilityScope();
+                }
+
+                , () => ChipBuilder.LessThan(i, 10), () =>
+                {
+                    i += 0.5f;
+                }
+
+                );
+                __EndAccessibilityScope();
+            }
+
+            LogString("All done!");
+            ExecFlow.current.Clear();
             __EndAccessibilityScope();
             __EndReturnScope();
         }

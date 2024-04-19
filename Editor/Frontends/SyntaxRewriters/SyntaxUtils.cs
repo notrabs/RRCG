@@ -250,5 +250,42 @@ namespace RRCG
 
             return property.AccessorList.Accessors.All(a => a.Body == null && a.ExpressionBody == null);
         }
+
+        public static List<ISymbol> FindAssignedSymbolsRecursive(this SemanticModel semanticModel, SyntaxNode nodeToSearch)
+        {
+            var assignedSymbols = new List<ISymbol>();
+
+            // 1. Find all assignment nodes within the node to search.
+            var assignments = nodeToSearch.DescendantNodesAndSelf()
+                .Where(n => AllAssignmentKinds.Contains(n.Kind()))
+                .ToArray();
+
+            // 2. For each assignment, attempt to resolve the symbol being assigned to.
+            foreach (var assignment in assignments)
+            {
+                var assignmentKind = assignment.Kind();
+                ExpressionSyntax assignedLocalExpression = default;
+
+                // Different syntax nodes store the assigned symbol differently.
+                // We need to do per-kind reading, unfortunately.
+                if (AssignmentExpressionKinds.Contains(assignmentKind))
+                    assignedLocalExpression = ((AssignmentExpressionSyntax)assignment).Left;
+                else if (PrefixUnaryAssignmentKinds.Contains(assignmentKind))
+                    assignedLocalExpression = ((PrefixUnaryExpressionSyntax)assignment).Operand;
+                else if (PostfixUnaryAssignmentKinds.Contains(assignmentKind))
+                    assignedLocalExpression = ((PostfixUnaryExpressionSyntax)assignment).Operand;
+
+                if (assignedLocalExpression == null) continue;
+
+                var symbolInfo = semanticModel.GetSymbolInfo(assignedLocalExpression);
+                if (symbolInfo.Symbol == null) continue;
+
+                // Ensure unique results..
+                if (assignedSymbols.Any(s => s.Equals(symbolInfo.Symbol))) continue;
+                assignedSymbols.Add(symbolInfo.Symbol);
+            }
+
+            return assignedSymbols;
+        }
     }
 }

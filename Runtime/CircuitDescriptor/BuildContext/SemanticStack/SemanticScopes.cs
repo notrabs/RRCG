@@ -134,6 +134,8 @@ namespace RRCGBuild
     }
 
     public class ForEachScope : SemanticScope.BaseIterator { }
+    
+    public class ForScope : SemanticScope.BaseIterator { }
 
     // Scope valid in the expression of an assignment to an identifier. (currently only implemented for declaration intiailizers)
     public class NamedAssignmentScope : SemanticScope
