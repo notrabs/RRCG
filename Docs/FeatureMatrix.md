@@ -118,12 +118,18 @@ implemented
 
 ## Iteration statements 
 
-**Implemented:** `while`, `do`, `foreach`
+**Implemented:** `while`, `do`, `foreach`, `for`
 
 Will place equivalent circuitry to implement the loops.
 If the iterator has a native CV2 chip (e.g. For Each), RRCG will prefer to use it, but will swap it out with an equivalent manual implementation if required to preserve semantics (e.g. delays, return, break).
 
-**Not implmented:** `for`
+In the case of For loops, RRCG is looking for the common forms to optimize as a For node:
+
+`for (int i=0; i < 10; i++)`
+
+`for (int i=10; i > 0; i--)`
+
+In these cases it will attempt to use the For node (even augmenting support for negative iteration through a Subtract chip), but will fallback to a semantically equivalent manual implementation if using the For node is/becomes impossible.
 
 ## Selection statements
 
