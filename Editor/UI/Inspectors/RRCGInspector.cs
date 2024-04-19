@@ -42,14 +42,19 @@ namespace RRCG
 
             if (GUILayout.Button("Open DOT Visualizer"))
             {
-                Application.OpenURL("https://dreampuf.github.io/GraphvizOnline/");
+                var context = await RoslynFrontend.GetBuilt(rrcgMeta);
+                if (EnableOptimizer) context = GraphOptimizer.Optimize(context);
+                var dotGraph = DotGraphBackend.Build(context);
+                Application.OpenURL("https://dreampuf.github.io/GraphvizOnline/#" + Uri.EscapeDataString(dotGraph));
             }
 
             if (GUILayout.Button("Copy DOT Graph"))
             {
                 var context = await RoslynFrontend.GetBuilt(rrcgMeta);
                 if (EnableOptimizer) context = GraphOptimizer.Optimize(context);
-                DotGraphBackend.Build(context);
+                var dotGraph = DotGraphBackend.Build(context);
+                GUIUtility.systemCopyBuffer = dotGraph;
+                Debug.Log("dotGraph copied");
             }
         }
     }

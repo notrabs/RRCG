@@ -6,7 +6,7 @@ namespace RRCG
 {
     public class DotGraphBackend
     {
-        public static void Build(Context context)
+        public static string Build(Context context)
         {
             var dotGraph = $@"digraph RRCG {{
 {string.Join("\n", context.Nodes.Select((node, i) => $"    {i} [label=\"{GetNodeName(node)}\"];"))}
@@ -15,8 +15,7 @@ namespace RRCG
 }}
 ";
             Debug.Log(dotGraph);
-            GUIUtility.systemCopyBuffer = dotGraph;
-            Debug.Log("dotGraph copied");
+            return dotGraph;
         }
 
         private static string GetNodeName(Node node)
