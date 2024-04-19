@@ -1311,18 +1311,11 @@
       "InputCount": 2
     },
     {
-      "Id": "Reroute_0",
-      "Type": "okvb+IBzoEmgurzcoR/slg==",
-      "Name": "Reroute",
-      "DefaultValues": [[[0,0],"System.Single",5.0]],
-      "InputCount": 1
-    },
-    {
-      "Id": "Round_0",
-      "Type": "muTPxvtPFEeVZI3doDAGdg==",
-      "Name": "Round",
-      "DefaultValues": [],
-      "InputCount": 1
+      "Id": "Root_0",
+      "Type": "cuSWixkrZUKq3ixiAjWNhg==",
+      "Name": "Root",
+      "DefaultValues": [[[0,0],"System.Single",5.0],[[0,1],"System.Single",1.0]],
+      "InputCount": 2
     },
     {
       "Id": "Vector3_Scale_6",
@@ -1346,18 +1339,11 @@
       "InputCount": 2
     },
     {
-      "Id": "Reroute_1",
-      "Type": "okvb+IBzoEmgurzcoR/slg==",
-      "Name": "Reroute",
-      "DefaultValues": [[[0,0],"System.Int32",6]],
-      "InputCount": 1
-    },
-    {
-      "Id": "Int_to_Float_1",
-      "Type": "irrPZdy1Rkm4JObvxXGfOg==",
-      "Name": "Int to Float",
-      "DefaultValues": [],
-      "InputCount": 1
+      "Id": "Bit_Or_0",
+      "Type": "EbwkLEOVOEeMbAxeP63ZRA==",
+      "Name": "Bit Or",
+      "DefaultValues": [[[0,0],"System.Int32",6],[[0,1],"System.Int32",0]],
+      "InputCount": 2
     },
     {
       "Id": "Vector3_Scale_7",
@@ -1381,18 +1367,11 @@
       "InputCount": 2
     },
     {
-      "Id": "Reroute_2",
-      "Type": "okvb+IBzoEmgurzcoR/slg==",
-      "Name": "Reroute",
-      "DefaultValues": [[[0,0],"System.Single",7.0]],
-      "InputCount": 1
-    },
-    {
-      "Id": "Round_1",
-      "Type": "muTPxvtPFEeVZI3doDAGdg==",
-      "Name": "Round",
-      "DefaultValues": [],
-      "InputCount": 1
+      "Id": "Root_1",
+      "Type": "cuSWixkrZUKq3ixiAjWNhg==",
+      "Name": "Root",
+      "DefaultValues": [[[0,0],"System.Single",7.0],[[0,1],"System.Single",1.0]],
+      "InputCount": 2
     },
     {
       "Id": "Vector3_Scale_8",
@@ -1416,18 +1395,11 @@
       "InputCount": 2
     },
     {
-      "Id": "Reroute_3",
-      "Type": "okvb+IBzoEmgurzcoR/slg==",
-      "Name": "Reroute",
-      "DefaultValues": [[[0,0],"System.Int32",8]],
-      "InputCount": 1
-    },
-    {
-      "Id": "Int_to_Float_2",
-      "Type": "irrPZdy1Rkm4JObvxXGfOg==",
-      "Name": "Int to Float",
-      "DefaultValues": [],
-      "InputCount": 1
+      "Id": "Bit_Or_1",
+      "Type": "EbwkLEOVOEeMbAxeP63ZRA==",
+      "Name": "Bit Or",
+      "DefaultValues": [[[0,0],"System.Int32",8],[[0,1],"System.Int32",0]],
+      "InputCount": 2
     },
     {
       "Id": "Vector3_Scale_9",
@@ -1486,7 +1458,7 @@
       "InputCount": 3
     },
     {
-      "Id": "Int_to_Float_3",
+      "Id": "Int_to_Float_1",
       "Type": "irrPZdy1Rkm4JObvxXGfOg==",
       "Name": "Int to Float",
       "DefaultValues": [],
@@ -1535,7 +1507,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Int_to_Float_4",
+      "Id": "Int_to_Float_2",
       "Type": "irrPZdy1Rkm4JObvxXGfOg==",
       "Name": "Int to Float",
       "DefaultValues": [],
@@ -1563,7 +1535,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Int_to_Float_5",
+      "Id": "Int_to_Float_3",
       "Type": "irrPZdy1Rkm4JObvxXGfOg==",
       "Name": "Int to Float",
       "DefaultValues": [],
@@ -1786,7 +1758,7 @@
       "InputCount": 3
     },
     {
-      "Id": "Int_to_Float_6",
+      "Id": "Int_to_Float_4",
       "Type": "irrPZdy1Rkm4JObvxXGfOg==",
       "Name": "Int to Float",
       "DefaultValues": [],
@@ -1807,7 +1779,7 @@
       "InputCount": 3
     },
     {
-      "Id": "Int_to_Float_7",
+      "Id": "Int_to_Float_5",
       "Type": "irrPZdy1Rkm4JObvxXGfOg==",
       "Name": "Int to Float",
       "DefaultValues": [],
@@ -1863,7 +1835,7 @@
       "InputCount": 0
     },
     {
-      "Id": "Reroute_4",
+      "Id": "Reroute_0",
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.Int32",1048575]],
@@ -1966,7 +1938,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Bit_Or_0",
+      "Id": "Bit_Or_2",
       "Type": "EbwkLEOVOEeMbAxeP63ZRA==",
       "Name": "Bit Or",
       "DefaultValues": [[[0,1],"System.Int32",-4096]],
@@ -2037,7 +2009,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Reroute_5",
+      "Id": "Reroute_1",
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.Int32",1044480]],
@@ -2172,7 +2144,7 @@
       "InputCount": 2
     },
     {
-      "Id": "Reroute_6",
+      "Id": "Reroute_2",
       "Type": "okvb+IBzoEmgurzcoR/slg==",
       "Name": "Reroute",
       "DefaultValues": [[[0,0],"System.Int32",252645132]],
@@ -5289,19 +5261,6 @@
     },
     {
       "From": {
-        "Node": "Reroute_0",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Round_0",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
         "Node": "Vector3_Create_0",
         "Group": 0,
         "Index": 0
@@ -5315,7 +5274,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_0",
+        "Node": "Root_0",
         "Group": 0,
         "Index": 0
       },
@@ -5367,19 +5326,6 @@
     },
     {
       "From": {
-        "Node": "Reroute_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Int_to_Float_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
         "Node": "Vector3_Create_0",
         "Group": 0,
         "Index": 0
@@ -5393,7 +5339,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_1",
+        "Node": "Bit_Or_0",
         "Group": 0,
         "Index": 0
       },
@@ -5445,19 +5391,6 @@
     },
     {
       "From": {
-        "Node": "Reroute_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Round_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
         "Node": "Vector3_Create_1",
         "Group": 0,
         "Index": 0
@@ -5471,7 +5404,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_2",
+        "Node": "Root_1",
         "Group": 0,
         "Index": 0
       },
@@ -5523,19 +5456,6 @@
     },
     {
       "From": {
-        "Node": "Reroute_3",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "Int_to_Float_2",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": false
-    },
-    {
-      "From": {
         "Node": "Vector3_Create_1",
         "Group": 0,
         "Index": 0
@@ -5549,7 +5469,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_3",
+        "Node": "Bit_Or_1",
         "Group": 0,
         "Index": 0
       },
@@ -5632,7 +5552,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Int_to_Float_3",
+        "Node": "Int_to_Float_1",
         "Group": 0,
         "Index": 0
       },
@@ -5640,7 +5560,7 @@
     },
     {
       "From": {
-        "Node": "Int_to_Float_3",
+        "Node": "Int_to_Float_1",
         "Group": 0,
         "Index": 0
       },
@@ -5749,7 +5669,7 @@
         "Index": 0
       },
       "To": {
-        "Node": "Int_to_Float_4",
+        "Node": "Int_to_Float_2",
         "Group": 0,
         "Index": 0
       },
@@ -5770,7 +5690,7 @@
     },
     {
       "From": {
-        "Node": "Int_to_Float_4",
+        "Node": "Int_to_Float_2",
         "Group": 0,
         "Index": 0
       },
@@ -5827,7 +5747,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Int_to_Float_5",
+        "Node": "Int_to_Float_3",
         "Group": 0,
         "Index": 0
       },
@@ -5848,7 +5768,7 @@
     },
     {
       "From": {
-        "Node": "Int_to_Float_5",
+        "Node": "Int_to_Float_3",
         "Group": 0,
         "Index": 0
       },
@@ -6100,7 +6020,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Int_to_Float_6",
+        "Node": "Int_to_Float_4",
         "Group": 0,
         "Index": 0
       },
@@ -6108,7 +6028,7 @@
     },
     {
       "From": {
-        "Node": "Int_to_Float_6",
+        "Node": "Int_to_Float_4",
         "Group": 0,
         "Index": 0
       },
@@ -6152,7 +6072,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "Int_to_Float_7",
+        "Node": "Int_to_Float_5",
         "Group": 0,
         "Index": 0
       },
@@ -6160,7 +6080,7 @@
     },
     {
       "From": {
-        "Node": "Int_to_Float_7",
+        "Node": "Int_to_Float_5",
         "Group": 0,
         "Index": 0
       },
@@ -6251,7 +6171,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_4",
+        "Node": "Reroute_0",
         "Group": 0,
         "Index": 0
       },
@@ -6342,12 +6262,12 @@
     },
     {
       "From": {
-        "Node": "Reroute_4",
+        "Node": "Reroute_0",
         "Group": 0,
         "Index": 0
       },
       "To": {
-        "Node": "Bit_Or_0",
+        "Node": "Bit_Or_2",
         "Group": 0,
         "Index": 0
       },
@@ -6368,7 +6288,7 @@
     },
     {
       "From": {
-        "Node": "Bit_Or_0",
+        "Node": "Bit_Or_2",
         "Group": 0,
         "Index": 0
       },
@@ -6433,7 +6353,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_4",
+        "Node": "Reroute_0",
         "Group": 0,
         "Index": 0
       },
@@ -6576,7 +6496,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_5",
+        "Node": "Reroute_1",
         "Group": 0,
         "Index": 0
       },
@@ -6719,7 +6639,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_5",
+        "Node": "Reroute_1",
         "Group": 0,
         "Index": 0
       },
@@ -6810,7 +6730,7 @@
     },
     {
       "From": {
-        "Node": "Reroute_6",
+        "Node": "Reroute_2",
         "Group": 0,
         "Index": 0
       },

@@ -472,18 +472,14 @@ namespace RRCGBuild
 
         public static FloatPort FloatConst(FloatPort value)
         {
-            var reroute = Reroute(value);
             // This forces the type to float. There might be a better way to do this.
-            Round(reroute);
-            return reroute;
+            return Root(value, 1);
         }
 
         public static IntPort IntConst(IntPort value)
         {
-            var reroute = Reroute(value);
-            // This forces the type to float. There might be a better way to do this.
-            IntToFloat(reroute);
-            return reroute;
+            // This forces the type to int. There might be a better way to do this.
+            return BitOr(value, 0);
         }
 
 
