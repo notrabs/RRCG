@@ -473,13 +473,13 @@ namespace RRCGBuild
         public static FloatPort FloatConst(FloatPort value)
         {
             // This forces the type to float. There might be a better way to do this.
-            return Root(value, 1);
+            return CircuitBuilder.Singleton($"ChipLib_FloatConst_{value.PortKey()}", () => Root(value, 1));
         }
 
         public static IntPort IntConst(IntPort value)
         {
             // This forces the type to int. There might be a better way to do this.
-            return BitOr(value, 0);
+            return CircuitBuilder.Singleton($"ChipLib_IntConst_{value.PortKey()}", () => BitOr(value, 0));
         }
 
 
