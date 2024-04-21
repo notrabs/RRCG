@@ -44,6 +44,9 @@ public class EventFunctionsTest : CircuitDescriptor
         NonVoid7(1, 2, 3, 4, 5, 6, 7);
         NonVoid8(1, 2, 3, 4, 5, 6, 7, 8);
         PublicProperFunction();
+
+        // Test static event functions
+        ChipLib.Log(StaticTest());
     }
 
     [EventFunction]
@@ -109,5 +112,15 @@ public class EventFunctionsTest : CircuitDescriptor
     public void PublicProperFunction()
     {
         ChipLib.Log("compiled!");
+    }
+
+    [EventFunction]
+    static string StaticTest()
+    {
+        string result = "static works";
+        for (int i = 0; i < 10; i++)
+            result += "!";
+
+        return result;
     }
 }

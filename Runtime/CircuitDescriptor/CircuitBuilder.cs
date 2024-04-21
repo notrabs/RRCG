@@ -350,108 +350,86 @@ namespace RRCGBuild
         // Compilation Helpers
         //
 
-        internal readonly Dictionary<string, DynamicEventDefinition> __RRCG_EVENT_FUNCTIONS = new Dictionary<string, DynamicEventDefinition>();
-        internal readonly Dictionary<string, object> __RRCG_EVENT_FUNCTION_RETURNS = new Dictionary<string, object>();
-
-        internal readonly Dictionary<string, dynamic> __RRCG_SHARED_PROPERTIES = new Dictionary<string, dynamic>();
-
-        private string __DispatchFunctionSignature(MethodInfo method) => method.ToString();
-
-        private void __DispatchEventFunctionVoid(string name, MethodInfo method, object target, params AnyPort[] args)
-        {
-            var signature = __DispatchFunctionSignature(method);
-
-            if (!__RRCG_EVENT_FUNCTIONS.ContainsKey(signature))
-            {
-                (StringPort, Type)[] eventDefinition = args.Select((arg, index) => ((StringPort)"value" + index, arg.GetType())).ToArray();
-
-                __RRCG_EVENT_FUNCTIONS[signature] = new DynamicEventDefinition("EventFunction_" + name, eventDefinition);
-
-                InlineGraph(() =>
-                {
-                    var ports = __RRCG_EVENT_FUNCTIONS[signature].Receiver();
-                    __RRCG_EVENT_FUNCTION_RETURNS[signature] = method.Invoke(target, ports);
-                });
-            }
-
-            __RRCG_EVENT_FUNCTIONS[signature].SendLocal(args);
-        }
-
-        private T __DispatchEventFunctionData<T>(string name, MethodInfo method, object target, params AnyPort[] args)
-        {
-            var signature = __DispatchFunctionSignature(method);
-
-            __DispatchEventFunctionVoid(name, method, target, args);
-
-            return (T)__RRCG_EVENT_FUNCTION_RETURNS[signature];
-        }
-
-        protected void __DispatchEventFunction(string name, Action fn) => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target);
+        #region Deprecated Dispatching Logic
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
+        protected void __DispatchEventFunction(string name, Action fn) => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn);
 
 
-        protected T __DispatchEventFunction<T>(string name, Func<T> fn) => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target);
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
+        protected T __DispatchEventFunction<T>(string name, Func<T> fn) => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected void __DispatchEventFunction<T0>(string name, Action<T0> fn, T0 param0)
             where T0 : AnyPort, new()
-        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0);
 
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected T __DispatchEventFunction<T, T0>(string name, Func<T0, T> fn, T0 param0)
             where T0 : AnyPort, new()
-        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected void __DispatchEventFunction<T0, T1>(string name, Action<T0, T1> fn, T0 param0, T1 param1)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
-        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected T __DispatchEventFunction<T, T0, T1>(string name, Func<T0, T1, T> fn, T0 param0, T1 param1)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
-        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected void __DispatchEventFunction<T0, T1, T2>(string name, Action<T0, T1, T2> fn, T0 param0, T1 param1, T2 param2)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
-        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1, param2);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected T __DispatchEventFunction<T, T0, T1, T2>(string name, Func<T0, T1, T2, T> fn, T0 param0, T1 param1, T2 param2)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
-        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1, param2);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected void __DispatchEventFunction<T0, T1, T2, T3>(string name, Action<T0, T1, T2, T3> fn, T0 param0, T1 param1, T2 param2, T3 param3)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
             where T3 : AnyPort, new()
-        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1, param2, param3);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected T __DispatchEventFunction<T, T0, T1, T2, T3>(string name, Func<T0, T1, T2, T3, T> fn, T0 param0, T1 param1, T2 param2, T3 param3)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
             where T3 : AnyPort, new()
-        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1, param2, param3);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected void __DispatchEventFunction<T0, T1, T2, T3, T4>(string name, Action<T0, T1, T2, T3, T4> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
             where T3 : AnyPort, new()
             where T4 : AnyPort, new()
-        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1, param2, param3, param4);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected T __DispatchEventFunction<T, T0, T1, T2, T3, T4>(string name, Func<T0, T1, T2, T3, T4, T> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
             where T3 : AnyPort, new()
             where T4 : AnyPort, new()
-        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1, param2, param3, param4);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected void __DispatchEventFunction<T0, T1, T2, T3, T4, T5>(string name, Action<T0, T1, T2, T3, T4, T5> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
@@ -459,8 +437,9 @@ namespace RRCGBuild
             where T3 : AnyPort, new()
             where T4 : AnyPort, new()
             where T5 : AnyPort, new()
-        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4, param5);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1, param2, param3, param4, param5);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected T __DispatchEventFunction<T, T0, T1, T2, T3, T4, T5>(string name, Func<T0, T1, T2, T3, T4, T5, T> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
@@ -468,8 +447,9 @@ namespace RRCGBuild
             where T3 : AnyPort, new()
             where T4 : AnyPort, new()
             where T5 : AnyPort, new()
-        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4, param5);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1, param2, param3, param4, param5);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected void __DispatchEventFunction<T0, T1, T2, T3, T4, T5, T6>(string name, Action<T0, T1, T2, T3, T4, T5, T6> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, T6 param6)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
@@ -478,8 +458,9 @@ namespace RRCGBuild
             where T4 : AnyPort, new()
             where T5 : AnyPort, new()
             where T6 : AnyPort, new()
-        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4, param5, param6);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1, param2, param3, param4, param5, param6);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected T __DispatchEventFunction<T, T0, T1, T2, T3, T4, T5, T6>(string name, Func<T0, T1, T2, T3, T4, T5, T6, T> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, T6 param6)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
@@ -488,8 +469,9 @@ namespace RRCGBuild
             where T4 : AnyPort, new()
             where T5 : AnyPort, new()
             where T6 : AnyPort, new()
-        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4, param5, param6);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1, param2, param3, param4, param5, param6);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected void __DispatchEventFunction<T0, T1, T2, T3, T4, T5, T6, T7>(string name, Action<T0, T1, T2, T3, T4, T5, T6, T7> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, T6 param6, T7 param7)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
@@ -499,8 +481,9 @@ namespace RRCGBuild
             where T5 : AnyPort, new()
             where T6 : AnyPort, new()
             where T7 : AnyPort, new()
-        => __DispatchEventFunctionVoid(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4, param5, param6, param7);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1, param2, param3, param4, param5, param6, param7);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected T __DispatchEventFunction<T, T0, T1, T2, T3, T4, T5, T6, T7>(string name, Func<T0, T1, T2, T3, T4, T5, T6, T7, T> fn, T0 param0, T1 param1, T2 param2, T3 param3, T4 param4, T5 param5, T6 param6, T7 param7)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
@@ -510,20 +493,14 @@ namespace RRCGBuild
             where T5 : AnyPort, new()
             where T6 : AnyPort, new()
             where T7 : AnyPort, new()
-        => __DispatchEventFunctionData<T>(name, fn.GetMethodInfo(), fn.Target, param0, param1, param2, param3, param4, param5, param6, param7);
+        => SpecialMethodsDispatcher.current.DispatchEventFunction(this, name, fn, param0, param1, param2, param3, param4, param5, param6, param7);
 
+        [Obsolete("Dispatching logic has moved to SpecialMethodsDispatcher. Please recompile your circuit descriptor.")]
         protected dynamic __DispatchSharedPropertyFunction<T>(string name, Func<T> fn)
         {
-            if (!__RRCG_SHARED_PROPERTIES.ContainsKey(name))
-            {
-                InlineGraph(() =>
-                {
-                    __RRCG_SHARED_PROPERTIES[name] = fn();
-                });
-            }
-
-            return __RRCG_SHARED_PROPERTIES[name];
+            return SpecialMethodsDispatcher.current.DispatchSharedPropertyFunction<T>(this, fn)!;
         }
+        #endregion
 
         public static void __BeginReturnScope(string methodName, Type? returnType, string[]? tupleElementNames)
         {

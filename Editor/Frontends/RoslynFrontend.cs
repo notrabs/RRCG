@@ -84,6 +84,7 @@ namespace RRCG
             if (type == null) throw new Exception("Could not find compiled class for '" + descriptorClass + "'. Make sure the class is public in the root namespace and has the same name as its file.");
 
             SemanticStack.current = new SemanticStack();
+            SpecialMethodsDispatcher.current = new SpecialMethodsDispatcher();
             Context context = new Context();
 
             Context.current = context;

@@ -44,6 +44,8 @@ namespace RRCGBuild
             NonVoid7(1, 2, 3, 4, 5, 6, 7);
             NonVoid8(1, 2, 3, 4, 5, 6, 7, 8);
             PublicProperFunction();
+            // Test static event functions
+            ChipLib.Log(StaticTest());
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -51,7 +53,7 @@ namespace RRCGBuild
         [EventFunction]
         void Void0()
         {
-            __DispatchEventFunction("Void0", delegate ()
+            SpecialMethodsDispatcher.current.DispatchEventFunction(this, "Void0", delegate ()
             {
                 __BeginReturnScope("Void0", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -66,7 +68,7 @@ namespace RRCGBuild
         [EventFunction]
         void Void1(StringPort p0)
         {
-            __DispatchEventFunction<StringPort>("Void1", delegate (StringPort p0)
+            SpecialMethodsDispatcher.current.DispatchEventFunction<StringPort>(this, "Void1", delegate (StringPort p0)
             {
                 __BeginReturnScope("Void1", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -82,7 +84,7 @@ namespace RRCGBuild
         [EventFunction]
         void Void1(IntPort p0)
         {
-            __DispatchEventFunction<IntPort>("Void1", delegate (IntPort p0)
+            SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort>(this, "Void1", delegate (IntPort p0)
             {
                 __BeginReturnScope("Void1", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -98,7 +100,7 @@ namespace RRCGBuild
         [EventFunction]
         void Void2(StringPort p0, IntPort p1)
         {
-            __DispatchEventFunction<StringPort, IntPort>("Void2", delegate (StringPort p0, IntPort p1)
+            SpecialMethodsDispatcher.current.DispatchEventFunction<StringPort, IntPort>(this, "Void2", delegate (StringPort p0, IntPort p1)
             {
                 __BeginReturnScope("Void2", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -115,7 +117,7 @@ namespace RRCGBuild
         [EventFunction]
         void Void3(StringPort p0, IntPort p1, FloatPort p2)
         {
-            __DispatchEventFunction<StringPort, IntPort, FloatPort>("Void3", delegate (StringPort p0, IntPort p1, FloatPort p2)
+            SpecialMethodsDispatcher.current.DispatchEventFunction<StringPort, IntPort, FloatPort>(this, "Void3", delegate (StringPort p0, IntPort p1, FloatPort p2)
             {
                 __BeginReturnScope("Void3", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -133,7 +135,7 @@ namespace RRCGBuild
         [EventFunction]
         IntPort SingleReturn()
         {
-            return __DispatchEventFunction<IntPort>("SingleReturn", delegate ()
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort>(this, "SingleReturn", delegate ()
             {
                 __BeginReturnScope("SingleReturn", typeof(IntPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -148,7 +150,7 @@ namespace RRCGBuild
         [EventFunction]
         IntPort DataReturn()
         {
-            return __DispatchEventFunction<IntPort>("DataReturn", delegate ()
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort>(this, "DataReturn", delegate ()
             {
                 __BeginReturnScope("DataReturn", typeof(IntPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -163,7 +165,7 @@ namespace RRCGBuild
         [EventFunction]
         (IntPort, StringPort) TupleReturn(IntPort number)
         {
-            return __DispatchEventFunction<(IntPort, StringPort), IntPort>("TupleReturn", delegate (IntPort number)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<(IntPort, StringPort), IntPort>(this, "TupleReturn", delegate (IntPort number)
             {
                 __BeginReturnScope("TupleReturn", typeof((IntPort, StringPort)), new[]{"value0", "value1"});
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -179,7 +181,7 @@ namespace RRCGBuild
         [EventFunction]
         (IntPort, StringPort) MultiInOut(IntPort number, StringPort text)
         {
-            return __DispatchEventFunction<(IntPort, StringPort), IntPort, StringPort>("MultiInOut", delegate (IntPort number, StringPort text)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<(IntPort, StringPort), IntPort, StringPort>(this, "MultiInOut", delegate (IntPort number, StringPort text)
             {
                 __BeginReturnScope("MultiInOut", typeof((IntPort, StringPort)), new[]{"value0", "value1"});
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -197,7 +199,7 @@ namespace RRCGBuild
         [EventFunction]
         void Void4(IntPort p0, IntPort p1, IntPort p2, IntPort p3)
         {
-            __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort>("Void4", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3)
+            SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort, IntPort, IntPort, IntPort>(this, "Void4", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3)
             {
                 __BeginReturnScope("Void4", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -216,7 +218,7 @@ namespace RRCGBuild
         [EventFunction]
         void Void5(IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4)
         {
-            __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort>("Void5", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4)
+            SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort>(this, "Void5", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4)
             {
                 __BeginReturnScope("Void5", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -236,7 +238,7 @@ namespace RRCGBuild
         [EventFunction]
         void Void6(IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5)
         {
-            __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("Void6", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5)
+            SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>(this, "Void6", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5)
             {
                 __BeginReturnScope("Void6", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -257,7 +259,7 @@ namespace RRCGBuild
         [EventFunction]
         void Void7(IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6)
         {
-            __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("Void7", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6)
+            SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>(this, "Void7", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6)
             {
                 __BeginReturnScope("Void7", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -279,7 +281,7 @@ namespace RRCGBuild
         [EventFunction]
         void Void8(IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6, IntPort p7)
         {
-            __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("Void8", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6, IntPort p7)
+            SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>(this, "Void8", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6, IntPort p7)
             {
                 __BeginReturnScope("Void8", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -302,7 +304,7 @@ namespace RRCGBuild
         [EventFunction]
         IntPort NonVoid4(IntPort p0, IntPort p1, IntPort p2, IntPort p3)
         {
-            return __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort>("NonVoid4", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort>(this, "NonVoid4", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3)
             {
                 __BeginReturnScope("NonVoid4", typeof(IntPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -321,7 +323,7 @@ namespace RRCGBuild
         [EventFunction]
         IntPort NonVoid5(IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4)
         {
-            return __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("NonVoid5", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>(this, "NonVoid5", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4)
             {
                 __BeginReturnScope("NonVoid5", typeof(IntPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -341,7 +343,7 @@ namespace RRCGBuild
         [EventFunction]
         IntPort NonVoid6(IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5)
         {
-            return __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("NonVoid6", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>(this, "NonVoid6", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5)
             {
                 __BeginReturnScope("NonVoid6", typeof(IntPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -362,7 +364,7 @@ namespace RRCGBuild
         [EventFunction]
         IntPort NonVoid7(IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6)
         {
-            return __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("NonVoid7", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>(this, "NonVoid7", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6)
             {
                 __BeginReturnScope("NonVoid7", typeof(IntPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -384,7 +386,7 @@ namespace RRCGBuild
         [EventFunction]
         IntPort NonVoid8(IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6, IntPort p7)
         {
-            return __DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>("NonVoid8", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6, IntPort p7)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort, IntPort>(this, "NonVoid8", delegate (IntPort p0, IntPort p1, IntPort p2, IntPort p3, IntPort p4, IntPort p5, IntPort p6, IntPort p7)
             {
                 __BeginReturnScope("NonVoid8", typeof(IntPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -407,13 +409,47 @@ namespace RRCGBuild
         [EventFunction]
         public void PublicProperFunction()
         {
-            __DispatchEventFunction("PublicProperFunction", delegate ()
+            SpecialMethodsDispatcher.current.DispatchEventFunction(this, "PublicProperFunction", delegate ()
             {
                 __BeginReturnScope("PublicProperFunction", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 ChipLib.Log("compiled!");
                 __EndAccessibilityScope();
                 __EndReturnScope();
+            }
+
+            );
+        }
+
+        [EventFunction]
+        static StringPort StaticTest()
+        {
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<StringPort>(typeof(EventFunctionsTest), "StaticTest", delegate ()
+            {
+                __BeginReturnScope("StaticTest", typeof(StringPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                    StringPort result = default !;
+                    result = __VariableDeclaratorExpression<StringPort>("result", () => "static works", () => result!, (_RRCG_SETTER_VALUE) => result = _RRCG_SETTER_VALUE);
+                {
+                    __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                    __OptimizedFor(__ConditionalContext("i", "result"), true, 0, 10, (i) =>
+                    {
+                        __BeginAccessibilityScope(AccessibilityScope.Kind.General);
+                        result += "!";
+                        __EndAccessibilityScope();
+                    }
+
+                    , () =>
+                    {
+                    }
+
+                    );
+                    __EndAccessibilityScope();
+                }
+
+                __Return<StringPort>(result);
+                __EndAccessibilityScope();
+                return __EndReturnScope()!;
             }
 
             );

@@ -128,11 +128,35 @@ namespace RRCG
             var isEventFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "EventFunction"));
             var isSharedPropertyFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "SharedProperty"));
 
+            var methodSymbol = SemanticModel.GetDeclaredSymbol(node);
+            var containingType = methodSymbol.ContainingType;
+            var isStatic = methodSymbol.IsStatic;
+
+            // Build "owner" expression for call to DispatchEventFunction/DispatchSharedProperty.
+            // If the method is an instance method, we want to pass "this",
+            // so that the instance "owns" that dispatched copy.
+            //
+            // If the method is static, we instead want to pass the containing type,
+            // so that the type itself becomes the owner of the dispatched copy.
+            ExpressionSyntax ownerExpression = null;
+            if (isEventFunction || isSharedPropertyFunction)
+            {
+                ownerExpression = ThisExpression();
+
+                if (isStatic)
+                {
+                    if (containingType == null)
+                        throw new Exception($"Static {(isEventFunction ? "EventFunction" : "SharedProperty")} methods must have a valid containing type!");
+
+                    // Rewrite the type, so that the namespace is translated (if it ends up overqualifying)
+                    ownerExpression = TypeOfExpression((TypeSyntax)Visit(containingType.ToTypeSyntax()));
+                }
+            }
 
             if (isEventFunction)
             {
-                ExpressionSyntax identifier = SyntaxFactory.IdentifierName("__DispatchEventFunction");
-
+                // Build name syntax for invocation.
+                SimpleNameSyntax invocationName = IdentifierName("DispatchEventFunction");
 
                 if (!isVoid || hasParameters)
                 {
@@ -141,51 +165,63 @@ namespace RRCG
                     if (!isVoid) genericParams.Add(method.ReturnType);
                     foreach (var param in method.ParameterList.Parameters) genericParams.Add(param.Type);
 
-                    identifier = SyntaxFactory.GenericName("__DispatchEventFunction").WithTypeArgumentList(SyntaxUtils.TypeArgumentList(genericParams.ToArray()));
+                    invocationName = GenericName("DispatchEventFunction")
+                                        .WithTypeArgumentList(
+                                            SyntaxUtils.TypeArgumentList(genericParams.ToArray()));
                 }
 
-
-                var invocation = SyntaxFactory.InvocationExpression(identifier).WithArgumentList(
-                        SyntaxUtils.ArgumentList(
-                            new ExpressionSyntax[]
-                            {
-                                SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
-                                SyntaxFactory.AnonymousMethodExpression()
-                                            .WithParameterList(method.ParameterList)
-                                            .WithBlock(SyntaxFactory.Block(statements))
-                            }.Concat(
-                                method.ParameterList.Parameters.Select(parameter => SyntaxFactory.IdentifierName(parameter.Identifier.ToString()))
-                            ).ToArray()
-                        )
-                    );
+                // Build invocation
+                var invocation = InvocationExpression(
+                                    MemberAccessExpression(
+                                        SyntaxKind.SimpleMemberAccessExpression,
+                                        MemberAccessExpression(
+                                            SyntaxKind.SimpleMemberAccessExpression,
+                                            IdentifierName("SpecialMethodsDispatcher"),
+                                            IdentifierName("current")),
+                                        invocationName))
+                                .WithArgumentList(
+                                    SyntaxUtils.ArgumentList(
+                                        new ExpressionSyntax[]
+                                        {
+                                            ownerExpression,
+                                            LiteralExpression(SyntaxKind.StringLiteralExpression, Literal(methodName)),
+                                            AnonymousMethodExpression()
+                                                        .WithParameterList(method.ParameterList)
+                                                        .WithBlock(Block(statements))
+                                        }.Concat(
+                                            method.ParameterList.Parameters.Select(parameter => IdentifierName(parameter.Identifier.ToString()))
+                                        ).ToArray()));
 
                 StatementSyntax statement = isVoid ? SyntaxFactory.ExpressionStatement(invocation) : SyntaxFactory.ReturnStatement(invocation);
 
                 method = method.WithBody(
-                    method.Body.WithStatements(SyntaxFactory.SingletonList(statement))
+                    method.Body.WithStatements(SingletonList(statement))
                 ).NormalizeWhitespace();
             }
             else if (isSharedPropertyFunction)
             {
-                StatementSyntax statement = SyntaxFactory.ReturnStatement(
-                    SyntaxFactory.InvocationExpression(
-                        SyntaxFactory.GenericName("__DispatchSharedPropertyFunction").WithTypeArgumentList(
-                        SyntaxFactory.TypeArgumentList(SyntaxFactory.SingletonSeparatedList<TypeSyntax>(
-                            method.ReturnType
-                        )))
-                    )
+                StatementSyntax statement = ReturnStatement(
+                    InvocationExpression(
+                        MemberAccessExpression(
+                            SyntaxKind.SimpleMemberAccessExpression,
+                            MemberAccessExpression(
+                                SyntaxKind.SimpleMemberAccessExpression,
+                                IdentifierName("SpecialMethodsDispatcher"),
+                                IdentifierName("current")),
+                            GenericName("DispatchSharedPropertyFunction")
+                                .WithTypeArgumentList(
+                                    TypeArgumentList(
+                                        SingletonSeparatedList<TypeSyntax>(
+                                            method.ReturnType)))))
                     .WithArgumentList(
                         SyntaxUtils.ArgumentList(
-                            SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(methodName)),
-                            SyntaxFactory.AnonymousMethodExpression()
-                                        .WithParameterList(SyntaxFactory.ParameterList())
-                                        .WithBlock(SyntaxFactory.Block(statements))
-                        )
-                    )
-                ).NormalizeWhitespace();
+                            ownerExpression,
+                            AnonymousMethodExpression()
+                                .WithParameterList(ParameterList())
+                                .WithBlock(Block(statements))))).NormalizeWhitespace();
 
                 method = method.WithBody(
-                    method.Body.WithStatements(SyntaxFactory.SingletonList(statement))
+                    method.Body.WithStatements(SingletonList(statement))
                 );
             }
             else

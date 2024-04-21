@@ -13,6 +13,7 @@ public class TestUtils
         var prevContext = Context.current;
         var prevExecFlow = ExecFlow.current;
         var prevSemanticStack = SemanticStack.current;
+        var prevDispatcher = SpecialMethodsDispatcher.current;
 
         bool didThrow = true;
 
@@ -22,6 +23,7 @@ public class TestUtils
             Context.current = new Context();
             ExecFlow.current = new ExecFlow();
             SemanticStack.current = new SemanticStack();
+            SpecialMethodsDispatcher.current = new SpecialMethodsDispatcher();
 
             circuitFn();
 
@@ -41,6 +43,7 @@ public class TestUtils
         Context.current = prevContext;
         ExecFlow.current = prevExecFlow;
         SemanticStack.current = prevSemanticStack;
+        SpecialMethodsDispatcher.current = prevDispatcher;
     }
 }
 

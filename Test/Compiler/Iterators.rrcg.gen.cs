@@ -125,7 +125,7 @@ namespace RRCGBuild
         [EventFunction]
         StringPort StringRepeatEventFunction(StringPort str, IntPort count)
         {
-            return __DispatchEventFunction<StringPort, StringPort, IntPort>("StringRepeatEventFunction", delegate (StringPort str, IntPort count)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<StringPort, StringPort, IntPort>(this, "StringRepeatEventFunction", delegate (StringPort str, IntPort count)
             {
                 __BeginReturnScope("StringRepeatEventFunction", typeof(StringPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -324,7 +324,7 @@ namespace RRCGBuild
         [EventFunction]
         StringPort StringRepeatDoWhileEventFunction(StringPort str, IntPort count)
         {
-            return __DispatchEventFunction<StringPort, StringPort, IntPort>("StringRepeatDoWhileEventFunction", delegate (StringPort str, IntPort count)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<StringPort, StringPort, IntPort>(this, "StringRepeatDoWhileEventFunction", delegate (StringPort str, IntPort count)
             {
                 __BeginReturnScope("StringRepeatDoWhileEventFunction", typeof(StringPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -683,7 +683,7 @@ namespace RRCGBuild
         [EventFunction]
         IntPort ForEachReturnEventFunction(ListPort<IntPort> list)
         {
-            return __DispatchEventFunction<IntPort, ListPort<IntPort>>("ForEachReturnEventFunction", delegate (ListPort<IntPort> list)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort, ListPort<IntPort>>(this, "ForEachReturnEventFunction", delegate (ListPort<IntPort> list)
             {
                 __BeginReturnScope("ForEachReturnEventFunction", typeof(IntPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -1226,7 +1226,7 @@ namespace RRCGBuild
         [EventFunction]
         IntPort ForLoopReturnEventFunction()
         {
-            return __DispatchEventFunction<IntPort>("ForLoopReturnEventFunction", delegate ()
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<IntPort>(this, "ForLoopReturnEventFunction", delegate ()
             {
                 __BeginReturnScope("ForLoopReturnEventFunction", typeof(IntPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);

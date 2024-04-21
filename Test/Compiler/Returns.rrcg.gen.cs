@@ -341,7 +341,7 @@ namespace RRCGBuild
         [EventFunction]
         StringPort EFSingleNonTupleReturn()
         {
-            return __DispatchEventFunction<StringPort>("EFSingleNonTupleReturn", delegate ()
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<StringPort>(this, "EFSingleNonTupleReturn", delegate ()
             {
                 __BeginReturnScope("EFSingleNonTupleReturn", typeof(StringPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -356,7 +356,7 @@ namespace RRCGBuild
         [EventFunction]
         StringPort EFMultipleNonTupleReturns()
         {
-            return __DispatchEventFunction<StringPort>("EFMultipleNonTupleReturns", delegate ()
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<StringPort>(this, "EFMultipleNonTupleReturns", delegate ()
             {
                 __BeginReturnScope("EFMultipleNonTupleReturns", typeof(StringPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -371,7 +371,7 @@ namespace RRCGBuild
         [EventFunction]
         (StringPort Named, IntPort) EFSingleTupleReturn()
         {
-            return __DispatchEventFunction<(StringPort Named, IntPort)>("EFSingleTupleReturn", delegate ()
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<(StringPort Named, IntPort)>(this, "EFSingleTupleReturn", delegate ()
             {
                 __BeginReturnScope("EFSingleTupleReturn", typeof((StringPort Named, IntPort)), new[]{"Named", "value1"});
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -386,7 +386,7 @@ namespace RRCGBuild
         [EventFunction]
         (StringPort Named, IntPort) EFMultipleTupleReturns()
         {
-            return __DispatchEventFunction<(StringPort Named, IntPort)>("EFMultipleTupleReturns", delegate ()
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<(StringPort Named, IntPort)>(this, "EFMultipleTupleReturns", delegate ()
             {
                 __BeginReturnScope("EFMultipleTupleReturns", typeof((StringPort Named, IntPort)), new[]{"Named", "value1"});
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -401,7 +401,7 @@ namespace RRCGBuild
         [EventFunction]
         StringPort EFTestIfReturnWithPromoted()
         {
-            return __DispatchEventFunction<StringPort>("EFTestIfReturnWithPromoted", delegate ()
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<StringPort>(this, "EFTestIfReturnWithPromoted", delegate ()
             {
                 __BeginReturnScope("EFTestIfReturnWithPromoted", typeof(StringPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -416,7 +416,7 @@ namespace RRCGBuild
         [EventFunction]
         StringPort EFTestWhileReturnWithPromoted(ListPort<StringPort> list)
         {
-            return __DispatchEventFunction<StringPort, ListPort<StringPort>>("EFTestWhileReturnWithPromoted", delegate (ListPort<StringPort> list)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<StringPort, ListPort<StringPort>>(this, "EFTestWhileReturnWithPromoted", delegate (ListPort<StringPort> list)
             {
                 __BeginReturnScope("EFTestWhileReturnWithPromoted", typeof(StringPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -432,7 +432,7 @@ namespace RRCGBuild
         [EventFunction]
         StringPort EFTestForEachReturnWithPromoted(ListPort<StringPort> list)
         {
-            return __DispatchEventFunction<StringPort, ListPort<StringPort>>("EFTestForEachReturnWithPromoted", delegate (ListPort<StringPort> list)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<StringPort, ListPort<StringPort>>(this, "EFTestForEachReturnWithPromoted", delegate (ListPort<StringPort> list)
             {
                 __BeginReturnScope("EFTestForEachReturnWithPromoted", typeof(StringPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
@@ -448,7 +448,7 @@ namespace RRCGBuild
         [EventFunction]
         StringPort EFTestSwitchReturn(IntPort match)
         {
-            return __DispatchEventFunction<StringPort, IntPort>("EFTestSwitchReturn", delegate (IntPort match)
+            return SpecialMethodsDispatcher.current.DispatchEventFunction<StringPort, IntPort>(this, "EFTestSwitchReturn", delegate (IntPort match)
             {
                 __BeginReturnScope("EFTestSwitchReturn", typeof(StringPort), null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
