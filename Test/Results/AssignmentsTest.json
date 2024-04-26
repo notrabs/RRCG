@@ -1097,7 +1097,7 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_0",
+        "Node": "string_Variable_2",
         "Group": 0,
         "Index": 1
       },
@@ -1214,7 +1214,7 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_1",
+        "Node": "string_Variable_4",
         "Group": 0,
         "Index": 1
       },
@@ -1331,7 +1331,7 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_2",
+        "Node": "string_Variable_6",
         "Group": 0,
         "Index": 1
       },
@@ -1448,7 +1448,7 @@
     },
     {
       "From": {
-        "Node": "Event_Receiver_3",
+        "Node": "string_Variable_8",
         "Group": 0,
         "Index": 1
       },

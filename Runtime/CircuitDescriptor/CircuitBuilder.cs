@@ -862,6 +862,9 @@ namespace RRCGBuild
                 ExecFlow.current = elseFlow;
                 foreach (var kvp in finalValuesElse)
                     kvp.Key.RRVariableValue = kvp.Value;
+
+                // Then set their C# state to refer to the variable outputs
+                conditional.ResetPromotedVariables(true);
             }
             else
             {
