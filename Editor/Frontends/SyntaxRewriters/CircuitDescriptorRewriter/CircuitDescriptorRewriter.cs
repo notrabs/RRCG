@@ -91,7 +91,7 @@ namespace RRCG
             if (node.Identifier.Text.Equals("BuildCircuitGraph")) return node;
 
             if (node.Modifiers.Any(SyntaxKind.UnsafeKeyword))
-                return node.WithModifiers(new SyntaxTokenList(node.Modifiers.Where(t => t.Kind() != SyntaxKind.UnsafeKeyword)));
+                return node;
 
             var method = (MethodDeclarationSyntax)base.VisitMethodDeclaration(node);
 
@@ -435,7 +435,7 @@ namespace RRCG
         public override SyntaxNode VisitFieldDeclaration(FieldDeclarationSyntax node)
         {
             if (node.Modifiers.Any(SyntaxKind.UnsafeKeyword))
-                return node.WithModifiers(new SyntaxTokenList(node.Modifiers.Where(t => t.Kind() != SyntaxKind.UnsafeKeyword)));
+                return node;
 
             return base.VisitFieldDeclaration(node);
         }

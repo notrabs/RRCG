@@ -320,7 +320,7 @@ namespace RRCGBuild
             __EndReturnScope();
         }
 
-        int BinaryLiteral(uint literal)
+        unsafe int BinaryLiteral(uint literal)
         {
             return unchecked((int)literal);
         }

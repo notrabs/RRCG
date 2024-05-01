@@ -105,7 +105,7 @@ namespace RRCG.Projects
         {
             var stepTimer = new ProfilingTimer();
 
-            var options = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary);
+            var options = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary, allowUnsafe: true);
 
             var references = new[] {
                 //MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
