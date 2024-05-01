@@ -84,12 +84,17 @@ namespace RRCGBuild
         /// </summary>
         public static void AllIteratorsNeedManual()
         {
-            var query = SemanticStack.current
-                .Where(s => s is SemanticScope.BaseIterator)
-                .Cast<SemanticScope.BaseIterator>();
+            for (int i=0; i < SemanticStack.current.Count; i++)
+            {
+                var item = SemanticStack.current.ElementAt(i);
 
-            foreach (var iterator in query)
-                iterator.NeedsManualImplementation = true;
+                if (item is SemanticScope.BaseIterator iterator)
+                    iterator.NeedsManualImplementation = true;
+
+                // We only want to affect iterators within the current method.
+                if (item is AccessibilityScope scope && scope.ScopeKind == AccessibilityScope.Kind.MethodRoot)
+                    break;
+            }
         }
     }
 }
