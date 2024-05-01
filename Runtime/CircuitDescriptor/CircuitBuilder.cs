@@ -587,7 +587,7 @@ namespace RRCGBuild
             // Merge the continue flow into the current execution flow,
             // ensure continuity, and loop back to the if node.
             ExecFlow.current.Merge(whileScope.ContinueFlow);
-            whileScope.EnsureContinuityAndCheckDelays();
+            whileScope.EnsureContinuityAndCheckDelays(ExecFlow.current);
             ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
 
             // Finally, add the Else port to the break flow,
@@ -963,7 +963,7 @@ namespace RRCGBuild
             conditional.ResetPromotedVariables(true);
 
             // Now validate execflow continuity from the current back to the "Loop" port
-            scope.EnsureContinuityAndCheckDelays();
+            scope.EnsureContinuityAndCheckDelays(ExecFlow.current);
 
             // Now we can pop our semantic scopes
             SemanticStack.current.PopExpectedScope(conditional);
@@ -1093,7 +1093,7 @@ namespace RRCGBuild
             }
 
             // Finally we can check for continuity and delays
-            scope.EnsureContinuityAndCheckDelays();
+            scope.EnsureContinuityAndCheckDelays(ExecFlow.current);
 
             // Loop back to the If node
             ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
@@ -1171,7 +1171,7 @@ namespace RRCGBuild
             conditional.ResetPromotedVariables(true);
 
             // Ensure continuity, check delays, and pop from the semantic stack.
-            scope.EnsureContinuityAndCheckDelays();
+            scope.EnsureContinuityAndCheckDelays(ExecFlow.current);
             SemanticStack.current.PopExpectedScope(conditional);
             SemanticStack.current.PopExpectedScope(scope);
 

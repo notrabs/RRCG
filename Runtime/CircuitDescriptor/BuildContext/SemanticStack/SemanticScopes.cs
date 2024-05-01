@@ -46,7 +46,7 @@ namespace RRCGBuild
             public void Break()
             {
                 ConditionalContext.WritePromotedVariables();
-                EnsureContinuityAndCheckDelays();
+                EnsureContinuityAndCheckDelays(ExecFlow.current);
 
                 BreakFlow.Merge(ExecFlow.current);
                 ExecFlow.current.Clear();
@@ -56,7 +56,7 @@ namespace RRCGBuild
             public void Continue()
             {
                 ConditionalContext.WritePromotedVariables();
-                EnsureContinuityAndCheckDelays();
+                EnsureContinuityAndCheckDelays(ExecFlow.current);
 
                 // Note: For CV2-native iterators (For, For Each),
                 // continue can just be implemented as clearing the current exec flow.
@@ -66,16 +66,17 @@ namespace RRCGBuild
             }
 
             /// <summary>
-            /// Ensures that either the current ExecFlow, the Continue flow, or the Break flow connect back to SourceExec.
+            /// Ensures the provided ExecFlow connects back to SourceExec.
             /// Also flags all open iterators on the SemanticStack as requiring a manual implementation if an After Delay port is present.
             /// </summary>
-            public void EnsureContinuityAndCheckDelays()
+            public void EnsureContinuityAndCheckDelays(ExecFlow execFlow)
             {
-                var portsToCheck = new Stack<Port>(
-                    ExecFlow.current.Ports
-                    .Concat(ContinueFlow.Ports)
-                    .Concat(BreakFlow.Ports));
+                // Edge-case: No ports in the exec flow.
+                // If you have something like: while (true) { break; }, you can trigger this.
+                // TODO: Is this the best way to handle this?
+                if (execFlow.Ports.Count <= 0) return;
 
+                var portsToCheck = new Stack<Port>(execFlow.Ports);
                 var checkedPorts = new List<Port>();
                 bool foundSource = false;
 
@@ -85,14 +86,14 @@ namespace RRCGBuild
                     var node = currPort.Node;
                     checkedPorts.Add(currPort);
 
-                    if (node.Type == ChipType.Delay && currPort.EquivalentTo(node.Port(0, 1)))
-                        SemanticStackUtils.AllIteratorsNeedManual();
-
                     if (currPort.EquivalentTo(SourceExec))
                     {
                         foundSource = true;
                         continue; // Don't search behind this node
                     }
+
+                    if (node.Type == ChipType.Delay && currPort.EquivalentTo(node.Port(0, 1)))
+                        SemanticStackUtils.AllIteratorsNeedManual();
 
                     var connectedExecPorts = Context.current.Connections
                         .Where(c => c.isExec && c.To.Node == currPort.Node)
