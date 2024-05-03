@@ -209,8 +209,6 @@ namespace RRCG
 
         public static IEnumerable<ISymbol> GetAccessibleSymbols(this SemanticModel semanticModel, int position, params SymbolKind[] filterKinds)
         {
-            var symbols = semanticModel.LookupSymbols(position);
-
             return semanticModel.LookupSymbols(position)
                 .Where(s => filterKinds.Contains(s.Kind))
                 .Where(symbol =>
