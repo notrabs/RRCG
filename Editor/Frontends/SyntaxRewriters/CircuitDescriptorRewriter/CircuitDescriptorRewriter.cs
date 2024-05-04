@@ -347,12 +347,6 @@ namespace RRCG
             return statements;
         }
 
-        public BlockSyntax WrapBlockInAccessibilityScope(BlockSyntax block, AccessibilityScope.Kind scopeKind)
-        {
-            var statements = block.Statements;
-            return SyntaxFactory.Block(WrapStatementsInAccessibilityScope(statements, scopeKind));
-        }
-
         public SyntaxList<StatementSyntax> WrapStatementsInAccessibilityScope(SyntaxList<StatementSyntax> statements, AccessibilityScope.Kind scopeKind)
         {
             statements = statements.Insert(0, SyntaxFactory.ExpressionStatement(
@@ -928,9 +922,9 @@ namespace RRCG
             // Otherwise we'll do this ourselves
 
             if (trueStatement is not BlockSyntax trueBlock)
-                trueBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(trueStatement), AccessibilityScope.Kind.General);
+                trueBlock = Block(WrapStatementsInAccessibilityScope(SingletonList(trueStatement), AccessibilityScope.Kind.General));
             if (falseStatement is not BlockSyntax falseBlock)
-                falseBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(falseStatement), AccessibilityScope.Kind.General);
+                falseBlock = Block(WrapStatementsInAccessibilityScope(SingletonList(falseStatement), AccessibilityScope.Kind.General));
 
             return SyntaxFactory.ExpressionStatement(
                 SyntaxFactory.InvocationExpression(IdentifierName("__If"))
@@ -1140,7 +1134,7 @@ namespace RRCG
             // we'll have already wrapped it in an accessibility scope.
             // Otherwise we need to do this here.
             if (whileStatement is not BlockSyntax whileBlock)
-                whileBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(whileStatement), AccessibilityScope.Kind.General);
+                whileBlock = Block(WrapStatementsInAccessibilityScope(SingletonList(whileStatement), AccessibilityScope.Kind.General));
 
             var whileDelegate = ExecDelegate().WithBlock(whileBlock);
 
@@ -1168,7 +1162,7 @@ namespace RRCG
             // Visit statement & ensure block w/ accessibility scope
             var visitedStatement = (StatementSyntax)Visit(node.Statement);
             if (visitedStatement is not BlockSyntax bodyBlock)
-                bodyBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(visitedStatement), AccessibilityScope.Kind.General);
+                bodyBlock = Block(WrapStatementsInAccessibilityScope(SingletonList(visitedStatement), AccessibilityScope.Kind.General));
 
             return ExpressionStatement(
                         InvocationExpression(
@@ -1234,7 +1228,7 @@ namespace RRCG
             // If the statement was a block, it will have been wrapped in an AccessibilityScope.
             // Otherwise we do this ourselves:
             if (visitedStatement is not BlockSyntax visitedBlock)
-                visitedBlock = WrapBlockInAccessibilityScope(SyntaxUtils.WrapInBlock(visitedStatement), AccessibilityScope.Kind.General);
+                visitedBlock = Block(WrapStatementsInAccessibilityScope(SingletonList(visitedStatement), AccessibilityScope.Kind.General));
 
             var bodyLambda = ParenthesizedLambdaExpression().WithBlock(visitedBlock);
             if (indexSymbol != null)
