@@ -1148,7 +1148,12 @@ namespace RRCGBuild
                 BreakFlow = new() { hasAdvanced = true },
                 ContinueFlow = new(),
                 ConditionalContext = conditional,
-                SourceExec = forNode.Port(0, 0)
+                SourceExec = forNode.Port(0, 0),
+
+                // TODO: The negative iteration worked fine for positive numbers,
+                //       but breaks on negative numbers. Whoops.. is it possible to
+                //       come up with a solution that works for both?
+                NeedsManualImplementation = !iterateUpward
             };
 
             SemanticStack.current.Push(scope);

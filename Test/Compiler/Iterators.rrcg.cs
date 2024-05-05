@@ -486,7 +486,11 @@ public class Iterators : CircuitDescriptor
         for (var i = 0; i < 10; i++)
             LogString($"i: {i}");
 
-        LogString("Testing standard form, negative iteration (data ports):");
+        // TODO: The negative iteration worked fine for positive numbers,
+        //       but breaks on negative numbers. Whoops.. is it possible to
+        //       come up with a solution that works for both?
+        
+        /*LogString("Testing standard form, negative iteration (data ports):");
 
         // The For node does not support negative iteration.
         // But, we can augment this functionality onto it.
@@ -509,7 +513,7 @@ public class Iterators : CircuitDescriptor
         var minPort = Reroute(0);
         var maxPort = Reroute(10);
         for (int i = maxPort; i > minPort; i--)
-            LogString($"i: {i}");
+            LogString($"i: {i}");*/
 
         LogString("All done!");
         throw null;
@@ -571,7 +575,7 @@ public class Iterators : CircuitDescriptor
             ChipLib.AwaitDelay();
         }
 
-        LogString("Testing negative iteration (data ports):");
+        /*LogString("Testing negative iteration (data ports):");
 
         // For negative iterators using data ports, all we need to do
         // is splice out the For node & the subtract node, and rather than
@@ -592,7 +596,7 @@ public class Iterators : CircuitDescriptor
         {
             LogString($"i: {i}");
             ChipLib.AwaitDelay();
-        }
+        }*/
 
         LogString("All done!");
         throw null;

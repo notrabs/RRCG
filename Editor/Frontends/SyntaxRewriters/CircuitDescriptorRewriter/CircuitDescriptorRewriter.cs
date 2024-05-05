@@ -1321,6 +1321,9 @@ namespace RRCG
             //       methods focused on recognizing each specific form, rather than one method
             //       that tries to recognize multiple. We could call them all and only give up
             //       if we find no match even after every one has been called.
+            //
+            //       This may even be necessary to do now, as the negative iteration correction
+            //       doesn't work with negative numbers (i.e for (int i=10; i > -1; i--)).
 
             // 1. The condition must be either:
             //    - a Less Than expression (iterating in the positive direction)
