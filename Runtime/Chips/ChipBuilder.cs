@@ -910,6 +910,18 @@ namespace RRCGBuild
             return ChipBuilderGen.Acos(value);
         }
 
+        public static new IntPort BitShiftLeft(IntPort value, IntPort shift)
+        {
+            if (value.IsDataPort && shift.IsDataPort) return new IntPort { Data = value.Data << shift.Data };
+            return ChipBuilderGen.BitShiftLeft(value, shift);
+        }
+
+        public static new IntPort BitShiftRight(IntPort value, IntPort shift)
+        {
+            if (value.IsDataPort && shift.IsDataPort) return new IntPort { Data = value.Data >> shift.Data };
+            return ChipBuilderGen.BitShiftRight(value, shift);
+        }
+
         #endregion MathNodes
 
 
