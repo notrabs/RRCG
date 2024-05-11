@@ -17,7 +17,7 @@ namespace RRCG.Optimizer.ContextOptimizations
             ChipType.InstanceGetIsPrivate, ChipType.InstanceGetMaxPlayers, ChipType.LocalPlayerGazeDirection,
             ChipType.LocalPlayerGazeOrigin, ChipType.TimeGetPreciseSeconds, ChipType.TimeGetUniversalSeconds,
             ChipType.TimeGetUniversalTime, ChipType.TimeGetUnsyncedUniversalSeconds, ChipType.TimeGetUnsyncedUniversalTime,
-            ChipType.Self, 
+            ChipType.Self, ChipType.LocalPlayerIsVR
         };
 
         public int OptimizeContext(Context context)
