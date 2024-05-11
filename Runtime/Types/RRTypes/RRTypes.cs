@@ -48,4 +48,5 @@ namespace RRCGSource
     public class RoomOffer : RoomOfferGen { }
     public class RecNetImage : RecNetImageGen { }
     public class RangedWeapon : RangedWeaponGen { }
+    public class Storefront : StorefrontGen { }
 }

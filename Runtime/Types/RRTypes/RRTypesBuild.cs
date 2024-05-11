@@ -247,4 +247,5 @@ namespace RRCGBuild
     public class RoomOfferPort : RoomOfferPortGen { }
     public class RecNetImagePort : RecNetImagePortGen { }
     public class RangedWeaponPort : RangedWeaponPortGen { }
+    public class StorefrontPort : StorefrontPortGen { }
 }

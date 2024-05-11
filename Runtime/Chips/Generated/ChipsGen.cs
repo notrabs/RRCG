@@ -1325,6 +1325,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Returns the current Billboarding Pivot Offset on the target Dialogue.UI. This is used to allow a dialogue to billboard but also have it be placed next to a character and pivot around them.
+        /// </summary>
+        public static Vector3 DialogueUIGetBillboardingPivotOffset(DialogueUI Target)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Returns the current text of the target Dialogue UI’s main body for the local player, and whether or not it’s currently interactive.
         /// </summary>
         public static (string BodyText, bool IsInteractive) DialogueUIGetDialogueText(DialogueUI Target)
@@ -1354,6 +1362,14 @@ namespace RRCGGenerated
         public static string DialogueUIGetTitleText(DialogueUI Target)
         {
             return default;
+        }
+
+        /// <summary>
+        /// Sets the Billboarding Pivot Offset on the target Dialogue.UI. This is used to allow a dialogue to billboard but also have it be placed next to a character and pivot around them.
+        /// </summary>
+        public static void DialogueUISetBillboardingPivotOffset(DialogueUI Target, Vector3 Offset)
+        {
+            return;
         }
 
         /// <summary>
@@ -2145,6 +2161,14 @@ namespace RRCGGenerated
             return default;
         }
 
+        /// <summary>
+        /// Defines a function.
+        /// </summary>
+        public static void FunctionDefinition()
+        {
+            return;
+        }
+
         public static HUDElement GameHUDElementConstant()
         {
             return default;
@@ -2156,6 +2180,14 @@ namespace RRCGGenerated
         public static void GameHUDElementSetAllValues(HUDElement Target)
         {
             return;
+        }
+
+        /// <summary>
+        /// Returns a list with all the inventory items in this room.
+        /// </summary>
+        public static List<InventoryItem> GetAllInventoryItemsInRoomR2()
+        {
+            return default;
         }
 
         /// <summary>
@@ -2728,6 +2760,134 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(AI Target, AI ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(AI Target, Combatant ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(AI Target, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(AI Target, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(Combatant Target, AI ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(Combatant Target, Combatant ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(Combatant Target, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(Combatant Target, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(RecRoomObject Target, AI ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(RecRoomObject Target, Combatant ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(RecRoomObject Target, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(RecRoomObject Target, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(Player Target, AI ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(Player Target, Combatant ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(Player Target, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Vector3 GetPositionInReferenceObjectSpace(Player Target, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Returns the player who is the room authority.
         /// </summary>
         public static Player GetRoomAuthority()
@@ -2763,6 +2923,38 @@ namespace RRCGGenerated
         /// Outputs the rotation of the target as a quaternion.
         /// </summary>
         public static Quaternion GetRotationDeprecated(Player Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the rotation of the target as a quaternion, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Quaternion GetRotationInReferenceObjectSpace(RecRoomObject Target, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the rotation of the target as a quaternion, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Quaternion GetRotationInReferenceObjectSpace(RecRoomObject Target, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the rotation of the target as a quaternion, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Quaternion GetRotationInReferenceObjectSpace(Player Target, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Outputs the rotation of the target as a quaternion, in the coordinate space defined by the reference object.
+        /// </summary>
+        public static Quaternion GetRotationInReferenceObjectSpace(Player Target, Player ReferenceObject)
         {
             return default;
         }
@@ -4379,6 +4571,11 @@ namespace RRCGGenerated
             return default;
         }
 
+        public static bool LocalPlayerIsVR()
+        {
+            return default;
+        }
+
         /// <summary>
         /// Override the voice rolloff distance of the target player as heard by the local player.
         public static void LocalPlayerOverridePlayerVoiceRolloffR2(Player Player, float VoiceRolloffDistance)
@@ -4658,6 +4855,13 @@ namespace RRCGGenerated
         /// Outputs False only when all inputs are True. If any input is False, it outputs True.
         /// </summary>
         public static bool Nand(bool Input)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Checks if a path exists between two positions using the NavMesh. 
+        public static bool NavMeshCanPathBetween(Vector3 StartPosition, Vector3 EndPosition, float MaxDistance)
         {
             return default;
         }
@@ -5612,9 +5816,17 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Sends a watch notification to the specified player containing the prompt title and body, along with each of the answer choices on its own line. Once this watch notification is opened, the player can choose a response and hit "ok," triggering the On Prompt Complete event. Since there is a delay between sending a notification and receiving the response in which other responses may be received, the Player output can be used to disambiguate multiple responses
+        /// Sends a prompt to the specified player containing the prompt title and body, along with each of the answer choices on its own line. The player can choose a response and hit "ok," triggering the On Prompt Complete event. Since there is a delay between sending a prompt and receiving the response in which other responses may be received, the Player output can be used to disambiguate multiple responses. This prompt appears in the watch and can either bring the watch up automatically, or trigger a watch notification and show up when the player next opens their watch. To use a watch notification, disable the Immediate setting on the chip with the configure tool.
         /// </summary>
-        public static (bool Success, Player ReceivingPlayer, string Response, int ResponseIndex) PlayerPromptMultipleChoiceR1(Player Player, string PromptTitle, string PromptBody, List<string> AnswerChoices, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response, int ResponseIndex)> OnPromptComplete)
+        public static (bool Success, Player ReceivingPlayer, string Response, int ResponseIndex) PlayerPromptMultipleChoice(Player Player, string PromptTitle, string PromptBody, List<string> AnswerChoices, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response, int ResponseIndex)> OnPromptComplete)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sends a prompt to the specified player where they can input text, which is then returned by this chip's output. This prompt appears in the watch and can either bring the watch up automatically, or trigger a watch notification and show up when the player next opens their watch. To use a watch notification, disable the Immediate setting on the chip with the configure tool.
+        /// </summary>
+        public static (bool Success, Player ReceivingPlayer, string Response) PlayerPromptText(Player Player, string PromptTitle, string PromptBody, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response)> OnPromptComplete)
         {
             return default;
         }
@@ -6246,6 +6458,13 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Searches the room for all objects with the input tag and outputs them as a list.
+        public static List<RecRoomObject> RecRoomObjectGetAllWithTagNew(string Tag)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Outputs the authority Player of the input object.
         /// </summary>
         public static Player RecRoomObjectGetAuthority(RecRoomObject Target)
@@ -6285,6 +6504,11 @@ namespace RRCGGenerated
             return default;
         }
 
+        public static RecRoomObject RecRoomObjectGetRootObject(RecRoomObject TargetObject)
+        {
+            return default;
+        }
+
         /// <summary>
         /// Resets an object.
         /// </summary>
@@ -6309,7 +6533,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the remainder of the first value when divided by the second.
         /// </summary>
-        public static int Remainder(int Value)
+        public static int Remainder(params int[] Value)
         {
             return default;
         }
@@ -6317,7 +6541,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the remainder of the first value when divided by the second.
         /// </summary>
-        public static float Remainder(float Value)
+        public static float Remainder(params float[] Value)
         {
             return default;
         }
@@ -6767,6 +6991,16 @@ namespace RRCGGenerated
             return default;
         }
 
+        public static RecRoomObject RootObject()
+        {
+            return default;
+        }
+
+        public static Player RootPlayer()
+        {
+            return default;
+        }
+
         /// <summary>
         /// Rotate a Vector3 with a Quaternion.
         /// </summary>
@@ -7107,6 +7341,38 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Sets the position of the target player or object in the coordinate space defined by the reference object. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
+        /// </summary>
+        public static bool SetPositionInReferenceObjectSpace(Player Target, Vector3 Position, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the position of the target player or object in the coordinate space defined by the reference object. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
+        /// </summary>
+        public static bool SetPositionInReferenceObjectSpace(Player Target, Vector3 Position, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the position of the target player or object in the coordinate space defined by the reference object. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
+        /// </summary>
+        public static bool SetPositionInReferenceObjectSpace(RecRoomObject Target, Vector3 Position, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the position of the target player or object in the coordinate space defined by the reference object. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
+        /// </summary>
+        public static bool SetPositionInReferenceObjectSpace(RecRoomObject Target, Vector3 Position, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Sets the rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
         public static bool SetRotation(Player Target, Vector3 Rotation)
@@ -7139,6 +7405,70 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
+        /// </summary>
+        public static bool SetRotationInReferenceObjectSpace(Player Target, Vector3 Rotation, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
+        /// </summary>
+        public static bool SetRotationInReferenceObjectSpace(Player Target, Vector3 Rotation, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
+        /// </summary>
+        public static bool SetRotationInReferenceObjectSpace(Player Target, Quaternion Rotation, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
+        /// </summary>
+        public static bool SetRotationInReferenceObjectSpace(Player Target, Quaternion Rotation, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
+        /// </summary>
+        public static bool SetRotationInReferenceObjectSpace(RecRoomObject Target, Vector3 Rotation, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
+        /// </summary>
+        public static bool SetRotationInReferenceObjectSpace(RecRoomObject Target, Vector3 Rotation, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
+        /// </summary>
+        public static bool SetRotationInReferenceObjectSpace(RecRoomObject Target, Quaternion Rotation, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
+        /// </summary>
+        public static bool SetRotationInReferenceObjectSpace(RecRoomObject Target, Quaternion Rotation, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Sets the transform (position and rotation) of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
         public static bool SetTransform(Player Target, Vector3 Position, Vector3 Rotation)
@@ -7166,6 +7496,70 @@ namespace RRCGGenerated
         /// Sets the transform (position and rotation) of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
         public static bool SetTransform(RecRoomObject Target, Vector3 Position, Quaternion Rotation)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
+        /// </summary>
+        public static bool SetTransformInReferenceObjectSpace(Player Target, Vector3 Position, Vector3 Rotation, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
+        /// </summary>
+        public static bool SetTransformInReferenceObjectSpace(Player Target, Vector3 Position, Vector3 Rotation, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
+        /// </summary>
+        public static bool SetTransformInReferenceObjectSpace(Player Target, Vector3 Position, Quaternion Rotation, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
+        /// </summary>
+        public static bool SetTransformInReferenceObjectSpace(Player Target, Vector3 Position, Quaternion Rotation, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
+        /// </summary>
+        public static bool SetTransformInReferenceObjectSpace(RecRoomObject Target, Vector3 Position, Vector3 Rotation, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
+        /// </summary>
+        public static bool SetTransformInReferenceObjectSpace(RecRoomObject Target, Vector3 Position, Vector3 Rotation, RecRoomObject ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
+        /// </summary>
+        public static bool SetTransformInReferenceObjectSpace(RecRoomObject Target, Vector3 Position, Quaternion Rotation, Player ReferenceObject)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
+        /// </summary>
+        public static bool SetTransformInReferenceObjectSpace(RecRoomObject Target, Vector3 Position, Quaternion Rotation, RecRoomObject ReferenceObject)
         {
             return default;
         }
@@ -7378,6 +7772,26 @@ namespace RRCGGenerated
         /// Stop any current screen shake for the given player.
         /// </summary>
         public static void StopCameraShake(Player Player)
+        {
+            return;
+        }
+
+        public static bool StorefrontGetIsEnabledR2(Storefront Storefront)
+        {
+            return default;
+        }
+
+        public static List<RoomOffer> StorefrontGetOffersListR2(Storefront Storefront)
+        {
+            return default;
+        }
+
+        public static void StorefrontSetIsEnabledR2(Storefront Storefront, bool IsEnabled)
+        {
+            return;
+        }
+
+        public static void StorefrontSetOffersListR2(Storefront Storefront, List<RoomOffer> OffersList)
         {
             return;
         }

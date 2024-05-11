@@ -1870,6 +1870,16 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static Vector3Port DialogueUIGetBillboardingPivotOffset(DialogueUIPort Target)
+        {
+            Node node = new Node()
+            {Name = "Dialogue UI Get Billboarding Pivot Offset", Type = "e0065ec4-332b-4b5d-8f60-70daa3a4af03", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static (StringPort BodyText, BoolPort IsInteractive) DialogueUIGetDialogueText(DialogueUIPort Target)
         {
             Node node = new Node()
@@ -1908,6 +1918,17 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
+        }
+
+        public static void DialogueUISetBillboardingPivotOffset(DialogueUIPort Target, Vector3Port Offset)
+        {
+            Node node = new Node()
+            {Name = "Dialogue UI Set Billboarding Pivot Offset", Type = "beeef46e-fdb0-4842-ad97-be5271efe837", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Offset, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
         }
 
         public static void DialogueUISetButtonState(DialogueUIPort Target, BoolPort Button1Enabled, StringPort Button1Text, BoolPort Button2Enabled, StringPort Button2Text, BoolPort Button3Enabled, StringPort Button3Text, BoolPort Button4Enabled, StringPort Button4Text)
@@ -3053,6 +3074,14 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static void FunctionDefinition()
+        {
+            Node node = new Node()
+            {Name = "Function Definition", Type = "49937daa-4f6d-442c-a0d8-0095b675250d", InputCount = 0};
+            Context.current.Nodes.Add(node);
+            return;
+        }
+
         public static HUDElementPort GameHUDElementConstant()
         {
             Node node = new Node()
@@ -3070,6 +3099,15 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
+        }
+
+        public static ListPort<InventoryItemPort> GetAllInventoryItemsInRoomR2()
+        {
+            Node node = new Node()
+            {Name = "Get All Inventory Items In Room", Type = "5ad0cd6b-90ad-4425-a43a-7ac7ec0d0141", InputCount = 0};
+            Context.current.Nodes.Add(node);
+            var output_ports = new ListPort<InventoryItemPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
         }
 
         public static ListPort<PlayerPort> GetAllPlayers()
@@ -3824,6 +3862,182 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static Vector3Port GetPositionInReferenceObjectSpace(AIPort Target, AIPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(AIPort Target, CombatantPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(AIPort Target, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(AIPort Target, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(CombatantPort Target, AIPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(CombatantPort Target, CombatantPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(CombatantPort Target, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(CombatantPort Target, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(RecRoomObjectPort Target, AIPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(RecRoomObjectPort Target, CombatantPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(RecRoomObjectPort Target, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(RecRoomObjectPort Target, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(PlayerPort Target, AIPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(PlayerPort Target, CombatantPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(PlayerPort Target, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port GetPositionInReferenceObjectSpace(PlayerPort Target, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Position in Reference Object Space", Type = "72be9974-9713-415c-a29e-4a39a5ac4737", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static PlayerPort GetRoomAuthority()
         {
             Node node = new Node()
@@ -3869,6 +4083,50 @@ namespace RRCGGenerated
             {Name = "Get Rotation (Deprecated)", Type = "c453fa47-d0db-4c4a-a6a1-dac4ebad0aca", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static QuaternionPort GetRotationInReferenceObjectSpace(RecRoomObjectPort Target, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Rotation in Reference Object Space", Type = "14bf5961-9d94-4ce0-a97a-37f5f382376c", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static QuaternionPort GetRotationInReferenceObjectSpace(RecRoomObjectPort Target, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Rotation in Reference Object Space", Type = "14bf5961-9d94-4ce0-a97a-37f5f382376c", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static QuaternionPort GetRotationInReferenceObjectSpace(PlayerPort Target, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Rotation in Reference Object Space", Type = "14bf5961-9d94-4ce0-a97a-37f5f382376c", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static QuaternionPort GetRotationInReferenceObjectSpace(PlayerPort Target, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Get Rotation in Reference Object Space", Type = "14bf5961-9d94-4ce0-a97a-37f5f382376c", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 1});
             var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
@@ -6319,6 +6577,15 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static BoolPort LocalPlayerIsVR()
+        {
+            Node node = new Node()
+            {Name = "Local Player Is VR", Type = "f9101f3c-5b1d-4edc-b850-83bd72a4b1d4", InputCount = 0};
+            Context.current.Nodes.Add(node);
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static void LocalPlayerOverridePlayerVoiceRolloffR2(PlayerPort Player, FloatPort VoiceRolloffDistance)
         {
             Node node = new Node()
@@ -6696,6 +6963,19 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Input, new Port{Node = node, Index = 0});
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort NavMeshCanPathBetween(Vector3Port StartPosition, Vector3Port EndPosition, FloatPort MaxDistance)
+        {
+            Node node = new Node()
+            {Name = "NavMesh Can Path Between", Type = "42a50b22-bc74-4c79-8bd6-00f021f721b0", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, StartPosition, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, EndPosition, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, MaxDistance, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return output_ports;
         }
 
@@ -7994,7 +8274,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static (BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response, IntPort ResponseIndex) PlayerPromptMultipleChoiceR1(PlayerPort Player, StringPort PromptTitle, StringPort PromptBody, ListPort<StringPort> AnswerChoices, AlternativeExec<(BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response, IntPort ResponseIndex)> OnPromptComplete)
+        public static (BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response, IntPort ResponseIndex) PlayerPromptMultipleChoice(PlayerPort Player, StringPort PromptTitle, StringPort PromptBody, ListPort<StringPort> AnswerChoices, AlternativeExec<(BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response, IntPort ResponseIndex)> OnPromptComplete)
         {
             Node node = new Node()
             {Name = "Player Prompt Multiple Choice", Type = "d376a3c7-67c2-4607-a124-e2b93dc256d8", InputCount = 5};
@@ -8004,6 +8284,24 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, PromptBody, new Port{Node = node, Index = 3});
             node.ConnectInputPort(Context.current, AnswerChoices, new Port{Node = node, Index = 4});
             var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 2}}, new PlayerPort{Port = new Port{Node = node, Index = 3}}, new StringPort{Port = new Port{Node = node, Index = 4}}, new IntPort{Port = new Port{Node = node, Index = 5}});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnPromptComplete(output_ports);
+            ExecFlow.current = mainFlow;
+            return output_ports;
+        }
+
+        public static (BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response) PlayerPromptText(PlayerPort Player, StringPort PromptTitle, StringPort PromptBody, AlternativeExec<(BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response)> OnPromptComplete)
+        {
+            Node node = new Node()
+            {Name = "Player Prompt Text", Type = "da8c6b01-2f4c-4d5b-88b5-293e4682fcc9", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, PromptTitle, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, PromptBody, new Port{Node = node, Index = 3});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 2}}, new PlayerPort{Port = new Port{Node = node, Index = 3}}, new StringPort{Port = new Port{Node = node, Index = 4}});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             var mainFlow = ExecFlow.current;
             ExecFlow.current = new ExecFlow();
@@ -8987,6 +9285,16 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static ListPort<RecRoomObjectPort> RecRoomObjectGetAllWithTagNew(StringPort Tag)
+        {
+            Node node = new Node()
+            {Name = "Rec Room Object Get All with Tag (new)", Type = "6404b6b4-3bc4-4bbb-8d2c-058a6834e9e9", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Tag, new Port{Node = node, Index = 0});
+            var output_ports = new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static PlayerPort RecRoomObjectGetAuthority(RecRoomObjectPort Target)
         {
             Node node = new Node()
@@ -9034,6 +9342,16 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Object, new Port{Node = node, Index = 0});
             var output_ports = (new PlayerPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
+        }
+
+        public static RecRoomObjectPort RecRoomObjectGetRootObject(RecRoomObjectPort TargetObject)
+        {
+            Node node = new Node()
+            {Name = "Rec Room Object Get Root Object", Type = "a2e31d7e-b107-49c1-a060-e9c417e8c59d", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, TargetObject, new Port{Node = node, Index = 0});
+            var output_ports = new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -9973,6 +10291,24 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static RecRoomObjectPort RootObject()
+        {
+            Node node = new Node()
+            {Name = "Root Object", Type = "85be495b-0d08-421c-b20f-72b38967d34a", InputCount = 0};
+            Context.current.Nodes.Add(node);
+            var output_ports = new RecRoomObjectPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static PlayerPort RootPlayer()
+        {
+            Node node = new Node()
+            {Name = "Root Player", Type = "2d92f1a6-f219-4163-99d9-42e71dbc5adf", InputCount = 0};
+            Context.current.Nodes.Add(node);
+            var output_ports = new PlayerPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static Vector3Port RotateVector(QuaternionPort Rotation, Vector3Port Point)
         {
             Node node = new Node()
@@ -10478,6 +10814,58 @@ namespace RRCGGenerated
             return;
         }
 
+        public static BoolPort SetPositionInReferenceObjectSpace(PlayerPort Target, Vector3Port Position, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Position in Reference Object Space", Type = "aae0e3a1-96d3-44df-816c-ce1e2ed34f56", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetPositionInReferenceObjectSpace(PlayerPort Target, Vector3Port Position, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Position in Reference Object Space", Type = "aae0e3a1-96d3-44df-816c-ce1e2ed34f56", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetPositionInReferenceObjectSpace(RecRoomObjectPort Target, Vector3Port Position, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Position in Reference Object Space", Type = "aae0e3a1-96d3-44df-816c-ce1e2ed34f56", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetPositionInReferenceObjectSpace(RecRoomObjectPort Target, Vector3Port Position, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Position in Reference Object Space", Type = "aae0e3a1-96d3-44df-816c-ce1e2ed34f56", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
         public static BoolPort SetRotation(PlayerPort Target, Vector3Port Rotation)
         {
             Node node = new Node()
@@ -10521,6 +10909,110 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetRotationInReferenceObjectSpace(PlayerPort Target, Vector3Port Rotation, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Rotation in Reference Object Space", Type = "64319731-bdb8-4a19-ad65-8e9e7100c0bf", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetRotationInReferenceObjectSpace(PlayerPort Target, Vector3Port Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Rotation in Reference Object Space", Type = "64319731-bdb8-4a19-ad65-8e9e7100c0bf", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetRotationInReferenceObjectSpace(PlayerPort Target, QuaternionPort Rotation, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Rotation in Reference Object Space", Type = "64319731-bdb8-4a19-ad65-8e9e7100c0bf", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetRotationInReferenceObjectSpace(PlayerPort Target, QuaternionPort Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Rotation in Reference Object Space", Type = "64319731-bdb8-4a19-ad65-8e9e7100c0bf", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetRotationInReferenceObjectSpace(RecRoomObjectPort Target, Vector3Port Rotation, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Rotation in Reference Object Space", Type = "64319731-bdb8-4a19-ad65-8e9e7100c0bf", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetRotationInReferenceObjectSpace(RecRoomObjectPort Target, Vector3Port Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Rotation in Reference Object Space", Type = "64319731-bdb8-4a19-ad65-8e9e7100c0bf", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetRotationInReferenceObjectSpace(RecRoomObjectPort Target, QuaternionPort Rotation, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Rotation in Reference Object Space", Type = "64319731-bdb8-4a19-ad65-8e9e7100c0bf", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetRotationInReferenceObjectSpace(RecRoomObjectPort Target, QuaternionPort Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Rotation in Reference Object Space", Type = "64319731-bdb8-4a19-ad65-8e9e7100c0bf", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 3});
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return output_ports;
@@ -10573,6 +11065,118 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
             node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetTransformInReferenceObjectSpace(PlayerPort Target, Vector3Port Position, Vector3Port Rotation, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Transform in Reference Object Space", Type = "3a0a2da6-d4d2-42e5-be8d-cedc23fbe8a8", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 4});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetTransformInReferenceObjectSpace(PlayerPort Target, Vector3Port Position, Vector3Port Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Transform in Reference Object Space", Type = "3a0a2da6-d4d2-42e5-be8d-cedc23fbe8a8", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 4});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetTransformInReferenceObjectSpace(PlayerPort Target, Vector3Port Position, QuaternionPort Rotation, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Transform in Reference Object Space", Type = "3a0a2da6-d4d2-42e5-be8d-cedc23fbe8a8", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 4});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetTransformInReferenceObjectSpace(PlayerPort Target, Vector3Port Position, QuaternionPort Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Transform in Reference Object Space", Type = "3a0a2da6-d4d2-42e5-be8d-cedc23fbe8a8", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 4});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetTransformInReferenceObjectSpace(RecRoomObjectPort Target, Vector3Port Position, Vector3Port Rotation, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Transform in Reference Object Space", Type = "3a0a2da6-d4d2-42e5-be8d-cedc23fbe8a8", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 4});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetTransformInReferenceObjectSpace(RecRoomObjectPort Target, Vector3Port Position, Vector3Port Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Transform in Reference Object Space", Type = "3a0a2da6-d4d2-42e5-be8d-cedc23fbe8a8", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 4});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetTransformInReferenceObjectSpace(RecRoomObjectPort Target, Vector3Port Position, QuaternionPort Rotation, PlayerPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Transform in Reference Object Space", Type = "3a0a2da6-d4d2-42e5-be8d-cedc23fbe8a8", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 4});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static BoolPort SetTransformInReferenceObjectSpace(RecRoomObjectPort Target, Vector3Port Position, QuaternionPort Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            Node node = new Node()
+            {Name = "Set Transform in Reference Object Space", Type = "3a0a2da6-d4d2-42e5-be8d-cedc23fbe8a8", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Rotation, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, ReferenceObject, new Port{Node = node, Index = 4});
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return output_ports;
@@ -10885,6 +11489,48 @@ namespace RRCGGenerated
             {Name = "Stop Camera Shake", Type = "a06b802b-bb80-4f66-937e-3a764a419c4d", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static BoolPort StorefrontGetIsEnabledR2(StorefrontPort Storefront)
+        {
+            Node node = new Node()
+            {Name = "Storefront Get Is Enabled", Type = "cf8756e6-97b9-4785-b926-057bb8ad7afd", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Storefront, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static ListPort<RoomOfferPort> StorefrontGetOffersListR2(StorefrontPort Storefront)
+        {
+            Node node = new Node()
+            {Name = "Storefront Get Offers List", Type = "da53cfee-9e05-4ed0-adda-3086ddb3b9a9", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Storefront, new Port{Node = node, Index = 0});
+            var output_ports = new ListPort<RoomOfferPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static void StorefrontSetIsEnabledR2(StorefrontPort Storefront, BoolPort IsEnabled)
+        {
+            Node node = new Node()
+            {Name = "Storefront Set Is Enabled", Type = "c74e115e-60e3-40f3-bdb9-de480355be33", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Storefront, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, IsEnabled, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void StorefrontSetOffersListR2(StorefrontPort Storefront, ListPort<RoomOfferPort> OffersList)
+        {
+            Node node = new Node()
+            {Name = "Storefront Set Offers List", Type = "799fea09-63e3-495f-b516-014a7202dd0c", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Storefront, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, OffersList, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }

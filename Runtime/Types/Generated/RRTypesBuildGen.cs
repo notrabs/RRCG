@@ -267,6 +267,26 @@ namespace RRCGGenerated
         {
             return ChipBuilder.DistanceDeprecated((AIPort)this, B);
         }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(AIPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((AIPort)this, ReferenceObject);
+        }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(CombatantPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((AIPort)this, ReferenceObject);
+        }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((AIPort)this, ReferenceObject);
+        }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((AIPort)this, ReferenceObject);
+        }
     }
 
     public abstract class AnalyticsPayloadPortGen : AnyPort
@@ -585,6 +605,26 @@ namespace RRCGGenerated
         {
             return ChipBuilder.DistanceDeprecated((CombatantPort)this, B);
         }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(AIPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((CombatantPort)this, ReferenceObject);
+        }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(CombatantPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((CombatantPort)this, ReferenceObject);
+        }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((CombatantPort)this, ReferenceObject);
+        }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((CombatantPort)this, ReferenceObject);
+        }
     }
 
     public abstract class ConsumablePortGen : AnyPort
@@ -638,6 +678,12 @@ namespace RRCGGenerated
 
     public abstract class DialogueUIPortGen : AnyPort
     {
+        public Vector3Port BillboardingPivotOffset
+        {
+            get => CircuitBuilder.Singleton("RRCG_DialogueUI_GetBillboardingPivotOffset_" + PortKey(), () => ChipBuilder.DialogueUIGetBillboardingPivotOffset((DialogueUIPort)this));
+            set => ChipBuilder.DialogueUISetBillboardingPivotOffset((DialogueUIPort)this, value);
+        }
+
         public (StringPort BodyText, BoolPort IsInteractive) DialogueText
         {
             get => CircuitBuilder.Singleton("RRCG_DialogueUI_GetDialogueText_" + PortKey(), () => ChipBuilder.DialogueUIGetDialogueText((DialogueUIPort)this));
@@ -2068,6 +2114,36 @@ namespace RRCGGenerated
             return ChipBuilder.GetFarthest((PlayerPort)this, Targets);
         }
 
+        public Vector3Port GetPositionInReferenceObjectSpace(AIPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((PlayerPort)this, ReferenceObject);
+        }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(CombatantPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((PlayerPort)this, ReferenceObject);
+        }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((PlayerPort)this, ReferenceObject);
+        }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((PlayerPort)this, ReferenceObject);
+        }
+
+        public QuaternionPort GetRotationInReferenceObjectSpace(RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.GetRotationInReferenceObjectSpace((PlayerPort)this, ReferenceObject);
+        }
+
+        public QuaternionPort GetRotationInReferenceObjectSpace(PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.GetRotationInReferenceObjectSpace((PlayerPort)this, ReferenceObject);
+        }
+
         public BoolPort GrantReward(RewardPort Reward, AlternativeExec<BoolPort> OnAwardComplete)
         {
             return ChipBuilder.GrantReward((PlayerPort)this, Reward, OnAwardComplete);
@@ -2198,9 +2274,14 @@ namespace RRCGGenerated
             return ChipBuilder.PlayerOwnsRoomKeyR1((PlayerPort)this, RoomKey, OnPlayerOwnsRoomKeyComplete);
         }
 
-        public (BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response, IntPort ResponseIndex) PromptMultipleChoiceR1(StringPort PromptTitle, StringPort PromptBody, ListPort<StringPort> AnswerChoices, AlternativeExec<(BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response, IntPort ResponseIndex)> OnPromptComplete)
+        public (BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response, IntPort ResponseIndex) PromptMultipleChoice(StringPort PromptTitle, StringPort PromptBody, ListPort<StringPort> AnswerChoices, AlternativeExec<(BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response, IntPort ResponseIndex)> OnPromptComplete)
         {
-            return ChipBuilder.PlayerPromptMultipleChoiceR1((PlayerPort)this, PromptTitle, PromptBody, AnswerChoices, OnPromptComplete);
+            return ChipBuilder.PlayerPromptMultipleChoice((PlayerPort)this, PromptTitle, PromptBody, AnswerChoices, OnPromptComplete);
+        }
+
+        public (BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response) PromptText(StringPort PromptTitle, StringPort PromptBody, AlternativeExec<(BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response)> OnPromptComplete)
+        {
+            return ChipBuilder.PlayerPromptText((PlayerPort)this, PromptTitle, PromptBody, OnPromptComplete);
         }
 
         public void ResetNameColor()
@@ -2323,6 +2404,16 @@ namespace RRCGGenerated
             ChipBuilder.SetPositionDeprecated((PlayerPort)this, Position, Failed);
         }
 
+        public BoolPort SetPositionInReferenceObjectSpace(Vector3Port Position, PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.SetPositionInReferenceObjectSpace((PlayerPort)this, Position, ReferenceObject);
+        }
+
+        public BoolPort SetPositionInReferenceObjectSpace(Vector3Port Position, RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.SetPositionInReferenceObjectSpace((PlayerPort)this, Position, ReferenceObject);
+        }
+
         public BoolPort SetRotation(Vector3Port Rotation)
         {
             return ChipBuilder.SetRotation((PlayerPort)this, Rotation);
@@ -2333,6 +2424,26 @@ namespace RRCGGenerated
             return ChipBuilder.SetRotation((PlayerPort)this, Rotation);
         }
 
+        public BoolPort SetRotationInReferenceObjectSpace(Vector3Port Rotation, PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.SetRotationInReferenceObjectSpace((PlayerPort)this, Rotation, ReferenceObject);
+        }
+
+        public BoolPort SetRotationInReferenceObjectSpace(Vector3Port Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.SetRotationInReferenceObjectSpace((PlayerPort)this, Rotation, ReferenceObject);
+        }
+
+        public BoolPort SetRotationInReferenceObjectSpace(QuaternionPort Rotation, PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.SetRotationInReferenceObjectSpace((PlayerPort)this, Rotation, ReferenceObject);
+        }
+
+        public BoolPort SetRotationInReferenceObjectSpace(QuaternionPort Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.SetRotationInReferenceObjectSpace((PlayerPort)this, Rotation, ReferenceObject);
+        }
+
         public BoolPort SetTransform(Vector3Port Position, Vector3Port Rotation)
         {
             return ChipBuilder.SetTransform((PlayerPort)this, Position, Rotation);
@@ -2341,6 +2452,26 @@ namespace RRCGGenerated
         public BoolPort SetTransform(Vector3Port Position, QuaternionPort Rotation)
         {
             return ChipBuilder.SetTransform((PlayerPort)this, Position, Rotation);
+        }
+
+        public BoolPort SetTransformInReferenceObjectSpace(Vector3Port Position, Vector3Port Rotation, PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.SetTransformInReferenceObjectSpace((PlayerPort)this, Position, Rotation, ReferenceObject);
+        }
+
+        public BoolPort SetTransformInReferenceObjectSpace(Vector3Port Position, Vector3Port Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.SetTransformInReferenceObjectSpace((PlayerPort)this, Position, Rotation, ReferenceObject);
+        }
+
+        public BoolPort SetTransformInReferenceObjectSpace(Vector3Port Position, QuaternionPort Rotation, PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.SetTransformInReferenceObjectSpace((PlayerPort)this, Position, Rotation, ReferenceObject);
+        }
+
+        public BoolPort SetTransformInReferenceObjectSpace(Vector3Port Position, QuaternionPort Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.SetTransformInReferenceObjectSpace((PlayerPort)this, Position, Rotation, ReferenceObject);
         }
 
         public void ShowBannerNotification(StringPort Title, StringPort MainText, FloatPort Duration)
@@ -2601,6 +2732,11 @@ namespace RRCGGenerated
             get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetPositionDeprecated_" + PortKey(), () => ChipBuilder.GetPositionDeprecated((RecRoomObjectPort)this));
         }
 
+        public RecRoomObjectPort RootObject
+        {
+            get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetRootObject_" + PortKey(), () => ChipBuilder.RecRoomObjectGetRootObject((RecRoomObjectPort)this));
+        }
+
         public QuaternionPort Rotation
         {
             get => CircuitBuilder.Singleton("RRCG_RecRoomObject_GetRotation_" + PortKey(), () => ChipBuilder.GetRotation((RecRoomObjectPort)this));
@@ -2762,6 +2898,36 @@ namespace RRCGGenerated
             return ChipBuilder.GetFarthest((RecRoomObjectPort)this, Targets);
         }
 
+        public Vector3Port GetPositionInReferenceObjectSpace(AIPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((RecRoomObjectPort)this, ReferenceObject);
+        }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(CombatantPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((RecRoomObjectPort)this, ReferenceObject);
+        }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((RecRoomObjectPort)this, ReferenceObject);
+        }
+
+        public Vector3Port GetPositionInReferenceObjectSpace(PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.GetPositionInReferenceObjectSpace((RecRoomObjectPort)this, ReferenceObject);
+        }
+
+        public QuaternionPort GetRotationInReferenceObjectSpace(RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.GetRotationInReferenceObjectSpace((RecRoomObjectPort)this, ReferenceObject);
+        }
+
+        public QuaternionPort GetRotationInReferenceObjectSpace(PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.GetRotationInReferenceObjectSpace((RecRoomObjectPort)this, ReferenceObject);
+        }
+
         public BoolPort HasTag(StringPort Tag)
         {
             return ChipBuilder.HasTag((RecRoomObjectPort)this, Tag);
@@ -2822,6 +2988,16 @@ namespace RRCGGenerated
             ChipBuilder.SetPositionDeprecated((RecRoomObjectPort)this, Position, Failed);
         }
 
+        public BoolPort SetPositionInReferenceObjectSpace(Vector3Port Position, PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.SetPositionInReferenceObjectSpace((RecRoomObjectPort)this, Position, ReferenceObject);
+        }
+
+        public BoolPort SetPositionInReferenceObjectSpace(Vector3Port Position, RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.SetPositionInReferenceObjectSpace((RecRoomObjectPort)this, Position, ReferenceObject);
+        }
+
         public BoolPort SetRotation(Vector3Port Rotation)
         {
             return ChipBuilder.SetRotation((RecRoomObjectPort)this, Rotation);
@@ -2832,6 +3008,26 @@ namespace RRCGGenerated
             return ChipBuilder.SetRotation((RecRoomObjectPort)this, Rotation);
         }
 
+        public BoolPort SetRotationInReferenceObjectSpace(Vector3Port Rotation, PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.SetRotationInReferenceObjectSpace((RecRoomObjectPort)this, Rotation, ReferenceObject);
+        }
+
+        public BoolPort SetRotationInReferenceObjectSpace(Vector3Port Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.SetRotationInReferenceObjectSpace((RecRoomObjectPort)this, Rotation, ReferenceObject);
+        }
+
+        public BoolPort SetRotationInReferenceObjectSpace(QuaternionPort Rotation, PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.SetRotationInReferenceObjectSpace((RecRoomObjectPort)this, Rotation, ReferenceObject);
+        }
+
+        public BoolPort SetRotationInReferenceObjectSpace(QuaternionPort Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.SetRotationInReferenceObjectSpace((RecRoomObjectPort)this, Rotation, ReferenceObject);
+        }
+
         public BoolPort SetTransform(Vector3Port Position, Vector3Port Rotation)
         {
             return ChipBuilder.SetTransform((RecRoomObjectPort)this, Position, Rotation);
@@ -2840,6 +3036,26 @@ namespace RRCGGenerated
         public BoolPort SetTransform(Vector3Port Position, QuaternionPort Rotation)
         {
             return ChipBuilder.SetTransform((RecRoomObjectPort)this, Position, Rotation);
+        }
+
+        public BoolPort SetTransformInReferenceObjectSpace(Vector3Port Position, Vector3Port Rotation, PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.SetTransformInReferenceObjectSpace((RecRoomObjectPort)this, Position, Rotation, ReferenceObject);
+        }
+
+        public BoolPort SetTransformInReferenceObjectSpace(Vector3Port Position, Vector3Port Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.SetTransformInReferenceObjectSpace((RecRoomObjectPort)this, Position, Rotation, ReferenceObject);
+        }
+
+        public BoolPort SetTransformInReferenceObjectSpace(Vector3Port Position, QuaternionPort Rotation, PlayerPort ReferenceObject)
+        {
+            return ChipBuilder.SetTransformInReferenceObjectSpace((RecRoomObjectPort)this, Position, Rotation, ReferenceObject);
+        }
+
+        public BoolPort SetTransformInReferenceObjectSpace(Vector3Port Position, QuaternionPort Rotation, RecRoomObjectPort ReferenceObject)
+        {
+            return ChipBuilder.SetTransformInReferenceObjectSpace((RecRoomObjectPort)this, Position, Rotation, ReferenceObject);
         }
 
         public void SpawnerInternalStartSpawningR1(IntPort Amountofobjectstospawn, FloatPort Timebetweenspawns, Vector3Port SpawnPosition)
@@ -3054,6 +3270,21 @@ namespace RRCGGenerated
 
     public abstract class SteeringEnginePortGen : AnyPort
     {
+    }
+
+    public abstract class StorefrontPortGen : AnyPort
+    {
+        public BoolPort IsEnabledR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Storefront_GetIsEnabledR2_" + PortKey(), () => ChipBuilder.StorefrontGetIsEnabledR2((StorefrontPort)this));
+            set => ChipBuilder.StorefrontSetIsEnabledR2((StorefrontPort)this, value);
+        }
+
+        public ListPort<RoomOfferPort> OffersListR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Storefront_GetOffersListR2_" + PortKey(), () => ChipBuilder.StorefrontGetOffersListR2((StorefrontPort)this));
+            set => ChipBuilder.StorefrontSetOffersListR2((StorefrontPort)this, value);
+        }
     }
 
     public abstract class StudioObjectPortGen : AnyPort
