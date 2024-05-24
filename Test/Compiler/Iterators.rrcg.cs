@@ -15,7 +15,6 @@ public class Iterators : CircuitDescriptor
         WhileReturnTest();
 
         // Test unreachable nodes aren't spawned
-        // (this doesn't happen currently. Some day..)
         UnreachableNodesTest();
 
         // Test nested while loops

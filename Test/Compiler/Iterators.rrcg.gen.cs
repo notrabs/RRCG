@@ -18,7 +18,6 @@ namespace RRCGBuild
             // Test returning from within a while loop
             WhileReturnTest();
             // Test unreachable nodes aren't spawned
-            // (this doesn't happen currently. Some day..)
             UnreachableNodesTest();
             // Test nested while loops
             NestedWhileTest();
@@ -190,7 +189,6 @@ namespace RRCGBuild
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     ChipLib.Log("index.Value == 50, break!");
                     __Break();
-                    PlayerShowSubtitle(PlayerPort.Local, "This node is unreachable and should not be placed.", 0, 0);
                     __EndAccessibilityScope();
                 }
 
@@ -202,7 +200,6 @@ namespace RRCGBuild
                         __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         ChipLib.Log("index.Value % 5 == 0, continue!");
                         __Continue();
-                        PlayerShowSubtitle(PlayerPort.Local, "This node is unreachable and should not be placed.", 0, 0);
                         __EndAccessibilityScope();
                     }
 

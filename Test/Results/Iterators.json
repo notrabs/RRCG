@@ -458,13 +458,6 @@
       "InputCount": 2
     },
     {
-      "Id": "Player_Show_Subtitle_0",
-      "Type": "h+aqq0PpNEW7eCyNfhfEJQ==",
-      "Name": "Player Show Subtitle",
-      "DefaultValues": [[[0,1],"System.Int32",1],[[0,2],"System.String","This node is unreachable and should not be placed."],[[0,3],"System.Single",0.0],[[0,4],"System.Int32",0]],
-      "InputCount": 5
-    },
-    {
       "Id": "Remainder_0",
       "Type": "eS5G/p+eNEK1lHtsCmkymw==",
       "Name": "Remainder",
@@ -491,13 +484,6 @@
       "Name": "Log String",
       "DefaultValues": [[[0,1],"System.String","index.Value % 5 == 0, continue!"]],
       "InputCount": 2
-    },
-    {
-      "Id": "Player_Show_Subtitle_1",
-      "Type": "h+aqq0PpNEW7eCyNfhfEJQ==",
-      "Name": "Player Show Subtitle",
-      "DefaultValues": [[[0,1],"System.Int32",1],[[0,2],"System.String","This node is unreachable and should not be placed."],[[0,3],"System.Single",0.0],[[0,4],"System.Int32",0]],
-      "InputCount": 5
     },
     {
       "Id": "Log_String_8",
@@ -4803,32 +4789,6 @@
       },
       "To": {
         "Node": "Log_String_7",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Player_Show_Subtitle_0",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_5",
-        "Group": 0,
-        "Index": 0
-      },
-      "isExec": true
-    },
-    {
-      "From": {
-        "Node": "Player_Show_Subtitle_1",
-        "Group": 0,
-        "Index": 0
-      },
-      "To": {
-        "Node": "If_5",
         "Group": 0,
         "Index": 0
       },

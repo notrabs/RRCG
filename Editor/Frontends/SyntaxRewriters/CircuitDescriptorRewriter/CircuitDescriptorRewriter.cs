@@ -399,7 +399,8 @@ namespace RRCG
         public override SyntaxNode VisitBlock(BlockSyntax node)
         {
             var kind = AccessibilityScope.Kind.General;
-            var newStatements = new SyntaxList<StatementSyntax>(node.Statements.Select(s => (StatementSyntax)Visit(s)));
+            var trimmedStatements = TrimUnreachableStatements(node.Statements);
+            var newStatements = new SyntaxList<StatementSyntax>(trimmedStatements.Select(s => (StatementSyntax)Visit(s)));
 
             switch (node.Parent?.Kind())
             {
@@ -1557,6 +1558,32 @@ namespace RRCG
         public AnonymousMethodExpressionSyntax ExecDelegate()
         {
             return SyntaxFactory.AnonymousMethodExpression();
+        }
+
+        /// <summary>
+        /// Given a set of StatementSyntaxes, remove any which appear beyond
+        /// a statement that ends execution flow (return/continue/goto/break/throw).
+        /// </summary>
+        public IEnumerable<StatementSyntax> TrimUnreachableStatements(IEnumerable<StatementSyntax> statements)
+        {
+            // NOTE: The SemanticModel provides an AnalyzeControlFlow function that can
+            //       be used to easily remove unreachable code in a generalized way.
+            //       But this has broader implications, e.g. affecting if statements
+            //       with constant condition values, breaking tests.
+            //
+            //       We may want to use control flow analysis in the future, to solve the
+            //       optimizable cases, but for now, this at least solves the problematic ones.
+            //       (namely iterators, for example)
+
+            var targetKinds = new[] { SyntaxKind.ReturnStatement, SyntaxKind.ContinueStatement, SyntaxKind.BreakStatement,
+                                      SyntaxKind.GotoStatement, SyntaxKind.GotoCaseStatement, SyntaxKind.GotoDefaultStatement,
+                                      SyntaxKind.ThrowStatement };
+
+            foreach (var statement in statements)
+            {
+                yield return statement;
+                if (targetKinds.Contains(statement.Kind())) yield break;
+            }
         }
 
         public InvocationExpressionSyntax VariableDeclaratorExpressionInvocation(string identifierName, ExpressionSyntax? initializer, TypeSyntax? resolvedType, bool hasSetter)
