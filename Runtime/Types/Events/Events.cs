@@ -7,6 +7,7 @@ namespace RRCG
     public static class RoomEvents
     {
         public static string Hz30 = "Update 30Hz";
+        public static string Update = "Update";
         public static string TestEvent = "Test Event";
         public static string ConsumableUsed = "Consumable Used";
     }
