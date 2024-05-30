@@ -203,7 +203,7 @@ namespace RRCGBuild
 
         public StringPort Substring(IntPort Index, IntPort Length = null)
         {
-            if (IsActualPort || Index.IsActualPort || Length.IsActualPort) return ChipBuilder.StringSubstring(this, Index, Length);
+            if (IsActualPort || Index.IsActualPort || Length.IsActualPort) return ChipBuilder.StringSubstring(this, Index, Length ?? int.MaxValue);
 
             string str = (string)Data;
             return new StringPort { Data = str.Substring(Index.Data, Length?.Data ?? int.MaxValue) };
