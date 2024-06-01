@@ -41,7 +41,6 @@ namespace RRCGSource
     public class RoomCurrency : RoomCurrencyGen { }
     public class InventoryItem : InventoryItemGen { }
     public class State : StateGen { }
-    public class Grabber : GrabberGen { }
     public class EquipmentSlot : EquipmentSlotGen { }
     public class DialogueUI : DialogueUIGen { }
     public class CollisionDetectionVolume : CollisionDetectionVolumeGen { }

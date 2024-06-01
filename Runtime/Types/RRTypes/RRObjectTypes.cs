@@ -186,4 +186,8 @@ namespace RRCGSource
     {
         public static implicit operator Light(RecRoomObject data) => default;
     }
+    public class Grabber : GrabberGen
+    {
+        public static implicit operator Grabber(RecRoomObject data) => default;
+    }
 }

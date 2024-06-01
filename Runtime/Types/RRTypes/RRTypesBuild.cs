@@ -240,7 +240,6 @@ namespace RRCGBuild
     public class RoomCurrencyPort : RoomCurrencyPortGen { }
     public class InventoryItemPort : InventoryItemPortGen { }
     public class StatePort : StatePortGen { }
-    public class GrabberPort : GrabberPortGen { }
     public class EquipmentSlotPort : EquipmentSlotPortGen { }
     public class DialogueUIPort : DialogueUIPortGen { }
     public class CollisionDetectionVolumePort : CollisionDetectionVolumePortGen { }
