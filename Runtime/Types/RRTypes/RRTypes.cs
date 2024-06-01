@@ -48,4 +48,6 @@ namespace RRCGSource
     public class RecNetImage : RecNetImageGen { }
     public class RangedWeapon : RangedWeaponGen { }
     public class Storefront : StorefrontGen { }
+
+    // remember to add types to RRTypesUtils.ImplemetedRRTypes
 }

@@ -109,7 +109,7 @@ namespace RRCG
                     .WithSemicolonToken(Token(SyntaxKind.None))
                     .WithBody(
                        isVoid ?
-                            Block(ExpressionStatement(method.ExpressionBody.Expression)):
+                            Block(ExpressionStatement(method.ExpressionBody.Expression)) :
                             // The return needs to be applied already translated here, as to not invalidate the semantic model further down
                             Block(ValueReturnStatement(method.ExpressionBody.Expression, rewrittenReturnType))
                 );
@@ -309,7 +309,7 @@ namespace RRCG
                 // Collect element names
                 var names = new List<ExpressionSyntax>();
 
-                for (int i=0; i < tupleType.Elements.Count; i++)
+                for (int i = 0; i < tupleType.Elements.Count; i++)
                 {
                     var element = tupleType.Elements[i];
                     names.Add(
@@ -343,7 +343,7 @@ namespace RRCG
                                                           endInvocation));
 
             statements = statements.Add(endStatement);
-            
+
             return statements;
         }
 
@@ -507,7 +507,7 @@ namespace RRCG
                 case SyntaxKind.GenericName:
                 case SyntaxKind.IdentifierName:
                     return visitedNode.WithExpression(genericName);
-                
+
                 case SyntaxKind.SimpleMemberAccessExpression:
                     return visitedNode.WithExpression(
                             ((MemberAccessExpressionSyntax)visitedNode.Expression).WithName(genericName)
@@ -607,73 +607,13 @@ namespace RRCG
                 if (symbolInfo.Symbol is not INamedTypeSymbol) return base.VisitIdentifierName(node).NormalizeWhitespace();
             }
 
+            if (RRTypesUtils.ImplemetedRRTypes.Contains(node.Identifier.ValueText))
+            {
+                return IdentifierName(node.Identifier.ValueText + "Port").NormalizeWhitespace();
+            }
+
             switch (node.Identifier.ValueText)
             {
-                case "AI":
-                case "Vector3":
-                case "Quaternion":
-                case "TriggerHandle":
-                case "WelcomeMat":
-                case "StudioObject":
-                case "AnalyticsPayload":
-                case "Player":
-                case "RecRoomObject":
-                case "Combatant":
-                case "PatrolPoint":
-                case "Audio":
-                case "AudioPlayer":
-                case "Consumable":
-                case "RoomKey":
-                case "BackgroundObjects":
-                case "Color":
-                case "Beacon":
-                case "Button":
-                case "TextScreen":
-                case "CollisionData":
-                case "Costume":
-                case "DestinationRoom":
-                case "Die":
-                case "RoomDoor":
-                case "Emitter":
-                case "ExplosionEmitter":
-                case "Fog":
-                case "HUDElement":
-                case "Reward":
-                case "GroundVehicle":
-                case "GunHandle":
-                case "HolotarProjector":
-                case "InteractionVolume":
-                case "InvisibleCollision":
-                case "LaserPointer":
-                case "Light":
-                case "Piston":
-                case "PlayerOutfitSlot":
-                case "PlayerWorldUI":
-                case "ProjectileLauncher":
-                case "RemoteVideoPlayer":
-                case "PlayerSpawnPointV2":
-                case "Skydome":
-                case "Sun":
-                case "SunDirection":
-                case "Rotator":
-                case "Seat":
-                case "SFX":
-                case "Text":
-                case "ToggleButton":
-                case "MotionTrail":
-                case "TriggerVolume":
-                case "VectorComponent":
-                case "RoomCurrency":
-                case "HUDConstant":
-                case "SteeringEngine":
-                case "GiftDropShopItem":
-                case "ObjectiveMarker":
-                case "MeleeZone":
-                case "SwingHandle":
-                case "RoomLevelHUD":
-                case "Touchpad":
-                case "AnimationController":
-                    return IdentifierName(node.Identifier.ValueText + "Port").NormalizeWhitespace();
                 case "RRCGSource":
                     return IdentifierName("RRCGBuild");
             }
@@ -1054,7 +994,8 @@ namespace RRCG
                 var rewritten = (TypeSyntax)Visit(syntax);
                 invocationName = GenericName(Identifier("__SwitchExpression"))
                                     .WithTypeArgumentList(SyntaxUtils.TypeArgumentList(rewritten));
-            } else
+            }
+            else
             {
                 Debug.LogWarning($"Unable to resolve result type for switch expression: {node}");
             }
@@ -1285,7 +1226,8 @@ namespace RRCG
                                                         (ExpressionSyntax)Visit(maxExpression),
                                                         bodyLambda,
                                                         incrementorsLambda))));
-            } else
+            }
+            else
             {
                 var conditionLambda = ParenthesizedLambdaExpression()
                                       .WithExpressionBody((ExpressionSyntax)Visit(node.Condition));
@@ -1304,7 +1246,7 @@ namespace RRCG
             // Finally, wrap statements in an accessibility scope, and return a block.
             return Block(WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.General));
         }
-        
+
         bool DetermineForStatementOptimization(ForStatementSyntax node, out bool iterateUpward, out ILocalSymbol indexSymbol, out ExpressionSyntax minExpression, out ExpressionSyntax maxExpression)
         {
             iterateUpward = false;
@@ -1637,7 +1579,7 @@ namespace RRCG
         {
             // 1. Create arguments list to store our identifier names
             var arguments = new List<ExpressionSyntax>() { };
-            
+
             var promotedSymbols = new List<ISymbol>();
             foreach (var nodeToSearch in nodesToSearch)
             {

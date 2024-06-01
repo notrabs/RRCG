@@ -190,4 +190,6 @@ namespace RRCGSource
     {
         public static implicit operator Grabber(RecRoomObject data) => default;
     }
+
+    // remember to add types to RRTypesUtils.ImplemetedRRTypes
 }
