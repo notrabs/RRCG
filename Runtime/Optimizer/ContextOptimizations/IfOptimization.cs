@@ -121,8 +121,8 @@ namespace RRCG.Optimizer.ContextOptimizations
             ifNode.InputCount = 1;
             context.RemoveConnection(connectionToIf);
 
-            OptimizerUtils.RemoveDanglingDataNode(context, equalsNode);
-            foreach (var nodeToRemove in inputNodes) OptimizerUtils.RemoveDanglingDataNode(context, nodeToRemove);
+            GraphUtils.RemoveDanglingDataNode(context, equalsNode);
+            foreach (var nodeToRemove in inputNodes) GraphUtils.RemoveDanglingDataNode(context, nodeToRemove);
 
             return true;
         }
@@ -130,9 +130,9 @@ namespace RRCG.Optimizer.ContextOptimizations
         static bool OptimizePlayerGetIsLocalIf(Context context, Node ifNode, Node isLocalNode)
         {
             ifNode.Type = ChipType.IfPlayerIsLocal;
-            OptimizerUtils.CopyDataInputPort(context, isLocalNode.Port(0, 0), ifNode.Port(0, 1));
+            GraphUtils.CopyDataInputPort(context, isLocalNode.Port(0, 0), ifNode.Port(0, 1));
 
-            OptimizerUtils.RemoveDanglingDataNode(context, isLocalNode);
+            GraphUtils.RemoveDanglingDataNode(context, isLocalNode);
 
             return true;
         }
@@ -141,10 +141,10 @@ namespace RRCG.Optimizer.ContextOptimizations
         {
             ifNode.Type = ChipType.IfPlayerHasRoleR1;
             ifNode.InputCount += 1;
-            OptimizerUtils.CopyDataInputPort(context, hasRoleNode.Port(0, 0), ifNode.Port(0, 1));
-            OptimizerUtils.CopyDataInputPort(context, hasRoleNode.Port(0, 1), ifNode.Port(0, 2));
+            GraphUtils.CopyDataInputPort(context, hasRoleNode.Port(0, 0), ifNode.Port(0, 1));
+            GraphUtils.CopyDataInputPort(context, hasRoleNode.Port(0, 1), ifNode.Port(0, 2));
 
-            OptimizerUtils.RemoveDanglingDataNode(context, hasRoleNode);
+            GraphUtils.RemoveDanglingDataNode(context, hasRoleNode);
 
             return true;
         }
