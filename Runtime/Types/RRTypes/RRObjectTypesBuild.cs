@@ -198,4 +198,16 @@ namespace RRCGBuild
     {
         public static implicit operator GrabberPort(RecRoomObjectPort data) => new GrabberPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
+    public class ReplicatorPort : ReplicatorPortGen
+    {
+        public static implicit operator ReplicatorPort(RecRoomObjectPort data) => new ReplicatorPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
+    }
+    public class PathfinderPort : PathfinderPortGen
+    {
+        public static implicit operator PathfinderPort(RecRoomObjectPort data) => new PathfinderPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
+    }
+    public class LeaderboardProjectorPort : LeaderboardProjectorPortGen
+    {
+        public static implicit operator LeaderboardProjectorPort(RecRoomObjectPort data) => new LeaderboardProjectorPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
+    }
 }

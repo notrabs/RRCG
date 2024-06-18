@@ -190,6 +190,18 @@ namespace RRCGSource
     {
         public static implicit operator Grabber(RecRoomObject data) => default;
     }
+    public class Replicator : ReplicatorGen
+    {
+        public static implicit operator Replicator(RecRoomObject data) => default;
+    }
+    public class Pathfinder : PathfinderGen
+    {
+        public static implicit operator Pathfinder(RecRoomObject data) => default;
+    }
+    public class LeaderboardProjector : LeaderboardProjectorGen
+    {
+        public static implicit operator LeaderboardProjector(RecRoomObject data) => default;
+    }
 
     // remember to add types to RRTypesUtils.ImplemetedRRTypes
 }

@@ -48,9 +48,6 @@ namespace RRCGSource
     public class RecNetImage : RecNetImageGen { }
     public class RangedWeapon : RangedWeaponGen { }
     public class Storefront : StorefrontGen { }
-    public class Replicator : ReplicatorGen { }
-    public class Pathfinder : PathfinderGen { }
-    public class LeaderboardProjector : LeaderboardProjectorGen { }
     public class HolotarRecording : HolotarRecordingGen { }
     // remember to add types to RRTypesUtils.ImplemetedRRTypes
 }

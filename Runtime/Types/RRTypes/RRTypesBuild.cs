@@ -247,8 +247,5 @@ namespace RRCGBuild
     public class RecNetImagePort : RecNetImagePortGen { }
     public class RangedWeaponPort : RangedWeaponPortGen { }
     public class StorefrontPort : StorefrontPortGen { }
-    public class ReplicatorPort : ReplicatorPortGen { }
-    public class PathfinderPort : PathfinderPortGen { }
-    public class LeaderboardProjectorPort : LeaderboardProjectorPortGen { }
     public class HolotarRecordingPort : HolotarRecordingPortGen { }
 }
