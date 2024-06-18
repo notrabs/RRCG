@@ -3110,6 +3110,16 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static ListPort<InventoryItemPort> GetAllInventoryItemsWithTagR2(StringPort Tag)
+        {
+            Node node = new Node()
+            {Name = "Get All Inventory Items With Tag", Type = "80ad6681-f1b1-448e-acc2-0736e4f6841d", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Tag, new Port{Node = node, Index = 0});
+            var output_ports = new ListPort<InventoryItemPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static ListPort<PlayerPort> GetAllPlayers()
         {
             Node node = new Node()
@@ -4840,6 +4850,98 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static FloatPort HolotarProjectorGetCurrentTime(HolotarProjectorPort Target)
+        {
+            Node node = new Node()
+            {Name = "Holotar Projector Get Current Time", Type = "9cf6397d-6e8f-4945-95ac-65ec01530d57", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static FloatPort HolotarProjectorGetVolume(HolotarProjectorPort Target)
+        {
+            Node node = new Node()
+            {Name = "Holotar Projector Get Volume", Type = "973bc740-7e2b-48ac-911d-7eadfdc1833e", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static void HolotarProjectorPause(HolotarProjectorPort Target)
+        {
+            Node node = new Node()
+            {Name = "Holotar Projector Pause", Type = "8554d9ff-4ac3-4214-872b-4274fe5a8549", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void HolotarProjectorPlay(HolotarProjectorPort Target, HolotarRecordingPort Holotar)
+        {
+            Node node = new Node()
+            {Name = "Holotar Projector Play", Type = "17fa140e-4112-4362-8d04-16aa2ae95d44", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Holotar, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void HolotarProjectorResume(HolotarProjectorPort Target)
+        {
+            Node node = new Node()
+            {Name = "Holotar Projector Resume", Type = "df1624a8-1f41-4ff9-b893-1cf16c2a942d", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void HolotarProjectorSetCurrentTime(HolotarProjectorPort Target, FloatPort Time)
+        {
+            Node node = new Node()
+            {Name = "Holotar Projector Set Current Time", Type = "4529edc7-0fb7-48b0-a685-8600ac73b7df", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Time, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void HolotarProjectorSetVolume(HolotarProjectorPort Target, FloatPort Volume)
+        {
+            Node node = new Node()
+            {Name = "Holotar Projector Set Volume", Type = "4cc01ea7-d5ce-4877-883a-9492e6e48c9e", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Volume, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void HolotarProjectorStop(HolotarProjectorPort Target)
+        {
+            Node node = new Node()
+            {Name = "Holotar Projector Stop", Type = "943fdeaa-a9d8-4ddf-aa21-04bc3f022f58", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static HolotarRecordingPort HolotarRecording()
+        {
+            Node node = new Node()
+            {Name = "Holotar Recording", Type = "a01d55f9-3a69-4edf-bdfa-20beff06148a", InputCount = 0};
+            Context.current.Nodes.Add(node);
+            var output_ports = new HolotarRecordingPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static BoolPort HolsterObject(PlayerPort Player, RecRoomObjectPort ObjectToHolster, BoolPort ForceHolster, BoolPort Steal)
         {
             Node node = new Node()
@@ -5236,13 +5338,13 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static (StringPort Name, StringPort Description, BoolPort SupportsUseAction, RecNetImagePort Image) InventoryItemGetDefinitionR2(InventoryItemPort InventoryItem)
+        public static (StringPort Name, StringPort Description, BoolPort SupportsUseAction, RecNetImagePort Image, ListPort<StringPort> Tags) InventoryItemGetDefinitionR2(InventoryItemPort InventoryItem)
         {
             Node node = new Node()
             {Name = "Inventory Item Get Definition", Type = "93ad7158-81eb-453c-b3db-222b9630ae0e", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, InventoryItem, new Port{Node = node, Index = 0});
-            var output_ports = (new StringPort{Port = new Port{Node = node, Index = 0}}, new StringPort{Port = new Port{Node = node, Index = 1}}, new BoolPort{Port = new Port{Node = node, Index = 2}}, new RecNetImagePort{Port = new Port{Node = node, Index = 3}});
+            var output_ports = (new StringPort{Port = new Port{Node = node, Index = 0}}, new StringPort{Port = new Port{Node = node, Index = 1}}, new BoolPort{Port = new Port{Node = node, Index = 2}}, new RecNetImagePort{Port = new Port{Node = node, Index = 3}}, new ListPort<StringPort>{Port = new Port{Node = node, Index = 4}});
             return output_ports;
         }
 
@@ -5489,6 +5591,16 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static BoolPort LeaderboardGetProjectorEnabled(LeaderboardProjectorPort Target)
+        {
+            Node node = new Node()
+            {Name = "Leaderboard Get Projector Enabled", Type = "17d59d6e-c4c5-48de-b113-d708b740b48d", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static void LeaderboardSetLocalPlayerStat(IntPort Channel, IntPort Value)
         {
             Node node = new Node()
@@ -5496,6 +5608,17 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Channel, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void LeaderboardSetProjectorEnabled(LeaderboardProjectorPort Target, BoolPort Enabled)
+        {
+            Node node = new Node()
+            {Name = "Leaderboard Set Projector Enabled", Type = "a7b12a2f-2a22-4332-a810-f9497eb91ac4", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Enabled, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }
@@ -6559,6 +6682,15 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static BoolPort LocalPlayerGetIsThirdPersonActive()
+        {
+            Node node = new Node()
+            {Name = "Local Player Get Is Third Person Active", Type = "d6d17e6f-855e-4f5a-9e33-843a788ce3a0", InputCount = 0};
+            Context.current.Nodes.Add(node);
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static (StringPort HeaderText, ColorPort HeaderTextColor, StringPort BodyText, ColorPort BodyTextColor) LocalPlayerGetObjectiveLogContent()
         {
             Node node = new Node()
@@ -6593,6 +6725,16 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, VoiceRolloffDistance, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void LocalPlayerRequestThirdPerson(BoolPort Active)
+        {
+            Node node = new Node()
+            {Name = "Local Player Request Third Person", Type = "039fdbe0-31f2-4743-81ef-aa326b5e410f", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Active, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }
@@ -7324,6 +7466,197 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static BoolPort PathfinderGetEnableGroundClampingR2(PathfinderPort Pathfinder)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Get Enable Ground Clamping", Type = "04dfa392-1f6d-4f7e-9c84-777846cf9ff8", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 0});
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static FloatPort PathfinderGetMaxAccelerationR2(PathfinderPort Pathfinder)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Get Max Acceleration", Type = "af786307-3e91-4321-af54-6d2da29b070e", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 0});
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static FloatPort PathfinderGetMaxAngularSpeedR2(PathfinderPort Pathfinder)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Get Max Angular Speed", Type = "de4897c7-a9d2-4219-8674-e1714e1fc9ab", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 0});
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static FloatPort PathfinderGetMaxLinearSpeedR2(PathfinderPort Pathfinder)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Get Max Linear Speed", Type = "07dcdde1-97a5-4923-8d75-78a74c942731", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 0});
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static (BoolPort IsPathing, BoolPort HasArrived, BoolPort WithinSlowdownDistance) PathfinderGetPathingStateR2(PathfinderPort Pathfinder)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Get Pathing State", Type = "f39decac-fc9d-40fb-ae61-090946d64cfe", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 0});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}}, new BoolPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
+        }
+
+        public static (Vector3Port TargetPosition, FloatPort SlowdownDistance, FloatPort ArrivalDistance) PathfinderGetPathingTargetR2(PathfinderPort Pathfinder)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Get Pathing Target", Type = "9665db7b-085a-4453-9121-90e2d084e527", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 0});
+            var output_ports = (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
+        }
+
+        public static (BoolPort IsRotating, BoolPort HasArrived) PathfinderGetRotationStateR2(PathfinderPort Pathfinder)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Get Rotation State", Type = "0e2cbe0b-53e5-41ad-807a-b8be7a8fd019", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 0});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
+        }
+
+        public static (Vector3Port TargetDirection, FloatPort SlowdownAngle, FloatPort ArrivalAngle) PathfinderGetRotationTargetR2(PathfinderPort Pathfinder)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Get Rotation Target", Type = "0f6ac53c-d48b-4085-88b2-008a231c9716", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 0});
+            var output_ports = (new Vector3Port{Port = new Port{Node = node, Index = 0}}, new FloatPort{Port = new Port{Node = node, Index = 1}}, new FloatPort{Port = new Port{Node = node, Index = 2}});
+            return output_ports;
+        }
+
+        public static ListPort<StringPort> PathfinderGetTagsToIgnoreR2(PathfinderPort Pathfinder)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Get Tags To Ignore", Type = "11510599-9682-47ff-8218-91a83504275f", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 0});
+            var output_ports = new ListPort<StringPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static void PathfinderSetGroundClampingR2(PathfinderPort Pathfinder, BoolPort Enable)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Set Ground Clamping", Type = "9806dabd-f9e6-416c-9fe7-e0346de88c49", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Enable, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PathfinderSetMaxAccelerationR2(PathfinderPort Pathfinder, FloatPort MaxAcceleration)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Set Max Acceleration", Type = "c299c80e-2406-456f-9455-bf61008d90a2", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, MaxAcceleration, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PathfinderSetMaxAngularSpeedR2(PathfinderPort Pathfinder, FloatPort MaxAngularSpeed)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Set Max Angular Speed", Type = "dea14fad-b6ba-4ce6-ac67-57dfe0f88b39", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, MaxAngularSpeed, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PathfinderSetMaxLinearSpeedR2(PathfinderPort Pathfinder, FloatPort MaxLinearSpeed)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Set Max Linear Speed", Type = "5ed82dc3-f83d-457a-9605-dbd3a323754e", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, MaxLinearSpeed, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PathfinderSetTagsToIgnoreR2(PathfinderPort Pathfinder, ListPort<StringPort> TagsToIgnore)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Set Tags To Ignore", Type = "8b3b16ee-7078-4376-b56b-7da679c9ef14", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, TagsToIgnore, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PathfinderStartPathingToPositionR2(PathfinderPort Pathfinder, Vector3Port TargetPosition, FloatPort SlowdownDistance, FloatPort ArrivalDistance)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Start Pathing to Position", Type = "9eb2c95e-9602-4a0c-a78f-3674e23291ec", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, TargetPosition, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, SlowdownDistance, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, ArrivalDistance, new Port{Node = node, Index = 4});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PathfinderStartRotatingToDirectionR2(PathfinderPort Pathfinder, Vector3Port TargetDirection, FloatPort SlowdownAngle, FloatPort ArrivalAngle)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Start Rotating to Direction", Type = "d019ed0f-4fa9-464b-baad-22e5f89f25de", InputCount = 5};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, TargetDirection, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, SlowdownAngle, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, ArrivalAngle, new Port{Node = node, Index = 4});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PathfinderStopPathingR2(PathfinderPort Pathfinder)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Stop Pathing", Type = "03375be5-3c6e-4f11-8f65-3454c37ed9f6", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 1});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PathfinderStopRotatingR2(PathfinderPort Pathfinder)
+        {
+            Node node = new Node()
+            {Name = "Pathfinder Stop Rotating", Type = "4d13671f-026a-4eaa-8871-405c4c79f2b5", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Pathfinder, new Port{Node = node, Index = 1});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
         public static FloatPort PistonGetAcceleration(PistonPort Target)
         {
             Node node = new Node()
@@ -7513,10 +7846,10 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void PlayerDefinitionBoard()
+        public static void PlayerDefinitionBoardEmpty()
         {
             Node node = new Node()
-            {Name = "Player Definition Board", Type = "4c9e7840-0721-4d1c-b334-167f79d3bf40", InputCount = 0};
+            {Name = "Player Definition Board (Empty)", Type = "4c9e7840-0721-4d1c-b334-167f79d3bf40", InputCount = 0};
             Context.current.Nodes.Add(node);
             return;
         }
@@ -8309,14 +8642,6 @@ namespace RRCGGenerated
             OnPromptComplete(output_ports);
             ExecFlow.current = mainFlow;
             return output_ports;
-        }
-
-        public static void PlayerReferenceBoard()
-        {
-            Node node = new Node()
-            {Name = "Player Reference Board", Type = "e6b15a3d-e584-44d9-9a82-23dab32e2c24", InputCount = 0};
-            Context.current.Nodes.Add(node);
-            return;
         }
 
         public static void PlayerRemoveAimAssistTag(PlayerPort Player, StringPort Tag)
@@ -9460,6 +9785,56 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, Tags, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
+        }
+
+        public static IntPort ReplicatorGetActiveObjectsCountR2(ReplicatorPort Target)
+        {
+            Node node = new Node()
+            {Name = "Replicator Get Active Objects Count", Type = "62566b9c-6f09-46a0-8db9-8c4b895a2b79", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static ListPort<RecRoomObjectPort> ReplicatorGetActiveObjectsR2(ReplicatorPort Target)
+        {
+            Node node = new Node()
+            {Name = "Replicator Get Active Objects", Type = "8cb80c1a-3b88-4fc0-a1ff-8c069a57e726", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static void ReplicatorReturnObjectR2(RecRoomObjectPort Target)
+        {
+            Node node = new Node()
+            {Name = "Replicator Return Object", Type = "c7d598f7-c8ea-4022-b0b3-a23356e71768", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static (RecRoomObjectPort Object, BoolPort Success) ReplicatorSpawnNextObjectR2(ReplicatorPort Target, Vector3Port Position, QuaternionPort Orientation, BoolPort AssigntoPlayer, PlayerPort Player, AlternativeExec<(RecRoomObjectPort Object, BoolPort Success)> OnSpawnComplete)
+        {
+            Node node = new Node()
+            {Name = "Replicator Spawn Next Object", Type = "fc467906-eb16-4d6f-9c51-e5bd0fbcd492", InputCount = 6};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Position, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Orientation, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, AssigntoPlayer, new Port{Node = node, Index = 4});
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 5});
+            var output_ports = (new RecRoomObjectPort{Port = new Port{Node = node, Index = 2}}, new BoolPort{Port = new Port{Node = node, Index = 3}});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            var mainFlow = ExecFlow.current;
+            ExecFlow.current = new ExecFlow();
+            ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
+            OnSpawnComplete(output_ports);
+            ExecFlow.current = mainFlow;
+            return output_ports;
         }
 
         public static void RequestVelocitySetOverDuration(PlayerPort Object, FloatPort Multiplier, Vector3Port Velocity, FloatPort Duration)
@@ -11830,6 +12205,17 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static ColorPort StudioObjectGetPropertyColor(StudioObjectPort StudioObject, StringPort Property)
+        {
+            Node node = new Node()
+            {Name = "Studio Object Get Property - Color", Type = "a7f4e64d-41cf-4000-ab55-efbf0ea5d777", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, StudioObject, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, Property, new Port{Node = node, Index = 1});
+            var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static FloatPort StudioObjectGetPropertyFloat(StudioObjectPort StudioObject, StringPort Property)
         {
             Node node = new Node()
@@ -11852,6 +12238,17 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static QuaternionPort StudioObjectGetPropertyQuaternion(StudioObjectPort StudioObject, StringPort Property)
+        {
+            Node node = new Node()
+            {Name = "Studio Object Get Property - Quaternion", Type = "4ea0cf52-729d-459b-b70c-93306246da2c", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, StudioObject, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, Property, new Port{Node = node, Index = 1});
+            var output_ports = new QuaternionPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static StringPort StudioObjectGetPropertyString(StudioObjectPort StudioObject, StringPort Property)
         {
             Node node = new Node()
@@ -11860,6 +12257,17 @@ namespace RRCGGenerated
             node.ConnectInputPort(Context.current, StudioObject, new Port{Node = node, Index = 0});
             node.ConnectInputPort(Context.current, Property, new Port{Node = node, Index = 1});
             var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port StudioObjectGetPropertyVector3(StudioObjectPort StudioObject, StringPort Property)
+        {
+            Node node = new Node()
+            {Name = "Studio Object Get Property - Vector3", Type = "b96ed765-58d1-46f1-afa8-1b85a40fba50", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, StudioObject, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, Property, new Port{Node = node, Index = 1});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -12062,6 +12470,17 @@ namespace RRCGGenerated
         }
 
         public static void ToggleButtonSetIsPressed(ToggleButtonPort Target, BoolPort Value)
+        {
+            Node node = new Node()
+            {Name = "Toggle Button Set Is Pressed", Type = "4b4857a2-db4d-497e-a135-05b02842fd4e", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void ToggleButtonSetIsPressedDeprecated(ToggleButtonPort Target, BoolPort Value)
         {
             Node node = new Node()
             {Name = "Toggle Button Set Is Pressed", Type = "fdfb3857-3d13-4d66-9a05-f88586e9f821", InputCount = 3};

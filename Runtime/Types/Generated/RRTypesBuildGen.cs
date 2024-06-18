@@ -1015,6 +1015,41 @@ namespace RRCGGenerated
 
     public abstract class HolotarProjectorPortGen : AnyPort
     {
+        public FloatPort CurrentTime
+        {
+            get => CircuitBuilder.Singleton("RRCG_HolotarProjector_GetCurrentTime_" + PortKey(), () => ChipBuilder.HolotarProjectorGetCurrentTime((HolotarProjectorPort)this));
+            set => ChipBuilder.HolotarProjectorSetCurrentTime((HolotarProjectorPort)this, value);
+        }
+
+        public HolotarRecordingPort Play
+        {
+            set => ChipBuilder.HolotarProjectorPlay((HolotarProjectorPort)this, value);
+        }
+
+        public FloatPort Volume
+        {
+            get => CircuitBuilder.Singleton("RRCG_HolotarProjector_GetVolume_" + PortKey(), () => ChipBuilder.HolotarProjectorGetVolume((HolotarProjectorPort)this));
+            set => ChipBuilder.HolotarProjectorSetVolume((HolotarProjectorPort)this, value);
+        }
+
+        public void Pause()
+        {
+            ChipBuilder.HolotarProjectorPause((HolotarProjectorPort)this);
+        }
+
+        public void Resume()
+        {
+            ChipBuilder.HolotarProjectorResume((HolotarProjectorPort)this);
+        }
+
+        public void Stop()
+        {
+            ChipBuilder.HolotarProjectorStop((HolotarProjectorPort)this);
+        }
+    }
+
+    public abstract class HolotarRecordingPortGen : AnyPort
+    {
     }
 
     public abstract class HUDConstantPortGen : AnyPort
@@ -1097,7 +1132,7 @@ namespace RRCGGenerated
 
     public abstract class InventoryItemPortGen : AnyPort
     {
-        public (StringPort Name, StringPort Description, BoolPort SupportsUseAction, RecNetImagePort Image) DefinitionR2
+        public (StringPort Name, StringPort Description, BoolPort SupportsUseAction, RecNetImagePort Image, ListPort<StringPort> Tags) DefinitionR2
         {
             get => CircuitBuilder.Singleton("RRCG_InventoryItem_GetDefinitionR2_" + PortKey(), () => ChipBuilder.InventoryItemGetDefinitionR2((InventoryItemPort)this));
         }
@@ -1161,6 +1196,19 @@ namespace RRCGGenerated
         {
             get => CircuitBuilder.Singleton("RRCG_LaserPointer_GetLength_" + PortKey(), () => ChipBuilder.LaserPointerGetLength((LaserPointerPort)this));
             set => ChipBuilder.LaserPointerSetLength((LaserPointerPort)this, value);
+        }
+    }
+
+    public abstract class LeaderboardProjectorPortGen : AnyPort
+    {
+        public BoolPort LeaderboardGetProjectorEnabled
+        {
+            get => CircuitBuilder.Singleton("RRCG_LeaderboardProjector_LeaderboardGetProjectorEnabled_" + PortKey(), () => ChipBuilder.LeaderboardGetProjectorEnabled((LeaderboardProjectorPort)this));
+        }
+
+        public BoolPort LeaderboardSetProjectorEnabled
+        {
+            set => ChipBuilder.LeaderboardSetProjectorEnabled((LeaderboardProjectorPort)this, value);
         }
     }
 
@@ -1339,6 +1387,83 @@ namespace RRCGGenerated
         }
     }
 
+    public abstract class PathfinderPortGen : AnyPort
+    {
+        public BoolPort EnableGroundClampingR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Pathfinder_GetEnableGroundClampingR2_" + PortKey(), () => ChipBuilder.PathfinderGetEnableGroundClampingR2((PathfinderPort)this));
+        }
+
+        public BoolPort GroundClampingR2
+        {
+            set => ChipBuilder.PathfinderSetGroundClampingR2((PathfinderPort)this, value);
+        }
+
+        public FloatPort MaxAccelerationR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Pathfinder_GetMaxAccelerationR2_" + PortKey(), () => ChipBuilder.PathfinderGetMaxAccelerationR2((PathfinderPort)this));
+            set => ChipBuilder.PathfinderSetMaxAccelerationR2((PathfinderPort)this, value);
+        }
+
+        public FloatPort MaxAngularSpeedR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Pathfinder_GetMaxAngularSpeedR2_" + PortKey(), () => ChipBuilder.PathfinderGetMaxAngularSpeedR2((PathfinderPort)this));
+            set => ChipBuilder.PathfinderSetMaxAngularSpeedR2((PathfinderPort)this, value);
+        }
+
+        public FloatPort MaxLinearSpeedR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Pathfinder_GetMaxLinearSpeedR2_" + PortKey(), () => ChipBuilder.PathfinderGetMaxLinearSpeedR2((PathfinderPort)this));
+            set => ChipBuilder.PathfinderSetMaxLinearSpeedR2((PathfinderPort)this, value);
+        }
+
+        public (BoolPort IsPathing, BoolPort HasArrived, BoolPort WithinSlowdownDistance) PathingStateR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Pathfinder_GetPathingStateR2_" + PortKey(), () => ChipBuilder.PathfinderGetPathingStateR2((PathfinderPort)this));
+        }
+
+        public (Vector3Port TargetPosition, FloatPort SlowdownDistance, FloatPort ArrivalDistance) PathingTargetR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Pathfinder_GetPathingTargetR2_" + PortKey(), () => ChipBuilder.PathfinderGetPathingTargetR2((PathfinderPort)this));
+        }
+
+        public (BoolPort IsRotating, BoolPort HasArrived) RotationStateR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Pathfinder_GetRotationStateR2_" + PortKey(), () => ChipBuilder.PathfinderGetRotationStateR2((PathfinderPort)this));
+        }
+
+        public (Vector3Port TargetDirection, FloatPort SlowdownAngle, FloatPort ArrivalAngle) RotationTargetR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Pathfinder_GetRotationTargetR2_" + PortKey(), () => ChipBuilder.PathfinderGetRotationTargetR2((PathfinderPort)this));
+        }
+
+        public ListPort<StringPort> TagsToIgnoreR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Pathfinder_GetTagsToIgnoreR2_" + PortKey(), () => ChipBuilder.PathfinderGetTagsToIgnoreR2((PathfinderPort)this));
+            set => ChipBuilder.PathfinderSetTagsToIgnoreR2((PathfinderPort)this, value);
+        }
+
+        public void StartPathingToPositionR2(Vector3Port TargetPosition, FloatPort SlowdownDistance, FloatPort ArrivalDistance)
+        {
+            ChipBuilder.PathfinderStartPathingToPositionR2((PathfinderPort)this, TargetPosition, SlowdownDistance, ArrivalDistance);
+        }
+
+        public void StartRotatingToDirectionR2(Vector3Port TargetDirection, FloatPort SlowdownAngle, FloatPort ArrivalAngle)
+        {
+            ChipBuilder.PathfinderStartRotatingToDirectionR2((PathfinderPort)this, TargetDirection, SlowdownAngle, ArrivalAngle);
+        }
+
+        public void StopPathingR2()
+        {
+            ChipBuilder.PathfinderStopPathingR2((PathfinderPort)this);
+        }
+
+        public void StopRotatingR2()
+        {
+            ChipBuilder.PathfinderStopRotatingR2((PathfinderPort)this);
+        }
+    }
+
     public abstract class PatrolPointPortGen : AnyPort
     {
     }
@@ -1466,11 +1591,6 @@ namespace RRCGGenerated
         public (RecRoomObjectPort DominantHandObject, RecRoomObjectPort OffHandObject, RecRoomObjectPort LeftHipHolsterObject, RecRoomObjectPort RightHipHolsterObject, RecRoomObjectPort ShoulderHolsterObject) EquippedObjects
         {
             get => CircuitBuilder.Singleton("RRCG_Player_GetEquippedObjects_" + PortKey(), () => ChipBuilder.PlayerGetEquippedObjects((PlayerPort)this));
-        }
-
-        public BoolPort EquipShareCamera
-        {
-            set => ChipBuilder.EquipShareCamera((PlayerPort)this, value);
         }
 
         public StringPort FirstTag
@@ -2082,6 +2202,11 @@ namespace RRCGGenerated
         public BoolPort EquipObjectToOffHand(RecRoomObjectPort ObjectToEquip, BoolPort ForceEquip, BoolPort Steal)
         {
             return ChipBuilder.EquipObjectToOffHand((PlayerPort)this, ObjectToEquip, ForceEquip, Steal);
+        }
+
+        public BoolPort EquipShareCamera(BoolPort ForceEquip)
+        {
+            return ChipBuilder.EquipShareCamera((PlayerPort)this, ForceEquip);
         }
 
         public (RecRoomObjectPort Closest, IntPort ClosestIndex, FloatPort Distance) GetClosest(ListPort<RecRoomObjectPort> Targets)
@@ -2958,6 +3083,11 @@ namespace RRCGGenerated
             ChipBuilder.RemoveTags((RecRoomObjectPort)this, Tags);
         }
 
+        public void ReplicatorReturnObjectR2()
+        {
+            ChipBuilder.ReplicatorReturnObjectR2((RecRoomObjectPort)this);
+        }
+
         public void RequestVelocitySetOverDuration(FloatPort Multiplier, Vector3Port Velocity, FloatPort Duration)
         {
             ChipBuilder.RequestVelocitySetOverDuration((RecRoomObjectPort)this, Multiplier, Velocity, Duration);
@@ -3101,6 +3231,24 @@ namespace RRCGGenerated
 
     public abstract class RemoteVideoPlayerPortGen : AnyPort
     {
+    }
+
+    public abstract class ReplicatorPortGen : AnyPort
+    {
+        public IntPort ActiveObjectsCountR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Replicator_GetActiveObjectsCountR2_" + PortKey(), () => ChipBuilder.ReplicatorGetActiveObjectsCountR2((ReplicatorPort)this));
+        }
+
+        public ListPort<RecRoomObjectPort> ActiveObjectsR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Replicator_GetActiveObjectsR2_" + PortKey(), () => ChipBuilder.ReplicatorGetActiveObjectsR2((ReplicatorPort)this));
+        }
+
+        public (RecRoomObjectPort Object, BoolPort Success) SpawnNextObjectR2(Vector3Port Position, QuaternionPort Orientation, BoolPort AssigntoPlayer, PlayerPort Player, AlternativeExec<(RecRoomObjectPort Object, BoolPort Success)> OnSpawnComplete)
+        {
+            return ChipBuilder.ReplicatorSpawnNextObjectR2((ReplicatorPort)this, Position, Orientation, AssigntoPlayer, Player, OnSpawnComplete);
+        }
     }
 
     public abstract class RewardPortGen : AnyPort
@@ -3344,6 +3492,11 @@ namespace RRCGGenerated
             return ChipBuilder.StudioObjectGetPropertyBool((StudioObjectPort)this, Property);
         }
 
+        public ColorPort GetPropertyColor(StringPort Property)
+        {
+            return ChipBuilder.StudioObjectGetPropertyColor((StudioObjectPort)this, Property);
+        }
+
         public FloatPort GetPropertyFloat(StringPort Property)
         {
             return ChipBuilder.StudioObjectGetPropertyFloat((StudioObjectPort)this, Property);
@@ -3354,9 +3507,19 @@ namespace RRCGGenerated
             return ChipBuilder.StudioObjectGetPropertyInt((StudioObjectPort)this, Property);
         }
 
+        public QuaternionPort GetPropertyQuaternion(StringPort Property)
+        {
+            return ChipBuilder.StudioObjectGetPropertyQuaternion((StudioObjectPort)this, Property);
+        }
+
         public StringPort GetPropertyString(StringPort Property)
         {
             return ChipBuilder.StudioObjectGetPropertyString((StudioObjectPort)this, Property);
+        }
+
+        public Vector3Port GetPropertyVector3(StringPort Property)
+        {
+            return ChipBuilder.StudioObjectGetPropertyVector3((StudioObjectPort)this, Property);
         }
     }
 
@@ -3434,6 +3597,11 @@ namespace RRCGGenerated
         {
             get => CircuitBuilder.Singleton("RRCG_ToggleButton_GetIsPressed_" + PortKey(), () => ChipBuilder.ToggleButtonGetIsPressed((ToggleButtonPort)this));
             set => ChipBuilder.ToggleButtonSetIsPressed((ToggleButtonPort)this, value);
+        }
+
+        public BoolPort IsPressedDeprecated
+        {
+            set => ChipBuilder.ToggleButtonSetIsPressedDeprecated((ToggleButtonPort)this, value);
         }
     }
 

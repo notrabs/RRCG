@@ -618,6 +618,9 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Unlocks a room key for the target player. Multiple award room key requests from the same client are sent in bulk with a one-second cooldown.
+        /// The Success port will be TRUE if the key was successfully unlocked for the player or if the player previously owned the key. If the key could not be awarded the Success port will be FALSE.
+        /// Use the Log Output toggle in the configuration settings to see more information about why a failure occurred. Logging output may impact room performance and should be toggled off when not in use.
+        /// </summary>
         public static bool AwardRoomKeyR1(RoomKey RoomKey, Player Player, AlternativeExec<bool> OnAwardRoomKeyComplete)
         {
             return default;
@@ -2012,6 +2015,8 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Equips Share Camera to a player's dominant hand if the player is not already holding the Share Camera.
+        /// Returns success if the target player is already holding their Share Camera in either hand.
+        /// </summary>
         public static bool EquipShareCamera(Player Player, bool ForceEquip)
         {
             return default;
@@ -2186,6 +2191,14 @@ namespace RRCGGenerated
         /// Returns a list with all the inventory items in this room.
         /// </summary>
         public static List<InventoryItem> GetAllInventoryItemsInRoomR2()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns a List of Room Inventory Items that are tagged with the inputted tag.
+        /// </summary>
+        public static List<InventoryItem> GetAllInventoryItemsWithTagR2(string Tag)
         {
             return default;
         }
@@ -3384,6 +3397,78 @@ namespace RRCGGenerated
             return default;
         }
 
+        /// <summary>
+        /// Get current playback time for Target Holotar Projector
+        /// </summary>
+        public static float HolotarProjectorGetCurrentTime(HolotarProjector Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Holotar Projector get playback volume
+        /// </summary>
+        public static float HolotarProjectorGetVolume(HolotarProjector Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Pasue Holotar Projector at current playback time
+        /// </summary>
+        public static void HolotarProjectorPause(HolotarProjector Target)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Load & play Holotar Recording from the start through the Target Projector. Play will always begin the clip from 0s
+        /// </summary>
+        public static void HolotarProjectorPlay(HolotarProjector Target, HolotarRecording Holotar)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Resume playing the currently loaded clip on the Target Projector from the current time 
+        /// </summary>
+        public static void HolotarProjectorResume(HolotarProjector Target)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Set playback time for Target Projector when paused or playing
+        /// </summary>
+        public static void HolotarProjectorSetCurrentTime(HolotarProjector Target, float Time)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Holotar Projector set playback volume
+        /// </summary>
+        public static void HolotarProjectorSetVolume(HolotarProjector Target, float Volume)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Holotar Projector end play
+        /// </summary>
+        public static void HolotarProjectorStop(HolotarProjector Target)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Constant to record and save a Holotar clip
+        /// </summary>
+        public static HolotarRecording HolotarRecording()
+        {
+            return default;
+        }
+
         public static bool HolsterObject(Player Player, RecRoomObject ObjectToHolster, bool ForceHolster, bool Steal)
         {
             return default;
@@ -3632,9 +3717,9 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Gets the friendly name, description, and image of the given inventory item.
+        /// Gets the friendly name, description, image, and tag names of the given inventory item.
         /// </summary>
-        public static (string Name, string Description, bool SupportsUseAction, RecNetImage Image) InventoryItemGetDefinitionR2(InventoryItem InventoryItem)
+        public static (string Name, string Description, bool SupportsUseAction, RecNetImage Image, List<string> Tags) InventoryItemGetDefinitionR2(InventoryItem InventoryItem)
         {
             return default;
         }
@@ -3790,9 +3875,25 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Outputs True if the target Leaderboard object is enabled.
+        /// </summary>
+        public static bool LeaderboardGetProjectorEnabled(LeaderboardProjector Target)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Set the leaderboard stat for the local player on the given stat channel.
         /// </summary>
         public static void LeaderboardSetLocalPlayerStat(int Channel, int Value)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the enabled state of the target Leaderboard object.
+        /// </summary>
+        public static void LeaderboardSetProjectorEnabled(LeaderboardProjector Target, bool Enabled)
         {
             return;
         }
@@ -4518,6 +4619,9 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Clears the local player's override of target player's voice rolloff distance.
+        /// 
+        /// The local player's reckoning of the target player's voice rolloff returns to being based on that player's voice rolloff distance property.
+        /// </summary>
         public static void LocalPlayerClearPlayerVoiceRolloffOverrideR2(Player Player)
         {
             return;
@@ -4556,6 +4660,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Checks if the local player is in third-person mode. This always returns false for platforms that do not support third person like VR.
+        /// </summary>
+        public static bool LocalPlayerGetIsThirdPersonActive()
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Get the current displayed content on the Objective Log HUD UI
         /// </summary>
         public static (string HeaderText, Color HeaderTextColor, string BodyText, Color BodyTextColor) LocalPlayerGetObjectiveLogContent()
@@ -4578,7 +4690,18 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Override the voice rolloff distance of the target player as heard by the local player.
+        /// 
+        /// Other players' perception of the target player's voice rolloff will be unaffected.
+        /// </summary>
         public static void LocalPlayerOverridePlayerVoiceRolloffR2(Player Player, float VoiceRolloffDistance)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Tries to set the local player to third or first person. If Active is true, the local player will be changed to third person. If Active is false, they will be changed to first person. No effect on platforms where third person is unsupported, like VR.
+        /// </summary>
+        public static void LocalPlayerRequestThirdPerson(bool Active)
         {
             return;
         }
@@ -4861,6 +4984,9 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Checks if a path exists between two positions using the NavMesh. 
+        /// 
+        /// Use "Max Distance" to indicate how far away from the NavMesh the positions can be. Lower values increase precision and can cause valid paths to register false if the target positions are not close enough to the NavMesh, while higher values decrease precision and can return a false positive if the margin is wide enough to include points that are not near the NavMesh.
+        /// </summary>
         public static bool NavMeshCanPathBetween(Vector3 StartPosition, Vector3 EndPosition, float MaxDistance)
         {
             return default;
@@ -5127,6 +5253,149 @@ namespace RRCGGenerated
             return default;
         }
 
+        public static bool PathfinderGetEnableGroundClampingR2(Pathfinder Pathfinder)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Gets the maximum acceleration of the Pathfinder, in meters per second squared
+        /// </summary>
+        public static float PathfinderGetMaxAccelerationR2(Pathfinder Pathfinder)
+        {
+            return default;
+        }
+
+        public static float PathfinderGetMaxAngularSpeedR2(Pathfinder Pathfinder)
+        {
+            return default;
+        }
+
+        public static float PathfinderGetMaxLinearSpeedR2(Pathfinder Pathfinder)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Gets the Pathfinder's current pathing state information
+        /// * Is Pathing
+        /// * Has Arrived
+        /// * Within Slowdown Distance
+        /// </summary>
+        public static (bool IsPathing, bool HasArrived, bool WithinSlowdownDistance) PathfinderGetPathingStateR2(Pathfinder Pathfinder)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Gets the current pathing target (target position, slowdown and arrival distances) of the Pathfinder
+        /// </summary>
+        public static (Vector3 TargetPosition, float SlowdownDistance, float ArrivalDistance) PathfinderGetPathingTargetR2(Pathfinder Pathfinder)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Gets the Pathfinder's current rotation state information
+        /// * Is Rotating
+        /// * Has Arrived
+        /// </summary>
+        public static (bool IsRotating, bool HasArrived) PathfinderGetRotationStateR2(Pathfinder Pathfinder)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Gets the current pathing target (target direction, slowdown and arrival angles in degress) of the Pathfinder
+        /// </summary>
+        public static (Vector3 TargetDirection, float SlowdownAngle, float ArrivalAngle) PathfinderGetRotationTargetR2(Pathfinder Pathfinder)
+        {
+            return default;
+        }
+
+        public static List<string> PathfinderGetTagsToIgnoreR2(Pathfinder Pathfinder)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Toggles enabling ground clamping for the pathfinder
+        /// </summary>
+        public static void PathfinderSetGroundClampingR2(Pathfinder Pathfinder, bool Enable)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the maximum linear acceleration of the Pathfinder, in meters per second squared
+        /// </summary>
+        public static void PathfinderSetMaxAccelerationR2(Pathfinder Pathfinder, float MaxAcceleration)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the maximum angular speed of the Pathfinder, in degrees per second
+        /// </summary>
+        public static void PathfinderSetMaxAngularSpeedR2(Pathfinder Pathfinder, float MaxAngularSpeed)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the maximum linear speed of the Pathfinder, in meters per second
+        /// </summary>
+        public static void PathfinderSetMaxLinearSpeedR2(Pathfinder Pathfinder, float MaxLinearSpeed)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the object tags that the pathfinder ignores on collision
+        /// </summary>
+        public static void PathfinderSetTagsToIgnoreR2(Pathfinder Pathfinder, List<string> TagsToIgnore)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Starts moving the Pathfinder towards the target position
+        /// It will slow down once it is within Slowdown Distance of the target
+        /// And stop once it is within Arrival Distance of the target
+        /// </summary>
+        public static void PathfinderStartPathingToPositionR2(Pathfinder Pathfinder, Vector3 TargetPosition, float SlowdownDistance, float ArrivalDistance)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Starts rotating the Pathfinder towards the target direction
+        /// Rotation target takes priority over automatically rotating to face the pathing direction
+        /// It will slow down once it is within Slowdown Angle (in degrees) of the target
+        /// And stop once it is within Arrival Angle (in degrees) of the target
+        /// </summary>
+        public static void PathfinderStartRotatingToDirectionR2(Pathfinder Pathfinder, Vector3 TargetDirection, float SlowdownAngle, float ArrivalAngle)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Stops moving the Pathfinder
+        /// </summary>
+        public static void PathfinderStopPathingR2(Pathfinder Pathfinder)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Clears the target rotation of a Pathfinder
+        /// Automatic rotation to face the pathing direction will resume
+        /// </summary>
+        public static void PathfinderStopRotatingR2(Pathfinder Pathfinder)
+        {
+            return;
+        }
+
         /// <summary>
         /// Gets the acceleration of a piston.
         /// </summary>
@@ -5214,6 +5483,8 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Adds a tag to the list of player tags that the provided player can target with aim assist.
+        /// By default, this list contains the #player tag.
+        /// </summary>
         public static void PlayerAddAimAssistTag(Player Player, string Tag)
         {
             return;
@@ -5262,7 +5533,7 @@ namespace RRCGGenerated
         /// <summary>
         /// This is very similar to an object board that you would find on any object, except this is for all players! After placing, make sure to configure it and make sure it is active. Edit into this board and add any other chips you'd like and know that each player will have the same logic on them when you hit done editing.
         /// </summary>
-        public static void PlayerDefinitionBoard()
+        public static void PlayerDefinitionBoardEmpty()
         {
             return;
         }
@@ -5277,6 +5548,8 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Gets the list of player tags that the provided player can target with aim assist.
+        /// By default, this list contains the #player tag.
+        /// </summary>
         public static List<string> PlayerGetAimAssistTags(Player Player)
         {
             return default;
@@ -5297,6 +5570,9 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Returns whether a given player is allowed to teleport.
+        /// 
+        /// Note: The value of this property is independent of a player's platform. (This value can be true for screens players.)
+        /// </summary>
         public static bool PlayerGetCanTeleportR2(Player Player)
         {
             return default;
@@ -5660,6 +5936,11 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Returns the voice rolloff distance for the target player, as reckoned by the local player.
+        /// 
+        /// If the local player has set an override for the target player's voice rolloff distance, the "Has Local Override" bool returns true, and the overridden value is returned.
+        /// 
+        /// Otherwise, the synced value of that player's voice rolloff distance is returned, and the bool returns false.
+        /// </summary>
         public static (float VoiceRolloffDistance, bool HasLocalOverride) PlayerGetVoiceRolloffDistanceR2(Player Player)
         {
             return default;
@@ -5752,6 +6033,8 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Outputs if the Player is holding their Maker Pen.
+        /// Useful for having different logic while creating.
+        /// </summary>
         public static bool PlayerIsHoldingMakerPen(Player Target)
         {
             return default;
@@ -5831,13 +6114,10 @@ namespace RRCGGenerated
             return default;
         }
 
-        public static void PlayerReferenceBoard()
-        {
-            return;
-        }
-
         /// <summary>
         /// Removes a tag from the list of player tags that the provided player can target with aim assist.
+        /// By default, this list contains the #player tag.
+        /// </summary>
         public static void PlayerRemoveAimAssistTag(Player Player, string Tag)
         {
             return;
@@ -5901,6 +6181,8 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Sets the list of player tags that the provided player can target with aim assist.
+        /// By default, this list contains the #player tag.
+        /// </summary>
         public static void PlayerSetAimAssistTags(Player Player, List<string> Tags)
         {
             return;
@@ -5913,6 +6195,9 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Sets whether a given player is allowed to teleport.
+        /// 
+        /// Note: Setting this to false does not prevent VR players from being in Teleport mode. It only prevents them from performing a teleport.
+        /// </summary>
         public static void PlayerSetCanTeleportR2(Player Player, bool CanTeleport)
         {
             return;
@@ -5952,6 +6237,9 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Sets whether manual sprint is required for a given player.
+        /// 
+        /// Players can choose whether they want to use auto sprint in their settings.
+        /// </summary>
         public static void PlayerSetForceManualSprintR2(Player Player, bool ForceManualSprint)
         {
             return;
@@ -5959,6 +6247,9 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Sets whether Virtual Height Mode is required for a given player.
+        /// 
+        /// Players can choose whether they want to use Physical Height Mode in their settings.
+        /// </summary>
         public static void PlayerSetForceVirtualHeightModeR2(Player Player, bool ForceVirtualHeightMode)
         {
             return;
@@ -6059,6 +6350,9 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Sets the voice rolloff distance for a given player as heard by all other players.
+        /// 
+        /// Beyond this distance, the target player cannot be heard.
+        /// </summary>
         public static void PlayerSetVoiceRolloffDistanceR2(Player Player, float VoiceRolloffDistance)
         {
             return;
@@ -6459,6 +6753,9 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Searches the room for all objects with the input tag and outputs them as a list.
+        /// 
+        /// Objects are guaranteed to be returned in the same order for every player in an room. The order may change between instances of a room or when the room is reloaded.
+        /// </summary>
         public static List<RecRoomObject> RecRoomObjectGetAllWithTagNew(string Tag)
         {
             return default;
@@ -6584,6 +6881,40 @@ namespace RRCGGenerated
         public static void RemoveTags(RecRoomObject Target, List<string> Tags)
         {
             return;
+        }
+
+        /// <summary>
+        /// Returns the total number of objects that have been spawned by the target replicator and are currently active.
+        /// </summary>
+        public static int ReplicatorGetActiveObjectsCountR2(Replicator Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns the list of objects that have been spawned by the target replicator and are currently active.
+        /// </summary>
+        public static List<RecRoomObject> ReplicatorGetActiveObjectsR2(Replicator Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// If the target object was spawned by a replicator, it will be despawned and returned to the pool. If not, the chip will no-op.
+        /// </summary>
+        public static void ReplicatorReturnObjectR2(RecRoomObject Target)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Spawns a copy of the object assigned to the target replicator at the position and orientation specified. If “Assign to Player” is true, the resulting object will be assigned to the specified player such that no other players can interact with it, and the object will be automatically returned when that player leaves the room. 
+        /// 
+        /// When the object is spawned, On Spawn Complete will fire and pass through an object reference. If it fails, such as when the limit of objects has been hit, the object reference will be invalid and the Success bool will be false.
+        /// </summary>
+        public static (RecRoomObject Object, bool Success) ReplicatorSpawnNextObjectR2(Replicator Target, Vector3 Position, Quaternion Orientation, bool AssigntoPlayer, Player Player, AlternativeExec<(RecRoomObject Object, bool Success)> OnSpawnComplete)
+        {
+            return default;
         }
 
         /// <summary>
@@ -7968,6 +8299,11 @@ namespace RRCGGenerated
             return default;
         }
 
+        public static Color StudioObjectGetPropertyColor(StudioObject StudioObject, string Property)
+        {
+            return default;
+        }
+
         public static float StudioObjectGetPropertyFloat(StudioObject StudioObject, string Property)
         {
             return default;
@@ -7978,7 +8314,17 @@ namespace RRCGGenerated
             return default;
         }
 
+        public static Quaternion StudioObjectGetPropertyQuaternion(StudioObject StudioObject, string Property)
+        {
+            return default;
+        }
+
         public static string StudioObjectGetPropertyString(StudioObject StudioObject, string Property)
+        {
+            return default;
+        }
+
+        public static Vector3 StudioObjectGetPropertyVector3(StudioObject StudioObject, string Property)
         {
             return default;
         }
@@ -8144,6 +8490,14 @@ namespace RRCGGenerated
         /// Sets a Toggle Button state to pressed.
         /// </summary>
         public static void ToggleButtonSetIsPressed(ToggleButton Target, bool Value)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets a Toggle Button state to pressed.
+        /// </summary>
+        public static void ToggleButtonSetIsPressedDeprecated(ToggleButton Target, bool Value)
         {
             return;
         }
@@ -8407,6 +8761,9 @@ namespace RRCGGenerated
 
         /// <summary>
         /// Clamps a vector's magnitude to a given max length.
+        /// Vector is unchanged if magnitude is already less.
+        /// Max length cannot be negative.
+        /// </summary>
         public static Vector3 Vector3ClampMagnitude(Vector3 Vector, float MaxLength)
         {
             return default;

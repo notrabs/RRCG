@@ -84,7 +84,11 @@ namespace RRCG
             "Handle",
             "RecNetImage",
             "RangedWeapon",
-            "Storefront"
+            "Storefront",
+            "Replicator",
+            "Pathfinder",
+            "LeaderboardProjector",
+            "HolotarRecording"
         };
     }
 }
