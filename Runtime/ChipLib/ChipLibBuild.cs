@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace RRCGBuild
 {
-    public class ChipLib: ChipBuilder
+    public static class ChipLib
     {
         public static T0 VariableCache<T0>(T0 value0)
             where T0 : AnyPort, new()
@@ -119,14 +119,14 @@ namespace RRCGBuild
             if (obj is StringPort sp) stringPort = sp;
             else stringPort = obj.ToString();
 
-            LogString(stringPort);
+            ChipBuilder.LogString(stringPort);
         }
 
         public static void AwaitDelay(FloatPort delay = null)
         {
             if (delay == null) delay = new FloatPort() { Data = 0f };
 
-            Delay(delay, delegate () { }, delegate () { });
+            ChipBuilder.Delay(delay, delegate () { }, delegate () { });
             ExecFlow.current.Ports[0].Index = 1;
         }
 
@@ -136,14 +136,14 @@ namespace RRCGBuild
             {
                 var lastExec = new Variable<FloatPort>();
 
-                var currentTime = TimeGetPreciseSeconds();
+                var currentTime = ChipBuilder.TimeGetPreciseSeconds();
 
-                var test = GreaterThan(
-                    Subtract(currentTime, lastExec.Value),
+                var test = ChipBuilder.GreaterThan(
+                    ChipBuilder.Subtract(currentTime, lastExec.Value),
                     interval
                 );
 
-                If(
+                ChipBuilder.If(
                     test,
                     () => lastExec.Value = currentTime,
                     () => CircuitBuilder.ClearExec()
@@ -153,10 +153,10 @@ namespace RRCGBuild
 
         public static IntPort RandomStoreCounter()
         {
-            var randomPort = RandomInt(0, 10);
+            var randomPort = ChipBuilder.RandomInt(0, 10);
             var randomNode = Context.lastSpawnedNode;
 
-            var sum = Add(randomPort, 1);
+            var sum = ChipBuilder.Add(randomPort, 1);
 
             randomNode.ConnectInputPort(Context.current, sum, new Port { Node = randomNode, Index = 1 });
             randomNode.ConnectInputPort(Context.current, sum, new Port { Node = randomNode, Index = 2 });
@@ -166,7 +166,7 @@ namespace RRCGBuild
 
         public static IntPort RandomStoreCounter(IntPort modulusPort)
         {
-            var randomPort = RandomInt(0, 10);
+            var randomPort = ChipBuilder.RandomInt(0, 10);
             var randomNode = Context.lastSpawnedNode;
 
             IntPort inputValue;
@@ -179,7 +179,7 @@ namespace RRCGBuild
                     cases.Add(i, i + 1);
                 }
 
-                inputValue = ValueIntegerSwitch(randomPort, 0, cases);
+                inputValue = ChipBuilder.ValueIntegerSwitch(randomPort, 0, cases);
             }
             else
             {
@@ -203,12 +203,12 @@ namespace RRCGBuild
                 cases.Add(i, options[i]);
             }
 
-            return ValueIntegerSwitch(index, options[0], cases);
+            return ChipBuilder.ValueIntegerSwitch(index, options[0], cases);
         }
 
         public static T PickRandom<T>(params T[] options) where T : AnyPort, new()
         {
-            var index = RandomInt(0, options.Length - 1);
+            var index = ChipBuilder.RandomInt(0, options.Length - 1);
             return ValueSwitch(index, options);
         }
 
@@ -227,11 +227,11 @@ namespace RRCGBuild
 
         public static IntPort RandomNonRepeating(IntPort num)
         {
-            var sum = Add(0, RandomInt(0, (int)num - 1));
+            var sum = ChipBuilder.Add(0, ChipBuilder.RandomInt(0, (int)num - 1));
             var addNode = Context.lastSpawnedNode;
 
-            var newValue = Modulo(sum, num);
-            var nonRepeating = RandomInt(newValue, newValue);
+            var newValue = ChipBuilder.Modulo(sum, num);
+            var nonRepeating = ChipBuilder.RandomInt(newValue, newValue);
 
             addNode.ConnectInputPort(nonRepeating, 0);
 
@@ -239,34 +239,34 @@ namespace RRCGBuild
         }
         public static IntPort RandomNonRepeating(IVariable<IntPort> variable, IntPort num)
         {
-            var newValue = Modulo(Add(variable.Value, RandomInt(0, (int)num - 1)), num);
+            var newValue = ChipBuilder.Modulo(ChipBuilder.Add(variable.Value, ChipBuilder.RandomInt(0, (int)num - 1)), num);
             variable.Value = newValue;
             return variable.Value;
         }
 
         public static T GetClosest<T>(Vector3Port postion, string tag) where T : AnyPort, new()
         {
-            return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllWithTag(tag)).Closest;
+            return (T)(dynamic)ChipBuilder.GetClosest(postion, ChipBuilder.RecRoomObjectGetAllWithTag(tag)).Closest;
         }
         public static T GetClosest<T>(PlayerPort postion, string tag) where T : AnyPort, new()
         {
-            return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllWithTag(tag)).Closest;
+            return (T)(dynamic)ChipBuilder.GetClosest(postion, ChipBuilder.RecRoomObjectGetAllWithTag(tag)).Closest;
         }
         public static T GetClosest<T>(RecRoomObjectPort postion, string tag) where T : AnyPort, new()
         {
-            return (T)(dynamic)GetClosest(postion, RecRoomObjectGetAllWithTag(tag)).Closest;
+            return (T)(dynamic)ChipBuilder.GetClosest(postion, ChipBuilder.RecRoomObjectGetAllWithTag(tag)).Closest;
         }
 
         public static void RequireKeyR1(Guid keyGuid)
         {
             var key = CircuitBuilder.Singleton("RequireKey_" + keyGuid, () => ChipBuilder.RoomKeyConstantR1(new RoomKeyData(keyGuid)));
 
-            var ownsKey = PlayerOwnsRoomKeyR1(PlayerPort.Local, key, (_) => { });
+            var ownsKey = ChipBuilder.PlayerOwnsRoomKeyR1(PlayerPort.Local, key, (_) => { });
             ExecFlow.current.Ports[0].Index = 1;
 
-            If(ownsKey, delegate () { }, delegate ()
+            ChipBuilder.If(ownsKey, delegate () { }, delegate ()
             {
-                ShowPurchasePromptR1(key, PlayerPort.Local);
+                ChipBuilder.ShowPurchasePromptR1(key, PlayerPort.Local);
                 CircuitBuilder.ClearExec();
             });
         }
@@ -279,7 +279,7 @@ namespace RRCGBuild
 
             var intialValues = new T[intCount];
             Array.Fill(intialValues, value);
-            return ListCreate<T>(intialValues);
+            return ChipBuilder.ListCreate<T>(intialValues);
         }
 
         public class LUT<T> where T : AnyPort, new()
@@ -322,7 +322,7 @@ namespace RRCGBuild
                 var y = LUT_Data_Single<FloatPort>(index, list.Select(v => v.y));
                 var z = LUT_Data_Single<FloatPort>(index, list.Select(v => v.z));
 
-                return Vector3Create(x, y, z);
+                return ChipBuilder.Vector3Create(x, y, z);
             }
 
             private QuaternionPort LUT_Data_Quaternion(IntPort index, IEnumerable<QuaternionPort> list)
@@ -332,7 +332,7 @@ namespace RRCGBuild
                 var z = LUT_Data_Single<FloatPort>(index, list.Select(v => v.z));
                 var w = LUT_Data_Single<FloatPort>(index, list.Select(v => v.w));
 
-                return QuaternionCreate(x, y, z, w);
+                return ChipBuilder.QuaternionCreate(x, y, z, w);
             }
 
             private PrimitiveT LUT_Data_Single<PrimitiveT>(IntPort index, IEnumerable<PrimitiveT> primitiveList) where PrimitiveT : AnyPort, new()
@@ -473,19 +473,27 @@ namespace RRCGBuild
         public static FloatPort FloatConst(FloatPort value)
         {
             // This forces the type to float. There might be a better way to do this.
-            return CircuitBuilder.Singleton($"ChipLib_FloatConst_{value.PortKey()}", () => Root(value, 1));
+            return CircuitBuilder.Singleton($"ChipLib_FloatConst_{value.PortKey()}", () => ChipBuilder.Root(value, 1));
         }
 
         public static IntPort IntConst(IntPort value)
         {
             // This forces the type to int. There might be a better way to do this.
-            return CircuitBuilder.Singleton($"ChipLib_IntConst_{value.PortKey()}", () => BitOr(value, 0));
+            return CircuitBuilder.Singleton($"ChipLib_IntConst_{value.PortKey()}", () => ChipBuilder.BitOr(value, 0));
         }
 
 
         public static (BoolPort Hit, PlayerPort Player, RecRoomObjectPort Object, FloatPort Distance, Vector3Port HitPosition, Vector3Port SurfaceNormal) Raycast(Vector3Port from, Vector3Port to, RaycastData config)
         {
-            return ChipBuilder.Raycast(from, to - from, Distance(from, to), config);
+            return ChipBuilder.Raycast(from, to - from, ChipBuilder.Distance(from, to), config);
         }
+
+        public static (BoolPort Success, RecRoomObjectPort Object) AwaitSpawn(this ReplicatorPort replicator, Vector3Port position, QuaternionPort rotation, BoolPort assignToPlayer, PlayerPort assignPlayer)
+        {
+            var result = ChipBuilder.ReplicatorSpawnNextObjectR2(replicator, position, rotation, assignToPlayer, assignPlayer, (_) => { });
+            ExecFlow.current.Ports[0].Index = 1;
+            return (result.Success, result.Object);
+        }
+
     }
 }

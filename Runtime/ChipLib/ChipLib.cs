@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RRCGSource
 {
-    public class ChipLib
+    public static class ChipLib
     {
         /// <summary>
         /// Creates a temporary variable to cache a value for further executions.
@@ -127,5 +127,10 @@ namespace RRCGSource
         /// A Raycast chip, but defined by two points instead of direction+distance.
         /// </summary>
         public static (bool Hit, Player Player, RecRoomObject Object, float Distance, Vector3 HitPosition, Vector3 SurfaceNormal) Raycast(Vector3 from, Vector3 to, RaycastData config) => default;
+
+        /// <summary>
+        /// Spawns an object from a Replicator, and waits for the operation to complete.
+        /// </summary>
+        public static (bool Success, RecRoomObject Object) AwaitSpawn(this Replicator replicator, Vector3 position, Quaternion rotation, bool assignToPlayer, Player assignPlayer) => default;
     }
 }
