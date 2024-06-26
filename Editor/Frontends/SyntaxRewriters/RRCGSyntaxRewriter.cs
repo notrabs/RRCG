@@ -4,7 +4,7 @@ using Microsoft.CodeAnalysis;
 using System.Linq;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using System;
-using UnityEngine;
+using System.Collections.Generic;
 
 namespace RRCG
 {
@@ -69,16 +69,48 @@ namespace RRCG
 
         public override SyntaxNode VisitClassDeclaration(ClassDeclarationSyntax node)
         {
-            if (node.BaseList?.Types.Any(t =>
-                t.ToString().Contains("StudioObjectDescriptor")) ?? false)
+            // TODO: This new approach is still not really ideal,
+            //       at least for the circuit descriptors. Because inheriting
+            //       all the chips means they're accessible all the way down,
+            //       polluting the intellisense for CircuitLibraries.
+            //
+            //       Ideally we can move away from inheritance and use Attributes,
+            //       and expose the chips in a static class so you can do "using static".
+
+            var studioObjectTypes = new ITypeSymbol[]
+            {
+                SemanticModel.Compilation.GetTypeByMetadataName("RRCGSource.StudioObjectDescriptor")
+            };
+
+            var circuitDescriptorTypes = new ITypeSymbol[]
+            {
+                SemanticModel.Compilation.GetTypeByMetadataName("RRCGSource.CircuitDescriptor"),
+                SemanticModel.Compilation.GetTypeByMetadataName("RRCGSource.CircuitLibrary")
+            };
+
+            var type = SemanticModel.GetDeclaredSymbol(node);
+            var baseTypes = WalkInheritanceChain(type);
+            
+            if (baseTypes.Intersect(studioObjectTypes).Count() > 0)
                 return studioObjectDescriptorRewriter.VisitClassDeclarationRoot(node);
-            if (node.BaseList?.Types.Any(t =>
-                t.ToString().Contains("CircuitDescriptor") ||
-                t.ToString().Contains("IntPacker") || // This is really not ideal...
-                t.ToString().Contains("CircuitLibrary")) ?? false)
+
+            if (baseTypes.Intersect(circuitDescriptorTypes).Count() > 0)
                 return circuitDescriptorRewriter.VisitClassDeclarationRoot(node);
 
             return base.VisitClassDeclaration(node);
+        }
+
+        public List<ITypeSymbol> WalkInheritanceChain(ITypeSymbol target)
+        {
+            var list = new List<ITypeSymbol>();
+            var current = target;
+            while (current.BaseType != null)
+            {
+                list.Add(current.BaseType);
+                current = current.BaseType;
+            }
+
+            return list;
         }
     }
 }
