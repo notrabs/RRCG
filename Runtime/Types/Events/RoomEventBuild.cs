@@ -8,7 +8,7 @@ namespace RRCGBuild
         public static void Hz30(AlternativeExec<FloatPort> onHz30) => CircuitBuilder.InlineGraph(() => onHz30(Hz30()));
 
         public static FloatPort Update() => ChipBuilder.EventReceiver<FloatPort>(RoomEvents.Update);
-        public static void Update(AlternativeExec<FloatPort> onUpdate) => CircuitBuilder.InlineGraph(() => onUpdate(Hz30()));
+        public static void Update(AlternativeExec<FloatPort> onUpdate) => CircuitBuilder.InlineGraph(() => onUpdate(Update()));
 
         public static StringPort TestEvent() => ChipBuilder.EventReceiver<StringPort>(RoomEvents.TestEvent);
         public static void TestEvent(AlternativeExec<StringPort> onTestEvent) => CircuitBuilder.InlineGraph(() => { onTestEvent(TestEvent()); });

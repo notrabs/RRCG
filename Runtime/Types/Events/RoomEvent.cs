@@ -12,7 +12,7 @@ namespace RRCGSource
         /// Update event running every graphics frame (may run multiple times per circuit tick)
         /// <returns>deltaTime</returns>
         public static float Update() => default;
-        public static void Update(AlternativeExec<float> onHz30) { }
+        public static void Update(AlternativeExec<float> onUpdate) { }
 
         /// <returns>The parameter configured by the user before sending Test Event</returns>
         public static string TestEvent() => default;
