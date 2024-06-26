@@ -9,6 +9,102 @@ namespace RRCGBuild
 
     public class AssignmentsTest : CircuitBuilder
     {
+        // We should see an accessibility scope inserted
+        // into both blocks, as well as a return scope for the getter.
+        public FloatPort PropertyAccessorTestBlocks
+        {
+            get
+            {
+                __BeginReturnScope("PropertyAccessorTestBlocks_get", typeof(FloatPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __Return<FloatPort>(PropertyAccessorBacking);
+                __EndAccessibilityScope();
+                return __EndReturnScope()!;
+            }
+
+            set
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                PropertyAccessorBacking = value;
+                __EndAccessibilityScope();
+            }
+        }
+
+        // This should translate in a similar way,
+        // with the same SemanticScope configuration
+        public FloatPort PropertyAccessorTestExpressions
+        {
+            get
+            {
+                __BeginReturnScope("PropertyAccessorTestExpressions_get", typeof(FloatPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __Return<FloatPort>(PropertyAccessorBacking);
+                __EndAccessibilityScope();
+                return __EndReturnScope()!;
+            }
+
+            set
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                PropertyAccessorBacking = value;
+                __EndAccessibilityScope();
+            }
+        }
+
+        // These should also behave the same.
+        public FloatPort PropertyAccessorTestMixedOne
+        {
+            get
+            {
+                __BeginReturnScope("PropertyAccessorTestMixedOne_get", typeof(FloatPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __Return<FloatPort>(PropertyAccessorBacking);
+                __EndAccessibilityScope();
+                return __EndReturnScope()!;
+            }
+
+            set
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                PropertyAccessorBacking = value;
+                __EndAccessibilityScope();
+            }
+        }
+
+        public FloatPort PropertyAccessorTestMixedTwo
+        {
+            get
+            {
+                __BeginReturnScope("PropertyAccessorTestMixedTwo_get", typeof(FloatPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __Return<FloatPort>(PropertyAccessorBacking);
+                __EndAccessibilityScope();
+                return __EndReturnScope()!;
+            }
+
+            set
+            {
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                PropertyAccessorBacking = value;
+                __EndAccessibilityScope();
+            }
+        }
+
+        // And this one shouldn't be affected,
+        // since it's marked unsafe.
+        public unsafe FloatPort PropertyAccessorTestUnsafe
+        {
+            get
+            {
+                return PropertyAccessorBacking;
+            }
+
+            set
+            {
+                PropertyAccessorBacking = value;
+            }
+        }
+
         public override void CircuitGraph()
         {
             __BeginReturnScope("CircuitGraph", null, null);
@@ -247,6 +343,7 @@ namespace RRCGBuild
         TypeTest.NestedTypeTest mehtodNestedTypeAssignmentAnonymous = __NamedAssignment<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignmentAnonymous", () => new());
         FloatPort outOfScopeType = __NamedAssignment<FloatPort>("outOfScopeType", () => Mathf.Sqrt(4));
         IVariable<IntPort> variableAssignment = __NamedAssignment<IVariable<IntPort>>("variableAssignment", () => new Variable<IntPort>());
+        FloatPort PropertyAccessorBacking = __NamedAssignment<FloatPort>("PropertyAccessorBacking", () => 0f);
     }
 
     class TypeTest

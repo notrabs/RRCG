@@ -235,6 +235,62 @@ namespace RRCG
             return method;
         }
 
+        public override SyntaxNode VisitAccessorDeclaration(AccessorDeclarationSyntax node)
+        {
+            // This method assumes the accessor is part of a property declaration
+            var visited = (AccessorDeclarationSyntax)base.VisitAccessorDeclaration(node);
+            if (node.Parent is not AccessorListSyntax accessorList ||
+                accessorList.Parent is not PropertyDeclarationSyntax property)
+                return visited;
+
+            // Do not rewrite if the property has the unsafe keyword
+            if (property.Modifiers.Any(SyntaxKind.UnsafeKeyword))
+                return node;
+
+            var isGetter = visited.Kind() == SyntaxKind.GetAccessorDeclaration;
+            var rewrittenType = (TypeSyntax)Visit(property.Type);
+
+            // Collect & visit statements
+            // We do this so we can insert our own accessibility scope
+            // with the correct AccessibilityScope kind..
+            //
+            // (We could just add the get/set accessor kinds to the switch in VisitBlock,
+            //  but the parenting check above would be a little too out-of-place.
+            //  Probably cleaner overall to visit manually in these cases..)
+
+            var visitedStatements = new SyntaxList<StatementSyntax>();
+            if (node.ExpressionBody != null)
+            {
+                var visitedExpression = (ExpressionSyntax)Visit(node.ExpressionBody.Expression);
+                visitedStatements = visitedStatements.Add(isGetter ? ValueReturnStatement(visitedExpression, rewrittenType)
+                                                                   : ExpressionStatement(visitedExpression));
+            } else if (node.Body != null)
+            {
+                visitedStatements = visitedStatements.AddRange(node.Body.Statements.Select(s => (StatementSyntax)Visit(s)));
+            } else
+            {
+                // The accessor has no functional body.
+                // We don't need to do anything more.
+                return visited;
+            }
+
+            // Wrap in accessibility scope
+            visitedStatements = WrapStatementsInAccessibilityScope(visitedStatements, AccessibilityScope.Kind.MethodRoot);
+
+            // Wrap in return scope (for getters)
+            if (isGetter)
+            {
+                var name = $"{property.Identifier}_get";
+                visitedStatements = WrapStatementsInReturnScope(visitedStatements, name, rewrittenType);
+            }
+
+            // Finally return the visited accessor,
+            // with a new block body from our statements
+            return visited.WithExpressionBody(null)
+                        .WithSemicolonToken(MissingToken(SyntaxKind.SemicolonToken))
+                        .WithBody(Block(visitedStatements));
+        }
+
         public override SyntaxNode VisitSimpleLambdaExpression(SimpleLambdaExpressionSyntax method)
         {
             var visitedMethod = (SimpleLambdaExpressionSyntax)base.VisitSimpleLambdaExpression(method);

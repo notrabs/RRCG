@@ -37,6 +37,65 @@ public class AssignmentsTest : CircuitDescriptor
     [CloudVariable("PropertyCloudVar1")]
     private int PropertyCloudVar1 { get; set; }
 
+    // Not strictly an assignments test,
+    // but just make sure we generate valid syntax for property accessors.
+    float PropertyAccessorBacking = 0f;
+
+    // We should see an accessibility scope inserted
+    // into both blocks, as well as a return scope for the getter.
+    public float PropertyAccessorTestBlocks
+    {
+        get
+        {
+            return PropertyAccessorBacking;
+        }
+        set
+        {
+            PropertyAccessorBacking = value;
+        }
+    }
+
+    // This should translate in a similar way,
+    // with the same SemanticScope configuration
+    public float PropertyAccessorTestExpressions
+    {
+        get => PropertyAccessorBacking;
+        set => PropertyAccessorBacking = value;
+    }
+
+    // These should also behave the same.
+    public float PropertyAccessorTestMixedOne
+    {
+        get
+        {
+            return PropertyAccessorBacking;
+        }
+        set => PropertyAccessorBacking = value;
+    }
+
+    public float PropertyAccessorTestMixedTwo
+    {
+        get => PropertyAccessorBacking;
+        set
+        {
+            PropertyAccessorBacking = value;
+        }
+    }
+
+    // And this one shouldn't be affected,
+    // since it's marked unsafe.
+    public unsafe float PropertyAccessorTestUnsafe
+    {
+        get
+        {
+            return PropertyAccessorBacking;
+        }
+        set
+        {
+            PropertyAccessorBacking = value;
+        }
+    }
+
     public override void CircuitGraph()
     {
         // Test var assignments
