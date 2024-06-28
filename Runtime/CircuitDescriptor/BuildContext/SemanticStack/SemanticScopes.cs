@@ -46,7 +46,7 @@ namespace RRCGBuild
             public void Break()
             {
                 ConditionalContext.WritePromotedVariables();
-                EnsureContinuityAndCheckDelays(ExecFlow.current);
+                EnsureContinuityAndCheckAsync(ExecFlow.current);
 
                 BreakFlow.Merge(ExecFlow.current);
                 ExecFlow.current.Clear();
@@ -56,7 +56,7 @@ namespace RRCGBuild
             public void Continue()
             {
                 ConditionalContext.WritePromotedVariables();
-                EnsureContinuityAndCheckDelays(ExecFlow.current);
+                EnsureContinuityAndCheckAsync(ExecFlow.current);
 
                 // Note: For CV2-native iterators (For, For Each),
                 // continue can just be implemented as clearing the current exec flow.
@@ -67,9 +67,9 @@ namespace RRCGBuild
 
             /// <summary>
             /// Ensures the provided ExecFlow connects back to SourceExec.
-            /// Also flags all open iterators on the SemanticStack as requiring a manual implementation if an After Delay port is present.
+            /// Also flags all open iterators on the SemanticStack as requiring a manual implementation if an async exec port is present.
             /// </summary>
-            public void EnsureContinuityAndCheckDelays(ExecFlow execFlow)
+            public void EnsureContinuityAndCheckAsync(ExecFlow execFlow)
             {
                 // Edge-case: No ports in the exec flow.
                 // If you have something like: while (true) { break; }, you can trigger this.
@@ -92,7 +92,7 @@ namespace RRCGBuild
                         continue; // Don't search behind this node
                     }
 
-                    if (node.Type == ChipType.Delay && currPort.EquivalentTo(node.Port(0, 1)))
+                    if (ChipTypeUtils.IsExecPortAsync(currPort))
                         SemanticStackUtils.AllIteratorsNeedManual();
 
                     var connectedExecPorts = Context.current.Connections

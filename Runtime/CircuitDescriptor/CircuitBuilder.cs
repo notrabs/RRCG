@@ -587,7 +587,7 @@ namespace RRCGBuild
             // Merge the continue flow into the current execution flow,
             // ensure continuity, and loop back to the if node.
             ExecFlow.current.Merge(whileScope.ContinueFlow);
-            whileScope.EnsureContinuityAndCheckDelays(ExecFlow.current);
+            whileScope.EnsureContinuityAndCheckAsync(ExecFlow.current);
             ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
 
             // Finally, add the Else port to the break flow,
@@ -963,7 +963,7 @@ namespace RRCGBuild
             conditional.ResetPromotedVariables(true);
 
             // Now validate execflow continuity from the current back to the "Loop" port
-            scope.EnsureContinuityAndCheckDelays(ExecFlow.current);
+            scope.EnsureContinuityAndCheckAsync(ExecFlow.current);
 
             // Now we can pop our semantic scopes
             SemanticStack.current.PopExpectedScope(conditional);
@@ -1092,8 +1092,8 @@ namespace RRCGBuild
                 conditional.ResetPromotedVariables(true);
             }
 
-            // Finally we can check for continuity and delays
-            scope.EnsureContinuityAndCheckDelays(ExecFlow.current);
+            // Finally we can check for continuity and async exec ports
+            scope.EnsureContinuityAndCheckAsync(ExecFlow.current);
 
             // Loop back to the If node
             ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
@@ -1175,8 +1175,8 @@ namespace RRCGBuild
             conditional.WritePromotedVariables();
             conditional.ResetPromotedVariables(true);
 
-            // Ensure continuity, check delays, and pop from the semantic stack.
-            scope.EnsureContinuityAndCheckDelays(ExecFlow.current);
+            // Ensure continuity, check for async execs, and pop from the semantic stack.
+            scope.EnsureContinuityAndCheckAsync(ExecFlow.current);
             SemanticStack.current.PopExpectedScope(conditional);
             SemanticStack.current.PopExpectedScope(scope);
 
