@@ -1776,12 +1776,13 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static void DataTable(AnyPort Port0)
+        public static void DataTable(AnyPort Port0, DataTableDefinitionData config)
         {
             Node node = new Node()
             {Name = "Data Table", Type = "cf314640-805c-4ebc-958c-d10ed65ca9b8", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Port0, new Port{Node = node, Index = 0});
+            node.DataTableDefinitionData = config;
             return;
         }
 

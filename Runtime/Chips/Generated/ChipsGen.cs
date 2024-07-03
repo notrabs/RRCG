@@ -1258,7 +1258,7 @@ namespace RRCGGenerated
         /// <summary>
         /// A single data table. Edit the data table through the configuration menu on this chip. Specify the data type of each column and use Data Table Read Cell to extract the contents for use in circuit graphs. Must save room to commit changes.
         /// </summary>
-        public static void DataTable(object Port0)
+        public static void DataTable(object Port0, DataTableDefinitionData config)
         {
             return;
         }
