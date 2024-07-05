@@ -1786,39 +1786,43 @@ namespace RRCGGenerated
             return;
         }
 
-        public static ListPort<IntPort> DataTableGetAllRowsContaining()
+        internal static ListPort<IntPort> DataTableGetAllRowsContaining(DataTableColumnData config)
         {
             Node node = new Node()
             {Name = "Data Table Get All Rows Containing", Type = "0a04aa3b-22bd-44a8-8613-9c02db855e88", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new ListPort<IntPort>{Port = new Port{Node = node, Index = 0}};
+            node.DataTableColumnData = config;
             return output_ports;
         }
 
-        public static IntPort DataTableGetColumnCount()
+        public static IntPort DataTableGetColumnCount(DataTableData config)
         {
             Node node = new Node()
             {Name = "Data Table Get Column Count", Type = "bf05749e-c89e-4aa2-97f8-31c105f45b49", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            node.DataTableData = config;
             return output_ports;
         }
 
-        public static IntPort DataTableGetFirstRowContaining()
+        internal static IntPort DataTableGetFirstRowContaining(DataTableColumnData config)
         {
             Node node = new Node()
             {Name = "Data Table Get First Row Containing", Type = "699f2839-0742-4b3d-80ca-4394fb60e7e2", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            node.DataTableColumnData = config;
             return output_ports;
         }
 
-        public static IntPort DataTableGetRowCount()
+        public static IntPort DataTableGetRowCount(DataTableData config)
         {
             Node node = new Node()
             {Name = "Data Table Get Row Count", Type = "e32052ce-0f54-4875-aa11-39e8c2761deb", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            node.DataTableData = config;
             return output_ports;
         }
 

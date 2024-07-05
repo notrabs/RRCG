@@ -38,9 +38,10 @@ namespace RRCGBuild
         public EventReceiverData EventReceiverData = null;
         public RaycastData RaycastData = null;
         public VariableData VariableData = null;
-        public DataTableColumnData DataTableColumnData = null;
         public FogData FogData = null;
         public DataTableDefinitionData DataTableDefinitionData = null;
+        public DataTableColumnData DataTableColumnData = null;
+        public DataTableData DataTableData = null;
 
         [JsonConverter(typeof(DefaultValuesConverter))]
         public Dictionary<(int Group, int Port), object> DefaultValues = new Dictionary<(int Group, int Port), object>();

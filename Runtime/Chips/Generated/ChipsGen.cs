@@ -1266,7 +1266,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns a list of row indices containing the given value within a specified Data Table. Configure the chip to select the data table and column.
         /// </summary>
-        public static List<int> DataTableGetAllRowsContaining()
+        internal static List<int> DataTableGetAllRowsContaining(DataTableColumnData config)
         {
             return default;
         }
@@ -1274,7 +1274,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the number of columns in the given data table, set by configuring the chip.
         /// </summary>
-        public static int DataTableGetColumnCount()
+        public static int DataTableGetColumnCount(DataTableData config)
         {
             return default;
         }
@@ -1282,7 +1282,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the first row containing the given value within a specified Data Table. Configure the chip to select the Data Table and column.
         /// </summary>
-        public static int DataTableGetFirstRowContaining()
+        internal static int DataTableGetFirstRowContaining(DataTableColumnData config)
         {
             return default;
         }
@@ -1290,7 +1290,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the number of rows in the given data table, set by configuring the chip.
         /// </summary>
-        public static int DataTableGetRowCount()
+        public static int DataTableGetRowCount(DataTableData config)
         {
             return default;
         }
@@ -6441,7 +6441,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies a value by itself an input number of times.
         /// </summary>
-        public static int Power(int Value)
+        internal static int Power(int Value)
         {
             return default;
         }
@@ -6449,7 +6449,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Multiplies a value by itself an input number of times.
         /// </summary>
-        public static float Power(float Value)
+        internal static float Power(float Value)
         {
             return default;
         }

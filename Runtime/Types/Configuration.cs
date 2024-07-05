@@ -23,9 +23,13 @@ namespace RRCG
             { "Spherecast", "RaycastData" },
             { "OverlapBox", "RaycastData" },
             { "OverlapSphere", "RaycastData" },
-            { "DataTableReadCell", "DataTableColumnData" },
             { "FogConstant", "FogData" },
-            { "DataTable", "DataTableDefinitionData" }
+            { "DataTable", "DataTableDefinitionData" },
+            { "DataTableReadCell", "DataTableColumnData" },
+            { "DataTableGetFirstRowContaining", "DataTableColumnData" },
+            { "DataTableGetAllRowsContaining", "DataTableColumnData" },
+            { "DataTableGetRowCount", "DataTableData" },
+            { "DataTableGetColumnCount", "DataTableData" },
         };
 
         public static string GetConfigType(string chipName)
@@ -131,6 +135,13 @@ namespace RRCG
     public record DataTableDefinitionData(
         string Name,
         (Type Type, string Name, object[] Cells)[] Columns
+    );
+
+    // Couldn't come up with a descriptive name for this one.
+    // This one is for Data Table Get Row/Column count.
+    // It refers to a specific Data Table, but not to a column.
+    public record DataTableData(
+        string DataTableName
     );
 }
 

@@ -937,6 +937,22 @@ namespace RRCGBuild
             return new T() { Port = Context.lastSpawnedNode.Port(0, 0) };
         }
 
+        public static IntPort DataTableGetFirstRowContaining<T>(T Value, DataTableColumnData config) where T : AnyPort, new()
+        {
+            var output = DataTableGetFirstRowContaining(config);
+            Context.lastSpawnedNode.InputCount = 1;
+            Context.lastSpawnedNode.ConnectInputPort(Value, 0);
+            return output;
+        }
+
+        public static ListPort<IntPort> DataTableGetAllRowsContaining<T>(T Value, DataTableColumnData config) where T : AnyPort, new()
+        {
+            var output = DataTableGetAllRowsContaining(config);
+            Context.lastSpawnedNode.InputCount = 1;
+            Context.lastSpawnedNode.ConnectInputPort(Value, 0);
+            return output;
+        }
+
         #endregion
 
         //

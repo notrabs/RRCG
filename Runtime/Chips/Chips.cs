@@ -31,6 +31,8 @@ namespace RRCGSource
         //
 
         public static T DataTableReadCell<T>(int Row, DataTableColumnData config) => default;
+        public static int DataTableGetFirstRowContaining<T>(T Value, DataTableColumnData config) => default;
+        public static List<int> DataTableGetAllRowsContaining<T>(T Value, DataTableColumnData config) => default;
 
         //
         // Misc
