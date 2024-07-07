@@ -54,6 +54,8 @@ namespace RRCG.Projects
 
             var projectDirectory = StandaloneProjectManager.GetProjectPath(projectName);
             var projectFiles = Directory.GetFiles(projectDirectory, "*.rrcg.cs", SearchOption.AllDirectories);
+            var nonRRCGFiles = Directory.GetFiles(projectDirectory, "*.cs", SearchOption.AllDirectories)
+                                .Where(f => !f.EndsWith(".rrcg.cs") && !f.EndsWith(".rrcg.gen.cs"));
 
             // Assume that if a .gen file is newer, that it is cached properly.
             // Would be nicer with some kind of hashing, but this allows you to tinker with .gen files too.
@@ -68,17 +70,19 @@ namespace RRCG.Projects
             var cachedBuildFilesText = await Task.WhenAll(cachedSourceFiles.Select(file => File.ReadAllTextAsync(file.Replace(".rrcg.cs", ".rrcg.gen.cs"))).ToArray());
             var cachedSourceFilesText = await Task.WhenAll(cachedSourceFiles.Select(file => File.ReadAllTextAsync(file)).ToArray());
             var filesToCompileText = await Task.WhenAll(filesToCompile.Select(file => File.ReadAllTextAsync(file)).ToArray());
+            var nonRRCGFilesText = await Task.WhenAll(nonRRCGFiles.Select(file => File.ReadAllTextAsync(file)).ToArray());
 
             // Parse the scripts
             var cachedBuildSyntaxTrees = cachedBuildFilesText.Select(RoslynFrontend.ParseText).ToArray();
             var cachedSourceSyntaxTrees = cachedSourceFilesText.Select(RoslynFrontend.ParseText).ToArray();
             var sourceSyntaxTrees = filesToCompileText.Select(RoslynFrontend.ParseText).ToArray();
+            var nonRRCGSyntaxTrees = nonRRCGFilesText.Select(RoslynFrontend.ParseText).ToArray();
 
             // Prepare the semantic model
             var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary);
             var sourceCompilation = CSharpCompilation.Create(
                 "RRCG.SemanticModel",
-                cachedSourceSyntaxTrees.Concat(sourceSyntaxTrees),
+                cachedSourceSyntaxTrees.Concat(sourceSyntaxTrees).Concat(nonRRCGSyntaxTrees),
                 RoslynFrontend.GetLoadedReferences(),
                 compilationOptions
             );
@@ -96,7 +100,7 @@ namespace RRCG.Projects
 
             Debug.Log($"Compiled Source Files in {stepTimer.StartNew()} ({cachedBuildSyntaxTrees.Count()}/{cachedBuildSyntaxTrees.Count() + sourceSyntaxTrees.Count()} cached)");
 
-            return cachedBuildSyntaxTrees.Concat(buildSyntaxTrees);
+            return cachedBuildSyntaxTrees.Concat(buildSyntaxTrees).Concat(nonRRCGSyntaxTrees);
         }
 
         static int assemblyCounter = 0;
