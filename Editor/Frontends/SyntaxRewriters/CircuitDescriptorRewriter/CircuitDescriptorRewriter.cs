@@ -347,6 +347,9 @@ namespace RRCG
                 // Skip if the parameter has the ref or out keyword. We don't support this currently, the safe option is to skip.
                 if (parameter.Modifiers.Any(m => m.Kind() == SyntaxKind.RefKeyword || m.Kind() == SyntaxKind.OutKeyword)) continue;
 
+                // Skip discarded parameters
+                if (parameter.Identifier.ToString() == "_") continue;
+
                 var invocation = VariableDeclaratorExpressionInvocation(parameter.Identifier.ToString(), null, parameter.Type, true);
                 invocations = invocations.Add(ExpressionStatement(invocation));
             }
