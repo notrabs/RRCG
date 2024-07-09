@@ -155,6 +155,18 @@ namespace RRCGSource
         /// </summary>
         public static EventDefinition<T0, T1, T2> ExistingEvent<T0, T1, T2>(string eventName) { return default; }
 
+
+        /// <summary>
+        /// Allows you to access an existing Data Table in the room.
+        /// You must supply the column names as they appear in-game.
+        /// </summary>
+        public static DataTable<T0> ExistingDataTable<T0>(string name, string column0Name) => default;
+        /// <inheritdoc cref="ExistingDataTable{T0}(string, string)"/>
+        public static DataTable<T0, T1> ExistingDataTable<T0, T1>(string name, string column0Name, string column1Name) => default;
+        /// <inheritdoc cref="ExistingDataTable{T0}(string, string)"/>
+        public static DataTable<T0, T1, T2> ExistingDataTable<T0, T1, T2>(string name, string column0Name, string column1Name, string column2Name) => default;
+
+
         /// <summary>
         /// Helper method to ensure the provided function only runs once per context.
         /// The key parameter should be unique. Calls to Singleton with a key that was already used in the context

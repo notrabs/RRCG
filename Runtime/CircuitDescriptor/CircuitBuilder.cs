@@ -346,6 +346,33 @@ namespace RRCGBuild
             return new EventDefinition<T0, T1, T2>(true, eventName);
         }
 
+        /// <summary>
+        /// Allows you to access an existing Data Table in the room.
+        /// You must supply the column names as they appear in-game.
+        /// </summary>
+        public static DataTable<T0> ExistingDataTable<T0>(string name, string column0Name)
+            where T0 : AnyPort, new()
+        {
+            return new DataTable<T0>(true, name, column0Name);
+        }
+
+        /// <inheritdoc cref="ExistingDataTable{T0}(string, string)"/>
+        public static DataTable<T0, T1> ExistingDataTable<T0, T1>(string name, string column0Name, string column1Name)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+        {
+            return new DataTable<T0, T1>(true, name, column0Name, column1Name);
+        }
+
+        /// <inheritdoc cref="ExistingDataTable{T0}(string, string)"/>
+        public static DataTable<T0, T1, T2> ExistingDataTable<T0, T1, T2>(string name, string column0Name, string column1Name, string column2Name)
+            where T0 : AnyPort, new()
+            where T1 : AnyPort, new()
+            where T2 : AnyPort, new()
+        {
+            return new DataTable<T0, T1, T2>(true, name, column0Name, column1Name, column2Name);
+        }
+
         //
         // Compilation Helpers
         //

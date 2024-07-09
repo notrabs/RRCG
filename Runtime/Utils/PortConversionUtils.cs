@@ -48,6 +48,33 @@ namespace RRCG
             throw new Exception("Could not convert value to a port type!");
         }
 
+        public static AnyPort ToSpecificPort(object value, Type portType)
+        {
+            // Ensure portType is actually a port type
+            if (!typeof(AnyPort).IsAssignableFrom(portType))
+                throw new Exception("portType was not assignable to AnyPort!");
+
+            if (value is AnyPort existingPort)
+            {
+                // Case A: Value is already a port
+                //         Ensure it's the correct type..
+                // 
+                // TODO: Maybe we try to find an implicit conversion
+                //       to the target portType?
+                if (value.GetType() != portType)
+                    throw new Exception($"Value was already a port type, but was not {portType.Name}!");
+
+                return existingPort;
+            }
+
+            // Case B: Value is not a port
+            //         Try an implicit conversion...
+            if (!TryImplicitConversion(value, portType, out var port))
+                throw new Exception($"Could not convert value to {portType.Name}!");
+
+            return (AnyPort)port;
+        }
+
         static bool TryImplicitConversion(object value, Type targetType, out object converted)
         {
             var valueType = value.GetType();
