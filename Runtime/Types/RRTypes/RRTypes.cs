@@ -16,7 +16,6 @@ namespace RRCGSource
     public class RRTuple<T0, T1> : AnyObject { }
 
     public class AI : AIGen { }
-    public class AnalyticsPayload : AnalyticsPayloadGen { }
     public class Player : PlayerGen
     {
         public static Player Local = new Player();
@@ -49,5 +48,6 @@ namespace RRCGSource
     public class RangedWeapon : RangedWeaponGen { }
     public class Storefront : StorefrontGen { }
     public class HolotarRecording : HolotarRecordingGen { }
+    public class QuickChatTable : QuickChatTableGen { }
     // remember to add types to RRTypesUtils.ImplemetedRRTypes
 }

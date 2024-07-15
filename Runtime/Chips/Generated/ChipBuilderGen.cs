@@ -3096,16 +3096,6 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static void GameHUDElementSetAllValues(HUDElementPort Target)
-        {
-            Node node = new Node()
-            {Name = "Game HUD Element Set All Values", Type = "31295d8e-f416-4c44-b0bd-2eda32200365", InputCount = 2};
-            Context.current.Nodes.Add(node);
-            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return;
-        }
-
         public static ListPort<InventoryItemPort> GetAllInventoryItemsInRoomR2()
         {
             Node node = new Node()
@@ -3504,43 +3494,13 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static ColorPort GetGameHUDElementColor(HUDConstantPort Target)
+        public static ColorPort GetHUDElementColor(HUDConstantPort Target)
         {
             Node node = new Node()
-            {Name = "Get Game HUD Element Color", Type = "119d2860-e05c-4140-ba5f-c24139b78652", InputCount = 1};
+            {Name = "Get HUD Element Color", Type = "119d2860-e05c-4140-ba5f-c24139b78652", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             var output_ports = new ColorPort{Port = new Port{Node = node, Index = 0}};
-            return output_ports;
-        }
-
-        public static StringPort GetGameHUDElementLabel(HUDConstantPort Target)
-        {
-            Node node = new Node()
-            {Name = "Get Game HUD Element Label", Type = "98ef89de-7a1b-4043-8071-b5cda41030cd", InputCount = 1};
-            Context.current.Nodes.Add(node);
-            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
-            return output_ports;
-        }
-
-        public static IntPort GetGameHUDElementMaxValue(HUDConstantPort Target)
-        {
-            Node node = new Node()
-            {Name = "Get Game HUD Element Max Value", Type = "f59d4537-e8b4-4d19-b29f-d5203ce562af", InputCount = 1};
-            Context.current.Nodes.Add(node);
-            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
-            return output_ports;
-        }
-
-        public static IntPort GetGameHUDElementValue(HUDConstantPort Target)
-        {
-            Node node = new Node()
-            {Name = "Get Game HUD Element Value", Type = "d9cbf25f-01c6-468f-8607-d1dd8317bb2f", InputCount = 1};
-            Context.current.Nodes.Add(node);
-            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
-            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -3551,6 +3511,36 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static StringPort GetHUDElementLabel(HUDConstantPort Target)
+        {
+            Node node = new Node()
+            {Name = "Get HUD Element Label", Type = "98ef89de-7a1b-4043-8071-b5cda41030cd", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new StringPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static IntPort GetHUDElementMaxValue(HUDConstantPort Target)
+        {
+            Node node = new Node()
+            {Name = "Get HUD Element Max Value", Type = "f59d4537-e8b4-4d19-b29f-d5203ce562af", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static IntPort GetHUDElementValue(HUDConstantPort Target)
+        {
+            Node node = new Node()
+            {Name = "Get HUD Element Value", Type = "d9cbf25f-01c6-468f-8607-d1dd8317bb2f", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -7126,6 +7116,17 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static (BoolPort IsValid, Vector3Port HitPosition) NavMeshSamplePosition(Vector3Port SourcePosition, FloatPort MaxDistance)
+        {
+            Node node = new Node()
+            {Name = "NavMesh Sample Position", Type = "ebacb9b5-adb0-4f5b-94c4-973e89d30a65", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, SourcePosition, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(Context.current, MaxDistance, new Port{Node = node, Index = 1});
+            var output_ports = (new BoolPort{Port = new Port{Node = node, Index = 0}}, new Vector3Port{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
+        }
+
         public static FloatPort Noise(Vector3Port Point)
         {
             Node node = new Node()
@@ -7888,6 +7889,16 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static FloatPort PlayerGetAirControlPercentageR2(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Air Control Percentage", Type = "5d432b27-fe6d-49d0-a3cc-f013a4443bb1", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static ListPort<PlayerPort> PlayerGetAllWithTag(StringPort Tag)
         {
             Node node = new Node()
@@ -8240,6 +8251,16 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static RecNetImagePort PlayerGetProfileImage(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Profile Image", Type = "6fc7e821-99b8-496e-9b42-2a1f088b7ba9", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            var output_ports = new RecNetImagePort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static FloatPort PlayerGetProneSpeedR2(PlayerPort Player)
         {
             Node node = new Node()
@@ -8387,6 +8408,16 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
             var output_ports = (new FloatPort{Port = new Port{Node = node, Index = 0}}, new BoolPort{Port = new Port{Node = node, Index = 1}});
+            return output_ports;
+        }
+
+        public static FloatPort PlayerGetVolume(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Volume", Type = "2045f21f-e117-4bbc-aa5b-547d11e4b1ae", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -8738,6 +8769,17 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Tags, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PlayerSetAirControlPercentageR2(PlayerPort Player, FloatPort AirControlPercentage)
+        {
+            Node node = new Node()
+            {Name = "Player Set Air Control Percentage", Type = "9fa0e65c-36f4-4c4e-969f-94ff82b35c99", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, AirControlPercentage, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }
@@ -9406,6 +9448,27 @@ namespace RRCGGenerated
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             node.VariableData = config;
             return output_ports;
+        }
+
+        public static QuickChatTablePort QuickChatTable()
+        {
+            Node node = new Node()
+            {Name = "Quick Chat Table", Type = "ac6e433a-503a-4a18-a591-1fe2a2f276bb", InputCount = 0};
+            Context.current.Nodes.Add(node);
+            var output_ports = new QuickChatTablePort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static void QuickChatTableSetEnabled(QuickChatTablePort Target, PlayerPort Player, BoolPort Enabled)
+        {
+            Node node = new Node()
+            {Name = "Quick Chat Table Set Enabled", Type = "e148e9c2-2fb9-4b80-9996-d07a2b7c0a01", InputCount = 4};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(Context.current, Enabled, new Port{Node = node, Index = 3});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
         }
 
         public static FloatPort RandomFloat(FloatPort Min, FloatPort Max)
@@ -10927,10 +10990,10 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void SetGameHUDElementColor(HUDConstantPort Target, ColorPort Color)
+        public static void SetHUDElementColor(HUDConstantPort Target, ColorPort Color)
         {
             Node node = new Node()
-            {Name = "Set Game HUD Element Color", Type = "47f61ea8-aab2-4b0e-8d59-351c0047d853", InputCount = 3};
+            {Name = "Set HUD Element Color", Type = "47f61ea8-aab2-4b0e-8d59-351c0047d853", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Color, new Port{Node = node, Index = 2});
@@ -10938,57 +11001,12 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void SetGameHUDElementLabel(HUDConstantPort Target, StringPort Label)
+        public static void SetHUDElementContent(HUDConstantPort Target)
         {
             Node node = new Node()
-            {Name = "Set Game HUD Element Label", Type = "04fb09fa-5be2-491b-9d16-d5b21083f528", InputCount = 3};
+            {Name = "Set HUD Element Content", Type = "31295d8e-f416-4c44-b0bd-2eda32200365", InputCount = 2};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            node.ConnectInputPort(Context.current, Label, new Port{Node = node, Index = 2});
-            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return;
-        }
-
-        public static void SetGameHUDElementLabelEnabled(HUDConstantPort Target, BoolPort Enabled)
-        {
-            Node node = new Node()
-            {Name = "Set Game HUD Element Label Enabled", Type = "2231d8fa-fa63-4952-8ba4-a8258ffb2f9b", InputCount = 3};
-            Context.current.Nodes.Add(node);
-            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            node.ConnectInputPort(Context.current, Enabled, new Port{Node = node, Index = 2});
-            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return;
-        }
-
-        public static void SetGameHUDElementMaxValue(HUDConstantPort Target, IntPort Value)
-        {
-            Node node = new Node()
-            {Name = "Set Game HUD Element Max Value", Type = "f258d689-3341-4383-a8f1-73ab7b2f37a1", InputCount = 3};
-            Context.current.Nodes.Add(node);
-            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
-            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return;
-        }
-
-        public static void SetGameHUDElementValue(HUDConstantPort Target, IntPort Value)
-        {
-            Node node = new Node()
-            {Name = "Set Game HUD Element Value", Type = "61efbc78-9ddf-42bb-814a-3758a34f5faf", InputCount = 3};
-            Context.current.Nodes.Add(node);
-            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
-            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
-            return;
-        }
-
-        public static void SetGameHUDElementValueTextEnabled(HUDConstantPort Target, BoolPort Enabled)
-        {
-            Node node = new Node()
-            {Name = "Set Game HUD Element Value Text Enabled", Type = "a980fe11-65d0-4ae2-bd4c-6405cfc01ce0", InputCount = 3};
-            Context.current.Nodes.Add(node);
-            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
-            node.ConnectInputPort(Context.current, Enabled, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }
@@ -10997,6 +11015,61 @@ namespace RRCGGenerated
         {
             Node node = new Node()
             {Name = "Set HUD Element Enabled", Type = "64ebc8ff-a7d0-47b3-b00b-3cd7e5927978", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Enabled, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void SetHUDElementLabel(HUDConstantPort Target, StringPort Label)
+        {
+            Node node = new Node()
+            {Name = "Set HUD Element Label", Type = "04fb09fa-5be2-491b-9d16-d5b21083f528", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Label, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void SetHUDElementLabelEnabled(HUDConstantPort Target, BoolPort Enabled)
+        {
+            Node node = new Node()
+            {Name = "Set HUD Element Label Enabled", Type = "2231d8fa-fa63-4952-8ba4-a8258ffb2f9b", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Enabled, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void SetHUDElementMaxValue(HUDConstantPort Target, IntPort Value)
+        {
+            Node node = new Node()
+            {Name = "Set HUD Element Max Value", Type = "f258d689-3341-4383-a8f1-73ab7b2f37a1", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void SetHUDElementValue(HUDConstantPort Target, IntPort Value)
+        {
+            Node node = new Node()
+            {Name = "Set HUD Element Value", Type = "61efbc78-9ddf-42bb-814a-3758a34f5faf", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Value, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void SetHUDElementValueTextEnabled(HUDConstantPort Target, BoolPort Enabled)
+        {
+            Node node = new Node()
+            {Name = "Set HUD Element Value Text Enabled", Type = "a980fe11-65d0-4ae2-bd4c-6405cfc01ce0", InputCount = 3};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, Enabled, new Port{Node = node, Index = 2});
@@ -11691,7 +11764,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void ShowPurchasePromptR2(AnyPort InRoomPurchasable, PlayerPort Player)
+        public static void ShowPurchasePromptR2(RoomOfferPort InRoomPurchasable, PlayerPort Player)
         {
             Node node = new Node()
             {Name = "Show Purchase Prompt", Type = "53a17ff2-a6fe-4b69-adb0-1b1fdf5a7de0", InputCount = 3};

@@ -2180,14 +2180,6 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Override all Game HUD Element properties using default values from Game HUD Element Constant input
-        /// </summary>
-        public static void GameHUDElementSetAllValues(HUDElement Target)
-        {
-            return;
-        }
-
-        /// <summary>
         /// Returns a list with all the inventory items in this room.
         /// </summary>
         public static List<InventoryItem> GetAllInventoryItemsInRoomR2()
@@ -2483,22 +2475,7 @@ namespace RRCGGenerated
             return default;
         }
 
-        public static Color GetGameHUDElementColor(HUDConstant Target)
-        {
-            return default;
-        }
-
-        public static string GetGameHUDElementLabel(HUDConstant Target)
-        {
-            return default;
-        }
-
-        public static int GetGameHUDElementMaxValue(HUDConstant Target)
-        {
-            return default;
-        }
-
-        public static int GetGameHUDElementValue(HUDConstant Target)
+        public static Color GetHUDElementColor(HUDConstant Target)
         {
             return default;
         }
@@ -2507,6 +2484,21 @@ namespace RRCGGenerated
         /// Returns true if the local player has a HUD element of the given type currently enabled.
         /// </summary>
         public static bool GetHUDElementEnabled(HUDConstant Target)
+        {
+            return default;
+        }
+
+        public static string GetHUDElementLabel(HUDConstant Target)
+        {
+            return default;
+        }
+
+        public static int GetHUDElementMaxValue(HUDConstant Target)
+        {
+            return default;
+        }
+
+        public static int GetHUDElementValue(HUDConstant Target)
         {
             return default;
         }
@@ -4992,6 +4984,11 @@ namespace RRCGGenerated
             return default;
         }
 
+        public static (bool IsValid, Vector3 HitPosition) NavMeshSamplePosition(Vector3 SourcePosition, float MaxDistance)
+        {
+            return default;
+        }
+
         /// <summary>
         /// Samples a 3D Perlin noise field and returns a value usually bounded in [0,1].
         /// </summary>
@@ -5556,6 +5553,16 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Gets the fraction from 0 to 1 of the standard air control that this player has. 
+        /// This is multiplied by the air control value for the user's current state to calculate their acceleration. 
+        /// Set velocity nodes, wall running, wall climbing, and jumping out of a slide also affect your acceleration.
+        /// </summary>
+        public static float PlayerGetAirControlPercentageR2(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Searches the room for all players with the input tag and outputs them as a list.
         /// </summary>
         public static List<Player> PlayerGetAllWithTag(string Tag)
@@ -5829,6 +5836,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Gets the profile image of the given player.
+        /// </summary>
+        public static RecNetImage PlayerGetProfileImage(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Returns the prone speed for a given player.
         /// </summary>
         public static float PlayerGetProneSpeedR2(Player Player)
@@ -5942,6 +5957,14 @@ namespace RRCGGenerated
         /// Otherwise, the synced value of that player's voice rolloff distance is returned, and the bool returns false.
         /// </summary>
         public static (float VoiceRolloffDistance, bool HasLocalOverride) PlayerGetVoiceRolloffDistanceR2(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Gets the current microphone volume from the given player.
+        /// </summary>
+        public static float PlayerGetVolume(Player Player)
         {
             return default;
         }
@@ -6184,6 +6207,16 @@ namespace RRCGGenerated
         /// By default, this list contains the #player tag.
         /// </summary>
         public static void PlayerSetAimAssistTags(Player Player, List<string> Tags)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the fraction from 0 to 1 of the standard air control that this player will have. 
+        /// This is multiplied by the air control value for the user's current state to calculate their acceleration. 
+        /// Set velocity nodes, wall running, wall climbing, and jumping out of a slide also affect your acceleration.
+        /// </summary>
+        public static void PlayerSetAirControlPercentageR2(Player Player, float AirControlPercentage)
         {
             return;
         }
@@ -6630,6 +6663,22 @@ namespace RRCGGenerated
         internal static Quaternion QuaternionVariable(Quaternion Port0, VariableData config)
         {
             return default;
+        }
+
+        /// <summary>
+        /// Configure this constant to add a set of custom Quick Chat phrases to your room, and enable them per-player with Quick Chat Table Set Enabled. Chat options will appear in the Quick Chat > This Room category.
+        /// </summary>
+        public static QuickChatTable QuickChatTable()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Enable or disable the specified Quick Chat Table for the specified player. If a different set of custom Quick Chat phrases is already enabled, this will overwrite it.
+        /// </summary>
+        public static void QuickChatTableSetEnabled(QuickChatTable Target, Player Player, bool Enabled)
+        {
+            return;
         }
 
         /// <summary>
@@ -7508,37 +7557,45 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void SetGameHUDElementColor(HUDConstant Target, Color Color)
+        public static void SetHUDElementColor(HUDConstant Target, Color Color)
         {
             return;
         }
 
-        public static void SetGameHUDElementLabel(HUDConstant Target, string Label)
-        {
-            return;
-        }
-
-        public static void SetGameHUDElementLabelEnabled(HUDConstant Target, bool Enabled)
-        {
-            return;
-        }
-
-        public static void SetGameHUDElementMaxValue(HUDConstant Target, int Value)
-        {
-            return;
-        }
-
-        public static void SetGameHUDElementValue(HUDConstant Target, int Value)
-        {
-            return;
-        }
-
-        public static void SetGameHUDElementValueTextEnabled(HUDConstant Target, bool Enabled)
+        /// <summary>
+        /// Override all Game HUD Element properties using default values from Game HUD Element Constant input
+        /// </summary>
+        public static void SetHUDElementContent(HUDConstant Target)
         {
             return;
         }
 
         public static void SetHUDElementEnabled(HUDConstant Target, bool Enabled)
+        {
+            return;
+        }
+
+        public static void SetHUDElementLabel(HUDConstant Target, string Label)
+        {
+            return;
+        }
+
+        public static void SetHUDElementLabelEnabled(HUDConstant Target, bool Enabled)
+        {
+            return;
+        }
+
+        public static void SetHUDElementMaxValue(HUDConstant Target, int Value)
+        {
+            return;
+        }
+
+        public static void SetHUDElementValue(HUDConstant Target, int Value)
+        {
+            return;
+        }
+
+        public static void SetHUDElementValueTextEnabled(HUDConstant Target, bool Enabled)
         {
             return;
         }
@@ -7988,7 +8045,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void ShowPurchasePromptR2(object InRoomPurchasable, Player Player)
+        public static void ShowPurchasePromptR2(RoomOffer InRoomPurchasable, Player Player)
         {
             return;
         }

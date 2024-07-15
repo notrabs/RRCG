@@ -465,10 +465,6 @@ namespace RRCGGenerated
         }
     }
 
-    public abstract class AnalyticsPayloadGen : AnyObject
-    {
-    }
-
     public abstract class AnimationControllerGen : AnyObject
     {
         public int Frame
@@ -1364,10 +1360,6 @@ namespace RRCGGenerated
         }
     }
 
-    public abstract class GiftDropShopItemGen : AnyObject
-    {
-    }
-
     public abstract class GrabberGen : AnyObject
     {
         public (bool HasHeldObject, RecRoomObject HeldObject) HeldObjectR2
@@ -1623,16 +1615,6 @@ namespace RRCGGenerated
             }
         }
 
-        public HolotarRecording Play
-        {
-            /// <summary>
-            /// Load & play Holotar Recording from the start through the Target Projector. Play will always begin the clip from 0s
-            /// </summary>
-            set
-            {
-            }
-        }
-
         public float Volume
         {
             /// <summary>
@@ -1651,6 +1633,14 @@ namespace RRCGGenerated
         /// Pasue Holotar Projector at current playback time
         /// </summary>
         public void Pause()
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Load & play Holotar Recording from the start through the Target Projector. Play will always begin the clip from 0s
+        /// </summary>
+        public void Play(HolotarRecording Holotar)
         {
             return;
         }
@@ -1734,17 +1724,18 @@ namespace RRCGGenerated
             {
             }
         }
+
+        /// <summary>
+        /// Override all Game HUD Element properties using default values from Game HUD Element Constant input
+        /// </summary>
+        public void SetContent()
+        {
+            return;
+        }
     }
 
     public abstract class HUDElementGen : AnyObject
     {
-        /// <summary>
-        /// Override all Game HUD Element properties using default values from Game HUD Element Constant input
-        /// </summary>
-        public void GameHUDElementSetAllValues()
-        {
-            return;
-        }
     }
 
     public abstract class InteractionVolumeGen : AnyObject
@@ -2079,10 +2070,6 @@ namespace RRCGGenerated
         {
             return;
         }
-    }
-
-    public abstract class MeleeZoneGen : AnyObject
-    {
     }
 
     public abstract class MotionTrailGen : AnyObject
@@ -2528,6 +2515,24 @@ namespace RRCGGenerated
             /// <summary>
             /// Sets the list of player tags that the provided player can target with aim assist.
             /// By default, this list contains the #player tag.
+            /// </summary>
+            set
+            {
+            }
+        }
+
+        public float AirControlPercentageR2
+        {
+            /// <summary>
+            /// Gets the fraction from 0 to 1 of the standard air control that this player has. 
+            /// This is multiplied by the air control value for the user's current state to calculate their acceleration. 
+            /// Set velocity nodes, wall running, wall climbing, and jumping out of a slide also affect your acceleration.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets the fraction from 0 to 1 of the standard air control that this player will have. 
+            /// This is multiplied by the air control value for the user's current state to calculate their acceleration. 
+            /// Set velocity nodes, wall running, wall climbing, and jumping out of a slide also affect your acceleration.
             /// </summary>
             set
             {
@@ -3075,6 +3080,14 @@ namespace RRCGGenerated
             get => default;
         }
 
+        public RecNetImage ProfileImage
+        {
+            /// <summary>
+            /// Gets the profile image of the given player.
+            /// </summary>
+            get => default;
+        }
+
         public float ProneSpeedR2
         {
             /// <summary>
@@ -3396,6 +3409,14 @@ namespace RRCGGenerated
             set
             {
             }
+        }
+
+        public float Volume
+        {
+            /// <summary>
+            /// Gets the current microphone volume from the given player.
+            /// </summary>
+            get => default;
         }
 
         public float WalkSpeedR2
@@ -4605,6 +4626,17 @@ namespace RRCGGenerated
         }
     }
 
+    public abstract class QuickChatTableGen : AnyObject
+    {
+        /// <summary>
+        /// Enable or disable the specified Quick Chat Table for the specified player. If a different set of custom Quick Chat phrases is already enabled, this will overwrite it.
+        /// </summary>
+        public void SetEnabled(Player Player, bool Enabled)
+        {
+            return;
+        }
+    }
+
     public abstract class RangedWeaponGen : AnyObject
     {
         public Color Color
@@ -5326,10 +5358,6 @@ namespace RRCGGenerated
         }
     }
 
-    public abstract class RemoteVideoPlayerGen : AnyObject
-    {
-    }
-
     public abstract class ReplicatorGen : AnyObject
     {
         public int ActiveObjectsCountR2
@@ -5436,6 +5464,10 @@ namespace RRCGGenerated
 
     public abstract class RoomOfferGen : AnyObject
     {
+        public void ShowPurchasePromptR2(Player Player)
+        {
+            return;
+        }
     }
 
     public abstract class RotatorGen : AnyObject
@@ -5623,10 +5655,6 @@ namespace RRCGGenerated
         {
             return;
         }
-    }
-
-    public abstract class SteeringEngineGen : AnyObject
-    {
     }
 
     public abstract class StorefrontGen : AnyObject

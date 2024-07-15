@@ -289,10 +289,6 @@ namespace RRCGGenerated
         }
     }
 
-    public abstract class AnalyticsPayloadPortGen : AnyPort
-    {
-    }
-
     public abstract class AnimationControllerPortGen : AnyPort
     {
         public IntPort Frame
@@ -836,10 +832,6 @@ namespace RRCGGenerated
         }
     }
 
-    public abstract class GiftDropShopItemPortGen : AnyPort
-    {
-    }
-
     public abstract class GrabberPortGen : AnyPort
     {
         public (BoolPort HasHeldObject, RecRoomObjectPort HeldObject) HeldObjectR2
@@ -1021,11 +1013,6 @@ namespace RRCGGenerated
             set => ChipBuilder.HolotarProjectorSetCurrentTime((HolotarProjectorPort)this, value);
         }
 
-        public HolotarRecordingPort Play
-        {
-            set => ChipBuilder.HolotarProjectorPlay((HolotarProjectorPort)this, value);
-        }
-
         public FloatPort Volume
         {
             get => CircuitBuilder.Singleton("RRCG_HolotarProjector_GetVolume_" + PortKey(), () => ChipBuilder.HolotarProjectorGetVolume((HolotarProjectorPort)this));
@@ -1035,6 +1022,11 @@ namespace RRCGGenerated
         public void Pause()
         {
             ChipBuilder.HolotarProjectorPause((HolotarProjectorPort)this);
+        }
+
+        public void Play(HolotarRecordingPort Holotar)
+        {
+            ChipBuilder.HolotarProjectorPlay((HolotarProjectorPort)this, Holotar);
         }
 
         public void Resume()
@@ -1056,8 +1048,8 @@ namespace RRCGGenerated
     {
         public ColorPort Color
         {
-            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetColor_" + PortKey(), () => ChipBuilder.GetGameHUDElementColor((HUDConstantPort)this));
-            set => ChipBuilder.SetGameHUDElementColor((HUDConstantPort)this, value);
+            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetColor_" + PortKey(), () => ChipBuilder.GetHUDElementColor((HUDConstantPort)this));
+            set => ChipBuilder.SetHUDElementColor((HUDConstantPort)this, value);
         }
 
         public BoolPort Enabled
@@ -1068,39 +1060,40 @@ namespace RRCGGenerated
 
         public StringPort Label
         {
-            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetLabel_" + PortKey(), () => ChipBuilder.GetGameHUDElementLabel((HUDConstantPort)this));
-            set => ChipBuilder.SetGameHUDElementLabel((HUDConstantPort)this, value);
+            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetLabel_" + PortKey(), () => ChipBuilder.GetHUDElementLabel((HUDConstantPort)this));
+            set => ChipBuilder.SetHUDElementLabel((HUDConstantPort)this, value);
         }
 
         public BoolPort LabelEnabled
         {
-            set => ChipBuilder.SetGameHUDElementLabelEnabled((HUDConstantPort)this, value);
+            set => ChipBuilder.SetHUDElementLabelEnabled((HUDConstantPort)this, value);
         }
 
         public IntPort MaxValue
         {
-            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetMaxValue_" + PortKey(), () => ChipBuilder.GetGameHUDElementMaxValue((HUDConstantPort)this));
-            set => ChipBuilder.SetGameHUDElementMaxValue((HUDConstantPort)this, value);
+            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetMaxValue_" + PortKey(), () => ChipBuilder.GetHUDElementMaxValue((HUDConstantPort)this));
+            set => ChipBuilder.SetHUDElementMaxValue((HUDConstantPort)this, value);
         }
 
         public IntPort Value
         {
-            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetValue_" + PortKey(), () => ChipBuilder.GetGameHUDElementValue((HUDConstantPort)this));
-            set => ChipBuilder.SetGameHUDElementValue((HUDConstantPort)this, value);
+            get => CircuitBuilder.Singleton("RRCG_HUDConstant_GetValue_" + PortKey(), () => ChipBuilder.GetHUDElementValue((HUDConstantPort)this));
+            set => ChipBuilder.SetHUDElementValue((HUDConstantPort)this, value);
         }
 
         public BoolPort ValueTextEnabled
         {
-            set => ChipBuilder.SetGameHUDElementValueTextEnabled((HUDConstantPort)this, value);
+            set => ChipBuilder.SetHUDElementValueTextEnabled((HUDConstantPort)this, value);
+        }
+
+        public void SetContent()
+        {
+            ChipBuilder.SetHUDElementContent((HUDConstantPort)this);
         }
     }
 
     public abstract class HUDElementPortGen : AnyPort
     {
-        public void GameHUDElementSetAllValues()
-        {
-            ChipBuilder.GameHUDElementSetAllValues((HUDElementPort)this);
-        }
     }
 
     public abstract class InteractionVolumePortGen : AnyPort
@@ -1284,10 +1277,6 @@ namespace RRCGGenerated
         {
             ChipBuilder.LightTurnOn((LightPort)this);
         }
-    }
-
-    public abstract class MeleeZonePortGen : AnyPort
-    {
     }
 
     public abstract class MotionTrailPortGen : AnyPort
@@ -1516,6 +1505,12 @@ namespace RRCGGenerated
         public ListPort<StringPort> AimAssistTags
         {
             set => ChipBuilder.PlayerSetAimAssistTags((PlayerPort)this, value);
+        }
+
+        public FloatPort AirControlPercentageR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Player_GetAirControlPercentageR2_" + PortKey(), () => ChipBuilder.PlayerGetAirControlPercentageR2((PlayerPort)this));
+            set => ChipBuilder.PlayerSetAirControlPercentageR2((PlayerPort)this, value);
         }
 
         public QuaternionPort BodyOrientation
@@ -1824,6 +1819,11 @@ namespace RRCGGenerated
             get => CircuitBuilder.Singleton("RRCG_Player_GetPositionDeprecated_" + PortKey(), () => ChipBuilder.GetPositionDeprecated((PlayerPort)this));
         }
 
+        public RecNetImagePort ProfileImage
+        {
+            get => CircuitBuilder.Singleton("RRCG_Player_GetProfileImage_" + PortKey(), () => ChipBuilder.PlayerGetProfileImage((PlayerPort)this));
+        }
+
         public FloatPort ProneSpeedR2
         {
             get => CircuitBuilder.Singleton("RRCG_Player_GetProneSpeedR2_" + PortKey(), () => ChipBuilder.PlayerGetProneSpeedR2((PlayerPort)this));
@@ -2004,6 +2004,11 @@ namespace RRCGGenerated
         public FloatPort VoiceRolloffDistanceR2
         {
             set => ChipBuilder.PlayerSetVoiceRolloffDistanceR2((PlayerPort)this, value);
+        }
+
+        public FloatPort Volume
+        {
+            get => CircuitBuilder.Singleton("RRCG_Player_GetVolume_" + PortKey(), () => ChipBuilder.PlayerGetVolume((PlayerPort)this));
         }
 
         public FloatPort WalkSpeedR2
@@ -2760,6 +2765,14 @@ namespace RRCGGenerated
         }
     }
 
+    public abstract class QuickChatTablePortGen : AnyPort
+    {
+        public void SetEnabled(PlayerPort Player, BoolPort Enabled)
+        {
+            ChipBuilder.QuickChatTableSetEnabled((QuickChatTablePort)this, Player, Enabled);
+        }
+    }
+
     public abstract class RangedWeaponPortGen : AnyPort
     {
         public ColorPort Color
@@ -3229,10 +3242,6 @@ namespace RRCGGenerated
         }
     }
 
-    public abstract class RemoteVideoPlayerPortGen : AnyPort
-    {
-    }
-
     public abstract class ReplicatorPortGen : AnyPort
     {
         public IntPort ActiveObjectsCountR2
@@ -3307,6 +3316,10 @@ namespace RRCGGenerated
 
     public abstract class RoomOfferPortGen : AnyPort
     {
+        public void ShowPurchasePromptR2(PlayerPort Player)
+        {
+            ChipBuilder.ShowPurchasePromptR2((RoomOfferPort)this, Player);
+        }
     }
 
     public abstract class RotatorPortGen : AnyPort
@@ -3414,10 +3427,6 @@ namespace RRCGGenerated
         {
             ChipBuilder.GoToState((StatePort)this);
         }
-    }
-
-    public abstract class SteeringEnginePortGen : AnyPort
-    {
     }
 
     public abstract class StorefrontPortGen : AnyPort

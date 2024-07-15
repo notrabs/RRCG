@@ -106,10 +106,6 @@ namespace RRCGSource
     {
         public static implicit operator ProjectileLauncher(RecRoomObject data) => default;
     }
-    public class RemoteVideoPlayer: RemoteVideoPlayerGen
-    {
-        public static implicit operator RemoteVideoPlayer(RecRoomObject data) => default;
-    }
     public class PlayerSpawnPointV2: PlayerSpawnPointV2Gen
     {
         public static implicit operator PlayerSpawnPointV2(RecRoomObject data) => default;
@@ -150,21 +146,9 @@ namespace RRCGSource
     {
         public static implicit operator HUDConstant(RecRoomObject data) => default;
     }
-    public class SteeringEngine: SteeringEngineGen
-    {
-        public static implicit operator SteeringEngine(RecRoomObject data) => default;
-    }
-    public class GiftDropShopItem: GiftDropShopItemGen
-    {
-        public static implicit operator GiftDropShopItem(RecRoomObject data) => default;
-    }
     public class ObjectiveMarker: ObjectiveMarkerGen
     {
         public static implicit operator ObjectiveMarker(RecRoomObject data) => default;
-    }
-    public class MeleeZone: MeleeZoneGen
-    {
-        public static implicit operator MeleeZone(RecRoomObject data) => default;
     }
     public class SwingHandle: SwingHandleGen
     {

@@ -114,10 +114,6 @@ namespace RRCGBuild
     {
         public static implicit operator ProjectileLauncherPort(RecRoomObjectPort data) => new ProjectileLauncherPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class RemoteVideoPlayerPort : RemoteVideoPlayerPortGen
-    {
-        public static implicit operator RemoteVideoPlayerPort(RecRoomObjectPort data) => new RemoteVideoPlayerPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
-    }
     public class PlayerSpawnPointV2Port : PlayerSpawnPointV2PortGen
     {
         public static implicit operator PlayerSpawnPointV2Port(RecRoomObjectPort data) => new PlayerSpawnPointV2Port() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
@@ -158,21 +154,9 @@ namespace RRCGBuild
     {
         public static implicit operator HUDConstantPort(RecRoomObjectPort data) => new HUDConstantPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
-    public class SteeringEnginePort : SteeringEnginePortGen
-    {
-        public static implicit operator SteeringEnginePort(RecRoomObjectPort data) => new SteeringEnginePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
-    }
-    public class GiftDropShopItemPort : GiftDropShopItemPortGen
-    {
-        public static implicit operator GiftDropShopItemPort(RecRoomObjectPort data) => new GiftDropShopItemPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
-    }
     public class ObjectiveMarkerPort : ObjectiveMarkerPortGen
     {
         public static implicit operator ObjectiveMarkerPort(RecRoomObjectPort data) => new ObjectiveMarkerPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
-    }
-    public class MeleeZonePort : MeleeZonePortGen
-    {
-        public static implicit operator MeleeZonePort(RecRoomObjectPort data) => new MeleeZonePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
     public class SwingHandlePort : SwingHandlePortGen
     {

@@ -215,7 +215,6 @@ namespace RRCGBuild
     //
 
     public class AIPort : AIPortGen { }
-    public class AnalyticsPayloadPort : AnalyticsPayloadPortGen { }
     public class PlayerPort : PlayerPortGen
     {
         public static PlayerPort Local = new PlayerPort() { Port = null, Data = 1 };
@@ -248,4 +247,5 @@ namespace RRCGBuild
     public class RangedWeaponPort : RangedWeaponPortGen { }
     public class StorefrontPort : StorefrontPortGen { }
     public class HolotarRecordingPort : HolotarRecordingPortGen { }
+    public class QuickChatTablePort : QuickChatTablePortGen { }
 }

@@ -190,7 +190,6 @@ namespace RRCGGenerated
         public const string FromRecRoomObject = "7ff685a6-f59c-4c6c-b559-f343d81ea1d4";
         public const string FunctionDefinition = "49937daa-4f6d-442c-a0d8-0095b675250d";
         public const string GameHUDElementConstant = "4a3c3d38-f1a4-493b-977f-5444ab2d404b";
-        public const string GameHUDElementSetAllValues = "31295d8e-f416-4c44-b0bd-2eda32200365";
         public const string GetAllInventoryItemsInRoomR2 = "5ad0cd6b-90ad-4425-a43a-7ac7ec0d0141";
         public const string GetAllInventoryItemsWithTagR2 = "80ad6681-f1b1-448e-acc2-0736e4f6841d";
         public const string GetAllPlayers = "3f4346b1-bc6f-4aca-9650-d43cbd4acc5b";
@@ -208,11 +207,11 @@ namespace RRCGGenerated
         public const string GetFormattedTime = "7dfed109-e641-47f3-8844-fd0753e4e764";
         public const string GetForwardVector = "4536e1df-1138-4a2c-9117-475bb3f38eae";
         public const string GetForwardVectorDeprecated = "88f95338-d1a6-4fad-8424-d714d651f6ac";
-        public const string GetGameHUDElementColor = "119d2860-e05c-4140-ba5f-c24139b78652";
-        public const string GetGameHUDElementLabel = "98ef89de-7a1b-4043-8071-b5cda41030cd";
-        public const string GetGameHUDElementMaxValue = "f59d4537-e8b4-4d19-b29f-d5203ce562af";
-        public const string GetGameHUDElementValue = "d9cbf25f-01c6-468f-8607-d1dd8317bb2f";
+        public const string GetHUDElementColor = "119d2860-e05c-4140-ba5f-c24139b78652";
         public const string GetHUDElementEnabled = "a970b2bd-0224-4b1e-9839-111315b28986";
+        public const string GetHUDElementLabel = "98ef89de-7a1b-4043-8071-b5cda41030cd";
+        public const string GetHUDElementMaxValue = "f59d4537-e8b4-4d19-b29f-d5203ce562af";
+        public const string GetHUDElementValue = "d9cbf25f-01c6-468f-8607-d1dd8317bb2f";
         public const string GetInventoryItemFromNameR2 = "f54582a2-90b1-4be4-a6c0-0d688b4f8067";
         public const string GetLoadingPlayers = "2e02d617-5ada-4876-84ac-d1b6d6270fc4";
         public const string GetLocalCameraForward = "70c830bb-223a-4a7c-b0ae-df240c6f1f33";
@@ -470,6 +469,7 @@ namespace RRCGGenerated
         public const string MusicConstant = "ce3cbe60-7983-4458-b44a-738ea7036155";
         public const string Nand = "502e86d1-5b3a-4213-97e2-df25836ffcc4";
         public const string NavMeshCanPathBetween = "42a50b22-bc74-4c79-8bd6-00f021f721b0";
+        public const string NavMeshSamplePosition = "ebacb9b5-adb0-4f5b-94c4-973e89d30a65";
         public const string Noise = "06f8732b-b1cb-4b79-815e-5b389c1dd78f";
         public const string Nor = "2891bcb4-a6ab-4a2e-a08d-dd2a55f1cf66";
         public const string Not = "ff551243-beb4-470e-ab48-9d616818d5e4";
@@ -540,6 +540,7 @@ namespace RRCGGenerated
         public const string PlayerDefinitionBoardEmpty = "4c9e7840-0721-4d1c-b334-167f79d3bf40";
         public const string PlayerEquipInventoryItemR2 = "ad1dc480-3932-482f-9609-ab0b01f234e8";
         public const string PlayerGetAimAssistTags = "5d6461e3-c6e0-40eb-8032-8595b6d9b0dc";
+        public const string PlayerGetAirControlPercentageR2 = "5d432b27-fe6d-49d0-a3cc-f013a4443bb1";
         public const string PlayerGetAllWithTag = "8286a047-19a2-4ad0-bdec-833f35adf4f2";
         public const string PlayerGetCanFlyR2 = "b9e436c5-970f-46c4-80a9-d2950a130f01";
         public const string PlayerGetCanTeleportR2 = "52fcfdc0-5f37-4c4c-892a-f61ba6ebf686";
@@ -575,6 +576,7 @@ namespace RRCGGenerated
         public const string PlayerGetJumpInputEnabledR2 = "e6ec527a-be2e-438d-84f4-f60c4785206c";
         public const string PlayerGetNormalizedSteeringSpeedDeprecated = "1eb70662-4a75-4120-9713-11dbbeedc740";
         public const string PlayerGetPlayersInRadioChannel = "502c4b6c-47b6-4370-a1e0-9cab18b1af35";
+        public const string PlayerGetProfileImage = "6fc7e821-99b8-496e-9b42-2a1f088b7ba9";
         public const string PlayerGetProneSpeedR2 = "4d0f09da-4784-4b35-bf66-cdf818ea1a29";
         public const string PlayerGetRadioChannel = "be2f38d2-c6cb-4d9a-b74d-0a664c216a7b";
         public const string PlayerGetRoomIndex = "7683e201-29d3-44d4-abb4-d75ef9233faa";
@@ -590,6 +592,7 @@ namespace RRCGGenerated
         public const string PlayerGetTeleportDistanceR2 = "08b53553-0368-4de9-bb59-57a4e2fdb2b2";
         public const string PlayerGetTimeZone = "2d675f16-502a-489e-8fed-161935f32c04";
         public const string PlayerGetVoiceRolloffDistanceR2 = "7dd7ea91-2600-4002-804d-3a88d8b3b8a5";
+        public const string PlayerGetVolume = "2045f21f-e117-4bbc-aa5b-547d11e4b1ae";
         public const string PlayerGetWalkSpeedR2 = "9decb308-a5c1-41d6-8d68-cfc96d894505";
         public const string PlayerGetWallRunEnabledR2 = "ae54528b-eaf4-4247-a49e-29b9acbaf1b5";
         public const string PlayerGetXP = "88a12c40-5a38-4304-be23-36f769c2a4b8";
@@ -621,6 +624,7 @@ namespace RRCGGenerated
         public const string PlayerRightHandThumbDirection = "86e8581c-ddf9-4302-a06f-c451b5055a98";
         public const string PlayerRightHandVelocity = "aba06411-9c8c-477a-bc7f-76ab5605c85d";
         public const string PlayerSetAimAssistTags = "19883a68-58b5-480e-a5cd-97a526e08fdd";
+        public const string PlayerSetAirControlPercentageR2 = "9fa0e65c-36f4-4c4e-969f-94ff82b35c99";
         public const string PlayerSetCanFlyR2 = "c860b9ba-b6ae-43fa-b013-b163a7fb49fe";
         public const string PlayerSetCanTeleportR2 = "de2df219-9d85-4778-a9a3-255d912596a2";
         public const string PlayerSetCanWallClimbR2 = "4dff30bf-ac85-4295-af6c-b481c8628aec";
@@ -679,6 +683,8 @@ namespace RRCGGenerated
         public const string QuaternionRotateTowards = "edfe7cbb-6973-4489-9b7a-75746243dd6d";
         public const string QuaternionSplit = "1d2a37e1-428e-4385-bc96-4ad5adff0a05";
         public const string QuaternionVariable = "18a980ff-9a46-472c-b658-96bf42eb61c2";
+        public const string QuickChatTable = "ac6e433a-503a-4a18-a591-1fe2a2f276bb";
+        public const string QuickChatTableSetEnabled = "e148e9c2-2fb9-4b80-9996-d07a2b7c0a01";
         public const string RandomFloat = "4ecbf247-ab14-4f9e-8094-e40a45d283e6";
         public const string RandomFromList = "d253cef6-dd99-4357-b98a-e09a0c23bad7";
         public const string RandomFromListDeprecated = "0b18cef3-0ea5-4e3c-a0d5-c460f03dbe8c";
@@ -793,13 +799,14 @@ namespace RRCGGenerated
         public const string Self = "3d7d40d6-885a-4fa5-bbaa-b19057291ddb";
         public const string Sequence = "9e2ac049-e68e-4689-a288-bef8a62da316";
         public const string SetCameraShake = "a4bf7bb6-6dd9-4b34-85ab-2aaa324647e4";
-        public const string SetGameHUDElementColor = "47f61ea8-aab2-4b0e-8d59-351c0047d853";
-        public const string SetGameHUDElementLabel = "04fb09fa-5be2-491b-9d16-d5b21083f528";
-        public const string SetGameHUDElementLabelEnabled = "2231d8fa-fa63-4952-8ba4-a8258ffb2f9b";
-        public const string SetGameHUDElementMaxValue = "f258d689-3341-4383-a8f1-73ab7b2f37a1";
-        public const string SetGameHUDElementValue = "61efbc78-9ddf-42bb-814a-3758a34f5faf";
-        public const string SetGameHUDElementValueTextEnabled = "a980fe11-65d0-4ae2-bd4c-6405cfc01ce0";
+        public const string SetHUDElementColor = "47f61ea8-aab2-4b0e-8d59-351c0047d853";
+        public const string SetHUDElementContent = "31295d8e-f416-4c44-b0bd-2eda32200365";
         public const string SetHUDElementEnabled = "64ebc8ff-a7d0-47b3-b00b-3cd7e5927978";
+        public const string SetHUDElementLabel = "04fb09fa-5be2-491b-9d16-d5b21083f528";
+        public const string SetHUDElementLabelEnabled = "2231d8fa-fa63-4952-8ba4-a8258ffb2f9b";
+        public const string SetHUDElementMaxValue = "f258d689-3341-4383-a8f1-73ab7b2f37a1";
+        public const string SetHUDElementValue = "61efbc78-9ddf-42bb-814a-3758a34f5faf";
+        public const string SetHUDElementValueTextEnabled = "a980fe11-65d0-4ae2-bd4c-6405cfc01ce0";
         public const string SetPlayerVignette = "fee486b2-823f-4110-b33a-241adb59b634";
         public const string SetPlayerWorldUIPrimaryBarColor = "859086b7-8a86-4dde-b8cb-c3a361d13fe3";
         public const string SetPlayerWorldUIPrimaryBarEnabled = "03c280c2-5f80-4ba9-8966-6c5d11da84a9";

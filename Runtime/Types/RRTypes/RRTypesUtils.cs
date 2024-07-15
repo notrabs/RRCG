@@ -16,7 +16,6 @@ namespace RRCG
             "TriggerHandle",
             "WelcomeMat",
             "StudioObject",
-            "AnalyticsPayload",
             "Player",
             "RecRoomObject",
             "Combatant",
@@ -50,7 +49,6 @@ namespace RRCG
             "Piston",
             "PlayerOutfitSlot",
             "ProjectileLauncher",
-            "RemoteVideoPlayer",
             "PlayerSpawnPointV2",
             "Skydome",
             "Sun",
@@ -65,10 +63,7 @@ namespace RRCG
             "VectorComponent",
             "RoomCurrency",
             "HUDConstant",
-            "SteeringEngine",
-            "GiftDropShopItem",
             "ObjectiveMarker",
-            "MeleeZone",
             "SwingHandle",
             "RoomLevelHUD",
             "Touchpad",
@@ -88,7 +83,8 @@ namespace RRCG
             "Replicator",
             "Pathfinder",
             "LeaderboardProjector",
-            "HolotarRecording"
+            "HolotarRecording",
+            "QuickChatTable"
         };
     }
 }
