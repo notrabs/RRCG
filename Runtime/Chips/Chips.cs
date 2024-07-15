@@ -43,6 +43,8 @@ namespace RRCGSource
         public static float Power(float Value, float Power) { return default; }
         public static int Power(int Value, int Power) { return default; }
 
+        public static string StringFormat(string Format, params string[] Values) { return default; }
+
         // 
         // Shorthands
         //

@@ -12010,7 +12010,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static StringPort StringFormat(StringPort Format, StringPort Value)
+        internal static StringPort StringFormat(StringPort Format, StringPort Value)
         {
             Node node = new Node()
             {Name = "String Format", Type = "77afc9dd-baa9-4312-b8b8-7ef479c840e6", InputCount = 2};

@@ -563,10 +563,29 @@ namespace RRCGBuild
             ChipBuilderGen.Max(ports[0]);
             return ConnectDynamicPins(0, ports);
         }
+        
+        public static StringPort StringFormat(StringPort Format, params StringPort[] Values)
+        {
+            if (Format.IsDataPort && Values.All(v => v.IsDataPort))
+            {
+                // We probably could just return the result of string.Format here, but that method
+                // supports more advanced features (spacing, control alignment, etc) that the in-game
+                // chip doesn't support. So to preserve semantics we explicitly only handle {0}, {1} etc.
+
+                var result = Format.AsData<string>();
+                for (int i = 0; i < Values.Length; i++)
+                    result = result.Replace($"{{{i}}}", Values[i].AsData<string>());
+
+                return result;
+            }
+
+            ChipBuilderGen.StringFormat(Format, Values.FirstOrDefault());
+            return ConnectDynamicPins(1, Values);
+        }
 
         public static ListPort<T> ListCreate<T>(params T[] ports) where T : AnyPort, new()
         {
-            ChipBuilderGen.ListCreate<T>(ports.Length > 0 ? ports[0] : null);
+            ChipBuilderGen.ListCreate<T>(ports.FirstOrDefault());
             var node = Context.lastSpawnedNode;
 
             ConnectDynamicPins(0, ports);

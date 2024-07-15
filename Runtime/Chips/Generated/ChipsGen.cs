@@ -8203,7 +8203,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Use this chip to combine multiple strings together into a single string output. The "Format" input is part of final string output and can include other string inputs by using this syntax: {input pin # starting at 0}. For example, a "Format" input with a default value of “Hello, {0}!” with a single additional input pin with the value "World" is fully output as "Hello, World!". If you had another input pin you would use {1} to denote the 2nd pin. You can add more string inputs by configuring the chip and pressing "Add Input".
         /// </summary>
-        public static string StringFormat(string Format, string Value)
+        internal static string StringFormat(string Format, string Value)
         {
             return default;
         }
