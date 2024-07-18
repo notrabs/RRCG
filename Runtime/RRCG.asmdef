@@ -11,6 +11,12 @@
     ],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.rrcs.rrcg",
+            "expression": "0",
+            "define": "RRCG_WRITE_XML_DOC"
+        }
+    ],
     "noEngineReferences": false
 }
