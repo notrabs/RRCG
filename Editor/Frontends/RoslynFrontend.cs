@@ -34,10 +34,11 @@ namespace RRCG
         }
 
         public static SyntaxTree ParseText(string text) => ParseText(text, null); // Single Parameter overload to use in Linq
-        public static SyntaxTree ParseText(string text, string path)
+        public static SyntaxTree ParseText(string text, string path, params string[] preprocessorSymbols)
         {
             // The language version used by RRCG (and Unity)
-            var options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp9);
+            var options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp9)
+                                                    .WithPreprocessorSymbols(preprocessorSymbols);
             return CSharpSyntaxTree.ParseText(text, options, path);
         }
 

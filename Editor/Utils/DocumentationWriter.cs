@@ -14,10 +14,10 @@ static class DocumentationWriter
 {
     static DocumentationWriter()
     {
-        CompilationPipeline.compilationStarted += OnCompilationStarted;
+        CompilationPipeline.compilationFinished += OnCompilationFinished;
     }
 
-    private static void OnCompilationStarted(object _)
+    private static void OnCompilationFinished(object _)
     {
         // NOTE: Ideally, the Unity C# compiler should be able to do this for us.
         //       The C# compiler supports a "/doc:file.xml" argument that writes
@@ -35,9 +35,8 @@ static class DocumentationWriter
             // Create a compilation for the assembly
             var compilation = CSharpCompilation.Create(
                 asm.name,
-                asm.sourceFiles.Select(path => RoslynFrontend.ParseText(File.ReadAllText(path))),
-                asm.compiledAssemblyReferences.Select(path => MetadataReference.CreateFromFile(path)),
-                new CSharpCompilationOptions(outputKind: OutputKind.DynamicallyLinkedLibrary)
+                asm.sourceFiles.Select(path => RoslynFrontend.ParseText(File.ReadAllText(path), path, asm.defines)),
+                asm.allReferences.Select(path => MetadataReference.CreateFromFile(path))
             );
 
             // Generate & write the documentation XML,
