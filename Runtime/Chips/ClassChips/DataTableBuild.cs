@@ -139,7 +139,7 @@ namespace RRCGBuild
         }
 
         /// <summary>
-        /// Transposes an enumerable of whole data table rows (like IEnumerable<(T0, T1, T2)>)
+        /// Transposes an enumerable of whole data table rows (like IEnumerable&lt;(T0, T1, T2)&gt;)
         /// into an array of columns for the InitNewDataTable constructor.
         /// 
         /// This is so that we can reconcile the constructor for the source-realm DataTables

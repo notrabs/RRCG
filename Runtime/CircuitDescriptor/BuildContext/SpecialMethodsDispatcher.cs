@@ -6,7 +6,7 @@ using System.Reflection;
 namespace RRCGBuild
 {
     /// <summary>
-    /// Dispatches & manages "special methods" (event functions/shared properties).
+    /// Dispatches and manages "special methods" (event functions/shared properties).
     /// </summary>
     public class SpecialMethodsDispatcher
     {
