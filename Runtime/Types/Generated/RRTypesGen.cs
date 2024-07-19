@@ -26,7 +26,7 @@ namespace RRCGGenerated
         public (Vector3 Velocity, float Speed) CombatantGetVelocityR1
         {
             /// <summary>
-            /// Outputs the input combatant's current velocity and speed.
+            /// Outputs the input combatant&apos;s current velocity and speed.
             /// </summary>
             get => default;
         }
@@ -474,7 +474,7 @@ namespace RRCGGenerated
             /// </summary>
             get => default;
             /// <summary>
-            /// Sets the Animation Controller's animation to a specific frame number.
+            /// Sets the Animation Controller&apos;s animation to a specific frame number.
             /// </summary>
             set
             {
@@ -496,7 +496,7 @@ namespace RRCGGenerated
             /// </summary>
             get => default;
             /// <summary>
-            /// Sets the Animation Controller's play speed. Default value is 1. Negative values play the animation in reverse.
+            /// Sets the Animation Controller&apos;s play speed. Default value is 1. Negative values play the animation in reverse.
             /// </summary>
             set
             {
@@ -526,7 +526,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Tells the Animation Controller to play its animation using the Playback Mode set in the Animation Controller's configuration menu.
+        /// Tells the Animation Controller to play its animation using the Playback Mode set in the Animation Controller&apos;s configuration menu.
         /// </summary>
         public void Play()
         {
@@ -656,7 +656,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Changes the room's shared background objects state to the given configuration.
+        /// Changes the room&apos;s shared background objects state to the given configuration.
         /// </summary>
         public void RoomBackgroundObjectsModifyR2(float BlendTime, AlternativeExec BlendFinished)
         {
@@ -664,7 +664,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Overrides the given player's room background objects state to the given configuration. This will take precedent over the room's shared background objects state.
+        /// Overrides the given player&apos;s room background objects state to the given configuration. This will take precedent over the room&apos;s shared background objects state.
         /// </summary>
         public void RoomBackgroundObjectsPlayerOverrideR2(Player Player, float BlendTime, AlternativeExec BlendFinished)
         {
@@ -722,7 +722,7 @@ namespace RRCGGenerated
         public bool IsPressed
         {
             /// <summary>
-            /// Outputs a target Button's Pressed property.
+            /// Outputs a target Button&apos;s Pressed property.
             /// </summary>
             get => default;
         }
@@ -730,11 +730,11 @@ namespace RRCGGenerated
         public string Text
         {
             /// <summary>
-            /// Outputs a target Button's Text property.
+            /// Outputs a target Button&apos;s Text property.
             /// </summary>
             get => default;
             /// <summary>
-            /// Sets an input Button's Text property.
+            /// Sets an input Button&apos;s Text property.
             /// </summary>
             set
             {
@@ -747,7 +747,7 @@ namespace RRCGGenerated
         public float Distance
         {
             /// <summary>
-            /// Gets distance in meters of an object/player from center specified in "Overlap Sphere" chip.
+            /// Gets distance in meters of an object/player from center specified in &quot;Overlap Sphere&quot; chip.
             /// </summary>
             get => default;
         }
@@ -755,7 +755,7 @@ namespace RRCGGenerated
         public Vector3 Normal
         {
             /// <summary>
-            /// Gets unit vector specifying the direction of an object/player from center specified in "Overlap Sphere" chip.
+            /// Gets unit vector specifying the direction of an object/player from center specified in &quot;Overlap Sphere&quot; chip.
             /// </summary>
             get => default;
         }
@@ -763,7 +763,7 @@ namespace RRCGGenerated
         public RecRoomObject Object
         {
             /// <summary>
-            /// Gets object of a collision data (or null for players) returned from "Overlap Sphere" chip.
+            /// Gets object of a collision data (or null for players) returned from &quot;Overlap Sphere&quot; chip.
             /// </summary>
             get => default;
         }
@@ -771,7 +771,7 @@ namespace RRCGGenerated
         public Player Player
         {
             /// <summary>
-            /// Gets player of a collision data (or null for objects) returned from "Overlap Sphere" chip.
+            /// Gets player of a collision data (or null for objects) returned from &quot;Overlap Sphere&quot; chip.
             /// </summary>
             get => default;
         }
@@ -779,7 +779,7 @@ namespace RRCGGenerated
         public Vector3 Position
         {
             /// <summary>
-            /// Gets position of an object/player returned by "Overlap Sphere" chip.
+            /// Gets position of an object/player returned by &quot;Overlap Sphere&quot; chip.
             /// </summary>
             get => default;
         }
@@ -851,7 +851,7 @@ namespace RRCGGenerated
         public (Vector3 Velocity, float Speed) VelocityR1
         {
             /// <summary>
-            /// Outputs the input combatant's current velocity and speed.
+            /// Outputs the input combatant&apos;s current velocity and speed.
             /// </summary>
             get => default;
         }
@@ -1344,7 +1344,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Changes the room's shared fog state to the given configuration.
+        /// Changes the room&apos;s shared fog state to the given configuration.
         /// </summary>
         public void RoomFogModifyR2(float BlendTime, AlternativeExec BlendFinished)
         {
@@ -1352,7 +1352,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Overrides the given player's room fog state to the given configuration. This will take precedent over the room's shared fog state.
+        /// Overrides the given player&apos;s room fog state to the given configuration. This will take precedent over the room&apos;s shared fog state.
         /// </summary>
         public void RoomFogPlayerOverrideR2(Player Player, float BlendTime, AlternativeExec BlendFinished)
         {
@@ -1579,11 +1579,11 @@ namespace RRCGGenerated
         public List<string> PlayerFilterTagsR2
         {
             /// <summary>
-            /// Gets the tags that a handle is using in its Tag Filter. The Tag Filter must be enabled in the handle's configure menu for this to work.
+            /// Gets the tags that a handle is using in its Tag Filter. The Tag Filter must be enabled in the handle&apos;s configure menu for this to work.
             /// </summary>
             get => default;
             /// <summary>
-            /// Sets the tags that a handle is using in its Tag Filter. The Tag Filter must be enabled in the handle's configure menu for this to work.
+            /// Sets the tags that a handle is using in its Tag Filter. The Tag Filter must be enabled in the handle&apos;s configure menu for this to work.
             /// </summary>
             set
             {
@@ -1638,7 +1638,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Load & play Holotar Recording from the start through the Target Projector. Play will always begin the clip from 0s
+        /// Load &amp; play Holotar Recording from the start through the Target Projector. Play will always begin the clip from 0s
         /// </summary>
         public void Play(HolotarRecording Holotar)
         {
@@ -1936,7 +1936,7 @@ namespace RRCGGenerated
             /// </summary>
             get => default;
             /// <summary>
-            /// Sets the angle of the spotlight's cone.
+            /// Sets the angle of the spotlight&apos;s cone.
             /// </summary>
             set
             {
@@ -1946,7 +1946,7 @@ namespace RRCGGenerated
         public int AngleInt
         {
             /// <summary>
-            /// Sets the angle of the spotlight's cone.
+            /// Sets the angle of the spotlight&apos;s cone.
             /// </summary>
             set
             {
@@ -2328,7 +2328,7 @@ namespace RRCGGenerated
         public (bool IsPathing, bool HasArrived, bool WithinSlowdownDistance) PathingStateR2
         {
             /// <summary>
-            /// Gets the Pathfinder's current pathing state information
+            /// Gets the Pathfinder&apos;s current pathing state information
             /// * Is Pathing
             /// * Has Arrived
             /// * Within Slowdown Distance
@@ -2347,7 +2347,7 @@ namespace RRCGGenerated
         public (bool IsRotating, bool HasArrived) RotationStateR2
         {
             /// <summary>
-            /// Gets the Pathfinder's current rotation state information
+            /// Gets the Pathfinder&apos;s current rotation state information
             /// * Is Rotating
             /// * Has Arrived
             /// </summary>
@@ -2494,7 +2494,7 @@ namespace RRCGGenerated
         public string AccountName
         {
             /// <summary>
-            /// Outputs the player's Account name (e.g Coach) in a form of a string. To get a display name, use To String.
+            /// Outputs the player&apos;s Account name (e.g Coach) in a form of a string. To get a display name, use To String.
             /// </summary>
             get => default;
         }
@@ -2525,13 +2525,13 @@ namespace RRCGGenerated
         {
             /// <summary>
             /// Gets the fraction from 0 to 1 of the standard air control that this player has. 
-            /// This is multiplied by the air control value for the user's current state to calculate their acceleration. 
+            /// This is multiplied by the air control value for the user&apos;s current state to calculate their acceleration. 
             /// Set velocity nodes, wall running, wall climbing, and jumping out of a slide also affect your acceleration.
             /// </summary>
             get => default;
             /// <summary>
             /// Sets the fraction from 0 to 1 of the standard air control that this player will have. 
-            /// This is multiplied by the air control value for the user's current state to calculate their acceleration. 
+            /// This is multiplied by the air control value for the user&apos;s current state to calculate their acceleration. 
             /// Set velocity nodes, wall running, wall climbing, and jumping out of a slide also affect your acceleration.
             /// </summary>
             set
@@ -2542,7 +2542,7 @@ namespace RRCGGenerated
         public Quaternion BodyOrientation
         {
             /// <summary>
-            /// Outputs the rotation of a Player's body.
+            /// Outputs the rotation of a Player&apos;s body.
             /// </summary>
             get => default;
         }
@@ -2550,7 +2550,7 @@ namespace RRCGGenerated
         public Vector3 BodyPosition
         {
             /// <summary>
-            /// Outputs the postion of a Player's body in world space.
+            /// Outputs the postion of a Player&apos;s body in world space.
             /// </summary>
             get => default;
         }
@@ -2568,7 +2568,7 @@ namespace RRCGGenerated
             /// <summary>
             /// Returns whether a given player is allowed to teleport.
             /// 
-            /// Note: The value of this property is independent of a player's platform. (This value can be true for screens players.)
+            /// Note: The value of this property is independent of a player&apos;s platform. (This value can be true for screens players.)
             /// </summary>
             get => default;
             /// <summary>
@@ -2614,7 +2614,7 @@ namespace RRCGGenerated
         public (Vector3 Velocity, float Speed) CombatantGetVelocityR1
         {
             /// <summary>
-            /// Outputs the input combatant's current velocity and speed.
+            /// Outputs the input combatant&apos;s current velocity and speed.
             /// </summary>
             get => default;
         }
@@ -2728,7 +2728,7 @@ namespace RRCGGenerated
             /// </summary>
             get => default;
             /// <summary>
-            /// Forces the given player to use walk rather than teleport mode if they are playing in VR. This is useful when you need access to their walk inputs which won't fire if they are in teleport mode. You should consider adding a warning to your room so teleport players are aware that you're going to change their movement mode.
+            /// Forces the given player to use walk rather than teleport mode if they are playing in VR. This is useful when you need access to their walk inputs which won&apos;t fire if they are in teleport mode. You should consider adding a warning to your room so teleport players are aware that you&apos;re going to change their movement mode.
             /// </summary>
             set
             {
@@ -2774,7 +2774,7 @@ namespace RRCGGenerated
         public Vector3 HeadForwardVector
         {
             /// <summary>
-            /// Outputs the forward vector of a Player's head.
+            /// Outputs the forward vector of a Player&apos;s head.
             /// </summary>
             get => default;
         }
@@ -2782,7 +2782,7 @@ namespace RRCGGenerated
         public float HeadHeight
         {
             /// <summary>
-            /// Outputs the height of a Player's head.
+            /// Outputs the height of a Player&apos;s head.
             /// </summary>
             get => default;
         }
@@ -2790,7 +2790,7 @@ namespace RRCGGenerated
         public Quaternion HeadOrientation
         {
             /// <summary>
-            /// Outputs the rotation of a Player's head.
+            /// Outputs the rotation of a Player&apos;s head.
             /// </summary>
             get => default;
         }
@@ -2798,7 +2798,7 @@ namespace RRCGGenerated
         public Vector3 HeadPosition
         {
             /// <summary>
-            /// Outputs the position of a Player's head in world space.
+            /// Outputs the position of a Player&apos;s head in world space.
             /// </summary>
             get => default;
         }
@@ -2806,7 +2806,7 @@ namespace RRCGGenerated
         public Vector3 HeadUpVector
         {
             /// <summary>
-            /// Outputs the up vector of a Player's head.
+            /// Outputs the up vector of a Player&apos;s head.
             /// </summary>
             get => default;
         }
@@ -2814,7 +2814,7 @@ namespace RRCGGenerated
         public Vector3 HeadVelocity
         {
             /// <summary>
-            /// Outputs the velocity of a Player's head.
+            /// Outputs the velocity of a Player&apos;s head.
             /// </summary>
             get => default;
         }
@@ -2851,7 +2851,7 @@ namespace RRCGGenerated
         public (bool IsGrounded, float TimeSinceLastGrounded, RecRoomObject SurfaceObject, Vector3 SurfaceNormal) IsGrounded
         {
             /// <summary>
-            /// Returns whether the given player is grounded, a.k.a. not jumping, flying, wall-running, clambering, or falling. Also returns the time (in seconds) since they were last grounded, or 0 if currently grounded. Surface Object returns the Room Object that the player is standing on if they are grounded, or Invalid Object if the player is not grounded or standing on a non-Rec Room Object. Surface Normal returns the normal of the surface if the player is grounded and (0, 1, 0) if they're not.
+            /// Returns whether the given player is grounded, a.k.a. not jumping, flying, wall-running, clambering, or falling. Also returns the time (in seconds) since they were last grounded, or 0 if currently grounded. Surface Object returns the Room Object that the player is standing on if they are grounded, or Invalid Object if the player is not grounded or standing on a non-Rec Room Object. Surface Normal returns the normal of the surface if the player is grounded and (0, 1, 0) if they&apos;re not.
             /// </summary>
             get => default;
         }
@@ -2894,7 +2894,7 @@ namespace RRCGGenerated
         public bool IsRoomContributor
         {
             /// <summary>
-            /// Outputs True if the input Player is one of the current room's contributors.
+            /// Outputs True if the input Player is one of the current room&apos;s contributors.
             /// </summary>
             get => default;
         }
@@ -2902,7 +2902,7 @@ namespace RRCGGenerated
         public bool IsRoomHost
         {
             /// <summary>
-            /// Outputs True if the input Player is one of the current room's hosts.
+            /// Outputs True if the input Player is one of the current room&apos;s hosts.
             /// </summary>
             get => default;
         }
@@ -2910,7 +2910,7 @@ namespace RRCGGenerated
         public bool IsRoomMod
         {
             /// <summary>
-            /// Outputs True if the input Player is one of the current room's moderators.
+            /// Outputs True if the input Player is one of the current room&apos;s moderators.
             /// </summary>
             get => default;
         }
@@ -2918,7 +2918,7 @@ namespace RRCGGenerated
         public bool IsRoomOwner
         {
             /// <summary>
-            /// Outputs True if the input Player is one of the current room's owners.
+            /// Outputs True if the input Player is one of the current room&apos;s owners.
             /// </summary>
             get => default;
         }
@@ -2986,7 +2986,7 @@ namespace RRCGGenerated
         public Vector3 LeftHandFingerDirection
         {
             /// <summary>
-            /// Outputs the direction of a Player's left hand finger.
+            /// Outputs the direction of a Player&apos;s left hand finger.
             /// </summary>
             get => default;
         }
@@ -2994,7 +2994,7 @@ namespace RRCGGenerated
         public Vector3 LeftHandPosition
         {
             /// <summary>
-            /// Outputs the postion of a Player's left hand in world space.
+            /// Outputs the postion of a Player&apos;s left hand in world space.
             /// </summary>
             get => default;
         }
@@ -3002,7 +3002,7 @@ namespace RRCGGenerated
         public Quaternion LeftHandRotation
         {
             /// <summary>
-            /// Outputs the rotation of a Player's left hand.
+            /// Outputs the rotation of a Player&apos;s left hand.
             /// </summary>
             get => default;
         }
@@ -3010,7 +3010,7 @@ namespace RRCGGenerated
         public Vector3 LeftHandThumbDirection
         {
             /// <summary>
-            /// Outputs the direction of a Player's left hand thumb.
+            /// Outputs the direction of a Player&apos;s left hand thumb.
             /// </summary>
             get => default;
         }
@@ -3018,7 +3018,7 @@ namespace RRCGGenerated
         public Vector3 LeftHandVelocity
         {
             /// <summary>
-            /// Outputs the velocity of a Player's left hand.
+            /// Outputs the velocity of a Player&apos;s left hand.
             /// </summary>
             get => default;
         }
@@ -3028,7 +3028,7 @@ namespace RRCGGenerated
             /// <summary>
             /// Override the voice rolloff distance of the target player as heard by the local player.
             /// 
-            /// Other players' perception of the target player's voice rolloff will be unaffected.
+            /// Other players&apos; perception of the target player&apos;s voice rolloff will be unaffected.
             /// </summary>
             set
             {
@@ -3053,7 +3053,7 @@ namespace RRCGGenerated
         public List<Player> PartyOfPlayer
         {
             /// <summary>
-            /// Returns the party of the input player as List<Player>. If the player is not in a party, it will return a list containing only that player.
+            /// Returns the party of the input player as List&lt;Player&gt;. If the player is not in a party, it will return a list containing only that player.
             /// </summary>
             get => default;
         }
@@ -3140,7 +3140,7 @@ namespace RRCGGenerated
         public Vector3 RightHandFingerDirection
         {
             /// <summary>
-            /// Outputs the direction of a Player's right hand finger.
+            /// Outputs the direction of a Player&apos;s right hand finger.
             /// </summary>
             get => default;
         }
@@ -3148,7 +3148,7 @@ namespace RRCGGenerated
         public Vector3 RightHandPosition
         {
             /// <summary>
-            /// Outputs the postion of a Player's right hand in world space.
+            /// Outputs the postion of a Player&apos;s right hand in world space.
             /// </summary>
             get => default;
         }
@@ -3156,7 +3156,7 @@ namespace RRCGGenerated
         public Quaternion RightHandRotation
         {
             /// <summary>
-            /// Outputs the rotation of a Player's right hand.
+            /// Outputs the rotation of a Player&apos;s right hand.
             /// </summary>
             get => default;
         }
@@ -3164,7 +3164,7 @@ namespace RRCGGenerated
         public Vector3 RightHandThumbDirection
         {
             /// <summary>
-            /// Outputs the direction of a Player's right hand thumb.
+            /// Outputs the direction of a Player&apos;s right hand thumb.
             /// </summary>
             get => default;
         }
@@ -3172,7 +3172,7 @@ namespace RRCGGenerated
         public Vector3 RightHandVelocity
         {
             /// <summary>
-            /// Outputs the velocity of a Player's right hand.
+            /// Outputs the velocity of a Player&apos;s right hand.
             /// </summary>
             get => default;
         }
@@ -3303,7 +3303,7 @@ namespace RRCGGenerated
         public (bool Result, int SecondsUntilEnabled) SubscribesToRoomOwnerDeprecated
         {
             /// <summary>
-            /// Outputs True if the input Player subscribes to one of the current room's owners.
+            /// Outputs True if the input Player subscribes to one of the current room&apos;s owners.
             /// </summary>
             get => default;
         }
@@ -3347,7 +3347,7 @@ namespace RRCGGenerated
         public int TimeZone
         {
             /// <summary>
-            /// Returns the offset of the given player's local time zone from UTC in seconds.
+            /// Returns the offset of the given player&apos;s local time zone from UTC in seconds.
             /// </summary>
             get => default;
         }
@@ -3450,7 +3450,7 @@ namespace RRCGGenerated
         public bool WorldUIEnabled
         {
             /// <summary>
-            /// Returns the enabled state of the given player's world UI.
+            /// Returns the enabled state of the given player&apos;s world UI.
             /// </summary>
             get => default;
         }
@@ -3458,11 +3458,11 @@ namespace RRCGGenerated
         public Color WorldUIPrimaryBarColor
         {
             /// <summary>
-            /// Returns the color of the given player's primary bar in their current world UI.
+            /// Returns the color of the given player&apos;s primary bar in their current world UI.
             /// </summary>
             get => default;
             /// <summary>
-            /// Set the color of the primary bar in the given player's active world UI.
+            /// Set the color of the primary bar in the given player&apos;s active world UI.
             /// </summary>
             set
             {
@@ -3472,11 +3472,11 @@ namespace RRCGGenerated
         public bool WorldUIPrimaryBarEnabled
         {
             /// <summary>
-            /// Returns the enabled state of the given player's primary bar in their current world UI.
+            /// Returns the enabled state of the given player&apos;s primary bar in their current world UI.
             /// </summary>
             get => default;
             /// <summary>
-            /// Set the enabled state of the primary bar in the given player's active world UI.
+            /// Set the enabled state of the primary bar in the given player&apos;s active world UI.
             /// </summary>
             set
             {
@@ -3486,11 +3486,11 @@ namespace RRCGGenerated
         public int WorldUIPrimaryBarMaxValue
         {
             /// <summary>
-            /// Returns the max value of the given player's primary bar in their current world UI.
+            /// Returns the max value of the given player&apos;s primary bar in their current world UI.
             /// </summary>
             get => default;
             /// <summary>
-            /// Set the max value of the primary bar in the given player's active world UI.
+            /// Set the max value of the primary bar in the given player&apos;s active world UI.
             /// </summary>
             set
             {
@@ -3500,11 +3500,11 @@ namespace RRCGGenerated
         public int WorldUIPrimaryBarValue
         {
             /// <summary>
-            /// Returns the value of the given player's primary bar in their current world UI.
+            /// Returns the value of the given player&apos;s primary bar in their current world UI.
             /// </summary>
             get => default;
             /// <summary>
-            /// Set the value of the primary bar in the given player's active world UI.
+            /// Set the value of the primary bar in the given player&apos;s active world UI.
             /// </summary>
             set
             {
@@ -3514,11 +3514,11 @@ namespace RRCGGenerated
         public Color WorldUISecondaryBarColor
         {
             /// <summary>
-            /// Returns the color of the given player's secondary bar in their current world UI.
+            /// Returns the color of the given player&apos;s secondary bar in their current world UI.
             /// </summary>
             get => default;
             /// <summary>
-            /// Set the color of the secondary bar in the given player's active world UI.
+            /// Set the color of the secondary bar in the given player&apos;s active world UI.
             /// </summary>
             set
             {
@@ -3528,11 +3528,11 @@ namespace RRCGGenerated
         public bool WorldUISecondaryBarEnabled
         {
             /// <summary>
-            /// Returns the enabled state of the given player's secondary bar in their current world UI.
+            /// Returns the enabled state of the given player&apos;s secondary bar in their current world UI.
             /// </summary>
             get => default;
             /// <summary>
-            /// Set the enabled state of the secondary bar in the given player's active world UI.
+            /// Set the enabled state of the secondary bar in the given player&apos;s active world UI.
             /// </summary>
             set
             {
@@ -3542,11 +3542,11 @@ namespace RRCGGenerated
         public int WorldUISecondaryBarMaxValue
         {
             /// <summary>
-            /// Returns the max value of the given player's secondary bar in their current world UI.
+            /// Returns the max value of the given player&apos;s secondary bar in their current world UI.
             /// </summary>
             get => default;
             /// <summary>
-            /// Set the max value of the secondary bar in the given player's active world UI.
+            /// Set the max value of the secondary bar in the given player&apos;s active world UI.
             /// </summary>
             set
             {
@@ -3556,11 +3556,11 @@ namespace RRCGGenerated
         public int WorldUISecondaryBarValue
         {
             /// <summary>
-            /// Returns the value of the given player's secondary bar in their current world UI.
+            /// Returns the value of the given player&apos;s secondary bar in their current world UI.
             /// </summary>
             get => default;
             /// <summary>
-            /// Set the value of the secondary bar in the given player's active world UI.
+            /// Set the value of the secondary bar in the given player&apos;s active world UI.
             /// </summary>
             set
             {
@@ -3570,11 +3570,11 @@ namespace RRCGGenerated
         public Color WorldUITextColor
         {
             /// <summary>
-            /// Returns the color of the given player's text in their current world UI.
+            /// Returns the color of the given player&apos;s text in their current world UI.
             /// </summary>
             get => default;
             /// <summary>
-            /// Set the color of the text in the given player's active world UI.
+            /// Set the color of the text in the given player&apos;s active world UI.
             /// </summary>
             set
             {
@@ -3584,11 +3584,11 @@ namespace RRCGGenerated
         public bool WorldUITextEnabled
         {
             /// <summary>
-            /// Returns the enabled state of the given player's text in their current world UI.
+            /// Returns the enabled state of the given player&apos;s text in their current world UI.
             /// </summary>
             get => default;
             /// <summary>
-            /// Set the enabled state of the text in the given player's active world UI.
+            /// Set the enabled state of the text in the given player&apos;s active world UI.
             /// </summary>
             set
             {
@@ -3598,11 +3598,11 @@ namespace RRCGGenerated
         public string WorldUITextValue
         {
             /// <summary>
-            /// Returns the value of the given player's text in their current world UI.
+            /// Returns the value of the given player&apos;s text in their current world UI.
             /// </summary>
             get => default;
             /// <summary>
-            /// Set the value of the text in the given player's active world UI.
+            /// Set the value of the text in the given player&apos;s active world UI.
             /// </summary>
             set
             {
@@ -3634,7 +3634,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Award some amount to the Player's balance of one room currency. Configure this chip to set the affected currency.
+        /// Award some amount to the Player&apos;s balance of one room currency. Configure this chip to set the affected currency.
         /// </summary>
         public (bool Success, int TotalBalance) AwardCurrencyDeprecatedR1(int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
         {
@@ -3788,7 +3788,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Equips Share Camera to a player's dominant hand if the player is not already holding the Share Camera.
+        /// Equips Share Camera to a player&apos;s dominant hand if the player is not already holding the Share Camera.
         /// Returns success if the target player is already holding their Share Camera in either hand.
         /// </summary>
         public bool EquipShareCamera(bool ForceEquip)
@@ -3922,7 +3922,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// The "Should Run" port will exec a) if the input player is local or b) if input player is invalid and the local player has authority of the current context.
+        /// The &quot;Should Run&quot; port will exec a) if the input player is local or b) if input player is invalid and the local player has authority of the current context.
         /// </summary>
         public void IfLocalPlayerShouldRun(AlternativeExec ShouldNotRun)
         {
@@ -3970,9 +3970,9 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Clears the local player's override of target player's voice rolloff distance.
+        /// Clears the local player&apos;s override of target player&apos;s voice rolloff distance.
         /// 
-        /// The local player's reckoning of the target player's voice rolloff returns to being based on that player's voice rolloff distance property.
+        /// The local player&apos;s reckoning of the target player&apos;s voice rolloff returns to being based on that player&apos;s voice rolloff distance property.
         /// </summary>
         public void LocalPlayerClearPlayerVoiceRolloffOverrideR2()
         {
@@ -3988,7 +3988,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Enables the local player to interact with the provided player. To respond to interactions, configure a "Event Receiver" chip for the "Local Player... Interaction" events within a Player board. Hold duration is the number of seconds the player needs to hold the interact button to complete an interaction. If Hold duration is 0, the interaction will be a button press or tap on mobile platforms. Prompt is the string that will be displayed when a player interacts with the provided player.  Players will be interactive only for the players that ran this chip with them as the target player. Individual players may have different sets of players they can interact with. A player's interaction state is reset when the room is reset or reloaded. Enabling interactions with a player will make it so gestures do not work with them generally (e.g.: fistbumping, high-fiving, handshaking).
+        /// Enables the local player to interact with the provided player. To respond to interactions, configure a &quot;Event Receiver&quot; chip for the &quot;Local Player... Interaction&quot; events within a Player board. Hold duration is the number of seconds the player needs to hold the interact button to complete an interaction. If Hold duration is 0, the interaction will be a button press or tap on mobile platforms. Prompt is the string that will be displayed when a player interacts with the provided player.  Players will be interactive only for the players that ran this chip with them as the target player. Individual players may have different sets of players they can interact with. A player&apos;s interaction state is reset when the room is reset or reloaded. Enabling interactions with a player will make it so gestures do not work with them generally (e.g.: fistbumping, high-fiving, handshaking).
         /// </summary>
         public void LocalPlayerEnableInteractionWithTargetPlayer(float RequiredHoldDuration, string Prompt)
         {
@@ -4063,9 +4063,9 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the voice rolloff distance for the target player, as reckoned by the local player.
         /// 
-        /// If the local player has set an override for the target player's voice rolloff distance, the "Has Local Override" bool returns true, and the overridden value is returned.
+        /// If the local player has set an override for the target player&apos;s voice rolloff distance, the &quot;Has Local Override&quot; bool returns true, and the overridden value is returned.
         /// 
-        /// Otherwise, the synced value of that player's voice rolloff distance is returned, and the bool returns false.
+        /// Otherwise, the synced value of that player&apos;s voice rolloff distance is returned, and the bool returns false.
         /// </summary>
         public (float VoiceRolloffDistance, bool HasLocalOverride) GetVoiceRolloffDistanceR2()
         {
@@ -4099,7 +4099,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Sends a prompt to the specified player containing the prompt title and body, along with each of the answer choices on its own line. The player can choose a response and hit "ok," triggering the On Prompt Complete event. Since there is a delay between sending a prompt and receiving the response in which other responses may be received, the Player output can be used to disambiguate multiple responses. This prompt appears in the watch and can either bring the watch up automatically, or trigger a watch notification and show up when the player next opens their watch. To use a watch notification, disable the Immediate setting on the chip with the configure tool.
+        /// Sends a prompt to the specified player containing the prompt title and body, along with each of the answer choices on its own line. The player can choose a response and hit &quot;ok,&quot; triggering the On Prompt Complete event. Since there is a delay between sending a prompt and receiving the response in which other responses may be received, the Player output can be used to disambiguate multiple responses. This prompt appears in the watch and can either bring the watch up automatically, or trigger a watch notification and show up when the player next opens their watch. To use a watch notification, disable the Immediate setting on the chip with the configure tool.
         /// </summary>
         public (bool Success, Player ReceivingPlayer, string Response, int ResponseIndex) PromptMultipleChoice(string PromptTitle, string PromptBody, List<string> AnswerChoices, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response, int ResponseIndex)> OnPromptComplete)
         {
@@ -4107,7 +4107,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Sends a prompt to the specified player where they can input text, which is then returned by this chip's output. This prompt appears in the watch and can either bring the watch up automatically, or trigger a watch notification and show up when the player next opens their watch. To use a watch notification, disable the Immediate setting on the chip with the configure tool.
+        /// Sends a prompt to the specified player where they can input text, which is then returned by this chip&apos;s output. This prompt appears in the watch and can either bring the watch up automatically, or trigger a watch notification and show up when the player next opens their watch. To use a watch notification, disable the Immediate setting on the chip with the configure tool.
         /// </summary>
         public (bool Success, Player ReceivingPlayer, string Response) PromptText(string PromptTitle, string PromptBody, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response)> OnPromptComplete)
         {
@@ -4115,7 +4115,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Resets the color of the given player's name tag to the default color.
+        /// Resets the color of the given player&apos;s name tag to the default color.
         /// </summary>
         public void ResetNameColor()
         {
@@ -4203,7 +4203,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Reset the player's active world UI to its default values.
+        /// Reset the player&apos;s active world UI to its default values.
         /// </summary>
         public void ResetPlayerWorldUI()
         {
@@ -4248,7 +4248,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Clears the given player's local room background objects state override.
+        /// Clears the given player&apos;s local room background objects state override.
         /// </summary>
         public void RoomBackgroundObjectsClearPlayerOverrideR2(float BlendTime, AlternativeExec BlendFinished)
         {
@@ -4256,7 +4256,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Clears the given player's local room fog state override.
+        /// Clears the given player&apos;s local room fog state override.
         /// </summary>
         public void RoomFogClearPlayerOverrideR2(float BlendTime, AlternativeExec BlendFinished)
         {
@@ -4264,7 +4264,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Clears the given player's local room skydome state override.
+        /// Clears the given player&apos;s local room skydome state override.
         /// </summary>
         public void RoomSkydomeClearPlayerOverrideR2(float BlendTime, AlternativeExec BlendFinished)
         {
@@ -4272,7 +4272,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Clears the given player's local room sun state override.
+        /// Clears the given player&apos;s local room sun state override.
         /// </summary>
         public void RoomSunClearPlayerOverrideR2(float BlendTime, AlternativeExec BlendFinished)
         {
@@ -4424,7 +4424,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Prints the input notification to the given player's screen.
+        /// Prints the input notification to the given player&apos;s screen.
         /// </summary>
         public void ShowNotification<T>(string Value)
         {
@@ -4477,7 +4477,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// The input target's velocity parallel to the input direction vector is reflected along the input direction and velocities perpendicular to it, are maintained. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
+        /// The input target&apos;s velocity parallel to the input direction vector is reflected along the input direction and velocities perpendicular to it, are maintained. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
         public void VelocityReflect(float AdditionalSpeed, float SpeedMultiplier, Vector3 Direction, float MaximumSpeed)
         {
@@ -4757,7 +4757,7 @@ namespace RRCGGenerated
         public bool IsLocalPlayerAuthority
         {
             /// <summary>
-            /// Outputs True on the player's machine who has authority of the input.
+            /// Outputs True on the player&apos;s machine who has authority of the input.
             /// </summary>
             get => default;
         }
@@ -4986,7 +4986,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Converts the input Rec Room Object to the object's subtype.
+        /// Converts the input Rec Room Object to the object&apos;s subtype.
         /// </summary>
         internal T FromRecRoomObject<T>()
         {
@@ -5334,7 +5334,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// The input target's velocity parallel to the input direction vector is reflected along the input direction and velocities perpendicular to it, are maintained. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
+        /// The input target&apos;s velocity parallel to the input direction vector is reflected along the input direction and velocities perpendicular to it, are maintained. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
         public void VelocityReflect(float AdditionalSpeed, float SpeedMultiplier, Vector3 Direction, float MaximumSpeed)
         {
@@ -5394,7 +5394,7 @@ namespace RRCGGenerated
     public abstract class RoomCurrencyGen : AnyObject
     {
         /// <summary>
-        /// Award some amount to the Player's balance of the given room currency.
+        /// Award some amount to the Player&apos;s balance of the given room currency.
         /// </summary>
         public (bool Success, int TotalBalance) AwardCurrencyR1(Player Player, int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
         {
@@ -5402,7 +5402,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Returns the given player's balance of the given room currency.
+        /// Returns the given player&apos;s balance of the given room currency.
         /// </summary>
         public (bool Success, int TotalBalance) GetCurrencyBalanceR1(Player Player, AlternativeExec<(bool Success, int TotalBalance)> OnGetBalanceComplete)
         {
@@ -5630,7 +5630,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Changes the room's shared skydome state to the given configuration.
+        /// Changes the room&apos;s shared skydome state to the given configuration.
         /// </summary>
         public void RoomSkydomeModifyR2(float BlendTime, AlternativeExec BlendFinished)
         {
@@ -5638,7 +5638,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Overrides the given player's room skydome state to the given configuration. This will take precedent over the room's shared skydome state.
+        /// Overrides the given player&apos;s room skydome state to the given configuration. This will take precedent over the room&apos;s shared skydome state.
         /// </summary>
         public void RoomSkydomePlayerOverrideR2(Player Player, float BlendTime, AlternativeExec BlendFinished)
         {
@@ -5774,7 +5774,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Changes the room's shared sun state to the given configuration.
+        /// Changes the room&apos;s shared sun state to the given configuration.
         /// </summary>
         public void RoomSunModifyR2(SunDirection SunDirection, float BlendTime, AlternativeExec BlendFinished)
         {
@@ -5782,7 +5782,7 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Overrides the given player's room sun state to the given configuration. This will take precedent over the room's shared sun state.
+        /// Overrides the given player&apos;s room sun state to the given configuration. This will take precedent over the room&apos;s shared sun state.
         /// </summary>
         public void RoomSunPlayerOverrideR2(SunDirection SunDirection, Player Player, float BlendTime, AlternativeExec BlendFinished)
         {
@@ -5898,7 +5898,7 @@ namespace RRCGGenerated
         public (bool IsTouchActive, Vector3 TouchPosition, Vector3 WorldPosition) ActiveTouch
         {
             /// <summary>
-            /// Get the active touch position from the local player's interaction
+            /// Get the active touch position from the local player&apos;s interaction
             /// </summary>
             get => default;
         }
@@ -5970,7 +5970,7 @@ namespace RRCGGenerated
         public int ObjectCount
         {
             /// <summary>
-            /// Gets the number of objects currently inside a Trigger Volume. This is not synchronized with the Trigger Volume's events!
+            /// Gets the number of objects currently inside a Trigger Volume. This is not synchronized with the Trigger Volume&apos;s events!
             /// </summary>
             get => default;
         }
@@ -5992,7 +5992,7 @@ namespace RRCGGenerated
         public List<RecRoomObject> Objects
         {
             /// <summary>
-            /// Gets all of the objects currently inside a Trigger Volume. This is not synchronized with the Trigger Volume's events!
+            /// Gets all of the objects currently inside a Trigger Volume. This is not synchronized with the Trigger Volume&apos;s events!
             /// </summary>
             get => default;
         }
@@ -6000,7 +6000,7 @@ namespace RRCGGenerated
         public int PlayerCount
         {
             /// <summary>
-            /// Gets the number of players currently inside a Trigger Volume. This is not synchronized with the Trigger Volume's events!
+            /// Gets the number of players currently inside a Trigger Volume. This is not synchronized with the Trigger Volume&apos;s events!
             /// </summary>
             get => default;
         }
@@ -6022,7 +6022,7 @@ namespace RRCGGenerated
         public List<Player> Players
         {
             /// <summary>
-            /// Gets all of the players currently inside a Trigger Volume. This is not synchronized with the Trigger Volume's events!
+            /// Gets all of the players currently inside a Trigger Volume. This is not synchronized with the Trigger Volume&apos;s events!
             /// </summary>
             get => default;
         }
