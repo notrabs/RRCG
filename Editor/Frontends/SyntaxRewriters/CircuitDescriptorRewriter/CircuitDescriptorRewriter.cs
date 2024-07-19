@@ -118,7 +118,9 @@ namespace RRCG
             var statements = method.Body.Statements;
 
             // Declare parameters as as variables
-            statements = statements.InsertRange(0, VariableDeclaratorsFromParameters(method.ParameterList.Parameters.ToArray()));
+            // Here we pass the original method's parameters,
+            // as the semantic model is used in this operation
+            statements = statements.InsertRange(0, VariableDeclaratorsFromParameters(node.ParameterList.Parameters.ToArray()));
 
             // Wrap in accessibility & return scope
             statements = WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.MethodRoot);
@@ -294,21 +296,21 @@ namespace RRCG
         public override SyntaxNode VisitSimpleLambdaExpression(SimpleLambdaExpressionSyntax method)
         {
             var visitedMethod = (SimpleLambdaExpressionSyntax)base.VisitSimpleLambdaExpression(method);
-            return VisitAnonymousFunction(method, visitedMethod, "SimpleLambda", visitedMethod.Parameter);
+            return VisitAnonymousFunction(method, visitedMethod, "SimpleLambda", method.Parameter);
         }
         public override SyntaxNode VisitParenthesizedLambdaExpression(ParenthesizedLambdaExpressionSyntax method)
         {
             var visitedMethod = (ParenthesizedLambdaExpressionSyntax)base.VisitParenthesizedLambdaExpression(method);
-            return VisitAnonymousFunction(method, visitedMethod, "ParenthesizedLambda", visitedMethod.ParameterList.Parameters.ToArray());
+            return VisitAnonymousFunction(method, visitedMethod, "ParenthesizedLambda", method.ParameterList.Parameters.ToArray());
         }
 
         public override SyntaxNode VisitAnonymousMethodExpression(AnonymousMethodExpressionSyntax method)
         {
             var visitedMethod = (AnonymousMethodExpressionSyntax)base.VisitAnonymousMethodExpression(method);
-            return VisitAnonymousFunction(method, visitedMethod, "AnonymousMethod", visitedMethod.ParameterList.Parameters.ToArray());
+            return VisitAnonymousFunction(method, visitedMethod, "AnonymousMethod", method.ParameterList.Parameters.ToArray());
         }
 
-        public T VisitAnonymousFunction<T>(T method, T visitedMethod, string methodName, params ParameterSyntax[] visitedParameters) where T : AnonymousFunctionExpressionSyntax
+        public T VisitAnonymousFunction<T>(T method, T visitedMethod, string methodName, params ParameterSyntax[] unvisitedParameters) where T : AnonymousFunctionExpressionSyntax
         {
             SyntaxList<StatementSyntax> statements;
 
@@ -329,7 +331,7 @@ namespace RRCG
             }
 
             // Now we can declare method parameters as variables for the root accessibility scope.
-            statements = statements.InsertRange(0, VariableDeclaratorsFromParameters(visitedParameters));
+            statements = statements.InsertRange(0, VariableDeclaratorsFromParameters(unvisitedParameters));
 
             // Wrap the statements in an accessibility & return scope
             statements = WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.MethodRoot);
@@ -348,9 +350,11 @@ namespace RRCG
                 if (parameter.Modifiers.Any(m => m.Kind() == SyntaxKind.RefKeyword || m.Kind() == SyntaxKind.OutKeyword)) continue;
 
                 // Skip discarded parameters
-                if (parameter.Identifier.ToString() == "_") continue;
+                var parameterSymbol = SemanticModel.GetDeclaredSymbol(parameter);
+                if (parameterSymbol.IsDiscard) continue;
 
-                var invocation = VariableDeclaratorExpressionInvocation(parameter.Identifier.ToString(), null, parameter.Type, true);
+                var rewrittenType = (TypeSyntax)Visit(parameter.Type);
+                var invocation = VariableDeclaratorExpressionInvocation(parameter.Identifier.ToString(), null, rewrittenType, true);
                 invocations = invocations.Add(ExpressionStatement(invocation));
             }
 
