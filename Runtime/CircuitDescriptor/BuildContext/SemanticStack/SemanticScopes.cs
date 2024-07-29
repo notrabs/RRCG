@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System;
 using DeclaredVariable = RRCGBuild.AccessibilityScope.DeclaredVariable;
 using PromotedVariable = RRCGBuild.ConditionalContext.PromotedVariable;
-using RRCGGenerated;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using RRCG;
-
-// TODO: Should we start initializing members within the class declarations?
-//       We currently do this at each construction site, which gets quite verbose.
 
 namespace RRCGBuild
 {
@@ -34,9 +30,15 @@ namespace RRCGBuild
             // iterators the logic will basically be this.
 
             public Port SourceExec; // Necessary to ensure continuity in Continue/Break
-            public ExecFlow BreakFlow; // Break out of loop
-            public ExecFlow ContinueFlow; // Jump back to the start of the loop
+            public ExecFlow BreakFlow = new() { hasAdvanced = true }; // Break out of loop
+            public ExecFlow ContinueFlow = new(); // Jump back to the start of the loop
             public ConditionalContext ConditionalContext; // Required to write variable values when breaking/continuing
+
+            public BaseIterator(Port sourceExec, ConditionalContext conditional)
+            {
+                SourceExec = sourceExec;
+                ConditionalContext = conditional;
+            }
 
             // If this is true, the iterator will need to be built
             // with a manual implementation, and cannot be built with
@@ -112,8 +114,13 @@ namespace RRCGBuild
     // Actual scope definitions
     public class SwitchScope : SemanticScope.IBreak
     {
-        public ExecFlow BreakFlow;
+        public ExecFlow BreakFlow = new();
         public ConditionalContext ConditionalContext;
+
+        public SwitchScope(ConditionalContext conditional)
+        {
+            ConditionalContext = conditional;
+        }
 
         public void Break()
         {
@@ -131,17 +138,32 @@ namespace RRCGBuild
     {
         // NOTE: For While loops, a manual implementation will always be built
         // because there is no CV2 equivalent.
+        public WhileScope(Port sourceExec, ConditionalContext conditional)
+            : base(sourceExec, conditional) { }
     }
 
-    public class ForEachScope : SemanticScope.BaseIterator { }
+    public class ForEachScope : SemanticScope.BaseIterator
+    {
+        public ForEachScope(Port sourceExec, ConditionalContext conditional)
+            : base(sourceExec, conditional) { }
+    }
     
-    public class ForScope : SemanticScope.BaseIterator { }
+    public class ForScope : SemanticScope.BaseIterator
+    {
+        public ForScope(Port sourceExec, ConditionalContext conditional)
+            : base(sourceExec, conditional) { }
+    }
 
     // Scope valid in the expression of an assignment to an identifier. (currently only implemented for declaration intiailizers)
     public class NamedAssignmentScope : SemanticScope
     {
         // The Left-Hand side Identifier of the assignment
         public string Identifier;
+
+        public NamedAssignmentScope(string identifier)
+        {
+            Identifier = identifier;
+        }
     }
 
     // The accessibility scope is used to determine what
@@ -156,35 +178,47 @@ namespace RRCGBuild
 
         public class DeclaredVariable
         {
-            public Func<dynamic> Getter;
-            public Action<dynamic>? Setter;
-            public Type Type;
+            public Type Type { get; private set; }
+            public Func<dynamic> Getter { get; private set; }
+            public Action<dynamic>? Setter { get; private set; }
 
             // Only set when creating promoted variables in a conditional context.
             // This allows us to make use of the "double-set" prevention when we have
             // two seperate conditional contexts that immediately precede/follow eachother.
             public dynamic? RRVariableForPromotion;
+
+            public DeclaredVariable(Type type, Func<dynamic> getter, Action<dynamic>? setter = null)
+            {
+                Type = type;
+                Getter = getter;
+                Setter = setter;
+            }
         }
 
         // Gotos that jump to labels not yet defined
         // (exec flow contains ports waiting to be advanced
         //  once the label is declared)
-        public Dictionary<string, ExecFlow> PendingGotos;
+        public Dictionary<string, ExecFlow> PendingGotos = new();
 
         // Labels that have been defined, but are awaiting
         // a suitable Port to resolve to
-        public List<string> PendingLabels;
+        public List<string> PendingLabels = new();
 
         // Fully resolved labels, ready to jump to
-        public Dictionary<string, Port> DeclaredLabels;
+        public Dictionary<string, Port> DeclaredLabels = new();
 
         // Variables declared within this scope.
         // Maps identifier name -> getter/setter methods
-        public Dictionary<string, DeclaredVariable> DeclaredVariables;
+        public Dictionary<string, DeclaredVariable> DeclaredVariables = new();
 
         // Scope kind. May have implications on whether "access operations"
         // running under this scope can search up into enclosing accessibility scopes.
         public Kind ScopeKind;
+
+        public AccessibilityScope(Kind kind)
+        {
+            ScopeKind = kind;
+        }
     }
 
     // Manages promotion of variables in conditional branches
@@ -195,7 +229,7 @@ namespace RRCGBuild
         public class PromotedVariable
         {
             public DeclaredVariable DeclaredVariable;
-            public dynamic ValueBeforePromotion;
+            public dynamic ValueBeforePromotion; // TODO: This name is unclear. We really mean "value before entering this conditional context".
             public dynamic RRVariableValue
             {
                 // When creating PromotedVariables in __ConditionalContext,
@@ -210,10 +244,16 @@ namespace RRCGBuild
                     DeclaredVariable.RRVariableForPromotion!.Value = value;
                 }
             }
+
+            public PromotedVariable(DeclaredVariable declVar, dynamic? valueBeforePromotion = null)
+            {
+                DeclaredVariable = declVar;
+                ValueBeforePromotion = valueBeforePromotion ?? declVar.Getter();
+            }
         }
 
         // Variable promotion state
-        public Dictionary<string, PromotedVariable> PromotedVariables;
+        public Dictionary<string, PromotedVariable> PromotedVariables = new();
 
         /// <summary>
         /// Writes the current C# state of each promoted variable to the RR variable on the current exec flow.
@@ -252,6 +292,12 @@ namespace RRCGBuild
         {
             public ExecFlow ExecFlow;
             public dynamic? Data;
+
+            public Return(ExecFlow execFlow, dynamic? returnData)
+            {
+                ExecFlow = execFlow;
+                Data = returnData;
+            }
         }
 
         public ReturnScope(string methodName, Type? returnType, string[]? tupleElementNames)
@@ -288,7 +334,7 @@ namespace RRCGBuild
             // Copy the current exec flow, store it with the data
             var returnFlow = new ExecFlow();
             returnFlow.Merge(ExecFlow.current);
-            Returns.Add(new Return { ExecFlow = returnFlow, Data = data });
+            Returns.Add(new Return(returnFlow, data));
 
             // Clear the current exec flow & we're done
             ExecFlow.current.Clear();

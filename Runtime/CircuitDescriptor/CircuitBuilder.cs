@@ -227,12 +227,12 @@ namespace RRCGBuild
                 parameterIndex++;
             }
 
-            if (isVoid) return null;
+            if (isVoid) return null!;
             if (isPort)
             {
                 dynamic port = Activator.CreateInstance(cbResult.GetType());
                 port.Port = cbNode.Port(dataPortGroup, 0);
-                port.Data = (cbResult as AnyPort).Data;
+                port.Data = (cbResult as AnyPort)!.Data;
                 return port;
             }
             else
@@ -244,7 +244,7 @@ namespace RRCGBuild
                 {
                     dynamic port = Activator.CreateInstance(cbResultTuple[i].GetType());
                     port.Port = cbNode.Port(dataPortGroup, i);
-                    port.Data = (cbResultTuple[i] as AnyPort).Data;
+                    port.Data = (cbResultTuple[i] as AnyPort)!.Data;
                     cbOutPorts.Add(port);
                 }
 
@@ -254,17 +254,17 @@ namespace RRCGBuild
 
         public static void CircuitBoard(Action circuitBoardFn) => __CircuitBoard(circuitBoardFn);
         public static T CircuitBoard<T>(Func<T> circuitBoardFn) => (T)__CircuitBoard(circuitBoardFn);
-        public static void CircuitBoard<P0>(Action<P0> circuitBoardFn, P0 value0) => __CircuitBoard(circuitBoardFn, value0);
-        public static T CircuitBoard<P0, T>(Func<P0, T> circuitBoardFn, P0 value0) => (T)__CircuitBoard(circuitBoardFn, value0);
-        public static void CircuitBoard<P0, P1>(Action<P0, P1> circuitBoardFn, P0 value0, P1 value1) => __CircuitBoard(circuitBoardFn, value0, value1);
-        public static T CircuitBoard<P0, P1, T>(Func<P0, P1, T> circuitBoardFn, P0 value0, P1 value1) => (T)__CircuitBoard(circuitBoardFn, value0, value1);
+        public static void CircuitBoard<P0>(Action<P0> circuitBoardFn, P0 value0) => __CircuitBoard(circuitBoardFn, value0!);
+        public static T CircuitBoard<P0, T>(Func<P0, T> circuitBoardFn, P0 value0) => (T)__CircuitBoard(circuitBoardFn, value0!);
+        public static void CircuitBoard<P0, P1>(Action<P0, P1> circuitBoardFn, P0 value0, P1 value1) => __CircuitBoard(circuitBoardFn, value0!, value1!);
+        public static T CircuitBoard<P0, P1, T>(Func<P0, P1, T> circuitBoardFn, P0 value0, P1 value1) => (T)__CircuitBoard(circuitBoardFn, value0!, value1!);
 
         public static void CircuitBoard(string name, Action circuitBoardFn) => __CircuitBoard(name, circuitBoardFn);
         public static T CircuitBoard<T>(string name, Func<T> circuitBoardFn) => (T)__CircuitBoard(name, circuitBoardFn);
-        public static void CircuitBoard<P0>(string name, Action<P0> circuitBoardFn, P0 value0) => __CircuitBoard(name, circuitBoardFn, value0);
-        public static T CircuitBoard<P0, T>(string name, Func<P0, T> circuitBoardFn, P0 value0) => (T)__CircuitBoard(name, circuitBoardFn, value0);
-        public static void CircuitBoard<P0, P1>(string name, Action<P0, P1> circuitBoardFn, P0 value0, P1 value1) => __CircuitBoard(name, circuitBoardFn, value0, value1);
-        public static T CircuitBoard<P0, P1, T>(string name, Func<P0, P1, T> circuitBoardFn, P0 value0, P1 value1) => (T)__CircuitBoard(name, circuitBoardFn, value0, value1);
+        public static void CircuitBoard<P0>(string name, Action<P0> circuitBoardFn, P0 value0) => __CircuitBoard(name, circuitBoardFn, value0!);
+        public static T CircuitBoard<P0, T>(string name, Func<P0, T> circuitBoardFn, P0 value0) => (T)__CircuitBoard(name, circuitBoardFn, value0!);
+        public static void CircuitBoard<P0, P1>(string name, Action<P0, P1> circuitBoardFn, P0 value0, P1 value1) => __CircuitBoard(name, circuitBoardFn, value0!, value1!);
+        public static T CircuitBoard<P0, P1, T>(string name, Func<P0, P1, T> circuitBoardFn, P0 value0, P1 value1) => (T)__CircuitBoard(name, circuitBoardFn, value0!, value1!);
 
         public static void ExistingCircuitBoard(StringPort boardName, AlternativeExec circuitBoardFn)
         {
@@ -285,7 +285,8 @@ namespace RRCGBuild
 
         public static PortType ExistingDataInput<PortType>(StringPort portName)
         {
-            return default;
+            // TODO: Support existing ports
+            return default!;
         }
         public static void ExistingDataOutput<PortType>(StringPort portName, PortType value)
         {
@@ -591,13 +592,7 @@ namespace RRCGBuild
 
             // Now we can create & push a WhileScope
             // onto the SemanticStack and build the loop block.
-            var whileScope = new WhileScope()
-            {
-                BreakFlow = new() { hasAdvanced = true },
-                ContinueFlow = new(),
-                ConditionalContext = conditional,
-                SourceExec = ifNode.Port(0, 0)
-            };
+            var whileScope = new WhileScope(ifNode.Port(0, 0), conditional);
 
             SemanticStack.current.Push(conditional);
             SemanticStack.current.Push(whileScope);
@@ -626,11 +621,7 @@ namespace RRCGBuild
         public static void __Switch(ConditionalContext conditional, Func<AnyPort> match, AlternativeExec failed, Dictionary<AnyPort, AlternativeExec> branches)
         {
             // Push our semantic scopes
-            var switchScope = new SwitchScope
-            {
-                BreakFlow = new ExecFlow(),
-                ConditionalContext = conditional
-            };
+            var switchScope = new SwitchScope(conditional);
             SemanticStack.current.Push(conditional);
             SemanticStack.current.Push(switchScope);
 
@@ -705,7 +696,7 @@ namespace RRCGBuild
                 Action<dynamic>? dynamicSetter = setter != null ? (v) => setter(v) : null;
 
                 // Add to current scope
-                accessScope.DeclaredVariables[identifier] = new() { Getter = dynamicGetter, Setter = dynamicSetter, Type = typeof(T) };
+                accessScope.DeclaredVariables[identifier] = new(typeof(T), dynamicGetter, dynamicSetter);
             }
 
             // Initialize the variable?
@@ -713,7 +704,7 @@ namespace RRCGBuild
 
             if (initializer != null)
             {
-                var assignmentScope = new NamedAssignmentScope { Identifier = identifier };
+                var assignmentScope = new NamedAssignmentScope(identifier);
                 SemanticStack.current.Push(assignmentScope);
                 value = initializer();
                 SemanticStack.current.PopExpectedScope(assignmentScope);
@@ -726,7 +717,7 @@ namespace RRCGBuild
         {
             // This method is purely to push/pop a named assignment scope to the SemanticStack,
             // and does not interface with AccessibilityScopes.
-            var scope = new NamedAssignmentScope { Identifier = identifier };
+            var scope = new NamedAssignmentScope(identifier);
 
             SemanticStack.current.Push(scope);
             T value = initializer();
@@ -738,14 +729,7 @@ namespace RRCGBuild
 
         public static void __BeginAccessibilityScope(AccessibilityScope.Kind scopeKind)
         {
-            SemanticStack.current.Push(new AccessibilityScope
-            {
-                PendingGotos = new(),
-                PendingLabels = new(),
-                DeclaredLabels = new(),
-                DeclaredVariables = new(),
-                ScopeKind = scopeKind
-            });
+            SemanticStack.current.Push(new AccessibilityScope(scopeKind));
         }
 
         public static void __EndAccessibilityScope()
@@ -931,7 +915,6 @@ namespace RRCGBuild
                 if (declaredVariable == null) continue;
 
                 // Is it a port type?
-                var variableValue = declaredVariable.Getter();
                 var variableType = declaredVariable.Type;
                 if (!typeof(AnyPort).IsAssignableFrom(variableType)) continue;
 
@@ -946,15 +929,15 @@ namespace RRCGBuild
                     // Create a new one. Reflection magic!
                     var type = typeof(Variable<>).MakeGenericType(variableType);
 
-                    SemanticStack.current.Push(new NamedAssignmentScope { Identifier = $"Conditional_{identifier}" });
-                    variableForPromotion = Activator.CreateInstance(type, new object[] { null });
+                    SemanticStack.current.Push(new NamedAssignmentScope($"Conditional_{identifier}"));
+                    variableForPromotion = Activator.CreateInstance(type, new object[] { null! });
                     SemanticStack.current.Pop();
 
                     declaredVariable.RRVariableForPromotion = variableForPromotion;
                 }
 
                 // Create promoted variable & add to conditional context
-                var promotedVariable = new PromotedVariable() { DeclaredVariable = declaredVariable, ValueBeforePromotion = variableValue };
+                var promotedVariable = new PromotedVariable(declaredVariable);
                 conditionalContext.PromotedVariables[identifier] = promotedVariable;
             }
 
@@ -973,14 +956,7 @@ namespace RRCGBuild
             var forEachNode = Context.lastSpawnedNode;
             ExecFlow.current.Advance(Context.current, forEachNode.Port(0, 0), forEachNode.Port(0, 0));
 
-            var scope = new ForEachScope
-            {
-                BreakFlow = new() { hasAdvanced = true },
-                ContinueFlow = new(),
-                ConditionalContext = conditional,
-                SourceExec = forEachNode.Port(0, 0)
-            };
-
+            var scope = new ForEachScope(forEachNode.Port(0, 0), conditional);
             SemanticStack.current.Push(scope);
             SemanticStack.current.Push(conditional);
             body(new T { Port = forEachNode.Port(0, 1) });
@@ -1083,13 +1059,7 @@ namespace RRCGBuild
 
             // Create & push our scopes onto the SemanticStack,
             // build the body of the loop
-            var scope = new ForScope()
-            {
-                BreakFlow = new() { hasAdvanced = true },
-                ContinueFlow = new(),
-                ConditionalContext = conditional,
-                SourceExec = ifNode.Port(0, 0)
-            };
+            var scope = new ForScope(ifNode.Port(0, 0), conditional);
 
             SemanticStack.current.Push(conditional);
             SemanticStack.current.Push(scope);
@@ -1170,18 +1140,12 @@ namespace RRCGBuild
 
             // Finally, we can create our For scope,
             // push onto the semantic stack, and build the body
-            var scope = new ForScope
-            {
-                BreakFlow = new() { hasAdvanced = true },
-                ContinueFlow = new(),
-                ConditionalContext = conditional,
-                SourceExec = forNode.Port(0, 0),
+            var scope = new ForScope(forNode.Port(0, 0), conditional);
 
-                // TODO: The negative iteration worked fine for positive numbers,
-                //       but breaks on negative numbers. Whoops.. is it possible to
-                //       come up with a solution that works for both?
-                NeedsManualImplementation = !iterateUpward
-            };
+            // TODO: The negative iteration worked fine for positive numbers,
+            //       but breaks on negative numbers. Whoops.. is it possible to
+            //       come up with a solution that works for both?
+            scope.NeedsManualImplementation = !iterateUpward;
 
             SemanticStack.current.Push(scope);
             SemanticStack.current.Push(conditional);
@@ -1297,7 +1261,7 @@ namespace RRCGBuild
 
             // Otherwise make use of NamedAssignmentScope and AutoNamedVariable
             // to ensure the variable has a unique name.
-            var scope = new NamedAssignmentScope { Identifier = name };
+            var scope = new NamedAssignmentScope(name);
             SemanticStack.current.Push(scope);
 
             var result = new AutoNamedVariable<T>(homeValue, kind);
