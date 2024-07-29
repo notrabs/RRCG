@@ -248,7 +248,7 @@ namespace RRCGBuild
             {
                 // When creating PromotedVariables in __ConditionalContext,
                 // we always ensure the declared variable has an RRVariableForPromotion.
-                get => DeclaredVariable.RRVariable!.Value;
+                get => DeclaredVariable.RRVariable.Value;
 
                 set {
                     // Avoid double-setting the RR variable value,
@@ -256,7 +256,7 @@ namespace RRCGBuild
                     // This can happen if you have nested conditional statements.
 
                     if (value.EquivalentTo(RRVariableValue)) return;
-                    DeclaredVariable.RRVariable!.Value = value;
+                    DeclaredVariable.RRVariable.Value = value;
                 }
             }
 
