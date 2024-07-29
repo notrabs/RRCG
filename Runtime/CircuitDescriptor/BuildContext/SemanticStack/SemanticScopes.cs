@@ -276,7 +276,19 @@ namespace RRCGBuild
         public void WritePromotedVariables()
         {
             foreach (var promotedVariable in PromotedVariables.Values)
-                promotedVariable.RRVariableValue = promotedVariable.DeclaredVariable.Getter();
+            { 
+                var value = promotedVariable.DeclaredVariable.Getter();
+
+                // In the case of uninitialized variables, we'll just do nothing.
+                // This solves the case where e.g. in a do while loop, you assign
+                // to an undeclared variable before using it, so C# forgives you.
+                // e.g:
+                //     int i; do { i = 10 } while (i != 10)
+                //
+                // TODO: Does this cause problems for other cases?
+
+                if (value != null) promotedVariable.RRVariableValue = value;
+            }
         }
 
         /// <summary>
