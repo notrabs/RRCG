@@ -696,7 +696,7 @@ namespace RRCGBuild
                 Action<dynamic>? dynamicSetter = setter != null ? (v) => setter(v) : null;
 
                 // Add to current scope
-                accessScope.DeclaredVariables[identifier] = new(typeof(T), dynamicGetter, dynamicSetter);
+                accessScope.DeclaredVariables[identifier] = new(identifier, typeof(T), dynamicGetter, dynamicSetter);
             }
 
             // Initialize the variable?
@@ -905,7 +905,7 @@ namespace RRCGBuild
 
         public static ConditionalContext __ConditionalContext(params string[] promotedIdentifiers)
         {
-            var conditionalContext = new ConditionalContext() { PromotedVariables = new() };
+            var conditionalContext = new ConditionalContext();
 
             // Create promoted variables
             foreach (var identifier in promotedIdentifiers)
@@ -921,20 +921,6 @@ namespace RRCGBuild
                 // Is the variable marked as promoted within the current conditional context?
                 var promotedVariables = conditionalContext.PromotedVariables;
                 if (promotedVariables.ContainsKey(identifier)) continue;
-
-                // Does it have a variable for promotion we can re-use?
-                dynamic? variableForPromotion = declaredVariable.RRVariableForPromotion;
-                if (variableForPromotion == null)
-                {
-                    // Create a new one. Reflection magic!
-                    var type = typeof(Variable<>).MakeGenericType(variableType);
-
-                    SemanticStack.current.Push(new NamedAssignmentScope($"Conditional_{identifier}"));
-                    variableForPromotion = Activator.CreateInstance(type, new object[] { null! });
-                    SemanticStack.current.Pop();
-
-                    declaredVariable.RRVariableForPromotion = variableForPromotion;
-                }
 
                 // Create promoted variable & add to conditional context
                 var promotedVariable = new PromotedVariable(declaredVariable);

@@ -178,20 +178,34 @@ namespace RRCGBuild
 
         public class DeclaredVariable
         {
+            public string Identifier { get; private set; }
             public Type Type { get; private set; }
             public Func<dynamic> Getter { get; private set; }
             public Action<dynamic>? Setter { get; private set; }
+            public IVariable RRVariable => GetOrCreateRRVariable();
+            private IVariable? RRVariableInternal;
 
-            // Only set when creating promoted variables in a conditional context.
-            // This allows us to make use of the "double-set" prevention when we have
-            // two seperate conditional contexts that immediately precede/follow eachother.
-            public dynamic? RRVariableForPromotion;
-
-            public DeclaredVariable(Type type, Func<dynamic> getter, Action<dynamic>? setter = null)
+            public DeclaredVariable(string identifier, Type type, Func<dynamic> getter, Action<dynamic>? setter = null)
             {
+                Identifier = identifier;
                 Type = type;
                 Getter = getter;
                 Setter = setter;
+            }
+
+            IVariable GetOrCreateRRVariable()
+            {
+                // If we already have a variable node, return it.
+                if (RRVariableInternal != null) return RRVariableInternal;
+
+                // Otherwise we create a new one.
+                var variableType = typeof(Variable<>).MakeGenericType(Type);
+
+                SemanticStack.current.Push(new NamedAssignmentScope($"Conditional_{Identifier}"));
+                RRVariableInternal = (IVariable)Activator.CreateInstance(variableType, new object[] { null! });
+                SemanticStack.current.Pop();
+
+                return RRVariableInternal;
             }
         }
 
@@ -229,26 +243,27 @@ namespace RRCGBuild
         public class PromotedVariable
         {
             public DeclaredVariable DeclaredVariable;
-            public dynamic ValueBeforePromotion; // TODO: This name is unclear. We really mean "value before entering this conditional context".
-            public dynamic RRVariableValue
+            public dynamic ValueBeforeConditionalContext;
+            public AnyPort RRVariableValue
             {
                 // When creating PromotedVariables in __ConditionalContext,
                 // we always ensure the declared variable has an RRVariableForPromotion.
-                get => DeclaredVariable.RRVariableForPromotion!.Value;
+                get => DeclaredVariable.RRVariable!.Value;
 
                 set {
-                    // Avoid double-setting the variable value by checking if the value
-                    // is the variable getter port.
+                    // Avoid double-setting the RR variable value,
+                    // if its C# state still points to the Value pin.
+                    // This can happen if you have nested conditional statements.
 
-                    if (((AnyPort)value).EquivalentTo(RRVariableValue)) return;
-                    DeclaredVariable.RRVariableForPromotion!.Value = value;
+                    if (value.EquivalentTo(RRVariableValue)) return;
+                    DeclaredVariable.RRVariable!.Value = value;
                 }
             }
 
             public PromotedVariable(DeclaredVariable declVar, dynamic? valueBeforePromotion = null)
             {
                 DeclaredVariable = declVar;
-                ValueBeforePromotion = valueBeforePromotion ?? declVar.Getter();
+                ValueBeforeConditionalContext = valueBeforePromotion ?? declVar.Getter();
             }
         }
 
@@ -266,7 +281,7 @@ namespace RRCGBuild
 
         /// <summary>
         /// Resets the C# state of each promoted variable to either
-        /// the pre-promotion state, or the RR variable output (if setToVariableValue is set)
+        /// the pre-conditional state, or the RR variable output (if setToVariableValue is set)
         /// </summary>
         public void ResetPromotedVariables(bool setToVariableValue)
         {
@@ -274,7 +289,7 @@ namespace RRCGBuild
             {
                 if (promotedVariable.DeclaredVariable.Setter == null) continue;
 
-                var value = setToVariableValue ? promotedVariable.RRVariableValue : promotedVariable.ValueBeforePromotion;
+                var value = setToVariableValue ? promotedVariable.RRVariableValue : promotedVariable.ValueBeforeConditionalContext;
                 promotedVariable.DeclaredVariable.Setter(value);
             }
         }

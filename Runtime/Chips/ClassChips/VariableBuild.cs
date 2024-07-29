@@ -12,7 +12,15 @@ namespace RRCGBuild
         Cloud
     }
 
-    public interface IVariable<T>
+    public interface IVariable
+    {
+        public Type Type { get; }
+        public AnyPort Value { get; set; }
+        public void ChangedEvent();
+        public IVariable ChangedEvent(AlternativeExec OnChanged);
+    }
+
+    public interface IVariable<T> where T : AnyPort
     {
         public T Value { get; set; }
 
@@ -21,7 +29,7 @@ namespace RRCGBuild
     }
 
 
-    public class NamedVariable<T> : IVariable<T> where T : AnyPort, new()
+    public class NamedVariable<T> : IVariable<T>, IVariable where T : AnyPort, new()
     {
         private string name;
         private VariableKind kind;
@@ -86,15 +94,24 @@ namespace RRCGBuild
             return data;
         }
 
+        Type IVariable.Type => typeof(T);
+
+        AnyPort IVariable.Value
+        {
+            get => Value;
+            set => Value = (T)value;
+        }
+
         public T Value
         {
             get => VariableGetterPort;
             set { CreateVariableNode(value); }
         }
-        public void ChangedEvent()
-        {
-            ChipBuilder.EventReceiver(name + " Changed");
-        }
+
+        void IVariable.ChangedEvent() => ChangedEvent();
+        public void ChangedEvent() => ChipBuilder.EventReceiver(name + " Changed");
+
+        IVariable IVariable.ChangedEvent(AlternativeExec OnChanged) => (IVariable)ChangedEvent(OnChanged);
         public IVariable<T> ChangedEvent(AlternativeExec OnChanged)
         {
             CircuitBuilder.InlineGraph(() =>
