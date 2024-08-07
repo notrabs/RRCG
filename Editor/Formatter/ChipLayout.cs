@@ -25,8 +25,8 @@ namespace RRCG.Formatter
         public List<ChipLayout> children = new List<ChipLayout>();
 
         // Updates the layout world positions by passing down the top-left position and returning the size bottom-up
-        internal abstract Vector2 CalculateSize();
-        internal abstract void CalculateLayout(Vector2 worldPos);
+        public abstract Vector2 CalculateSize();
+        public abstract void CalculateLayout(Vector2 worldPos);
 
         public Vector2 Calculate()
         {
@@ -67,8 +67,8 @@ namespace RRCG.Formatter
                 0.2f + Math.Max(node.InputCount, node.SwitchCases?.Count ?? 0) * 0.03f
             );
         }
-        internal override Vector2 CalculateSize() => Size + Padding.Size;
-        internal override void CalculateLayout(Vector2 worldPos) => WorldPos = worldPos;
+        public override Vector2 CalculateSize() => Size + Padding.Size;
+        public override void CalculateLayout(Vector2 worldPos) => WorldPos = worldPos;
 
         public override void ApplyLayoutToChips(Vector3 rootPos, Quaternion rootRot)
         {
@@ -104,7 +104,7 @@ namespace RRCG.Formatter
 
     public class ChipLayoutVertical : ChipLayout
     {
-        internal override Vector2 CalculateSize()
+        public override Vector2 CalculateSize()
         {
             foreach (var child in children)
             {
@@ -119,7 +119,7 @@ namespace RRCG.Formatter
             return Size + Padding.Size;
         }
 
-        internal override void CalculateLayout(Vector2 worldPos)
+        public override void CalculateLayout(Vector2 worldPos)
         {
             WorldPos = worldPos;
 
@@ -143,7 +143,7 @@ namespace RRCG.Formatter
 
     public class ChipLayoutHorizontal : ChipLayout
     {
-        internal override Vector2 CalculateSize()
+        public override Vector2 CalculateSize()
         {
             foreach (var child in children)
             {
@@ -158,7 +158,7 @@ namespace RRCG.Formatter
             return Size + Padding.Size;
         }
 
-        internal override void CalculateLayout(Vector2 worldPos)
+        public override void CalculateLayout(Vector2 worldPos)
         {
             WorldPos = worldPos;
 
