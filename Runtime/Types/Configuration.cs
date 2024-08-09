@@ -30,6 +30,7 @@ namespace RRCG
             { "DataTableGetAllRowsContaining", "DataTableColumnData" },
             { "DataTableGetRowCount", "DataTableData" },
             { "DataTableGetColumnCount", "DataTableData" },
+            { "Sequence", "SequenceData" }
         };
 
         public static string GetConfigType(string chipName)
@@ -64,12 +65,12 @@ namespace RRCG
     );
 
     public record PlayerWorldUIData(
-            string Name,
-            WorldUIBar Primary = null,
-            WorldUIBar Secondary = null,
-            string Text = "",
-            bool Synced = true,
-            bool EnableWhileJoining = false
+        string Name,
+        WorldUIBar Primary = null,
+        WorldUIBar Secondary = null,
+        string Text = "",
+        bool Synced = true,
+        bool EnableWhileJoining = false
     );
 
     public record SFXConstantData(
@@ -142,6 +143,10 @@ namespace RRCG
     // It refers to a specific Data Table, but not to a column.
     public record DataTableData(
         string DataTableName
+    );
+
+    public record SequenceData(
+        int NumBranches  
     );
 }
 

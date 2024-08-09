@@ -7544,7 +7544,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Executes all output ports in order.
         /// </summary>
-        public static void Sequence<T>(AlternativeExec _2)
+        internal static void Sequence<T>(AlternativeExec _2, SequenceData config)
         {
             return;
         }

@@ -42,6 +42,7 @@ namespace RRCGBuild
         public DataTableDefinitionData DataTableDefinitionData = null;
         public DataTableColumnData DataTableColumnData = null;
         public DataTableData DataTableData = null;
+        public SequenceData SequenceData = null;
 
         [JsonConverter(typeof(DefaultValuesConverter))]
         public Dictionary<(int Group, int Port), object> DefaultValues = new Dictionary<(int Group, int Port), object>();

@@ -1019,6 +1019,35 @@ namespace RRCGBuild
             return new T() { Port = self.Port };
         }
 
+        public static void Sequence(params AlternativeExec[] branches)
+        {
+            // TODO: Support conditional assignments
+
+            // Validate number of branches
+            if (branches.Length <= 0)
+                throw new InvalidOperationException("Must have at least one branch for Sequence");
+
+            if (branches.Length > 63)
+                throw new InvalidOperationException("Maximum of 63 Sequence branches. One is reserved by RRCG to continue execution.");
+
+            // Build Sequence chip
+            ChipBuilderGen.Sequence<AnyPort>(() => { }, new(branches.Length + 1));
+            var sequenceNode = Context.lastSpawnedNode;
+
+            // Build branches
+            for (int i=0; i < branches.Length; i++)
+            {
+                ExecFlow.current.Ports.Clear();
+                ExecFlow.current.Ports.Add(sequenceNode.Port(0, i));
+
+                branches[i]();
+            }
+
+            // And continue on the final, reserved pin
+            ExecFlow.current.Clear();
+            ExecFlow.current.Ports.Add(sequenceNode.Port(0, branches.Length));
+        }
+
         #endregion Misc
     }
 }

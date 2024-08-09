@@ -10963,7 +10963,7 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static void Sequence<T>(AlternativeExec _2)
+        internal static void Sequence<T>(AlternativeExec _2, SequenceData config)
             where T : AnyPort, new()
         {
             Node node = new Node()
@@ -10975,6 +10975,7 @@ namespace RRCGGenerated
             ExecFlow.current.Ports.Add(new Port{Node = node, Index = 1});
             _2();
             ExecFlow.current = mainFlow;
+            node.SequenceData = config;
             return;
         }
 

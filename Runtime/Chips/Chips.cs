@@ -45,6 +45,9 @@ namespace RRCGSource
 
         public static string StringFormat(string Format, params string[] Values) { return default; }
 
+        /// <summary>Executes all branches in order. Note conditional assignments are still TODO.</summary>
+        public static void Sequence(params AlternativeExec[] branches) { }
+
         // 
         // Shorthands
         //
