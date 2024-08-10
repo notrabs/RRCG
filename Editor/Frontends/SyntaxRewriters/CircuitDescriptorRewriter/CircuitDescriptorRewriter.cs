@@ -95,6 +95,18 @@ namespace RRCG
 
             var method = (MethodDeclarationSyntax)base.VisitMethodDeclaration(node);
 
+            // Make sure generic methods in RRCG classes are constrained to port types in build realm
+            if (node.TypeParameterList != null)
+            {
+                method = method.WithConstraintClauses(
+                    SyntaxUtils.TypeParameterConstraintList(
+                        node.TypeParameterList.Parameters.Select(
+                            p => SyntaxUtils.TypeParameterConstraintClause(IdentifierName(p.Identifier.Text), TypeConstraint(IdentifierName("AnyPort")), ConstructorConstraint())
+                        ).ToArray()
+                    )
+                );
+            }
+
             var methodName = method.Identifier.ToString();
 
             var isVoid = method.ReturnType.ToString() == "void";
