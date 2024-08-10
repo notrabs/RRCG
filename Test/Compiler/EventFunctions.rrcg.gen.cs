@@ -432,7 +432,7 @@ namespace RRCGBuild
                     result = __VariableDeclaratorExpression<StringPort>("result", () => "static works", () => result!, (_RRCG_SETTER_VALUE) => result = _RRCG_SETTER_VALUE);
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                    __OptimizedFor(__ConditionalContext("i", "result"), true, 0, 10, (i) =>
+                    __OptimizedFor(__ConditionalContext("i", "result"), 0, 10, (i) =>
                     {
                         __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                         result += "!";

@@ -1087,55 +1087,25 @@ namespace RRCGBuild
             ExecFlow.current.Ports.Add(ifNode.Port(0, 1));
         }
 
-        public static void __OptimizedFor(ConditionalContext conditional, bool iterateUpward, IntPort min, IntPort max, Action<IntPort> body, AlternativeExec incrementors)
+        public static void __OptimizedFor(ConditionalContext conditional, IntPort min, IntPort max, Action<IntPort> body, AlternativeExec incrementors)
         {
             // Write promoted variables to RR variables,
             // set their C# state to reference the RR variable outputs
             conditional.WritePromotedVariables();
             conditional.ResetPromotedVariables(true);
 
-            // Build loop body assuming we can use the For node.
-            // The For node does not support negative iteration, so if we're iterating
-            // in the negative direction, we'll need some special behaviour to support it.
-            Node? maxCacheNode = null;
-            IntPort maxCached = max;
-            Node forNode;
-            Node? subtractNode = null;
-
-            // If negative (& the max value is a real port) build a cache for the max value
-            if (!iterateUpward && max.IsActualPort)
-            {
-                RandomInt(max, max);
-                maxCacheNode = Context.lastSpawnedNode;
-                maxCached = new IntPort { Port = maxCacheNode.Port(0, 1) };
-            }
-
-            // Build the For node itself
-            InlineGraph(() => For(min, maxCached, (_) => { }));
-            forNode = Context.lastSpawnedNode;
-
+            // We'll build the loop body assuming we can use the For node.
+            // If this assumption turns out wrong, we'll splice in a manual implementation.
+            InlineGraph(() => For(min, max, (_) => { }));
+            var forNode = Context.lastSpawnedNode;
             ExecFlow.current.Advance(Context.current, forNode.Port(0, 0), forNode.Port(0, 0));
 
-            // If negative, pass (maxCached - index) to the body.
-            var indexArg = new IntPort { Port = forNode.Port(0, 1) };
-            if (!iterateUpward)
-            {
-                indexArg = Subtract(maxCached, indexArg);
-                subtractNode = Context.lastSpawnedNode;
-            }
-
-            // Finally, we can create our For scope,
-            // push onto the semantic stack, and build the body
+            // Create our For scope, push onto the
+            // semantic stack, and build the body
             var scope = new ForScope(forNode.Port(0, 0), conditional);
-
-            // TODO: The negative iteration worked fine for positive numbers,
-            //       but breaks on negative numbers. Whoops.. is it possible to
-            //       come up with a solution that works for both?
-            scope.NeedsManualImplementation = !iterateUpward;
-
             SemanticStack.current.Push(scope);
             SemanticStack.current.Push(conditional);
-            body(indexArg);
+            body(new IntPort { Port = forNode.Port(0, 1) });
 
             // Write final values of promoted variables to their RR variables,
             // again set C# state to reference their outputs
@@ -1172,7 +1142,7 @@ namespace RRCGBuild
             var indexVariable = __CreateNamedVariable<IntPort>("For_index", null!, VariableKind.Local);
 
             // Replace index connections with the new variable output
-            var indexPortReplace = subtractNode?.Port(0, 0) ?? forNode.Port(0, 1);
+            var indexPortReplace = forNode.Port(0, 1);
             foreach (var conn in Context.current.Connections.Where(c => c.From.EquivalentTo(indexPortReplace)))
                 conn.From = indexVariable.Value.Port;
 
@@ -1185,9 +1155,8 @@ namespace RRCGBuild
             //       did actually advance. It would have to in order to require a manual implementation,
             //       as that only happens for these when a Delay chip has been spawned. But is this really safe?
 
-            var execInTarget = maxCacheNode != null ? maxCacheNode.Port(0, 0) : forNode.Port(0, 0);
             var execInputFrom = Context.current.Connections
-                .Where(c => c.To.EquivalentTo(execInTarget))
+                .Where(c => c.To.EquivalentTo(forNode.Port(0, 0)))
                 .Select(c => c.From)
                 .FirstOrDefault();
 
@@ -1196,40 +1165,32 @@ namespace RRCGBuild
                 .Select(c => c.To)
                 .FirstOrDefault();
 
-            // Remove old nodes, setup new exec flow
-            Context.current.RemoveNode(maxCacheNode);
+            // Remove old node, setup new exec flow
             Context.current.RemoveNode(forNode);
-            Context.current.RemoveNode(subtractNode);
             ExecFlow.current.Advance(Context.current, null, execInputFrom);
 
             // Initialize index variable
-            indexVariable.Value = iterateUpward ? min : max;
+            indexVariable.Value = min;
 
-            // Cache our "end point" value?
-            // This is pretty much what we would do when iterating negatively.
-            // But now we need it in both cases. So we just do it all over again :p
-            var endCache = iterateUpward ? max : min;
+            // Cache our "end point" value if it's an actual port
+            var endCache = max;
             if (endCache.IsActualPort)
                 endCache = RandomInt(endCache, endCache);
 
             // Check if we should enter the loop body
-            var condition = iterateUpward ? LessThan(indexVariable.Value, endCache) : GreaterThan(indexVariable.Value, endCache);
-            If(condition, () => { });
+            If(LessThan(indexVariable.Value, endCache), () => { });
             var ifNode = Context.lastSpawnedNode;
 
             // Wire Then port to exec output destination
             ExecFlow.current.Advance(Context.current, execOutputTo, null);
 
-            // Jump back onto the loop body exec flow, increment/decrement index, advance back to If node
+            // Jump back onto the loop body exec flow, increment index, advance back to If node
             // Edge-case: Empty execution flow (like: for (..) { break; })
             //            In this case the increment will be unreachable, so don't spawn it.
             ExecFlow.current = prevFlow;
             if (ExecFlow.current.Ports.Count > 0)
             {
-
-                indexVariable.Value = iterateUpward ? indexVariable.Value + 1
-                                                    : indexVariable.Value - 1;
-
+                indexVariable.Value++;
                 ExecFlow.current.Advance(Context.current, ifNode.Port(0, 0), null);
             }
 

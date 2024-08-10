@@ -472,47 +472,19 @@ public class Iterators : CircuitDescriptor
     {
         new EventDefinition("ForLoopTest").Receiver();
 
-        LogString("Testing standard form, positive iteration:");
+        LogString("Testing standard form:");
         for (int i = 0; i < 10; i++)
             LogString($"i: {i}");
 
-        LogString("Testing standard form, positive iteration (with 'var' index declaration):");
+        LogString("Testing standard form (with 'var' index declaration):");
 
         // This should work too, because C# infers the type to be int.
         // We check with the semantic model to determine the type when
         // checking if a For statement can use the For node,
         // not just the syntax alone.
+
         for (var i = 0; i < 10; i++)
             LogString($"i: {i}");
-
-        // TODO: The negative iteration worked fine for positive numbers,
-        //       but breaks on negative numbers. Whoops.. is it possible to
-        //       come up with a solution that works for both?
-        
-        /*LogString("Testing standard form, negative iteration (data ports):");
-
-        // The For node does not support negative iteration.
-        // But, we can augment this functionality onto it.
-
-        // At rewriting time, depending on the condition of the loop,
-        // we determine the iteration direction, and what values are
-        // the minimum and maximum. So this should iterate upward,
-        // but use a Subtract chip to correct the index.
-        for (int i = 10; i > 0; i--)
-            LogString($"i: {i}");
-
-        LogString("Testing standard form, negative iteration (real ports):");
-
-        // When we apply the correction for the negative iteration,
-        // we want it to be as efficient as possible. With a pure-data
-        // max value, we can insert it directly into the Subtract chip.
-        // But if it's a real port, we cache it in an efficient Random store
-        // first, to ensure each access of the index is nice and cheap.
-
-        var minPort = Reroute(0);
-        var maxPort = Reroute(10);
-        for (int i = maxPort; i > minPort; i--)
-            LogString($"i: {i}");*/
 
         LogString("All done!");
         throw null;
@@ -545,11 +517,12 @@ public class Iterators : CircuitDescriptor
         // If this occurs, we need to go back and splice-in a manual iterator
         // which can be a bit of a convoluted process, especially with the
         // flexibility of For loops.
+        //
         // So we need to make sure we get it right!
 
-        LogString("Testing positive iteration (data ports):");
+        LogString("Testing iteration w/ delay (data ports):");
 
-        // For positive iterators using data ports,
+        // For iterators using data ports,
         // all we need to do is splice out the For node itself.
         for (int i = 0; i < 10; i++)
         {
@@ -557,9 +530,9 @@ public class Iterators : CircuitDescriptor
             ChipLib.AwaitDelay();
         }
 
-        LogString("Testing positive iteration (real ports):");
+        LogString("Testing iteration w/ delay (real ports):");
 
-        // For positive iterators using real ports, we have a problem.
+        // For iterators using real ports, we have a problem.
         //
         // We want to preserve the semantics of the For node here.
         // The start/end values are immutable while running the loop,
@@ -573,29 +546,6 @@ public class Iterators : CircuitDescriptor
             LogString($"i: {i}");
             ChipLib.AwaitDelay();
         }
-
-        /*LogString("Testing negative iteration (data ports):");
-
-        // For negative iterators using data ports, all we need to do
-        // is splice out the For node & the subtract node, and rather than
-        // checking if the index is less than a value, we check if it's greater.
-        for (int i = 10; i > 0; i--)
-        {
-            LogString($"i: {i}");
-            ChipLib.AwaitDelay();
-        }
-
-        LogString("Testing negative iteration (real ports):");
-
-        // For negative iterators using real ports, we again have a problem.
-        // We again have to cache the end value to preserve semantics & efficiency.
-        // This should look exactly like the positive iterator/real port case, except
-        // the value being cached should be the minimum value.
-        for (int i = max; i > min; i--)
-        {
-            LogString($"i: {i}");
-            ChipLib.AwaitDelay();
-        }*/
 
         LogString("All done!");
         throw null;

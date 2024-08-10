@@ -1188,16 +1188,14 @@ namespace RRCG
         {
             // First, try to determine if this For statement can use the For chip,
             // and get the associated parameters (the index symbol, min/max value expression).
-            var canUseForChip = DetermineForStatementOptimization(node, out var iterateUpward, out var indexSymbol, out var minExpression, out var maxExpression);
+            var canUseForChip = DetermineForStatementOptimization(node, out var indexSymbol, out var minExpression, out var maxExpression);
 
             // Now, we rewrite the variable declarations into actual locals.
             var statements = new SyntaxList<StatementSyntax>();
 
             if (node.Declaration != null)
             {
-                // Re-parse and rewrite type, see VisitIdentifierName
-                var rewrittenType = (TypeSyntax)Visit(ParseTypeName(node.Declaration.Type.ToString()));
-
+                var rewrittenType = (TypeSyntax)Visit(node.Declaration.Type);
                 foreach (var variable in node.Declaration.Variables)
                 {
                     var identifier = variable.Identifier.ToString();
@@ -1282,9 +1280,7 @@ namespace RRCG
                                                     IdentifierName("__OptimizedFor"))
                                                 .WithArgumentList(
                                                     SyntaxUtils.ArgumentList(
-                                                        createConditional,
-                                                        LiteralExpression(iterateUpward ? SyntaxKind.TrueLiteralExpression
-                                                                                        : SyntaxKind.FalseLiteralExpression),
+                                                        createConditional,  
                                                         (ExpressionSyntax)Visit(minExpression),
                                                         (ExpressionSyntax)Visit(maxExpression),
                                                         bodyLambda,
@@ -1310,9 +1306,8 @@ namespace RRCG
             return Block(WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.General));
         }
 
-        bool DetermineForStatementOptimization(ForStatementSyntax node, out bool iterateUpward, out ILocalSymbol indexSymbol, out ExpressionSyntax minExpression, out ExpressionSyntax maxExpression)
+        bool DetermineForStatementOptimization(ForStatementSyntax node, out ILocalSymbol indexSymbol, out ExpressionSyntax minExpression, out ExpressionSyntax maxExpression)
         {
-            iterateUpward = false;
             indexSymbol = null;
             minExpression = null;
             maxExpression = null;
@@ -1320,28 +1315,11 @@ namespace RRCG
             // This method recognizes these forms:
             // for (int i=MIN; i < MAX; i++)
             // for (int i=MIN; i < MAX; ++i)
-            // for (int i=MAX; i > MIN; i--)
-            // for (int i=MAX; i > MIN; --i)
 
-            // TODO: It may be more doable to support more forms by writing multiple smaller
-            //       methods focused on recognizing each specific form, rather than one method
-            //       that tries to recognize multiple. We could call them all and only give up
-            //       if we find no match even after every one has been called.
-            //
-            //       This may even be necessary to do now, as the negative iteration correction
-            //       doesn't work with negative numbers (i.e for (int i=10; i > -1; i--)).
-
-            // 1. The condition must be either:
-            //    - a Less Than expression (iterating in the positive direction)
-            //    - a Greater Than expression (iterating in the negative direction)
-            if (node.Condition is not BinaryExpressionSyntax binaryExpression)
+            // 1. The condition must be a Less Than expression.
+            if (node.Condition is not BinaryExpressionSyntax binaryExpression ||
+                binaryExpression.Kind() != SyntaxKind.LessThanExpression)
                 return false;
-
-            var binExpKind = binaryExpression.Kind();
-            if (binExpKind != SyntaxKind.LessThanExpression && binExpKind != SyntaxKind.GreaterThanExpression)
-                return false;
-
-            var iteratingUpward = binExpKind == SyntaxKind.LessThanExpression;
 
             // 2. The left side of the comparison must be a local variable
             var leftSymbol = SemanticModel.GetSymbolInfo(binaryExpression.Left);
@@ -1368,8 +1346,7 @@ namespace RRCG
 
             // 6. The incrementors must contain exactly one
             //    statement that assigns to the local variable.
-            //    The statement must increment or decrement
-            //    the variable by exactly 1.
+            //    The statement must increment the variable by exactly 1.
 
             // Map each incrementor to its assignments..
             var incrementorToAssignments = node.Incrementors.ToDictionary(
@@ -1386,30 +1363,23 @@ namespace RRCG
             if (assignsToLocal.Length != 1) return false;
             var incrementor = assignsToLocal[0].Key;
 
-            // Ensure it's contained within our increment/decrement syntax kinds..
+            // Ensure it's incrementing the variable by exactly 1..
             SyntaxKind[] incrementKinds = { SyntaxKind.PreIncrementExpression, SyntaxKind.PostIncrementExpression };
-            SyntaxKind[] decrementKinds = { SyntaxKind.PreDecrementExpression, SyntaxKind.PostDecrementExpression };
 
             var incrementorKind = incrementor.Kind();
-            if (!incrementKinds.Concat(decrementKinds).Contains(incrementorKind))
+            if (!incrementKinds.Contains(incrementorKind))
                 return false;
-
-            // 7. If we're iterating in the positive direction, the incrementor must
-            //    be incrementing the variable. If we're iterating in the negative direction,
-            //    the incrementor must be decrementing the variable.
-            var incrementing = incrementKinds.Contains(incrementorKind);
-            if (incrementing != iteratingUpward) return false;
 
             // This for statement seems to follow the forms we can optimize.
             var from = localDeclaration.Initializer.Value;
             var to = binaryExpression.Right;
 
-            iterateUpward = iteratingUpward;
             indexSymbol = localSymbol;
-            minExpression = iteratingUpward ? from : to;
-            maxExpression = iteratingUpward ? to : from;
+            minExpression = from;
+            maxExpression = to;
             return true;
         }
+
         public override SyntaxNode VisitBinaryExpression(BinaryExpressionSyntax node)
         {
             string chip = null;

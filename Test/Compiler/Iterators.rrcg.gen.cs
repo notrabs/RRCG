@@ -770,10 +770,10 @@ namespace RRCGBuild
             __BeginReturnScope("ForLoopTest", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             new EventDefinition("ForLoopTest").Receiver();
-            LogString("Testing standard form, positive iteration:");
+            LogString("Testing standard form:");
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __OptimizedFor(__ConditionalContext("i"), true, 0, 10, (i) =>
+                __OptimizedFor(__ConditionalContext("i"), 0, 10, (i) =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString(__StringInterpolation("i: ", i));
@@ -788,10 +788,10 @@ namespace RRCGBuild
                 __EndAccessibilityScope();
             }
 
-            LogString("Testing standard form, positive iteration (with 'var' index declaration):");
+            LogString("Testing standard form (with 'var' index declaration):");
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __OptimizedFor(__ConditionalContext("i"), true, 0, 10, (i) =>
+                __OptimizedFor(__ConditionalContext("i"), 0, 10, (i) =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString(__StringInterpolation("i: ", i));
@@ -806,33 +806,6 @@ namespace RRCGBuild
                 __EndAccessibilityScope();
             }
 
-            // TODO: The negative iteration worked fine for positive numbers,
-            //       but breaks on negative numbers. Whoops.. is it possible to
-            //       come up with a solution that works for both?
-            /*LogString("Testing standard form, negative iteration (data ports):");
-
-        // The For node does not support negative iteration.
-        // But, we can augment this functionality onto it.
-
-        // At rewriting time, depending on the condition of the loop,
-        // we determine the iteration direction, and what values are
-        // the minimum and maximum. So this should iterate upward,
-        // but use a Subtract chip to correct the index.
-        for (int i = 10; i > 0; i--)
-            LogString($"i: {i}");
-
-        LogString("Testing standard form, negative iteration (real ports):");
-
-        // When we apply the correction for the negative iteration,
-        // we want it to be as efficient as possible. With a pure-data
-        // max value, we can insert it directly into the Subtract chip.
-        // But if it's a real port, we cache it in an efficient Random store
-        // first, to ensure each access of the index is nice and cheap.
-
-        var minPort = Reroute(0);
-        var maxPort = Reroute(10);
-        for (int i = maxPort; i > minPort; i--)
-            LogString($"i: {i}");*/
             LogString("All done!");
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
@@ -846,7 +819,7 @@ namespace RRCGBuild
             new EventDefinition("ManualForLoopTest").Receiver();
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __OptimizedFor(__ConditionalContext("i"), true, 0, 10, (i) =>
+                __OptimizedFor(__ConditionalContext("i"), 0, 10, (i) =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString(__StringInterpolation("i: ", i));
@@ -895,11 +868,12 @@ namespace RRCGBuild
             // If this occurs, we need to go back and splice-in a manual iterator
             // which can be a bit of a convoluted process, especially with the
             // flexibility of For loops.
+            //
             // So we need to make sure we get it right!
-            LogString("Testing positive iteration (data ports):");
+            LogString("Testing iteration w/ delay (data ports):");
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __OptimizedFor(__ConditionalContext("i"), true, 0, 10, (i) =>
+                __OptimizedFor(__ConditionalContext("i"), 0, 10, (i) =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString(__StringInterpolation("i: ", i));
@@ -915,14 +889,14 @@ namespace RRCGBuild
                 __EndAccessibilityScope();
             }
 
-            LogString("Testing positive iteration (real ports):");
+            LogString("Testing iteration w/ delay (real ports):");
                 IntPort min = default !;
                 min = __VariableDeclaratorExpression<IntPort>("min", () => Reroute<IntPort>(0), () => min!, (_RRCG_SETTER_VALUE) => min = _RRCG_SETTER_VALUE);
                 IntPort max = default !;
                 max = __VariableDeclaratorExpression<IntPort>("max", () => Reroute<IntPort>(10), () => max!, (_RRCG_SETTER_VALUE) => max = _RRCG_SETTER_VALUE);
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __OptimizedFor(__ConditionalContext("i"), true, min, max, (i) =>
+                __OptimizedFor(__ConditionalContext("i"), min, max, (i) =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString(__StringInterpolation("i: ", i));
@@ -938,28 +912,6 @@ namespace RRCGBuild
                 __EndAccessibilityScope();
             }
 
-            /*LogString("Testing negative iteration (data ports):");
-
-        // For negative iterators using data ports, all we need to do
-        // is splice out the For node & the subtract node, and rather than
-        // checking if the index is less than a value, we check if it's greater.
-        for (int i = 10; i > 0; i--)
-        {
-            LogString($"i: {i}");
-            ChipLib.AwaitDelay();
-        }
-
-        LogString("Testing negative iteration (real ports):");
-
-        // For negative iterators using real ports, we again have a problem.
-        // We again have to cache the end value to preserve semantics & efficiency.
-        // This should look exactly like the positive iterator/real port case, except
-        // the value being cached should be the minimum value.
-        for (int i = max; i > min; i--)
-        {
-            LogString($"i: {i}");
-            ChipLib.AwaitDelay();
-        }*/
             LogString("All done!");
             ExecFlow.current.Clear();
             __EndAccessibilityScope();
@@ -973,13 +925,13 @@ namespace RRCGBuild
             new EventDefinition("NestedForLoopTest").Receiver();
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __OptimizedFor(__ConditionalContext("outer"), true, 0, 10, (outer) =>
+                __OptimizedFor(__ConditionalContext("outer"), 0, 10, (outer) =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString(__StringInterpolation("outer: ", outer));
                     {
                         __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                        __OptimizedFor(__ConditionalContext("inner"), true, 0, 10, (inner) =>
+                        __OptimizedFor(__ConditionalContext("inner"), 0, 10, (inner) =>
                         {
                             __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                             LogString(__StringInterpolation("inner: ", inner));
@@ -1019,13 +971,13 @@ namespace RRCGBuild
             new EventDefinition("ManualWithinStandardForLoopTest").Receiver();
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __OptimizedFor(__ConditionalContext("outer"), true, 0, 10, (outer) =>
+                __OptimizedFor(__ConditionalContext("outer"), 0, 10, (outer) =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString(__StringInterpolation("outer: ", outer));
                     {
                         __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                        __OptimizedFor(__ConditionalContext("inner"), true, 0, 10, (inner) =>
+                        __OptimizedFor(__ConditionalContext("inner"), 0, 10, (inner) =>
                         {
                             __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                             LogString(__StringInterpolation("inner: ", inner));
@@ -1079,7 +1031,7 @@ namespace RRCGBuild
             new EventDefinition("StandardWithinManualForLoopTest").Receiver();
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __OptimizedFor(__ConditionalContext("outer"), true, 0, 10, (outer) =>
+                __OptimizedFor(__ConditionalContext("outer"), 0, 10, (outer) =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString(__StringInterpolation("outer: ", outer));
@@ -1099,7 +1051,7 @@ namespace RRCGBuild
                     );
                     {
                         __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                        __OptimizedFor(__ConditionalContext("inner"), true, 0, 10, (inner) =>
+                        __OptimizedFor(__ConditionalContext("inner"), 0, 10, (inner) =>
                         {
                             __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                             LogString(__StringInterpolation("inner: ", inner));
@@ -1144,7 +1096,7 @@ namespace RRCGBuild
                 promotedString = __VariableDeclaratorExpression<StringPort>("promotedString", () => "", () => promotedString!, (_RRCG_SETTER_VALUE) => promotedString = _RRCG_SETTER_VALUE);
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __OptimizedFor(__ConditionalContext("i", "promotedFloat", "promotedString"), true, 0, 10, (i) =>
+                __OptimizedFor(__ConditionalContext("i", "promotedFloat", "promotedString"), 0, 10, (i) =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     promotedFloat *= 2;
@@ -1168,7 +1120,7 @@ namespace RRCGBuild
                 otherOne = __VariableDeclaratorExpression<IntPort>("otherOne", () => 0, () => otherOne!, (_RRCG_SETTER_VALUE) => otherOne = _RRCG_SETTER_VALUE);
                 IntPort otherTwo = default !;
                 otherTwo = __VariableDeclaratorExpression<IntPort>("otherTwo", () => 0, () => otherTwo!, (_RRCG_SETTER_VALUE) => otherTwo = _RRCG_SETTER_VALUE);
-                __OptimizedFor(__ConditionalContext("i", "otherOne", "otherTwo"), true, 0, 10, (i) =>
+                __OptimizedFor(__ConditionalContext("i", "otherOne", "otherTwo"), 0, 10, (i) =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     otherTwo += 1;
@@ -1212,7 +1164,7 @@ namespace RRCGBuild
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __OptimizedFor(__ConditionalContext("i"), true, 0, 10, (i) =>
+                __OptimizedFor(__ConditionalContext("i"), 0, 10, (i) =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString(__StringInterpolation("i: ", i));

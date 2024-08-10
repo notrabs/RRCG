@@ -2382,7 +2382,7 @@
       "Id": "Log_String_62",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
-      "DefaultValues": [[[0,1],"System.String","Testing standard form, positive iteration:"]],
+      "DefaultValues": [[[0,1],"System.String","Testing standard form:"]],
       "InputCount": 2
     },
     {
@@ -2417,7 +2417,7 @@
       "Id": "Log_String_64",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
-      "DefaultValues": [[[0,1],"System.String","Testing standard form, positive iteration (with 'var' index declaration):"]],
+      "DefaultValues": [[[0,1],"System.String","Testing standard form (with 'var' index declaration):"]],
       "InputCount": 2
     },
     {
@@ -2588,7 +2588,7 @@
       "Id": "Log_String_69",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
-      "DefaultValues": [[[0,1],"System.String","Testing positive iteration (data ports):"]],
+      "DefaultValues": [[[0,1],"System.String","Testing iteration w/ delay (data ports):"]],
       "InputCount": 2
     },
     {
@@ -2668,7 +2668,7 @@
       "Id": "Log_String_71",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
-      "DefaultValues": [[[0,1],"System.String","Testing positive iteration (real ports):"]],
+      "DefaultValues": [[[0,1],"System.String","Testing iteration w/ delay (real ports):"]],
       "InputCount": 2
     },
     {

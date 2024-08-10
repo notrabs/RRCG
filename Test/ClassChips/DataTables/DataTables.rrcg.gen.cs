@@ -25,7 +25,7 @@ namespace RRCGBuild
             LogString(__StringInterpolation("Have columns: ", indexColumn.Name, ", ", percentageColumn.Name, ", ", nameColumn.Name));
             {
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-                __OptimizedFor(__ConditionalContext("i"), true, 0, table.RowCount, (i) =>
+                __OptimizedFor(__ConditionalContext("i"), 0, table.RowCount, (i) =>
                 {
                     __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                     LogString(__StringInterpolation("Row ", i, ": ", indexColumn[i], ", ", percentageColumn[i], ", ", nameColumn[i]));
