@@ -64,7 +64,7 @@ namespace RRCG.Formatter
 
             Size = new Vector2(
                 0.4f + node.Name.Length * 0.01f,
-                0.2f + Math.Max(node.InputCount, node.SwitchCases?.Count ?? 0) * 0.03f
+                0.2f + Math.Max(Math.Max(node.InputCount, node.SwitchCases?.Count ?? 0), node.SequenceData?.NumBranches ?? 0) * 0.03f
             );
         }
         public override Vector2 CalculateSize() => Size + Padding.Size;
