@@ -52,24 +52,27 @@ namespace RRCGBuild
             ChipLib.Log(SyncedPropertyVariable);
             ChipLib.Log(CloudPropertyVariable);
             // Test change events...
-            TestChangeEvent("FieldVariable", FieldVariable);
-            TestChangeEvent("SyncedFieldVariable", SyncedFieldVariable);
-            TestChangeEvent("CloudFieldVariable", CloudFieldVariable);
+            TestChangeEvent<IntPort>("FieldVariable", FieldVariable);
+            TestChangeEvent<StringPort>("SyncedFieldVariable", SyncedFieldVariable);
+            TestChangeEvent<BoolPort>("CloudFieldVariable", CloudFieldVariable);
             __EndAccessibilityScope();
             __EndReturnScope();
         }
 
-        void TestChangeEvent(StringPort name, object member)
+        void TestChangeEvent<T>(StringPort name, T member)
+            where T : AnyPort, new()
         {
             __BeginReturnScope("TestChangeEvent", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             __VariableDeclaratorExpression<StringPort>("name", null, () => name!, (_RRCG_SETTER_VALUE) => name = _RRCG_SETTER_VALUE);
-            __VariableDeclaratorExpression<object>("member", null, () => member!, (_RRCG_SETTER_VALUE) => member = _RRCG_SETTER_VALUE);
-            MemberVariableChanged(member, () =>
+            __VariableDeclaratorExpression<T>("member", null, () => member!, (_RRCG_SETTER_VALUE) => member = _RRCG_SETTER_VALUE);
+            MemberVariableChanged<T>(member, (value) =>
             {
                 __BeginReturnScope("ParenthesizedLambda", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __VariableDeclaratorExpression("value", null, () => value!, (_RRCG_SETTER_VALUE) => value = _RRCG_SETTER_VALUE);
                 LogString(__StringInterpolation("Change event fired for member: ", name));
+                LogString(__StringInterpolation("Got value: ", value));
                 __EndAccessibilityScope();
                 __EndReturnScope();
             }

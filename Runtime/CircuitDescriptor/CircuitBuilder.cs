@@ -1217,39 +1217,32 @@ namespace RRCGBuild
             return result;
         }
 
-        public static void MemberVariableChanged(object memberVariable)
+        public static T MemberVariableChanged<T>(T memberVariable) where T : AnyPort, new()
         {
             // memberVariable must reference the value pin of a Variable node
-            var memberVariablePort = PortConversionUtils.ToAnyPort(memberVariable);
-            if (!memberVariablePort.IsActualPort) goto fail;
+            if (!memberVariable.IsActualPort) goto fail;
 
-            var port = memberVariablePort.Port;
+            var port = memberVariable.Port;
             var node = port.Node;
 
             if (!ChipTypeUtils.VariableTypes.Contains(node.Type)) goto fail;
             if (!port.EquivalentTo(node.Port(0, 1))) goto fail;
 
             // All checks pass, create the event receiver
-            EventReceiver(node.VariableData.Name + " Changed");
-            return;
+            return EventReceiver<T>(node.VariableData.Name + " Changed");
 
         fail: // I didn't want to duplicate the message
             throw new ArgumentException("The memberVariable argument must refer to a variable output port!");
         }
 
-        public static void MemberVariableChanged(object fieldVariable, AlternativeExec onChanged)
+        public static void MemberVariableChanged<T>(T memberVariable, AlternativeExec<T> onChanged) where T : AnyPort, new()
         {
             InlineGraph(() =>
             {
-                MemberVariableChanged(fieldVariable);
-                onChanged();
+                var value = MemberVariableChanged(memberVariable);
+                onChanged(value);
             });
         }
-
-        [Obsolete("Renamed - use MemberVariableChanged instead.")]
-        public static void FieldVariableChanged<T>(T fieldVariable) where T : AnyPort, new() => MemberVariableChanged(fieldVariable);
-        [Obsolete("Renamed - use MemberVariableChanged instead.")]
-        public static void FieldVariableChanged<T>(T fieldVariable, AlternativeExec onChanged) where T : AnyPort, new() => MemberVariableChanged(fieldVariable, onChanged);
 
         public static TResult __SwitchExpression<TResult>(AnyPort match, Func<TResult> defaultExpression, Dictionary<AnyPort, Func<TResult>> cases) where TResult : AnyPort, new()
         {

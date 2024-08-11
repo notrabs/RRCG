@@ -28,7 +28,7 @@ namespace RRCGSource
     /// Fields or properties declared with this attribute will be placed as variable chips.
     /// The initializer will become the home value.
     /// </summary>
-    /// <see cref="CircuitDescriptor.MemberVariableChanged(object)"/>
+    /// <see cref="CircuitDescriptor.MemberVariableChanged{T}(T)"/>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class Variable : Attribute { }
 
@@ -36,7 +36,7 @@ namespace RRCGSource
     /// Fields or properties declared with this attribute will be placed as synced variable chips.
     /// The initializer will become the home value.
     /// </summary>
-    /// <see cref="CircuitDescriptor.MemberVariableChanged(object)"/>
+    /// <see cref="CircuitDescriptor.MemberVariableChanged{T}(T)"/>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class SyncedVariable : Attribute { }
 
@@ -44,7 +44,7 @@ namespace RRCGSource
     /// Fields or properties declared with this attribute will be placed as cloud variable chips.
     /// Home values are not supported with cloud variables!
     /// </summary>
-    /// <see cref="CircuitDescriptor.MemberVariableChanged(object)"/>
+    /// <see cref="CircuitDescriptor.MemberVariableChanged{T}(T)"/>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class CloudVariable : Attribute
     {
@@ -186,13 +186,8 @@ namespace RRCGSource
         /// Allows you to use the changed event for variables created with [Variable], [SyncedVariable], [CloudVariable], etc.
         /// Pass the member as the argument and the corresponding Event Receiver will be placed.
         /// </summary>
-        public static void MemberVariableChanged(object memberVariable) { }
-        /// <inheritdoc cref="MemberVariableChanged(object))"/>
-        public static void MemberVariableChanged(object memberVariable, AlternativeExec onChanged) { }
-
-        [Obsolete("Renamed - use MemberVariableChanged instead.")]
-        public static void FieldVariableChanged<T>(T fieldVariable) { }
-        [Obsolete("Renamed - use MemberVariableChanged instead.")]
-        public static void FieldVariableChanged<T>(T fieldVariable, AlternativeExec onChanged) { }
+        public static T MemberVariableChanged<T>(T memberVariable) { return default; }
+        /// <inheritdoc cref="MemberVariableChanged{T}(T)"/>
+        public static void MemberVariableChanged<T>(T memberVariable, AlternativeExec<T> onChanged) { }
     }
 }

@@ -16,16 +16,16 @@ namespace RRCGBuild
     {
         public Type Type { get; }
         public AnyPort Value { get; set; }
-        public void ChangedEvent();
-        public IVariable ChangedEvent(AlternativeExec OnChanged);
+        public AnyPort ChangedEvent();
+        public IVariable ChangedEvent(AlternativeExec<AnyPort> OnChanged);
     }
 
     public interface IVariable<T> where T : AnyPort
     {
         public T Value { get; set; }
 
-        public void ChangedEvent();
-        public IVariable<T> ChangedEvent(AlternativeExec OnChanged);
+        public T ChangedEvent();
+        public IVariable<T> ChangedEvent(AlternativeExec<T> OnChanged);
     }
 
 
@@ -108,16 +108,16 @@ namespace RRCGBuild
             set { CreateVariableNode(value); }
         }
 
-        void IVariable.ChangedEvent() => ChangedEvent();
-        public void ChangedEvent() => ChipBuilder.EventReceiver(name + " Changed");
+        AnyPort IVariable.ChangedEvent() => ChangedEvent();
+        public T ChangedEvent() => ChipBuilder.EventReceiver<T>(name + " Changed");
 
-        IVariable IVariable.ChangedEvent(AlternativeExec OnChanged) => (IVariable)ChangedEvent(OnChanged);
-        public IVariable<T> ChangedEvent(AlternativeExec OnChanged)
+        IVariable IVariable.ChangedEvent(AlternativeExec<AnyPort> OnChanged) => (IVariable)ChangedEvent(v => OnChanged(v));
+        public IVariable<T> ChangedEvent(AlternativeExec<T> OnChanged)
         {
             CircuitBuilder.InlineGraph(() =>
             {
-                ChangedEvent();
-                OnChanged();
+                var value = ChangedEvent();
+                OnChanged(value);
             });
             return this;
         }

@@ -16,13 +16,13 @@ namespace RRCGSource
         /// <summary>
         /// Places an event receiver to continue on its execution
         /// </summary>
-        public void ChangedEvent();
+        public T ChangedEvent();
 
         /// <summary>
         /// Inlines a graph that gets executed when the event changes.
         /// </summary>
         /// <returns>this</returns>
-        public IVariable<T> ChangedEvent(AlternativeExec OnChanged);
+        public IVariable<T> ChangedEvent(AlternativeExec<T> OnChanged);
     }
 
     public class NamedVariable<T> : IVariable<T>
@@ -33,8 +33,8 @@ namespace RRCGSource
 
         public T Value { get; set; }
 
-        public void ChangedEvent() { }
-        public IVariable<T> ChangedEvent(AlternativeExec OnChanged) { return default; }
+        public T ChangedEvent() { return default; }
+        public IVariable<T> ChangedEvent(AlternativeExec<T> OnChanged) { return default; }
     }
 
     public class Variable<T> : NamedVariable<T>

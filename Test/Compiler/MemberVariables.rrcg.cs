@@ -85,11 +85,12 @@ public class MemberVariables : CircuitDescriptor
         TestChangeEvent("CloudFieldVariable", CloudFieldVariable);
     }
 
-    void TestChangeEvent(string name, object member)
+    void TestChangeEvent<T>(string name, T member)
     {
-        MemberVariableChanged(member, () =>
+        MemberVariableChanged(member, (value) =>
         {
             LogString($"Change event fired for member: {name}");
+            LogString($"Got value: {value}");
         });
     }
 }
