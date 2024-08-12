@@ -134,6 +134,11 @@ namespace RRCG
             // as the semantic model is used in this operation
             statements = statements.InsertRange(0, VariableDeclaratorsFromParameters(node.ParameterList.Parameters.ToArray()));
 
+            // Fixup default values in parameters
+            (var newParameters, var coalescers) = DefaultValuesToCoalescers(method.ParameterList.Parameters.ToArray());
+            method = method.WithParameterList(SyntaxUtils.ParameterList(newParameters));
+            statements = statements.InsertRange(0, coalescers);
+
             // Wrap in accessibility & return scope
             statements = WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.MethodRoot);
             statements = WrapStatementsInReturnScope(statements, methodName, rewrittenReturnType);
@@ -353,6 +358,10 @@ namespace RRCG
             return (T)visitedMethod.WithBody(Block(statements));
         }
 
+        /// <summary>
+        /// Creates calls to __VariableDeclaratorExpression based on a set of method parameters,
+        /// so they are declared in the accessibility scope. You should pass unvisited parameters.
+        /// </summary>
         public SyntaxList<StatementSyntax> VariableDeclaratorsFromParameters(params ParameterSyntax[] parameters)
         {
             var invocations = new SyntaxList<StatementSyntax>();
@@ -371,6 +380,58 @@ namespace RRCG
             }
 
             return invocations;
+        }
+
+        /// <summary>
+        /// Transforms default value expressions on method parameters into using null-coalescence,
+        /// so that they work with the Port types. Pass visited parameters, replace the parameters
+        /// with the new parameters from this method, and add the Coalescers to the start of the statements.
+        /// </summary>
+        public (ParameterSyntax[] Parameters, StatementSyntax[] Coalescers) DefaultValuesToCoalescers(params ParameterSyntax[] parameters)
+        {
+            // The port types do not support default values with the standard C# syntax.
+            // So, we replace the default values with "null!", then use null-coalescence
+            // to assign the default value before entering the method.
+            var newParameters = new SyntaxList<ParameterSyntax>();
+            var coalescers = new SyntaxList<StatementSyntax>();
+
+            foreach (var parameter in parameters)
+            {
+                // If this parameter does not have a default value,
+                // or the default value is already a null/default expression,
+                // we'll just pass-through the original parameter.
+                var passthroughOriginal = parameter.Default?
+                                            .DescendantNodes(_ => true).Select(n => n.Kind())
+                                            .Any(k => k == SyntaxKind.NullLiteralExpression ||
+                                                      k == SyntaxKind.DefaultExpression) ?? true;
+
+                if (passthroughOriginal)
+                {
+                    newParameters = newParameters.Add(parameter);
+                    continue;
+                }
+
+                // Otherwise we need to modify this parameter.
+                // Extract the default value expression from the original,
+                // then modify the parameter so its default value is "null!"
+                var defaultValueExpression = parameter.Default!.Value;
+                newParameters = newParameters.Add(parameter.WithDefault(
+                                    EqualsValueClause(
+                                        PostfixUnaryExpression(
+                                            SyntaxKind.SuppressNullableWarningExpression,
+                                            LiteralExpression(
+                                                SyntaxKind.NullLiteralExpression)))));
+
+                // Then add a "coalescer" statement, that uses
+                // null-coalescense to assign the extracted default value.
+                coalescers = coalescers.Add(ExpressionStatement(
+                                                AssignmentExpression(
+                                                    SyntaxKind.CoalesceAssignmentExpression,
+                                                    IdentifierName(parameter.Identifier.ToString()),
+                                                    defaultValueExpression)));
+            }
+
+            return (newParameters.ToArray(), coalescers.ToArray());
         }
 
         public SyntaxList<StatementSyntax> WrapStatementsInReturnScope(SyntaxList<StatementSyntax> statements, string methodName, TypeSyntax returnType)
