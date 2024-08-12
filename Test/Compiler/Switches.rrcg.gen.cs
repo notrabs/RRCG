@@ -59,7 +59,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_3 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_\"case4\"");
-                    ExecFlow.current.Clear();
+                    __Throw();
                 }
 
                 ;
@@ -109,7 +109,7 @@ namespace RRCGBuild
                 AlternativeExec rrcg_switch_section_3 = delegate
                 {
                     __LabelDecl("rrcg_switch_case_label_4");
-                    ExecFlow.current.Clear();
+                    __Throw();
                 }
 
                 ;

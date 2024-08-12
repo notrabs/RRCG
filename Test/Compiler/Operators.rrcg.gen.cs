@@ -53,7 +53,7 @@ namespace RRCGBuild
                 preDecrement = __VariableDeclaratorExpression<IntPort>("preDecrement", () => 0, () => preDecrement!, (_RRCG_SETTER_VALUE) => preDecrement = _RRCG_SETTER_VALUE);
             ChipLib.Log(--preDecrement);
             ChipLib.Log(preDecrement);
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -88,7 +88,7 @@ namespace RRCGBuild
                 preDecrement = __VariableDeclaratorExpression<FloatPort>("preDecrement", () => 0, () => preDecrement!, (_RRCG_SETTER_VALUE) => preDecrement = _RRCG_SETTER_VALUE);
             ChipLib.Log(--preDecrement);
             ChipLib.Log(preDecrement);
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -123,7 +123,7 @@ namespace RRCGBuild
                 preDecrement = __VariableDeclaratorExpression<IntPort>("preDecrement", () => RandomInt(0, 0), () => preDecrement!, (_RRCG_SETTER_VALUE) => preDecrement = _RRCG_SETTER_VALUE);
             ChipLib.Log(--preDecrement);
             ChipLib.Log(preDecrement);
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -158,7 +158,7 @@ namespace RRCGBuild
                 preDecrement = __VariableDeclaratorExpression<FloatPort>("preDecrement", () => RandomFloat(0, 0), () => preDecrement!, (_RRCG_SETTER_VALUE) => preDecrement = _RRCG_SETTER_VALUE);
             ChipLib.Log(--preDecrement);
             ChipLib.Log(preDecrement);
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -222,7 +222,7 @@ namespace RRCGBuild
             ChipLib.Log(vectorA * 6);
             ChipLib.Log(7f * vectorB);
             ChipLib.Log(8 * vectorB);
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -243,7 +243,7 @@ namespace RRCGBuild
             ChipLib.Log(portA + portB * nativeA / nativeB);
             ChipLib.Log(portA + portB * 5);
             ChipLib.Log(portA * portB + 5);
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -279,7 +279,7 @@ namespace RRCGBuild
             // Will only evaluate the necessary branch
             ChipLib.VariableCache<FloatPort>(__Ternary<FloatPort>(true, () => RandomInt(0, 0), () => RandomFloat(0, 0)));
             ChipLib.VariableCache<FloatPort>(__Ternary<FloatPort>(false, () => RandomInt(0, 0), () => RandomFloat(0, 0)));
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -315,7 +315,7 @@ namespace RRCGBuild
                 portD = __VariableDeclaratorExpression<IntPort>("portD", () => Reroute<IntPort>(dataD), () => portD!, (_RRCG_SETTER_VALUE) => portD = _RRCG_SETTER_VALUE);
             ChipLib.Log(__StringInterpolation("Bitwise complement, pure data: ", ChipLib.BitString(~dataD)));
             ChipLib.Log(__StringInterpolation("Bitwise complement, with ports: ", ChipLib.BitString(~portD)));
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }

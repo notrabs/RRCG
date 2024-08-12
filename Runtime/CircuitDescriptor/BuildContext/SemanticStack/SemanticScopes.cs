@@ -24,7 +24,12 @@ namespace RRCGBuild
             public void Continue();
         }
 
-        public abstract class BaseIterator : IBreak, IContinue
+        public interface IThrow : SemanticScope
+        {
+            public void Throw();
+        }
+
+        public abstract class BaseIterator : IBreak, IContinue, IThrow
         {
             // Going with a base class here, because for most
             // iterators the logic will basically be this.
@@ -65,6 +70,15 @@ namespace RRCGBuild
                 // But we still store this flow so we can use it in the manual case.
                 ContinueFlow.Merge(ExecFlow.current);
                 ExecFlow.current.Clear();
+            }
+
+            public void Throw()
+            {
+                // In RRCG, a Throw statement is just intended to end the current branch of execution.
+                // So unlike Break, we don't need a manual implementation for this. We just need
+                // to check for continuity/async ports, and write the promoted variables.
+                EnsureContinuityAndCheckAsync(ExecFlow.current);
+                ConditionalContext.WritePromotedVariables();
             }
 
             /// <summary>

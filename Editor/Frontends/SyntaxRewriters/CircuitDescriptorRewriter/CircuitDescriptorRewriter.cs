@@ -708,7 +708,7 @@ namespace RRCG
 
         public override SyntaxNode VisitThrowStatement(ThrowStatementSyntax node)
         {
-            return SyntaxFactory.ParseStatement("ExecFlow.current.Clear();");
+            return SyntaxFactory.ParseStatement("__Throw();");
         }
 
         public override SyntaxNode VisitTupleType(TupleTypeSyntax node)

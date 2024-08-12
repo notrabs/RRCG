@@ -268,7 +268,7 @@ namespace RRCGBuild
             }
 
             );
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -1027,7 +1027,7 @@ namespace RRCGBuild
             floatVar.Value = TimeGetPreciseSeconds();
             floatVar.Value = TimeGetPreciseSeconds();
             floatVar.Value = TimeGetPreciseSeconds();
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -1056,7 +1056,7 @@ namespace RRCGBuild
             ChipLib.Log(var2.Value);
             var3.Value = RandomFloat(0, 100);
             ChipLib.Log(var3.Value);
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -1090,7 +1090,7 @@ namespace RRCGBuild
                 undeletableDivide = __VariableDeclaratorExpression<FloatPort>("undeletableDivide", () => ChipLib.FloatConst(50f) / ChipLib.FloatConst(0.2f) / (ChipLib.FloatConst(0.4f) / ChipLib.FloatConst(0.8f)), () => undeletableDivide!, (_RRCG_SETTER_VALUE) => undeletableDivide = _RRCG_SETTER_VALUE);
             ChipLib.Log(undeletableDivide); // Log to make it undeletable
             ChipLib.Log(undeletableDivide / 5f);
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }

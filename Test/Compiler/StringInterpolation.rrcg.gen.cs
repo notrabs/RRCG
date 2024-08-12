@@ -28,7 +28,7 @@ namespace RRCGBuild
                 StringPort port2 = default !;
                 port2 = __VariableDeclaratorExpression<StringPort>("port2", () => "World", () => port2!, (_RRCG_SETTER_VALUE) => port2 = _RRCG_SETTER_VALUE);
             ChipLib.Log(__StringInterpolation(port1, ", ", port2, "!"));
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -44,7 +44,7 @@ namespace RRCGBuild
                 port1 = __VariableDeclaratorExpression<StringPort>("port1", () => "data", () => port1!, (_RRCG_SETTER_VALUE) => port1 = _RRCG_SETTER_VALUE);
             variable.Value = "port";
             ChipLib.Log(__StringInterpolation("String interpolation works with both ", port1, " and ", variable.Value, "s!"));
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -84,7 +84,7 @@ namespace RRCGBuild
                 QuaternionPort quatPort = default !;
                 quatPort = __VariableDeclaratorExpression<QuaternionPort>("quatPort", () => QuaternionCreate(5, 6, 7, 8), () => quatPort!, (_RRCG_SETTER_VALUE) => quatPort = _RRCG_SETTER_VALUE);
             ChipLib.Log(__StringInterpolation("Interpolating with Quaternions. Data: ", quatData, ", Port: ", quatPort));
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }

@@ -86,7 +86,7 @@ namespace RRCGBuild
             __BeginReturnScope("ExecIn", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
             RandomInt(1, 10);
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }

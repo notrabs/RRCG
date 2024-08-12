@@ -471,7 +471,7 @@ namespace RRCGBuild
             LogString(__StringInterpolation("Starting test ", name));
             test();
             LogString(__StringInterpolation("Finished test ", name));
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }

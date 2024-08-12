@@ -98,7 +98,7 @@ namespace RRCGBuild
 
             );
             ChipLib.Log("While loop done!");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -116,7 +116,7 @@ namespace RRCGBuild
             ChipLib.Log(Concat("Repeated string (circuit board): ", CircuitBoard<StringPort, IntPort, StringPort>(StringRepeat, "Hey", 7)));
             // Test returns from while block within event functions
             ChipLib.Log(Concat("Repeated string (event function): ", StringRepeatEventFunction("Hi", 10)));
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -219,7 +219,7 @@ namespace RRCGBuild
 
             );
             ChipLib.Log("Unreachable nodes test done!");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -248,7 +248,7 @@ namespace RRCGBuild
 
             );
             LogString("2");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -313,7 +313,7 @@ namespace RRCGBuild
             ChipLib.Log(Concat("Repeated string (do while, circuit board): ", CircuitBoard<StringPort, IntPort, StringPort>(StringRepeatDoWhile, "Hey", 7)));
             // Test returns from do while block within event functions
             ChipLib.Log(Concat("Repeated string (do while, event function): ", StringRepeatDoWhileEventFunction("Hi", 10)));
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -473,7 +473,7 @@ namespace RRCGBuild
 
             );
             LogString("For each done");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -507,7 +507,7 @@ namespace RRCGBuild
 
             );
             LogString("Manual for each done");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -536,7 +536,7 @@ namespace RRCGBuild
 
             );
             LogString("Nested for each done");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -579,7 +579,7 @@ namespace RRCGBuild
 
             );
             LogString("Nested for each (manual within standard) done");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -622,7 +622,7 @@ namespace RRCGBuild
 
             );
             LogString("Nested for each (standard within manual) done");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -672,7 +672,7 @@ namespace RRCGBuild
 
             );
             LogString("All done");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -720,7 +720,7 @@ namespace RRCGBuild
             }
 
             );
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             return __EndReturnScope()!;
         }
@@ -738,7 +738,7 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation("Result (circuit board): ", result));
             // Test returns from For Each within event functions
             ChipLib.Log(__StringInterpolation("Result (event function): ", ForEachReturnEventFunction(list)));
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -760,7 +760,7 @@ namespace RRCGBuild
             }
 
             );
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -807,7 +807,7 @@ namespace RRCGBuild
             }
 
             LogString("All done!");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -849,7 +849,7 @@ namespace RRCGBuild
             }
 
             LogString("For loop done");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -913,7 +913,7 @@ namespace RRCGBuild
             }
 
             LogString("All done!");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -959,7 +959,7 @@ namespace RRCGBuild
             }
 
             LogString("Outer done");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -1019,7 +1019,7 @@ namespace RRCGBuild
             }
 
             LogString("Outer done");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -1079,7 +1079,7 @@ namespace RRCGBuild
             }
 
             LogString("Outer done");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -1138,7 +1138,7 @@ namespace RRCGBuild
             }
 
             LogString("All done!");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -1193,7 +1193,7 @@ namespace RRCGBuild
                 __EndAccessibilityScope();
             }
 
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             return __EndReturnScope()!;
         }
@@ -1210,7 +1210,7 @@ namespace RRCGBuild
             ChipLib.Log(__StringInterpolation("Result (circuit board): ", result));
             // Test returns from a For loop within event functions
             ChipLib.Log(__StringInterpolation("Result (event function): ", ForLoopReturnEventFunction()));
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -1273,7 +1273,7 @@ namespace RRCGBuild
             }
 
             LogString("All done!");
-            ExecFlow.current.Clear();
+            __Throw();
             __EndAccessibilityScope();
             __EndReturnScope();
         }

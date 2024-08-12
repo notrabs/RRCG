@@ -130,7 +130,7 @@ namespace RRCGBuild
                 __BeginAccessibilityScope(AccessibilityScope.Kind.General);
                 result += ", world!";
                 LogString(result);
-                ExecFlow.current.Clear();
+                __Throw();
                 __EndAccessibilityScope();
             }
 

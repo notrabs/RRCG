@@ -598,8 +598,11 @@ namespace RRCGBuild
             SemanticStack.current.Push(whileScope);
             block();
 
-            // Write the promoted variables & re-set C# state to reference RR variables
-            conditional.WritePromotedVariables();
+            // If the current ExecFlow has ports, write the promoted variables,
+            // but always re-set C# state to reference RR variables
+            if (ExecFlow.current.Ports.Count > 0)
+                conditional.WritePromotedVariables();
+
             conditional.ResetPromotedVariables(true);
 
             // End our semantic scopes
@@ -653,6 +656,15 @@ namespace RRCGBuild
             var continuable = SemanticStack.current.GetNextScopeWithType<SemanticScope.IContinue>();
             if (continuable != null)
                 continuable.Continue();
+        }
+
+        public static void __Throw()
+        {
+            var throwable = SemanticStack.current.GetNextScopeWithType<SemanticScope.IThrow>();
+            if (throwable != null)
+                throwable.Throw();
+
+            ExecFlow.current.Clear();
         }
 
         public static StringPort __StringInterpolation(params object[] values)
@@ -947,8 +959,11 @@ namespace RRCGBuild
             SemanticStack.current.Push(conditional);
             body(new T { Port = forEachNode.Port(0, 1) });
 
-            // End the conditional context
-            conditional.WritePromotedVariables();
+            // If the current ExecFlow has ports, write the promoted variables,
+            // but always re-set C# state to reference RR variables
+            if (ExecFlow.current.Ports.Count > 0)
+                conditional.WritePromotedVariables();
+
             conditional.ResetPromotedVariables(true);
 
             // Now validate execflow continuity from the current back to the "Loop" port
@@ -1055,25 +1070,27 @@ namespace RRCGBuild
             SemanticStack.current.PopExpectedScope(scope);
             SemanticStack.current.PopExpectedScope(conditional);
 
-            // Edge-case: exec flow with no ports (i.e for (...) { break; })
+            // If the current ExecFlow has ports, write the promoted variables,
+            // but always re-set C# state to reference RR variables
             if (ExecFlow.current.Ports.Count > 0)
-            {
-                // Write the promoted variables & re-set C# state to reference RR variables
                 conditional.WritePromotedVariables();
-                conditional.ResetPromotedVariables(true);
-            }
 
-            // Merge the continue flow into the current
-            // execution flow, and build the incrementors
-            // (only if we have ports.. need the double-check
-            //  because we merged exec flow).
+            conditional.ResetPromotedVariables(true);
+
+            // Merge the Continue flow into the current exec flow.
+            // If it has ports, we can now build the incrementors.
             ExecFlow.current.Merge(scope.ContinueFlow);
             if (ExecFlow.current.Ports.Count > 0)
-            {
                 incrementors();
+
+            // Now that we've built the incrementors, we again need to
+            // write the final values of promoted variables to their RR variables.
+            // But the ExecFlow could technically be empty again, now that we've
+            // built the incrementors. So we have to do another check:
+            if (ExecFlow.current.Ports.Count > 0)
                 conditional.WritePromotedVariables();
-                conditional.ResetPromotedVariables(true);
-            }
+
+            conditional.ResetPromotedVariables(true);
 
             // Finally we can check for continuity and async exec ports
             scope.EnsureContinuityAndCheckAsync(ExecFlow.current);
@@ -1107,19 +1124,26 @@ namespace RRCGBuild
             SemanticStack.current.Push(conditional);
             body(new IntPort { Port = forNode.Port(0, 1) });
 
-            // Write final values of promoted variables to their RR variables,
-            // again set C# state to reference their outputs
-            conditional.WritePromotedVariables();
+            // If the current ExecFlow has ports, write the promoted variables,
+            // but always re-set C# state to reference RR variables
+            if (ExecFlow.current.Ports.Count > 0)
+                conditional.WritePromotedVariables();
+
             conditional.ResetPromotedVariables(true);
 
-            // Merge the continue flow into the current exec flow, build the incrementors
-            // (only if we have ports.. otherwise it's unreachable)
+            // Merge the Continue flow into the current exec flow.
+            // If it has ports, we can now build the incrementors.
             ExecFlow.current.Merge(scope.ContinueFlow);
             if (ExecFlow.current.Ports.Count > 0)
                 incrementors();
 
-            // Again, we need to re-set the conditional context as before.
-            conditional.WritePromotedVariables();
+            // Now that we've built the incrementors, we again need to
+            // write the final values of promoted variables to their RR variables.
+            // But the ExecFlow could technically be empty again, now that we've
+            // built the incrementors. So we have to do another check:
+            if (ExecFlow.current.Ports.Count > 0)
+                conditional.WritePromotedVariables();
+
             conditional.ResetPromotedVariables(true);
 
             // Ensure continuity, check for async execs, and pop from the semantic stack.
