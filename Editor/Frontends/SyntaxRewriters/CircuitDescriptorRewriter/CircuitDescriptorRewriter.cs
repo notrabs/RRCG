@@ -259,30 +259,18 @@ namespace RRCG
             var isGetter = visited.Kind() == SyntaxKind.GetAccessorDeclaration;
             var rewrittenType = (TypeSyntax)Visit(property.Type);
 
-            // Collect & visit statements
+            // If the accessor has no functional body,
+            // we don't need to do anything more.
+            if (node.Body == null && node.ExpressionBody == null)
+                return visited;
+
+            // Otherwise, collect & visit statements
             // We do this so we can insert our own accessibility scope
             // with the correct AccessibilityScope kind..
-            //
-            // (We could just add the get/set accessor kinds to the switch in VisitBlock,
-            //  but the parenting check above would be a little too out-of-place.
-            //  Probably cleaner overall to visit manually in these cases..)
-
-            var visitedStatements = new SyntaxList<StatementSyntax>();
-            if (node.ExpressionBody != null)
-            {
-                var visitedExpression = (ExpressionSyntax)Visit(node.ExpressionBody.Expression);
-                visitedStatements = visitedStatements.Add(isGetter ? ValueReturnStatement(visitedExpression, rewrittenType)
-                                                                   : ExpressionStatement(visitedExpression));
-            } else if (node.Body != null)
-            {
-                visitedStatements = visitedStatements.AddRange(node.Body.Statements.Select(s => (StatementSyntax)Visit(s)));
-            } else
-            {
-                // The accessor has no functional body.
-                // We don't need to do anything more.
-                return visited;
-            }
-
+            var visitedStatements = node.Body != null
+                                        ? VisitList(node.Body.Statements)
+                                        : SingletonList<StatementSyntax>(isGetter ? ValueReturnStatement((ExpressionSyntax)Visit(node.ExpressionBody.Expression), rewrittenType)
+                                                                                  : ExpressionStatement((ExpressionSyntax)Visit(node.ExpressionBody.Expression)));
             // Wrap in accessibility scope
             visitedStatements = WrapStatementsInAccessibilityScope(visitedStatements, AccessibilityScope.Kind.MethodRoot);
 
