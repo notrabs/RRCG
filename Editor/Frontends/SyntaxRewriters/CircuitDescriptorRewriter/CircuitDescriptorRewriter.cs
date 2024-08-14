@@ -93,7 +93,17 @@ namespace RRCG
             if (node.Modifiers.Any(SyntaxKind.UnsafeKeyword))
                 return node;
 
-            var method = (MethodDeclarationSyntax)base.VisitMethodDeclaration(node);
+            // Visit the method signature seperately from its body.
+            // We do this to avoid VisitBlock & insert our own AccessibilityScope.
+            var method = MethodDeclaration(VisitList(node.AttributeLists), VisitList(node.Modifiers), (TypeSyntax)Visit(node.ReturnType),
+                            (ExplicitInterfaceSpecifierSyntax)Visit(node.ExplicitInterfaceSpecifier), VisitToken(node.Identifier),
+                            (TypeParameterListSyntax?)Visit(node.TypeParameterList), (ParameterListSyntax)Visit(node.ParameterList),
+                            List<TypeParameterConstraintClauseSyntax>(), Block(), null, MissingToken(SyntaxKind.SemicolonToken));
+
+            var methodName = method.Identifier.ToString();
+            var isVoid = method.ReturnType.ToString() == "void";
+            var hasParameters = method.ParameterList.Parameters.Count > 0;
+            var rewrittenReturnType = method.ReturnType;
 
             // Make sure generic methods in RRCG classes are constrained to port types in build realm
             if (node.TypeParameterList != null)
@@ -107,27 +117,13 @@ namespace RRCG
                 );
             }
 
-            var methodName = method.Identifier.ToString();
+            // Visit method statements
+            // ExpressionBody & Body are mutually exclusive.
+            var statements = node.Body != null
+                                ? VisitList(node.Body.Statements)
+                                : SingletonList<StatementSyntax>(isVoid ? ExpressionStatement((ExpressionSyntax)Visit(node.ExpressionBody.Expression))
+                                                                        : ValueReturnStatement((ExpressionSyntax)Visit(node.ExpressionBody.Expression), method.ReturnType));
 
-            var isVoid = method.ReturnType.ToString() == "void";
-            var hasParameters = method.ParameterList.Parameters.Count > 0;
-            var rewrittenReturnType = (TypeSyntax)Visit(node.ReturnType);
-
-            // Make sure the function has a block body
-            if (method.ExpressionBody != null)
-            {
-                method = method
-                    .WithExpressionBody(null)
-                    .WithSemicolonToken(Token(SyntaxKind.None))
-                    .WithBody(
-                       isVoid ?
-                            Block(ExpressionStatement(method.ExpressionBody.Expression)) :
-                            // The return needs to be applied already translated here, as to not invalidate the semantic model further down
-                            Block(ValueReturnStatement(method.ExpressionBody.Expression, rewrittenReturnType))
-                );
-            }
-
-            var statements = method.Body.Statements;
 
             // Declare parameters as as variables
             // Here we pass the original method's parameters,
@@ -213,9 +209,7 @@ namespace RRCG
 
                 StatementSyntax statement = isVoid ? SyntaxFactory.ExpressionStatement(invocation) : SyntaxFactory.ReturnStatement(invocation);
 
-                method = method.WithBody(
-                    method.Body.WithStatements(SingletonList(statement))
-                ).NormalizeWhitespace();
+                method = method.WithBody(Block(SingletonList(statement))).NormalizeWhitespace();
             }
             else if (isSharedPropertyFunction)
             {
@@ -239,15 +233,11 @@ namespace RRCG
                                 .WithParameterList(ParameterList())
                                 .WithBlock(Block(statements))))).NormalizeWhitespace();
 
-                method = method.WithBody(
-                    method.Body.WithStatements(SingletonList(statement))
-                );
+                method = method.WithBody(Block(SingletonList(statement)));
             }
             else
             {
-                method = method.WithBody(
-                    method.Body.WithStatements(statements)
-                );
+                method = method.WithBody(Block(statements));
             }
 
 
@@ -540,10 +530,9 @@ namespace RRCG
 
             switch (node.Parent?.Kind())
             {
-                case SyntaxKind.MethodDeclaration:
                 case SyntaxKind.AnonymousMethodExpression:
                 case SyntaxKind.ParenthesizedLambdaExpression:
-                case SyntaxKind.SimpleAssignmentExpression:
+                case SyntaxKind.SimpleLambdaExpression:
                     // In these cases we need to declare parameters as variables
                     // within the method's root accessibility scope. To make things
                     // easier for ourselves, we'll skip inserting one here and leave it
