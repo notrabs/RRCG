@@ -131,9 +131,10 @@ namespace RRCG
             statements = statements.InsertRange(0, VariableDeclaratorsFromParameters(node.ParameterList.Parameters.ToArray()));
 
             // Fixup default values in parameters
-            (var newParameters, var coalescers) = DefaultValuesToCoalescers(method.ParameterList.Parameters.ToArray());
-            method = method.WithParameterList(SyntaxUtils.ParameterList(newParameters));
-            statements = statements.InsertRange(0, coalescers);
+            // Apply the new parameters immediately, but not the coalescers.
+            // We need to handle these differently for the special methods.
+            var defaultValuesFixup = DefaultValuesToCoalescers(method.ParameterList.Parameters.ToArray());
+            method = method.WithParameterList(SyntaxUtils.ParameterList(defaultValuesFixup.Parameters));
 
             // Wrap in accessibility & return scope
             statements = WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.MethodRoot);
@@ -201,18 +202,24 @@ namespace RRCG
                                             ownerExpression,
                                             LiteralExpression(SyntaxKind.StringLiteralExpression, Literal(methodName)),
                                             AnonymousMethodExpression()
-                                                        .WithParameterList(method.ParameterList)
-                                                        .WithBlock(Block(statements))
+                                                        .WithParameterList(
+                                                            SyntaxUtils.ParameterList(
+                                                                method.ParameterList.Parameters.Select(p => p.WithDefault(null)).ToArray()))
+                                                        .WithBlock(Block(statements))   
                                         }.Concat(
                                             method.ParameterList.Parameters.Select(parameter => IdentifierName(parameter.Identifier.ToString()))
                                         ).ToArray()));
 
-                StatementSyntax statement = isVoid ? SyntaxFactory.ExpressionStatement(invocation) : SyntaxFactory.ReturnStatement(invocation);
+                // Add default value coalescers before invocation
+                var eventFunctionStatements = SingletonList<StatementSyntax>(isVoid ? SyntaxFactory.ExpressionStatement(invocation) : SyntaxFactory.ReturnStatement(invocation));
+                eventFunctionStatements = eventFunctionStatements.InsertRange(0, defaultValuesFixup.Coalescers);
 
-                method = method.WithBody(Block(SingletonList(statement))).NormalizeWhitespace();
+                method = method.WithBody(Block(eventFunctionStatements)).NormalizeWhitespace();
             }
             else if (isSharedPropertyFunction)
             {
+                if (isVoid) throw new Exception($"SharedProperty functions must have a non-void return type: {methodName}");
+
                 StatementSyntax statement = ReturnStatement(
                     InvocationExpression(
                         MemberAccessExpression(
@@ -233,11 +240,18 @@ namespace RRCG
                                 .WithParameterList(ParameterList())
                                 .WithBlock(Block(statements))))).NormalizeWhitespace();
 
-                method = method.WithBody(Block(SingletonList(statement)));
+                // Add default value coalescers before invocation
+                // Although it probably doesn't matter where we do it
+                // for shared properties, as the inputs are only connected once.
+                var sharedPropertyStatements = SingletonList(statement).InsertRange(0, defaultValuesFixup.Coalescers);
+                method = method.WithBody(Block(sharedPropertyStatements)).NormalizeWhitespace();
             }
             else
             {
-                method = method.WithBody(Block(statements));
+                // Normal method
+                // Insert default value coalescers as normal.
+                method = method.WithBody(
+                    Block(statements.InsertRange(0, defaultValuesFixup.Coalescers)));
             }
 
 
