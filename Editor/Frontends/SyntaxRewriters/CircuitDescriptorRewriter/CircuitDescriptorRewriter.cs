@@ -98,7 +98,7 @@ namespace RRCG
             var method = MethodDeclaration(VisitList(node.AttributeLists), VisitList(node.Modifiers), (TypeSyntax)Visit(node.ReturnType),
                             (ExplicitInterfaceSpecifierSyntax)Visit(node.ExplicitInterfaceSpecifier), VisitToken(node.Identifier),
                             (TypeParameterListSyntax?)Visit(node.TypeParameterList), (ParameterListSyntax)Visit(node.ParameterList),
-                            List<TypeParameterConstraintClauseSyntax>(), Block(), null, MissingToken(SyntaxKind.SemicolonToken));
+                            List<TypeParameterConstraintClauseSyntax>(), null, null, MissingToken(SyntaxKind.SemicolonToken));
 
             var methodName = method.Identifier.ToString();
             var isVoid = method.ReturnType.ToString() == "void";
@@ -290,40 +290,49 @@ namespace RRCG
 
         public override SyntaxNode VisitSimpleLambdaExpression(SimpleLambdaExpressionSyntax method)
         {
-            var visitedMethod = (SimpleLambdaExpressionSyntax)base.VisitSimpleLambdaExpression(method);
-            return VisitAnonymousFunction(method, visitedMethod, "SimpleLambda", method.Parameter);
+            var visitedSignature = SimpleLambdaExpression(VisitToken(method.AsyncKeyword), (ParameterSyntax)Visit(method.Parameter),
+                                                          VisitToken(method.ArrowToken), null, null);
+            return VisitAnonymousFunction(method, visitedSignature, "SimpleLambda", method.Parameter);
         }
+
         public override SyntaxNode VisitParenthesizedLambdaExpression(ParenthesizedLambdaExpressionSyntax method)
         {
-            var visitedMethod = (ParenthesizedLambdaExpressionSyntax)base.VisitParenthesizedLambdaExpression(method);
-            return VisitAnonymousFunction(method, visitedMethod, "ParenthesizedLambda", method.ParameterList.Parameters.ToArray());
+            var visitedSignature = ParenthesizedLambdaExpression(VisitToken(method.AsyncKeyword), (ParameterListSyntax)Visit(method.ParameterList),
+                                                                 VisitToken(method.ArrowToken), null, null);
+            return VisitAnonymousFunction(method, visitedSignature, "ParenthesizedLambda", method.ParameterList.Parameters.ToArray());
         }
 
         public override SyntaxNode VisitAnonymousMethodExpression(AnonymousMethodExpressionSyntax method)
         {
-            var visitedMethod = (AnonymousMethodExpressionSyntax)base.VisitAnonymousMethodExpression(method);
-            return VisitAnonymousFunction(method, visitedMethod, "AnonymousMethod", method.ParameterList.Parameters.ToArray());
+            var visitedSignature = AnonymousMethodExpression(VisitToken(method.AsyncKeyword), VisitToken(method.DelegateKeyword),
+                                                             (ParameterListSyntax)Visit(method.ParameterList), null, null);
+            return VisitAnonymousFunction(method, visitedSignature, "AnonymousMethod", method.ParameterList.Parameters.ToArray());
         }
 
-        public T VisitAnonymousFunction<T>(T method, T visitedMethod, string methodName, params ParameterSyntax[] unvisitedParameters) where T : AnonymousFunctionExpressionSyntax
+        public T VisitAnonymousFunction<T>(T method, T visitedSignature, string methodName, params ParameterSyntax[] unvisitedParameters) where T : AnonymousFunctionExpressionSyntax
         {
-            SyntaxList<StatementSyntax> statements;
+            // We expect visitedSignature to have no block/expression body.
+            // It should just be the signature, with no implementation.
+            if (visitedSignature.ExpressionBody != null || visitedSignature.Block != null)
+                throw new Exception("Expected visitedSignature to have no block/expression body!");
 
-            var returnType = (SemanticModel.GetSymbolInfo(method).Symbol as IMethodSymbol).ReturnType.ToTypeSyntax();
-            var rewrittenReturnType = (TypeSyntax)Visit(returnType);
+            // We need to know the return type.
+            // Use of the Semantic Model seems to be very consistent now,
+            // so this should really only fail in dire circumstances.
+            var methodSymbolInfo = SemanticModel.GetSymbolInfo(method);
+            if (methodSymbolInfo.Symbol is not IMethodSymbol methodSymbol)
+                throw new Exception($"Failed to resolve method symbol for anonymous function: {method}");
 
-            // Grab statements from the block/expression body
-            if (method.Block != null)
-            {
-                statements = visitedMethod.Block.Statements;
-            }
-            else
-            {
-                statements = SyntaxFactory.SingletonList<StatementSyntax>(
-                                returnType.ToString() == "void" ? SyntaxFactory.ExpressionStatement(visitedMethod.ExpressionBody)
-                                                                : ValueReturnStatement(visitedMethod.ExpressionBody, rewrittenReturnType)
-                                );
-            }
+            var returnType = methodSymbol.ReturnType;
+            var isVoid = returnType.SpecialType == SpecialType.System_Void;
+            var rewrittenReturnType = (TypeSyntax)Visit(returnType.ToTypeSyntax());
+
+            // Grab & visit statements from the original method.
+            // We do this so we can avoid VisitBlock & insert our own accessibility scope.
+            var statements = method.Block != null
+                                ? VisitList(method.Block.Statements)
+                                : SingletonList<StatementSyntax>(isVoid ? ExpressionStatement((ExpressionSyntax)Visit(method.ExpressionBody))
+                                                                        : ValueReturnStatement((ExpressionSyntax)Visit(method.ExpressionBody), rewrittenReturnType));
 
             // Now we can declare method parameters as variables for the root accessibility scope.
             statements = statements.InsertRange(0, VariableDeclaratorsFromParameters(unvisitedParameters));
@@ -333,7 +342,7 @@ namespace RRCG
             statements = WrapStatementsInReturnScope(statements, methodName, rewrittenReturnType);
 
             // Finally return the method with the new statements
-            return (T)visitedMethod.WithBody(Block(statements));
+            return (T)visitedSignature.WithBody(Block(statements));
         }
 
         /// <summary>
@@ -512,27 +521,10 @@ namespace RRCG
 
         public override SyntaxNode VisitBlock(BlockSyntax node)
         {
-            var kind = AccessibilityScope.Kind.General;
+            // Trim unreachable statements, and wrap in a general AccessibilityScope.
             var trimmedStatements = TrimUnreachableStatements(node.Statements);
-            var newStatements = new SyntaxList<StatementSyntax>(trimmedStatements.Select(s => (StatementSyntax)Visit(s)));
-
-            switch (node.Parent?.Kind())
-            {
-                case SyntaxKind.AnonymousMethodExpression:
-                case SyntaxKind.ParenthesizedLambdaExpression:
-                case SyntaxKind.SimpleLambdaExpression:
-                    // In these cases we need to declare parameters as variables
-                    // within the method's root accessibility scope. To make things
-                    // easier for ourselves, we'll skip inserting one here and leave it
-                    // to VisitMethodDeclaration / VisitAnonymousFunction.
-                    return Block(newStatements);
-
-            }
-
-            // Otherwise we can wrap it & return.
-            return Block(
-                        WrapStatementsInAccessibilityScope(newStatements, kind)
-                    );
+            var newStatements = List(trimmedStatements.Select(s => (StatementSyntax)Visit(s)));
+            return Block(WrapStatementsInAccessibilityScope(newStatements, AccessibilityScope.Kind.General));
         }
 
         public override SyntaxNode VisitUnsafeStatement(UnsafeStatementSyntax node)
