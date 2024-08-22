@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RRCGBuild
 {
-    internal class ClassChipsTest : CircuitBuilder
+    internal class ClassChipsTest : RRCGBuild.CircuitBuilder
     {
         public override void CircuitGraph()
         {
@@ -20,18 +20,18 @@ namespace RRCGBuild
             __BeginReturnScope("DelayTest", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.Delay delay = default !;
-                delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new Delay(5), () => delay!, (_RRCG_SETTER_VALUE) => delay = _RRCG_SETTER_VALUE);
-            ChipLib.Log("Delay Test 1");
+                delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new RRCGBuild.Delay(5), () => delay!, (_RRCG_SETTER_VALUE) => delay = _RRCG_SETTER_VALUE);
+            RRCGBuild.ChipLib.Log("Delay Test 1");
             delay.Cancel().Run();
-            ChipLib.Log("Delay is scheduled");
+            RRCGBuild.ChipLib.Log("Delay is scheduled");
             delay.Await();
-            ChipLib.Log("After delay");
+            RRCGBuild.ChipLib.Log("After delay");
             StartNewGraph();
-            ChipLib.Log("Delay Test 2");
+            RRCGBuild.ChipLib.Log("Delay Test 2");
             // Should only connect the cancel pin because run was called
             delay.Cancel().Run();
             StartNewGraph();
-            ChipLib.Log("Delay Test 3");
+            RRCGBuild.ChipLib.Log("Delay Test 3");
             delay.Run();
             __EndAccessibilityScope();
             __EndReturnScope();
@@ -46,7 +46,7 @@ namespace RRCGBuild
                 __BeginReturnScope("ParenthesizedLambda", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                     RRCGBuild.Delay delay = default !;
-                    delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new Delay(1), () => delay!, (_RRCG_SETTER_VALUE) => delay = _RRCG_SETTER_VALUE);
+                    delay = __VariableDeclaratorExpression<RRCGBuild.Delay>("delay", () => new RRCGBuild.Delay(1), () => delay!, (_RRCG_SETTER_VALUE) => delay = _RRCG_SETTER_VALUE);
                 delay.Await();
                 delay.Await();
                 __EndAccessibilityScope();

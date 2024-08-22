@@ -3,8 +3,50 @@ using System.Collections.Generic;
 
 namespace RRCGBuild
 {
-    public class MemberVariables : CircuitBuilder
+    public class MemberVariables : RRCGBuild.CircuitBuilder
     {
+        private NamedVariable<RRCGBuild.IntPort> __RRCG_MEMBER_VARIABLE_FieldVariable = __CreateNamedVariable<RRCGBuild.IntPort>("FieldVariable", 1000, VariableKind.Local);
+        public RRCGBuild.IntPort FieldVariable
+        {
+            get => __RRCG_MEMBER_VARIABLE_FieldVariable.Value;
+            set => __RRCG_MEMBER_VARIABLE_FieldVariable.Value = value;
+        }
+
+        private NamedVariable<RRCGBuild.StringPort> __RRCG_MEMBER_VARIABLE_SyncedFieldVariable = __CreateNamedVariable<RRCGBuild.StringPort>("SyncedFieldVariable", "Home value", VariableKind.Synced);
+        public RRCGBuild.StringPort SyncedFieldVariable
+        {
+            get => __RRCG_MEMBER_VARIABLE_SyncedFieldVariable.Value;
+            set => __RRCG_MEMBER_VARIABLE_SyncedFieldVariable.Value = value;
+        }
+
+        private NamedVariable<RRCGBuild.BoolPort> __RRCG_MEMBER_VARIABLE_CloudFieldVariable = __CreateNamedVariable<RRCGBuild.BoolPort>("FieldCloudVariable", null !, VariableKind.Cloud);
+        public RRCGBuild.BoolPort CloudFieldVariable
+        {
+            get => __RRCG_MEMBER_VARIABLE_CloudFieldVariable.Value;
+            set => __RRCG_MEMBER_VARIABLE_CloudFieldVariable.Value = value;
+        }
+
+        private NamedVariable<RRCGBuild.IntPort> __RRCG_MEMBER_VARIABLE_PropertyVariable = __CreateNamedVariable<RRCGBuild.IntPort>("PropertyVariable", 2000, VariableKind.Local);
+        public RRCGBuild.IntPort PropertyVariable
+        {
+            get => __RRCG_MEMBER_VARIABLE_PropertyVariable.Value;
+            private set => __RRCG_MEMBER_VARIABLE_PropertyVariable.Value = value;
+        }
+
+        private NamedVariable<RRCGBuild.StringPort> __RRCG_MEMBER_VARIABLE_SyncedPropertyVariable = __CreateNamedVariable<RRCGBuild.StringPort>("SyncedPropertyVariable", "Home value", VariableKind.Synced);
+        public RRCGBuild.StringPort SyncedPropertyVariable
+        {
+            get => __RRCG_MEMBER_VARIABLE_SyncedPropertyVariable.Value;
+            set => __RRCG_MEMBER_VARIABLE_SyncedPropertyVariable.Value = value;
+        }
+
+        private NamedVariable<RRCGBuild.BoolPort> __RRCG_MEMBER_VARIABLE_CloudPropertyVariable = __CreateNamedVariable<RRCGBuild.BoolPort>("PropertyCloudVariable", null !, VariableKind.Cloud);
+        public RRCGBuild.BoolPort CloudPropertyVariable
+        {
+            private get => __RRCG_MEMBER_VARIABLE_CloudPropertyVariable.Value;
+            set => __RRCG_MEMBER_VARIABLE_CloudPropertyVariable.Value = value;
+        }
+
         // Some invalid member variables..
         // Number of cloud variable arguments must match the number of declared variables
         //[CloudVariable("Too", "Many")]
@@ -36,7 +78,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            RoomEvent.TestEvent();
+            RRCGBuild.RoomEvent.TestEvent();
             // Test assignments..
             FieldVariable = FieldVariable + 1;
             SyncedFieldVariable = SyncedFieldVariable + ", assigned suffix (field)";
@@ -44,33 +86,32 @@ namespace RRCGBuild
             PropertyVariable += 1;
             SyncedPropertyVariable += ", assigned suffix (property)";
             CloudPropertyVariable = true;
-            // Test reads...
-            ChipLib.Log(FieldVariable);
-            ChipLib.Log(SyncedFieldVariable);
-            ChipLib.Log(CloudFieldVariable);
-            ChipLib.Log(PropertyVariable);
-            ChipLib.Log(SyncedPropertyVariable);
-            ChipLib.Log(CloudPropertyVariable);
+            RRCGBuild.ChipLib.Log(FieldVariable);
+            RRCGBuild.ChipLib.Log(SyncedFieldVariable);
+            RRCGBuild.ChipLib.Log(CloudFieldVariable);
+            RRCGBuild.ChipLib.Log(PropertyVariable);
+            RRCGBuild.ChipLib.Log(SyncedPropertyVariable);
+            RRCGBuild.ChipLib.Log(CloudPropertyVariable);
             // Test change events...
-            TestChangeEvent<IntPort>("FieldVariable", FieldVariable);
-            TestChangeEvent<StringPort>("SyncedFieldVariable", SyncedFieldVariable);
-            TestChangeEvent<BoolPort>("CloudFieldVariable", CloudFieldVariable);
+            TestChangeEvent<RRCGBuild.IntPort>("FieldVariable", FieldVariable);
+            TestChangeEvent<RRCGBuild.StringPort>("SyncedFieldVariable", SyncedFieldVariable);
+            TestChangeEvent<RRCGBuild.BoolPort>("CloudFieldVariable", CloudFieldVariable);
             __EndAccessibilityScope();
             __EndReturnScope();
         }
 
-        void TestChangeEvent<T>(StringPort name, T member)
+        void TestChangeEvent<T>(RRCGBuild.StringPort name, T member)
             where T : AnyPort, new()
         {
             __BeginReturnScope("TestChangeEvent", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            __VariableDeclaratorExpression<StringPort>("name", null, () => name!, (_RRCG_SETTER_VALUE) => name = _RRCG_SETTER_VALUE);
+            __VariableDeclaratorExpression<RRCGBuild.StringPort>("name", null, () => name!, (_RRCG_SETTER_VALUE) => name = _RRCG_SETTER_VALUE);
             __VariableDeclaratorExpression<T>("member", null, () => member!, (_RRCG_SETTER_VALUE) => member = _RRCG_SETTER_VALUE);
             MemberVariableChanged<T>(member, (value) =>
             {
                 __BeginReturnScope("ParenthesizedLambda", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-                __VariableDeclaratorExpression("value", null, () => value!, (_RRCG_SETTER_VALUE) => value = _RRCG_SETTER_VALUE);
+                __VariableDeclaratorExpression<T>("value", null, () => value!, (_RRCG_SETTER_VALUE) => value = _RRCG_SETTER_VALUE);
                 LogString(__StringInterpolation("Change event fired for member: ", name));
                 LogString(__StringInterpolation("Got value: ", value));
                 __EndAccessibilityScope();
@@ -80,48 +121,6 @@ namespace RRCGBuild
             );
             __EndAccessibilityScope();
             __EndReturnScope();
-        }
-
-        private NamedVariable<IntPort> __RRCG_MEMBER_VARIABLE_FieldVariable = __CreateNamedVariable<IntPort>("FieldVariable", 1000, VariableKind.Local);
-        public IntPort FieldVariable
-        {
-            get => __RRCG_MEMBER_VARIABLE_FieldVariable.Value;
-            set => __RRCG_MEMBER_VARIABLE_FieldVariable.Value = value;
-        }
-
-        private NamedVariable<StringPort> __RRCG_MEMBER_VARIABLE_SyncedFieldVariable = __CreateNamedVariable<StringPort>("SyncedFieldVariable", "Home value", VariableKind.Synced);
-        public StringPort SyncedFieldVariable
-        {
-            get => __RRCG_MEMBER_VARIABLE_SyncedFieldVariable.Value;
-            set => __RRCG_MEMBER_VARIABLE_SyncedFieldVariable.Value = value;
-        }
-
-        private NamedVariable<BoolPort> __RRCG_MEMBER_VARIABLE_CloudFieldVariable = __CreateNamedVariable<BoolPort>("FieldCloudVariable", null !, VariableKind.Cloud);
-        public BoolPort CloudFieldVariable
-        {
-            get => __RRCG_MEMBER_VARIABLE_CloudFieldVariable.Value;
-            set => __RRCG_MEMBER_VARIABLE_CloudFieldVariable.Value = value;
-        }
-
-        private NamedVariable<IntPort> __RRCG_MEMBER_VARIABLE_PropertyVariable = __CreateNamedVariable<IntPort>("PropertyVariable", 2000, VariableKind.Local);
-        public IntPort PropertyVariable
-        {
-            get => __RRCG_MEMBER_VARIABLE_PropertyVariable.Value;
-            private set => __RRCG_MEMBER_VARIABLE_PropertyVariable.Value = value;
-        }
-
-        private NamedVariable<StringPort> __RRCG_MEMBER_VARIABLE_SyncedPropertyVariable = __CreateNamedVariable<StringPort>("SyncedPropertyVariable", "Home value", VariableKind.Synced);
-        public StringPort SyncedPropertyVariable
-        {
-            get => __RRCG_MEMBER_VARIABLE_SyncedPropertyVariable.Value;
-            set => __RRCG_MEMBER_VARIABLE_SyncedPropertyVariable.Value = value;
-        }
-
-        private NamedVariable<BoolPort> __RRCG_MEMBER_VARIABLE_CloudPropertyVariable = __CreateNamedVariable<BoolPort>("PropertyCloudVariable", null !, VariableKind.Cloud);
-        public BoolPort CloudPropertyVariable
-        {
-            private get => __RRCG_MEMBER_VARIABLE_CloudPropertyVariable.Value;
-            set => __RRCG_MEMBER_VARIABLE_CloudPropertyVariable.Value = value;
         }
     }
 }

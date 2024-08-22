@@ -5,13 +5,13 @@ using RRCGBuild;
 
 namespace RRCGBuild
 {
-    public class EntryPointsTest : CircuitBuilder
+    public class EntryPointsTest : RRCGBuild.CircuitBuilder
     {
+        RRCGBuild.IntPort a = __NamedAssignment<RRCGBuild.IntPort>("a", () => RandomInt(1, 10));
         public EntryPointsTest()
         {
             __BeginAccessibilityScope(AccessibilityScope.Kind.General);
-            // This should be executed after class initializers, and before the circuit graph
-            ChipLib.Log("constructor");
+            RRCGBuild.ChipLib.Log("constructor");
             __EndAccessibilityScope();
         }
 
@@ -19,8 +19,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            // This should be the first graph after initialization
-            ChipLib.Log("main circuit graph");
+            RRCGBuild.ChipLib.Log("main circuit graph");
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -30,8 +29,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("PrivateGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            // This should start a new graph
-            ChipLib.Log("private graph");
+            RRCGBuild.ChipLib.Log("private graph");
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -41,8 +39,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("ProtectedGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            // This should start a new graph
-            ChipLib.Log("protected graph");
+            RRCGBuild.ChipLib.Log("protected graph");
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -52,8 +49,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("InternalGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            // This should start a new graph
-            ChipLib.Log("internal graph");
+            RRCGBuild.ChipLib.Log("internal graph");
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -63,12 +59,9 @@ namespace RRCGBuild
         {
             __BeginReturnScope("PublicGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            // This should start a new graph
-            ChipLib.Log("public graph");
+            RRCGBuild.ChipLib.Log("public graph");
             __EndAccessibilityScope();
             __EndReturnScope();
         }
-
-        IntPort a = __NamedAssignment<IntPort>("a", () => RandomInt(1, 10));
     }
 }

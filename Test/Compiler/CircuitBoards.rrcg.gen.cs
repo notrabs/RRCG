@@ -4,21 +4,21 @@ using System.Collections.Generic;
 
 namespace RRCGBuild
 {
-    public class CircuitBoards : CircuitBuilder
+    public class CircuitBoards : RRCGBuild.CircuitBuilder
     {
         public override void CircuitGraph()
         {
             __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-                IntPort a = default !;
-                a = __VariableDeclaratorExpression<IntPort>("a", () => RandomInt(1, 10), () => a!, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
+                RRCGBuild.IntPort a = default !;
+                a = __VariableDeclaratorExpression<RRCGBuild.IntPort>("a", () => RandomInt(1, 10), () => a!, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
             CircuitBoard(ContentsExec);
-                IntPort b = default !;
-                b = __VariableDeclaratorExpression<IntPort>("b", () => CircuitBoard<IntPort, IntPort>(ContentsMixed, a), () => b!, (_RRCG_SETTER_VALUE) => b = _RRCG_SETTER_VALUE);
-            ChipLib.Log(b);
-            var(c, d) = CircuitBoard<IntPort, IntPort, (IntPort namedValue, IntPort)>(ContentsData, b, b);
-            ChipLib.Log(c);
-            ChipLib.Log(d);
+                RRCGBuild.IntPort b = default !;
+                b = __VariableDeclaratorExpression<RRCGBuild.IntPort>("b", () => CircuitBoard<RRCGBuild.IntPort, RRCGBuild.IntPort>(ContentsMixed, a), () => b!, (_RRCG_SETTER_VALUE) => b = _RRCG_SETTER_VALUE);
+            RRCGBuild.ChipLib.Log(b);
+            var(c, d) = CircuitBoard<RRCGBuild.IntPort, RRCGBuild.IntPort, (RRCGBuild.IntPort namedValue, RRCGBuild.IntPort Item2)>(ContentsData, b, b);
+            RRCGBuild.ChipLib.Log(c);
+            RRCGBuild.ChipLib.Log(d);
             CircuitBoard(ExecOut);
             CircuitBoard(ExecIn);
             // Returns are not translated yet
@@ -27,12 +27,12 @@ namespace RRCGBuild
             //    ChipLib.Log("Anonymous Function");
             //    return "test";
             //});
-            CircuitBoard<IntPort>((IntPort test) =>
+            CircuitBoard<RRCGBuild.IntPort>((RRCGBuild.IntPort test) =>
             {
                 __BeginReturnScope("ParenthesizedLambda", null, null);
                 __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-                __VariableDeclaratorExpression<IntPort>("test", null, () => test!, (_RRCG_SETTER_VALUE) => test = _RRCG_SETTER_VALUE);
-                ChipLib.Log("Anonymous Parameter");
+                __VariableDeclaratorExpression<RRCGBuild.IntPort>("test", null, () => test!, (_RRCG_SETTER_VALUE) => test = _RRCG_SETTER_VALUE);
+                RRCGBuild.ChipLib.Log("Anonymous Parameter");
                 __EndAccessibilityScope();
                 __EndReturnScope();
             }
@@ -51,23 +51,23 @@ namespace RRCGBuild
             __EndReturnScope();
         }
 
-        IntPort ContentsMixed(IntPort a)
+        RRCGBuild.IntPort ContentsMixed(RRCGBuild.IntPort a)
         {
-            __BeginReturnScope("ContentsMixed", typeof(IntPort), null);
+            __BeginReturnScope("ContentsMixed", typeof(RRCGBuild.IntPort), null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            __VariableDeclaratorExpression<IntPort>("a", null, () => a!, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
-            __Return<IntPort>(RandomInt(a, 10));
+            __VariableDeclaratorExpression<RRCGBuild.IntPort>("a", null, () => a!, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
+            __Return<RRCGBuild.IntPort>(RandomInt(a, 10));
             __EndAccessibilityScope();
             return __EndReturnScope()!;
         }
 
-        (IntPort namedValue, IntPort) ContentsData(IntPort a, IntPort b)
+        (RRCGBuild.IntPort namedValue, RRCGBuild.IntPort) ContentsData(RRCGBuild.IntPort a, RRCGBuild.IntPort b)
         {
-            __BeginReturnScope("ContentsData", typeof((IntPort namedValue, IntPort)), new[]{"namedValue", "value1"});
+            __BeginReturnScope("ContentsData", typeof((RRCGBuild.IntPort namedValue, RRCGBuild.IntPort)), new[]{"namedValue", "value1"});
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            __VariableDeclaratorExpression<IntPort>("a", null, () => a!, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
-            __VariableDeclaratorExpression<IntPort>("b", null, () => b!, (_RRCG_SETTER_VALUE) => b = _RRCG_SETTER_VALUE);
-            __Return<(IntPort namedValue, IntPort)>((a, b));
+            __VariableDeclaratorExpression<RRCGBuild.IntPort>("a", null, () => a!, (_RRCG_SETTER_VALUE) => a = _RRCG_SETTER_VALUE);
+            __VariableDeclaratorExpression<RRCGBuild.IntPort>("b", null, () => b!, (_RRCG_SETTER_VALUE) => b = _RRCG_SETTER_VALUE);
+            __Return<(RRCGBuild.IntPort namedValue, RRCGBuild.IntPort Item2)>((a, b));
             __EndAccessibilityScope();
             return __EndReturnScope()!;
         }
@@ -76,7 +76,7 @@ namespace RRCGBuild
         {
             __BeginReturnScope("ExecOut", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            RoomEvent.Hz30();
+            RRCGBuild.RoomEvent.Hz30();
             __EndAccessibilityScope();
             __EndReturnScope();
         }

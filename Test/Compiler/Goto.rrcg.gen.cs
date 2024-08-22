@@ -8,13 +8,13 @@ namespace RRCGBuild
 
 #pragma warning disable CS0164 // This label has not been referenced
 
-    public class Goto : CircuitBuilder
+    public class Goto : RRCGBuild.CircuitBuilder
     {
         public override void CircuitGraph()
         {
             __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            new EventDefinition("GotoTest").Receiver();
+            new RRCGBuild.EventDefinition("GotoTest").Receiver();
                 __LabelDecl("label1");
                 LogString("Label 1!");
             __If(__ConditionalContext(), () => true, delegate
