@@ -13,14 +13,14 @@ namespace RRCG
     public partial class CircuitDescriptorRewriter : CSharpSyntaxRewriter
     {
         private RRCGSyntaxRewriter rrcgRewriter;
-        private MemberVariablesProcessor memberVariablesProcessor;
-        private NamedAssignmentProcessor namedAssignmentProcessor;
+        private BuildRealmResolver BuildRealmResolver;
+        private MemberVariablesVisitor MemberVariablesVisitor;
 
         public CircuitDescriptorRewriter(RRCGSyntaxRewriter rrcgRewriter)
         {
             this.rrcgRewriter = rrcgRewriter;
-            memberVariablesProcessor = new(this);
-            namedAssignmentProcessor = new(this);
+            BuildRealmResolver = new(SemanticModel);
+            MemberVariablesVisitor = new(this, SemanticModel, BuildRealmResolver);
         }
 
         SemanticModel SemanticModel => rrcgRewriter.SemanticModel;
@@ -31,7 +31,38 @@ namespace RRCG
 
         public SyntaxNode VisitClassDeclarationRoot(ClassDeclarationSyntax node)
         {
-            var visited = (ClassDeclarationSyntax)base.VisitClassDeclaration(node);
+            // First, visit the class without its members
+            var visitedClass = ClassDeclaration(VisitList(node.AttributeLists), VisitList(node.Modifiers), VisitToken(node.Keyword), VisitToken(node.Identifier),
+                                                (TypeParameterListSyntax)Visit(node.TypeParameterList), (BaseListSyntax)Visit(node.BaseList),
+                                                List<TypeParameterConstraintClauseSyntax>(), VisitToken(node.OpenBraceToken), List<MemberDeclarationSyntax>(),
+                                                VisitToken(node.CloseBraceToken),  VisitToken(node.SemicolonToken));
+
+            // Then visit the members individually
+            var newMembers = new SyntaxList<MemberDeclarationSyntax>();
+            foreach (var member in node.Members)
+            {
+                // If it's a field, we could have member variables
+                if (member is FieldDeclarationSyntax field &&
+                    MemberVariablesVisitor.VisitPotentialMemberVariable(field) is List<MemberDeclarationSyntax> fieldMembers)
+                {
+                    newMembers = newMembers.AddRange(fieldMembers);
+                    continue;
+                }
+
+                // Same thing for properties..
+                if (member is PropertyDeclarationSyntax property &&
+                    MemberVariablesVisitor.VisitPotentialMemberVariable(property) is List<MemberDeclarationSyntax> propMembers)
+                {
+                    newMembers = newMembers.AddRange(propMembers);
+                    continue;
+                }
+
+                // Otherwise, just visit ordinarily.
+                newMembers = newMembers.Add((MemberDeclarationSyntax)base.Visit(member));
+            }
+
+            // Construct final visited class
+            var visited = visitedClass.WithMembers(newMembers);
 
             // Makes sure generic types in RRCG classes are constrained to port types in build realm
             if (node.TypeParameterList != null)
@@ -45,27 +76,7 @@ namespace RRCG
                 );
             }
 
-            // Process class members as necessary
-
-            // Processors consume from allMembers by reference.
-            // They return a list of new members, which is merged into newMembers.
-
-            // We do this so that any already-processed members
-            // aren't re-processed by other processors.
-
-            var allMembers = visited.Members.ToList();
-            var newMembers = new List<MemberDeclarationSyntax>();
-
-            // Process member variables..
-            newMembers.AddRange(memberVariablesProcessor.ProcessMemberVariables(allMembers));
-
-            // Process named assignments...
-            newMembers.AddRange(namedAssignmentProcessor.ProcessMemberAssignments(allMembers));
-
-            // Now that all the processors are done, merge the new members back into the
-            // list of original (surviving..?) members, and return.
-            allMembers.AddRange(newMembers);
-            return visited.WithMembers(new SyntaxList<MemberDeclarationSyntax>(allMembers));
+            return visited;
         }
 
         public override SyntaxNode VisitClassDeclaration(ClassDeclarationSyntax node)
@@ -75,12 +86,10 @@ namespace RRCG
 
         public override SyntaxNode VisitSimpleBaseType(SimpleBaseTypeSyntax node)
         {
-            // Rewriting isn't really necessary. But it helps with Autocomplete when looking for these types.
-            var visited = (SimpleBaseTypeSyntax)base.VisitSimpleBaseType(node);
-
-            if (visited.Type.ToString() == "CircuitDescriptor") visited = visited.WithType(ParseTypeName("CircuitBuilder"));
-            if (visited.Type.ToString() == "CircuitLibrary") visited = visited.WithType(ParseTypeName("CircuitLibraryBuilder"));
-            return visited;
+            // Attempt to resolve an existing build-realm type (CircuitBuilder/CircuitLibraryBuilder),
+            // but fallback to rewriting the namespace if that fails.
+            var symbol = SemanticModel.GetSymbolInfo(node.Type).Symbol as ITypeSymbol;
+            return SimpleBaseType(BuildRealmResolver.ResolveOrRewriteBuildRealmType(symbol));
         }
 
         //
@@ -103,7 +112,7 @@ namespace RRCG
             var methodName = method.Identifier.ToString();
             var isVoid = method.ReturnType.ToString() == "void";
             var hasParameters = method.ParameterList.Parameters.Count > 0;
-            var rewrittenReturnType = method.ReturnType;
+            var buildReturnType = method.ReturnType;
 
             // Make sure generic methods in RRCG classes are constrained to port types in build realm
             if (node.TypeParameterList != null)
@@ -138,15 +147,16 @@ namespace RRCG
 
             // Wrap in accessibility & return scope
             statements = WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.MethodRoot);
-            statements = WrapStatementsInReturnScope(statements, methodName, rewrittenReturnType);
-
-            // special functions
-            var isEventFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "EventFunction"));
-            var isSharedPropertyFunction = method.AttributeLists.Any(list => list.Attributes.Any(attr => attr.Name.ToString() == "SharedProperty"));
+            statements = WrapStatementsInReturnScope(statements, methodName, buildReturnType);
 
             var methodSymbol = SemanticModel.GetDeclaredSymbol(node);
             var containingType = methodSymbol.ContainingType;
             var isStatic = methodSymbol.IsStatic;
+
+            // special functions
+            var methodAttributes = methodSymbol.GetAttributes();
+            var isEventFunction = methodAttributes.Any(a => a.AttributeClass == BuildRealmResolver.EventFunctionAttribute);
+            var isSharedPropertyFunction = methodAttributes.Any(a => a.AttributeClass == BuildRealmResolver.SharedPropertyAttribute);
 
             // Build "owner" expression for call to DispatchEventFunction/DispatchSharedProperty.
             // If the method is an instance method, we want to pass "this",
@@ -164,8 +174,8 @@ namespace RRCG
                     if (containingType == null)
                         throw new Exception($"Static {(isEventFunction ? "EventFunction" : "SharedProperty")} methods must have a valid containing type!");
 
-                    // Rewrite the type, so that the namespace is translated (if it ends up overqualifying)
-                    ownerExpression = TypeOfExpression((TypeSyntax)Visit(containingType.ToTypeSyntax()));
+                    // Rewrite the containing type, such that it points into the RRCGBuild namespace
+                    ownerExpression = TypeOfExpression(BuildRealmResolver.RewriteBuildRealmNamespace(containingType));
                 }
             }
 
@@ -271,7 +281,8 @@ namespace RRCG
                 return node;
 
             var isGetter = visited.Kind() == SyntaxKind.GetAccessorDeclaration;
-            var rewrittenType = (TypeSyntax)Visit(property.Type);
+            var typeSymbol = SemanticModel.GetSymbolInfo(property.Type).Symbol as ITypeSymbol;
+            var buildType = BuildRealmResolver.ResolveOrRewriteBuildRealmType(typeSymbol);
 
             // If the accessor has no functional body,
             // we don't need to do anything more.
@@ -283,7 +294,7 @@ namespace RRCG
             // with the correct AccessibilityScope kind..
             var visitedStatements = node.Body != null
                                         ? VisitList(node.Body.Statements)
-                                        : SingletonList<StatementSyntax>(isGetter ? ValueReturnStatement((ExpressionSyntax)Visit(node.ExpressionBody.Expression), rewrittenType)
+                                        : SingletonList<StatementSyntax>(isGetter ? ValueReturnStatement((ExpressionSyntax)Visit(node.ExpressionBody.Expression), buildType)
                                                                                   : ExpressionStatement((ExpressionSyntax)Visit(node.ExpressionBody.Expression)));
             // Wrap in accessibility scope
             visitedStatements = WrapStatementsInAccessibilityScope(visitedStatements, AccessibilityScope.Kind.MethodRoot);
@@ -292,7 +303,7 @@ namespace RRCG
             if (isGetter)
             {
                 var name = $"{property.Identifier}_get";
-                visitedStatements = WrapStatementsInReturnScope(visitedStatements, name, rewrittenType);
+                visitedStatements = WrapStatementsInReturnScope(visitedStatements, name, buildType);
             }
 
             // Finally return the visited accessor,
@@ -319,17 +330,12 @@ namespace RRCG
         public override SyntaxNode VisitAnonymousMethodExpression(AnonymousMethodExpressionSyntax method)
         {
             var visitedSignature = AnonymousMethodExpression(VisitToken(method.AsyncKeyword), VisitToken(method.DelegateKeyword),
-                                                             (ParameterListSyntax)Visit(method.ParameterList), null, null);
+                                                             (ParameterListSyntax)Visit(method.ParameterList), Block(), null);
             return VisitAnonymousFunction(method, visitedSignature, "AnonymousMethod", method.ParameterList.Parameters.ToArray());
         }
 
         public T VisitAnonymousFunction<T>(T method, T visitedSignature, string methodName, params ParameterSyntax[] unvisitedParameters) where T : AnonymousFunctionExpressionSyntax
         {
-            // We expect visitedSignature to have no block/expression body.
-            // It should just be the signature, with no implementation.
-            if (visitedSignature.ExpressionBody != null || visitedSignature.Block != null)
-                throw new Exception("Expected visitedSignature to have no block/expression body!");
-
             // We need to know the return type.
             // Use of the Semantic Model seems to be very consistent now,
             // so this should really only fail in dire circumstances.
@@ -339,21 +345,21 @@ namespace RRCG
 
             var returnType = methodSymbol.ReturnType;
             var isVoid = returnType.SpecialType == SpecialType.System_Void;
-            var rewrittenReturnType = (TypeSyntax)Visit(returnType.ToTypeSyntax());
+            var buildReturnType = BuildRealmResolver.ResolveOrRewriteBuildRealmType(returnType);
 
             // Grab & visit statements from the original method.
             // We do this so we can avoid VisitBlock & insert our own accessibility scope.
             var statements = method.Block != null
                                 ? VisitList(method.Block.Statements)
                                 : SingletonList<StatementSyntax>(isVoid ? ExpressionStatement((ExpressionSyntax)Visit(method.ExpressionBody))
-                                                                        : ValueReturnStatement((ExpressionSyntax)Visit(method.ExpressionBody), rewrittenReturnType));
+                                                                        : ValueReturnStatement((ExpressionSyntax)Visit(method.ExpressionBody), buildReturnType));
 
             // Now we can declare method parameters as variables for the root accessibility scope.
             statements = statements.InsertRange(0, VariableDeclaratorsFromParameters(unvisitedParameters));
 
             // Wrap the statements in an accessibility & return scope
             statements = WrapStatementsInAccessibilityScope(statements, AccessibilityScope.Kind.MethodRoot);
-            statements = WrapStatementsInReturnScope(statements, methodName, rewrittenReturnType);
+            statements = WrapStatementsInReturnScope(statements, methodName, buildReturnType);
 
             // Finally return the method with the new statements
             return (T)visitedSignature.WithBody(Block(statements));
@@ -375,8 +381,8 @@ namespace RRCG
                 var parameterSymbol = SemanticModel.GetDeclaredSymbol(parameter);
                 if (parameterSymbol.IsDiscard) continue;
 
-                var rewrittenType = (TypeSyntax)Visit(parameter.Type);
-                var invocation = VariableDeclaratorExpressionInvocation(parameter.Identifier.ToString(), null, rewrittenType, true);
+                var buildType = BuildRealmResolver.ResolveOrRewriteBuildRealmType(parameterSymbol.Type);
+                var invocation = VariableDeclaratorExpressionInvocation(parameter.Identifier.ToString(), null, buildType, true);
                 invocations = invocations.Add(ExpressionStatement(invocation));
             }
 
@@ -548,10 +554,42 @@ namespace RRCG
 
         public override SyntaxNode VisitFieldDeclaration(FieldDeclarationSyntax node)
         {
+            // If the field has the unsafe keyword, don't do anything to it.
             if (node.Modifiers.Any(SyntaxKind.UnsafeKeyword))
                 return node;
+            
+            var visitedField = (FieldDeclarationSyntax)base.VisitFieldDeclaration(node);
 
-            return base.VisitFieldDeclaration(node);
+            // Resolve/rewrite build-realm type, create
+            // invocation name for call to __NamedAssignment
+            var typeSymbol = SemanticModel.GetSymbolInfo(node.Declaration.Type).Symbol as ITypeSymbol;
+            var buildType = BuildRealmResolver.ResolveOrRewriteBuildRealmType(typeSymbol);
+
+            var namedAssignmentName = GenericName("__NamedAssignment")
+                .WithTypeArgumentList(SyntaxUtils.TypeArgumentList(buildType));
+
+            // Now we can process the declared variables in the field.
+            var newVariables = visitedField.Declaration.Variables.Select(variable =>
+            {
+                var identifier = variable.Identifier.ToString();
+
+                // Wrap initializer in call to __NamedAssignment,
+                // which will preserve the source naming.
+                if (variable.Initializer != null)
+                    variable = variable.WithInitializer(
+                                    EqualsValueClause(
+                                        InvocationExpression(namedAssignmentName)
+                                        .WithArgumentList(
+                                            SyntaxUtils.ArgumentList(
+                                                SyntaxUtils.StringLiteral(identifier),
+                                                ParenthesizedLambdaExpression()
+                                                .WithExpressionBody(variable.Initializer.Value)))));
+
+                return variable;
+            });
+
+            // Finally, return the visited field declaration with the new variables.
+            return visitedField.WithDeclaration(VariableDeclaration(buildType, SeparatedList(newVariables)));
         }
 
         public override SyntaxNode VisitInvocationExpression(InvocationExpressionSyntax node)
@@ -560,21 +598,16 @@ namespace RRCG
             var visitedNode = (InvocationExpressionSyntax)base.VisitInvocationExpression(node);
             var expression = visitedNode.Expression;
 
-            // Rewrite Chips -> ChipBuilder
-            if (expression is MemberAccessExpressionSyntax ma && ma.Expression is SimpleNameSyntax ins)
-            {
-                if (ins.Identifier.Text == "Chips")
-                {
-                    visitedNode = visitedNode.WithExpression(ma.WithExpression(SyntaxFactory.IdentifierName("ChipBuilder")));
-                }
-            }
-
             // Attempt to fixup ommitted type parameters
             var symbolInfo = SemanticModel.GetSymbolInfo(node);
             var methodSymbol = (IMethodSymbol)symbolInfo.Symbol;
 
             // Bail out if we failed to resolve the method symbol.
-            if (methodSymbol == null) return visitedNode;
+            if (methodSymbol == null)
+            {
+                Debug.LogWarning($"Failed to resolve method symbol for invocation: {node}");
+                return visitedNode;
+            }
 
             // Get the method name syntax
             // A bit clunky but we have to do this..
@@ -607,15 +640,15 @@ namespace RRCG
             foreach (var resolvedType in resolvedTypeArgs)
             {
                 // Ensure the type resolved correctly
-                if (resolvedType.ToString() == "?")
+                if (resolvedType is IErrorTypeSymbol)
                 {
                     Debug.LogWarning($"Failed to resolve type assignments for generic invocation expression: {node}");
                     return visitedNode;
                 }
 
-                // Rewrite & store the type
-                var typeSyntax = resolvedType.ToTypeSyntax();
-                rewrittenTypes = rewrittenTypes.Add((TypeSyntax)Visit(typeSyntax));
+                // Resolve/rewrite & store the type
+                var buildType = BuildRealmResolver.ResolveOrRewriteBuildRealmType(resolvedType);
+                rewrittenTypes = rewrittenTypes.Add(buildType);
             }
 
             // Apply the type parameters to the expression & return
@@ -652,92 +685,41 @@ namespace RRCG
 
         public override SyntaxNode VisitPredefinedType(PredefinedTypeSyntax node)
         {
-            switch (node.Keyword.ValueText)
-            {
-                case "bool":
-                    return IdentifierName("BoolPort");
-                case "string":
-                    return IdentifierName("StringPort");
-                case "int":
-                    return IdentifierName("IntPort");
-                case "float":
-                    return IdentifierName("FloatPort");
-                case "void":
-                    // ignore
-                    break;
-                default:
-                    Debug.Log("unknonw predefined type: " + node.Keyword.ValueText);
-                    break;
-            }
+            // For System.Void, we don't want to do any type resolution. Just pass-through.
+            var typeSymbol = SemanticModel.GetSymbolInfo(node).Symbol as ITypeSymbol;
+            if (typeSymbol.SpecialType == SpecialType.System_Void)
+                return base.VisitPredefinedType(node);
 
+            // For the predefined types, we only want to resolve an existing build-realm type.
+            // We don't want to fallback to re-writing it to point into the RRCGBuild namespace.
+            if (BuildRealmResolver.ResolveBuildRealmType(typeSymbol) is ITypeSymbol resolved)
+                return resolved.ToTypeSyntax();
+
+            Debug.LogWarning($"Unknown predefined type: {node}");
             return base.VisitPredefinedType(node);
         }
 
         public override SyntaxNode VisitGenericName(GenericNameSyntax node)
-        {
-            switch (node.Identifier.ValueText)
-            {
-                case "List":
-                    return ((GenericNameSyntax)base.VisitGenericName(node))
-                        .WithIdentifier(Identifier(node.Identifier.ValueText + "Port"));
-            }
-
-            return base.VisitGenericName(node);
-        }
+            => ResolveOrRewriteIfType(node, base.VisitGenericName);
 
         public override SyntaxNode VisitQualifiedName(QualifiedNameSyntax node)
-        {
-            // Makes sure the mapped Unity Types get mapped into their corresponding port types, even if they are fully qualified
-            var names = node.ChildNodes().ToArray();
-
-            if (names.Length == 2 && names[0].ToString() == "UnityEngine")
-            {
-                var unityType = names[1].ToString();
-
-                switch (unityType)
-                {
-                    case "Vector3":
-                    case "Quaternion":
-                    case "Color":
-                        return IdentifierName(unityType + "Port");
-                }
-            }
-            else if (node.ToString().StartsWith("System.Collections.Generic.List"))
-            {
-                var listGeneric = (GenericNameSyntax)names[1];
-                return VisitGenericName(listGeneric);
-            }
-
-            return base.VisitQualifiedName(node);
-        }
+            => ResolveOrRewriteIfType(node, base.VisitQualifiedName);
 
         public override SyntaxNode VisitIdentifierName(IdentifierNameSyntax node)
+            => ResolveOrRewriteIfType(node, base.VisitIdentifierName);
+
+        // Helper method to prevent logic duplication in VisitGeneric/Qualified/IdentifierName
+        SyntaxNode ResolveOrRewriteIfType<T>(T node, Func<T, SyntaxNode> baseVisit) where T : NameSyntax
         {
-            // We only want to rewrite types, which requires checking the semantic model.
-            // However, there are some places (like visiting variable declarators) where we
-            // want to rewrite a type from a node that isn't part of the original compilation.
-            // Thankfully we can just check for this, but maybe there's another way?
-            var root = node.SyntaxTree.GetRoot();
-            if (root is not TypeSyntax)
-            {
-                var symbolInfo = SemanticModel.GetSymbolInfo(node);
+            // We only want to resolve/rewrite types, so let's check for that first.
+            var symbol = SemanticModel.GetSymbolInfo(node).Symbol;
+            if (symbol is not ITypeSymbol typeSymbol)
+                return baseVisit(node).NormalizeWhitespace();
 
-                // Only rewrite if the symbol is referring to a type
-                if (symbolInfo.Symbol is not INamedTypeSymbol) return base.VisitIdentifierName(node).NormalizeWhitespace();
-            }
-
-            if (RRTypesUtils.ImplemetedRRTypes.Contains(node.Identifier.ValueText))
-            {
-                return IdentifierName(node.Identifier.ValueText + "Port").NormalizeWhitespace();
-            }
-
-            switch (node.Identifier.ValueText)
-            {
-                case "RRCGSource":
-                    return IdentifierName("RRCGBuild");
-            }
-
-            return base.VisitIdentifierName(node).NormalizeWhitespace();
+            // The syntax node is referring to a type.
+            // Attempt to resolve it to an existing build-realm type in the compilation.
+            // If that fails, rewrite its syntax such that it points into the RRCGBuild namespace.
+            return BuildRealmResolver.ResolveOrRewriteBuildRealmType(typeSymbol);
         }
 
         public override SyntaxNode VisitBreakStatement(BreakStatementSyntax node)
@@ -818,15 +800,16 @@ namespace RRCG
                 return ParseStatement("__Return();");
 
             // Attempt to resolve build-realm type to ensure implicit cast to Port types
-            TypeSyntax? rewrittenType = null;
             var typeSymbol = SemanticModel.GetTypeInfo(node.Expression).ConvertedType;
-
-            if (typeSymbol.ToString() != "?")
-                rewrittenType = (TypeSyntax)Visit(typeSymbol.ToTypeSyntax());
-            else
+            if (typeSymbol is not IErrorTypeSymbol)
+            {
+                var buildType = BuildRealmResolver.ResolveOrRewriteBuildRealmType(typeSymbol);
+                return ValueReturnStatement(expression, buildType);
+            } else
+            {
                 Debug.LogWarning($"Failed to determine converted type of expression: {expression}");
-
-            return ValueReturnStatement(expression, rewrittenType);
+                return ValueReturnStatement(expression, null);
+            }
         }
 
         public ExpressionStatementSyntax ValueReturnStatement(ExpressionSyntax expression, TypeSyntax? returnType)
@@ -858,19 +841,15 @@ namespace RRCG
                 return visited;
 
             var symbolInfo = SemanticModel.GetDeclaredSymbol(node.Variables[0]); // TODO: Assuming at least one variable. Is this safe?
-            var resolvedType = symbolInfo.GetResolvedType();
-
-            if (resolvedType == null)
+            if (symbolInfo.GetResolvedType() is ITypeSymbol resolvedType)
+            {
+                var buildType = BuildRealmResolver.ResolveOrRewriteBuildRealmType(resolvedType);
+                return visited.WithType(buildType);
+            } else
             {
                 Debug.LogWarning($"Failed to resolve type for var-typed variable declaration: {node}");
                 return visited;
             }
-
-            var type = resolvedType.ToTypeSyntax();
-            var rewrittenType = (TypeSyntax)Visit(type);
-            var result = visited.WithType(rewrittenType);
-            return result;
-
         }
 
         public override SyntaxNode VisitLocalDeclarationStatement(LocalDeclarationStatementSyntax node)
@@ -926,28 +905,20 @@ namespace RRCG
 
             // Attempt to resolve build-realm type for the declaration.
             // Write it as the generic parameter for the call to __VariableDeclaratorExpression
-            TypeSyntax? finalType = null;
             var symbolInfo = SemanticModel.GetDeclaredSymbol(node);
 
-            // Try to grab the type from the symbol
+            // Try to grab the type from the symbol.
+            // If we could resolve it, use it to
+            // resolve/rewrite the build-realm type.
             var resolvedType = symbolInfo.GetResolvedType();
+            TypeSyntax? buildType = resolvedType != null ? BuildRealmResolver.ResolveOrRewriteBuildRealmType(resolvedType) : null;
 
-            // If we found it (and correctly resolved it),
-            // parse & rewrite the type, then write it as
-            // the type assignment for invocation.
-            if (resolvedType != null)
-            {
-                var type = resolvedType.ToTypeSyntax();
-                finalType = (TypeSyntax)Visit(type);
-            }
-            else
-            {
+            if (buildType == null)
                 Debug.LogWarning($"Failed to determine result type for variable declarator expression: {node}");
-            }
 
             var name = node.Identifier.ToString();
             var initializerArg = node.Initializer != null ? (ExpressionSyntax)base.Visit(node.Initializer.Value) : null;
-            return node.WithInitializer(EqualsValueClause(VariableDeclaratorExpressionInvocation(name, initializerArg, finalType, true)));
+            return node.WithInitializer(EqualsValueClause(VariableDeclaratorExpressionInvocation(name, initializerArg, buildType, true)));
         }
 
         public override SyntaxNode VisitPostfixUnaryExpression(PostfixUnaryExpressionSyntax node)
@@ -1108,11 +1079,10 @@ namespace RRCG
             var typeInfo = SemanticModel.GetTypeInfo(node);
             if (typeInfo.ConvertedType is not IErrorTypeSymbol)
             {
-                // Re-parse and rewrite, see VisitIdentifierName
-                var syntax = typeInfo.ConvertedType.ToTypeSyntax();
-                var rewritten = (TypeSyntax)Visit(syntax);
                 invocationName = GenericName(Identifier("__SwitchExpression"))
-                                    .WithTypeArgumentList(SyntaxUtils.TypeArgumentList(rewritten));
+                                    .WithTypeArgumentList(
+                                        SyntaxUtils.TypeArgumentList(
+                                            BuildRealmResolver.ResolveOrRewriteBuildRealmType(typeInfo.ConvertedType)));
             }
             else
             {
@@ -1221,6 +1191,7 @@ namespace RRCG
             var createConditional = CreateConditionalContext(symbols, node.Statement);
 
             // Visit statement & ensure block w/ accessibility scope
+            // If the statement was already a block, VisitBlock would have done that
             var visitedStatement = (StatementSyntax)Visit(node.Statement);
             if (visitedStatement is not BlockSyntax bodyBlock)
                 bodyBlock = Block(WrapStatementsInAccessibilityScope(SingletonList(visitedStatement), AccessibilityScope.Kind.General));
@@ -1251,7 +1222,9 @@ namespace RRCG
 
             if (node.Declaration != null)
             {
-                var rewrittenType = (TypeSyntax)Visit(node.Declaration.Type);
+                var typeSymbol = SemanticModel.GetSymbolInfo(node.Declaration.Type).Symbol as ITypeSymbol;
+                var buildType = BuildRealmResolver.ResolveOrRewriteBuildRealmType(typeSymbol);
+
                 foreach (var variable in node.Declaration.Variables)
                 {
                     var identifier = variable.Identifier.ToString();
@@ -1262,7 +1235,7 @@ namespace RRCG
 
                     // Declare variable
                     statements = statements.Add(LocalDeclarationStatement(
-                                                    VariableDeclaration(rewrittenType)
+                                                    VariableDeclaration(buildType)
                                                     .WithVariables(
                                                         SingletonSeparatedList<VariableDeclaratorSyntax>(
                                                             VariableDeclarator(identifier)
@@ -1277,7 +1250,7 @@ namespace RRCG
                             AssignmentExpression(
                                 SyntaxKind.SimpleAssignmentExpression,
                                 IdentifierName(identifier),
-                                VariableDeclaratorExpressionInvocation(identifier, initializer, rewrittenType, true))));
+                                VariableDeclaratorExpressionInvocation(identifier, initializer, buildType, true))));
                 }
             }
 
@@ -1562,10 +1535,10 @@ namespace RRCG
             // If we're unable to resolve the type, inform the user but try to let the actual compiler infer the type
             if (typeInfo.ConvertedType is not IErrorTypeSymbol)
             {
-                var convertedType = typeInfo.ConvertedType.ToTypeSyntax();
-                var typeAssignment = (TypeSyntax)Visit(convertedType);
-
-                invocationName = GenericName(Identifier("__Ternary")).WithTypeArgumentList(SyntaxUtils.TypeArgumentList(typeAssignment));
+                invocationName = GenericName(Identifier("__Ternary"))
+                    .WithTypeArgumentList(
+                        SyntaxUtils.TypeArgumentList(
+                            BuildRealmResolver.ResolveOrRewriteBuildRealmType(typeInfo.ConvertedType)));
             }
             else
             {
@@ -1578,8 +1551,7 @@ namespace RRCG
                                                  ParenthesizedLambdaExpression()
                                                     .WithExpressionBody(whenTrue),
                                                  ParenthesizedLambdaExpression()
-                                                    .WithExpressionBody(whenFalse))
-                    );
+                                                    .WithExpressionBody(whenFalse)));
         }
 
         //
@@ -1619,7 +1591,6 @@ namespace RRCG
 
         public InvocationExpressionSyntax VariableDeclaratorExpressionInvocation(string identifierName, ExpressionSyntax? initializer, TypeSyntax? resolvedType, bool hasSetter)
         {
-
             ExpressionSyntax initializerArg = initializer != null ? ParenthesizedLambdaExpression(initializer) : LiteralExpression(SyntaxKind.NullLiteralExpression);
             SimpleNameSyntax invocationName = resolvedType == null ? IdentifierName("__VariableDeclaratorExpression")
                                                                    : GenericName(Identifier("__VariableDeclaratorExpression"))

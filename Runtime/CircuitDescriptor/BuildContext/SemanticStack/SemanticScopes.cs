@@ -458,7 +458,7 @@ namespace RRCGBuild
 
             // Return the first port or a tuple as necessary
             ExecFlow.current = returnFlow;
-            return !ReturnTypeIsTupleType ? cachePorts.FirstOrDefault() : TupleUtils.UnwrapTuple(ReturnType, cachePorts.ToArray());
+            return !ReturnTypeIsTupleType ? cachePorts.FirstOrDefault() : TupleUtils.UnwrapTuple(ReturnType, cachePorts);
         }
     }
 }

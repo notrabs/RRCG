@@ -4,10 +4,8 @@ using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using NUnit.Framework;
+using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace RRCG
 {
@@ -174,11 +172,14 @@ namespace RRCG
 
         public static TypeSyntax ToTypeSyntax(this ITypeSymbol symbol)
         {
-            var str = symbol.ToString();
-            if (str == "?")
+            if (symbol is IErrorTypeSymbol)
                 throw new Exception("Type symbol did not resolve correctly!");
 
-            return SyntaxFactory.ParseTypeName(str);
+            // If the type refers to System.Void, return the keyword variation.
+            if (symbol.SpecialType == SpecialType.System_Void)
+                return PredefinedType(Token(SyntaxKind.VoidKeyword));
+
+            return SyntaxFactory.ParseTypeName(symbol.ToString());
         }
 
         public static T StripTrivia<T>(this T node) where T : SyntaxNode
@@ -201,7 +202,7 @@ namespace RRCG
             }
 
             // Using null check for short-circuit
-            if (resolvedType == null || resolvedType.ToString() == "?")
+            if (resolvedType == null || resolvedType is IErrorTypeSymbol)
                 return null;
 
             return resolvedType;
@@ -284,6 +285,44 @@ namespace RRCG
             }
 
             return assignedSymbols;
+        }
+
+        /// <summary>
+        /// Given an ISymbol, return a list of its containing symbols,
+        /// starting from the topmost parent leading down to the symbol itself.
+        /// Namespace -> Type -> Nested Type -> Your Symbol, for example.
+        /// </summary>
+        public static List<ISymbol> UnpackSymbolParents(this ISymbol symbol)
+        {
+            var symbols = new List<ISymbol>();
+            var current = symbol;
+            while (current is not INamespaceSymbol nameSpace ||
+                   !nameSpace.IsGlobalNamespace)
+            {
+                symbols.Insert(0, current);
+                current = current.ContainingSymbol;
+            }
+
+            return symbols;
+        }
+
+        public static string GetMetadataName(this ISymbol type)
+        {
+            var unpacked = type.UnpackSymbolParents();
+            var metadataName = "";
+
+            for (int i=0; i < unpacked.Count; i++)
+            {
+                var current = unpacked[i];
+                var previous = i > 0 ? unpacked[i - 1] : null;
+                metadataName += current.MetadataName;
+
+                // Ensure we use the correct separator for nested types (+)
+                if (i < unpacked.Count - 1)
+                    metadataName += previous is ITypeSymbol && current is ITypeSymbol ? "+" : ".";
+            }
+
+            return metadataName;
         }
     }
 }
