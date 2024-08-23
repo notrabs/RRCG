@@ -490,6 +490,46 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Returns the intensity of the target Audio FX Zone object.
+        /// </summary>
+        public static float AudioFXZoneGetIntensity(AudioFXZone Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Returns the priority of the target Audio FX Zone object.
+        /// </summary>
+        public static int AudioFXZoneGetPriority(AudioFXZone Target)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Sets the effect of the target Audio FX Zone object.
+        /// </summary>
+        public static void AudioFXZoneSetEffect(AudioFXZone Target)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the intensity of the target Audio FX Zone object.
+        /// </summary>
+        public static void AudioFXZoneSetIntensity(AudioFXZone Target, float Intensity)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the priority of the target Audio FX Zone object.
+        /// </summary>
+        public static void AudioFXZoneSetPriority(AudioFXZone Target, int Priority)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Returns the length in seconds of the given audio reference.
         /// </summary>
         public static float AudioGetLength(Audio Audio)
@@ -3456,7 +3496,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Constant to record and save a Holotar clip
         /// </summary>
-        public static HolotarRecording HolotarRecording()
+        public static HolotarRecording HolotarRecordingConstant()
         {
             return default;
         }
@@ -4699,6 +4739,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Sets whether gravity should be disabled for the local player
+        /// </summary>
+        public static void LocalPlayerSetGravityDisabledR2(bool Disabled)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Set the content to be displayed on the Objective Log HUD UI
         /// </summary>
         public static void LocalPlayerSetObjectiveLogContent(string HeaderText, Color HeaderTextColor, string BodyText, Color BodyTextColor)
@@ -4829,9 +4877,10 @@ namespace RRCGGenerated
         }
 
         /// <summary>
-        /// Request that the local player begin to wall run. Not affected by CanWallRun directly. If you want that property to impact this request you should check it yourself.
+        /// Request that the local player begin to wall run. Only works if called via an exec line from the WallRunReady event.  
+        /// Not affected by CanWallRun. If you want that property to impact this request you should check it yourself.
         /// </summary>
-        public static void LocomotionRequestWallRunR2(float MaxSpeed, float MaxDuration, float GravityMultiplier)
+        public static void LocomotionRequestWallRunR2(float GravityMultiplier)
         {
             return;
         }
@@ -5697,7 +5746,7 @@ namespace RRCGGenerated
             return default;
         }
 
-        public static bool PlayerGetIsCustomFootstepAudioEnabled(Player Player)
+        public static bool PlayerGetIsCustomFootstepAudioActive(Player Player)
         {
             return default;
         }
@@ -5823,6 +5872,16 @@ namespace RRCGGenerated
         /// (DEPRECATED: Use PlayerGetSteeringSpeed / GetWalkSpeed) Returns the steering speed requested by the player, squared, and normalized by the square of the default walk speed.
         /// </summary>
         public static float PlayerGetNormalizedSteeringSpeedDeprecated(Player Player)
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Gets the physics velocity for the given player. 
+        /// Physics velocity includes velocity from impulses, jumps, vehicle collisions, and similar sources 
+        /// Physics velocity will generally be reduced over time by drag from various sources.
+        /// </summary>
+        public static Vector3 PlayerGetPhysicsVelocityR2(Player Player)
         {
             return default;
         }
@@ -6318,6 +6377,17 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Sets the physics velocity for the given player.  
+        /// Physics velocity includes velocity from impulses, jumps, vehicle collisions, and similar sources. 
+        /// Physics velocity will generally be reduced over time by drag from various sources. 
+        /// This node is similar Velocity Set. However, that node also zeroes the Steering Velocity.
+        /// </summary>
+        public static void PlayerSetPhysicsVelocityR2(Player Player, Vector3 PhysicsVelocity)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Sets the prone speed for a given player
         /// </summary>
         public static void PlayerSetProneSpeedR2(Player Player, float ProneSpeed)
@@ -6361,6 +6431,16 @@ namespace RRCGGenerated
         /// Sets whether walk input is enabled for a given player. Setting this to false will stop Steering Input events from firing, and will remove walk-related button prompts / UI elements on supported platforms.
         /// </summary>
         public static void PlayerSetSteeringInputEnabledR2(Player Player, bool SteeringInputEnabled)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets the steering velocity for the given player.  
+        /// Steering Velocity should generally be modified via Locomotion Steering Request. 
+        /// Setting it directly may result in animation artifacts but can be done in special cases.
+        /// </summary>
+        public static void PlayerSetSteeringVelocityR2(Player Player, Vector3 SteeringVelocity)
         {
             return;
         }

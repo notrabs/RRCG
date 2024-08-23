@@ -40,6 +40,11 @@ namespace RRCGGenerated
         public const string Asin = "aaa4e58f-16df-426a-b7a7-a654eab97037";
         public const string Atan = "84646ed2-015e-4a8b-9d37-5115cb9ebadc";
         public const string Atan2 = "02d62908-550d-4f8b-8bc7-0960fb1b547f";
+        public const string AudioFXZoneGetIntensity = "26000298-f08f-4600-b100-3ee0076b2b63";
+        public const string AudioFXZoneGetPriority = "bbf3d871-ab5d-4405-ab53-aec19cdc6c8a";
+        public const string AudioFXZoneSetEffect = "c4fcf47f-84fe-4e4c-865c-3010f67bdea7";
+        public const string AudioFXZoneSetIntensity = "7cd9ebf1-d935-4a98-914e-504180537519";
+        public const string AudioFXZoneSetPriority = "19605859-538d-4e1d-9d62-b00abb3e294a";
         public const string AudioGetLength = "be5262f0-1f67-4be7-aa8c-967c30bd5487";
         public const string AudioPlayerGetAudio = "0f4433b6-425d-4172-968a-2c867bc0fef5";
         public const string AudioPlayerGetMaxRolloffDistance = "2db28fb7-0edb-4f09-8d74-ed5614dfaf11";
@@ -306,7 +311,7 @@ namespace RRCGGenerated
         public const string HolotarProjectorSetCurrentTime = "4529edc7-0fb7-48b0-a685-8600ac73b7df";
         public const string HolotarProjectorSetVolume = "4cc01ea7-d5ce-4877-883a-9492e6e48c9e";
         public const string HolotarProjectorStop = "943fdeaa-a9d8-4ddf-aa21-04bc3f022f58";
-        public const string HolotarRecording = "a01d55f9-3a69-4edf-bdfa-20beff06148a";
+        public const string HolotarRecordingConstant = "a01d55f9-3a69-4edf-bdfa-20beff06148a";
         public const string HolsterObject = "d619a625-f624-491a-9f53-3bf969f1ae14";
         public const string HSVToColor = "2e8d2d58-a73d-407a-9892-6cac4cb9ce9a";
         public const string If = "7adc6ab1-fcab-4746-aec6-006352e29cdc";
@@ -438,6 +443,7 @@ namespace RRCGGenerated
         public const string LocalPlayerIsVR = "f9101f3c-5b1d-4edc-b850-83bd72a4b1d4";
         public const string LocalPlayerOverridePlayerVoiceRolloffR2 = "bb4ff641-2267-45e0-9e07-fc480b04f478";
         public const string LocalPlayerRequestThirdPerson = "039fdbe0-31f2-4743-81ef-aa326b5e410f";
+        public const string LocalPlayerSetGravityDisabledR2 = "6f88b273-5be6-4183-a772-902c45f4a5c7";
         public const string LocalPlayerSetObjectiveLogContent = "a060bad3-3111-4b9d-add3-5e6af3a4a151";
         public const string LocalPlayerSetObjectiveLogEnabled = "5013021c-3243-4cc2-bd39-06abddb38c9c";
         public const string LocalPlayerSetPlayerNametagVisibility = "a73655df-b37b-4c02-a19a-4eb05ce75a14";
@@ -558,7 +564,7 @@ namespace RRCGGenerated
         public const string PlayerGetIsAuthorityOf = "c35fe6fe-d231-4ee5-80ff-9e69f24eb29e";
         public const string PlayerGetIsClambering = "fea61975-90b0-4187-b28a-b732a14834c0";
         public const string PlayerGetIsCrouching = "97a006a4-10fc-43ab-b222-e1d9b3d09d61";
-        public const string PlayerGetIsCustomFootstepAudioEnabled = "d5a7f0e5-b0ab-4b6d-82d2-cdecade30009";
+        public const string PlayerGetIsCustomFootstepAudioActive = "d5a7f0e5-b0ab-4b6d-82d2-cdecade30009";
         public const string PlayerGetIsFlying = "ee300d88-e1b7-4af5-b28e-cd983b9492d7";
         public const string PlayerGetIsGrounded = "4db35e9d-3a1d-4823-a011-7f94e028a3e7";
         public const string PlayerGetIsJumpingOrFalling = "a474eca1-e820-4249-a314-fbc0ae223a5f";
@@ -575,6 +581,7 @@ namespace RRCGGenerated
         public const string PlayerGetJumpHeightR2 = "42dbf319-8d57-41d2-921f-f3f707e6ad81";
         public const string PlayerGetJumpInputEnabledR2 = "e6ec527a-be2e-438d-84f4-f60c4785206c";
         public const string PlayerGetNormalizedSteeringSpeedDeprecated = "1eb70662-4a75-4120-9713-11dbbeedc740";
+        public const string PlayerGetPhysicsVelocityR2 = "12a87d99-c45a-48e3-b2e5-308ce3e51199";
         public const string PlayerGetPlayersInRadioChannel = "502c4b6c-47b6-4370-a1e0-9cab18b1af35";
         public const string PlayerGetProfileImage = "6fc7e821-99b8-496e-9b42-2a1f088b7ba9";
         public const string PlayerGetProneSpeedR2 = "4d0f09da-4784-4b35-bf66-cdf818ea1a29";
@@ -637,12 +644,14 @@ namespace RRCGGenerated
         public const string PlayerSetJumpHeightR2 = "5dae4912-b714-4cbe-91ab-c736b517d0d6";
         public const string PlayerSetJumpInputEnabledR2 = "d837f992-bcc3-4571-b402-c39a5378e1ee";
         public const string PlayerSetNameColor = "19d7fe7e-99e9-444c-8e4f-12c5237abe90";
+        public const string PlayerSetPhysicsVelocityR2 = "b57b2efb-7ab5-47c0-808b-ac62651758c6";
         public const string PlayerSetProneSpeedR2 = "f7f503b5-58df-42b2-ab69-3d7f3b0f4a5d";
         public const string PlayerSetRadioChannel = "231d05ba-8577-4d1e-888d-115e657dd525";
         public const string PlayerSetSlideSpeedR2 = "e4f3a06c-b997-4186-a4a3-f435713a910b";
         public const string PlayerSetSprintInputEnabledR2 = "68b971bc-30af-44d0-ad2f-50a5bbad1f5e";
         public const string PlayerSetSprintSpeedR2 = "23e9efca-876b-4a5f-b813-770b9e77fbd4";
         public const string PlayerSetSteeringInputEnabledR2 = "e5f60f37-b6f5-45a8-9ef6-ea38dd908531";
+        public const string PlayerSetSteeringVelocityR2 = "50968d3b-7692-4531-826b-8dbbfd4c38f9";
         public const string PlayerSetTeleportDelayR2 = "0d489d96-de0f-47c0-a629-ab7b22f18a21";
         public const string PlayerSetTeleportDistanceR2 = "39d0f90b-dc6c-4b8d-b103-f3f01228d08e";
         public const string PlayerSetVoiceRolloffDistanceR2 = "7fd128dd-189b-4454-9824-5f482f8f5ce6";

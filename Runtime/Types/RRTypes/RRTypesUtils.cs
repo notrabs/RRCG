@@ -84,7 +84,8 @@ namespace RRCG
             "Pathfinder",
             "LeaderboardProjector",
             "HolotarRecording",
-            "QuickChatTable"
+            "QuickChatTable",
+            "AudioFXZone"
         };
     }
 }

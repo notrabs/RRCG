@@ -194,4 +194,8 @@ namespace RRCGBuild
     {
         public static implicit operator LeaderboardProjectorPort(RecRoomObjectPort data) => new LeaderboardProjectorPort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
     }
+    public class AudioFXZonePort : AudioFXZonePortGen
+    {
+        public static implicit operator AudioFXZonePort(RecRoomObjectPort data) => new AudioFXZonePort() { Port = ChipBuilder.FromRecRoomObject<AnyPort>(data).Port };
+    }
 }

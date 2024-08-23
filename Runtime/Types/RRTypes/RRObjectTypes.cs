@@ -187,5 +187,10 @@ namespace RRCGSource
         public static implicit operator LeaderboardProjector(RecRoomObject data) => default;
     }
 
+    public class AudioFXZone : AudioFXZoneGen
+    {
+        public static implicit operator AudioFXZone(RecRoomObject data) => default;
+    }
+
     // remember to add types to RRTypesUtils.ImplemetedRRTypes
 }

@@ -688,6 +688,58 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static FloatPort AudioFXZoneGetIntensity(AudioFXZonePort Target)
+        {
+            Node node = new Node()
+            {Name = "Audio FX Zone Get Intensity", Type = "26000298-f08f-4600-b100-3ee0076b2b63", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static IntPort AudioFXZoneGetPriority(AudioFXZonePort Target)
+        {
+            Node node = new Node()
+            {Name = "Audio FX Zone Get Priority", Type = "bbf3d871-ab5d-4405-ab53-aec19cdc6c8a", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 0});
+            var output_ports = new IntPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static void AudioFXZoneSetEffect(AudioFXZonePort Target)
+        {
+            Node node = new Node()
+            {Name = "Audio FX Zone Set Effect", Type = "c4fcf47f-84fe-4e4c-865c-3010f67bdea7", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void AudioFXZoneSetIntensity(AudioFXZonePort Target, FloatPort Intensity)
+        {
+            Node node = new Node()
+            {Name = "Audio FX Zone Set Intensity", Type = "7cd9ebf1-d935-4a98-914e-504180537519", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Intensity, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void AudioFXZoneSetPriority(AudioFXZonePort Target, IntPort Priority)
+        {
+            Node node = new Node()
+            {Name = "Audio FX Zone Set Priority", Type = "19605859-538d-4e1d-9d62-b00abb3e294a", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, Priority, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
         public static FloatPort AudioGetLength(AudioPort Audio)
         {
             Node node = new Node()
@@ -4928,10 +4980,10 @@ namespace RRCGGenerated
             return;
         }
 
-        public static HolotarRecordingPort HolotarRecording()
+        public static HolotarRecordingPort HolotarRecordingConstant()
         {
             Node node = new Node()
-            {Name = "Holotar Recording", Type = "a01d55f9-3a69-4edf-bdfa-20beff06148a", InputCount = 0};
+            {Name = "Holotar Recording Constant", Type = "a01d55f9-3a69-4edf-bdfa-20beff06148a", InputCount = 0};
             Context.current.Nodes.Add(node);
             var output_ports = new HolotarRecordingPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;
@@ -6734,6 +6786,16 @@ namespace RRCGGenerated
             return;
         }
 
+        public static void LocalPlayerSetGravityDisabledR2(BoolPort Disabled)
+        {
+            Node node = new Node()
+            {Name = "Local Player Set Gravity Disabled", Type = "6f88b273-5be6-4183-a772-902c45f4a5c7", InputCount = 2};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Disabled, new Port{Node = node, Index = 1});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
         public static void LocalPlayerSetObjectiveLogContent(StringPort HeaderText, ColorPort HeaderTextColor, StringPort BodyText, ColorPort BodyTextColor)
         {
             Node node = new Node()
@@ -6909,14 +6971,12 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void LocomotionRequestWallRunR2(FloatPort MaxSpeed, FloatPort MaxDuration, FloatPort GravityMultiplier)
+        public static void LocomotionRequestWallRunR2(FloatPort GravityMultiplier)
         {
             Node node = new Node()
-            {Name = "Locomotion Request Wall Run", Type = "13989690-57a9-432f-b79d-9e8a33c9888b", InputCount = 4};
+            {Name = "Locomotion Request Wall Run", Type = "13989690-57a9-432f-b79d-9e8a33c9888b", InputCount = 2};
             Context.current.Nodes.Add(node);
-            node.ConnectInputPort(Context.current, MaxSpeed, new Port{Node = node, Index = 1});
-            node.ConnectInputPort(Context.current, MaxDuration, new Port{Node = node, Index = 2});
-            node.ConnectInputPort(Context.current, GravityMultiplier, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(Context.current, GravityMultiplier, new Port{Node = node, Index = 1});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }
@@ -8071,10 +8131,10 @@ namespace RRCGGenerated
             return output_ports;
         }
 
-        public static BoolPort PlayerGetIsCustomFootstepAudioEnabled(PlayerPort Player)
+        public static BoolPort PlayerGetIsCustomFootstepAudioActive(PlayerPort Player)
         {
             Node node = new Node()
-            {Name = "Player Get Is Custom Footstep Audio Enabled", Type = "d5a7f0e5-b0ab-4b6d-82d2-cdecade30009", InputCount = 1};
+            {Name = "Player Get Is Custom Footstep Audio Active", Type = "d5a7f0e5-b0ab-4b6d-82d2-cdecade30009", InputCount = 1};
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
@@ -8238,6 +8298,16 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
             var output_ports = new FloatPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static Vector3Port PlayerGetPhysicsVelocityR2(PlayerPort Player)
+        {
+            Node node = new Node()
+            {Name = "Player Get Physics Velocity", Type = "12a87d99-c45a-48e3-b2e5-308ce3e51199", InputCount = 1};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 0});
+            var output_ports = new Vector3Port{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 
@@ -8917,6 +8987,17 @@ namespace RRCGGenerated
             return;
         }
 
+        public static void PlayerSetPhysicsVelocityR2(PlayerPort Player, Vector3Port PhysicsVelocity)
+        {
+            Node node = new Node()
+            {Name = "Player Set Physics Velocity", Type = "b57b2efb-7ab5-47c0-808b-ac62651758c6", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, PhysicsVelocity, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
         public static void PlayerSetProneSpeedR2(PlayerPort Player, FloatPort ProneSpeed)
         {
             Node node = new Node()
@@ -8979,6 +9060,17 @@ namespace RRCGGenerated
             Context.current.Nodes.Add(node);
             node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
             node.ConnectInputPort(Context.current, SteeringInputEnabled, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void PlayerSetSteeringVelocityR2(PlayerPort Player, Vector3Port SteeringVelocity)
+        {
+            Node node = new Node()
+            {Name = "Player Set Steering Velocity", Type = "50968d3b-7692-4531-826b-8dbbfd4c38f9", InputCount = 3};
+            Context.current.Nodes.Add(node);
+            node.ConnectInputPort(Context.current, Player, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(Context.current, SteeringVelocity, new Port{Node = node, Index = 2});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }

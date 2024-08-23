@@ -558,6 +558,45 @@ namespace RRCGGenerated
         }
     }
 
+    public abstract class AudioFXZoneGen : AnyObject
+    {
+        public float Intensity
+        {
+            /// <summary>
+            /// Returns the intensity of the target Audio FX Zone object.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets the intensity of the target Audio FX Zone object.
+            /// </summary>
+            set
+            {
+            }
+        }
+
+        public int Priority
+        {
+            /// <summary>
+            /// Returns the priority of the target Audio FX Zone object.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets the priority of the target Audio FX Zone object.
+            /// </summary>
+            set
+            {
+            }
+        }
+
+        /// <summary>
+        /// Sets the effect of the target Audio FX Zone object.
+        /// </summary>
+        public void SetEffect()
+        {
+            return;
+        }
+    }
+
     public abstract class AudioPlayerGen : AnyObject
     {
         public Audio Audio
@@ -2835,7 +2874,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public bool IsCustomFootstepAudioEnabled
+        public bool IsCustomFootstepAudioActive
         {
             get => default;
         }
@@ -3058,6 +3097,25 @@ namespace RRCGGenerated
             get => default;
         }
 
+        public Vector3 PhysicsVelocityR2
+        {
+            /// <summary>
+            /// Gets the physics velocity for the given player. 
+            /// Physics velocity includes velocity from impulses, jumps, vehicle collisions, and similar sources 
+            /// Physics velocity will generally be reduced over time by drag from various sources.
+            /// </summary>
+            get => default;
+            /// <summary>
+            /// Sets the physics velocity for the given player.  
+            /// Physics velocity includes velocity from impulses, jumps, vehicle collisions, and similar sources. 
+            /// Physics velocity will generally be reduced over time by drag from various sources. 
+            /// This node is similar Velocity Set. However, that node also zeroes the Steering Velocity.
+            /// </summary>
+            set
+            {
+            }
+        }
+
         public Vector3 Position
         {
             /// <summary>
@@ -3121,16 +3179,6 @@ namespace RRCGGenerated
             /// <summary>
             /// Removes a tag from the list of player tags that the provided player can target with aim assist.
             /// By default, this list contains the #player tag.
-            /// </summary>
-            set
-            {
-            }
-        }
-
-        public string RemoveRoleR1
-        {
-            /// <summary>
-            /// Removes the input role from a target player.
             /// </summary>
             set
             {
@@ -3298,6 +3346,18 @@ namespace RRCGGenerated
             /// Returns the steering speed requested by the player. This value represents how fast a player is wanting to move in world units.
             /// </summary>
             get => default;
+        }
+
+        public Vector3 SteeringVelocityR2
+        {
+            /// <summary>
+            /// Sets the steering velocity for the given player.  
+            /// Steering Velocity should generally be modified via Locomotion Steering Request. 
+            /// Setting it directly may result in animation artifacts but can be done in special cases.
+            /// </summary>
+            set
+            {
+            }
         }
 
         public (bool Result, int SecondsUntilEnabled) SubscribesToRoomOwnerDeprecated
@@ -4112,6 +4172,14 @@ namespace RRCGGenerated
         public (bool Success, Player ReceivingPlayer, string Response) PromptText(string PromptTitle, string PromptBody, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response)> OnPromptComplete)
         {
             return default;
+        }
+
+        /// <summary>
+        /// Removes the input role from a target player.
+        /// </summary>
+        public void RemoveRoleR1(string Value)
+        {
+            return;
         }
 
         /// <summary>

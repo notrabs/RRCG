@@ -343,6 +343,26 @@ namespace RRCGGenerated
         }
     }
 
+    public abstract class AudioFXZonePortGen : AnyPort
+    {
+        public FloatPort Intensity
+        {
+            get => CircuitBuilder.Singleton("RRCG_AudioFXZone_GetIntensity_" + PortKey(), () => ChipBuilder.AudioFXZoneGetIntensity((AudioFXZonePort)this));
+            set => ChipBuilder.AudioFXZoneSetIntensity((AudioFXZonePort)this, value);
+        }
+
+        public IntPort Priority
+        {
+            get => CircuitBuilder.Singleton("RRCG_AudioFXZone_GetPriority_" + PortKey(), () => ChipBuilder.AudioFXZoneGetPriority((AudioFXZonePort)this));
+            set => ChipBuilder.AudioFXZoneSetPriority((AudioFXZonePort)this, value);
+        }
+
+        public void SetEffect()
+        {
+            ChipBuilder.AudioFXZoneSetEffect((AudioFXZonePort)this);
+        }
+    }
+
     public abstract class AudioPlayerPortGen : AnyPort
     {
         public AudioPort Audio
@@ -1671,9 +1691,9 @@ namespace RRCGGenerated
             get => CircuitBuilder.Singleton("RRCG_Player_GetIsCrouching_" + PortKey(), () => ChipBuilder.PlayerGetIsCrouching((PlayerPort)this));
         }
 
-        public BoolPort IsCustomFootstepAudioEnabled
+        public BoolPort IsCustomFootstepAudioActive
         {
-            get => CircuitBuilder.Singleton("RRCG_Player_GetIsCustomFootstepAudioEnabled_" + PortKey(), () => ChipBuilder.PlayerGetIsCustomFootstepAudioEnabled((PlayerPort)this));
+            get => CircuitBuilder.Singleton("RRCG_Player_GetIsCustomFootstepAudioActive_" + PortKey(), () => ChipBuilder.PlayerGetIsCustomFootstepAudioActive((PlayerPort)this));
         }
 
         public BoolPort IsFlying
@@ -1808,6 +1828,12 @@ namespace RRCGGenerated
             get => CircuitBuilder.Singleton("RRCG_Player_GetPartyOfPlayer_" + PortKey(), () => ChipBuilder.GetPartyOfPlayer((PlayerPort)this));
         }
 
+        public Vector3Port PhysicsVelocityR2
+        {
+            get => CircuitBuilder.Singleton("RRCG_Player_GetPhysicsVelocityR2_" + PortKey(), () => ChipBuilder.PlayerGetPhysicsVelocityR2((PlayerPort)this));
+            set => ChipBuilder.PlayerSetPhysicsVelocityR2((PlayerPort)this, value);
+        }
+
         public Vector3Port Position
         {
             get => CircuitBuilder.Singleton("RRCG_Player_GetPosition_" + PortKey(), () => ChipBuilder.GetPosition((PlayerPort)this));
@@ -1839,11 +1865,6 @@ namespace RRCGGenerated
         public StringPort RemoveAimAssistTag
         {
             set => ChipBuilder.PlayerRemoveAimAssistTag((PlayerPort)this, value);
-        }
-
-        public StringPort RemoveRoleR1
-        {
-            set => ChipBuilder.PlayerRemoveRoleR1((PlayerPort)this, value);
         }
 
         public Vector3Port RightHandFingerDirection
@@ -1942,6 +1963,11 @@ namespace RRCGGenerated
         public FloatPort SteeringSpeed
         {
             get => CircuitBuilder.Singleton("RRCG_Player_GetSteeringSpeed_" + PortKey(), () => ChipBuilder.PlayerGetSteeringSpeed((PlayerPort)this));
+        }
+
+        public Vector3Port SteeringVelocityR2
+        {
+            set => ChipBuilder.PlayerSetSteeringVelocityR2((PlayerPort)this, value);
         }
 
         public (BoolPort Result, IntPort SecondsUntilEnabled) SubscribesToRoomOwnerDeprecated
@@ -2412,6 +2438,11 @@ namespace RRCGGenerated
         public (BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response) PromptText(StringPort PromptTitle, StringPort PromptBody, AlternativeExec<(BoolPort Success, PlayerPort ReceivingPlayer, StringPort Response)> OnPromptComplete)
         {
             return ChipBuilder.PlayerPromptText((PlayerPort)this, PromptTitle, PromptBody, OnPromptComplete);
+        }
+
+        public void RemoveRoleR1(StringPort Value)
+        {
+            ChipBuilder.PlayerRemoveRoleR1((PlayerPort)this, Value);
         }
 
         public void ResetNameColor()
