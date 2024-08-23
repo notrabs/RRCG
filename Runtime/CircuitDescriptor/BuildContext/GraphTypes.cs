@@ -22,6 +22,9 @@ namespace RRCGBuild
         [JsonIgnore]
         internal bool IsProperNode = true;
 
+        [JsonIgnore]
+        internal Context? Context;
+
         public int InputCount { get; internal set; }
 
         // Configuration data
@@ -56,15 +59,22 @@ namespace RRCGBuild
             Id = Guid.NewGuid().ToString();
         }
 
+        [Obsolete("Use the context-less variant instead.")]
         public void ConnectInputPort(Context context, AnyPort port, Port input)
+            => ConnectInputPort(port, input);
+
+        public void ConnectInputPort(AnyPort port, Port input)
         {
             if (port == null) return;
+            if (input.Node != this)
+                throw new InvalidOperationException("Input port did not belong to this node!");
 
             port = port.AsConnectable();
+            var context = input.Node.Context;
 
             if (port.IsActualPort)
             {
-                context.Connections.Add(new Connection { From = port.Port, To = input });
+                context.AddConnection(new Connection { From = port.Port, To = input });
                 DefaultValues.Remove((input.Group, input.Index));
             }
             else DefaultValues.Add((input.Group, input.Index), port.Data);
@@ -73,7 +83,7 @@ namespace RRCGBuild
         public Port ConnectInputPort(AnyPort port, int inputIndex)
         {
             var input = new Port() { Node = this, Index = inputIndex };
-            ConnectInputPort(Context.current, port, input);
+            ConnectInputPort(port, input);
             return input;
         }
 

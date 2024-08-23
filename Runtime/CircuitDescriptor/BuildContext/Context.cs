@@ -86,10 +86,34 @@ namespace RRCGBuild
             return prefix + "_" + idCounters[prefix]++;
         }
 
+        public void AddNode(Node node)
+        {
+            if (node.Context != null)
+                node.Context.RemoveNode(node);
+
+            node.Context = this;
+            Nodes.Add(node);
+        }
+
         public void RemoveNode(Node node)
         {
+            if (node.Context != this)
+                throw new InvalidOperationException("Node did not belong to this context!");
+
+            node.Context = null;
             Nodes.Remove(node);
             Connections.RemoveAll(c => c.From.Node == node || c.To.Node == node);
+        }
+
+        public void AddConnection(Connection connection)
+        {
+            if (connection.From.Node.Context != this)
+                throw new Exception("Can't connect from a node in another context!");
+
+            if (connection.To.Node.Context != this)
+                throw new Exception("Can't connect to a node in another context!");
+
+            Connections.Add(connection);
         }
 
         public void RemoveConnection(Connection connection)
