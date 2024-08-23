@@ -108,8 +108,7 @@ namespace RRCGBuild
             var prevExecFlow = ExecFlow.current;
 
             var cbContext = new Context();
-            prevContext.SubContexts.Add(cbContext);
-            cbContext.ParentContext = prevContext;
+            prevContext.AddSubContext(cbContext);
             Context.current = cbContext;
             ExecFlow.current = new ExecFlow();
 
@@ -272,7 +271,7 @@ namespace RRCGBuild
             var parentExec = ExecFlow.current;
 
             Context newContext = new Context() { ParentContext = parentContext, MetaExistingCircuitBoard = boardName.Data };
-            parentContext.SubContexts.Add(newContext);
+            parentContext.AddSubContext(newContext);
 
             Context.current = newContext;
             ExecFlow.current = new ExecFlow();

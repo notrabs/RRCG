@@ -61,13 +61,13 @@ namespace RRCG
         public class GraphAnalysis
         {
             public Port? ExecEntry { get; init; }
-            public IReadOnlyList<Node> Nodes { get; init; }
+            public GraphAnalysisContext AnalyzedContext { get; init; }
             public ExecFlow FinalExecFlow { get; init; }
 
-            public GraphAnalysis(Port? entry, List<Node> nodes, ExecFlow finalFlow)
+            public GraphAnalysis(Port? entry, GraphAnalysisContext context, ExecFlow finalFlow)
             {
                 ExecEntry = entry;
-                Nodes = nodes;
+                AnalyzedContext = context;
                 FinalExecFlow = finalFlow;
             }
         }
@@ -77,10 +77,21 @@ namespace RRCG
         {
             public TReturn ReturnValue { get; init; }
 
-            public GraphAnalysis(Port? entry, List<Node> nodes, ExecFlow finalFlow, TReturn returnData)
-                : base(entry, nodes, finalFlow)
+            public GraphAnalysis(Port? entry, GraphAnalysisContext context, ExecFlow finalFlow, TReturn returnData)
+                : base(entry, context, finalFlow)
             {
                 ReturnValue = returnData;
+            }
+        }
+
+        public class GraphAnalysisContext : Context
+        {
+            public override void AddConnection(Connection connection)
+            {
+                // In a GraphAnalysisContext, we'll happily accept
+                // any connection, regardless of whether or not the
+                // associated Nodes are in different contexts.
+                Connections.Add(connection);
             }
         }
 
@@ -89,29 +100,41 @@ namespace RRCG
         /// </summary>
         public static GraphAnalysis<TReturn> BuildWithAnalysis<TReturn>(Func<TReturn> graph)
         {
-            return CircuitBuilder.InlineGraph(() =>
-            {
-                // Use a temporary node to determine the entry point.
-                // The ExecFlow will contain the "Run" output port of the delay.
-                ChipBuilder.Delay(0f, () => { }, () => { });
-                var tempNode = Context.lastSpawnedNode;
-                var context = Context.current;
+            // Backup ExecFlow & context
+            var prevExecFlow = ExecFlow.current;
+            var prevContext = Context.current;
 
-                // Take note of the current nodes, build the
-                // graph, and record the difference.
-                var currentNodes = Context.current.Nodes.ToList(); // shallow copy
-                var returnData = graph();
-                var newNodes = Context.current.Nodes.Except(currentNodes).ToList();
+            // Create new ExecFlow & context.
+            // We'll use a special context, GraphAnalysisContext,
+            // which allows any connection to be made.
+            var analysisContext = new GraphAnalysisContext();
+            ExecFlow.current = new ExecFlow();
+            Context.current = analysisContext;
 
-                // Query the context for the entry point.
-                var port = context.Connections
-                                  .Where(c => c.From.EquivalentTo(tempNode.Port(0, 0)))
-                                  .FirstOrDefault()?.To;
+            // Use a temporary node to determine the entry point.
+            // The ExecFlow will contain the "Run" output port of the delay.
+            ChipBuilder.Delay(0f, () => { }, () => { });
+            var tempNode = Context.lastSpawnedNode;
 
-                // Finally, remove the temporary node and return.
-                Context.current.RemoveNode(tempNode);
-                return new GraphAnalysis<TReturn>(port, newNodes, ExecFlow.current, returnData);
-            });
+            // Now we can build the graph, and take note
+            // of the return data.
+            var returnData = graph();
+
+            if (Context.current != analysisContext)
+                throw new Exception("Context changed unexpectedly!");
+
+            // Query the context for the entry point,
+            // then remove the temporary node.
+            var entryPort = analysisContext.Connections
+                              .Where(c => c.From.EquivalentTo(tempNode.Port(0, 0)))
+                              .FirstOrDefault()?.To;
+            analysisContext.RemoveNode(tempNode);
+
+            // Restore Context/ExecFlow, and return.
+            var finalExecFlow = ExecFlow.current;
+            ExecFlow.current = prevExecFlow;
+            Context.current = prevContext;
+            return new GraphAnalysis<TReturn>(entryPort, analysisContext, finalExecFlow, returnData);
         }
 
         /// <inheritdoc/>

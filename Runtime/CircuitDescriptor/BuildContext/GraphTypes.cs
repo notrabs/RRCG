@@ -23,7 +23,7 @@ namespace RRCGBuild
         internal bool IsProperNode = true;
 
         [JsonIgnore]
-        internal Context? Context;
+        public Context? Context { get; internal set; }
 
         public int InputCount { get; internal set; }
 

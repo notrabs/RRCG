@@ -17,7 +17,7 @@ namespace RRCGBuild
         public List<Connection> Connections = new List<Connection>();
 
         [JsonIgnore]
-        public Context ParentContext;
+        public Context? ParentContext { get; internal set; }
         public List<Context> SubContexts = new List<Context>();
 
         public string MetaExistingCircuitBoard;
@@ -33,8 +33,21 @@ namespace RRCGBuild
 
         public void Merge(Context context)
         {
-            this.Nodes.AddRange(context.Nodes);
-            this.Connections.AddRange(context.Connections);
+            // Adding items to this Context will remove them from the other.
+            // So, we take a shallow copy of everything:
+
+            var copyNodes = context.Nodes.ToList(); // shallow copy
+            var copyConnections = context.Connections.ToList(); // shallow copy
+            var copySubcontexts = context.SubContexts.ToList(); // shallow copy
+
+            foreach (var node in copyNodes)
+                AddNode(node);
+
+            foreach (var connection in copyConnections)
+                AddConnection(connection);
+
+            foreach (var subcontext in copySubcontexts)
+                AddSubContext(subcontext);
         }
 
         public IEnumerable<Context> GetAncestors()
@@ -105,7 +118,7 @@ namespace RRCGBuild
             Connections.RemoveAll(c => c.From.Node == node || c.To.Node == node);
         }
 
-        public void AddConnection(Connection connection)
+        public virtual void AddConnection(Connection connection)
         {
             if (connection.From.Node.Context != this)
                 throw new Exception("Can't connect from a node in another context!");
@@ -119,6 +132,27 @@ namespace RRCGBuild
         public void RemoveConnection(Connection connection)
         {
             Connections.Remove(connection);
+        }
+
+        public void AddSubContext(Context subContext)
+        {
+            if (subContext == this)
+                throw new InvalidOperationException("A context cannot be its own parent!");
+
+            if (subContext.ParentContext != null)
+                subContext.ParentContext.RemoveSubContext(subContext);
+
+            subContext.ParentContext = this;
+            SubContexts.Add(subContext);
+        }
+
+        public void RemoveSubContext(Context subContext)
+        {
+            if (subContext.ParentContext != this)
+                throw new InvalidOperationException("Subcontext did not belong to this context!");
+
+            subContext.ParentContext = null;
+            SubContexts.Remove(subContext);
         }
     }
 
