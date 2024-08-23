@@ -180,7 +180,7 @@ namespace RRCG.Optimizer.ContextOptimizations
             foreach (var connection in context.Connections.ToList()) // shallow copy
             {
                 if (connection.To.Node == node)
-                    context.Connections.Remove(connection);
+                    context.RemoveConnection(connection);
             }
 
             // Re-connect input ports
@@ -188,8 +188,7 @@ namespace RRCG.Optimizer.ContextOptimizations
             {
                 for (int index = 0; index < groupToIndexToPort[group].Count; index++)
                 {
-                    node.ConnectInputPort(context,
-                                          groupToIndexToPort[group][index],
+                    node.ConnectInputPort(groupToIndexToPort[group][index],
                                           new Port { Node = node, Group = group, Index = index });
                 }
             }

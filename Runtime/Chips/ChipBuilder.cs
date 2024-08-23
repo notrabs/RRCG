@@ -437,7 +437,7 @@ namespace RRCGBuild
             var node = Context.lastSpawnedNode;
 
             for (var i = 0; i < inputs.Length; i++)
-                node.ConnectInputPort(Context.current, inputs[i], node.Port(0, 1 + i));
+                node.ConnectInputPort(inputs[i], node.Port(0, 1 + i));
         }
 
         internal static void EventDefinition(StringPort eventName, params (StringPort, Type)[] eventDefinition)
@@ -611,7 +611,7 @@ namespace RRCGBuild
 
             for (int i = 1; i < ports.Length; i++)
             {
-                node.ConnectInputPort(Context.current, ports[i], new Port
+                node.ConnectInputPort(ports[i], new Port
                 {
                     Node = node,
                     Index = i + offset
@@ -656,7 +656,7 @@ namespace RRCGBuild
             }
             else
             {
-                Context.current.Nodes.Remove(node);
+                Context.current.RemoveNode(node);
             }
         }
 

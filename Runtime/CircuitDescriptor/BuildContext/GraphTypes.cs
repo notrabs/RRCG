@@ -59,10 +59,6 @@ namespace RRCGBuild
             Id = Guid.NewGuid().ToString();
         }
 
-        [Obsolete("Use the context-less variant instead.")]
-        public void ConnectInputPort(Context context, AnyPort port, Port input)
-            => ConnectInputPort(port, input);
-
         public void ConnectInputPort(AnyPort port, Port input)
         {
             if (port == null) return;

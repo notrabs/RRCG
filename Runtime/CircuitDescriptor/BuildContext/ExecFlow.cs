@@ -44,7 +44,7 @@ namespace RRCGBuild
 
                 foreach (Port port in Ports)
                 {
-                    context.Connections.Add(new Connection
+                    context.AddConnection(new Connection
                     {
                         From = port,
                         To = inPort,

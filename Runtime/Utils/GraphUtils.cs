@@ -46,7 +46,7 @@ namespace RRCG
                 if (existingConnectionToPort != null) existingConnectionToPort.From = existingConnectionFromPort.From;
                 else
                 {
-                    context.Connections.Add(new Connection { From = existingConnectionFromPort.From, To = toPort });
+                    context.AddConnection(new Connection { From = existingConnectionFromPort.From, To = toPort });
                     toNode.DefaultValues.Remove(toKey);
                 }
             }

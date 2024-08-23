@@ -158,8 +158,8 @@ namespace RRCGBuild
 
             var sum = ChipBuilder.Add(randomPort, 1);
 
-            randomNode.ConnectInputPort(Context.current, sum, new Port { Node = randomNode, Index = 1 });
-            randomNode.ConnectInputPort(Context.current, sum, new Port { Node = randomNode, Index = 2 });
+            randomNode.ConnectInputPort(sum, new Port { Node = randomNode, Index = 1 });
+            randomNode.ConnectInputPort(sum, new Port { Node = randomNode, Index = 2 });
 
             return randomPort;
         }
@@ -186,8 +186,8 @@ namespace RRCGBuild
                 inputValue = (randomPort + 1) % modulusPort;
             }
 
-            randomNode.ConnectInputPort(Context.current, inputValue, new Port { Node = randomNode, Index = 1 });
-            randomNode.ConnectInputPort(Context.current, inputValue, new Port { Node = randomNode, Index = 2 });
+            randomNode.ConnectInputPort(inputValue, new Port { Node = randomNode, Index = 1 });
+            randomNode.ConnectInputPort(inputValue, new Port { Node = randomNode, Index = 2 });
 
             return randomPort;
         }

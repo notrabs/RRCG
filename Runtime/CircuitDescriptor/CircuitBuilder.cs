@@ -151,7 +151,7 @@ namespace RRCGBuild
 
             if (isPort)
             {
-                outNode.ConnectInputPort(Context.current, cbResult as AnyPort, outNode.Port(dataPortGroup, 0));
+                outNode.ConnectInputPort(cbResult as AnyPort, outNode.Port(dataPortGroup, 0));
             }
             else if (isTuple)
             {
@@ -159,7 +159,7 @@ namespace RRCGBuild
 
                 for (var i = 0; i < tuple.Length; i++)
                 {
-                    outNode.ConnectInputPort(Context.current, (AnyPort)tuple[i], outNode.Port(dataPortGroup, i));
+                    outNode.ConnectInputPort((AnyPort)tuple[i], outNode.Port(dataPortGroup, i));
                 }
             }
 
@@ -223,7 +223,7 @@ namespace RRCGBuild
             parameterIndex = 0;
             foreach (var parameter in parameters)
             {
-                cbNode.ConnectInputPort(Context.current, parameter, cbNode.Port(dataPortGroup, parameterIndex));
+                cbNode.ConnectInputPort(parameter, cbNode.Port(dataPortGroup, parameterIndex));
                 parameterIndex++;
             }
 
