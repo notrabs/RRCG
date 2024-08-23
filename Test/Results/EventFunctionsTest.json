@@ -2,6 +2,19 @@
   "Id": "0",
   "Nodes": [
     {
+      "Id": "int_Variable_0",
+      "Type": "B0kiM/9oAkGALnw+7UgdNw==",
+      "Name": "int Variable",
+      "VariableData": {
+        "Name": "RRCG_ContextDependency",
+        "Kind": 0,
+        "Type": "RRCGBuild.IntPort, RRCG, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "HomeValue": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
       "Id": "Event_Definition_0",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
@@ -476,6 +489,13 @@
       "InputCount": 1
     },
     {
+      "Id": "To_String_6",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
       "Id": "Log_String_7",
       "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
       "Name": "Log String",
@@ -531,7 +551,7 @@
       "InputCount": 1
     },
     {
-      "Id": "To_String_6",
+      "Id": "To_String_7",
       "Type": "To7cvZa07kiOJVuf6OHGyQ==",
       "Name": "To String",
       "DefaultValues": [],
@@ -1306,6 +1326,49 @@
       "Name": "Log String",
       "DefaultValues": [],
       "InputCount": 2
+    },
+    {
+      "Id": "Event_Definition_21",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventFunction_VoidCrossContext",
+        "EventDefinition": []
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_21",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventFunction_VoidCrossContext"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "To_String_8",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_18",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "RRCG_<CircuitGraph>b__3_0",
+      "Type": "et7rFMB230ew3QGx2qUIIQ==",
+      "Name": "RRCG_<CircuitGraph>b__3",
+      "DefaultValues": [],
+      "CircuitBoardId": "0_0",
+      "InputCount": 0
     }
   ],
   "Connections": [
@@ -1805,7 +1868,20 @@
     },
     {
       "From": {
-        "Node": "To_String_5",
+        "Node": "Event_Receiver_7",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_6",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_6",
         "Group": 0,
         "Index": 0
       },
@@ -1875,7 +1951,7 @@
         "Index": 1
       },
       "To": {
-        "Node": "To_String_6",
+        "Node": "To_String_7",
         "Group": 0,
         "Index": 0
       },
@@ -1883,7 +1959,7 @@
     },
     {
       "From": {
-        "Node": "To_String_6",
+        "Node": "To_String_7",
         "Group": 0,
         "Index": 0
       },
@@ -2322,7 +2398,146 @@
         "Index": 0
       },
       "isExec": true
+    },
+    {
+      "From": {
+        "Node": "int_Variable_0",
+        "Group": 0,
+        "Index": 1
+      },
+      "To": {
+        "Node": "To_String_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_8",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_18",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_21",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_18",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Log_String_17",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "RRCG_<CircuitGraph>b__3_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "isExec": true
     }
   ],
-  "SubContexts": []
+  "SubContexts": [
+    {
+      "Id": "0_0",
+      "Nodes": [
+        {
+          "Id": "In_0",
+          "Type": "iCvgE/VGAkaXNYhWrrPrew==",
+          "Name": "In",
+          "DefaultValues": [],
+          "InputCount": 0
+        },
+        {
+          "Id": "Event_Sender_26",
+          "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+          "Name": "Event Sender",
+          "EventSenderData": {
+            "EventName": "RRCG_EventFunction_VoidCrossContext",
+            "EventTarget": 0
+          },
+          "DefaultValues": [],
+          "InputCount": 1
+        },
+        {
+          "Id": "Out_0",
+          "Type": "Jk8tMSiZ1UWRLmfIUBKx0g==",
+          "Name": "Out",
+          "DefaultValues": [],
+          "InputCount": 0
+        }
+      ],
+      "Connections": [
+        {
+          "From": {
+            "Node": "In_0",
+            "Group": 1,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Event_Sender_26",
+            "Group": 0,
+            "Index": 0
+          },
+          "isExec": true
+        },
+        {
+          "From": {
+            "Node": "Event_Sender_26",
+            "Group": 0,
+            "Index": 0
+          },
+          "To": {
+            "Node": "Out_0",
+            "Group": 1,
+            "Index": 0
+          },
+          "isExec": true
+        }
+      ],
+      "SubContexts": [],
+      "MetaNewBoard": [
+        {
+          "Name": "Dummy",
+          "Inputs": [],
+          "Outputs": []
+        },
+        {
+          "Name": "Exec",
+          "Inputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ],
+          "Outputs": [
+            {
+              "Item1": "Exec",
+              "Item2": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          ]
+        },
+        {
+          "Name": "Data",
+          "Inputs": [],
+          "Outputs": []
+        }
+      ]
+    }
+  ]
 }

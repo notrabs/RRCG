@@ -7,6 +7,13 @@ namespace RRCGBuild
 {
     public class EventFunctionsTest : RRCGBuild.CircuitBuilder
     {
+        private NamedVariable<RRCGBuild.IntPort> __RRCG_MEMBER_VARIABLE_ContextDependency = __CreateNamedVariable<RRCGBuild.IntPort>("ContextDependency", 0, VariableKind.Local);
+        RRCGBuild.IntPort ContextDependency
+        {
+            get => __RRCG_MEMBER_VARIABLE_ContextDependency.Value;
+            set => __RRCG_MEMBER_VARIABLE_ContextDependency.Value = value;
+        }
+
         public override void CircuitGraph()
         {
             __BeginReturnScope("CircuitGraph", null, null);
@@ -44,6 +51,19 @@ namespace RRCGBuild
             NonVoid8(1, 2, 3, 4, 5, 6, 7, 8);
             PublicProperFunction();
             RRCGBuild.ChipLib.Log(StaticTest());
+            // EventFunctions that have a "dependency" on a node
+            // from a particular context should be placed in the
+            // same context as that node. (TODO: Cross-context returns..)
+            CircuitBoard(() =>
+            {
+                __BeginReturnScope("ParenthesizedLambda", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                VoidCrossContext();
+                __EndAccessibilityScope();
+                __EndReturnScope();
+            }
+
+            );
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -448,6 +468,25 @@ namespace RRCGBuild
                 __Return<RRCGBuild.StringPort>(result);
                 __EndAccessibilityScope();
                 return __EndReturnScope()!;
+            }
+
+            );
+        }
+
+        [EventFunction]
+        void VoidCrossContext()
+        {
+            SpecialMethodsDispatcher.current.DispatchEventFunction(this, "VoidCrossContext", delegate ()
+            {
+                __BeginReturnScope("VoidCrossContext", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                // Because the content of this EventFunction
+                // uses the ContextDependency variable (in the root context),
+                // the receiver should also be placed in the root context,
+                // despite its first invocation occuring in a subcontext.
+                LogString(__StringInterpolation(ContextDependency));
+                __EndAccessibilityScope();
+                __EndReturnScope();
             }
 
             );

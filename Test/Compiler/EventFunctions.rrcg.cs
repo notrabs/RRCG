@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EventFunctionsTest : CircuitDescriptor
 {
+    [Variable] int ContextDependency = 0;
+
     public override void CircuitGraph()
     {
         Void0();
@@ -47,6 +49,11 @@ public class EventFunctionsTest : CircuitDescriptor
 
         // Test static event functions
         ChipLib.Log(StaticTest());
+
+        // EventFunctions that have a "dependency" on a node
+        // from a particular context should be placed in the
+        // same context as that node. (TODO: Cross-context returns..)
+        CircuitBoard(() => VoidCrossContext());
     }
 
     [EventFunction]
@@ -122,5 +129,15 @@ public class EventFunctionsTest : CircuitDescriptor
             result += "!";
 
         return result;
+    }
+
+    [EventFunction]
+    void VoidCrossContext()
+    {
+        // Because the content of this EventFunction
+        // uses the ContextDependency variable (in the root context),
+        // the receiver should also be placed in the root context,
+        // despite its first invocation occuring in a subcontext.
+        LogString($"{ContextDependency}");
     }
 }

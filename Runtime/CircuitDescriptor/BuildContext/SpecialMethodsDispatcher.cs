@@ -1,3 +1,4 @@
+using RRCG;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,18 +22,54 @@ namespace RRCGBuild
             // Has this particular event function been created for the owner already?
             if (!container.EventFunctions.ContainsKey(signature))
             {
-                // Build the method contents in a new event.
+                // Build the method contents on a new event.
+                // Climb to the root context..
+                var prevContext = Context.current;
+                while (Context.current.ParentContext != null)
+                    Context.current = Context.current.ParentContext;
+
+                // Place the event definition in the root context..
                 (StringPort, Type)[] eventPorts = args.Select((arg, index) => ((StringPort)"value" + index, arg.GetType())).ToArray();
                 var eventDefinition = new DynamicEventDefinition("EventFunction_" + name, eventPorts);
 
-                var returnData = CircuitBuilder.InlineGraph(() =>
+                // Then return to the previous context.
+                Context.current = prevContext;
+
+                // Now build the method body from the event receiver.
+                // Build with analysis, so we can place it into a sensible Context.
+                var analysis = GraphUtils.BuildWithAnalysis(() =>
                 {
                     var ports = eventDefinition.Receiver();
                     return method.Invoke(target, ports);
                 });
 
-                // And store the new event along with the return data.
-                container.EventFunctions[signature] = (eventDefinition, returnData);
+                // Now look for any connections to/from nodes
+                // outside the context ("dependencies" if you will),
+                // to help us figure out in which context to place the receiver.
+                //
+                // NOTE: It's probably impossible as of now to create an outgoing dependency,
+                //       but it's technically correct to check for them anyway.
+                var context = analysis.AnalyzedContext;
+                var incomingDependencies = context.Connections.Where(c => c.From.Node.Context != context).Select(c => c.From.Node);
+                var outgoingDependencies = context.Connections.Where(c => c.To.Node.Context != context).Select(c => c.To.Node);
+
+                // Now look at their contexts. If the dependencies live in different
+                // contexts to eachother, the situation cannot be reconciled.
+                var dependencyContexts = incomingDependencies.Select(n => n.Context)
+                                        .Concat(outgoingDependencies.Select(n => n.Context))
+                                        .Distinct()
+                                        .ToArray();
+
+                if (dependencyContexts.Length > 1)
+                    throw new Exception($"EventFunction references nodes from more than one external context!");
+
+                // Otherwise, we either choose to place the receiver in
+                // the first dependency context, or just the current context.
+                var targetContext = dependencyContexts.FirstOrDefault() ?? Context.current;
+                targetContext.Merge(context);
+
+                // Finally, store the event with the return data.
+                container.EventFunctions[signature] = (eventDefinition, analysis.ReturnValue);
             }
 
             // Finally, we send the event & return the result.

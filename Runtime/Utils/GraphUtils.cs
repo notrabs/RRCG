@@ -111,6 +111,10 @@ namespace RRCG
             ExecFlow.current = new ExecFlow();
             Context.current = analysisContext;
 
+            // The analysis context must become a subcontext
+            // of the previous context, for GetUniqueId.
+            prevContext.AddSubContext(analysisContext);
+
             // Use a temporary node to determine the entry point.
             // The ExecFlow will contain the "Run" output port of the delay.
             ChipBuilder.Delay(0f, () => { }, () => { });
@@ -132,6 +136,8 @@ namespace RRCG
 
             // Restore Context/ExecFlow, and return.
             var finalExecFlow = ExecFlow.current;
+            prevContext.RemoveSubContext(analysisContext);
+
             ExecFlow.current = prevExecFlow;
             Context.current = prevContext;
             return new GraphAnalysis<TReturn>(entryPort, analysisContext, finalExecFlow, returnData);
