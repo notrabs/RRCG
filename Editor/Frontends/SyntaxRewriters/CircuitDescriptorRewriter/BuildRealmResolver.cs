@@ -50,6 +50,9 @@ namespace RRCG
             AddTypeMetadataNameMapping("RRCGSource.CircuitLibrary", "RRCGBuild.CircuitLibraryBuilder");
             AddTypeMetadataNameMapping("RRCGSource.Chips", "RRCGBuild.ChipBuilder");
 
+            // Special port type
+            AddTypeMetadataNameMapping("RRCGSource.AnyObject", "RRCGBuild.AnyPort");
+
             // Implemented RR types..
             foreach (var type in RRTypesUtils.ImplemetedRRTypes)
             {
