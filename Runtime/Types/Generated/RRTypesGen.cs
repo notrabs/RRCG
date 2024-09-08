@@ -1838,7 +1838,7 @@ namespace RRCGGenerated
 
     public abstract class InventoryItemGen : AnyObject
     {
-        public (string Name, string Description, bool SupportsUseAction, RecNetImage Image, List<string> Tags) DefinitionR2
+        public (string Name, string Description, bool SupportsUseAction, RecNetImage Image) DefinitionR2
         {
             /// <summary>
             /// Gets the friendly name, description, image, and tag names of the given inventory item.
@@ -1982,7 +1982,7 @@ namespace RRCGGenerated
             }
         }
 
-        public int AngleInt
+        public int AngleDeprecated
         {
             /// <summary>
             /// Sets the angle of the spotlight&apos;s cone.
@@ -2038,7 +2038,7 @@ namespace RRCGGenerated
             }
         }
 
-        public int IntensityInt
+        public int IntensityDeprecated
         {
             /// <summary>
             /// Sets the brightness level for a point light or a spotlight.
@@ -2062,7 +2062,7 @@ namespace RRCGGenerated
             }
         }
 
-        public int RangeInt
+        public int RangeDeprecated
         {
             /// <summary>
             /// Sets the range of a point light or a spotlight.
@@ -2794,6 +2794,18 @@ namespace RRCGGenerated
         {
             /// <summary>
             /// Returns the local players balance of one room currency. Configure this chip to selecht which currency to use.
+            /// </summary>
+            set
+            {
+            }
+        }
+
+        public object GoToEvent
+        {
+            /// <summary>
+            /// Sends a player to a community event.
+            /// 
+            /// If the event is not currently happening, shows the page for it on the watch.
             /// </summary>
             set
             {

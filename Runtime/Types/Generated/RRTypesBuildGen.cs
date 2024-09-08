@@ -1145,7 +1145,7 @@ namespace RRCGGenerated
 
     public abstract class InventoryItemPortGen : AnyPort
     {
-        public (StringPort Name, StringPort Description, BoolPort SupportsUseAction, RecNetImagePort Image, ListPort<StringPort> Tags) DefinitionR2
+        public (StringPort Name, StringPort Description, BoolPort SupportsUseAction, RecNetImagePort Image) DefinitionR2
         {
             get => CircuitBuilder.Singleton("RRCG_InventoryItem_GetDefinitionR2_" + PortKey(), () => ChipBuilder.InventoryItemGetDefinitionR2((InventoryItemPort)this));
         }
@@ -1233,9 +1233,9 @@ namespace RRCGGenerated
             set => ChipBuilder.LightSetAngle((LightPort)this, value);
         }
 
-        public IntPort AngleInt
+        public IntPort AngleDeprecated
         {
-            set => ChipBuilder.LightSetAngleInt((LightPort)this, value);
+            set => ChipBuilder.LightSetAngleDeprecated((LightPort)this, value);
         }
 
         public ColorPort Color
@@ -1260,9 +1260,9 @@ namespace RRCGGenerated
             set => ChipBuilder.LightSetIntensity((LightPort)this, value);
         }
 
-        public IntPort IntensityInt
+        public IntPort IntensityDeprecated
         {
-            set => ChipBuilder.LightSetIntensityInt((LightPort)this, value);
+            set => ChipBuilder.LightSetIntensityDeprecated((LightPort)this, value);
         }
 
         public FloatPort Range
@@ -1271,9 +1271,9 @@ namespace RRCGGenerated
             set => ChipBuilder.LightSetRange((LightPort)this, value);
         }
 
-        public IntPort RangeInt
+        public IntPort RangeDeprecated
         {
-            set => ChipBuilder.LightSetRangeInt((LightPort)this, value);
+            set => ChipBuilder.LightSetRangeDeprecated((LightPort)this, value);
         }
 
         public FloatPort Softness
@@ -1644,6 +1644,11 @@ namespace RRCGGenerated
         public AlternativeExec<(BoolPort Success, IntPort TotalBalance)> GetCurrencyBalanceDeprecatedR1
         {
             set => ChipBuilder.GetCurrencyBalanceDeprecatedR1((PlayerPort)this, value);
+        }
+
+        public AnyPort GoToEvent
+        {
+            set => ChipBuilder.GoToEvent((PlayerPort)this, value);
         }
 
         public DestinationRoomPort GoToRoom
