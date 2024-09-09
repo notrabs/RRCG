@@ -10,8 +10,8 @@ namespace RRCGBuild
         {
             __BeginReturnScope("CircuitGraph", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-                RRCGBuild.StudioFunctionsObject studioObject = default !;
-                studioObject = __VariableDeclaratorExpression<RRCGBuild.StudioFunctionsObject>("studioObject", () => new RRCGBuild.StudioFunctionsObject(RRCGBuild.RecRoomObjectPort.Invalid), () => studioObject!, (_RRCG_SETTER_VALUE) => studioObject = _RRCG_SETTER_VALUE);
+                StudioFunctionsObject studioObject = default !;
+                studioObject = __VariableDeclaratorExpression<StudioFunctionsObject>("studioObject", () => new StudioFunctionsObject(RRCGBuild.RecRoomObjectPort.Invalid), () => studioObject!, (_RRCG_SETTER_VALUE) => studioObject = _RRCG_SETTER_VALUE);
             studioObject.VoidFunction();
             studioObject.AllParameterTypes(true, 23f, 7, "test", new RRCGBuild.ColorPort(1.0f, 0, 0), RRCGBuild.Vector3Port.up, RRCGBuild.QuaternionPort.identity);
             RRCGBuild.ChipLib.Log(studioObject.SingleReturn(RRCGBuild.Vector3Port.zero));

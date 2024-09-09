@@ -422,9 +422,6 @@ namespace RRCGBuild
                 RRCGBuild.RecRoomObjectPort rrObjResultPort = default !;
                 rrObjResultPort = __VariableDeclaratorExpression<RRCGBuild.RecRoomObjectPort>("rrObjResultPort", () => RRCGBuild.ChipLib.VariableCache<RRCGBuild.RecRoomObjectPort>(__SwitchExpression<RRCGBuild.RecRoomObjectPort>(matchIntPort, () => null !, new()
                 {{-1, () => RRCGBuild.RecRoomObjectPort.Invalid}})), () => rrObjResultPort!, (_RRCG_SETTER_VALUE) => rrObjResultPort = _RRCG_SETTER_VALUE);
-            // And this should produce a build-time exception.
-            // (Maybe there's a difference in semantics
-            //  when the result type supports default values. FIXME?)
             TestUtils.ExpectToThrow(() =>
             {
                 __BeginReturnScope("ParenthesizedLambda", null, null);
