@@ -6008,6 +6008,17 @@ namespace RRCGGenerated
             return;
         }
 
+        public static void LightSetEnabled(LightPort target, BoolPort enabled)
+        {
+            Node node = new Node()
+            {Name = "Light Set Enabled", Type = "e30a20e6-8c98-4c9c-b0bc-bf8b0e11a74f", InputCount = 3};
+            Context.current.AddNode(node);
+            node.ConnectInputPort(target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(enabled, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
         public static void LightSetIntensity(LightPort target, FloatPort intensity)
         {
             Node node = new Node()
@@ -6803,6 +6814,33 @@ namespace RRCGGenerated
         {
             Node node = new Node()
             {Name = "Local Player Get Objective Log Enabled", Type = "ab20a5af-2d16-494c-b376-0fb5d2c59258", InputCount = 0};
+            Context.current.AddNode(node);
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort LocalPlayerIsUsingController()
+        {
+            Node node = new Node()
+            {Name = "Local Player Is Using Controller", Type = "00b3958e-4f84-42fa-acd8-cdb33dd44f25", InputCount = 0};
+            Context.current.AddNode(node);
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort LocalPlayerIsUsingKeyboardAndMouse()
+        {
+            Node node = new Node()
+            {Name = "Local Player Is Using Keyboard And Mouse", Type = "859d380b-573e-4db7-94dd-82729dcc2e39", InputCount = 0};
+            Context.current.AddNode(node);
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort LocalPlayerIsUsingTouch()
+        {
+            Node node = new Node()
+            {Name = "Local Player Is Using Touch", Type = "cbe72a5a-4616-4213-b2d7-660c58642bab", InputCount = 0};
             Context.current.AddNode(node);
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
             return output_ports;

@@ -2022,6 +2022,12 @@ namespace RRCGGenerated
             /// Returns True if the target light is emitting light.
             /// </summary>
             get => default;
+            /// <summary>
+            /// Sets whether or not a Light is enabled and will emit light.
+            /// </summary>
+            set
+            {
+            }
         }
 
         public float Intensity

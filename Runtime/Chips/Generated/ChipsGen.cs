@@ -4172,6 +4172,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Sets whether or not a Light is enabled and will emit light.
+        /// </summary>
+        public static void LightSetEnabled(Light target, bool enabled)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Sets the brightness level for a point light or a spotlight.
         /// </summary>
         public static void LightSetIntensity(Light target, float intensity)
@@ -4745,6 +4753,33 @@ namespace RRCGGenerated
             return default;
         }
 
+        /// <summary>
+        /// Check whether the local player is using a controller or not.
+        /// </summary>
+        public static bool LocalPlayerIsUsingController()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Check whether the local player is using keyboard and mouse controls or not.
+        /// </summary>
+        public static bool LocalPlayerIsUsingKeyboardAndMouse()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Check whether the local player is using touch controls or not.
+        /// </summary>
+        public static bool LocalPlayerIsUsingTouch()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Check whether the local player is in VR or not.
+        /// </summary>
         public static bool LocalPlayerIsVR()
         {
             return default;

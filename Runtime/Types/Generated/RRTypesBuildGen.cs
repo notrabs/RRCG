@@ -1252,6 +1252,7 @@ namespace RRCGGenerated
         public BoolPort Enabled
         {
             get => CircuitBuilder.Singleton("RRCG_Light_GetEnabled_" + PortKey(), () => ChipBuilder.LightGetEnabled((LightPort)this));
+            set => ChipBuilder.LightSetEnabled((LightPort)this, value);
         }
 
         public FloatPort Intensity

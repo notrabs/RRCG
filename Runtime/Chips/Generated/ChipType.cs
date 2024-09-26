@@ -385,6 +385,7 @@ namespace RRCGGenerated
         public const string LightSetAngleDeprecated = "873d8765-9dc7-41ea-87ef-dd6e32119af8";
         public const string LightSetColor = "b2698906-68bd-4ea3-be98-35a23615b522";
         public const string LightSetColorIdDeprecated = "2b6d9368-2ddc-41fb-ac14-b1a3561b19fc";
+        public const string LightSetEnabled = "e30a20e6-8c98-4c9c-b0bc-bf8b0e11a74f";
         public const string LightSetIntensity = "aa6dc013-3f5b-45f4-87a2-8aa4d16cc375";
         public const string LightSetIntensityDeprecated = "902a47c8-3834-4858-bbae-5357281a507d";
         public const string LightSetRange = "214bb1b7-f808-4a36-9c10-113045b4fe44";
@@ -445,6 +446,9 @@ namespace RRCGGenerated
         public const string LocalPlayerGetIsThirdPersonActive = "d6d17e6f-855e-4f5a-9e33-843a788ce3a0";
         public const string LocalPlayerGetObjectiveLogContent = "809ba66c-8877-4d74-ac4b-2d0730a1b576";
         public const string LocalPlayerGetObjectiveLogEnabled = "ab20a5af-2d16-494c-b376-0fb5d2c59258";
+        public const string LocalPlayerIsUsingController = "00b3958e-4f84-42fa-acd8-cdb33dd44f25";
+        public const string LocalPlayerIsUsingKeyboardAndMouse = "859d380b-573e-4db7-94dd-82729dcc2e39";
+        public const string LocalPlayerIsUsingTouch = "cbe72a5a-4616-4213-b2d7-660c58642bab";
         public const string LocalPlayerIsVR = "f9101f3c-5b1d-4edc-b850-83bd72a4b1d4";
         public const string LocalPlayerOverridePlayerVoiceRolloffR2 = "bb4ff641-2267-45e0-9e07-fc480b04f478";
         public const string LocalPlayerRequestThirdPerson = "039fdbe0-31f2-4743-81ef-aa326b5e410f";
