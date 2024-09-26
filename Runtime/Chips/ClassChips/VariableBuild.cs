@@ -7,6 +7,7 @@ namespace RRCGBuild
 {
     public enum VariableKind
     {
+        None = -1,
         Local,
         Synced,
         Cloud
