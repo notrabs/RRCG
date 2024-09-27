@@ -15,12 +15,12 @@ namespace RRCGBuild
         // Event Nodes
         // 
         #region EventNodes
-        public static void EventReceiver(StringPort eventName)
+        public static void EventReceiver(string eventName)
         {
-            EventReceiver(new EventReceiverData(eventName.AsData<string>()));
+            EventReceiver(new EventReceiverData(eventName));
         }
 
-        public static T0 EventReceiver<T0>(StringPort eventName) where T0 : AnyPort, new()
+        public static T0 EventReceiver<T0>(string eventName) where T0 : AnyPort, new()
         {
             EventReceiver(eventName);
             var node = Context.lastSpawnedNode;
@@ -28,7 +28,7 @@ namespace RRCGBuild
             return new T0() { Port = node.Port(0, 1) };
         }
 
-        public static (T0, T1) EventReceiver<T0, T1>(StringPort eventName)
+        public static (T0, T1) EventReceiver<T0, T1>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
         {
@@ -40,7 +40,7 @@ namespace RRCGBuild
                 new T1() { Port = node.Port(0, 2) }
             );
         }
-        public static (T0, T1, T2) EventReceiver<T0, T1, T2>(StringPort eventName)
+        public static (T0, T1, T2) EventReceiver<T0, T1, T2>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -54,7 +54,7 @@ namespace RRCGBuild
                 new T2() { Port = node.Port(0, 3) }
             );
         }
-        public static (T0, T1, T2, T3) EventReceiver<T0, T1, T2, T3>(StringPort eventName)
+        public static (T0, T1, T2, T3) EventReceiver<T0, T1, T2, T3>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -71,7 +71,7 @@ namespace RRCGBuild
             );
         }
 
-        public static (T0, T1, T2, T3, T4) EventReceiver<T0, T1, T2, T3, T4>(StringPort eventName)
+        public static (T0, T1, T2, T3, T4) EventReceiver<T0, T1, T2, T3, T4>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -90,7 +90,7 @@ namespace RRCGBuild
             );
         }
 
-        public static (T0, T1, T2, T3, T4, T5) EventReceiver<T0, T1, T2, T3, T4, T5>(StringPort eventName)
+        public static (T0, T1, T2, T3, T4, T5) EventReceiver<T0, T1, T2, T3, T4, T5>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -111,7 +111,7 @@ namespace RRCGBuild
             );
         }
 
-        public static (T0, T1, T2, T3, T4, T5, T6) EventReceiver<T0, T1, T2, T3, T4, T5, T6>(StringPort eventName)
+        public static (T0, T1, T2, T3, T4, T5, T6) EventReceiver<T0, T1, T2, T3, T4, T5, T6>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -134,7 +134,7 @@ namespace RRCGBuild
             );
         }
 
-        public static (T0, T1, T2, T3, T4, T5, T6, T7) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7>(StringPort eventName)
+        public static (T0, T1, T2, T3, T4, T5, T6, T7) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -159,7 +159,7 @@ namespace RRCGBuild
             );
         }
 
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8>(StringPort eventName)
+        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -186,7 +186,7 @@ namespace RRCGBuild
             );
         }
 
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>(StringPort eventName)
+        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -215,7 +215,7 @@ namespace RRCGBuild
             );
         }
 
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(StringPort eventName)
+        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -246,7 +246,7 @@ namespace RRCGBuild
             );
         }
 
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(StringPort eventName)
+        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -279,7 +279,7 @@ namespace RRCGBuild
             );
         }
 
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(StringPort eventName)
+        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -314,7 +314,7 @@ namespace RRCGBuild
             );
         }
 
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(StringPort eventName)
+        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -351,7 +351,7 @@ namespace RRCGBuild
             );
         }
 
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(StringPort eventName)
+        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -390,7 +390,7 @@ namespace RRCGBuild
             );
         }
 
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(StringPort eventName)
+        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string eventName)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
@@ -431,19 +431,19 @@ namespace RRCGBuild
             );
         }
 
-        internal static void EventSender(StringPort eventName, EventTarget eventTarget, params AnyPort[] inputs)
+        internal static void EventSender(string eventName, EventTarget eventTarget, params AnyPort[] inputs)
         {
-            EventSender(new EventSenderData(eventName.AsData<string>(), eventTarget));
+            EventSender(new EventSenderData(eventName, eventTarget));
             var node = Context.lastSpawnedNode;
 
             for (var i = 0; i < inputs.Length; i++)
                 node.ConnectInputPort(inputs[i], node.Port(0, 1 + i));
         }
 
-        internal static void EventDefinition(StringPort eventName, params (StringPort, Type)[] eventDefinition)
+        internal static void EventDefinition(string eventName, params (StringPort, Type)[] eventDefinition)
         {
             EventDefinition(new EventDefinitionData(
-                eventName.AsData<string>(),
+                eventName,
                 eventDefinition.Select(t => (t.Item1.AsData<string>(), t.Item2)).ToArray()
             ));
         }

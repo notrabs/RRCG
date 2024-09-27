@@ -40,7 +40,7 @@ namespace RRCGBuild
     // Access to the generic interface. It is up to the user to make sure the types are correct.
     internal class DynamicEventDefinition : BaseEvent
     {
-        public DynamicEventDefinition(StringPort eventName, params (StringPort, Type)[] eventDefinition) => InitNewEvent(eventName.AsData<string>(), eventDefinition);
+        public DynamicEventDefinition(string eventName, params (StringPort, Type)[] eventDefinition) => InitNewEvent(eventName, eventDefinition);
 
         public AnyPort[] Receiver()
         {
@@ -68,7 +68,7 @@ namespace RRCGBuild
     public class EventDefinition : BaseEvent
     {
         public EventDefinition() => InitNewEvent(null);
-        public EventDefinition(StringPort eventName) => InitNewEvent(eventName.AsData<string>());
+        public EventDefinition(string eventName) => InitNewEvent(eventName);
 
         // The bool param is only used to make the signature different from the other constructors
         internal EventDefinition(bool _, string existingEvent) => InitExistingEvent(existingEvent);
@@ -96,8 +96,8 @@ namespace RRCGBuild
             null,
             (param0Name ?? "value0", typeof(T0))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0))
         );
         internal EventDefinition(bool _, string existingEvent) => InitExistingEvent(existingEvent);
@@ -126,8 +126,8 @@ namespace RRCGBuild
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1))
         );
@@ -159,8 +159,8 @@ namespace RRCGBuild
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2))
@@ -195,8 +195,8 @@ namespace RRCGBuild
             (param2Name ?? "value2", typeof(T2)),
             (param3Name ?? "value3", typeof(T3))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -234,8 +234,8 @@ namespace RRCGBuild
             (param3Name ?? "value3", typeof(T3)),
             (param4Name ?? "value4", typeof(T4))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -276,8 +276,8 @@ namespace RRCGBuild
             (param4Name ?? "value4", typeof(T4)),
             (param5Name ?? "value5", typeof(T5))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -321,8 +321,8 @@ namespace RRCGBuild
             (param5Name ?? "value5", typeof(T5)),
             (param6Name ?? "value6", typeof(T6))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -369,8 +369,8 @@ namespace RRCGBuild
             (param6Name ?? "value6", typeof(T6)),
             (param7Name ?? "value7", typeof(T7))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -420,8 +420,8 @@ namespace RRCGBuild
             (param7Name ?? "value7", typeof(T7)),
             (param8Name ?? "value8", typeof(T8))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -474,8 +474,8 @@ namespace RRCGBuild
             (param8Name ?? "value8", typeof(T8)),
             (param9Name ?? "value9", typeof(T9))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -531,8 +531,8 @@ namespace RRCGBuild
             (param9Name ?? "value9", typeof(T9)),
             (param10Name ?? "value10", typeof(T10))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name, StringPort param10Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name, StringPort param10Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -591,8 +591,8 @@ namespace RRCGBuild
             (param10Name ?? "value10", typeof(T10)),
             (param11Name ?? "value11", typeof(T11))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name, StringPort param10Name, StringPort param11Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name, StringPort param10Name, StringPort param11Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -654,8 +654,8 @@ namespace RRCGBuild
             (param11Name ?? "value11", typeof(T11)),
             (param12Name ?? "value12", typeof(T12))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name, StringPort param10Name, StringPort param11Name, StringPort param12Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name, StringPort param10Name, StringPort param11Name, StringPort param12Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -720,8 +720,8 @@ namespace RRCGBuild
             (param12Name ?? "value12", typeof(T12)),
             (param13Name ?? "value13", typeof(T13))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name, StringPort param10Name, StringPort param11Name, StringPort param12Name, StringPort param13Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name, StringPort param10Name, StringPort param11Name, StringPort param12Name, StringPort param13Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -789,8 +789,8 @@ namespace RRCGBuild
             (param13Name ?? "value13", typeof(T13)),
             (param14Name ?? "value14", typeof(T14))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name, StringPort param10Name, StringPort param11Name, StringPort param12Name, StringPort param13Name, StringPort param14Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name, StringPort param10Name, StringPort param11Name, StringPort param12Name, StringPort param13Name, StringPort param14Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -861,8 +861,8 @@ namespace RRCGBuild
             (param14Name ?? "value14", typeof(T14)),
             (param15Name ?? "value15", typeof(T15))
         );
-        public EventDefinition(StringPort eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name, StringPort param10Name, StringPort param11Name, StringPort param12Name, StringPort param13Name, StringPort param14Name, StringPort param15Name) => InitNewEvent(
-            eventName.AsData<string>(),
+        public EventDefinition(string eventName, StringPort param0Name, StringPort param1Name, StringPort param2Name, StringPort param3Name, StringPort param4Name, StringPort param5Name, StringPort param6Name, StringPort param7Name, StringPort param8Name, StringPort param9Name, StringPort param10Name, StringPort param11Name, StringPort param12Name, StringPort param13Name, StringPort param14Name, StringPort param15Name) => InitNewEvent(
+            eventName,
             (param0Name ?? "value0", typeof(T0)),
             (param1Name ?? "value1", typeof(T1)),
             (param2Name ?? "value2", typeof(T2)),
@@ -904,8 +904,8 @@ namespace RRCGBuild
     [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
     public class EventHelper
     {
-        private StringPort eventName;
-        public EventHelper(StringPort eventName)
+        private string eventName;
+        public EventHelper(string eventName)
         {
             this.eventName = eventName;
         }
@@ -930,9 +930,9 @@ namespace RRCGBuild
     [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
     public class EventHelper<T0> where T0 : AnyPort, new()
     {
-        private StringPort eventName;
+        private string eventName;
         private StringPort value0;
-        public EventHelper(StringPort eventName, StringPort value0 = null)
+        public EventHelper(string eventName, StringPort value0 = null)
         {
             this.eventName = eventName;
             this.value0 = value0 ?? "value0";
@@ -960,11 +960,11 @@ namespace RRCGBuild
         where T0 : AnyPort, new()
         where T1 : AnyPort, new()
     {
-        private StringPort eventName;
+        private string eventName;
         private StringPort value0;
         private StringPort value1;
         public EventHelper(
-            StringPort eventName,
+            string eventName,
             StringPort value0 = null,
             StringPort value1 = null
         )
@@ -1000,12 +1000,12 @@ namespace RRCGBuild
         where T1 : AnyPort, new()
         where T2 : AnyPort, new()
     {
-        private StringPort eventName;
+        private string eventName;
         private StringPort value0;
         private StringPort value1;
         private StringPort value2;
         public EventHelper(
-            StringPort eventName,
+            string eventName,
             StringPort value0 = null,
             StringPort value1 = null,
             StringPort value2 = null
@@ -1045,13 +1045,13 @@ namespace RRCGBuild
         where T2 : AnyPort, new()
         where T3 : AnyPort, new()
     {
-        private StringPort eventName;
+        private string eventName;
         private StringPort value0;
         private StringPort value1;
         private StringPort value2;
         private StringPort value3;
         public EventHelper(
-            StringPort eventName,
+            string eventName,
             StringPort value0 = null,
             StringPort value1 = null,
             StringPort value2 = null,
