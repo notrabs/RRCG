@@ -461,11 +461,11 @@ namespace RRCGBuild
             , match);
         }
 
-        private void Test(RRCGBuild.StringPort name, System.Action test)
+        private void Test(string name, System.Action test)
         {
             __BeginReturnScope("Test", null, null);
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
-            __VariableDeclaratorExpression<RRCGBuild.StringPort>("name", null, () => name!, (_RRCG_SETTER_VALUE) => name = _RRCG_SETTER_VALUE);
+            __VariableDeclaratorExpression<string>("name", null, () => name!, (_RRCG_SETTER_VALUE) => name = _RRCG_SETTER_VALUE);
             __VariableDeclaratorExpression<System.Action>("test", null, () => test!, (_RRCG_SETTER_VALUE) => test = _RRCG_SETTER_VALUE);
             new RRCGBuild.EventDefinition(name).Receiver();
             LogString(__StringInterpolation("Starting test ", name));

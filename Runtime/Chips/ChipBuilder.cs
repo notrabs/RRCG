@@ -444,6 +444,7 @@ namespace RRCGBuild
         {
             EventDefinition(new EventDefinitionData(
                 eventName,
+                eventId,
                 eventDefinition.Select(t => (t.Item1.AsData<string>(), t.Item2)).ToArray()
             ));
         }
