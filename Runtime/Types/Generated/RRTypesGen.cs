@@ -5192,6 +5192,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Searches the room for all objects with the input tag and outputs a list of their direct children and all descendants in the hierarchy.
+        /// </summary>
+        public List<RecRoomObject> GetAllChildrenWithTagR2(string tag)
+        {
+            return default;
+        }
+
+        /// <summary>
         /// Resets an object.
         /// </summary>
         public void Reset()

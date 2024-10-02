@@ -3113,6 +3113,11 @@ namespace RRCGGenerated
             ChipBuilder.IfHasTag((RecRoomObjectPort)this, tag, doesNotHaveTag);
         }
 
+        public ListPort<RecRoomObjectPort> GetAllChildrenWithTagR2(StringPort tag)
+        {
+            return ChipBuilder.RecRoomObjectGetAllChildrenWithTagR2((RecRoomObjectPort)this, tag);
+        }
+
         public void Reset()
         {
             ChipBuilder.RecRoomObjectReset((RecRoomObjectPort)this);

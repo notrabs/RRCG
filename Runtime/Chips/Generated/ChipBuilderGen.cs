@@ -6886,6 +6886,20 @@ namespace RRCGGenerated
             return;
         }
 
+        public static void LocalPlayerSetLocomotionVFXEnabledR2(AnyPort sprintWind, AnyPort wallRunWind, AnyPort slideStartWind, AnyPort slideWind, AnyPort slideSparks)
+        {
+            Node node = new Node()
+            {Name = "Local Player Set Locomotion VFX Enabled", Type = "f2604270-0397-40ca-a5a4-b799727eccfd", InputCount = 6};
+            Context.current.AddNode(node);
+            node.ConnectInputPort(sprintWind, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(wallRunWind, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(slideStartWind, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(slideWind, new Port{Node = node, Index = 4});
+            node.ConnectInputPort(slideSparks, new Port{Node = node, Index = 5});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
         public static void LocalPlayerSetObjectiveLogContent(StringPort headerText, ColorPort headerTextColor, StringPort bodyText, ColorPort bodyTextColor)
         {
             Node node = new Node()
@@ -9847,6 +9861,17 @@ namespace RRCGGenerated
             Context.current.AddNode(node);
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static ListPort<RecRoomObjectPort> RecRoomObjectGetAllChildrenWithTagR2(RecRoomObjectPort @object, StringPort tag)
+        {
+            Node node = new Node()
+            {Name = "Rec Room Object Get All Children with Tag", Type = "c8ead7ca-2727-4358-b52b-012d56aa707f", InputCount = 2};
+            Context.current.AddNode(node);
+            node.ConnectInputPort(@object, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(tag, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 

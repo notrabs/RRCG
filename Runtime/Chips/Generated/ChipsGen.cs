@@ -4812,6 +4812,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Sets whether specific locomotion visual feedback effects should play when in the corresponding state.
+        /// </summary>
+        public static void LocalPlayerSetLocomotionVFXEnabledR2(object sprintWind, object wallRunWind, object slideStartWind, object slideWind, object slideSparks)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Set the content to be displayed on the Objective Log HUD UI
         /// </summary>
         public static void LocalPlayerSetObjectiveLogContent(string headerText, Color headerTextColor, string bodyText, Color bodyTextColor)
@@ -6933,6 +6941,14 @@ namespace RRCGGenerated
         /// Recalcualtes and updates the current room authority based on parameters such as their network connection and platform.
         /// </summary>
         public static bool RecalculateRoomAuthority()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Searches the room for all objects with the input tag and outputs a list of their direct children and all descendants in the hierarchy.
+        /// </summary>
+        public static List<RecRoomObject> RecRoomObjectGetAllChildrenWithTagR2(RecRoomObject @object, string tag)
         {
             return default;
         }

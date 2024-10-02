@@ -453,6 +453,7 @@ namespace RRCGGenerated
         public const string LocalPlayerOverridePlayerVoiceRolloffR2 = "bb4ff641-2267-45e0-9e07-fc480b04f478";
         public const string LocalPlayerRequestThirdPerson = "039fdbe0-31f2-4743-81ef-aa326b5e410f";
         public const string LocalPlayerSetGravityDisabledR2 = "6f88b273-5be6-4183-a772-902c45f4a5c7";
+        public const string LocalPlayerSetLocomotionVFXEnabledR2 = "f2604270-0397-40ca-a5a4-b799727eccfd";
         public const string LocalPlayerSetObjectiveLogContent = "a060bad3-3111-4b9d-add3-5e6af3a4a151";
         public const string LocalPlayerSetObjectiveLogEnabled = "5013021c-3243-4cc2-bd39-06abddb38c9c";
         public const string LocalPlayerSetPlayerNametagVisibility = "a73655df-b37b-4c02-a19a-4eb05ce75a14";
@@ -721,6 +722,7 @@ namespace RRCGGenerated
         public const string RangedWeaponSetTorsoDamage = "531dc709-286e-429c-9d51-537a63d74f76";
         public const string Raycast = "af203a1f-f3c9-479b-86f0-72224b094179";
         public const string RecalculateRoomAuthority = "d5df73b6-4b92-4867-ab3a-5d308876598b";
+        public const string RecRoomObjectGetAllChildrenWithTagR2 = "c8ead7ca-2727-4358-b52b-012d56aa707f";
         public const string RecRoomObjectGetAllWithTag = "02d69553-ae96-4c2d-8477-59ada6a66783";
         public const string RecRoomObjectGetAllWithTagNew = "6404b6b4-3bc4-4bbb-8d2c-058a6834e9e9";
         public const string RecRoomObjectGetAuthority = "9e51fcdc-87b4-4eee-a7b1-8d6f86a5fa6b";
