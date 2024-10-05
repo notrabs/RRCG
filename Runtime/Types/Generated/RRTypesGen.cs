@@ -2022,6 +2022,12 @@ namespace RRCGGenerated
             /// Returns True if the target light is emitting light.
             /// </summary>
             get => default;
+            /// <summary>
+            /// Sets whether or not a Light is enabled and will emit light.
+            /// </summary>
+            set
+            {
+            }
         }
 
         public float Intensity
@@ -5183,6 +5189,14 @@ namespace RRCGGenerated
         public void IfHasTag(string tag, AlternativeExec doesNotHaveTag)
         {
             return;
+        }
+
+        /// <summary>
+        /// Searches the room for all objects with the input tag and outputs a list of their direct children and all descendants in the hierarchy.
+        /// </summary>
+        public List<RecRoomObject> GetAllChildrenWithTagR2(string tag)
+        {
+            return default;
         }
 
         /// <summary>

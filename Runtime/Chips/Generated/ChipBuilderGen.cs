@@ -6008,6 +6008,17 @@ namespace RRCGGenerated
             return;
         }
 
+        public static void LightSetEnabled(LightPort target, BoolPort enabled)
+        {
+            Node node = new Node()
+            {Name = "Light Set Enabled", Type = "e30a20e6-8c98-4c9c-b0bc-bf8b0e11a74f", InputCount = 3};
+            Context.current.AddNode(node);
+            node.ConnectInputPort(target, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(enabled, new Port{Node = node, Index = 2});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
         public static void LightSetIntensity(LightPort target, FloatPort intensity)
         {
             Node node = new Node()
@@ -6808,6 +6819,33 @@ namespace RRCGGenerated
             return output_ports;
         }
 
+        public static BoolPort LocalPlayerIsUsingController()
+        {
+            Node node = new Node()
+            {Name = "Local Player Is Using Controller", Type = "00b3958e-4f84-42fa-acd8-cdb33dd44f25", InputCount = 0};
+            Context.current.AddNode(node);
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort LocalPlayerIsUsingKeyboardAndMouse()
+        {
+            Node node = new Node()
+            {Name = "Local Player Is Using Keyboard And Mouse", Type = "859d380b-573e-4db7-94dd-82729dcc2e39", InputCount = 0};
+            Context.current.AddNode(node);
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
+        public static BoolPort LocalPlayerIsUsingTouch()
+        {
+            Node node = new Node()
+            {Name = "Local Player Is Using Touch", Type = "cbe72a5a-4616-4213-b2d7-660c58642bab", InputCount = 0};
+            Context.current.AddNode(node);
+            var output_ports = new BoolPort{Port = new Port{Node = node, Index = 0}};
+            return output_ports;
+        }
+
         public static BoolPort LocalPlayerIsVR()
         {
             Node node = new Node()
@@ -6844,6 +6882,20 @@ namespace RRCGGenerated
             {Name = "Local Player Set Gravity Disabled", Type = "6f88b273-5be6-4183-a772-902c45f4a5c7", InputCount = 2};
             Context.current.AddNode(node);
             node.ConnectInputPort(disabled, new Port{Node = node, Index = 1});
+            ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return;
+        }
+
+        public static void LocalPlayerSetLocomotionVFXEnabledR2(BoolPort sprintWind, BoolPort wallRunWind, BoolPort slideStartWind, BoolPort slideWind, BoolPort slideSparks)
+        {
+            Node node = new Node()
+            {Name = "Local Player Set Locomotion VFX Enabled", Type = "f2604270-0397-40ca-a5a4-b799727eccfd", InputCount = 6};
+            Context.current.AddNode(node);
+            node.ConnectInputPort(sprintWind, new Port{Node = node, Index = 1});
+            node.ConnectInputPort(wallRunWind, new Port{Node = node, Index = 2});
+            node.ConnectInputPort(slideStartWind, new Port{Node = node, Index = 3});
+            node.ConnectInputPort(slideWind, new Port{Node = node, Index = 4});
+            node.ConnectInputPort(slideSparks, new Port{Node = node, Index = 5});
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
             return;
         }
@@ -9809,6 +9861,17 @@ namespace RRCGGenerated
             Context.current.AddNode(node);
             var output_ports = new BoolPort{Port = new Port{Node = node, Index = 1}};
             ExecFlow.current.Advance(Context.current, new Port{Node = node}, new Port{Node = node});
+            return output_ports;
+        }
+
+        public static ListPort<RecRoomObjectPort> RecRoomObjectGetAllChildrenWithTagR2(RecRoomObjectPort @object, StringPort tag)
+        {
+            Node node = new Node()
+            {Name = "Rec Room Object Get All Children with Tag", Type = "c8ead7ca-2727-4358-b52b-012d56aa707f", InputCount = 2};
+            Context.current.AddNode(node);
+            node.ConnectInputPort(@object, new Port{Node = node, Index = 0});
+            node.ConnectInputPort(tag, new Port{Node = node, Index = 1});
+            var output_ports = new ListPort<RecRoomObjectPort>{Port = new Port{Node = node, Index = 0}};
             return output_ports;
         }
 

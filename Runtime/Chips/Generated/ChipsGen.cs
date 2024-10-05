@@ -4172,6 +4172,14 @@ namespace RRCGGenerated
         }
 
         /// <summary>
+        /// Sets whether or not a Light is enabled and will emit light.
+        /// </summary>
+        public static void LightSetEnabled(Light target, bool enabled)
+        {
+            return;
+        }
+
+        /// <summary>
         /// Sets the brightness level for a point light or a spotlight.
         /// </summary>
         public static void LightSetIntensity(Light target, float intensity)
@@ -4745,6 +4753,33 @@ namespace RRCGGenerated
             return default;
         }
 
+        /// <summary>
+        /// Check whether the local player is using a controller or not.
+        /// </summary>
+        public static bool LocalPlayerIsUsingController()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Check whether the local player is using keyboard and mouse controls or not.
+        /// </summary>
+        public static bool LocalPlayerIsUsingKeyboardAndMouse()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Check whether the local player is using touch controls or not.
+        /// </summary>
+        public static bool LocalPlayerIsUsingTouch()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Check whether the local player is in VR or not.
+        /// </summary>
         public static bool LocalPlayerIsVR()
         {
             return default;
@@ -4772,6 +4807,14 @@ namespace RRCGGenerated
         /// Sets whether gravity should be disabled for the local player
         /// </summary>
         public static void LocalPlayerSetGravityDisabledR2(bool disabled)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Sets whether specific locomotion visual feedback effects should play when in the corresponding state.
+        /// </summary>
+        public static void LocalPlayerSetLocomotionVFXEnabledR2(bool sprintWind, bool wallRunWind, bool slideStartWind, bool slideWind, bool slideSparks)
         {
             return;
         }
@@ -6898,6 +6941,14 @@ namespace RRCGGenerated
         /// Recalcualtes and updates the current room authority based on parameters such as their network connection and platform.
         /// </summary>
         public static bool RecalculateRoomAuthority()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Searches the room for all objects with the input tag and outputs a list of their direct children and all descendants in the hierarchy.
+        /// </summary>
+        public static List<RecRoomObject> RecRoomObjectGetAllChildrenWithTagR2(RecRoomObject @object, string tag)
         {
             return default;
         }

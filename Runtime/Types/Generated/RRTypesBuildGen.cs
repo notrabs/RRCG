@@ -1252,6 +1252,7 @@ namespace RRCGGenerated
         public BoolPort Enabled
         {
             get => CircuitBuilder.Singleton("RRCG_Light_GetEnabled_" + PortKey(), () => ChipBuilder.LightGetEnabled((LightPort)this));
+            set => ChipBuilder.LightSetEnabled((LightPort)this, value);
         }
 
         public FloatPort Intensity
@@ -3110,6 +3111,11 @@ namespace RRCGGenerated
         public void IfHasTag(StringPort tag, AlternativeExec doesNotHaveTag)
         {
             ChipBuilder.IfHasTag((RecRoomObjectPort)this, tag, doesNotHaveTag);
+        }
+
+        public ListPort<RecRoomObjectPort> GetAllChildrenWithTagR2(StringPort tag)
+        {
+            return ChipBuilder.RecRoomObjectGetAllChildrenWithTagR2((RecRoomObjectPort)this, tag);
         }
 
         public void Reset()
