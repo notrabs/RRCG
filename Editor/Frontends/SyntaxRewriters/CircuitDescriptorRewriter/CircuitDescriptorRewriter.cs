@@ -700,19 +700,23 @@ namespace RRCG
         }
 
         public override SyntaxNode VisitGenericName(GenericNameSyntax node)
-            => ResolveOrRewriteIfType(node, base.VisitGenericName);
+            => ResolveOrRewriteIfType(node, node, base.VisitGenericName);
 
         public override SyntaxNode VisitQualifiedName(QualifiedNameSyntax node)
-            => ResolveOrRewriteIfType(node, base.VisitQualifiedName);
+            => ResolveOrRewriteIfType(node, node, base.VisitQualifiedName);
 
         public override SyntaxNode VisitIdentifierName(IdentifierNameSyntax node)
-            => ResolveOrRewriteIfType(node, base.VisitIdentifierName);
+            => ResolveOrRewriteIfType(node, node, base.VisitIdentifierName);
+
+        public override SyntaxNode VisitMemberAccessExpression(MemberAccessExpressionSyntax node)
+            => ResolveOrRewriteIfType(node, node.Name, base.VisitMemberAccessExpression);
 
         // Helper method to prevent logic duplication in VisitGeneric/Qualified/IdentifierName
-        SyntaxNode ResolveOrRewriteIfType<T>(T node, Func<T, SyntaxNode> baseVisit) where T : NameSyntax
+        SyntaxNode ResolveOrRewriteIfType<T>(T node, SyntaxNode typeNode, Func<T, SyntaxNode> baseVisit)
+            where T : SyntaxNode
         {
             // We only want to resolve/rewrite types, so let's check for that first.
-            var symbol = SemanticModel.GetSymbolInfo(node).Symbol;
+            var symbol = SemanticModel.GetSymbolInfo(typeNode).Symbol;
             if (symbol is not ITypeSymbol typeSymbol)
                 return baseVisit(node).NormalizeWhitespace();
 

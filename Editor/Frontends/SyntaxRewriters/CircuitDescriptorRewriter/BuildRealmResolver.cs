@@ -156,8 +156,8 @@ namespace RRCG
         /// </summary>
         public TypeSyntax ResolveOrRewriteBuildRealmType(ITypeSymbol sourceRealm)
         {
-            if (sourceRealm is IErrorTypeSymbol)
-                throw new Exception("Got an IErrorTypeSymbol!");
+            if (sourceRealm == null) throw new ArgumentNullException("sourceRealm");
+            if (sourceRealm is IErrorTypeSymbol) throw new Exception("Got an IErrorTypeSymbol!");
 
             // If the type is an array/tuple/generic type,
             // we have to do some special handling.

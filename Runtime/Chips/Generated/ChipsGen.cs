@@ -4814,7 +4814,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets whether specific locomotion visual feedback effects should play when in the corresponding state.
         /// </summary>
-        public static void LocalPlayerSetLocomotionVFXEnabledR2(object sprintWind, object wallRunWind, object slideStartWind, object slideWind, object slideSparks)
+        public static void LocalPlayerSetLocomotionVFXEnabledR2(bool sprintWind, bool wallRunWind, bool slideStartWind, bool slideWind, bool slideSparks)
         {
             return;
         }

@@ -10,8 +10,8 @@ namespace RRCGBuild
     public class AssignmentsTest : RRCGBuild.CircuitBuilder
     {
         RRCGBuild.IntPort methodValueAssignment = __NamedAssignment<RRCGBuild.IntPort>("methodValueAssignment", () => 3);
-        RRCGBuild.TypeTest mehtodTypeAssignment = __NamedAssignment<RRCGBuild.TypeTest>("mehtodTypeAssignment", () => new RRCGBuild.TypeTest());
-        RRCGBuild.TypeTest mehtodTypeAssignmentAnonymous = __NamedAssignment<RRCGBuild.TypeTest>("mehtodTypeAssignmentAnonymous", () => new());
+        TypeTest mehtodTypeAssignment = __NamedAssignment<TypeTest>("mehtodTypeAssignment", () => new TypeTest());
+        TypeTest mehtodTypeAssignmentAnonymous = __NamedAssignment<TypeTest>("mehtodTypeAssignmentAnonymous", () => new());
         TypeTest.NestedTypeTest mehtodNestedTypeAssignment = __NamedAssignment<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignment", () => new TypeTest.NestedTypeTest());
         TypeTest.NestedTypeTest mehtodNestedTypeAssignmentAnonymous = __NamedAssignment<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignmentAnonymous", () => new());
         RRCGBuild.FloatPort outOfScopeType = __NamedAssignment<RRCGBuild.FloatPort>("outOfScopeType", () => UnityEngine.Mathf.Sqrt(4));
@@ -182,8 +182,8 @@ namespace RRCGBuild
             __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
                 RRCGBuild.IntPort methodValueAssignment = default !;
                 methodValueAssignment = __VariableDeclaratorExpression<RRCGBuild.IntPort>("methodValueAssignment", () => 3, () => methodValueAssignment!, (_RRCG_SETTER_VALUE) => methodValueAssignment = _RRCG_SETTER_VALUE);
-                RRCGBuild.TypeTest mehtodTypeAssignment = default !;
-                mehtodTypeAssignment = __VariableDeclaratorExpression<RRCGBuild.TypeTest>("mehtodTypeAssignment", () => new RRCGBuild.TypeTest(), () => mehtodTypeAssignment!, (_RRCG_SETTER_VALUE) => mehtodTypeAssignment = _RRCG_SETTER_VALUE);
+                TypeTest mehtodTypeAssignment = default !;
+                mehtodTypeAssignment = __VariableDeclaratorExpression<TypeTest>("mehtodTypeAssignment", () => new TypeTest(), () => mehtodTypeAssignment!, (_RRCG_SETTER_VALUE) => mehtodTypeAssignment = _RRCG_SETTER_VALUE);
                 TypeTest.NestedTypeTest mehtodNestedTypeAssignment = default !;
                 mehtodNestedTypeAssignment = __VariableDeclaratorExpression<TypeTest.NestedTypeTest>("mehtodNestedTypeAssignment", () => new TypeTest.NestedTypeTest(), () => mehtodNestedTypeAssignment!, (_RRCG_SETTER_VALUE) => mehtodNestedTypeAssignment = _RRCG_SETTER_VALUE);
                 RRCGBuild.FloatPort outOfScopeType = default !;

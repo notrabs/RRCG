@@ -6886,7 +6886,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public static void LocalPlayerSetLocomotionVFXEnabledR2(AnyPort sprintWind, AnyPort wallRunWind, AnyPort slideStartWind, AnyPort slideWind, AnyPort slideSparks)
+        public static void LocalPlayerSetLocomotionVFXEnabledR2(BoolPort sprintWind, BoolPort wallRunWind, BoolPort slideStartWind, BoolPort slideWind, BoolPort slideSparks)
         {
             Node node = new Node()
             {Name = "Local Player Set Locomotion VFX Enabled", Type = "f2604270-0397-40ca-a5a4-b799727eccfd", InputCount = 6};
