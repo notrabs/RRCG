@@ -61,7 +61,7 @@ namespace RRCGBuild
                                         .ToArray();
 
                 if (dependencyContexts.Length > 1)
-                    throw new Exception($"EventFunction references nodes from more than one external context!");
+                    throw new Exception($"EventFunction '{name}' references nodes from more than one external context!");
 
                 // Otherwise, we either choose to place the receiver in
                 // the first dependency context, or just the current context.
