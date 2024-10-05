@@ -116,6 +116,8 @@ namespace RRCGGenerated
         public const string CombatantSplitR1 = "81b08e44-0a1e-40da-b8a1-79f416691dcf";
         public const string CombatantVariableR1 = "cfd8e246-8682-4707-a0ae-da55bacfbf72";
         public const string Comment = "83623f53-86b2-477d-bb2f-fe68f68ba617";
+        public const string CommunityEventConstant = "ab9cf11c-a9fa-41e0-91ac-c241e152e986";
+        public const string CommunityEventVariable = "355870c7-e058-4f34-8fcc-d0a8ef797fd6";
         public const string ConsumableActivateR1 = "d7ea08ab-aee6-43d0-99e1-54478ac3db7f";
         public const string ConsumableConstantR1 = "3dc63876-39a9-4828-9967-67821e620cb1";
         public const string ConsumableDeactivateR1 = "6809978a-e1fc-403a-a41a-d4e94f22281f";
@@ -194,6 +196,7 @@ namespace RRCGGenerated
         public const string ForEach = "744e5311-6cc7-4130-962e-fe050a475d43";
         public const string FromRecRoomObject = "7ff685a6-f59c-4c6c-b559-f343d81ea1d4";
         public const string FunctionDefinition = "49937daa-4f6d-442c-a0d8-0095b675250d";
+        public const string FunctionOut = "3b63e0ee-4cc6-40f0-b789-b8f6d93e0a6e";
         public const string GameHUDElementConstant = "4a3c3d38-f1a4-493b-977f-5444ab2d404b";
         public const string GetAllInventoryItemsInRoomR2 = "5ad0cd6b-90ad-4425-a43a-7ac7ec0d0141";
         public const string GetAllInventoryItemsWithTagR2 = "80ad6681-f1b1-448e-acc2-0736e4f6841d";
@@ -254,6 +257,7 @@ namespace RRCGGenerated
         public const string GetUpVectorDeprecated = "830f781d-2522-4ec0-9d6f-ecfc0bf695f6";
         public const string GetVelocity = "0310de62-2ede-4af0-b551-0228290fc54c";
         public const string GetVelocityDeprecated = "e9c65fbe-9d0f-4373-bd45-fe620de801b4";
+        public const string GoToEvent = "9c9f756e-f972-49a4-bd1d-82225d43b350";
         public const string GoToRoom = "bad6a57b-2af8-4526-8caa-e07476da4a5b";
         public const string GoToState = "ecf53690-1d60-4971-b057-f601d49975ab";
         public const string GrabberGetHeldObjectR2 = "338a3300-ad0d-40d9-a9a7-ff57f5401905";
@@ -378,13 +382,14 @@ namespace RRCGGenerated
         public const string LightGetSoftness = "afc674dc-06b5-44fc-9d01-95d8ca56db41";
         public const string LightGetSpecularContribution = "b7e74ebc-9ed7-4302-abf1-d2fe42b92a6d";
         public const string LightSetAngle = "494ceaa7-3520-4f5b-87e0-7dd08334730c";
-        public const string LightSetAngleInt = "873d8765-9dc7-41ea-87ef-dd6e32119af8";
+        public const string LightSetAngleDeprecated = "873d8765-9dc7-41ea-87ef-dd6e32119af8";
         public const string LightSetColor = "b2698906-68bd-4ea3-be98-35a23615b522";
         public const string LightSetColorIdDeprecated = "2b6d9368-2ddc-41fb-ac14-b1a3561b19fc";
+        public const string LightSetEnabled = "e30a20e6-8c98-4c9c-b0bc-bf8b0e11a74f";
         public const string LightSetIntensity = "aa6dc013-3f5b-45f4-87a2-8aa4d16cc375";
-        public const string LightSetIntensityInt = "902a47c8-3834-4858-bbae-5357281a507d";
+        public const string LightSetIntensityDeprecated = "902a47c8-3834-4858-bbae-5357281a507d";
         public const string LightSetRange = "214bb1b7-f808-4a36-9c10-113045b4fe44";
-        public const string LightSetRangeInt = "c3d0ef1f-921c-4602-a6eb-b03ed46d556f";
+        public const string LightSetRangeDeprecated = "c3d0ef1f-921c-4602-a6eb-b03ed46d556f";
         public const string LightSetSoftness = "7876451d-982d-4880-b78b-b3d02389af2c";
         public const string LightSetSpecularContribution = "723817f6-9562-4f36-b3cc-1c66da5ac3c6";
         public const string LightTurnOff = "0f96406e-af69-4f6c-a430-c6b004457ef4";
@@ -396,6 +401,7 @@ namespace RRCGGenerated
         public const string ListBoolVariable = "e0ef8c83-e5a6-4272-a102-07bfc0a40fd5";
         public const string ListClear = "2314f2f2-979b-4d4a-ab02-fc3e7fdddad6";
         public const string ListColorVariable = "9216dded-da74-49a7-a327-5750f4809787";
+        public const string ListCommunityEventVariable = "2be6c6b9-39da-4efd-abfa-c531d91aa641";
         public const string ListConcat = "0e2f21e0-bc71-423a-a983-72e27193ca8b";
         public const string ListContains = "73f261e2-d65d-4607-858d-3f4c37c76963";
         public const string ListCopy = "b336b889-407a-45c8-ad82-a89f4e033c05";
@@ -440,10 +446,14 @@ namespace RRCGGenerated
         public const string LocalPlayerGetIsThirdPersonActive = "d6d17e6f-855e-4f5a-9e33-843a788ce3a0";
         public const string LocalPlayerGetObjectiveLogContent = "809ba66c-8877-4d74-ac4b-2d0730a1b576";
         public const string LocalPlayerGetObjectiveLogEnabled = "ab20a5af-2d16-494c-b376-0fb5d2c59258";
+        public const string LocalPlayerIsUsingController = "00b3958e-4f84-42fa-acd8-cdb33dd44f25";
+        public const string LocalPlayerIsUsingKeyboardAndMouse = "859d380b-573e-4db7-94dd-82729dcc2e39";
+        public const string LocalPlayerIsUsingTouch = "cbe72a5a-4616-4213-b2d7-660c58642bab";
         public const string LocalPlayerIsVR = "f9101f3c-5b1d-4edc-b850-83bd72a4b1d4";
         public const string LocalPlayerOverridePlayerVoiceRolloffR2 = "bb4ff641-2267-45e0-9e07-fc480b04f478";
         public const string LocalPlayerRequestThirdPerson = "039fdbe0-31f2-4743-81ef-aa326b5e410f";
         public const string LocalPlayerSetGravityDisabledR2 = "6f88b273-5be6-4183-a772-902c45f4a5c7";
+        public const string LocalPlayerSetLocomotionVFXEnabledR2 = "f2604270-0397-40ca-a5a4-b799727eccfd";
         public const string LocalPlayerSetObjectiveLogContent = "a060bad3-3111-4b9d-add3-5e6af3a4a151";
         public const string LocalPlayerSetObjectiveLogEnabled = "5013021c-3243-4cc2-bd39-06abddb38c9c";
         public const string LocalPlayerSetPlayerNametagVisibility = "a73655df-b37b-4c02-a19a-4eb05ce75a14";
@@ -712,6 +722,7 @@ namespace RRCGGenerated
         public const string RangedWeaponSetTorsoDamage = "531dc709-286e-429c-9d51-537a63d74f76";
         public const string Raycast = "af203a1f-f3c9-479b-86f0-72224b094179";
         public const string RecalculateRoomAuthority = "d5df73b6-4b92-4867-ab3a-5d308876598b";
+        public const string RecRoomObjectGetAllChildrenWithTagR2 = "c8ead7ca-2727-4358-b52b-012d56aa707f";
         public const string RecRoomObjectGetAllWithTag = "02d69553-ae96-4c2d-8477-59ada6a66783";
         public const string RecRoomObjectGetAllWithTagNew = "6404b6b4-3bc4-4bbb-8d2c-058a6834e9e9";
         public const string RecRoomObjectGetAuthority = "9e51fcdc-87b4-4eee-a7b1-8d6f86a5fa6b";

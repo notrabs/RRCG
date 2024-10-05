@@ -110,7 +110,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public bool HasLineOfSightToTargetR1(AI Target)
+        public bool HasLineOfSightToTargetR1(AI target)
         {
             return default;
         }
@@ -118,7 +118,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public bool HasLineOfSightToTargetR1(Combatant Target)
+        public bool HasLineOfSightToTargetR1(Combatant target)
         {
             return default;
         }
@@ -126,7 +126,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public bool HasLineOfSightToTargetR1(RecRoomObject Target)
+        public bool HasLineOfSightToTargetR1(RecRoomObject target)
         {
             return default;
         }
@@ -134,7 +134,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public bool HasLineOfSightToTargetR1(PatrolPoint Target)
+        public bool HasLineOfSightToTargetR1(PatrolPoint target)
         {
             return default;
         }
@@ -142,7 +142,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public bool HasLineOfSightToTargetR1(Player Target)
+        public bool HasLineOfSightToTargetR1(Player target)
         {
             return default;
         }
@@ -150,7 +150,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if the input AI has line of sight to the input target.
         /// </summary>
-        public bool HasLineOfSightToTargetR1(Vector3 Target)
+        public bool HasLineOfSightToTargetR1(Vector3 target)
         {
             return default;
         }
@@ -158,7 +158,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Command an AI to look at the input target. If you want the AI to look in a passed in vector as a direction, set the “Look Target Is Direction” parameter to True. To make an AI stop looking, use the AI Stop Looking node.
         /// </summary>
-        public void LookAtR1(AI LookTarget, bool LookTargetisDirection)
+        public void LookAtR1(AI lookTarget, bool lookTargetIsDirection)
         {
             return;
         }
@@ -166,7 +166,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Command an AI to look at the input target. If you want the AI to look in a passed in vector as a direction, set the “Look Target Is Direction” parameter to True. To make an AI stop looking, use the AI Stop Looking node.
         /// </summary>
-        public void LookAtR1(Combatant LookTarget, bool LookTargetisDirection)
+        public void LookAtR1(Combatant lookTarget, bool lookTargetIsDirection)
         {
             return;
         }
@@ -174,7 +174,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Command an AI to look at the input target. If you want the AI to look in a passed in vector as a direction, set the “Look Target Is Direction” parameter to True. To make an AI stop looking, use the AI Stop Looking node.
         /// </summary>
-        public void LookAtR1(RecRoomObject LookTarget, bool LookTargetisDirection)
+        public void LookAtR1(RecRoomObject lookTarget, bool lookTargetIsDirection)
         {
             return;
         }
@@ -182,7 +182,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Command an AI to look at the input target. If you want the AI to look in a passed in vector as a direction, set the “Look Target Is Direction” parameter to True. To make an AI stop looking, use the AI Stop Looking node.
         /// </summary>
-        public void LookAtR1(PatrolPoint LookTarget, bool LookTargetisDirection)
+        public void LookAtR1(PatrolPoint lookTarget, bool lookTargetIsDirection)
         {
             return;
         }
@@ -190,7 +190,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Command an AI to look at the input target. If you want the AI to look in a passed in vector as a direction, set the “Look Target Is Direction” parameter to True. To make an AI stop looking, use the AI Stop Looking node.
         /// </summary>
-        public void LookAtR1(Player LookTarget, bool LookTargetisDirection)
+        public void LookAtR1(Player lookTarget, bool lookTargetIsDirection)
         {
             return;
         }
@@ -198,7 +198,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Command an AI to look at the input target. If you want the AI to look in a passed in vector as a direction, set the “Look Target Is Direction” parameter to True. To make an AI stop looking, use the AI Stop Looking node.
         /// </summary>
-        public void LookAtR1(Vector3 LookTarget, bool LookTargetisDirection)
+        public void LookAtR1(Vector3 lookTarget, bool lookTargetIsDirection)
         {
             return;
         }
@@ -206,7 +206,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands the AI to path to the input target destination.
         /// </summary>
-        public void PathToR1(AI Target)
+        public void PathToR1(AI target)
         {
             return;
         }
@@ -214,7 +214,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands the AI to path to the input target destination.
         /// </summary>
-        public void PathToR1(Combatant Target)
+        public void PathToR1(Combatant target)
         {
             return;
         }
@@ -222,7 +222,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands the AI to path to the input target destination.
         /// </summary>
-        public void PathToR1(RecRoomObject Target)
+        public void PathToR1(RecRoomObject target)
         {
             return;
         }
@@ -230,7 +230,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands the AI to path to the input target destination.
         /// </summary>
-        public void PathToR1(PatrolPoint Target)
+        public void PathToR1(PatrolPoint target)
         {
             return;
         }
@@ -238,7 +238,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands the AI to path to the input target destination.
         /// </summary>
-        public void PathToR1(Player Target)
+        public void PathToR1(Player target)
         {
             return;
         }
@@ -246,7 +246,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands the AI to path to the input target destination.
         /// </summary>
-        public void PathToR1(Vector3 Target)
+        public void PathToR1(Vector3 target)
         {
             return;
         }
@@ -254,7 +254,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands an AI to turn an inputted number of degrees. To command the AI to back to default rotating behavior, use the AI Stop Looking node.
         /// </summary>
-        public void RotateR1(float Rotation)
+        public void RotateR1(float rotation)
         {
             return;
         }
@@ -262,7 +262,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands an AI to turn an inputted number of degrees. To command the AI to back to default rotating behavior, use the AI Stop Looking node.
         /// </summary>
-        public void RotateR1(int Rotation)
+        public void RotateR1(int rotation)
         {
             return;
         }
@@ -270,7 +270,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Commands an AI to turn an inputted number of degrees. To command the AI to back to default rotating behavior, use the AI Stop Looking node.
         /// </summary>
-        public void RotateR1(Vector3 Rotation)
+        public void RotateR1(Vector3 rotation)
         {
             return;
         }
@@ -278,7 +278,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets an AI’s various LoS paramters. The “Cone” setting acts like a vision cone that sits in front of AIs like eyes, where the “Circle” setting acts like a radius around the AI. The Require LoS For Targetting parameter defines if AIs can see you through walls.
         /// </summary>
-        public void SetLineOfSightParametersR1(string VisionType, float VisionRange, float VisionConeAngle, float HearingRange, bool RequireLoSfortargeting)
+        public void SetLineOfSightParametersR1(string visionType, float visionRange, float visionConeAngle, float hearingRange, bool requireLoSForTargeting)
         {
             return;
         }
@@ -323,7 +323,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void CombatantReceiveDamageR1(int Damage, bool IgnoreShield, AI DamageSource)
+        public void CombatantReceiveDamageR1(int damage, bool ignoreShield, AI damageSource)
         {
             return;
         }
@@ -331,7 +331,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void CombatantReceiveDamageR1(int Damage, bool IgnoreShield, Combatant DamageSource)
+        public void CombatantReceiveDamageR1(int damage, bool ignoreShield, Combatant damageSource)
         {
             return;
         }
@@ -339,7 +339,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void CombatantReceiveDamageR1(int Damage, bool IgnoreShield, Player DamageSource)
+        public void CombatantReceiveDamageR1(int damage, bool ignoreShield, Player damageSource)
         {
             return;
         }
@@ -347,7 +347,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the Health property of an input combatant.
         /// </summary>
-        public void CombatantSetHealthR1(int Health)
+        public void CombatantSetHealthR1(int health)
         {
             return;
         }
@@ -355,7 +355,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(AI B)
+        public float Distance(AI b)
         {
             return default;
         }
@@ -363,7 +363,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(Combatant B)
+        public float Distance(Combatant b)
         {
             return default;
         }
@@ -371,7 +371,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(RecRoomObject B)
+        public float Distance(RecRoomObject b)
         {
             return default;
         }
@@ -379,7 +379,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(Player B)
+        public float Distance(Player b)
         {
             return default;
         }
@@ -387,7 +387,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(Vector3 B)
+        public float Distance(Vector3 b)
         {
             return default;
         }
@@ -395,7 +395,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(AI B)
+        public float DistanceDeprecated(AI b)
         {
             return default;
         }
@@ -403,7 +403,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(Combatant B)
+        public float DistanceDeprecated(Combatant b)
         {
             return default;
         }
@@ -411,7 +411,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(RecRoomObject B)
+        public float DistanceDeprecated(RecRoomObject b)
         {
             return default;
         }
@@ -419,7 +419,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(Player B)
+        public float DistanceDeprecated(Player b)
         {
             return default;
         }
@@ -427,7 +427,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(Vector3 B)
+        public float DistanceDeprecated(Vector3 b)
         {
             return default;
         }
@@ -435,7 +435,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(AI ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(AI referenceObject)
         {
             return default;
         }
@@ -443,7 +443,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(Combatant ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(Combatant referenceObject)
         {
             return default;
         }
@@ -451,7 +451,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(RecRoomObject ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(RecRoomObject referenceObject)
         {
             return default;
         }
@@ -459,7 +459,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(Player ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(Player referenceObject)
         {
             return default;
         }
@@ -552,7 +552,7 @@ namespace RRCGGenerated
             get => default;
         }
 
-        public void PlayAudioAtPosition(Vector3 Position, float Volume, float PlaybackSpeed, bool Is2D, PlayAudioAtPositionData config)
+        public void PlayAudioAtPosition(Vector3 position, float volume, float playbackSpeed, bool is2D, PlayAudioAtPositionData config)
         {
             return;
         }
@@ -676,7 +676,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public void Play(Audio Audio)
+        public void Play(Audio audio)
         {
             return;
         }
@@ -689,7 +689,7 @@ namespace RRCGGenerated
 
     public abstract class BackgroundObjectsGen : AnyObject
     {
-        public bool RoomBackgroundObjectsModifyR1(AlternativeExec<bool> BlendFinished)
+        public bool RoomBackgroundObjectsModifyR1(AlternativeExec<bool> blendFinished)
         {
             return default;
         }
@@ -697,7 +697,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Changes the room&apos;s shared background objects state to the given configuration.
         /// </summary>
-        public void RoomBackgroundObjectsModifyR2(float BlendTime, AlternativeExec BlendFinished)
+        public void RoomBackgroundObjectsModifyR2(float blendTime, AlternativeExec blendFinished)
         {
             return;
         }
@@ -705,7 +705,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Overrides the given player&apos;s room background objects state to the given configuration. This will take precedent over the room&apos;s shared background objects state.
         /// </summary>
-        public void RoomBackgroundObjectsPlayerOverrideR2(Player Player, float BlendTime, AlternativeExec BlendFinished)
+        public void RoomBackgroundObjectsPlayerOverrideR2(Player player, float blendTime, AlternativeExec blendFinished)
         {
             return;
         }
@@ -906,7 +906,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void ReceiveDamageR1(int Damage, bool IgnoreShield, AI DamageSource)
+        public void ReceiveDamageR1(int damage, bool ignoreShield, AI damageSource)
         {
             return;
         }
@@ -914,7 +914,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void ReceiveDamageR1(int Damage, bool IgnoreShield, Combatant DamageSource)
+        public void ReceiveDamageR1(int damage, bool ignoreShield, Combatant damageSource)
         {
             return;
         }
@@ -922,7 +922,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void ReceiveDamageR1(int Damage, bool IgnoreShield, Player DamageSource)
+        public void ReceiveDamageR1(int damage, bool ignoreShield, Player damageSource)
         {
             return;
         }
@@ -930,7 +930,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the Health property of an input combatant.
         /// </summary>
-        public void SetHealthR1(int Health)
+        public void SetHealthR1(int health)
         {
             return;
         }
@@ -943,7 +943,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(AI B)
+        public float Distance(AI b)
         {
             return default;
         }
@@ -951,7 +951,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(Combatant B)
+        public float Distance(Combatant b)
         {
             return default;
         }
@@ -959,7 +959,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(RecRoomObject B)
+        public float Distance(RecRoomObject b)
         {
             return default;
         }
@@ -967,7 +967,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(Player B)
+        public float Distance(Player b)
         {
             return default;
         }
@@ -975,7 +975,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(Vector3 B)
+        public float Distance(Vector3 b)
         {
             return default;
         }
@@ -983,7 +983,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(AI B)
+        public float DistanceDeprecated(AI b)
         {
             return default;
         }
@@ -991,7 +991,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(Combatant B)
+        public float DistanceDeprecated(Combatant b)
         {
             return default;
         }
@@ -999,7 +999,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(RecRoomObject B)
+        public float DistanceDeprecated(RecRoomObject b)
         {
             return default;
         }
@@ -1007,7 +1007,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(Player B)
+        public float DistanceDeprecated(Player b)
         {
             return default;
         }
@@ -1015,7 +1015,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(Vector3 B)
+        public float DistanceDeprecated(Vector3 b)
         {
             return default;
         }
@@ -1023,7 +1023,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(AI ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(AI referenceObject)
         {
             return default;
         }
@@ -1031,7 +1031,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(Combatant ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(Combatant referenceObject)
         {
             return default;
         }
@@ -1039,7 +1039,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(RecRoomObject ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(RecRoomObject referenceObject)
         {
             return default;
         }
@@ -1047,7 +1047,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(Player ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(Player referenceObject)
         {
             return default;
         }
@@ -1058,7 +1058,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Award a room consumable to a player. Multiple award room consumable requests from the same client are sent in bulk with a ten-second cooldown. The Success port will be TRUE if the consumable was entirely, or in part, awarded to the player. If the consumable could not be awarded, the Success port will be FALSE. Use the Log Output toggle in the configuration settings to see more information about why a failure occurred. Logging output may impact room performance and should be toggled off when not in use.
         /// </summary>
-        public bool AwardConsumableR1(Player Player, int Quantity, AlternativeExec<bool> OnAwardConsumableComplete)
+        public bool AwardConsumableR1(Player player, int quantity, AlternativeExec<bool> onAwardConsumableComplete)
         {
             return default;
         }
@@ -1082,7 +1082,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
         /// </summary>
-        public void ShowPurchasePromptR1(Player Player)
+        public void ShowPurchasePromptR1(Player player)
         {
             return;
         }
@@ -1101,7 +1101,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Equip a Player with a costume.
         /// </summary>
-        public void Equip(Player Player)
+        public void Equip(Player player)
         {
             return;
         }
@@ -1195,7 +1195,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Set the visibility and text of up to four buttons on the target Dialogue UI for the local player. Text will truncate after 512 characters. Buttons are automatically interactive when enabled. Each button will fire a Button Pressed event in the Dialogue UI’s board scope when pressed. Button visibility is dependent on the Dialogue UI being enabled.
         /// </summary>
-        public void SetButtonState(bool Button1Enabled, string Button1Text, bool Button2Enabled, string Button2Text, bool Button3Enabled, string Button3Text, bool Button4Enabled, string Button4Text)
+        public void SetButtonState(bool button1Enabled, string button1Text, bool button2Enabled, string button2Text, bool button3Enabled, string button3Text, bool button4Enabled, string button4Text)
         {
             return;
         }
@@ -1203,7 +1203,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the text of the target Dialogue UI’s main body for the local player. Text will truncate after 256 characters. If “Is interactive” is true, an arrow will appear in the lower right when the text has fully animated in, and the whole panel will be clickable for the player. The Next Pressed event will fire in the Dialogue UI’s board scope when this interactive panel is clicked.
         /// </summary>
-        public void SetDialogueText(string BodyText, bool IsInteractive)
+        public void SetDialogueText(string bodyText, bool isInteractive)
         {
             return;
         }
@@ -1377,7 +1377,7 @@ namespace RRCGGenerated
 
     public abstract class FogGen : AnyObject
     {
-        public bool RoomFogModifyR1(AlternativeExec<bool> BlendFinished)
+        public bool RoomFogModifyR1(AlternativeExec<bool> blendFinished)
         {
             return default;
         }
@@ -1385,7 +1385,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Changes the room&apos;s shared fog state to the given configuration.
         /// </summary>
-        public void RoomFogModifyR2(float BlendTime, AlternativeExec BlendFinished)
+        public void RoomFogModifyR2(float blendTime, AlternativeExec blendFinished)
         {
             return;
         }
@@ -1393,7 +1393,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Overrides the given player&apos;s room fog state to the given configuration. This will take precedent over the room&apos;s shared fog state.
         /// </summary>
-        public void RoomFogPlayerOverrideR2(Player Player, float BlendTime, AlternativeExec BlendFinished)
+        public void RoomFogPlayerOverrideR2(Player player, float blendTime, AlternativeExec blendFinished)
         {
             return;
         }
@@ -1422,7 +1422,7 @@ namespace RRCGGenerated
         /// <summary>
         /// On execution, the target Grabber will attempt to grab the specified object. If Steal From Player is true, it will steal the object from a player who has it held or holstered. If Snap to Grabber is true, the object will be moved to the Grabber’s position. If Snap to Grabber is false, the distance between Grabber and object at the moment of execution will be maintained until the object is released.
         /// </summary>
-        public bool GrabObjectR2(RecRoomObject Object, bool StealfromPlayer, bool SnaptoGrabber)
+        public bool GrabObjectR2(RecRoomObject @object, bool stealFromPlayer, bool snapToGrabber)
         {
             return default;
         }
@@ -1470,32 +1470,32 @@ namespace RRCGGenerated
             }
         }
 
-        public void AddBoostFuel(int Boostamount)
+        public void AddBoostFuel(int boostAmount)
         {
             return;
         }
 
-        public void ApplyBoost(AlternativeExec Failure)
+        public void ApplyBoost(AlternativeExec failure)
         {
             return;
         }
 
-        public Player GetSeatedPlayer(int Seatindex)
+        public Player GetSeatedPlayer(int seatIndex)
         {
             return default;
         }
 
-        public void SetSeatedPlayer(int Seatindex, Player Player, AlternativeExec Failure)
+        public void SetSeatedPlayer(int seatIndex, Player player, AlternativeExec failure)
         {
             return;
         }
 
-        public void UnseatPlayer(Player Player, AlternativeExec Failure)
+        public void UnseatPlayer(Player player, AlternativeExec failure)
         {
             return;
         }
 
-        public void UnseatPlayerFromSeat(int Seatindex, AlternativeExec Failure)
+        public void UnseatPlayerFromSeat(int seatIndex, AlternativeExec failure)
         {
             return;
         }
@@ -1583,17 +1583,17 @@ namespace RRCGGenerated
             }
         }
 
-        public void AddAutoAimRoleDeprecatedR1(string Role)
+        public void AddAutoAimRoleDeprecatedR1(string role)
         {
             return;
         }
 
-        public void ApplyRecoil(float AngleX, float AngleY, float Duration, float ReturnDuration)
+        public void ApplyRecoil(float angleX, float angleY, float duration, float returnDuration)
         {
             return;
         }
 
-        public Vector3 GetFiringDirection(RecRoomObject Source)
+        public Vector3 GetFiringDirection(RecRoomObject source)
         {
             return default;
         }
@@ -1632,7 +1632,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Plays haptic feedback through a held Handle object Duration is an integer in milliseconds between 1 and 500 Intensity is a float value from 0 to 1  At this time, haptics are only supported on VR. 
         /// </summary>
-        public void PlayHandleHaptics(int Duration, float Intensity)
+        public void PlayHandleHaptics(int duration, float intensity)
         {
             return;
         }
@@ -1679,7 +1679,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Load &amp; play Holotar Recording from the start through the Target Projector. Play will always begin the clip from 0s
         /// </summary>
-        public void Play(HolotarRecording Holotar)
+        public void Play(HolotarRecording holotar)
         {
             return;
         }
@@ -1838,7 +1838,7 @@ namespace RRCGGenerated
 
     public abstract class InventoryItemGen : AnyObject
     {
-        public (string Name, string Description, bool SupportsUseAction, RecNetImage Image, List<string> Tags) DefinitionR2
+        public (string Name, string Description, bool SupportsUseAction, RecNetImage Image) DefinitionR2
         {
             /// <summary>
             /// Gets the friendly name, description, image, and tag names of the given inventory item.
@@ -1857,7 +1857,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Add an inventory item to the given player.
         /// </summary>
-        public (bool Success, int TotalCount) AddR2(Player Player, int Quantity, AlternativeExec<(bool Success, int TotalCount)> Complete)
+        public (bool Success, int TotalCount) AddR2(Player player, int quantity, AlternativeExec<(bool Success, int TotalCount)> complete)
         {
             return default;
         }
@@ -1865,7 +1865,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Get the count of how many of the given inventory item the given player owns.
         /// </summary>
-        public int GetCountR2(Player Player, AlternativeExec<int> Complete)
+        public int GetCountR2(Player player, AlternativeExec<int> complete)
         {
             return default;
         }
@@ -1873,7 +1873,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Remove an inventory item from the given player.
         /// </summary>
-        public (bool Success, int TotalCount) RemoveR2(Player Player, int Quantity, AlternativeExec<(bool Success, int TotalCount)> Complete)
+        public (bool Success, int TotalCount) RemoveR2(Player player, int quantity, AlternativeExec<(bool Success, int TotalCount)> complete)
         {
             return default;
         }
@@ -1982,7 +1982,7 @@ namespace RRCGGenerated
             }
         }
 
-        public int AngleInt
+        public int AngleDeprecated
         {
             /// <summary>
             /// Sets the angle of the spotlight&apos;s cone.
@@ -2022,6 +2022,12 @@ namespace RRCGGenerated
             /// Returns True if the target light is emitting light.
             /// </summary>
             get => default;
+            /// <summary>
+            /// Sets whether or not a Light is enabled and will emit light.
+            /// </summary>
+            set
+            {
+            }
         }
 
         public float Intensity
@@ -2038,7 +2044,7 @@ namespace RRCGGenerated
             }
         }
 
-        public int IntensityInt
+        public int IntensityDeprecated
         {
             /// <summary>
             /// Sets the brightness level for a point light or a spotlight.
@@ -2062,7 +2068,7 @@ namespace RRCGGenerated
             }
         }
 
-        public int RangeInt
+        public int RangeDeprecated
         {
             /// <summary>
             /// Sets the range of a point light or a spotlight.
@@ -2297,7 +2303,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Objective Marker Attach To Player Or Object sets the position of target Objective Marker to the position of an object or a player, for the local player. Marker will track target object or player until position is set again. If a tracked player leaves the room, the marker will remain at the last tracked position.
         /// </summary>
-        public void AttachToPlayerOrObject(Player PlayerOrObject)
+        public void AttachToPlayerOrObject(Player playerOrObject)
         {
             return;
         }
@@ -2305,7 +2311,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Objective Marker Attach To Player Or Object sets the position of target Objective Marker to the position of an object or a player, for the local player. Marker will track target object or player until position is set again. If a tracked player leaves the room, the marker will remain at the last tracked position.
         /// </summary>
-        public void AttachToPlayerOrObject(RecRoomObject PlayerOrObject)
+        public void AttachToPlayerOrObject(RecRoomObject playerOrObject)
         {
             return;
         }
@@ -2417,7 +2423,7 @@ namespace RRCGGenerated
         /// It will slow down once it is within Slowdown Distance of the target
         /// And stop once it is within Arrival Distance of the target
         /// </summary>
-        public void StartPathingToPositionR2(Vector3 TargetPosition, float SlowdownDistance, float ArrivalDistance)
+        public void StartPathingToPositionR2(Vector3 targetPosition, float slowdownDistance, float arrivalDistance)
         {
             return;
         }
@@ -2428,7 +2434,7 @@ namespace RRCGGenerated
         /// It will slow down once it is within Slowdown Angle (in degrees) of the target
         /// And stop once it is within Arrival Angle (in degrees) of the target
         /// </summary>
-        public void StartRotatingToDirectionR2(Vector3 TargetDirection, float SlowdownAngle, float ArrivalAngle)
+        public void StartRotatingToDirectionR2(Vector3 targetDirection, float slowdownAngle, float arrivalAngle)
         {
             return;
         }
@@ -2794,6 +2800,18 @@ namespace RRCGGenerated
         {
             /// <summary>
             /// Returns the local players balance of one room currency. Configure this chip to selecht which currency to use.
+            /// </summary>
+            set
+            {
+            }
+        }
+
+        public object GoToEvent
+        {
+            /// <summary>
+            /// Sends a player to a community event.
+            /// 
+            /// If the event is not currently happening, shows the page for it on the watch.
             /// </summary>
             set
             {
@@ -3680,7 +3698,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds a tag to the input object or player.
         /// </summary>
-        public void AddTag(string Tag)
+        public void AddTag(string tag)
         {
             return;
         }
@@ -3688,7 +3706,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds tags to the input object or player.
         /// </summary>
-        public void AddTags(List<string> Tags)
+        public void AddTags(List<string> tags)
         {
             return;
         }
@@ -3696,7 +3714,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Award some amount to the Player&apos;s balance of one room currency. Configure this chip to set the affected currency.
         /// </summary>
-        public (bool Success, int TotalBalance) AwardCurrencyDeprecatedR1(int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
+        public (bool Success, int TotalBalance) AwardCurrencyDeprecatedR1(int amount, AlternativeExec<(bool Success, int TotalBalance)> onAwardCurrencyComplete)
         {
             return default;
         }
@@ -3728,7 +3746,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void CombatantReceiveDamageR1(int Damage, bool IgnoreShield, AI DamageSource)
+        public void CombatantReceiveDamageR1(int damage, bool ignoreShield, AI damageSource)
         {
             return;
         }
@@ -3736,7 +3754,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void CombatantReceiveDamageR1(int Damage, bool IgnoreShield, Combatant DamageSource)
+        public void CombatantReceiveDamageR1(int damage, bool ignoreShield, Combatant damageSource)
         {
             return;
         }
@@ -3744,7 +3762,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Deals damage to the given target combatant with various parameters.
         /// </summary>
-        public void CombatantReceiveDamageR1(int Damage, bool IgnoreShield, Player DamageSource)
+        public void CombatantReceiveDamageR1(int damage, bool ignoreShield, Player damageSource)
         {
             return;
         }
@@ -3752,7 +3770,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the Health property of an input combatant.
         /// </summary>
-        public void CombatantSetHealthR1(int Health)
+        public void CombatantSetHealthR1(int health)
         {
             return;
         }
@@ -3760,7 +3778,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(AI B)
+        public float Distance(AI b)
         {
             return default;
         }
@@ -3768,7 +3786,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(Combatant B)
+        public float Distance(Combatant b)
         {
             return default;
         }
@@ -3776,7 +3794,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(RecRoomObject B)
+        public float Distance(RecRoomObject b)
         {
             return default;
         }
@@ -3784,7 +3802,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(Player B)
+        public float Distance(Player b)
         {
             return default;
         }
@@ -3792,7 +3810,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(Vector3 B)
+        public float Distance(Vector3 b)
         {
             return default;
         }
@@ -3800,7 +3818,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(AI B)
+        public float DistanceDeprecated(AI b)
         {
             return default;
         }
@@ -3808,7 +3826,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(Combatant B)
+        public float DistanceDeprecated(Combatant b)
         {
             return default;
         }
@@ -3816,7 +3834,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(RecRoomObject B)
+        public float DistanceDeprecated(RecRoomObject b)
         {
             return default;
         }
@@ -3824,7 +3842,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(Player B)
+        public float DistanceDeprecated(Player b)
         {
             return default;
         }
@@ -3832,17 +3850,17 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(Vector3 B)
+        public float DistanceDeprecated(Vector3 b)
         {
             return default;
         }
 
-        public bool EquipObjectToDominantHand(RecRoomObject ObjectToEquip, bool ForceEquip, bool Steal)
+        public bool EquipObjectToDominantHand(RecRoomObject objectToEquip, bool forceEquip, bool steal)
         {
             return default;
         }
 
-        public bool EquipObjectToOffHand(RecRoomObject ObjectToEquip, bool ForceEquip, bool Steal)
+        public bool EquipObjectToOffHand(RecRoomObject objectToEquip, bool forceEquip, bool steal)
         {
             return default;
         }
@@ -3851,7 +3869,7 @@ namespace RRCGGenerated
         /// Equips Share Camera to a player&apos;s dominant hand if the player is not already holding the Share Camera.
         /// Returns success if the target player is already holding their Share Camera in either hand.
         /// </summary>
-        public bool EquipShareCamera(bool ForceEquip)
+        public bool EquipShareCamera(bool forceEquip)
         {
             return default;
         }
@@ -3859,7 +3877,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public (RecRoomObject Closest, int ClosestIndex, float Distance) GetClosest(List<RecRoomObject> Targets)
+        public (RecRoomObject Closest, int ClosestIndex, float Distance) GetClosest(List<RecRoomObject> targets)
         {
             return default;
         }
@@ -3867,7 +3885,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public (Player Closest, int ClosestIndex, float Distance) GetClosest(List<Player> Targets)
+        public (Player Closest, int ClosestIndex, float Distance) GetClosest(List<Player> targets)
         {
             return default;
         }
@@ -3875,7 +3893,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public (Vector3 Closest, int ClosestIndex, float Distance) GetClosest(List<Vector3> Targets)
+        public (Vector3 Closest, int ClosestIndex, float Distance) GetClosest(List<Vector3> targets)
         {
             return default;
         }
@@ -3883,7 +3901,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public (RecRoomObject Farthest, int FarthestIndex, float Distance) GetFarthest(List<RecRoomObject> Targets)
+        public (RecRoomObject Farthest, int FarthestIndex, float Distance) GetFarthest(List<RecRoomObject> targets)
         {
             return default;
         }
@@ -3891,7 +3909,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public (Player Farthest, int FarthestIndex, float Distance) GetFarthest(List<Player> Targets)
+        public (Player Farthest, int FarthestIndex, float Distance) GetFarthest(List<Player> targets)
         {
             return default;
         }
@@ -3899,7 +3917,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public (Vector3 Farthest, int FarthestIndex, float Distance) GetFarthest(List<Vector3> Targets)
+        public (Vector3 Farthest, int FarthestIndex, float Distance) GetFarthest(List<Vector3> targets)
         {
             return default;
         }
@@ -3907,7 +3925,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(AI ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(AI referenceObject)
         {
             return default;
         }
@@ -3915,7 +3933,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(Combatant ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(Combatant referenceObject)
         {
             return default;
         }
@@ -3923,7 +3941,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(RecRoomObject ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(RecRoomObject referenceObject)
         {
             return default;
         }
@@ -3931,7 +3949,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(Player ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(Player referenceObject)
         {
             return default;
         }
@@ -3939,7 +3957,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the rotation of the target as a quaternion, in the coordinate space defined by the reference object.
         /// </summary>
-        public Quaternion GetRotationInReferenceObjectSpace(RecRoomObject ReferenceObject)
+        public Quaternion GetRotationInReferenceObjectSpace(RecRoomObject referenceObject)
         {
             return default;
         }
@@ -3947,7 +3965,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the rotation of the target as a quaternion, in the coordinate space defined by the reference object.
         /// </summary>
-        public Quaternion GetRotationInReferenceObjectSpace(Player ReferenceObject)
+        public Quaternion GetRotationInReferenceObjectSpace(Player referenceObject)
         {
             return default;
         }
@@ -3955,7 +3973,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Grants the contents of a Reward to the specified Player.
         /// </summary>
-        public bool GrantReward(Reward Reward, AlternativeExec<bool> OnAwardComplete)
+        public bool GrantReward(Reward reward, AlternativeExec<bool> onAwardComplete)
         {
             return default;
         }
@@ -3963,12 +3981,12 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs True if the input object or player has the input tag.
         /// </summary>
-        public bool HasTag(string Tag)
+        public bool HasTag(string tag)
         {
             return default;
         }
 
-        public bool HolsterObject(RecRoomObject ObjectToHolster, bool ForceHolster, bool Steal)
+        public bool HolsterObject(RecRoomObject objectToHolster, bool forceHolster, bool steal)
         {
             return default;
         }
@@ -3976,7 +3994,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Runs Has Tag if the input object or player has the input tag, otherwise runs Does Not Have Tag
         /// </summary>
-        public void IfHasTag(string Tag, AlternativeExec DoesNotHaveTag)
+        public void IfHasTag(string tag, AlternativeExec doesNotHaveTag)
         {
             return;
         }
@@ -3984,7 +4002,7 @@ namespace RRCGGenerated
         /// <summary>
         /// The &quot;Should Run&quot; port will exec a) if the input player is local or b) if input player is invalid and the local player has authority of the current context.
         /// </summary>
-        public void IfLocalPlayerShouldRun(AlternativeExec ShouldNotRun)
+        public void IfLocalPlayerShouldRun(AlternativeExec shouldNotRun)
         {
             return;
         }
@@ -3992,7 +4010,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Runs Has Role if the input player has the input role, otherwise runs Does Not Have Role.
         /// </summary>
-        public void IfPlayerHasRoleR1(string Role, AlternativeExec DoesNotHaveRole)
+        public void IfPlayerHasRoleR1(string role, AlternativeExec doesNotHaveRole)
         {
             return;
         }
@@ -4000,7 +4018,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if a player is the local player or not.
         /// </summary>
-        public void IfPlayerIsLocal(AlternativeExec IsNotLocal)
+        public void IfPlayerIsLocal(AlternativeExec isNotLocal)
         {
             return;
         }
@@ -4008,7 +4026,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Runs Is Valid if the input player is not null, otherwise runs Is Not Valid. Players can be not valid if a variable is never set or if a player has left the room.
         /// </summary>
-        public void IfPlayerIsValid(AlternativeExec IsNotValid)
+        public void IfPlayerIsValid(AlternativeExec isNotValid)
         {
             return;
         }
@@ -4016,7 +4034,7 @@ namespace RRCGGenerated
         /// <summary>
         /// If the input player is invalid, this runs Is Not Valid. If the input player is valid but not the local player, this runs Is Valid And Not Local. If the input player is both valid and the local player, this runs Is Valid And Local. Players can be invalid if a variable is never set or if a player has left the room.
         /// </summary>
-        public void IfPlayerIsValidAndLocal(AlternativeExec IsNotValid, AlternativeExec IsValidAndNotLocal)
+        public void IfPlayerIsValidAndLocal(AlternativeExec isNotValid, AlternativeExec isValidAndNotLocal)
         {
             return;
         }
@@ -4024,7 +4042,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Get the leaderboard stat for the given player on the given stat channel.
         /// </summary>
-        public int LeaderboardGetPlayerStat(int Channel, AlternativeExec<int> OnGetStatComplete)
+        public int LeaderboardGetPlayerStat(int channel, AlternativeExec<int> onGetStatComplete)
         {
             return default;
         }
@@ -4050,7 +4068,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Enables the local player to interact with the provided player. To respond to interactions, configure a &quot;Event Receiver&quot; chip for the &quot;Local Player... Interaction&quot; events within a Player board. Hold duration is the number of seconds the player needs to hold the interact button to complete an interaction. If Hold duration is 0, the interaction will be a button press or tap on mobile platforms. Prompt is the string that will be displayed when a player interacts with the provided player.  Players will be interactive only for the players that ran this chip with them as the target player. Individual players may have different sets of players they can interact with. A player&apos;s interaction state is reset when the room is reset or reloaded. Enabling interactions with a player will make it so gestures do not work with them generally (e.g.: fistbumping, high-fiving, handshaking).
         /// </summary>
-        public void LocalPlayerEnableInteractionWithTargetPlayer(float RequiredHoldDuration, string Prompt)
+        public void LocalPlayerEnableInteractionWithTargetPlayer(float requiredHoldDuration, string prompt)
         {
             return;
         }
@@ -4058,7 +4076,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Control whether the player sees the nametag of the target player.It takes priority over role settings.Reset the room to remove the effect of this chip.
         /// </summary>
-        public void LocalPlayerSetPlayerNametagVisibility(bool Enabled)
+        public void LocalPlayerSetPlayerNametagVisibility(bool enabled)
         {
             return;
         }
@@ -4066,7 +4084,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds a Role to a Player.
         /// </summary>
-        public void AddRoleR1(string Value)
+        public void AddRoleR1(string value)
         {
             return;
         }
@@ -4074,7 +4092,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Award XP to specified player. Will not function correctly unless Room Progression is enabled in Room Settings.
         /// </summary>
-        public bool AwardXP(int Amount, AlternativeExec<bool> OnAwardComplete)
+        public bool AwardXP(int amount, AlternativeExec<bool> onAwardComplete)
         {
             return default;
         }
@@ -4090,7 +4108,7 @@ namespace RRCGGenerated
         /// <summary>
         /// For the target player, equip the specified Inventory Item to the specified Inventory Equipment Slot. If the Slot is of Inventory type, this chip will take effect whether or not the Slot is enabled, but the Slot must then be enabled separately.
         /// </summary>
-        public bool EquipInventoryItemR2(InventoryItem InventoryItem, EquipmentSlot InventoryEquipmentSlot, AlternativeExec<bool> OnEquipComplete)
+        public bool EquipInventoryItemR2(InventoryItem inventoryItem, EquipmentSlot inventoryEquipmentSlot, AlternativeExec<bool> onEquipComplete)
         {
             return default;
         }
@@ -4107,7 +4125,7 @@ namespace RRCGGenerated
         /// <summary>
         /// For the target player, get whether the specified equipment slot is enabled.
         /// </summary>
-        public bool GetEquipmentSlotIsEnabledR2(EquipmentSlot EquipmentSlot)
+        public bool GetEquipmentSlotIsEnabledR2(EquipmentSlot equipmentSlot)
         {
             return default;
         }
@@ -4115,7 +4133,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs if a Player is authority of the input object.
         /// </summary>
-        public bool GetIsAuthorityOf(RecRoomObject Object)
+        public bool GetIsAuthorityOf(RecRoomObject @object)
         {
             return default;
         }
@@ -4132,7 +4150,7 @@ namespace RRCGGenerated
             return default;
         }
 
-        public bool HasPurchasedRoomOfferR2(RoomOffer RoomOffer, AlternativeExec<bool> OnPlayerHasPurchasedRoomOfferComplete)
+        public bool HasPurchasedRoomOfferR2(RoomOffer roomOffer, AlternativeExec<bool> onPlayerHasPurchasedRoomOfferComplete)
         {
             return default;
         }
@@ -4140,7 +4158,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs True if the input player has the input role.
         /// </summary>
-        public bool HasRoleR1(string Value)
+        public bool HasRoleR1(string value)
         {
             return default;
         }
@@ -4148,12 +4166,12 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns true if the given player owns at least one of the given inventory item.
         /// </summary>
-        public bool OwnsInventoryItemR2(InventoryItem InventoryItem, AlternativeExec<bool> Complete)
+        public bool OwnsInventoryItemR2(InventoryItem inventoryItem, AlternativeExec<bool> complete)
         {
             return default;
         }
 
-        public bool OwnsRoomKeyR1(RoomKey RoomKey, AlternativeExec<bool> OnPlayerOwnsRoomKeyComplete)
+        public bool OwnsRoomKeyR1(RoomKey roomKey, AlternativeExec<bool> onPlayerOwnsRoomKeyComplete)
         {
             return default;
         }
@@ -4161,7 +4179,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sends a prompt to the specified player containing the prompt title and body, along with each of the answer choices on its own line. The player can choose a response and hit &quot;ok,&quot; triggering the On Prompt Complete event. Since there is a delay between sending a prompt and receiving the response in which other responses may be received, the Player output can be used to disambiguate multiple responses. This prompt appears in the watch and can either bring the watch up automatically, or trigger a watch notification and show up when the player next opens their watch. To use a watch notification, disable the Immediate setting on the chip with the configure tool.
         /// </summary>
-        public (bool Success, Player ReceivingPlayer, string Response, int ResponseIndex) PromptMultipleChoice(string PromptTitle, string PromptBody, List<string> AnswerChoices, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response, int ResponseIndex)> OnPromptComplete)
+        public (bool Success, Player ReceivingPlayer, string Response, int ResponseIndex) PromptMultipleChoice(string promptTitle, string promptBody, List<string> answerChoices, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response, int ResponseIndex)> onPromptComplete)
         {
             return default;
         }
@@ -4169,7 +4187,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sends a prompt to the specified player where they can input text, which is then returned by this chip&apos;s output. This prompt appears in the watch and can either bring the watch up automatically, or trigger a watch notification and show up when the player next opens their watch. To use a watch notification, disable the Immediate setting on the chip with the configure tool.
         /// </summary>
-        public (bool Success, Player ReceivingPlayer, string Response) PromptText(string PromptTitle, string PromptBody, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response)> OnPromptComplete)
+        public (bool Success, Player ReceivingPlayer, string Response) PromptText(string promptTitle, string promptBody, AlternativeExec<(bool Success, Player ReceivingPlayer, string Response)> onPromptComplete)
         {
             return default;
         }
@@ -4177,7 +4195,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Removes the input role from a target player.
         /// </summary>
-        public void RemoveRoleR1(string Value)
+        public void RemoveRoleR1(string value)
         {
             return;
         }
@@ -4193,7 +4211,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Enables the specified equipment slot on the target player
         /// </summary>
-        public void SetEquipmentSlotIsEnabledR2(EquipmentSlot EquipmentSlot, bool IsEnabled)
+        public void SetEquipmentSlotIsEnabledR2(EquipmentSlot equipmentSlot, bool isEnabled)
         {
             return;
         }
@@ -4201,7 +4219,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Displays a subtitle for a specified duration. If there is already a subtitle showing, it will be replaced only if this subtitle has an equal or higher priority. If the string is more than 200 characters, it will be displayed in multiple subtitles, each lasting a fraction of the total duration. Escape characters are ignored.
         /// </summary>
-        public void ShowSubtitle(string Subtitle, float Duration, int Priority)
+        public void ShowSubtitle(string subtitle, float duration, int priority)
         {
             return;
         }
@@ -4209,7 +4227,7 @@ namespace RRCGGenerated
         /// <summary>
         /// For the specified player, unequip anything which is equipped to the specified slot. If the slot is of Inventory type, this chip will take effect whether or not the slot is enabled.
         /// </summary>
-        public bool UnequipFromSlotR2(EquipmentSlot EquipmentSlot, AlternativeExec<bool> OnUnequipComplete)
+        public bool UnequipFromSlotR2(EquipmentSlot equipmentSlot, AlternativeExec<bool> onUnequipComplete)
         {
             return default;
         }
@@ -4217,7 +4235,7 @@ namespace RRCGGenerated
         /// <summary>
         /// For the target player, unequip the specified Inventory Item from any slot to which it is equipped.
         /// </summary>
-        public bool UnequipInventoryItemR2(InventoryItem InventoryItem, AlternativeExec<bool> OnUnequipComplete)
+        public bool UnequipInventoryItemR2(InventoryItem inventoryItem, AlternativeExec<bool> onUnequipComplete)
         {
             return default;
         }
@@ -4249,7 +4267,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Removes a tag from the input object or player.
         /// </summary>
-        public void RemoveTag(string Tag)
+        public void RemoveTag(string tag)
         {
             return;
         }
@@ -4257,7 +4275,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Removes the input list of tags from the input object or player.
         /// </summary>
-        public void RemoveTags(List<string> Tags)
+        public void RemoveTags(List<string> tags)
         {
             return;
         }
@@ -4265,7 +4283,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the velocity of the input target, similar to Velocity Set, but reapplies every physics tick until either the input duration has elapsed, the authority of the input target has changed, or another impulsing CV2 chip has been executed against the same input target.
         /// </summary>
-        public void RequestVelocitySetOverDuration(float Multiplier, Vector3 Velocity, float Duration)
+        public void RequestVelocitySetOverDuration(float multiplier, Vector3 velocity, float duration)
         {
             return;
         }
@@ -4281,7 +4299,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position and rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, selected/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool Respawn(Vector3 Position, Vector3 Rotation, float SpawnRadius, bool ClearVelocity, bool UseRezEffects)
+        public bool Respawn(Vector3 position, Vector3 rotation, float spawnRadius, bool clearVelocity, bool useRezEffects)
         {
             return default;
         }
@@ -4289,7 +4307,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position and rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, selected/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool Respawn(Vector3 Position, Quaternion Rotation, float SpawnRadius, bool ClearVelocity, bool UseRezEffects)
+        public bool Respawn(Vector3 position, Quaternion rotation, float spawnRadius, bool clearVelocity, bool useRezEffects)
         {
             return default;
         }
@@ -4297,7 +4315,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position and rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, selected/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public void RespawnDeprecated(Vector3 Position, Vector3 Rotation, float SpawnRadius, bool ClearVelocity, bool UseRezEffects, AlternativeExec Failed)
+        public void RespawnDeprecated(Vector3 position, Vector3 rotation, float spawnRadius, bool clearVelocity, bool useRezEffects, AlternativeExec failed)
         {
             return;
         }
@@ -4305,12 +4323,12 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position and rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, selected/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public void RespawnDeprecated(Vector3 Position, Quaternion Rotation, float SpawnRadius, bool ClearVelocity, bool UseRezEffects, AlternativeExec Failed)
+        public void RespawnDeprecated(Vector3 position, Quaternion rotation, float spawnRadius, bool clearVelocity, bool useRezEffects, AlternativeExec failed)
         {
             return;
         }
 
-        public void RespawnPointRespawnPlayer(bool ClearVelocity, bool UseRezEffects)
+        public void RespawnPointRespawnPlayer(bool clearVelocity, bool useRezEffects)
         {
             return;
         }
@@ -4318,7 +4336,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Clears the given player&apos;s local room background objects state override.
         /// </summary>
-        public void RoomBackgroundObjectsClearPlayerOverrideR2(float BlendTime, AlternativeExec BlendFinished)
+        public void RoomBackgroundObjectsClearPlayerOverrideR2(float blendTime, AlternativeExec blendFinished)
         {
             return;
         }
@@ -4326,7 +4344,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Clears the given player&apos;s local room fog state override.
         /// </summary>
-        public void RoomFogClearPlayerOverrideR2(float BlendTime, AlternativeExec BlendFinished)
+        public void RoomFogClearPlayerOverrideR2(float blendTime, AlternativeExec blendFinished)
         {
             return;
         }
@@ -4334,7 +4352,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Clears the given player&apos;s local room skydome state override.
         /// </summary>
-        public void RoomSkydomeClearPlayerOverrideR2(float BlendTime, AlternativeExec BlendFinished)
+        public void RoomSkydomeClearPlayerOverrideR2(float blendTime, AlternativeExec blendFinished)
         {
             return;
         }
@@ -4342,7 +4360,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Clears the given player&apos;s local room sun state override.
         /// </summary>
-        public void RoomSunClearPlayerOverrideR2(float BlendTime, AlternativeExec BlendFinished)
+        public void RoomSunClearPlayerOverrideR2(float blendTime, AlternativeExec blendFinished)
         {
             return;
         }
@@ -4350,7 +4368,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Start a screen shake effect for the given player. This will have no effect on VR players.
         /// </summary>
-        public void SetCameraShake(float Intensity, float Duration)
+        public void SetCameraShake(float intensity, float duration)
         {
             return;
         }
@@ -4358,7 +4376,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Apply a vignette of the given color to the given player. The vignette will be displayed at the given intensity for the given duration, and then fade out. The intensity must be between 0 and 1.
         /// </summary>
-        public void SetVignette(float Time, Color Color, float Intensity)
+        public void SetVignette(float time, Color color, float intensity)
         {
             return;
         }
@@ -4366,7 +4384,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position of the target player or object. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public void SetPositionDeprecated(Vector3 Position, AlternativeExec Failed)
+        public void SetPositionDeprecated(Vector3 position, AlternativeExec failed)
         {
             return;
         }
@@ -4374,7 +4392,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position of the target player or object in the coordinate space defined by the reference object. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool SetPositionInReferenceObjectSpace(Vector3 Position, Player ReferenceObject)
+        public bool SetPositionInReferenceObjectSpace(Vector3 position, Player referenceObject)
         {
             return default;
         }
@@ -4382,7 +4400,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position of the target player or object in the coordinate space defined by the reference object. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool SetPositionInReferenceObjectSpace(Vector3 Position, RecRoomObject ReferenceObject)
+        public bool SetPositionInReferenceObjectSpace(Vector3 position, RecRoomObject referenceObject)
         {
             return default;
         }
@@ -4390,7 +4408,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool SetRotation(Vector3 Rotation)
+        public bool SetRotation(Vector3 rotation)
         {
             return default;
         }
@@ -4398,7 +4416,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool SetRotation(Quaternion Rotation)
+        public bool SetRotation(Quaternion rotation)
         {
             return default;
         }
@@ -4406,7 +4424,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
         /// </summary>
-        public bool SetRotationInReferenceObjectSpace(Vector3 Rotation, Player ReferenceObject)
+        public bool SetRotationInReferenceObjectSpace(Vector3 rotation, Player referenceObject)
         {
             return default;
         }
@@ -4414,7 +4432,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
         /// </summary>
-        public bool SetRotationInReferenceObjectSpace(Vector3 Rotation, RecRoomObject ReferenceObject)
+        public bool SetRotationInReferenceObjectSpace(Vector3 rotation, RecRoomObject referenceObject)
         {
             return default;
         }
@@ -4422,7 +4440,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
         /// </summary>
-        public bool SetRotationInReferenceObjectSpace(Quaternion Rotation, Player ReferenceObject)
+        public bool SetRotationInReferenceObjectSpace(Quaternion rotation, Player referenceObject)
         {
             return default;
         }
@@ -4430,7 +4448,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
         /// </summary>
-        public bool SetRotationInReferenceObjectSpace(Quaternion Rotation, RecRoomObject ReferenceObject)
+        public bool SetRotationInReferenceObjectSpace(Quaternion rotation, RecRoomObject referenceObject)
         {
             return default;
         }
@@ -4438,7 +4456,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the transform (position and rotation) of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool SetTransform(Vector3 Position, Vector3 Rotation)
+        public bool SetTransform(Vector3 position, Vector3 rotation)
         {
             return default;
         }
@@ -4446,7 +4464,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the transform (position and rotation) of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool SetTransform(Vector3 Position, Quaternion Rotation)
+        public bool SetTransform(Vector3 position, Quaternion rotation)
         {
             return default;
         }
@@ -4454,7 +4472,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
         /// </summary>
-        public bool SetTransformInReferenceObjectSpace(Vector3 Position, Vector3 Rotation, Player ReferenceObject)
+        public bool SetTransformInReferenceObjectSpace(Vector3 position, Vector3 rotation, Player referenceObject)
         {
             return default;
         }
@@ -4462,7 +4480,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
         /// </summary>
-        public bool SetTransformInReferenceObjectSpace(Vector3 Position, Vector3 Rotation, RecRoomObject ReferenceObject)
+        public bool SetTransformInReferenceObjectSpace(Vector3 position, Vector3 rotation, RecRoomObject referenceObject)
         {
             return default;
         }
@@ -4470,7 +4488,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
         /// </summary>
-        public bool SetTransformInReferenceObjectSpace(Vector3 Position, Quaternion Rotation, Player ReferenceObject)
+        public bool SetTransformInReferenceObjectSpace(Vector3 position, Quaternion rotation, Player referenceObject)
         {
             return default;
         }
@@ -4478,7 +4496,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
         /// </summary>
-        public bool SetTransformInReferenceObjectSpace(Vector3 Position, Quaternion Rotation, RecRoomObject ReferenceObject)
+        public bool SetTransformInReferenceObjectSpace(Vector3 position, Quaternion rotation, RecRoomObject referenceObject)
         {
             return default;
         }
@@ -4486,7 +4504,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Shows a player a banner notification. Appearance can be customized in the config menu!
         /// </summary>
-        public void ShowBannerNotification(string Title, string MainText, float Duration)
+        public void ShowBannerNotification(string title, string mainText, float duration)
         {
             return;
         }
@@ -4494,7 +4512,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Prints the input notification to the given player&apos;s screen.
         /// </summary>
-        public void ShowNotification<T>(string Value)
+        public void ShowNotification<T>(string value)
         {
             return;
         }
@@ -4502,7 +4520,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Shows a player a notification about a single reward or a list of up to 4 rewards. Appearance can be customized in the config menu! Triggering this chip multiple times will queue the notifications up in order of execution, and each will play subsequently after the previous duration is reached.
         /// </summary>
-        public void ShowRewardNotification(Reward Reward, float Duration)
+        public void ShowRewardNotification(Reward reward, float duration)
         {
             return;
         }
@@ -4510,7 +4528,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Shows a player a notification about a single reward or a list of up to 4 rewards. Appearance can be customized in the config menu! Triggering this chip multiple times will queue the notifications up in order of execution, and each will play subsequently after the previous duration is reached.
         /// </summary>
-        public void ShowRewardNotification(List<Reward> Reward, float Duration)
+        public void ShowRewardNotification(List<Reward> reward, float duration)
         {
             return;
         }
@@ -4523,7 +4541,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public List<RecRoomObject> UnequipFromSlotsR1(bool DominantHand, bool OffHand, bool LeftHipHolster, bool RightHipHolster, bool ShoulderHolster)
+        public List<RecRoomObject> UnequipFromSlotsR1(bool dominantHand, bool offHand, bool leftHipHolster, bool rightHipHolster, bool shoulderHolster)
         {
             return default;
         }
@@ -4531,7 +4549,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds velocity to the input target. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocityAdd(float Multiplier, Vector3 Velocity, float MaximumSpeed)
+        public void VelocityAdd(float multiplier, Vector3 velocity, float maximumSpeed)
         {
             return;
         }
@@ -4539,7 +4557,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds velocity to the input target. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocityAddDeprecated(float Speed, Vector3 Direction, float MaximumSpeed)
+        public void VelocityAddDeprecated(float speed, Vector3 direction, float maximumSpeed)
         {
             return;
         }
@@ -4547,7 +4565,7 @@ namespace RRCGGenerated
         /// <summary>
         /// The input target&apos;s velocity parallel to the input direction vector is reflected along the input direction and velocities perpendicular to it, are maintained. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocityReflect(float AdditionalSpeed, float SpeedMultiplier, Vector3 Direction, float MaximumSpeed)
+        public void VelocityReflect(float additionalSpeed, float speedMultiplier, Vector3 direction, float maximumSpeed)
         {
             return;
         }
@@ -4555,7 +4573,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Momentarily sets the velocity of the input target in the input direction. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocitySet(float Multiplier, Vector3 Velocity)
+        public void VelocitySet(float multiplier, Vector3 velocity)
         {
             return;
         }
@@ -4563,7 +4581,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Momentarily sets the velocity of the input target in the input direction. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocitySetDeprecated(float Speed, Vector3 Direction)
+        public void VelocitySetDeprecated(float speed, Vector3 direction)
         {
             return;
         }
@@ -4583,47 +4601,47 @@ namespace RRCGGenerated
             }
         }
 
-        public bool AddAvoidRoleR1(string Role)
+        public bool AddAvoidRoleR1(string role)
         {
             return default;
         }
 
-        public void AddAvoidTag(string Tag)
+        public void AddAvoidTag(string tag)
         {
             return;
         }
 
-        public bool AddSpawnRoleR1(string Role)
+        public bool AddSpawnRoleR1(string role)
         {
             return default;
         }
 
-        public void AddSpawnTag(string Tag)
+        public void AddSpawnTag(string tag)
         {
             return;
         }
 
-        public void RemoveAvoidRoleR1(string Role)
+        public void RemoveAvoidRoleR1(string role)
         {
             return;
         }
 
-        public void RemoveAvoidTag(string Tag)
+        public void RemoveAvoidTag(string tag)
         {
             return;
         }
 
-        public void RemoveSpawnRoleR1(string Role)
+        public void RemoveSpawnRoleR1(string role)
         {
             return;
         }
 
-        public void RemoveSpawnTag(string Tag)
+        public void RemoveSpawnTag(string tag)
         {
             return;
         }
 
-        public void RespawnPlayerAtRespawnPoint(Player Player, bool ClearVelocity, bool UseRezEffects)
+        public void RespawnPlayerAtRespawnPoint(Player player, bool clearVelocity, bool useRezEffects)
         {
             return;
         }
@@ -4634,7 +4652,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Displays a target UI configuration above a given player.
         /// </summary>
-        public void DisplayPlayerWorldUI(Player Player)
+        public void DisplayPlayerWorldUI(Player player)
         {
             return;
         }
@@ -4688,7 +4706,7 @@ namespace RRCGGenerated
             }
         }
 
-        public void FireProjectile(Vector3 Direction)
+        public void FireProjectile(Vector3 direction)
         {
             return;
         }
@@ -4699,7 +4717,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Enable or disable the specified Quick Chat Table for the specified player. If a different set of custom Quick Chat phrases is already enabled, this will overwrite it.
         /// </summary>
-        public void SetEnabled(Player Player, bool Enabled)
+        public void SetEnabled(Player player, bool enabled)
         {
             return;
         }
@@ -4924,7 +4942,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds a tag to the input object or player.
         /// </summary>
-        public void AddTag(string Tag)
+        public void AddTag(string tag)
         {
             return;
         }
@@ -4932,7 +4950,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds tags to the input object or player.
         /// </summary>
-        public void AddTags(List<string> Tags)
+        public void AddTags(List<string> tags)
         {
             return;
         }
@@ -4940,17 +4958,17 @@ namespace RRCGGenerated
         /// <summary>
         /// Add angular velocity to an object. The Angular Velocity vector should lie along the axis of the rotation being added, with a magnitude that (once multiplied by the speed multiplier) represents the clockwise rotation speed in deg/s. Once the new angular velocity has been computed, its speed will be capped by the Max Angular Speed.
         /// </summary>
-        public bool AngularVelocityAdd(Vector3 AngularVelocity, float SpeedMultiplier, float MaxAngularSpeed)
+        public bool AngularVelocityAdd(Vector3 angularVelocity, float speedMultiplier, float maxAngularSpeed)
         {
             return default;
         }
 
-        public void AngularVelocityAddDeprecated(Vector3 Rotation, float VelocityMultiplier, float MaxAngularVelocityApplied)
+        public void AngularVelocityAddDeprecated(Vector3 rotation, float velocityMultiplier, float maxAngularVelocityApplied)
         {
             return;
         }
 
-        public void AngularVelocityAddDeprecated(Quaternion Rotation, float VelocityMultiplier, float MaxAngularVelocityApplied)
+        public void AngularVelocityAddDeprecated(Quaternion rotation, float velocityMultiplier, float maxAngularVelocityApplied)
         {
             return;
         }
@@ -4958,17 +4976,17 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the angular velocity of an object. The Angular Velocity vector should lie along the axis of rotation, with a magnitude that (once multiplied by the speed multiplier) represents the clockwise rotation speed in deg/s.
         /// </summary>
-        public bool AngularVelocitySet(Vector3 AngularVelocity, float SpeedMultiplier)
+        public bool AngularVelocitySet(Vector3 angularVelocity, float speedMultiplier)
         {
             return default;
         }
 
-        public void AngularVelocitySetDeprecated(Vector3 Rotation, float VelocityMultiplier)
+        public void AngularVelocitySetDeprecated(Vector3 rotation, float velocityMultiplier)
         {
             return;
         }
 
-        public void AngularVelocitySetDeprecated(Quaternion Rotation, float VelocityMultiplier)
+        public void AngularVelocitySetDeprecated(Quaternion rotation, float velocityMultiplier)
         {
             return;
         }
@@ -4976,7 +4994,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(AI B)
+        public float Distance(AI b)
         {
             return default;
         }
@@ -4984,7 +5002,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(Combatant B)
+        public float Distance(Combatant b)
         {
             return default;
         }
@@ -4992,7 +5010,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(RecRoomObject B)
+        public float Distance(RecRoomObject b)
         {
             return default;
         }
@@ -5000,7 +5018,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(Player B)
+        public float Distance(Player b)
         {
             return default;
         }
@@ -5008,7 +5026,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float Distance(Vector3 B)
+        public float Distance(Vector3 b)
         {
             return default;
         }
@@ -5016,7 +5034,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(AI B)
+        public float DistanceDeprecated(AI b)
         {
             return default;
         }
@@ -5024,7 +5042,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(Combatant B)
+        public float DistanceDeprecated(Combatant b)
         {
             return default;
         }
@@ -5032,7 +5050,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(RecRoomObject B)
+        public float DistanceDeprecated(RecRoomObject b)
         {
             return default;
         }
@@ -5040,7 +5058,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(Player B)
+        public float DistanceDeprecated(Player b)
         {
             return default;
         }
@@ -5048,7 +5066,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the distance between the input objects.
         /// </summary>
-        public float DistanceDeprecated(Vector3 B)
+        public float DistanceDeprecated(Vector3 b)
         {
             return default;
         }
@@ -5064,7 +5082,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public (RecRoomObject Closest, int ClosestIndex, float Distance) GetClosest(List<RecRoomObject> Targets)
+        public (RecRoomObject Closest, int ClosestIndex, float Distance) GetClosest(List<RecRoomObject> targets)
         {
             return default;
         }
@@ -5072,7 +5090,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public (Player Closest, int ClosestIndex, float Distance) GetClosest(List<Player> Targets)
+        public (Player Closest, int ClosestIndex, float Distance) GetClosest(List<Player> targets)
         {
             return default;
         }
@@ -5080,7 +5098,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is closest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public (Vector3 Closest, int ClosestIndex, float Distance) GetClosest(List<Vector3> Targets)
+        public (Vector3 Closest, int ClosestIndex, float Distance) GetClosest(List<Vector3> targets)
         {
             return default;
         }
@@ -5088,7 +5106,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public (RecRoomObject Farthest, int FarthestIndex, float Distance) GetFarthest(List<RecRoomObject> Targets)
+        public (RecRoomObject Farthest, int FarthestIndex, float Distance) GetFarthest(List<RecRoomObject> targets)
         {
             return default;
         }
@@ -5096,7 +5114,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public (Player Farthest, int FarthestIndex, float Distance) GetFarthest(List<Player> Targets)
+        public (Player Farthest, int FarthestIndex, float Distance) GetFarthest(List<Player> targets)
         {
             return default;
         }
@@ -5104,7 +5122,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Finds the element in Targets that is farthest in space to Origin, and returns it, its index in the list, and its distance to Origin.
         /// </summary>
-        public (Vector3 Farthest, int FarthestIndex, float Distance) GetFarthest(List<Vector3> Targets)
+        public (Vector3 Farthest, int FarthestIndex, float Distance) GetFarthest(List<Vector3> targets)
         {
             return default;
         }
@@ -5112,7 +5130,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(AI ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(AI referenceObject)
         {
             return default;
         }
@@ -5120,7 +5138,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(Combatant ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(Combatant referenceObject)
         {
             return default;
         }
@@ -5128,7 +5146,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(RecRoomObject ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(RecRoomObject referenceObject)
         {
             return default;
         }
@@ -5136,7 +5154,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the position of the input object as a vector3, in the coordinate space defined by the reference object.
         /// </summary>
-        public Vector3 GetPositionInReferenceObjectSpace(Player ReferenceObject)
+        public Vector3 GetPositionInReferenceObjectSpace(Player referenceObject)
         {
             return default;
         }
@@ -5144,7 +5162,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the rotation of the target as a quaternion, in the coordinate space defined by the reference object.
         /// </summary>
-        public Quaternion GetRotationInReferenceObjectSpace(RecRoomObject ReferenceObject)
+        public Quaternion GetRotationInReferenceObjectSpace(RecRoomObject referenceObject)
         {
             return default;
         }
@@ -5152,7 +5170,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs the rotation of the target as a quaternion, in the coordinate space defined by the reference object.
         /// </summary>
-        public Quaternion GetRotationInReferenceObjectSpace(Player ReferenceObject)
+        public Quaternion GetRotationInReferenceObjectSpace(Player referenceObject)
         {
             return default;
         }
@@ -5160,7 +5178,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Outputs True if the input object or player has the input tag.
         /// </summary>
-        public bool HasTag(string Tag)
+        public bool HasTag(string tag)
         {
             return default;
         }
@@ -5168,9 +5186,17 @@ namespace RRCGGenerated
         /// <summary>
         /// Runs Has Tag if the input object or player has the input tag, otherwise runs Does Not Have Tag
         /// </summary>
-        public void IfHasTag(string Tag, AlternativeExec DoesNotHaveTag)
+        public void IfHasTag(string tag, AlternativeExec doesNotHaveTag)
         {
             return;
+        }
+
+        /// <summary>
+        /// Searches the room for all objects with the input tag and outputs a list of their direct children and all descendants in the hierarchy.
+        /// </summary>
+        public List<RecRoomObject> GetAllChildrenWithTagR2(string tag)
+        {
+            return default;
         }
 
         /// <summary>
@@ -5189,7 +5215,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Removes a tag from the input object or player.
         /// </summary>
-        public void RemoveTag(string Tag)
+        public void RemoveTag(string tag)
         {
             return;
         }
@@ -5197,7 +5223,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Removes the input list of tags from the input object or player.
         /// </summary>
-        public void RemoveTags(List<string> Tags)
+        public void RemoveTags(List<string> tags)
         {
             return;
         }
@@ -5213,7 +5239,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the velocity of the input target, similar to Velocity Set, but reapplies every physics tick until either the input duration has elapsed, the authority of the input target has changed, or another impulsing CV2 chip has been executed against the same input target.
         /// </summary>
-        public void RequestVelocitySetOverDuration(float Multiplier, Vector3 Velocity, float Duration)
+        public void RequestVelocitySetOverDuration(float multiplier, Vector3 velocity, float duration)
         {
             return;
         }
@@ -5221,7 +5247,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position and rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, selected/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool Respawn(Vector3 Position, Vector3 Rotation, float SpawnRadius, bool ClearVelocity, bool UseRezEffects)
+        public bool Respawn(Vector3 position, Vector3 rotation, float spawnRadius, bool clearVelocity, bool useRezEffects)
         {
             return default;
         }
@@ -5229,7 +5255,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position and rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, selected/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool Respawn(Vector3 Position, Quaternion Rotation, float SpawnRadius, bool ClearVelocity, bool UseRezEffects)
+        public bool Respawn(Vector3 position, Quaternion rotation, float spawnRadius, bool clearVelocity, bool useRezEffects)
         {
             return default;
         }
@@ -5237,7 +5263,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position and rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, selected/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public void RespawnDeprecated(Vector3 Position, Vector3 Rotation, float SpawnRadius, bool ClearVelocity, bool UseRezEffects, AlternativeExec Failed)
+        public void RespawnDeprecated(Vector3 position, Vector3 rotation, float spawnRadius, bool clearVelocity, bool useRezEffects, AlternativeExec failed)
         {
             return;
         }
@@ -5245,7 +5271,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position and rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, selected/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public void RespawnDeprecated(Vector3 Position, Quaternion Rotation, float SpawnRadius, bool ClearVelocity, bool UseRezEffects, AlternativeExec Failed)
+        public void RespawnDeprecated(Vector3 position, Quaternion rotation, float spawnRadius, bool clearVelocity, bool useRezEffects, AlternativeExec failed)
         {
             return;
         }
@@ -5253,7 +5279,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position of the target player or object. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public void SetPositionDeprecated(Vector3 Position, AlternativeExec Failed)
+        public void SetPositionDeprecated(Vector3 position, AlternativeExec failed)
         {
             return;
         }
@@ -5261,7 +5287,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position of the target player or object in the coordinate space defined by the reference object. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool SetPositionInReferenceObjectSpace(Vector3 Position, Player ReferenceObject)
+        public bool SetPositionInReferenceObjectSpace(Vector3 position, Player referenceObject)
         {
             return default;
         }
@@ -5269,7 +5295,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the position of the target player or object in the coordinate space defined by the reference object. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool SetPositionInReferenceObjectSpace(Vector3 Position, RecRoomObject ReferenceObject)
+        public bool SetPositionInReferenceObjectSpace(Vector3 position, RecRoomObject referenceObject)
         {
             return default;
         }
@@ -5277,7 +5303,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool SetRotation(Vector3 Rotation)
+        public bool SetRotation(Vector3 rotation)
         {
             return default;
         }
@@ -5285,7 +5311,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the rotation of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool SetRotation(Quaternion Rotation)
+        public bool SetRotation(Quaternion rotation)
         {
             return default;
         }
@@ -5293,7 +5319,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
         /// </summary>
-        public bool SetRotationInReferenceObjectSpace(Vector3 Rotation, Player ReferenceObject)
+        public bool SetRotationInReferenceObjectSpace(Vector3 rotation, Player referenceObject)
         {
             return default;
         }
@@ -5301,7 +5327,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
         /// </summary>
-        public bool SetRotationInReferenceObjectSpace(Vector3 Rotation, RecRoomObject ReferenceObject)
+        public bool SetRotationInReferenceObjectSpace(Vector3 rotation, RecRoomObject referenceObject)
         {
             return default;
         }
@@ -5309,7 +5335,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
         /// </summary>
-        public bool SetRotationInReferenceObjectSpace(Quaternion Rotation, Player ReferenceObject)
+        public bool SetRotationInReferenceObjectSpace(Quaternion rotation, Player referenceObject)
         {
             return default;
         }
@@ -5317,7 +5343,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the rotation of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated. 
         /// </summary>
-        public bool SetRotationInReferenceObjectSpace(Quaternion Rotation, RecRoomObject ReferenceObject)
+        public bool SetRotationInReferenceObjectSpace(Quaternion rotation, RecRoomObject referenceObject)
         {
             return default;
         }
@@ -5325,7 +5351,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the transform (position and rotation) of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool SetTransform(Vector3 Position, Vector3 Rotation)
+        public bool SetTransform(Vector3 position, Vector3 rotation)
         {
             return default;
         }
@@ -5333,7 +5359,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the transform (position and rotation) of the target player or object. Players will rotate about the vertical axis only. Will fail in the following cases: If the target object is currently held, select/frozen by the maker pen, or is the child of a gizmo. Will also fail on players that are seated.
         /// </summary>
-        public bool SetTransform(Vector3 Position, Quaternion Rotation)
+        public bool SetTransform(Vector3 position, Quaternion rotation)
         {
             return default;
         }
@@ -5341,7 +5367,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
         /// </summary>
-        public bool SetTransformInReferenceObjectSpace(Vector3 Position, Vector3 Rotation, Player ReferenceObject)
+        public bool SetTransformInReferenceObjectSpace(Vector3 position, Vector3 rotation, Player referenceObject)
         {
             return default;
         }
@@ -5349,7 +5375,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
         /// </summary>
-        public bool SetTransformInReferenceObjectSpace(Vector3 Position, Vector3 Rotation, RecRoomObject ReferenceObject)
+        public bool SetTransformInReferenceObjectSpace(Vector3 position, Vector3 rotation, RecRoomObject referenceObject)
         {
             return default;
         }
@@ -5357,7 +5383,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
         /// </summary>
-        public bool SetTransformInReferenceObjectSpace(Vector3 Position, Quaternion Rotation, Player ReferenceObject)
+        public bool SetTransformInReferenceObjectSpace(Vector3 position, Quaternion rotation, Player referenceObject)
         {
             return default;
         }
@@ -5365,12 +5391,12 @@ namespace RRCGGenerated
         /// <summary>
         /// Sets the transform (position and rotation) of the target player or object in the coordinate space defined by the reference object. Fails if the target object is marked as static (as all child objects are by default) or if it or its parent is selected/frozen by the maker pen. Will also fail on players that are seated.  
         /// </summary>
-        public bool SetTransformInReferenceObjectSpace(Vector3 Position, Quaternion Rotation, RecRoomObject ReferenceObject)
+        public bool SetTransformInReferenceObjectSpace(Vector3 position, Quaternion rotation, RecRoomObject referenceObject)
         {
             return default;
         }
 
-        public void SpawnerInternalStartSpawningR1(int Amountofobjectstospawn, float Timebetweenspawns, Vector3 SpawnPosition)
+        public void SpawnerInternalStartSpawningR1(int amountOfObjectsToSpawn, float timeBetweenSpawns, Vector3 spawnPosition)
         {
             return;
         }
@@ -5388,7 +5414,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds velocity to the input target. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocityAdd(float Multiplier, Vector3 Velocity, float MaximumSpeed)
+        public void VelocityAdd(float multiplier, Vector3 velocity, float maximumSpeed)
         {
             return;
         }
@@ -5396,7 +5422,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Adds velocity to the input target. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocityAddDeprecated(float Speed, Vector3 Direction, float MaximumSpeed)
+        public void VelocityAddDeprecated(float speed, Vector3 direction, float maximumSpeed)
         {
             return;
         }
@@ -5404,7 +5430,7 @@ namespace RRCGGenerated
         /// <summary>
         /// The input target&apos;s velocity parallel to the input direction vector is reflected along the input direction and velocities perpendicular to it, are maintained. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocityReflect(float AdditionalSpeed, float SpeedMultiplier, Vector3 Direction, float MaximumSpeed)
+        public void VelocityReflect(float additionalSpeed, float speedMultiplier, Vector3 direction, float maximumSpeed)
         {
             return;
         }
@@ -5412,7 +5438,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Momentarily sets the velocity of the input target in the input direction. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocitySet(float Multiplier, Vector3 Velocity)
+        public void VelocitySet(float multiplier, Vector3 velocity)
         {
             return;
         }
@@ -5420,7 +5446,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Momentarily sets the velocity of the input target in the input direction. The input velocity will be multiplied by the magnitude of the vector provided in the input direction.
         /// </summary>
-        public void VelocitySetDeprecated(float Speed, Vector3 Direction)
+        public void VelocitySetDeprecated(float speed, Vector3 direction)
         {
             return;
         }
@@ -5449,7 +5475,7 @@ namespace RRCGGenerated
         /// 
         /// When the object is spawned, On Spawn Complete will fire and pass through an object reference. If it fails, such as when the limit of objects has been hit, the object reference will be invalid and the Success bool will be false.
         /// </summary>
-        public (RecRoomObject Object, bool Success) SpawnNextObjectR2(Vector3 Position, Quaternion Orientation, bool AssigntoPlayer, Player Player, AlternativeExec<(RecRoomObject Object, bool Success)> OnSpawnComplete)
+        public (RecRoomObject Object, bool Success) SpawnNextObjectR2(Vector3 position, Quaternion orientation, bool assignToPlayer, Player player, AlternativeExec<(RecRoomObject Object, bool Success)> onSpawnComplete)
         {
             return default;
         }
@@ -5464,7 +5490,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Award some amount to the Player&apos;s balance of the given room currency.
         /// </summary>
-        public (bool Success, int TotalBalance) AwardCurrencyR1(Player Player, int Amount, AlternativeExec<(bool Success, int TotalBalance)> OnAwardCurrencyComplete)
+        public (bool Success, int TotalBalance) AwardCurrencyR1(Player player, int amount, AlternativeExec<(bool Success, int TotalBalance)> onAwardCurrencyComplete)
         {
             return default;
         }
@@ -5472,7 +5498,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Returns the given player&apos;s balance of the given room currency.
         /// </summary>
-        public (bool Success, int TotalBalance) GetCurrencyBalanceR1(Player Player, AlternativeExec<(bool Success, int TotalBalance)> OnGetBalanceComplete)
+        public (bool Success, int TotalBalance) GetCurrencyBalanceR1(Player player, AlternativeExec<(bool Success, int TotalBalance)> onGetBalanceComplete)
         {
             return default;
         }
@@ -5480,7 +5506,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
         /// </summary>
-        public void ShowPurchasePromptR1(Player Player)
+        public void ShowPurchasePromptR1(Player player)
         {
             return;
         }
@@ -5512,7 +5538,7 @@ namespace RRCGGenerated
         /// The Success port will be TRUE if the key was successfully unlocked for the player or if the player previously owned the key. If the key could not be awarded the Success port will be FALSE.
         /// Use the Log Output toggle in the configuration settings to see more information about why a failure occurred. Logging output may impact room performance and should be toggled off when not in use.
         /// </summary>
-        public bool AwardRoomKeyR1(Player Player, AlternativeExec<bool> OnAwardRoomKeyComplete)
+        public bool AwardRoomKeyR1(Player player, AlternativeExec<bool> onAwardRoomKeyComplete)
         {
             return default;
         }
@@ -5520,7 +5546,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Show player a purchase prompt for a Room Key or Room Consumable. If called too many times sequentially, the purchase prompt will appear as a Watch notification, instead of as a popup.
         /// </summary>
-        public void ShowPurchasePromptR1(Player Player)
+        public void ShowPurchasePromptR1(Player player)
         {
             return;
         }
@@ -5532,7 +5558,7 @@ namespace RRCGGenerated
 
     public abstract class RoomOfferGen : AnyObject
     {
-        public void ShowPurchasePromptR2(Player Player)
+        public void ShowPurchasePromptR2(Player player)
         {
             return;
         }
@@ -5638,7 +5664,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Seats an input player on a target Seat.
         /// </summary>
-        public void SetSeatedPlayer(Player Player, AlternativeExec Fail)
+        public void SetSeatedPlayer(Player player, AlternativeExec fail)
         {
             return;
         }
@@ -5692,7 +5718,7 @@ namespace RRCGGenerated
 
     public abstract class SkydomeGen : AnyObject
     {
-        public bool RoomSkydomeModifyR1(AlternativeExec<bool> BlendFinished)
+        public bool RoomSkydomeModifyR1(AlternativeExec<bool> blendFinished)
         {
             return default;
         }
@@ -5700,7 +5726,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Changes the room&apos;s shared skydome state to the given configuration.
         /// </summary>
-        public void RoomSkydomeModifyR2(float BlendTime, AlternativeExec BlendFinished)
+        public void RoomSkydomeModifyR2(float blendTime, AlternativeExec blendFinished)
         {
             return;
         }
@@ -5708,7 +5734,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Overrides the given player&apos;s room skydome state to the given configuration. This will take precedent over the room&apos;s shared skydome state.
         /// </summary>
-        public void RoomSkydomePlayerOverrideR2(Player Player, float BlendTime, AlternativeExec BlendFinished)
+        public void RoomSkydomePlayerOverrideR2(Player player, float blendTime, AlternativeExec blendFinished)
         {
             return;
         }
@@ -5753,82 +5779,82 @@ namespace RRCGGenerated
             }
         }
 
-        public void StudioEventSender(string Event)
+        public void StudioEventSender(string @event)
         {
             return;
         }
 
-        public void StudioEventSenderBool(string Event, bool Value)
+        public void StudioEventSenderBool(string @event, bool value)
         {
             return;
         }
 
-        public void StudioEventSenderFloat(string Event, float Value)
+        public void StudioEventSenderFloat(string @event, float value)
         {
             return;
         }
 
-        public void StudioEventSenderInt(string Event, int Value)
+        public void StudioEventSenderInt(string @event, int value)
         {
             return;
         }
 
-        public void StudioEventSenderString(string Event, string Value)
+        public void StudioEventSenderString(string @event, string value)
         {
             return;
         }
 
-        public void StudioEventSenderStringBool(string Event, string Value0, bool Value1)
+        public void StudioEventSenderStringBool(string @event, string value0, bool value1)
         {
             return;
         }
 
-        public void StudioEventSenderStringFloat(string Event, string Value0, float Value1)
+        public void StudioEventSenderStringFloat(string @event, string value0, float value1)
         {
             return;
         }
 
-        public void StudioEventSenderStringInt(string Event, string Value0, int Value1)
+        public void StudioEventSenderStringInt(string @event, string value0, int value1)
         {
             return;
         }
 
-        public void StudioEventSenderStringString(string Event, string Value0, string Value1)
+        public void StudioEventSenderStringString(string @event, string value0, string value1)
         {
             return;
         }
 
-        public bool GetPropertyBool(string Property)
+        public bool GetPropertyBool(string property)
         {
             return default;
         }
 
-        public Color GetPropertyColor(string Property)
+        public Color GetPropertyColor(string property)
         {
             return default;
         }
 
-        public float GetPropertyFloat(string Property)
+        public float GetPropertyFloat(string property)
         {
             return default;
         }
 
-        public int GetPropertyInt(string Property)
+        public int GetPropertyInt(string property)
         {
             return default;
         }
 
-        public Quaternion GetPropertyQuaternion(string Property)
+        public Quaternion GetPropertyQuaternion(string property)
         {
             return default;
         }
 
-        public string GetPropertyString(string Property)
+        public string GetPropertyString(string property)
         {
             return default;
         }
 
-        public Vector3 GetPropertyVector3(string Property)
+        public Vector3 GetPropertyVector3(string property)
         {
             return default;
         }
@@ -5836,7 +5862,7 @@ namespace RRCGGenerated
 
     public abstract class SunGen : AnyObject
     {
-        public bool RoomSunModifyR1(SunDirection SunDirection, AlternativeExec<bool> BlendFinished)
+        public bool RoomSunModifyR1(SunDirection sunDirection, AlternativeExec<bool> blendFinished)
         {
             return default;
         }
@@ -5844,7 +5870,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Changes the room&apos;s shared sun state to the given configuration.
         /// </summary>
-        public void RoomSunModifyR2(SunDirection SunDirection, float BlendTime, AlternativeExec BlendFinished)
+        public void RoomSunModifyR2(SunDirection sunDirection, float blendTime, AlternativeExec blendFinished)
         {
             return;
         }
@@ -5852,7 +5878,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Overrides the given player&apos;s room sun state to the given configuration. This will take precedent over the room&apos;s shared sun state.
         /// </summary>
-        public void RoomSunPlayerOverrideR2(SunDirection SunDirection, Player Player, float BlendTime, AlternativeExec BlendFinished)
+        public void RoomSunPlayerOverrideR2(SunDirection sunDirection, Player player, float blendTime, AlternativeExec blendFinished)
         {
             return;
         }
@@ -5928,7 +5954,7 @@ namespace RRCGGenerated
             return;
         }
 
-        public void PrintTextToScreen(string Text, Color Color)
+        public void PrintTextToScreen(string text, Color color)
         {
             return;
         }
@@ -6101,7 +6127,7 @@ namespace RRCGGenerated
         /// <summary>
         /// Gets the direction and magnitude of the Vector Component.
         /// </summary>
-        public Vector3 GetVector(float Magnitude)
+        public Vector3 GetVector(float magnitude)
         {
             return default;
         }
