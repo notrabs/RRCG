@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static RRCG.GraphUtils;
 
 namespace RRCGBuild
 {
@@ -120,10 +121,12 @@ namespace RRCGBuild
 
         public virtual void AddConnection(Connection connection)
         {
-            if (connection.From.Node.Context != this)
+            // Only throw an exception, if the context is a concrete context. The connections will be checked again, once an Analysis context is merged into a real one
+            if (connection.From.Node.Context != this && !(connection.From.Node.Context is GraphAnalysisContext))
                 throw new Exception("Can't connect from a node in another context!");
 
-            if (connection.To.Node.Context != this)
+            // Only throw an exception, if the context is a concrete context. The connections will be checked again, once an Analysis context is merged into a real one
+            if (connection.To.Node.Context != this && !(connection.To.Node.Context is GraphAnalysisContext))
                 throw new Exception("Can't connect to a node in another context!");
 
             Connections.Add(connection);
