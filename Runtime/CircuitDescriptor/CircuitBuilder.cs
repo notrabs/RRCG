@@ -298,10 +298,10 @@ namespace RRCGBuild
         {
         }
 
-        public static void StudioEventReceiver(string eventName, Guid eventId)
+        public static void StudioEventReceiver(string eventName, Guid eventId = default)
         {
             CircuitBuilder.Singleton("StudioEventReceiver_" + eventName, () => EventDefinition(eventName, eventId));
-            EventReceiver(eventName, eventId);
+            EventReceiver(eventId);
         }
 
         /// <summary>
@@ -1251,7 +1251,7 @@ namespace RRCGBuild
             if (!port.EquivalentTo(node.Port(0, 1))) goto fail;
 
             // All checks pass, create the event receiver
-            return EventReceiver<T>(node.VariableData.Name + " Changed", Guid.Empty);
+            return EventReceiver<T>(node.VariableData.Name + " Changed");
 
         fail: // I didn't want to duplicate the message
             throw new ArgumentException("The memberVariable argument must refer to a variable output port!");

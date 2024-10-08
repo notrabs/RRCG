@@ -103,11 +103,13 @@ namespace RRCG
     );
 
     public record EventReceiverData(
-       string EventName
+        string EventName,
+        Guid EventId
     );
 
     public record EventSenderData(
         string EventName,
+        Guid EventId,
         EventTarget EventTarget
     );
 

@@ -14,14 +14,37 @@ namespace RRCGBuild
         // Event Nodes
         // 
         #region EventNodes
-        public static void EventReceiver(string eventName, Guid eventId)
+
+        public static void EventReceiver(string eventName)
         {
-            EventReceiver(new EventReceiverData(eventName));
+            EventReceiver(new EventReceiverData(eventName, Guid.Empty));
         }
 
-        public static T EventReceiver<T>(string eventName, Guid eventId) where T : new()
+        public static void EventReceiver(Guid eventId)
         {
-            EventReceiver(eventName, eventId);
+            EventReceiver(new EventReceiverData(null, eventId));
+        }
+
+        public static T EventReceiver<T>(string eventName) where T : new()
+        {
+            EventReceiver(eventName);
+            return ReadEventReceiverData<T>();
+        }
+
+        public static T EventReceiver<T>(Guid eventId) where T : new()
+        {
+            EventReceiver(eventId);
+            return ReadEventReceiverData<T>();
+        }
+
+        public static T EventReceiver<T>(EventReceiverData receiverData) where T : new()
+        {
+            EventReceiver(receiverData);
+            return ReadEventReceiverData<T>();
+        }
+
+        private static T ReadEventReceiverData<T>() where T : new()
+        {
             Node node = Context.lastSpawnedNode;
 
             if (typeof(AnyPort).IsAssignableFrom(typeof(T)))
@@ -55,13 +78,23 @@ namespace RRCGBuild
             }
         }
 
-        internal static void EventSender(string eventName, Guid eventId, EventTarget eventTarget, params AnyPort[] inputs)
+        internal static void EventSender(EventSenderData eventData, params AnyPort[] inputs)
         {
-            EventSender(new EventSenderData(eventName, eventTarget));
+            EventSender(eventData);
             var node = Context.lastSpawnedNode;
 
             for (var i = 0; i < inputs.Length; i++)
                 node.ConnectInputPort(inputs[i], node.Port(0, 1 + i));
+        }
+
+        internal static void EventSender(string eventName, EventTarget eventTarget, params AnyPort[] inputs)
+        {
+            EventSender(new EventSenderData(eventName, Guid.Empty, eventTarget), inputs);
+        }
+
+        internal static void EventSender(Guid eventId, EventTarget eventTarget, params AnyPort[] inputs)
+        {
+            EventSender(new EventSenderData(null, eventId, eventTarget), inputs);
         }
 
         internal static void EventDefinition(string eventName, Guid eventId, params (StringPort, Type)[] eventDefinition)
