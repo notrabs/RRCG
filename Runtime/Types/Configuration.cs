@@ -98,6 +98,7 @@ namespace RRCG
 
     public record EventDefinitionData(
        string EventName,
+       Guid EventId,
        (string, Type)[] EventDefinition
     );
 

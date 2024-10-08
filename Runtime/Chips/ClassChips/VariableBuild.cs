@@ -7,6 +7,7 @@ namespace RRCGBuild
 {
     public enum VariableKind
     {
+        None = -1,
         Local,
         Synced,
         Cloud
@@ -109,7 +110,7 @@ namespace RRCGBuild
         }
 
         AnyPort IVariable.ChangedEvent() => ChangedEvent();
-        public T ChangedEvent() => ChipBuilder.EventReceiver<T>(name + " Changed");
+        public T ChangedEvent() => ChipBuilder.EventReceiver<T>(name + " Changed", Guid.Empty);
 
         IVariable IVariable.ChangedEvent(AlternativeExec<AnyPort> OnChanged) => (IVariable)ChangedEvent(v => OnChanged(v));
         public IVariable<T> ChangedEvent(AlternativeExec<T> OnChanged)
