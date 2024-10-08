@@ -143,7 +143,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1) => base.SendRoomAuthority(value0, value1);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1) => base.SendPlayer(player, value0, value1);
 
-        public (T0, T1) Receiver() => ChipBuilder.EventReceiver<T0, T1>(EventName, EventId);
+        public (T0, T1) Receiver() => ChipBuilder.EventReceiver<(T0, T1)>(EventName, EventId);
         public EventDefinition<T0, T1> Receiver(AlternativeExec<(T0, T1)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -177,7 +177,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2) => base.SendRoomAuthority(value0, value1, value2);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2) => base.SendPlayer(player, value0, value1, value2);
 
-        public (T0, T1, T2) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2>(EventName, EventId);
+        public (T0, T1, T2) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2)>(EventName, EventId);
         public EventDefinition<T0, T1, T2> Receiver(AlternativeExec<(T0, T1, T2)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -214,7 +214,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3) => base.SendRoomAuthority(value0, value1, value2, value3);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3) => base.SendPlayer(player, value0, value1, value2, value3);
 
-        public (T0, T1, T2, T3) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3>(EventName, EventId);
+        public (T0, T1, T2, T3) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3> Receiver(AlternativeExec<(T0, T1, T2, T3)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -254,7 +254,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4) => base.SendRoomAuthority(value0, value1, value2, value3, value4);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3, T4 value4) => base.SendPlayer(player, value0, value1, value2, value3, value4);
 
-        public (T0, T1, T2, T3, T4) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3, T4>(EventName, EventId);
+        public (T0, T1, T2, T3, T4) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3, T4)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3, T4> Receiver(AlternativeExec<(T0, T1, T2, T3, T4)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -297,7 +297,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5) => base.SendRoomAuthority(value0, value1, value2, value3, value4, value5);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5) => base.SendPlayer(player, value0, value1, value2, value3, value4, value5);
 
-        public (T0, T1, T2, T3, T4, T5) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3, T4, T5>(EventName, EventId);
+        public (T0, T1, T2, T3, T4, T5) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3, T4, T5)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3, T4, T5> Receiver(AlternativeExec<(T0, T1, T2, T3, T4, T5)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -343,7 +343,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6) => base.SendRoomAuthority(value0, value1, value2, value3, value4, value5, value6);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6) => base.SendPlayer(player, value0, value1, value2, value3, value4, value5, value6);
 
-        public (T0, T1, T2, T3, T4, T5, T6) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3, T4, T5, T6>(EventName, EventId);
+        public (T0, T1, T2, T3, T4, T5, T6) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3, T4, T5, T6)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3, T4, T5, T6> Receiver(AlternativeExec<(T0, T1, T2, T3, T4, T5, T6)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -392,7 +392,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) => base.SendRoomAuthority(value0, value1, value2, value3, value4, value5, value6, value7);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) => base.SendPlayer(player, value0, value1, value2, value3, value4, value5, value6, value7);
 
-        public (T0, T1, T2, T3, T4, T5, T6, T7) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7>(EventName, EventId);
+        public (T0, T1, T2, T3, T4, T5, T6, T7) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3, T4, T5, T6, T7)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3, T4, T5, T6, T7> Receiver(AlternativeExec<(T0, T1, T2, T3, T4, T5, T6, T7)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -444,7 +444,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8) => base.SendRoomAuthority(value0, value1, value2, value3, value4, value5, value6, value7, value8);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8) => base.SendPlayer(player, value0, value1, value2, value3, value4, value5, value6, value7, value8);
 
-        public (T0, T1, T2, T3, T4, T5, T6, T7, T8) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8>(EventName, EventId);
+        public (T0, T1, T2, T3, T4, T5, T6, T7, T8) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3, T4, T5, T6, T7, T8)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3, T4, T5, T6, T7, T8> Receiver(AlternativeExec<(T0, T1, T2, T3, T4, T5, T6, T7, T8)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -499,7 +499,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9) => base.SendRoomAuthority(value0, value1, value2, value3, value4, value5, value6, value7, value8, value9);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9) => base.SendPlayer(player, value0, value1, value2, value3, value4, value5, value6, value7, value8, value9);
 
-        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>(EventName, EventId);
+        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> Receiver(AlternativeExec<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -557,7 +557,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10) => base.SendRoomAuthority(value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10) => base.SendPlayer(player, value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10);
 
-        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(EventName, EventId);
+        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> Receiver(AlternativeExec<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -618,7 +618,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11) => base.SendRoomAuthority(value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11) => base.SendPlayer(player, value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11);
 
-        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(EventName, EventId);
+        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> Receiver(AlternativeExec<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -682,7 +682,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12) => base.SendRoomAuthority(value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12) => base.SendPlayer(player, value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12);
 
-        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(EventName, EventId);
+        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> Receiver(AlternativeExec<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -749,7 +749,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13) => base.SendRoomAuthority(value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13) => base.SendPlayer(player, value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13);
 
-        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(EventName, EventId);
+        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> Receiver(AlternativeExec<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -819,7 +819,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14) => base.SendRoomAuthority(value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14) => base.SendPlayer(player, value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14);
 
-        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(EventName, EventId);
+        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> Receiver(AlternativeExec<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -892,7 +892,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14, T15 value15) => base.SendRoomAuthority(value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8, T9 value9, T10 value10, T11 value11, T12 value12, T13 value13, T14 value14, T15 value15) => base.SendPlayer(player, value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15);
 
-        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(EventName, EventId);
+        public (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15)>(EventName, EventId);
         public EventDefinition<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> Receiver(AlternativeExec<(T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15)> inlineGraph)
         {
             CircuitBuilder.InlineGraph(() => inlineGraph(Receiver()));
@@ -1002,7 +1002,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1) => ChipBuilder.EventSender(eventName, eventId, EventTarget.ROOM_AUTHORITY, value0, value1);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1) => ChipBuilder.EventSender(eventName, eventId, EventTarget.PLAYER, player, value0, value1);
 
-        public (T0, T1) Receiver() => ChipBuilder.EventReceiver<T0, T1>(eventName, eventId);
+        public (T0, T1) Receiver() => ChipBuilder.EventReceiver<(T0, T1)>(eventName, eventId);
     }
 
     [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
@@ -1050,7 +1050,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2) => ChipBuilder.EventSender(eventName, eventId, EventTarget.ROOM_AUTHORITY, value0, value1, value2);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2) => ChipBuilder.EventSender(eventName, eventId, EventTarget.PLAYER, player, value0, value1, value2);
 
-        public (T0, T1, T2) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2>(eventName, eventId);
+        public (T0, T1, T2) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2)>(eventName, eventId);
     }
 
     [Obsolete("Use new EventDefinition() or ExistingEvent() instead")]
@@ -1103,7 +1103,7 @@ namespace RRCGBuild
         public void SendRoomAuthority(T0 value0, T1 value1, T2 value2, T3 value3) => ChipBuilder.EventSender(eventName, eventId, EventTarget.ROOM_AUTHORITY, value0, value1, value2, value3);
         public void SendPlayer(PlayerPort player, T0 value0, T1 value1, T2 value2, T3 value3) => ChipBuilder.EventSender(eventName, eventId, EventTarget.PLAYER, player, value0, value1, value2, value3);
 
-        public (T0, T1, T2, T3) Receiver() => ChipBuilder.EventReceiver<T0, T1, T2, T3>(eventName, eventId);
+        public (T0, T1, T2, T3) Receiver() => ChipBuilder.EventReceiver<(T0, T1, T2, T3)>(eventName, eventId);
     }
 
 }

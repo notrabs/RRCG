@@ -1,10 +1,9 @@
 using RRCG;
 using RRCGGenerated;
-using RRCGSource;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System;
 using UnityEngine;
 
 namespace RRCGBuild
@@ -20,415 +19,40 @@ namespace RRCGBuild
             EventReceiver(new EventReceiverData(eventName));
         }
 
-        public static T0 EventReceiver<T0>(string eventName, Guid eventId) where T0 : AnyPort, new()
+        public static T EventReceiver<T>(string eventName, Guid eventId) where T : new()
         {
             EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
+            Node node = Context.lastSpawnedNode;
 
-            return new T0() { Port = node.Port(0, 1) };
-        }
+            if (typeof(AnyPort).IsAssignableFrom(typeof(T)))
+            {
+                T instance = new T();
+                if (instance is AnyPort anyPort)
+                    anyPort.Port = node.Port(0, 1);
+                else
+                    throw new ArgumentException($"Cast failed.");
+                return instance;
+            }
+            else if (typeof(ITuple).IsAssignableFrom(typeof(T)))
+            {
+                Type tupleType = typeof(T);
+                int tupleLength = tupleType.GenericTypeArguments.Length;
+                object[] tupleArgs = new object[tupleLength];
+                for (int i = 0; i < tupleLength; i++)
+                {
+                    Type portType = tupleType.GenericTypeArguments[i];
+                    if (Activator.CreateInstance(portType) is not AnyPort portInstance)
+                        throw new ArgumentException($"Tuple argument {i} ({portType}) must be an AnyPort.");
+                    portInstance.Port = node.Port(0, i + 1);
+                    tupleArgs[i] = portInstance;
+                }
 
-        public static (T0, T1) EventReceiver<T0, T1>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) }
-            );
-        }
-        public static (T0, T1, T2) EventReceiver<T0, T1, T2>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) }
-            );
-        }
-        public static (T0, T1, T2, T3) EventReceiver<T0, T1, T2, T3>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) }
-            );
-        }
-
-        public static (T0, T1, T2, T3, T4) EventReceiver<T0, T1, T2, T3, T4>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-            where T4 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) },
-                new T4() { Port = node.Port(0, 5) }
-            );
-        }
-
-        public static (T0, T1, T2, T3, T4, T5) EventReceiver<T0, T1, T2, T3, T4, T5>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-            where T4 : AnyPort, new()
-            where T5 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) },
-                new T4() { Port = node.Port(0, 5) },
-                new T5() { Port = node.Port(0, 6) }
-            );
-        }
-
-        public static (T0, T1, T2, T3, T4, T5, T6) EventReceiver<T0, T1, T2, T3, T4, T5, T6>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-            where T4 : AnyPort, new()
-            where T5 : AnyPort, new()
-            where T6 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) },
-                new T4() { Port = node.Port(0, 5) },
-                new T5() { Port = node.Port(0, 6) },
-                new T6() { Port = node.Port(0, 7) }
-            );
-        }
-
-        public static (T0, T1, T2, T3, T4, T5, T6, T7) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-            where T4 : AnyPort, new()
-            where T5 : AnyPort, new()
-            where T6 : AnyPort, new()
-            where T7 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) },
-                new T4() { Port = node.Port(0, 5) },
-                new T5() { Port = node.Port(0, 6) },
-                new T6() { Port = node.Port(0, 7) },
-                new T7() { Port = node.Port(0, 8) }
-            );
-        }
-
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-            where T4 : AnyPort, new()
-            where T5 : AnyPort, new()
-            where T6 : AnyPort, new()
-            where T7 : AnyPort, new()
-            where T8 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) },
-                new T4() { Port = node.Port(0, 5) },
-                new T5() { Port = node.Port(0, 6) },
-                new T6() { Port = node.Port(0, 7) },
-                new T7() { Port = node.Port(0, 8) },
-                new T8() { Port = node.Port(0, 9) }
-            );
-        }
-
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-            where T4 : AnyPort, new()
-            where T5 : AnyPort, new()
-            where T6 : AnyPort, new()
-            where T7 : AnyPort, new()
-            where T8 : AnyPort, new()
-            where T9 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) },
-                new T4() { Port = node.Port(0, 5) },
-                new T5() { Port = node.Port(0, 6) },
-                new T6() { Port = node.Port(0, 7) },
-                new T7() { Port = node.Port(0, 8) },
-                new T8() { Port = node.Port(0, 9) },
-                new T9() { Port = node.Port(0, 10) }
-            );
-        }
-
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-            where T4 : AnyPort, new()
-            where T5 : AnyPort, new()
-            where T6 : AnyPort, new()
-            where T7 : AnyPort, new()
-            where T8 : AnyPort, new()
-            where T9 : AnyPort, new()
-            where T10 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) },
-                new T4() { Port = node.Port(0, 5) },
-                new T5() { Port = node.Port(0, 6) },
-                new T6() { Port = node.Port(0, 7) },
-                new T7() { Port = node.Port(0, 8) },
-                new T8() { Port = node.Port(0, 9) },
-                new T9() { Port = node.Port(0, 10) },
-                new T10() { Port = node.Port(0, 11) }
-            );
-        }
-
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-            where T4 : AnyPort, new()
-            where T5 : AnyPort, new()
-            where T6 : AnyPort, new()
-            where T7 : AnyPort, new()
-            where T8 : AnyPort, new()
-            where T9 : AnyPort, new()
-            where T10 : AnyPort, new()
-            where T11 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) },
-                new T4() { Port = node.Port(0, 5) },
-                new T5() { Port = node.Port(0, 6) },
-                new T6() { Port = node.Port(0, 7) },
-                new T7() { Port = node.Port(0, 8) },
-                new T8() { Port = node.Port(0, 9) },
-                new T9() { Port = node.Port(0, 10) },
-                new T10() { Port = node.Port(0, 11) },
-                new T11() { Port = node.Port(0, 12) }
-            );
-        }
-
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-            where T4 : AnyPort, new()
-            where T5 : AnyPort, new()
-            where T6 : AnyPort, new()
-            where T7 : AnyPort, new()
-            where T8 : AnyPort, new()
-            where T9 : AnyPort, new()
-            where T10 : AnyPort, new()
-            where T11 : AnyPort, new()
-            where T12 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) },
-                new T4() { Port = node.Port(0, 5) },
-                new T5() { Port = node.Port(0, 6) },
-                new T6() { Port = node.Port(0, 7) },
-                new T7() { Port = node.Port(0, 8) },
-                new T8() { Port = node.Port(0, 9) },
-                new T9() { Port = node.Port(0, 10) },
-                new T10() { Port = node.Port(0, 11) },
-                new T11() { Port = node.Port(0, 12) },
-                new T12() { Port = node.Port(0, 13) }
-            );
-        }
-
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-            where T4 : AnyPort, new()
-            where T5 : AnyPort, new()
-            where T6 : AnyPort, new()
-            where T7 : AnyPort, new()
-            where T8 : AnyPort, new()
-            where T9 : AnyPort, new()
-            where T10 : AnyPort, new()
-            where T11 : AnyPort, new()
-            where T12 : AnyPort, new()
-            where T13 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) },
-                new T4() { Port = node.Port(0, 5) },
-                new T5() { Port = node.Port(0, 6) },
-                new T6() { Port = node.Port(0, 7) },
-                new T7() { Port = node.Port(0, 8) },
-                new T8() { Port = node.Port(0, 9) },
-                new T9() { Port = node.Port(0, 10) },
-                new T10() { Port = node.Port(0, 11) },
-                new T11() { Port = node.Port(0, 12) },
-                new T12() { Port = node.Port(0, 13) },
-                new T13() { Port = node.Port(0, 14) }
-            );
-        }
-
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-            where T4 : AnyPort, new()
-            where T5 : AnyPort, new()
-            where T6 : AnyPort, new()
-            where T7 : AnyPort, new()
-            where T8 : AnyPort, new()
-            where T9 : AnyPort, new()
-            where T10 : AnyPort, new()
-            where T11 : AnyPort, new()
-            where T12 : AnyPort, new()
-            where T13 : AnyPort, new()
-            where T14 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) },
-                new T4() { Port = node.Port(0, 5) },
-                new T5() { Port = node.Port(0, 6) },
-                new T6() { Port = node.Port(0, 7) },
-                new T7() { Port = node.Port(0, 8) },
-                new T8() { Port = node.Port(0, 9) },
-                new T9() { Port = node.Port(0, 10) },
-                new T10() { Port = node.Port(0, 11) },
-                new T11() { Port = node.Port(0, 12) },
-                new T12() { Port = node.Port(0, 13) },
-                new T13() { Port = node.Port(0, 14) },
-                new T14() { Port = node.Port(0, 15) }
-            );
-        }
-
-        public static (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15) EventReceiver<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string eventName, Guid eventId)
-            where T0 : AnyPort, new()
-            where T1 : AnyPort, new()
-            where T2 : AnyPort, new()
-            where T3 : AnyPort, new()
-            where T4 : AnyPort, new()
-            where T5 : AnyPort, new()
-            where T6 : AnyPort, new()
-            where T7 : AnyPort, new()
-            where T8 : AnyPort, new()
-            where T9 : AnyPort, new()
-            where T10 : AnyPort, new()
-            where T11 : AnyPort, new()
-            where T12 : AnyPort, new()
-            where T13 : AnyPort, new()
-            where T14 : AnyPort, new()
-            where T15 : AnyPort, new()
-        {
-            EventReceiver(eventName, eventId);
-            var node = Context.lastSpawnedNode;
-
-            return (
-                new T0() { Port = node.Port(0, 1) },
-                new T1() { Port = node.Port(0, 2) },
-                new T2() { Port = node.Port(0, 3) },
-                new T3() { Port = node.Port(0, 4) },
-                new T4() { Port = node.Port(0, 5) },
-                new T5() { Port = node.Port(0, 6) },
-                new T6() { Port = node.Port(0, 7) },
-                new T7() { Port = node.Port(0, 8) },
-                new T8() { Port = node.Port(0, 9) },
-                new T9() { Port = node.Port(0, 10) },
-                new T10() { Port = node.Port(0, 11) },
-                new T11() { Port = node.Port(0, 12) },
-                new T12() { Port = node.Port(0, 13) },
-                new T13() { Port = node.Port(0, 14) },
-                new T14() { Port = node.Port(0, 15) },
-                new T15() { Port = node.Port(0, 16) }
-            );
+                return (T)Activator.CreateInstance(tupleType, tupleArgs);
+            }
+            else
+            {
+                throw new ArgumentException($"T ({typeof(T)}) must be an AnyPort or tuple.");
+            }
         }
 
         internal static void EventSender(string eventName, Guid eventId, EventTarget eventTarget, params AnyPort[] inputs)

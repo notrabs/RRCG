@@ -9,7 +9,7 @@ namespace RRCGBuild
         {
             CircuitBuilder.InlineGraph(() =>
             {
-                onConsumablePurchased(ChipBuilder.EventReceiver<ConsumablePort, IntPort>("Consumable Purchased", Guid.ParseExact("b5678272-adbe-4e59-a833-bd156fd8f7fa", "D")));
+                onConsumablePurchased(ChipBuilder.EventReceiver<(ConsumablePort consumable, IntPort quantity)>("Consumable Purchased", Guid.ParseExact("b5678272-adbe-4e59-a833-bd156fd8f7fa", "D")));
             }
 
             );
