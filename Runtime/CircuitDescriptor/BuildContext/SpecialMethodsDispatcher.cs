@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using static RRCG.GraphUtils;
 
 namespace RRCGBuild
 {
@@ -57,11 +58,14 @@ namespace RRCGBuild
                 // contexts to eachother, the situation cannot be reconciled.
                 var dependencyContexts = incomingDependencies.Select(n => n.Context)
                                         .Concat(outgoingDependencies.Select(n => n.Context))
+                                        // TODO: If there is nested analysis contexts during construction, the concrete context cannot be known easily.
+                                        // Using the parent context is a heuristic that fixes it for simple cases for now. Really this needs a better fix.
+                                        .Select(c => c is GraphAnalysisContext ? c.ParentContext : c)
                                         .Distinct()
                                         .ToArray();
 
                 if (dependencyContexts.Length > 1)
-                    throw new Exception($"EventFunction references nodes from more than one external context!");
+                    throw new Exception($"EventFunction '{name}' references nodes from more than one external context!");
 
                 // Otherwise, we either choose to place the receiver in
                 // the first dependency context, or just the current context.

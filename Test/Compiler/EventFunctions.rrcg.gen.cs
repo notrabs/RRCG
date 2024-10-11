@@ -64,6 +64,8 @@ namespace RRCGBuild
             }
 
             );
+            // Checks that event functions can access shared properties
+            AccessingSharedProperty();
             __EndAccessibilityScope();
             __EndReturnScope();
         }
@@ -487,6 +489,55 @@ namespace RRCGBuild
                 LogString(__StringInterpolation(ContextDependency));
                 __EndAccessibilityScope();
                 __EndReturnScope();
+            }
+
+            );
+        }
+
+        [EventFunction]
+        void AccessingSharedProperty()
+        {
+            SpecialMethodsDispatcher.current.DispatchEventFunction(this, "AccessingSharedProperty", delegate ()
+            {
+                __BeginReturnScope("AccessingSharedProperty", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                SharedData();
+                // There is a tricky situation, when EventFunctions are nested, and both use the same SharedData()
+                AccessingSharedPropertyNested();
+                __EndAccessibilityScope();
+                __EndReturnScope();
+            }
+
+            );
+        }
+
+        RRCGBuild.RecRoomObjectPort rootContextData = __NamedAssignment<RRCGBuild.RecRoomObjectPort>("rootContextData", () => RecRoomObjectGetFirstWithTag("rootcontext"));
+        [EventFunction]
+        void AccessingSharedPropertyNested()
+        {
+            SpecialMethodsDispatcher.current.DispatchEventFunction(this, "AccessingSharedPropertyNested", delegate ()
+            {
+                __BeginReturnScope("AccessingSharedPropertyNested", null, null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                RRCGBuild.ChipLib.Log(rootContextData);
+                RRCGBuild.ChipLib.Log(SharedData());
+                __EndAccessibilityScope();
+                __EndReturnScope();
+            }
+
+            );
+        }
+
+        [SharedProperty]
+        RRCGBuild.RecRoomObjectPort SharedData()
+        {
+            return SpecialMethodsDispatcher.current.DispatchSharedPropertyFunction<RRCGBuild.RecRoomObjectPort>(this, delegate ()
+            {
+                __BeginReturnScope("SharedData", typeof(RRCGBuild.RecRoomObjectPort), null);
+                __BeginAccessibilityScope(AccessibilityScope.Kind.MethodRoot);
+                __Return<RRCGBuild.RecRoomObjectPort>(RecRoomObjectGetFirstWithTag("shared"));
+                __EndAccessibilityScope();
+                return __EndReturnScope()!;
             }
 
             );

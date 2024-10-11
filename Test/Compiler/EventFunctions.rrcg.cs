@@ -54,6 +54,9 @@ public class EventFunctionsTest : CircuitDescriptor
         // from a particular context should be placed in the
         // same context as that node. (TODO: Cross-context returns..)
         CircuitBoard(() => VoidCrossContext());
+
+        // Checks that event functions can access shared properties
+        AccessingSharedProperty();
     }
 
     [EventFunction]
@@ -139,5 +142,32 @@ public class EventFunctionsTest : CircuitDescriptor
         // the receiver should also be placed in the root context,
         // despite its first invocation occuring in a subcontext.
         LogString($"{ContextDependency}");
+    }
+
+    [EventFunction]
+    void AccessingSharedProperty()
+    {
+        SharedData();
+
+        // There is a tricky situation, when EventFunctions are nested, and both use the same SharedData()
+        AccessingSharedPropertyNested();
+    }
+
+    RecRoomObject rootContextData = RecRoomObjectGetFirstWithTag("rootcontext");
+
+    [EventFunction]
+    void AccessingSharedPropertyNested()
+    {
+        ChipLib.Log(rootContextData);
+
+        // This SharedData() at this time is still placed in the parent's EventFunction's Analysis context.
+        // This makes this EventFunction depende on the rootContext (above) and an analysis context
+        ChipLib.Log(SharedData());
+    }
+
+    [SharedProperty]
+    RecRoomObject SharedData()
+    {
+        return RecRoomObjectGetFirstWithTag("shared");
     }
 }

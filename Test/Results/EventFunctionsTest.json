@@ -15,6 +15,13 @@
       "InputCount": 2
     },
     {
+      "Id": "Rec_Room_Object_Get_First_with_Tag_0",
+      "Type": "PC3/Q6rDvEWntwFYfIph9g==",
+      "Name": "Rec Room Object Get First with Tag",
+      "DefaultValues": [[[0,0],"System.String","rootcontext"]],
+      "InputCount": 1
+    },
+    {
       "Id": "Event_Definition_0",
       "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
       "Name": "Event Definition",
@@ -1369,6 +1376,105 @@
       "DefaultValues": [],
       "CircuitBoardId": "0_0",
       "InputCount": 0
+    },
+    {
+      "Id": "Event_Definition_22",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventFunction_AccessingSharedProperty",
+        "EventDefinition": []
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Definition_23",
+      "Type": "+qFyfTSkN0SnOlHzBqP1Xw==",
+      "Name": "Event Definition",
+      "EventDefinitionData": {
+        "EventName": "RRCG_EventFunction_AccessingSharedPropertyNested",
+        "EventDefinition": []
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Event_Receiver_22",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventFunction_AccessingSharedPropertyNested"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "To_String_9",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_19",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "To_String_10",
+      "Type": "To7cvZa07kiOJVuf6OHGyQ==",
+      "Name": "To String",
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Log_String_20",
+      "Type": "zKhHQMw9qE+Fp0HVabjlRw==",
+      "Name": "Log String",
+      "DefaultValues": [],
+      "InputCount": 2
+    },
+    {
+      "Id": "Event_Receiver_23",
+      "Type": "yzxTizpkHUmYLJRBfOmZVA==",
+      "Name": "Event Receiver",
+      "EventReceiverData": {
+        "EventName": "RRCG_EventFunction_AccessingSharedProperty"
+      },
+      "DefaultValues": [],
+      "InputCount": 0
+    },
+    {
+      "Id": "Rec_Room_Object_Get_First_with_Tag_1",
+      "Type": "PC3/Q6rDvEWntwFYfIph9g==",
+      "Name": "Rec Room Object Get First with Tag",
+      "DefaultValues": [[[0,0],"System.String","shared"]],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_26",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventFunction_AccessingSharedPropertyNested",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
+    },
+    {
+      "Id": "Event_Sender_27",
+      "Type": "UP6olje8i0W6yVgtRTFHeQ==",
+      "Name": "Event Sender",
+      "EventSenderData": {
+        "EventName": "RRCG_EventFunction_AccessingSharedProperty",
+        "EventTarget": 0
+      },
+      "DefaultValues": [],
+      "InputCount": 1
     }
   ],
   "Connections": [
@@ -2450,6 +2556,110 @@
         "Index": 0
       },
       "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Rec_Room_Object_Get_First_with_Tag_0",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "To_String_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_9",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_19",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_22",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_19",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Rec_Room_Object_Get_First_with_Tag_1",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "To_String_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "To_String_10",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_20",
+        "Group": 0,
+        "Index": 1
+      },
+      "isExec": false
+    },
+    {
+      "From": {
+        "Node": "Log_String_19",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Log_String_20",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "Event_Receiver_23",
+        "Group": 0,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_26",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
+    },
+    {
+      "From": {
+        "Node": "RRCG_<CircuitGraph>b__3_0",
+        "Group": 1,
+        "Index": 0
+      },
+      "To": {
+        "Node": "Event_Sender_27",
+        "Group": 0,
+        "Index": 0
+      },
+      "isExec": true
     }
   ],
   "SubContexts": [
@@ -2464,7 +2674,7 @@
           "InputCount": 0
         },
         {
-          "Id": "Event_Sender_26",
+          "Id": "Event_Sender_28",
           "Type": "UP6olje8i0W6yVgtRTFHeQ==",
           "Name": "Event Sender",
           "EventSenderData": {
@@ -2490,7 +2700,7 @@
             "Index": 0
           },
           "To": {
-            "Node": "Event_Sender_26",
+            "Node": "Event_Sender_28",
             "Group": 0,
             "Index": 0
           },
@@ -2498,7 +2708,7 @@
         },
         {
           "From": {
-            "Node": "Event_Sender_26",
+            "Node": "Event_Sender_28",
             "Group": 0,
             "Index": 0
           },
