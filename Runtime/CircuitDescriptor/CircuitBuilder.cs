@@ -301,7 +301,10 @@ namespace RRCGBuild
         public static void StudioEventReceiver(string eventName, Guid eventId = default)
         {
             CircuitBuilder.Singleton("StudioEventReceiver_" + eventName, () => EventDefinition(eventName, eventId));
-            EventReceiver(eventId);
+            if (eventId == Guid.Empty)
+                EventReceiver(eventName);
+            else
+                EventReceiver(eventId);
         }
 
         /// <summary>

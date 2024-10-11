@@ -96,10 +96,18 @@ namespace RRCG
     public record RoomCurrencyData(Guid Id);
     public record RoomConsumableData(Guid Id);
 
-    public record EventData(
-       string EventName,
-       Guid EventId
-    );
+    public record EventData
+    {
+        public string EventName { get; init; }
+        public Guid EventId { get; init; }
+        public EventData(string eventName, Guid eventId)
+        {
+            if (string.IsNullOrWhiteSpace(eventName) && (eventId == Guid.Empty))
+                throw new ArgumentException("Event name and ID cannot be empty at the same time.");
+            EventName = eventName;
+            EventId = eventId;
+        }
+    }
 
     public record EventDefinitionData(
        string EventName,
