@@ -80,7 +80,7 @@ namespace RRCGBuild
 
         internal static void EventSender(EventSenderData eventData, params AnyPort[] inputs)
         {
-            EventSender(eventData);
+            ChipBuilderGen.EventSender(eventData);
             var node = Context.lastSpawnedNode;
 
             for (var i = 0; i < inputs.Length; i++)
