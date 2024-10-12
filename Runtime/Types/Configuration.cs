@@ -99,7 +99,8 @@ namespace RRCG
     public record EventData
     {
         public string EventName { get; init; }
-        public Guid EventId { get; init; }
+        public Guid EventId { get; set; }
+
         public EventData(string eventName, Guid eventId)
         {
             if (string.IsNullOrWhiteSpace(eventName) && (eventId == Guid.Empty))
