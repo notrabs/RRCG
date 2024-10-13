@@ -17,12 +17,12 @@ namespace RRCGBuild
 
         public static void EventReceiver(string eventName)
         {
-            EventReceiver(new EventReceiverData(eventName, Guid.Empty));
+            EventReceiver(new EventReceiverData(new EventDefinitionData(eventName, Guid.Empty, null)));
         }
 
         public static void EventReceiver(Guid eventId)
         {
-            EventReceiver(new EventReceiverData(null, eventId));
+            EventReceiver(new EventReceiverData(new EventDefinitionData(null, eventId, null)));
         }
 
         public static T EventReceiver<T>(string eventName) where T : new()
@@ -87,23 +87,20 @@ namespace RRCGBuild
                 node.ConnectInputPort(inputs[i], node.Port(0, 1 + i));
         }
 
-        internal static void EventSender(string eventName, EventTarget eventTarget, params AnyPort[] inputs)
+        internal static void EventSender(EventDefinitionData eventDefinition, EventTarget eventTarget, params AnyPort[] inputs)
         {
-            EventSender(new EventSenderData(eventName, Guid.Empty, eventTarget), inputs);
+            EventSender(new EventSenderData(eventDefinition, eventTarget), inputs);
         }
 
-        internal static void EventSender(Guid eventId, EventTarget eventTarget, params AnyPort[] inputs)
+        internal static EventDefinitionData EventDefinition(string eventName, Guid eventId, params (StringPort, Type)[] eventDefinition)
         {
-            EventSender(new EventSenderData(null, eventId, eventTarget), inputs);
-        }
-
-        internal static void EventDefinition(string eventName, Guid eventId, params (StringPort, Type)[] eventDefinition)
-        {
-            EventDefinition(new EventDefinitionData(
+            EventDefinitionData data = new(
                 eventName,
                 eventId,
                 eventDefinition.Select(t => (t.Item1.AsData<string>(), t.Item2)).ToArray()
-            ));
+            );
+            EventDefinition(data);
+            return data;
         }
 
         #endregion

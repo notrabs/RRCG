@@ -312,7 +312,7 @@ namespace RRCGBuild
         /// </summary>
         public static EventDefinition ExistingEvent(string eventName, Guid eventId)
         {
-            return new EventDefinition(true, eventName, eventId);
+            return new EventDefinition(eventId, eventName);
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace RRCGBuild
         public static EventDefinition<T0> ExistingEvent<T0>(string eventName, Guid eventId)
             where T0 : AnyPort, new()
         {
-            return new EventDefinition<T0>(true, eventName, eventId);
+            return new EventDefinition<T0>(eventId, eventName);
         }
 
         /// <summary>
@@ -333,7 +333,7 @@ namespace RRCGBuild
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
         {
-            return new EventDefinition<T0, T1>(true, eventName, eventId);
+            return new EventDefinition<T0, T1>(eventId, eventName);
         }
 
         /// <summary>
@@ -345,7 +345,7 @@ namespace RRCGBuild
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
         {
-            return new EventDefinition<T0, T1, T2>(true, eventName, eventId);
+            return new EventDefinition<T0, T1, T2>(eventId, eventName);
         }
 
         /// <summary>

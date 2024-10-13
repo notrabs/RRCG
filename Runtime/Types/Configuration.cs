@@ -96,36 +96,38 @@ namespace RRCG
     public record RoomCurrencyData(Guid Id);
     public record RoomConsumableData(Guid Id);
 
-    public record EventData
+    public record EventDefinitionData
     {
-        public string EventName { get; init; }
+        public string EventName { get; set; } // set is only used by the obfuscator
         public Guid EventId { get; set; }
 
-        public EventData(string eventName, Guid eventId)
+        public (string, Type)[] EventParameters { get; init; }
+
+        public EventDefinitionData(string name, Guid id, (string, Type)[] parameters)
         {
-            if (string.IsNullOrWhiteSpace(eventName) && (eventId == Guid.Empty))
+            if (string.IsNullOrWhiteSpace(name) && (id == Guid.Empty))
                 throw new ArgumentException("Event name and ID cannot be empty at the same time.");
-            EventName = eventName;
-            EventId = eventId;
+            EventName = name;
+            EventId = id;
+            EventParameters = parameters;
         }
     }
 
-    public record EventDefinitionData(
-       string EventName,
-       Guid EventId,
-       (string, Type)[] EventDefinition
-    ) : EventData(EventName, EventId);
+    public record EventData(EventDefinitionData EventDefinition)
+    {
+        public string EventName => EventDefinition.EventName;
+        public Guid EventId => EventDefinition.EventId;
+        public (string, Type)[] EventParameters => EventDefinition.EventParameters;
+    }
 
     public record EventReceiverData(
-        string EventName,
-        Guid EventId
-    ) : EventData(EventName, EventId);
+        EventDefinitionData EventDefinition
+    ) : EventData(EventDefinition);
 
     public record EventSenderData(
-        string EventName,
-        Guid EventId,
+        EventDefinitionData EventDefinition,
         EventTarget EventTarget
-    ) : EventData(EventName, EventId);
+    ) : EventData(EventDefinition);
 
     public record RaycastData(
         bool IgnorePlayers = false,
