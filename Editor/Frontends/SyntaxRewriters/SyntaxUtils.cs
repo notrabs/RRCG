@@ -67,6 +67,10 @@ namespace RRCG
         }
         public static TypeArgumentListSyntax TypeArgumentList(params TypeSyntax[] arguments)
         {
+            return TypeArgumentList((IEnumerable<TypeSyntax>)arguments);
+        }
+        public static TypeArgumentListSyntax TypeArgumentList(IEnumerable<TypeSyntax> arguments)
+        {
             var withCommas = CommaSeparated(arguments.Select(arg => (SyntaxNodeOrToken)arg));
 
             return SyntaxFactory.TypeArgumentList(SyntaxFactory.SeparatedList<TypeSyntax>(withCommas));

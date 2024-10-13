@@ -96,19 +96,36 @@ namespace RRCG
     public record RoomCurrencyData(Guid Id);
     public record RoomConsumableData(Guid Id);
 
+    public record EventData
+    {
+        public string EventName { get; init; }
+        public Guid EventId { get; set; }
+
+        public EventData(string eventName, Guid eventId)
+        {
+            if (string.IsNullOrWhiteSpace(eventName) && (eventId == Guid.Empty))
+                throw new ArgumentException("Event name and ID cannot be empty at the same time.");
+            EventName = eventName;
+            EventId = eventId;
+        }
+    }
+
     public record EventDefinitionData(
        string EventName,
+       Guid EventId,
        (string, Type)[] EventDefinition
-    );
+    ) : EventData(EventName, EventId);
 
     public record EventReceiverData(
-       string EventName
-    );
+        string EventName,
+        Guid EventId
+    ) : EventData(EventName, EventId);
 
     public record EventSenderData(
         string EventName,
+        Guid EventId,
         EventTarget EventTarget
-    );
+    ) : EventData(EventName, EventId);
 
     public record RaycastData(
         bool IgnorePlayers = false,
@@ -122,10 +139,17 @@ namespace RRCG
         object HomeValue
     );
 
+    // Couldn't come up with a descriptive name for this one.
+    // This one is for Data Table Get Row/Column count.
+    // It refers to a specific Data Table, but not to a column.
+    public record DataTableData(
+        string DataTableName
+    );
+
     public record DataTableColumnData(
         string DataTableName,
         string ColumnName
-    );
+    ) : DataTableData(DataTableName);
 
     public record FogData(
         int Color,
@@ -136,13 +160,6 @@ namespace RRCG
     public record DataTableDefinitionData(
         string Name,
         (Type Type, string Name, object[] Cells)[] Columns
-    );
-
-    // Couldn't come up with a descriptive name for this one.
-    // This one is for Data Table Get Row/Column count.
-    // It refers to a specific Data Table, but not to a column.
-    public record DataTableData(
-        string DataTableName
     );
 
     public record SequenceData(
