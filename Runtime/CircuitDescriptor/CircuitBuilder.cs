@@ -6,7 +6,6 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using DeclaredVariable = RRCGBuild.AccessibilityScope.DeclaredVariable;
 using PromotedVariable = RRCGBuild.ConditionalContext.PromotedVariable;
 
 namespace RRCGBuild
@@ -299,51 +298,54 @@ namespace RRCGBuild
         {
         }
 
-        public static void StudioEventReceiver(string eventName)
+        public static void StudioEventReceiver(string eventName, Guid eventId = default)
         {
-            CircuitBuilder.Singleton("StudioEventReceiver_" + eventName, () => EventDefinition(eventName));
-            EventReceiver(eventName);
+            CircuitBuilder.Singleton("StudioEventReceiver_" + eventName, () => EventDefinition(eventName, eventId));
+            if (eventId == Guid.Empty)
+                EventReceiver(eventName);
+            else
+                EventReceiver(eventId);
         }
 
         /// <summary>
         /// Returns an Instance of the Event class for an already exising Event in the room
         /// </summary>
-        public static EventDefinition ExistingEvent(string eventName)
+        public static EventDefinition ExistingEvent(string eventName, Guid eventId)
         {
-            return new EventDefinition(true, eventName);
+            return new EventDefinition(eventId, eventName);
         }
 
         /// <summary>
         /// Returns an Instance of the Event class for an already exising Event in the room. 
         /// With one Event parameter.
         /// </summary>
-        public static EventDefinition<T0> ExistingEvent<T0>(string eventName)
+        public static EventDefinition<T0> ExistingEvent<T0>(string eventName, Guid eventId)
             where T0 : AnyPort, new()
         {
-            return new EventDefinition<T0>(true, eventName);
+            return new EventDefinition<T0>(eventId, eventName);
         }
 
         /// <summary>
         /// Returns an Instance of the Event class for an already exising Event in the room. 
         /// With two Event parameter.
         /// </summary>
-        public static EventDefinition<T0, T1> ExistingEvent<T0, T1>(string eventName)
+        public static EventDefinition<T0, T1> ExistingEvent<T0, T1>(string eventName, Guid eventId)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
         {
-            return new EventDefinition<T0, T1>(true, eventName);
+            return new EventDefinition<T0, T1>(eventId, eventName);
         }
 
         /// <summary>
         /// Returns an Instance of the Event class for an already exising Event in the room. 
         /// With three Event parameter.
         /// </summary>
-        public static EventDefinition<T0, T1, T2> ExistingEvent<T0, T1, T2>(string eventName)
+        public static EventDefinition<T0, T1, T2> ExistingEvent<T0, T1, T2>(string eventName, Guid eventId)
             where T0 : AnyPort, new()
             where T1 : AnyPort, new()
             where T2 : AnyPort, new()
         {
-            return new EventDefinition<T0, T1, T2>(true, eventName);
+            return new EventDefinition<T0, T1, T2>(eventId, eventName);
         }
 
         /// <summary>

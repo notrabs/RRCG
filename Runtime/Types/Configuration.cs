@@ -96,19 +96,38 @@ namespace RRCG
     public record RoomCurrencyData(Guid Id);
     public record RoomConsumableData(Guid Id);
 
-    public record EventDefinitionData(
-       string EventName,
-       (string, Type)[] EventDefinition
-    );
+    public record EventDefinitionData
+    {
+        public string EventName { get; set; } // set is only used by the obfuscator
+        public Guid EventId { get; set; }
+
+        public (string, Type)[] EventParameters { get; init; }
+
+        public EventDefinitionData(string name, Guid id, (string, Type)[] parameters)
+        {
+            if (string.IsNullOrWhiteSpace(name) && (id == Guid.Empty))
+                throw new ArgumentException("Event name and ID cannot be empty at the same time.");
+            EventName = name;
+            EventId = id;
+            EventParameters = parameters;
+        }
+    }
+
+    public record EventData(EventDefinitionData EventDefinition)
+    {
+        public string EventName => EventDefinition.EventName;
+        public Guid EventId => EventDefinition.EventId;
+        public (string, Type)[] EventParameters => EventDefinition.EventParameters;
+    }
 
     public record EventReceiverData(
-       string EventName
-    );
+        EventDefinitionData EventDefinition
+    ) : EventData(EventDefinition);
 
     public record EventSenderData(
-        string EventName,
+        EventDefinitionData EventDefinition,
         EventTarget EventTarget
-    );
+    ) : EventData(EventDefinition);
 
     public record RaycastData(
         bool IgnorePlayers = false,
@@ -122,10 +141,17 @@ namespace RRCG
         object HomeValue
     );
 
+    // Couldn't come up with a descriptive name for this one.
+    // This one is for Data Table Get Row/Column count.
+    // It refers to a specific Data Table, but not to a column.
+    public record DataTableData(
+        string DataTableName
+    );
+
     public record DataTableColumnData(
         string DataTableName,
         string ColumnName
-    );
+    ) : DataTableData(DataTableName);
 
     public record FogData(
         int Color,
@@ -136,13 +162,6 @@ namespace RRCG
     public record DataTableDefinitionData(
         string Name,
         (Type Type, string Name, object[] Cells)[] Columns
-    );
-
-    // Couldn't come up with a descriptive name for this one.
-    // This one is for Data Table Get Row/Column count.
-    // It refers to a specific Data Table, but not to a column.
-    public record DataTableData(
-        string DataTableName
     );
 
     public record SequenceData(
